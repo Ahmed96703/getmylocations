@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b1224" />
+
+    <title>GeoPulse | Real-time Location Tool</title>
+    <meta name="description" content="GeoPulse — a premium, privacy-first real-time location tool. See your city, country, and exact GPS coordinates on a beautiful interactive map." />
+    <link rel="canonical" href="https://geopulse.app/tool/location-finder" />
+
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="GPTBot" content="index, follow" />
+    <meta name="Google-InspectionTool" content="index, follow" />
+    <meta name="ClaudeBot" content="index, follow" />
+    <meta name="PerplexityBot" content="index, follow" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="GeoPulse" />
+    <meta property="og:title" content="GeoPulse | Real-time Location Tool" />
+    <meta property="og:description" content="Privacy-first real-time location tool. View your city, country, and GPS coordinates on an interactive map." />
+    <meta property="og:url" content="https://geopulse.app/tool/location-finder" />
+    <meta property="og:image" content="https://geopulse.app/tool/location-finderog-image.png" />
+    <meta property="og:image:alt" content="GeoPulse dashboard with live coordinates and an interactive map" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="GeoPulse | Real-time Location Tool" />
+    <meta name="twitter:description" content="Privacy-first real-time location tool with city, country, and GPS coordinates." />
+    <meta name="twitter:image" content="https://geopulse.app/tool/location-finderog-image.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://a.tile.openstreetmap.org" crossorigin />
+    <link rel="preconnect" href="https://b.tile.openstreetmap.org" crossorigin />
+    <link rel="preconnect" href="https://c.tile.openstreetmap.org" crossorigin />
+    <link rel="preconnect" href="https://api.bigdatacloud.net" crossorigin />
+    <link rel="preconnect" href="https://nominatim.openstreetmap.org" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "GeoPulse",
+      "url": "https://geopulse.app/tool/location-finder",
+      "description": "Premium, privacy-focused real-time geolocation tool with reverse geocoding and interactive OpenStreetMap.",
+      "applicationCategory": "UtilitiesApplication",
+      "applicationSubCategory": "Maps",
+      "operatingSystem": "Web",
+      "browserRequirements": "Requires a browser with the Geolocation API.",
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "featureList": [
+        "Real-time location tracking",
+        "Reverse geocoding (city and country)",
+        "Manual coordinate input",
+        "Interactive OpenStreetMap view",
+        "Privacy-focused — runs fully in browser",
+        "Free to use, no signup",
+        "Mobile-responsive design"
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "How does GeoPulse find my location?", "acceptedAnswer": { "@type": "Answer", "text": "GeoPulse uses your browser's Geolocation API combined with reverse geocoding via OpenStreetMap Nominatim. All requests run from your browser." } },
+        { "@type": "Question", "name": "Is GeoPulse free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. GeoPulse is 100% free, no signup, no ads, and uses open-source OpenStreetMap data." } },
+        { "@type": "Question", "name": "Does GeoPulse store my location?", "acceptedAnswer": { "@type": "Answer", "text": "No. There is no backend. Your coordinates and addresses are never stored or shared." } }
+      ]
+    }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
