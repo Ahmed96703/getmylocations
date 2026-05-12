@@ -8,7 +8,7 @@ export default function NotFound() {
         <div className="flex justify-center"><Logo size={48} /></div>
         <div className="font-display text-3xl font-bold mt-4">Page not found</div>
         <p className="text-slate-300/90 mt-2 text-sm">The route you followed doesn’t exist.</p>
-        <Link to="/tool/location-finder" className="btn-primary mt-5 inline-flex">Open Location Finder</Link>
+        <Link to="/" className="btn-primary mt-5 inline-flex">Open Location Finder</Link>
       </div>
     </main>
   );

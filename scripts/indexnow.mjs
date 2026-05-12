@@ -7,7 +7,7 @@ const KEY = 'ee1554a41cb26eb4c13925cd6bd63fa2';
 const KEY_LOCATION = `https://${HOST}/${KEY}.txt`;
 const URLS = [
   `https://${HOST}/`,
-  `https://${HOST}/tool/location-finder`,
+  `https://${HOST}`,
 ];
 
 const body = { host: HOST, key: KEY, keyLocation: KEY_LOCATION, urlList: URLS };

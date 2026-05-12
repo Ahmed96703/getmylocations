@@ -2,7 +2,7 @@
   "name": "GetMyLocations — Location Finder",
   "short_name": "GetMyLocations",
   "description": "Free, privacy-first IP & GPS location finder with latitude, longitude, city, and country.",
-  "start_url": "/tool/location-finder",
+  "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait",
