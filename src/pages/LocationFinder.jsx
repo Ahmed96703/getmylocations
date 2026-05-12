@@ -166,6 +166,8 @@ export default function LocationFinder() {
           </div>
         </section>
 
+        <AdSlot label="Advertisement" minHeight={250} />
+
         <section aria-labelledby="faq" className="mt-12">
           <h2 id="faq" className="font-display text-2xl font-bold">Frequently asked questions</h2>
           <div className="glass mt-4 rounded-2xl divide-y divide-white/5">
@@ -180,6 +182,8 @@ export default function LocationFinder() {
             ))}
           </div>
         </section>
+
+        <AdSlot label="Advertisement" minHeight={250} />
 
       </main>
       <Footer />
