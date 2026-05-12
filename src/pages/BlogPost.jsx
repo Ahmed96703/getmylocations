@@ -5,6 +5,10 @@ import { findPost } from '../posts/manifest.js';
 
 const POSTS = {
   'how-to-find-your-gps-coordinates': lazy(() => import('../posts/HowToFindGpsCoordinates.jsx')),
+  'what-is-ip-location-and-how-accurate': lazy(() => import('../posts/WhatIsIpLocation.jsx')),
+  'latitude-vs-longitude-explained': lazy(() => import('../posts/LatitudeVsLongitude.jsx')),
+  'how-gps-works': lazy(() => import('../posts/HowGpsWorks.jsx')),
+  '10-uses-for-gps-coordinates': lazy(() => import('../posts/TenUsesForGpsCoordinates.jsx')),
 };
 
 export default function BlogPost() {

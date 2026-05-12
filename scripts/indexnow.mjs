@@ -12,6 +12,10 @@ const URLS = [
   `https://${HOST}/contact`,
   `https://${HOST}/privacy-policy`,
   `https://${HOST}/blog/how-to-find-your-gps-coordinates`,
+  `https://${HOST}/blog/what-is-ip-location-and-how-accurate`,
+  `https://${HOST}/blog/latitude-vs-longitude-explained`,
+  `https://${HOST}/blog/how-gps-works`,
+  `https://${HOST}/blog/10-uses-for-gps-coordinates`,
 ];
 
 const body = { host: HOST, key: KEY, keyLocation: KEY_LOCATION, urlList: URLS };
