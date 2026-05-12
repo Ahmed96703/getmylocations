@@ -11,6 +11,7 @@ const URLS = [
   `https://${HOST}/blog`,
   `https://${HOST}/contact`,
   `https://${HOST}/privacy-policy`,
+  `https://${HOST}/blog/how-to-find-your-gps-coordinates`,
 ];
 
 const body = { host: HOST, key: KEY, keyLocation: KEY_LOCATION, urlList: URLS };
