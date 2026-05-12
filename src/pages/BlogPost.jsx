@@ -1,6 +1,7 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import PageLayout from '../components/PageLayout.jsx';
+import AdSlot from '../components/AdSlot.jsx';
 import { findPost } from '../posts/manifest.js';
 
 const POSTS = {
@@ -79,6 +80,8 @@ export default function BlogPost() {
       <Suspense fallback={<div className="text-slate-400 text-sm">Loading…</div>}>
         <Body />
       </Suspense>
+
+      <AdSlot label="Advertisement" format="fluid" layout="in-article" minHeight={200} />
 
       <div className="mt-14 p-6 glass rounded-2xl">
         <div className="text-xs uppercase tracking-[0.16em] text-electric-400 font-semibold">Try the tool</div>

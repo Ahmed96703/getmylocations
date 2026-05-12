@@ -6,6 +6,7 @@ import Dashboard from '../components/Dashboard.jsx';
 import ManualInput from '../components/ManualInput.jsx';
 import Footer from '../components/Footer.jsx';
 import PermissionBlocked from '../components/PermissionBlocked.jsx';
+import AdSlot from '../components/AdSlot.jsx';
 import { useGeolocation } from '../hooks/useGeolocation.js';
 import { useReverseGeocode } from '../hooks/useReverseGeocode.js';
 
@@ -145,6 +146,8 @@ export default function LocationFinder() {
             copied={copied}
           />
         </div>
+
+        <AdSlot label="Advertisement" minHeight={250} />
 
         <section aria-labelledby="how" className="mt-14">
           <h2 id="how" className="font-display text-2xl font-bold">How GetMyLocations works</h2>
