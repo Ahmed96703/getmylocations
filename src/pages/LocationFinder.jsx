@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Logo from '../components/Logo.jsx';
 import Dashboard from '../components/Dashboard.jsx';
 import ManualInput from '../components/ManualInput.jsx';
+import Footer from '../components/Footer.jsx';
 import { useGeolocation } from '../hooks/useGeolocation.js';
 import { useReverseGeocode } from '../hooks/useReverseGeocode.js';
 
@@ -170,10 +171,8 @@ export default function LocationFinder() {
           </div>
         </section>
 
-        <footer role="contentinfo" className="mt-10 mb-4 text-center text-xs text-slate-500">
-          Map © OpenStreetMap contributors · Tiles © CARTO · Built with React, Tailwind, Leaflet & Framer Motion
-        </footer>
       </main>
+      <Footer />
     </div>
   );
 }
