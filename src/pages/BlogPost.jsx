@@ -59,19 +59,24 @@ export default function BlogPost() {
 
       <h1 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight">{post.title}</h1>
 
-      <div className="mt-3 text-sm text-slate-400 flex items-center gap-3 flex-wrap">
-        <time dateTime={post.date}>{dateStr}</time>
-        <span aria-hidden="true">·</span>
-        <span>{post.readingTime} min read</span>
+      <div className="mt-4 flex items-center gap-3 flex-wrap">
+        <div className="flex items-center gap-2.5">
+          <div className="w-9 h-9 rounded-full bg-gradient-to-br from-electric-400 to-electric-600 grid place-items-center text-ink-950 font-bold text-sm" aria-hidden="true">G</div>
+          <div className="text-sm leading-tight">
+            <div className="font-semibold text-slate-100">GetMyLocations Editorial</div>
+            <div className="text-xs text-slate-400">
+              <time dateTime={post.date}>{dateStr}</time>
+              <span className="mx-1.5" aria-hidden="true">·</span>
+              <span>{post.readingTime} min read</span>
+            </div>
+          </div>
+        </div>
         {post.tags?.length > 0 && (
-          <>
-            <span aria-hidden="true">·</span>
-            <ul className="flex gap-1.5">
-              {post.tags.map((t) => (
-                <li key={t} className="px-2 py-0.5 rounded-full bg-white/5 ring-1 ring-white/10 text-[11px] uppercase tracking-wider">{t}</li>
-              ))}
-            </ul>
-          </>
+          <ul className="flex gap-1.5 ml-auto">
+            {post.tags.map((t) => (
+              <li key={t} className="px-2 py-0.5 rounded-full bg-white/5 ring-1 ring-white/10 text-[11px] uppercase tracking-wider text-slate-300">{t}</li>
+            ))}
+          </ul>
         )}
       </div>
 

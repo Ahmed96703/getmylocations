@@ -7,6 +7,7 @@ const LINKS = [
   { to: '/blog', label: 'Blog' },
   { to: '/contact', label: 'Contact' },
   { to: '/privacy-policy', label: 'Privacy Policy' },
+  { to: '/terms', label: 'Terms' },
 ];
 
 export default function Footer() {
