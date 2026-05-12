@@ -1,0 +1,16 @@
+{
+  "name": "GetMyLocations — Location Finder",
+  "short_name": "GetMyLocations",
+  "description": "Free, privacy-first IP & GPS location finder with latitude, longitude, city, and country.",
+  "start_url": "/tool/location-finder",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0b1224",
+  "theme_color": "#0b1224",
+  "categories": ["utilities", "navigation", "maps"],
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

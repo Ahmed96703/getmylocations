@@ -10,10 +10,11 @@ import { useReverseGeocode } from '../hooks/useReverseGeocode.js';
 const MapView = lazy(() => import('../MapView.jsx'));
 
 const FAQS = [
-  { q: 'How does GeoPulse find my location?', a: "It uses your browser's Geolocation API combined with a free reverse-geocoding service. Everything runs client-side in your browser." },
-  { q: 'Is GeoPulse free?', a: 'Yes — 100% free, no signup, no ads, powered by open data.' },
-  { q: 'Does GeoPulse store my data?', a: 'No. There is no backend. Coordinates and addresses are never stored or shared.' },
-  { q: 'Can I enter coordinates manually?', a: 'Yes. Toggle Advanced mode to input any latitude and longitude — the map and address update instantly.' },
+  { q: 'How do I find my current location online?', a: "Open GetMyLocations and approve the browser's location permission. Your latitude, longitude, city, and country appear instantly on an interactive map." },
+  { q: 'What is my IP location?', a: 'IP location is an approximate position derived from your network address. GetMyLocations combines IP, Wi-Fi, and GPS signals for the most accurate result.' },
+  { q: 'How do I find latitude and longitude?', a: 'GetMyLocations displays live GPS coordinates in WGS-84 degrees. You can also enter coordinates manually to fly the map to any location.' },
+  { q: 'Is GetMyLocations free and private?', a: 'Yes. GetMyLocations is 100% free, requires no signup, and runs fully in your browser — your coordinates are never stored or shared.' },
+  { q: 'Why is my location not accurate?', a: 'Without GPS, browsers estimate location from Wi-Fi or IP, which is less precise. Enable location services and stay outdoors for meter-level accuracy.' },
 ];
 
 export default function LocationFinder() {
@@ -27,7 +28,7 @@ export default function LocationFinder() {
   const meta = mode === 'manual' ? { accuracy: null, ts: Date.now() } : autoMeta;
   const { data: place, loading: placeLoading } = useReverseGeocode(pos);
 
-  useEffect(() => { document.title = 'GeoPulse | Real-time Location Tool'; }, []);
+  useEffect(() => { document.title = 'GetMyLocations | Real-time Location Tool'; }, []);
 
   useEffect(() => {
     if (mode === 'manual' && !manualPos && autoPos) setManualPos(autoPos);
@@ -46,10 +47,10 @@ export default function LocationFinder() {
 
       <header role="banner" className="sticky top-0 z-20 border-b border-white/5 bg-ink-950/60 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-5 py-3.5 flex items-center justify-between gap-4">
-          <Link to="/tool/location-finder" aria-label="GeoPulse home" className="flex items-center gap-3 group">
+          <Link to="/tool/location-finder" aria-label="GetMyLocations home" className="flex items-center gap-3 group">
             <Logo size={36} />
             <div>
-              <div className="font-display text-lg font-bold leading-none group-hover:text-electric-400 transition">GeoPulse</div>
+              <div className="font-display text-lg font-bold leading-none group-hover:text-electric-400 transition">GetMyLocations</div>
               <nav aria-label="Breadcrumb" className="text-[11px] text-slate-400 mt-0.5 flex items-center gap-1">
                 <span>Tools</span>
                 <span aria-hidden="true">/</span>
@@ -84,10 +85,10 @@ export default function LocationFinder() {
       <main id="main" role="main" className="max-w-7xl mx-auto px-5 py-8">
         <section aria-labelledby="hero" className="mb-7">
           <h1 id="hero" className="font-display text-4xl sm:text-5xl font-extrabold tracking-tight">
-            Your <span className="text-electric-400">pulse</span> on the planet.
+            Find <span className="text-electric-400">my location</span> — IP & GPS coordinates.
           </h1>
           <p className="text-slate-300/90 mt-2 max-w-2xl">
-            Premium, privacy-first geolocation. See your city, country, and exact GPS coordinates on a beautiful interactive map — instantly.
+            GetMyLocations is a free, privacy-first location finder. Detect your current latitude and longitude, see your city and country, and view it all live on an interactive map — no signup, no tracking, 100% in your browser.
           </p>
         </section>
 
@@ -142,7 +143,7 @@ export default function LocationFinder() {
         </div>
 
         <section aria-labelledby="how" className="mt-14">
-          <h2 id="how" className="font-display text-2xl font-bold">How GeoPulse works</h2>
+          <h2 id="how" className="font-display text-2xl font-bold">How GetMyLocations works</h2>
           <div className="grid sm:grid-cols-3 gap-3 mt-4">
             {[
               { t: 'Allow access', d: 'Approve the one-time browser location prompt.' },

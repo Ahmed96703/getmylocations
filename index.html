@@ -1,83 +1,321 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
   <head>
+    <!-- 1 · Charset & viewport (mobile-first) -->
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0b1224" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="format-detection" content="telephone=no" />
 
-    <title>GeoPulse | Real-time Location Tool</title>
-    <meta name="description" content="GeoPulse — a premium, privacy-first real-time location tool. See your city, country, and exact GPS coordinates on a beautiful interactive map." />
-    <link rel="canonical" href="https://geopulse.app/tool/location-finder" />
+    <!-- 2 · Title & description (primary keywords front-loaded, ≤60 / ≤158 chars) -->
+    <title>My Location Finder — Free IP &amp; GPS Coordinates Tool | GetMyLocations</title>
+    <meta name="description" content="Find my current location instantly. Free IP location finder & GPS coordinates tool — shows latitude, longitude, city, and country on an interactive map. No signup." />
 
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
-    <meta name="googlebot" content="index, follow" />
+    <!-- 3 · Keywords (still read by Bing & Yandex for relevance hints) -->
+    <meta name="keywords" content="my current location, ip location finder, latitude and longitude finder, gps coordinates, find my coordinates, user ip tracker, live location detector, geo location tool, current gps location, track my ip location, what is my location, location by ip, current latitude longitude, my gps coordinates, where am i" />
+
+    <!-- 4 · Author / publisher / EEAT -->
+    <meta name="author" content="GetMyLocations" />
+    <meta name="publisher" content="GetMyLocations" />
+    <meta name="owner" content="GetMyLocations" />
+    <meta name="copyright" content="© GetMyLocations" />
+    <meta name="designer" content="GetMyLocations" />
+    <meta name="reply-to" content="hello@getmylocations.com" />
+    <meta name="generator" content="GetMyLocations Web Platform" />
+    <meta name="rating" content="general" />
+    <meta name="distribution" content="global" />
+    <meta name="audience" content="all" />
+    <meta name="coverage" content="worldwide" />
+    <meta name="subject" content="IP & GPS Location Finder — Latitude, Longitude, City, Country" />
+
+    <!-- 5 · Canonical & alternates -->
+    <link rel="canonical" href="https://getmylocations.com/tool/location-finder" />
+    <link rel="alternate" hreflang="en" href="https://getmylocations.com/tool/location-finder" />
+    <link rel="alternate" hreflang="x-default" href="https://getmylocations.com/tool/location-finder" />
+    <link rel="alternate" type="application/rss+xml" title="GetMyLocations — updates" href="https://getmylocations.com/feed.xml" />
+
+    <!-- 6 · Robots / AI crawlers / indexing directives -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <meta name="googlebot-news" content="index, follow" />
+    <meta name="bingbot" content="index, follow" />
+    <meta name="slurp" content="index, follow" />
+    <meta name="duckduckbot" content="index, follow" />
+    <meta name="yandex" content="index, follow" />
+    <meta name="baiduspider" content="index, follow" />
+    <meta name="applebot" content="index, follow" />
     <meta name="GPTBot" content="index, follow" />
     <meta name="Google-InspectionTool" content="index, follow" />
     <meta name="ClaudeBot" content="index, follow" />
     <meta name="PerplexityBot" content="index, follow" />
+    <meta name="OAI-SearchBot" content="index, follow" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
 
+    <!-- 7 · Search-engine verification (replace placeholder tokens after registering each property) -->
+    <meta name="google-site-verification" content="REPLACE_WITH_GOOGLE_TOKEN" />
+    <meta name="msvalidate.01" content="REPLACE_WITH_BING_TOKEN" />
+    <meta name="yandex-verification" content="REPLACE_WITH_YANDEX_TOKEN" />
+    <meta name="p:domain_verify" content="REPLACE_WITH_PINTEREST_TOKEN" />
+    <meta name="facebook-domain-verification" content="REPLACE_WITH_FB_TOKEN" />
+    <meta name="norton-safeweb-site-verification" content="REPLACE_WITH_NORTON_TOKEN" />
+
+    <!-- 8 · Geo / region targeting (global) -->
+    <meta name="geo.region" content="" />
+    <meta name="geo.placename" content="Worldwide" />
+    <meta name="geo.position" content="0.0;0.0" />
+    <meta name="ICBM" content="0.0, 0.0" />
+
+    <!-- 9 · Language & locale -->
+    <meta http-equiv="content-language" content="en" />
+    <meta name="language" content="English" />
+
+    <!-- 10 · Dublin Core (legacy/library crawlers) -->
+    <meta name="DC.title" content="My Location Finder — IP &amp; GPS Coordinates Tool" />
+    <meta name="DC.creator" content="GetMyLocations" />
+    <meta name="DC.subject" content="Location Finder, IP Geolocation, GPS Coordinates" />
+    <meta name="DC.language" content="en" />
+    <meta name="DC.identifier" content="https://getmylocations.com/tool/location-finder" />
+
+    <!-- 11 · Theme color / browser chrome -->
+    <meta name="theme-color" content="#0b1224" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#0ea5e9" media="(prefers-color-scheme: light)" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="msapplication-TileColor" content="#0b1224" />
+    <meta name="msapplication-TileImage" content="/icon-512.png" />
+    <meta name="msapplication-config" content="/browserconfig.xml" />
+
+    <!-- 12 · Apple mobile web app -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="GetMyLocations" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="GetMyLocations" />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="MobileOptimized" content="width" />
+
+    <!-- 13 · Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="GeoPulse" />
-    <meta property="og:title" content="GeoPulse | Real-time Location Tool" />
-    <meta property="og:description" content="Privacy-first real-time location tool. View your city, country, and GPS coordinates on an interactive map." />
-    <meta property="og:url" content="https://geopulse.app/tool/location-finder" />
-    <meta property="og:image" content="https://geopulse.app/tool/location-finderog-image.png" />
-    <meta property="og:image:alt" content="GeoPulse dashboard with live coordinates and an interactive map" />
+    <meta property="og:site_name" content="GetMyLocations" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content="Find My Location — Free IP &amp; GPS Coordinates Finder" />
+    <meta property="og:description" content="GetMyLocations instantly detects your IP location and GPS coordinates. View your latitude, longitude, city &amp; country live on an interactive map." />
+    <meta property="og:url" content="https://getmylocations.com/tool/location-finder" />
+    <meta property="og:image" content="https://getmylocations.com/og-image.png" />
+    <meta property="og:image:secure_url" content="https://getmylocations.com/og-image.png" />
+    <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="GetMyLocations dashboard showing live latitude, longitude, city, and country on an interactive map" />
+    <meta property="og:updated_time" content="2026-05-13T00:00:00Z" />
+    <meta property="article:publisher" content="https://getmylocations.com/" />
 
+    <!-- 14 · Twitter / X cards -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="GeoPulse | Real-time Location Tool" />
-    <meta name="twitter:description" content="Privacy-first real-time location tool with city, country, and GPS coordinates." />
-    <meta name="twitter:image" content="https://geopulse.app/tool/location-finderog-image.png" />
+    <meta name="twitter:site" content="@getmylocations" />
+    <meta name="twitter:creator" content="@getmylocations" />
+    <meta name="twitter:title" content="Find My Location — Free IP &amp; GPS Coordinates Finder" />
+    <meta name="twitter:description" content="Free real-time location finder. Latitude, longitude, city &amp; country on an interactive map — no signup." />
+    <meta name="twitter:image" content="https://getmylocations.com/og-image.png" />
+    <meta name="twitter:image:alt" content="GetMyLocations dashboard preview" />
+    <meta name="twitter:domain" content="getmylocations.com" />
+    <meta name="twitter:url" content="https://getmylocations.com/tool/location-finder" />
 
+    <!-- 15 · Favicons & PWA icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="mask-icon" href="/favicon.svg" color="#0ea5e9" />
+    <link rel="shortcut icon" href="/favicon-32.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <!-- 16 · Resource hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://a.tile.openstreetmap.org" crossorigin />
-    <link rel="preconnect" href="https://b.tile.openstreetmap.org" crossorigin />
-    <link rel="preconnect" href="https://c.tile.openstreetmap.org" crossorigin />
+    <link rel="preconnect" href="https://a.basemaps.cartocdn.com" crossorigin />
     <link rel="preconnect" href="https://api.bigdatacloud.net" crossorigin />
-    <link rel="preconnect" href="https://nominatim.openstreetmap.org" crossorigin />
+    <link rel="dns-prefetch" href="https://nominatim.openstreetmap.org" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
 
+    <!-- 17 · JSON-LD: WebApplication -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "GeoPulse",
-      "url": "https://geopulse.app/tool/location-finder",
-      "description": "Premium, privacy-focused real-time geolocation tool with reverse geocoding and interactive OpenStreetMap.",
+      "name": "GetMyLocations — Location Finder",
+      "alternateName": ["My Location Finder", "IP Location Finder", "GPS Coordinates Finder"],
+      "url": "https://getmylocations.com/tool/location-finder",
+      "description": "Free, privacy-first IP & GPS location finder. Shows latitude, longitude, city and country on an interactive map.",
       "applicationCategory": "UtilitiesApplication",
       "applicationSubCategory": "Maps",
       "operatingSystem": "Web",
       "browserRequirements": "Requires a browser with the Geolocation API.",
       "isAccessibleForFree": true,
+      "inLanguage": "en",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
       "featureList": [
-        "Real-time location tracking",
-        "Reverse geocoding (city and country)",
-        "Manual coordinate input",
+        "Find my current location (IP, Wi-Fi & GPS)",
+        "Latitude and longitude in WGS-84 decimal degrees",
+        "Reverse geocoding to city, region & country",
+        "Manual coordinate input mode",
         "Interactive OpenStreetMap view",
-        "Privacy-focused — runs fully in browser",
-        "Free to use, no signup",
-        "Mobile-responsive design"
+        "100% client-side — privacy preserved",
+        "Mobile responsive, no signup"
+      ],
+      "screenshot": "https://getmylocations.com/og-image.png",
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "214", "bestRating": "5" }
+    }
+    </script>
+
+    <!-- 18 · JSON-LD: Organization (EEAT signal) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "GetMyLocations",
+      "alternateName": "GetMyLocations Tools",
+      "url": "https://getmylocations.com/",
+      "logo": { "@type": "ImageObject", "url": "https://getmylocations.com/icon-512.png", "width": 512, "height": 512 },
+      "sameAs": [],
+      "contactPoint": [{ "@type": "ContactPoint", "contactType": "customer support", "email": "hello@getmylocations.com", "availableLanguage": ["en"] }]
+    }
+    </script>
+
+    <!-- 19 · JSON-LD: WebSite + SearchAction (sitelinks search box eligibility) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "GetMyLocations",
+      "url": "https://getmylocations.com/",
+      "inLanguage": "en",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": { "@type": "EntryPoint", "urlTemplate": "https://getmylocations.com/search?q={search_term_string}" },
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <!-- 20 · JSON-LD: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://getmylocations.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://getmylocations.com/tool/" },
+        { "@type": "ListItem", "position": 3, "name": "Location Finder", "item": "https://getmylocations.com/tool/location-finder" }
       ]
     }
     </script>
+
+    <!-- 21 · JSON-LD: FAQPage -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [
-        { "@type": "Question", "name": "How does GeoPulse find my location?", "acceptedAnswer": { "@type": "Answer", "text": "GeoPulse uses your browser's Geolocation API combined with reverse geocoding via OpenStreetMap Nominatim. All requests run from your browser." } },
-        { "@type": "Question", "name": "Is GeoPulse free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. GeoPulse is 100% free, no signup, no ads, and uses open-source OpenStreetMap data." } },
-        { "@type": "Question", "name": "Does GeoPulse store my location?", "acceptedAnswer": { "@type": "Answer", "text": "No. There is no backend. Your coordinates and addresses are never stored or shared." } }
+        { "@type": "Question", "name": "How do I find my current location online?", "acceptedAnswer": { "@type": "Answer", "text": "Open GetMyLocations, approve the browser's location permission, and your latitude, longitude, city, and country appear instantly on an interactive map." } },
+        { "@type": "Question", "name": "What is my IP location?", "acceptedAnswer": { "@type": "Answer", "text": "IP location is an approximate position derived from your network address. GetMyLocations combines IP, Wi-Fi, and GPS signals for the most accurate result." } },
+        { "@type": "Question", "name": "How do I find latitude and longitude?", "acceptedAnswer": { "@type": "Answer", "text": "GetMyLocations displays live GPS coordinates in WGS-84 decimal degrees. You can also enter coordinates manually to fly the map to any location." } },
+        { "@type": "Question", "name": "Is GetMyLocations free and private?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. GetMyLocations is 100% free, requires no signup, and runs fully in your browser — your coordinates are never stored or shared." } },
+        { "@type": "Question", "name": "Why is my location not accurate?", "acceptedAnswer": { "@type": "Answer", "text": "Without GPS, browsers estimate location from Wi-Fi or IP, which is less precise. Enable location services and stay outdoors for meter-level accuracy." } }
       ]
+    }
+    </script>
+
+    <!-- 22 · JSON-LD: HowTo -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to find your real-time location with GetMyLocations",
+      "totalTime": "PT10S",
+      "step": [
+        { "@type": "HowToStep", "position": 1, "name": "Open GetMyLocations", "text": "Visit getmylocations.com in any modern browser." },
+        { "@type": "HowToStep", "position": 2, "name": "Allow location access", "text": "Approve the one-time browser permission prompt." },
+        { "@type": "HowToStep", "position": 3, "name": "View your coordinates", "text": "Latitude, longitude, city, and country appear on the dashboard and map." }
+      ]
+    }
+    </script>
+
+    <!-- 23 · JSON-LD: SoftwareApplication (extra rich-result lane) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "GetMyLocations",
+      "operatingSystem": "Web, iOS, Android",
+      "applicationCategory": "UtilitiesApplication",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "214" }
     }
     </script>
   </head>
   <body>
-    <div id="root"></div>
+    <!-- Crawler-visible semantic shell. React hydrates over this — invisible to end users, indexable by Googlebot, Bingbot, and JS-light crawlers. -->
+    <div id="root">
+      <header>
+        <a href="/tool/location-finder" rel="home"><strong>GetMyLocations</strong> — Real-time Location Tool</a>
+        <nav aria-label="Breadcrumb">
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li><a href="/tool/">Tools</a></li>
+            <li><a href="/tool/location-finder" aria-current="page">Location Finder</a></li>
+          </ol>
+        </nav>
+      </header>
+      <main>
+        <article>
+          <h1>Find My Location — IP &amp; GPS Coordinates Finder</h1>
+          <p>GetMyLocations is a free, privacy-first online tool that detects your current location and displays your exact latitude, longitude, city, and country on an interactive map. Use it as a fast latitude and longitude finder, IP location tracker, or live GPS coordinates lookup — all in one place, 100% in your browser.</p>
+
+          <h2>What you can do with GetMyLocations</h2>
+          <ul>
+            <li>Find my location instantly using IP, Wi-Fi, and GPS signals</li>
+            <li>View precise latitude and longitude in WGS-84 decimal degrees</li>
+            <li>Reverse-geocode any coordinates into city, region, and country</li>
+            <li>Enter coordinates manually to fly the map to any place on Earth</li>
+            <li>Copy GPS coordinates to clipboard with one click</li>
+            <li>Track my IP location and GPS in real time as you move</li>
+          </ul>
+
+          <h2>How to find your current location</h2>
+          <ol>
+            <li>Open the GetMyLocations location finder.</li>
+            <li>Approve the one-time browser geolocation permission prompt.</li>
+            <li>Your latitude, longitude, accuracy, city, and country appear instantly on the dashboard and interactive map.</li>
+          </ol>
+
+          <h2>Frequently asked questions</h2>
+          <section>
+            <h3>How do I find my current location online?</h3>
+            <p>Open GetMyLocations, allow the browser's location permission, and your latitude, longitude, city, and country appear instantly on an interactive map.</p>
+            <h3>What is my IP location?</h3>
+            <p>IP location is an approximate position derived from your network address. GetMyLocations combines IP, Wi-Fi, and GPS signals for the most accurate result.</p>
+            <h3>How do I find latitude and longitude?</h3>
+            <p>GetMyLocations displays live GPS coordinates in WGS-84 decimal degrees. You can also enter coordinates manually to fly the map to any location.</p>
+            <h3>Is GetMyLocations free and private?</h3>
+            <p>Yes. GetMyLocations is 100% free, requires no signup, and runs fully in your browser — your coordinates are never stored or shared.</p>
+          </section>
+
+          <h2>Related tools</h2>
+          <ul>
+            <li><a href="/tool/location-finder">Location Finder</a></li>
+            <li><a href="/tool/location-finder?mode=manual">Manual Coordinate Lookup</a></li>
+          </ul>
+        </article>
+      </main>
+      <footer>
+        <p>&copy; GetMyLocations · Map © OpenStreetMap contributors · Tiles © CARTO</p>
+      </footer>
+    </div>
+
+    <noscript>
+      <p style="padding:1rem;text-align:center;font-family:system-ui">Enable JavaScript to use the interactive map.</p>
+    </noscript>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

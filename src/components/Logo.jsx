@@ -1,7 +1,7 @@
 export default function Logo({ size = 36 }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 48 48" fill="none" role="img" aria-label="GeoPulse logo">
-      <title>GeoPulse</title>
+    <svg width={size} height={size} viewBox="0 0 48 48" fill="none" role="img" aria-label="GetMyLocations logo">
+      <title>GetMyLocations</title>
       <defs>
         <linearGradient id="gp-grad" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0%" stopColor="#38bdf8" />

@@ -9,10 +9,14 @@ async function fetchBDC(lat, lon, signal) {
   const r = await fetch(BDC(lat, lon), { signal });
   if (!r.ok) throw new Error('bdc');
   const j = await r.json();
+  const admin = j.localityInfo?.administrative || [];
+  const city = j.city || j.locality || admin.find((a) => a.adminLevel >= 6)?.name || admin.at(-1)?.name || '';
+  const country = j.countryName || admin.find((a) => a.adminLevel === 2)?.name || '';
+  if (!country) throw new Error('bdc-empty');
   return {
-    city: j.city || j.locality || j.localityInfo?.administrative?.[3]?.name || '—',
-    region: j.principalSubdivision || '',
-    country: j.countryName || '—',
+    city: city || '—',
+    region: j.principalSubdivision || admin.find((a) => a.adminLevel === 4)?.name || '',
+    country,
     countryCode: (j.countryCode || '').toUpperCase(),
   };
 }
@@ -22,10 +26,12 @@ async function fetchNominatim(lat, lon, signal) {
   if (!r.ok) throw new Error('nominatim');
   const j = await r.json();
   const a = j.address || {};
+  const country = a.country || '';
+  if (!country) throw new Error('nominatim-empty');
   return {
-    city: a.city || a.town || a.village || a.municipality || a.county || '—',
-    region: a.state || a.region || '',
-    country: a.country || '—',
+    city: a.city || a.town || a.village || a.municipality || a.suburb || a.county || a.state_district || '—',
+    region: a.state || a.region || a.state_district || '',
+    country,
     countryCode: (a.country_code || '').toUpperCase(),
   };
 }

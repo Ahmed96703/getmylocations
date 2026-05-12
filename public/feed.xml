@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GetMyLocations — Location Tools</title>
+    <link>https://getmylocations.com/</link>
+    <description>Free, privacy-first IP and GPS location tools.</description>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 13 May 2026 00:00:00 GMT</lastBuildDate>
+    <atom:link href="https://getmylocations.com/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Location Finder — Find My Location, IP &amp; GPS Coordinates</title>
+      <link>https://getmylocations.com/tool/location-finder</link>
+      <guid isPermaLink="true">https://getmylocations.com/tool/location-finder</guid>
+      <description>Free real-time location finder. Detects IP, Wi-Fi, and GPS to show latitude, longitude, city, and country on an interactive map.</description>
+      <pubDate>Tue, 13 May 2026 00:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>
