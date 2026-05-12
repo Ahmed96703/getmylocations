@@ -5,6 +5,7 @@ import Logo from '../components/Logo.jsx';
 import Dashboard from '../components/Dashboard.jsx';
 import ManualInput from '../components/ManualInput.jsx';
 import Footer from '../components/Footer.jsx';
+import PermissionBlocked from '../components/PermissionBlocked.jsx';
 import { useGeolocation } from '../hooks/useGeolocation.js';
 import { useReverseGeocode } from '../hooks/useReverseGeocode.js';
 
@@ -23,7 +24,7 @@ export default function LocationFinder() {
   const [manualPos, setManualPos] = useState(null);
   const [copied, setCopied] = useState(false);
 
-  const { pos: autoPos, meta: autoMeta, error, loading, retry } = useGeolocation(mode === 'auto');
+  const { pos: autoPos, meta: autoMeta, error, loading, retry, permission } = useGeolocation(mode === 'auto');
 
   const pos = mode === 'manual' ? manualPos : autoPos;
   const meta = mode === 'manual' ? { accuracy: null, ts: Date.now() } : autoMeta;
@@ -89,7 +90,13 @@ export default function LocationFinder() {
           </p>
         </section>
 
-        {error && (
+        {permission === 'denied' && mode === 'auto' && (
+          <div className="mb-6">
+            <PermissionBlocked onRetry={retry} onManualMode={() => setMode('manual')} />
+          </div>
+        )}
+
+        {error && permission !== 'denied' && (
           <div role="alert" className="mb-6 rounded-2xl glass border-rose-400/30 px-5 py-4 flex items-start justify-between gap-4">
             <div>
               <div className="font-semibold text-rose-200">Couldn’t access location</div>
