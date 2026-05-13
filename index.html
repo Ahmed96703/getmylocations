@@ -144,27 +144,42 @@
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
+      "@id": "https://getmylocations.com/#webapp",
       "name": "GetMyLocations — Location Finder",
-      "alternateName": ["My Location Finder", "IP Location Finder", "GPS Coordinates Finder"],
+      "alternateName": ["My Location Finder", "IP Location Finder", "GPS Coordinates Finder", "Live GPS Tracker"],
       "url": "https://getmylocations.com/",
-      "description": "Free, privacy-first IP & GPS location finder. Shows latitude, longitude, city and country on an interactive map.",
+      "description": "Free, privacy-first IP & GPS location finder. Shows latitude, longitude, city and country on an interactive map. Live GPS tracker that works on any device, with no signup or tracking.",
       "applicationCategory": "UtilitiesApplication",
       "applicationSubCategory": "Maps",
       "operatingSystem": "Web",
-      "browserRequirements": "Requires a browser with the Geolocation API.",
+      "browserRequirements": "Requires a browser with the Geolocation API (Chrome, Safari, Firefox, Edge, or Brave).",
       "isAccessibleForFree": true,
       "inLanguage": "en",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "audience": { "@type": "Audience", "audienceType": "general public" },
+      "keywords": "my current location, find my current coordinates, ip location finder, latitude longitude finder, gps coordinates, live gps tracker, what is my ip location, where am i",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock" },
       "featureList": [
-        "Find my current location (IP, Wi-Fi & GPS)",
-        "Latitude and longitude in WGS-84 decimal degrees",
-        "Reverse geocoding to city, region & country",
+        "Find my current coordinates (latitude and longitude)",
+        "Live GPS tracker with real-time updates",
+        "IP, Wi-Fi, and GPS hybrid positioning",
+        "WGS-84 decimal degrees with 6-digit precision",
+        "Reverse geocoding to city, region, and country",
         "Manual coordinate input mode",
         "Interactive OpenStreetMap view",
         "100% client-side — privacy preserved",
-        "Mobile responsive, no signup"
+        "Share my location with one-click clipboard / native share sheet",
+        "Mobile responsive, no signup, no ads-tracking"
       ],
-      "screenshot": "https://getmylocations.com/og-image.png"
+      "screenshot": "https://getmylocations.com/og-image.png",
+      "image": "https://getmylocations.com/og-image.png",
+      "creator": { "@id": "https://getmylocations.com/#founder" },
+      "author":  { "@id": "https://getmylocations.com/#founder" },
+      "publisher": { "@id": "https://getmylocations.com/#org" },
+      "potentialAction": {
+        "@type": "UseAction",
+        "target": "https://getmylocations.com/",
+        "name": "Find my location"
+      }
     }
     </script>
 
@@ -173,31 +188,62 @@
     {
       "@context": "https://schema.org",
       "@type": "Organization",
+      "@id": "https://getmylocations.com/#org",
       "name": "GetMyLocations",
       "alternateName": "GetMyLocations Tools",
+      "legalName": "GetMyLocations",
       "url": "https://getmylocations.com/",
       "logo": { "@type": "ImageObject", "url": "https://getmylocations.com/icon-512.png", "width": 512, "height": 512 },
+      "image": "https://getmylocations.com/og-image.png",
+      "description": "GetMyLocations is a free, privacy-first geolocation tool that finds your latitude, longitude, city, and country in real time — no signup, no tracking.",
+      "foundingDate": "2026-05-13",
+      "founder": { "@id": "https://getmylocations.com/#founder" },
+      "knowsAbout": [
+        "IP geolocation",
+        "GPS coordinates",
+        "Latitude and longitude",
+        "Reverse geocoding",
+        "Browser Geolocation API",
+        "WGS-84 coordinate system",
+        "Live location tracking",
+        "OpenStreetMap"
+      ],
+      "areaServed": "Worldwide",
       "sameAs": [],
-      "contactPoint": [{ "@type": "ContactPoint", "contactType": "customer support", "email": "hello@getmylocations.com", "availableLanguage": ["en"] }],
-      "founder": {
-        "@type": "Person",
-        "name": "Ahmed (Mada)"
-      }
+      "contactPoint": [{
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "email": "hello@getmylocations.com",
+        "availableLanguage": ["en"]
+      }]
     }
     </script>
 
-    <!-- 18.1 · JSON-LD: Person (Founder) -->
+    <!-- 18.1 · JSON-LD: Person (Founder, EEAT) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
+      "@id": "https://getmylocations.com/#founder",
       "name": "Ahmed (Mada)",
-      "jobTitle": "Founder",
-      "url": "https://getmylocations.com/",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "GetMyLocations"
-      }
+      "givenName": "Ahmed",
+      "alternateName": "Mada",
+      "jobTitle": "Founder & Lead Developer",
+      "description": "Founder of GetMyLocations, a free privacy-first geolocation tool. Builds web utilities focused on speed, privacy, and clean design.",
+      "url": "https://getmylocations.com/about",
+      "image": "https://getmylocations.com/icon-512.png",
+      "knowsAbout": [
+        "Web development",
+        "GPS and geolocation systems",
+        "IP geolocation",
+        "Frontend engineering",
+        "Search engine optimization",
+        "User privacy"
+      ],
+      "knowsLanguage": ["en", "ur"],
+      "nationality": { "@type": "Country", "name": "Pakistan" },
+      "worksFor": { "@id": "https://getmylocations.com/#org" },
+      "sameAs": []
     }
     </script>
 
@@ -233,12 +279,17 @@
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
+      "@id": "https://getmylocations.com/#faq",
+      "inLanguage": "en",
+      "about": { "@id": "https://getmylocations.com/#webapp" },
       "mainEntity": [
+        { "@type": "Question", "name": "How do I find my current coordinates?", "acceptedAnswer": { "@type": "Answer", "text": "Open GetMyLocations and approve the browser location prompt. Your exact latitude and longitude appear instantly with six decimals of precision — copy them with one click." } },
         { "@type": "Question", "name": "How do I find my current location online?", "acceptedAnswer": { "@type": "Answer", "text": "Open GetMyLocations, approve the browser's location permission, and your latitude, longitude, city, and country appear instantly on an interactive map." } },
         { "@type": "Question", "name": "What is my IP location?", "acceptedAnswer": { "@type": "Answer", "text": "IP location is an approximate position derived from your network address. GetMyLocations combines IP, Wi-Fi, and GPS signals for the most accurate result." } },
         { "@type": "Question", "name": "How do I find latitude and longitude?", "acceptedAnswer": { "@type": "Answer", "text": "GetMyLocations displays live GPS coordinates in WGS-84 decimal degrees. You can also enter coordinates manually to fly the map to any location." } },
         { "@type": "Question", "name": "Is GetMyLocations free and private?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. GetMyLocations is 100% free, requires no signup, and runs fully in your browser — your coordinates are never stored or shared." } },
-        { "@type": "Question", "name": "Why is my location not accurate?", "acceptedAnswer": { "@type": "Answer", "text": "Without GPS, browsers estimate location from Wi-Fi or IP, which is less precise. Enable location services and stay outdoors for meter-level accuracy." } }
+        { "@type": "Question", "name": "Why is my location not accurate?", "acceptedAnswer": { "@type": "Answer", "text": "Without GPS, browsers estimate location from Wi-Fi or IP, which is less precise. Enable location services and stay outdoors for meter-level accuracy." } },
+        { "@type": "Question", "name": "Does GetMyLocations work as a live GPS tracker?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. GetMyLocations uses the browser's watchPosition API to update your latitude and longitude in real time as you move, acting as a free live GPS tracker." } }
       ]
     }
     </script>
