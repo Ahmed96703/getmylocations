@@ -343,6 +343,28 @@
   <body>
     <!-- Crawler-visible semantic shell. React hydrates over this — invisible to end users, indexable by Googlebot, Bingbot, and JS-light crawlers. -->
     <div id="root">
+      
+      <!-- App Shell for instantaneous LCP (Largest Contentful Paint) -->
+      <div id="app-shell" style="min-height: 100vh; background: linear-gradient(180deg, #060a16 0%, #0b1224 60%, #070b18 100%); color: #f1f5f9; font-family: system-ui, -apple-system, sans-serif;">
+        <header style="height: 64px; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; padding: 0 1.25rem; box-sizing: border-box;">
+          <div style="max-width: 80rem; margin: 0 auto; width: 100%; font-weight: bold; font-size: 1.125rem;">GetMyLocations</div>
+        </header>
+        <main style="max-width: 80rem; margin: 0 auto; padding: 2rem 1.25rem; box-sizing: border-box;">
+          <h1 style="font-size: clamp(2.25rem, 5vw, 3rem); font-weight: 800; line-height: 1.1; margin: 0; letter-spacing: -0.02em;">
+            Find <span style="color: #38bdf8;">my current coordinates</span> — live GPS tracker.
+          </h1>
+          <p style="margin-top: 0.75rem; color: #cbd5e1; font-size: 1.125rem; max-width: 42rem; line-height: 1.6;">
+            Loading real-time map and location services...
+          </p>
+          <div style="margin-top: 2rem; height: 480px; width: 100%; border-radius: 1.5rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 10px 30px -10px rgba(0,0,0,0.6); animation: shell-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;"></div>
+        </main>
+      </div>
+      <style>
+        @keyframes shell-pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
+        /* When app-shell is present, hide the actual body background so it doesn't double up or flicker */
+        body:has(#app-shell) { background: #0b1224; }
+      </style>
+
       <div class="seo-shell">
         <header>
           <a href="/" rel="home"><strong>GetMyLocations</strong> — Real-time Location Finder</a>
