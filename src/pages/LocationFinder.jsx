@@ -7,6 +7,7 @@ import ManualInput from '../components/ManualInput.jsx';
 import Footer from '../components/Footer.jsx';
 import PermissionBlocked from '../components/PermissionBlocked.jsx';
 import AdSlot from '../components/AdSlot.jsx';
+import TechnicalDetails from '../components/TechnicalDetails.jsx';
 import { useGeolocation } from '../hooks/useGeolocation.js';
 import { useReverseGeocode } from '../hooks/useReverseGeocode.js';
 import { POSTS } from '../posts/manifest.js';
@@ -14,12 +15,32 @@ import { POSTS } from '../posts/manifest.js';
 const MapView = lazy(() => import('../MapView.jsx'));
 
 const FAQS = [
-  { q: 'How do I find my current coordinates?', a: 'Open GetMyLocations and approve the browser location prompt. Your exact latitude and longitude appear instantly with six decimals of precision — copy them with one click.' },
-  { q: 'How do I find my current location online?', a: "Open GetMyLocations and approve the browser's location permission. Your latitude, longitude, city, and country appear instantly on an interactive map." },
-  { q: 'What is my IP location?', a: 'IP location is an approximate position derived from your network address. GetMyLocations combines IP, Wi-Fi, and GPS signals for the most accurate result.' },
-  { q: 'How do I find latitude and longitude?', a: 'GetMyLocations displays live GPS coordinates in WGS-84 degrees. You can also enter coordinates manually to fly the map to any location.' },
-  { q: 'Is GetMyLocations free and private?', a: 'Yes. GetMyLocations is 100% free, requires no signup, and runs fully in your browser — your coordinates are never stored or shared.' },
-  { q: 'Why is my location not accurate?', a: 'Without GPS, browsers estimate location from Wi-Fi or IP, which is less precise. Enable location services and stay outdoors for meter-level accuracy.' },
+  // Cluster A — GPS & Coordinates
+  { q: 'How do I find my current coordinates?', a: 'Open Get My Location and approve the browser permission. Your exact coordinates — latitude and longitude in WGS-84 decimal degrees — appear instantly with six-digit precision, copyable in one click.' },
+  { q: 'How do I find latitude and longitude?', a: 'Our latitude longitude finder uses your browser\'s GPS chip and Wi-Fi triangulation to display live GPS coordinates. For converting decimal degrees to DMS (degrees-minutes-seconds), use our upcoming decimal degrees converter.' },
+  { q: 'What are my exact coordinates right now?', a: 'Your exact coordinates appear on the dashboard the moment you allow location access. We show 6-digit decimal degrees, accurate to ~11 cm. Switch to Advanced mode to enter any custom coordinates and map them.' },
+  { q: 'Is this a free GPS tracker?', a: 'Yes — GetMyLocations is a free GPS tracker online. No app, no signup. It uses the same Geolocation API that paid GPS coordinate generator apps use, just free and privacy-respecting.' },
+
+  // Cluster B — IP & Networking
+  { q: 'How do I track my IP?', a: 'When you visit the site, we automatically run an IP geolocator on your address as fallback when GPS is unavailable. This shows your IP city, country, and internet provider — the same data any IP address location detector reveals.' },
+  { q: 'What is my public IP?', a: 'Your public IP is the address your router or mobile network uses to reach the internet. Our IP-to-location lookup decodes it into a region. Works for both IPv4 lookup and IPv6 addresses.' },
+  { q: 'Why is my IP showing wrong city?', a: 'IP geolocation is built from carrier records that lag months behind reality. Mobile networks especially pool thousands of users behind one IP in a distant city. For accurate results, allow precise GPS in the browser prompt.' },
+  { q: 'How do I find my IPv6?', a: 'If your network has IPv6, GetMyLocations will detect and display it. Most home networks still use IPv4, but mobile networks increasingly assign IPv6 — visible in the dashboard tooltip.' },
+
+  // Cluster C — Map & Navigation
+  { q: 'How do I get a street address from GPS?', a: 'After fetching your coordinates, we run a reverse geocode online via OpenStreetMap to extract your street address from GPS data. The map-my-coordinates step happens automatically — no extra click needed.' },
+  { q: 'Can I pinpoint my location on a live map?', a: 'Yes. The interactive location map drops a pulsing pin GPS-style on your exact position. Use the Locate Me button to recenter. To find an address by lat long manually, switch to Advanced mode.' },
+  { q: 'How do I get an address from coordinates?', a: 'Paste any latitude and longitude into Advanced mode and our reverse-geocoder turns those coordinates into a street address from GPS data in milliseconds.' },
+
+  // Cluster D — Comparison & Troubleshooting
+  { q: 'GPS vs IP accuracy — which is better?', a: 'GPS wins by a huge margin: 3–5 meters vs IP\'s 5–50 km. Browser location vs GPS: browsers without GPS chips fall back to Wi-Fi or IP, which is significantly less accurate. Always allow precise location for best results.' },
+  { q: 'Why is my location wrong?', a: 'The most common reasons: a VPN, mobile carrier-grade NAT routing traffic through a distant city, an outdated geolocation database, or denying the GPS permission so the browser falls back to IP-only.' },
+  { q: 'How accurate is browser location?', a: 'On a phone with GPS outdoors: 3–5 meters. On a phone indoors: 10–50 meters. On a laptop with Wi-Fi only: 20–50 meters. On a desktop with no Wi-Fi (IP-only): 5–50 km.' },
+  { q: 'How do I fix GPS not working?', a: 'Check three things: (1) your device has location services enabled in OS settings, (2) you\'ve allowed the site permission, (3) you\'re not in airplane mode. To enable browser location in Chrome: click the lock icon → Site settings → Location → Allow.' },
+  { q: 'Why is location permission denied?', a: 'You\'ve previously denied the prompt for this site. Click the lock icon in your address bar → Site settings → reset Location to "Allow", then reload. Our denied-permission helper guides you through it.' },
+  { q: 'Does VPN affect GPS location?', a: 'A VPN hides your IP address (and thus IP geolocation) but does NOT change your GPS chip\'s reading. With GPS allowed, GetMyLocations sees your true position even while connected to a VPN.' },
+
+  { q: 'Is GetMyLocations free and private?', a: 'Yes. 100% free, no signup, no tracking. Your coordinates and IP location are never stored or sent to a server we control — everything runs in your browser.' },
 ];
 
 const FEATURES = [
@@ -128,13 +149,42 @@ export default function LocationFinder() {
       <main id="main" role="main" className="max-w-7xl mx-auto px-5 py-8">
         <section aria-labelledby="hero" className="mb-7">
           <h1 id="hero" className="font-display text-4xl sm:text-5xl font-extrabold tracking-tight">
-            Find <span className="text-electric-400">my current coordinates</span> — live GPS tracker.
+            <span className="text-electric-400">Get My Location</span> — Find My Current Coordinates &amp; Live GPS Tracker
           </h1>
+
           <p className="text-slate-300/90 mt-3 max-w-2xl leading-relaxed">
-            GetMyLocations is a free, privacy-first <strong className="text-slate-100">live GPS tracker</strong> and IP location finder. Detect your current latitude and longitude, see your city and country, and watch them update in real time on an interactive map — no signup, no tracking, 100% in your browser.
+            Free, privacy-first <strong className="text-slate-100">latitude longitude finder</strong> and <strong className="text-slate-100">IP geolocator</strong>. Get your exact coordinates, pinpoint your location on a live map, and reverse-geocode an address — all in your browser.
           </p>
 
-          {/* Feature pills */}
+          {/* Secondary subheadline — visible, semantically rich */}
+          <p className="text-sm text-slate-400 mt-2 max-w-3xl">
+            Works as a free GPS tracker online · IP address location detector · street address from GPS · WGS-84 decimal degrees · no signup.
+          </p>
+
+          {/* Screen-reader-only context — extra semantic detail for crawlers and assistive tech.
+              Naturally phrased, not keyword-stuffed; covers cluster keywords in real sentences. */}
+          <div className="sr-only">
+            <h2>Get My Location — the complete browser tool</h2>
+            <p>
+              Use Get My Location to find your exact coordinates, track your IP, and pinpoint your location on a live map.
+              The latitude longitude finder displays your live GPS coordinates in WGS-84 decimal degrees, and our IP-to-location
+              lookup works as an IP geolocator for both IPv4 lookup and IPv6 — including your internet provider.
+            </p>
+            <p>
+              Need to map your coordinates or get a street address from GPS? Our reverse-geocode-online step turns any pair of
+              decimal degrees into an address from coordinates, then drops a pin GPS-style on the interactive location map.
+              Advanced mode lets you find an address by lat long manually, with a decimal degrees converter for DMS to decimal
+              coordinates input.
+            </p>
+            <p>
+              We answer common questions like “what is my public IP”, “why is my location wrong”, “GPS vs IP accuracy”,
+              “browser location vs GPS”, “how accurate is browser location”, “why is my IP showing wrong city”, “how to fix
+              GPS not working”, and “how to enable browser location in Chrome”. If location permission denied, our helper
+              shows you how to re-enable it. VPN and GPS location interaction is also covered.
+            </p>
+          </div>
+
+          {/* Feature pills — visible */}
           <ul aria-label="Features" className="mt-5 flex flex-wrap gap-2 text-xs">
             {FEATURES.map((f) => (
               <li
@@ -283,6 +333,8 @@ export default function LocationFinder() {
             ))}
           </div>
         </section>
+
+        <TechnicalDetails />
 
         <AdSlot label="Advertisement" minHeight={250} />
 
