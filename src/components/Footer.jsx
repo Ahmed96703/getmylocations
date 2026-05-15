@@ -14,24 +14,35 @@ const SITE_LINKS = [
 // Anchor links go to relevant sections of the home page or blog posts.
 const QUICK_LINKS = [
   {
+    heading: 'My Location',
+    links: [
+      { to: '/', label: 'My location now' },
+      { to: '/', label: 'What is my location' },
+      { to: "/", label: "What's my location" },
+      { to: '/', label: 'Where am I' },
+      { to: '/', label: 'My current location' },
+      { to: '/', label: 'Location' },
+    ],
+  },
+  {
     heading: 'GPS & Coordinates',
     links: [
-      { to: '/', label: 'Latitude longitude finder' },
-      { to: '/', label: 'My exact coordinates' },
+      { to: '/', label: 'Latitude and longitude' },
+      { to: '/', label: 'Latitude and longitude finder' },
+      { to: '/', label: 'Longitude and latitude finder' },
+      { to: '/', label: 'Lat long finder' },
       { to: '/blog/latitude-vs-longitude-explained', label: 'Decimal degrees converter' },
-      { to: '/blog/latitude-vs-longitude-explained', label: 'WGS-84 coordinates' },
       { to: '/', label: 'Live GPS coordinates' },
-      { to: '/', label: 'Free GPS tracker online' },
     ],
   },
   {
     heading: 'IP & Networking',
     links: [
+      { to: '/', label: 'IP finder' },
+      { to: '/', label: 'IP location finder' },
       { to: '/', label: 'Track my IP' },
       { to: '/', label: 'What is my public IP' },
-      { to: '/', label: 'IP geolocator' },
       { to: '/blog/what-is-ip-location-and-how-accurate', label: 'IPv4 lookup' },
-      { to: '/blog/what-is-ip-location-and-how-accurate', label: 'IP to location' },
       { to: '/', label: 'Internet provider lookup' },
     ],
   },
@@ -65,7 +76,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-5 py-10">
 
         {/* Quick Links — topic clusters for internal authority */}
-        <nav aria-label="Footer topics" className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10">
+        <nav aria-label="Footer topics" className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 mb-10">
           {QUICK_LINKS.map((col) => (
             <div key={col.heading}>
               <h3 className="text-[11px] uppercase tracking-[0.18em] text-electric-400 font-semibold mb-3">{col.heading}</h3>

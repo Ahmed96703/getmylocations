@@ -15,6 +15,11 @@ import { POSTS } from '../posts/manifest.js';
 const MapView = lazy(() => import('../MapView.jsx'));
 
 const FAQS = [
+  // Head-term queries (high search volume)
+  { q: 'Where am I right now?', a: 'Open GetMyLocations and allow the location prompt — within two seconds the page answers "where am I" with your exact coordinates, city, country, and a live map pin. No signup needed.' },
+  { q: "What's my location now?", a: 'GetMyLocations is the fastest answer to "what\'s my location now" — it combines GPS, Wi-Fi, and IP signals to show your live position on a map the instant you grant permission.' },
+  { q: 'Is there a free lat long finder?', a: 'Yes. GetMyLocations is a free lat long finder (also known as a latitude and longitude finder or longitude and latitude finder) that works in any modern browser without signup.' },
+
   // Cluster A — GPS & Coordinates
   { q: 'How do I find my current coordinates?', a: 'Open Get My Location and approve the browser permission. Your exact coordinates — latitude and longitude in WGS-84 decimal degrees — appear instantly with six-digit precision, copyable in one click.' },
   { q: 'How do I find latitude and longitude?', a: 'Our latitude longitude finder uses your browser\'s GPS chip and Wi-Fi triangulation to display live GPS coordinates. For converting decimal degrees to DMS (degrees-minutes-seconds), use our upcoming decimal degrees converter.' },
@@ -165,6 +170,12 @@ export default function LocationFinder() {
               Naturally phrased, not keyword-stuffed; covers cluster keywords in real sentences. */}
           <div className="sr-only">
             <h2>Get My Location — the complete browser tool</h2>
+            <p>
+              Wondering "where am I", "what is my location", or "what's my location now"? GetMyLocations answers all three
+              instantly. As a free lat long finder, latitude and longitude finder, and longitude and latitude finder rolled
+              into one, it works as an IP finder and IP location finder too — perfect for anyone searching "my location",
+              "my location now", or "my current location" online.
+            </p>
             <p>
               Use Get My Location to find your exact coordinates, track your IP, and pinpoint your location on a live map.
               The latitude longitude finder displays your live GPS coordinates in WGS-84 decimal degrees, and our IP-to-location
