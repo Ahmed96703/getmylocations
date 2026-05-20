@@ -67,6 +67,18 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://getmylocations.com/ip-location-lookup</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://getmylocations.com/decimal-degrees-converter</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://getmylocations.com/contact</loc>
     <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>

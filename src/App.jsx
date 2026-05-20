@@ -9,6 +9,8 @@ import Terms from './pages/Terms.jsx';
 import NotFound from './pages/NotFound.jsx';
 import FixLocationNotWorking from './pages/FixLocationNotWorking.jsx';
 import GpsCoordinatesFinder from './pages/GpsCoordinatesFinder.jsx';
+import IpLocationLookup from './pages/IpLocationLookup.jsx';
+import DecimalDegreesConverter from './pages/DecimalDegreesConverter.jsx';
 
 export default function App() {
   return (
@@ -23,6 +25,8 @@ export default function App() {
         <Route path="/terms" element={<Terms />} />
         <Route path="/fix-location-not-working" element={<FixLocationNotWorking />} />
         <Route path="/gps-coordinates-finder" element={<GpsCoordinatesFinder />} />
+        <Route path="/ip-location-lookup" element={<IpLocationLookup />} />
+        <Route path="/decimal-degrees-converter" element={<DecimalDegreesConverter />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

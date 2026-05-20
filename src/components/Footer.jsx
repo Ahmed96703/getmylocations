@@ -12,6 +12,8 @@ const SITE_LINKS = [
 
 const GUIDE_LINKS = [
   { to: '/gps-coordinates-finder', label: 'GPS Coordinates Guide' },
+  { to: '/ip-location-lookup', label: 'IP Location Lookup' },
+  { to: '/decimal-degrees-converter', label: 'Decimal Degrees Converter' },
   { to: '/fix-location-not-working', label: 'Fix Location Issues' },
 ];
 
