@@ -166,35 +166,6 @@ export default function LocationFinder() {
             Works as a free GPS tracker online · IP address location detector · street address from GPS · WGS-84 decimal degrees · no signup.
           </p>
 
-          {/* Screen-reader-only context — extra semantic detail for crawlers and assistive tech.
-              Naturally phrased, not keyword-stuffed; covers cluster keywords in real sentences. */}
-          <div className="sr-only">
-            <h2>Get My Location — the complete browser tool</h2>
-            <p>
-              Wondering "where am I", "what is my location", or "what's my location now"? GetMyLocations answers all three
-              instantly. As a free lat long finder, latitude and longitude finder, and longitude and latitude finder rolled
-              into one, it works as an IP finder and IP location finder too — perfect for anyone searching "my location",
-              "my location now", or "my current location" online.
-            </p>
-            <p>
-              Use Get My Location to find your exact coordinates, track your IP, and pinpoint your location on a live map.
-              The latitude longitude finder displays your live GPS coordinates in WGS-84 decimal degrees, and our IP-to-location
-              lookup works as an IP geolocator for both IPv4 lookup and IPv6 — including your internet provider.
-            </p>
-            <p>
-              Need to map your coordinates or get a street address from GPS? Our reverse-geocode-online step turns any pair of
-              decimal degrees into an address from coordinates, then drops a pin GPS-style on the interactive location map.
-              Advanced mode lets you find an address by lat long manually, with a decimal degrees converter for DMS to decimal
-              coordinates input.
-            </p>
-            <p>
-              We answer common questions like “what is my public IP”, “why is my location wrong”, “GPS vs IP accuracy”,
-              “browser location vs GPS”, “how accurate is browser location”, “why is my IP showing wrong city”, “how to fix
-              GPS not working”, and “how to enable browser location in Chrome”. If location permission denied, our helper
-              shows you how to re-enable it. VPN and GPS location interaction is also covered.
-            </p>
-          </div>
-
           {/* Feature pills — visible */}
           <ul aria-label="Features" className="mt-5 flex flex-wrap gap-2 text-xs">
             {FEATURES.map((f) => (
