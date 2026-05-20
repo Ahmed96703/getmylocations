@@ -11,6 +11,8 @@ import FixLocationNotWorking from './pages/FixLocationNotWorking.jsx';
 import GpsCoordinatesFinder from './pages/GpsCoordinatesFinder.jsx';
 import IpLocationLookup from './pages/IpLocationLookup.jsx';
 import DecimalDegreesConverter from './pages/DecimalDegreesConverter.jsx';
+import ReverseGeocoding from './pages/ReverseGeocoding.jsx';
+import GpsVsIpAccuracy from './pages/GpsVsIpAccuracy.jsx';
 
 export default function App() {
   return (
@@ -27,6 +29,8 @@ export default function App() {
         <Route path="/gps-coordinates-finder" element={<GpsCoordinatesFinder />} />
         <Route path="/ip-location-lookup" element={<IpLocationLookup />} />
         <Route path="/decimal-degrees-converter" element={<DecimalDegreesConverter />} />
+        <Route path="/reverse-geocoding" element={<ReverseGeocoding />} />
+        <Route path="/gps-vs-ip-accuracy" element={<GpsVsIpAccuracy />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

@@ -79,6 +79,18 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://getmylocations.com/reverse-geocoding</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://getmylocations.com/gps-vs-ip-accuracy</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://getmylocations.com/contact</loc>
     <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
