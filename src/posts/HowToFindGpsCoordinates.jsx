@@ -133,7 +133,7 @@ export default function HowToFindGpsCoordinates() {
 
       <h2 className="font-display text-2xl font-bold mt-12">Try it now</h2>
       <p className="mt-3 text-slate-300/90 leading-relaxed">
-        Ready to find your exact coordinates? Open the free <Link to="/" className="text-electric-400 hover:underline font-semibold">GetMyLocations</Link> tool, allow the location prompt, and you’ll see your latitude, longitude, city, and country in under two seconds — no signup, no tracking, completely free.
+        Ready to find your exact coordinates? Open the free <Link to="/" className="text-electric-400 hover:underline font-semibold">GetMyLocations</Link> tool, allow the location prompt, and you’ll see your latitude, longitude, city, and country in under two seconds — no signup needed, completely free, and processed entirely in your browser.
       </p>
     </article>
   );

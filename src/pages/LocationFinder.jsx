@@ -45,14 +45,14 @@ const FAQS = [
   { q: 'Why is location permission denied?', a: 'You\'ve previously denied the prompt for this site. Click the lock icon in your address bar → Site settings → reset Location to "Allow", then reload. Our denied-permission helper guides you through it.' },
   { q: 'Does VPN affect GPS location?', a: 'A VPN hides your IP address (and thus IP geolocation) but does NOT change your GPS chip\'s reading. With GPS allowed, GetMyLocations sees your true position even while connected to a VPN.' },
 
-  { q: 'Is GetMyLocations free and private?', a: 'Yes. 100% free, no signup, no tracking. Your coordinates and IP location are never stored or sent to a server we control — everything runs in your browser.' },
+  { q: 'Is GetMyLocations free and private?', a: 'Yes. 100% free, no signup needed. Your GPS coordinates are processed in your browser and never sent to a server we operate. We do use third-party services for reverse geocoding and advertising — see our Privacy Policy for details.' },
 ];
 
 const FEATURES = [
   { icon: '📍', t: 'Find my current coordinates', d: 'Exact latitude and longitude with six-decimal precision, copied to your clipboard in one click.' },
   { icon: '📡', t: 'Live GPS tracker', d: 'Real-time coordinate updates as you move — watch your latitude and longitude tick live.' },
   { icon: '🌐', t: 'IP & city lookup', d: 'Reverse-geocodes your location into city, region, and country in milliseconds.' },
-  { icon: '🔒', t: 'Privacy-first', d: '100% client-side. Your data never leaves your browser. No signup, no tracking.' },
+  { icon: '🔒', t: 'Privacy-first', d: '100% client-side coordinate processing. Your GPS reading is not sent to a server we operate. No signup required.' },
 ];
 
 const MORE_TOOLS = [

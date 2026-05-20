@@ -10,7 +10,7 @@ export default function About() {
 
       <h2 className="font-display text-2xl font-bold mt-10">Our mission</h2>
       <p className="mt-3 text-slate-300/90 leading-relaxed">
-        We believe finding your own location shouldn’t require signing up, installing an app, or handing your data to a third party. GetMyLocations runs 100% client-side: your coordinates never leave your device, no analytics track you, and the map is powered by free, open-source OpenStreetMap data.
+        We believe finding your own location shouldn’t require signing up or installing an app. GetMyLocations runs 100% client-side: your coordinates are processed in your browser and never sent to a server we operate, and the map is powered by free, open-source OpenStreetMap data. See our <a className="text-electric-400 hover:underline" href="/privacy-policy">Privacy Policy</a> for details on third-party services we use, including reverse-geocoding APIs and advertising.
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-10">Who it’s for</h2>

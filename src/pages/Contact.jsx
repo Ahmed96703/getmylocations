@@ -20,7 +20,7 @@ export default function Contact() {
       <div className="mt-4 space-y-4 text-slate-300/90">
         <div>
           <h3 className="font-semibold text-slate-100">Is GetMyLocations free?</h3>
-          <p className="text-sm mt-1">Yes — completely free, no signup, no ads.</p>
+          <p className="text-sm mt-1">Yes — completely free, no signup required. The site is supported by advertising.</p>
         </div>
         <div>
           <h3 className="font-semibold text-slate-100">Do you offer an API?</h3>
