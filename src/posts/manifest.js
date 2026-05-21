@@ -1,6 +1,30 @@
 // Blog post manifest — single source of truth for routing, blog index, and sitemap generation.
 export const POSTS = [
   {
+    slug: 'gps-coordinates-emergencies-aml-guide',
+    title: 'GPS Coordinates in Emergencies — The Complete AML & 911/112 Guide',
+    excerpt: 'How emergency dispatchers use coordinates, what Advanced Mobile Location does automatically, when to read your own coordinates, and how to communicate them over the phone.',
+    date: '2026-05-20',
+    readingTime: 10,
+    tags: ['emergency', 'gps', 'safety'],
+  },
+  {
+    slug: 'browser-geolocation-api-explained',
+    title: 'Browser Geolocation API Explained — What Websites Can and Can\'t See',
+    excerpt: 'A complete walkthrough of navigator.geolocation: how it works, what the OS fuses to produce a coordinate, accuracy/permission/error model, and real privacy implications.',
+    date: '2026-05-19',
+    readingTime: 9,
+    tags: ['geolocation', 'api', 'privacy'],
+  },
+  {
+    slug: 'how-to-share-gps-location-safely',
+    title: 'How to Share Your GPS Location Safely — iMessage, WhatsApp, Maps, Signal',
+    excerpt: 'Six common ways to share your live or static location, what each one actually exposes, and a safety checklist to avoid the most common privacy mistakes.',
+    date: '2026-05-18',
+    readingTime: 8,
+    tags: ['privacy', 'sharing', 'safety'],
+  },
+  {
     slug: 'how-to-find-your-gps-coordinates',
     title: 'How to Find Your GPS Coordinates (Complete 2026 Guide for Any Device)',
     excerpt: 'The fastest, most accurate ways to get your exact latitude and longitude — on iPhone, Android, Mac, Windows, and any browser. With privacy tips and free tools.',

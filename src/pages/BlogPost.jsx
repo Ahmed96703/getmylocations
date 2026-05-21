@@ -10,6 +10,9 @@ const POSTS = {
   'latitude-vs-longitude-explained': lazy(() => import('../posts/LatitudeVsLongitude.jsx')),
   'how-gps-works': lazy(() => import('../posts/HowGpsWorks.jsx')),
   '10-uses-for-gps-coordinates': lazy(() => import('../posts/TenUsesForGpsCoordinates.jsx')),
+  'how-to-share-gps-location-safely': lazy(() => import('../posts/HowToShareGpsLocationSafely.jsx')),
+  'browser-geolocation-api-explained': lazy(() => import('../posts/BrowserGeolocationApi.jsx')),
+  'gps-coordinates-emergencies-aml-guide': lazy(() => import('../posts/GpsCoordinatesEmergencies.jsx')),
 };
 
 export default function BlogPost() {
