@@ -128,6 +128,63 @@ export default function LatitudeVsLongitude() {
         It’s the global coordinate system that virtually every modern GPS, map, and phone uses. Unless you’re a surveyor working with a national grid, WGS-84 is the only one you’ll meet.
       </p>
 
+      <h2 className="font-display text-2xl font-bold mt-12">The history behind the grid</h2>
+      <p className="mt-3 text-slate-300/90 leading-relaxed">
+        The latitude–longitude system is two thousand years older than you might expect. The Greek scholar Hipparchus proposed dividing the world into 360° around its axis back in the 2nd century BC, and Ptolemy formalized a coordinate grid in his <em>Geography</em> around 150 AD. The equator was the obvious choice for latitude’s zero — it’s defined by the planet’s spin axis — but longitude’s zero was arbitrary and the cause of centuries of arguments.
+      </p>
+      <p className="mt-3 text-slate-300/90 leading-relaxed">
+        Different countries used different prime meridians for hundreds of years: the French ran theirs through Paris, the Spaniards through Cadiz, the Americans through Washington. Greenwich won the international vote at the 1884 Meridian Conference for prosaic reasons — most maritime nautical charts of the era were already published using Greenwich, and re-printing them all was unappealing. The result: every GPS coordinate today is measured from a brass strip in a south-east London suburb.
+      </p>
+
+      <h2 className="font-display text-2xl font-bold mt-12">Famous coordinates worth knowing</h2>
+      <p className="mt-3 text-slate-300/90 leading-relaxed">
+        A handful of coordinates show up often enough that they’re worth recognizing:
+      </p>
+      <ul className="mt-3 space-y-2 text-slate-300/90 list-disc list-inside">
+        <li><strong>0°, 0°</strong> — the intersection of the equator and the prime meridian. Sits in the Atlantic Ocean off the coast of Ghana. Often called Null Island; not actually an island.</li>
+        <li><strong>Eiffel Tower:</strong> 48.8584, 2.2945</li>
+        <li><strong>Statue of Liberty:</strong> 40.6892, −74.0445</li>
+        <li><strong>Sydney Opera House:</strong> −33.8568, 151.2153</li>
+        <li><strong>Mount Everest summit:</strong> 27.9881, 86.9250</li>
+        <li><strong>North Pole:</strong> 90.0, undefined longitude</li>
+        <li><strong>South Pole:</strong> −90.0, undefined longitude</li>
+      </ul>
+      <p className="mt-3 text-slate-300/90 leading-relaxed">
+        That “undefined longitude” at the poles is one of the system’s pleasant quirks: every meridian converges to the same point, so longitude has no meaning there.
+      </p>
+
+      <h2 className="font-display text-2xl font-bold mt-12">Edge cases that confuse software</h2>
+      <p className="mt-3 text-slate-300/90 leading-relaxed">
+        Three coordinate edge cases regularly break poorly-written mapping code:
+      </p>
+      <ul className="mt-3 space-y-2 text-slate-300/90 list-disc list-inside">
+        <li>
+          <strong>The antimeridian (longitude ±180°).</strong> This is where east and west meet in the Pacific. A great-circle line from Alaska to Vladivostok crosses ±180°, but naive code that treats longitude as a flat number will draw the line all the way around the world the other way. Proper geospatial libraries handle this; you can spot the bug whenever a flight-route map shows planes flying through Africa to cross the Pacific.
+        </li>
+        <li>
+          <strong>The poles (latitude ±90°).</strong> Longitude is meaningless here. Distance calculations using formulas that assume rectangular coordinates fall apart. Real-world cases: weather forecasting at McMurdo Station, GPS-guided drones over Arctic ice.
+        </li>
+        <li>
+          <strong>Coordinate sign convention disagreements.</strong> Some legacy databases use west-positive longitude (instead of the now-standard east-positive). Loading a 1980s NOAA dataset directly into Google Maps will reflect everything horizontally.
+        </li>
+      </ul>
+
+      <h2 className="font-display text-2xl font-bold mt-12">Why “lat, lon” and not “lon, lat”?</h2>
+      <p className="mt-3 text-slate-300/90 leading-relaxed">
+        Both conventions exist and the choice has cost engineering hours all over the world. The short version: humans read in (latitude, longitude) order because latitude was historically the easier value to measure (a sextant reading off the noon sun), so it came first in published almanacs. Mathematicians, on the other hand, prefer (x, y) — and longitude maps to x — so geometry libraries flipped the order. GeoJSON inherited the math convention; KML, WKT, and most user-facing apps kept the human one.
+      </p>
+      <p className="mt-3 text-slate-300/90 leading-relaxed">
+        Rule of thumb when reading a coordinate from an unfamiliar source: the value with the smaller absolute maximum is latitude (|lat| ≤ 90) and the larger is longitude (|lon| ≤ 180). If one of your numbers is bigger than 90 in absolute value, that one is definitely longitude.
+      </p>
+
+      <h2 className="font-display text-2xl font-bold mt-12">Distance between two coordinate pairs</h2>
+      <p className="mt-3 text-slate-300/90 leading-relaxed">
+        A common task: how far apart are two latitude–longitude pairs? You can’t use Pythagoras because the Earth is round. The <strong>Haversine formula</strong> gives the great-circle distance — the shortest path across the sphere’s surface — and is accurate to within ~0.5% for any pair of points on Earth.
+      </p>
+      <p className="mt-3 text-slate-300/90 leading-relaxed">
+        For most everyday cases (driving distances, real-estate ad copy, flight planning), Haversine is plenty. For higher accuracy over very long distances, the Vincenty formula accounts for Earth’s actual ellipsoid shape and is accurate to a few millimeters. Both are one-liners in any modern programming language.
+      </p>
+
       <h2 className="font-display text-2xl font-bold mt-12">Try it yourself</h2>
       <p className="mt-3 text-slate-300/90 leading-relaxed">
         Open <Link to="/" className="text-electric-400 hover:underline font-semibold">GetMyLocations</Link> — you’ll see your own latitude and longitude in decimal degrees, with six decimal places of precision and a live map pin. Toggle into Advanced mode to type any coordinates and watch the map fly there in real time.

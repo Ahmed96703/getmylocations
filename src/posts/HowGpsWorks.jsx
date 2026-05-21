@@ -85,6 +85,57 @@ export default function HowGpsWorks() {
       <p className="mt-3 text-slate-300/90 leading-relaxed">
         Yes. Because GPS signals are so weak, even a small jammer can overwhelm them locally. <strong>Spoofing</strong> — broadcasting fake but realistic signals — is harder but documented in military contexts and increasingly seen near conflict zones. Phones now flag suspicious GPS as “unreliable” when the math doesn’t add up.
       </p>
+      <p className="mt-3 text-slate-300/90 leading-relaxed">
+        Civilian jammers are illegal in most countries but still common. A driver who wants to evade fleet-tracking might plug a $30 jammer into the cigarette lighter — and unintentionally take out GPS for everyone within a few hundred meters, including aircraft and emergency services nearby. The most famous case was Newark Airport in 2009, where a single contractor’s in-cab jammer regularly disrupted the Smart Landing System until the FAA tracked him down.
+      </p>
+      <p className="mt-3 text-slate-300/90 leading-relaxed">
+        Spoofing is a more sophisticated attack. By transmitting a stronger, fake constellation, an attacker can convince a receiver it’s somewhere it isn’t. Ships in the Black Sea have repeatedly reported false GPS positions placing them on dry land at airports — a textbook spoofing pattern. Modern receivers fight back by cross-checking signals against multiple GNSS constellations (a Galileo signal disagreeing with a GPS signal is a red flag) and by watching for unrealistic position jumps.
+      </p>
+
+      <h2 className="font-display text-2xl font-bold mt-12">RTK and centimeter-level precision</h2>
+      <p className="mt-3 text-slate-300/90 leading-relaxed">
+        Consumer GPS hovers around 3–5 meters of accuracy. For surveying, agriculture, and drone work, that’s nowhere near enough. The technique called <strong>Real-Time Kinematic (RTK)</strong> closes the gap to centimeters by using a fixed base station at a precisely surveyed point.
+      </p>
+      <p className="mt-3 text-slate-300/90 leading-relaxed">
+        The base station knows its own coordinates exactly. It receives the same GPS signals you do, calculates what its position would <em>appear</em> to be based on those signals alone, and broadcasts the difference — a correction — to nearby rover receivers in real time. Your moving receiver applies the correction and ends up with sub-centimeter accuracy.
+      </p>
+      <p className="mt-3 text-slate-300/90 leading-relaxed">
+        Network RTK takes this further by combining corrections from dozens of base stations across a region. A self-driving tractor in Nebraska can pull corrections from a state-wide network and stay within 2 cm of a target row for kilometers. The high-end iPhones with the U1 chip don’t do full RTK, but they include enough hardware that compatible apps can pull network corrections for sub-meter accuracy in supported regions.
+      </p>
+
+      <h2 className="font-display text-2xl font-bold mt-12">How GPS gets used in the real world</h2>
+      <p className="mt-3 text-slate-300/90 leading-relaxed">
+        The obvious uses — navigation, fitness tracking, geocaching — are only the beginning. GPS quietly underpins infrastructure most people never think about:
+      </p>
+      <ul className="mt-3 space-y-2 text-slate-300/90 list-disc list-inside">
+        <li><strong>Time synchronization.</strong> Cell towers, electrical grids, and stock exchanges synchronize their clocks against GPS to nanosecond precision. A GPS outage doesn’t just break maps — it can drop calls and halt trading.</li>
+        <li><strong>Precision agriculture.</strong> A modern tractor can drive itself in perfectly straight rows for kilometers, dropping fertilizer and seed based on previously-collected per-square-meter soil data. RTK GPS makes this possible.</li>
+        <li><strong>Aviation.</strong> Aircraft use GPS for approach and landing in low visibility (the LPV procedure, for example, replaces the need for ground-based ILS in many small airports).</li>
+        <li><strong>Search and rescue.</strong> AML (Advanced Mobile Location) automatically transmits a caller’s GPS coordinates to emergency dispatchers when they dial 911 or 112.</li>
+        <li><strong>Tectonic monitoring.</strong> Permanent GPS receivers placed on faults can detect the few millimeters of motion that precede major earthquakes.</li>
+        <li><strong>Asset tracking.</strong> Shipping containers, rental scooters, and stolen-bike trackers all rely on cheap GPS modules and cellular backhaul.</li>
+      </ul>
+
+      <h2 className="font-display text-2xl font-bold mt-12">Battery cost and how phones cheat</h2>
+      <p className="mt-3 text-slate-300/90 leading-relaxed">
+        A GPS receiver running continuously can chew through ~25% of a phone battery in a day. Modern OSes hide this by being clever: instead of running GPS at full duty cycle, they fall back to Wi-Fi and cell positioning when you’re stationary, sample GPS in short bursts when you’re walking, and only run it continuously during active navigation.
+      </p>
+      <p className="mt-3 text-slate-300/90 leading-relaxed">
+        The “high accuracy” / “battery saving” / “device only” toggles in your phone’s location settings really mean: <em>use everything including cloud-assisted Wi-Fi positioning</em>, <em>use only Wi-Fi and cell</em>, or <em>use only the GPS chip</em>. The first is most accurate and uses moderate battery; the second is faster but coarse; the third is most private but slowest to lock on.
+      </p>
+
+      <h2 className="font-display text-2xl font-bold mt-12">What about indoor positioning?</h2>
+      <p className="mt-3 text-slate-300/90 leading-relaxed">
+        GPS doesn’t work indoors — the satellite signal is just too weak to penetrate roofs and walls. Indoor positioning systems (IPS) fill the gap with completely different technology: Bluetooth beacons, Wi-Fi RTT (round-trip time) measurements, ultra-wideband (UWB) chips, and visual SLAM using the phone’s camera. Airports and shopping malls have started deploying these for indoor mapping, with accuracy usually in the 1–3 meter range. None of this involves GPS at all, even though most apps blur the distinction in their UI.
+      </p>
+
+      <h2 className="font-display text-2xl font-bold mt-12">The future of GNSS</h2>
+      <p className="mt-3 text-slate-300/90 leading-relaxed">
+        GPS itself is mid-modernization. The next-generation GPS III satellites broadcast a new civilian signal called L1C that’s designed to interoperate with Galileo and BeiDou, allowing multi-constellation receivers to combine signals more efficiently. Galileo is rolling out a free High Accuracy Service (HAS) that pushes corrections globally and brings ~20 cm accuracy to consumer devices without RTK.
+      </p>
+      <p className="mt-3 text-slate-300/90 leading-relaxed">
+        In parallel, a new generation of <strong>LEO PNT</strong> (Low-Earth-Orbit Position, Navigation, Timing) constellations are launching — Iridium’s STL service and several SpaceX-adjacent projects. LEO signals are much stronger than the 20,000-km MEO GPS signals and much harder to jam, which is why aviation and defense are paying close attention.
+      </p>
 
       <h2 className="font-display text-2xl font-bold mt-12">See your own GPS coordinates</h2>
       <p className="mt-3 text-slate-300/90 leading-relaxed">

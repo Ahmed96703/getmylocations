@@ -116,6 +116,44 @@ export default function WhatIsIpLocation() {
       <h3 className="font-semibold text-lg mt-6 text-slate-100">Is IP location ever useful for security?</h3>
       <p className="mt-2 text-slate-300/90 leading-relaxed">Yes — comparing your typical IP geography to a sudden login from a different country is a cheap, effective anomaly signal that powers most account-protection systems.</p>
 
+      <h2 className="font-display text-2xl font-bold mt-12">A deeper look at how the databases are built</h2>
+      <p className="mt-3 text-slate-300/90 leading-relaxed">
+        The four or five companies that dominate IP geolocation each spend tens of millions of dollars a year keeping their databases current. MaxMind&apos;s GeoIP2, IPinfo&apos;s lite and standard tiers, IP2Location&apos;s LITE database, and BigDataCloud&apos;s API all draw from overlapping sources but differ in the corrections they apply and the freshness of their data.
+      </p>
+      <p className="mt-3 text-slate-300/90 leading-relaxed">
+        The core inputs are the same for everyone: Regional Internet Registry allocation records (which ISP owns which IP range), BGP routing-table snapshots (which network operator announces which prefix on which backbone), and reverse DNS PTR records (which sometimes encode a city or POP name). What separates a good database from a bad one is the layer on top: latency probes from globally distributed servers (the response time to a known location helps narrow the candidate set), Wi-Fi BSSID corroboration on mobile devices, and crowd-sourced ground truth from apps that have both GPS and IP visibility.
+      </p>
+      <p className="mt-3 text-slate-300/90 leading-relaxed">
+        Updates ripple unevenly. A new IP block allocated to a Pakistani ISP last week may appear correctly in BigDataCloud&apos;s daily refresh but show up as &ldquo;unknown&rdquo; in a six-month-old free dataset. This is why ad networks and fraud-detection systems pay for premium feeds while small developers use free monthly snapshots.
+      </p>
+
+      <h2 className="font-display text-2xl font-bold mt-12">CGNAT and the IPv4 exhaustion problem</h2>
+      <p className="mt-3 text-slate-300/90 leading-relaxed">
+        The world ran out of unassigned IPv4 addresses in 2011 (APNIC, the Asia-Pacific registry, exhausted its pool first). ISPs respond with <strong>Carrier-Grade NAT (CGNAT)</strong>: multiple subscribers share a single public IPv4, distinguished by port number. From the outside world&apos;s perspective, hundreds of households in a neighborhood can all look like the same IP.
+      </p>
+      <p className="mt-3 text-slate-300/90 leading-relaxed">
+        For geolocation this is mostly fine — the shared IP still maps to roughly the same area. For other things, it&apos;s a nightmare: hosting a game server, getting a VoIP call to ring through, or being whitelisted for remote work all require port-forwarding that CGNAT breaks. The standard workaround is to pay extra for a static IPv4, or to use a service that does its own NAT traversal (Tailscale, ZeroTier, Cloudflare Tunnel).
+      </p>
+      <p className="mt-3 text-slate-300/90 leading-relaxed">
+        IPv6 fixes the address shortage with a 128-bit space large enough to give every grain of sand on Earth its own IP. Adoption is uneven — about 45% of Google traffic worldwide was over IPv6 in 2025 — but rising. IPv6 geolocation is typically more honest because there&apos;s no incentive to share addresses across many subscribers.
+      </p>
+
+      <h2 className="font-display text-2xl font-bold mt-12">CDNs and shared hosting confuse the picture further</h2>
+      <p className="mt-3 text-slate-300/90 leading-relaxed">
+        When you visit a popular site, the IP your browser connects to often belongs to a Content Delivery Network (Cloudflare, Akamai, Fastly), not the actual web server. CDNs route you to whatever data center is geographically closest, which is exactly the kind of latency-aware routing that powers the modern web — but it means a single hostname can resolve to dozens of different IPs around the world depending on where you are.
+      </p>
+      <p className="mt-3 text-slate-300/90 leading-relaxed">
+        For IP geolocation, this matters because the CDN&apos;s IP geolocation can lie in either direction. The data center might be in Frankfurt while serving users across half of Europe; databases tagged with the data center&apos;s location report all those users as German. The reverse — many users in one city served from a far-away data center — is also common when small CDNs lack regional presence.
+      </p>
+
+      <h2 className="font-display text-2xl font-bold mt-12">Mobile carriers are the trickiest case</h2>
+      <p className="mt-3 text-slate-300/90 leading-relaxed">
+        Mobile traffic is back-hauled to a small number of carrier gateways before exiting to the public internet. Your IP almost always geolocates to whichever city houses the gateway your traffic was routed through &mdash; not where you&apos;re actually standing. Reliance Jio users in eastern India often geolocate to Mumbai; Verizon LTE traffic across the US northeast often geolocates to a single Pennsylvania facility.
+      </p>
+      <p className="mt-3 text-slate-300/90 leading-relaxed">
+        This is also why geolocating an IP can disagree by hundreds of kilometers on mobile vs Wi-Fi for the same user, same device, same moment. If a service desperately needs your real location and you&apos;re on cellular, IP is essentially useless &mdash; only GPS will get them what they need.
+      </p>
+
       <h2 className="font-display text-2xl font-bold mt-12">See it for yourself</h2>
       <p className="mt-3 text-slate-300/90 leading-relaxed">
         Curious what IP databases think about <em>your</em> IP right now? Open <Link to="/" className="text-electric-400 hover:underline font-semibold">GetMyLocations</Link> and decline the precise GPS prompt — you’ll see the IP-only estimate, often pleasantly wrong by 10+ km. Then allow GPS and watch the accuracy jump by 4-5 orders of magnitude. It’s the single fastest way to grok the difference.
