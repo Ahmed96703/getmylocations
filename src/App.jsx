@@ -6,6 +6,7 @@ import BlogPost from './pages/BlogPost.jsx';
 import Contact from './pages/Contact.jsx';
 import Privacy from './pages/Privacy.jsx';
 import Terms from './pages/Terms.jsx';
+import Disclaimer from './pages/Disclaimer.jsx';
 import NotFound from './pages/NotFound.jsx';
 import FixLocationNotWorking from './pages/FixLocationNotWorking.jsx';
 import GpsCoordinatesFinder from './pages/GpsCoordinatesFinder.jsx';
@@ -25,6 +26,7 @@ export default function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/privacy-policy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
+        <Route path="/disclaimer" element={<Disclaimer />} />
         <Route path="/fix-location-not-working" element={<FixLocationNotWorking />} />
         <Route path="/gps-coordinates-finder" element={<GpsCoordinatesFinder />} />
         <Route path="/ip-location-lookup" element={<IpLocationLookup />} />

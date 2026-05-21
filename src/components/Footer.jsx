@@ -8,6 +8,7 @@ const SITE_LINKS = [
   { to: '/contact', label: 'Contact' },
   { to: '/privacy-policy', label: 'Privacy Policy' },
   { to: '/terms', label: 'Terms' },
+  { to: '/disclaimer', label: 'Disclaimer' },
 ];
 
 const GUIDE_LINKS = [
