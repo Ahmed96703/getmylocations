@@ -1,28 +1,18 @@
-# Cloudflare routing rules
-# Rules are evaluated TOP to BOTTOM — specific first, catch-all last.
-# Status 200 = rewrite (URL stays clean), 301 = permanent redirect.
+# Cloudflare routing rules (v2 — 2026-05-25)
+# Each line: SOURCE  DESTINATION  STATUS
+# 200 = rewrite (URL stays clean in browser)
+# 301 = permanent redirect (URL changes in browser)
 #
-# Note: Cloudflare already auto-strips .html extensions, so we MUST NOT add
-# `/foo.html → /foo  301` rules — they would create infinite loops with the
-# rewrite rules below.
+# IMPORTANT: Do NOT add /foo.html -> /foo redirects.
+# Cloudflare auto-strips .html, which would cause infinite loops.
 
-# ── Standalone tool pages: serve .html files at clean URLs ──
-/my-location              /my-location.html              200
-/gps-coordinates          /gps-coordinates.html          200
-/coordinates-converter    /coordinates-converter.html    200
-/ip-location              /ip-location.html              200
-/distance-calculator      /distance-calculator.html      200
-/address-finder           /address-finder.html           200
-/street-view              /street-view.html              200
-/driving-directions       /driving-directions.html       200
+/my-location           /my-location.html           200
+/gps-coordinates       /gps-coordinates.html       200
+/coordinates-converter /coordinates-converter.html 200
+/ip-location           /ip-location.html           200
+/distance-calculator   /distance-calculator.html   200
+/address-finder        /address-finder.html        200
+/street-view           /street-view.html           200
+/driving-directions    /driving-directions.html    200
 
-# ── Legacy paths from earlier iterations: 301-redirect to canonical clean URLs ──
-# These are safe because the target path is different from the source.
-/gps-coordinates-converter      /coordinates-converter   301
-/ip-location-finder             /ip-location             301
-
-# ── React SPA fallback: everything else goes to index.html ──
-# React Router handles: /, /about, /blog, /privacy-policy, /terms, /disclaimer,
-# /fix-location-not-working, /gps-coordinates-finder, /ip-location-lookup,
-# /reverse-geocoding, /gps-vs-ip-accuracy, /blog/:slug, etc.
-/*                        /index.html                    200
+/*                     /index.html                 200
