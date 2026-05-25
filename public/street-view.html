@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Street View — See Any Address in Google Street View | GetMyLocations</title>
+<meta name="description" content="Free Street View tool. Enter any address or GPS coordinates and see the location in Google Street View. No signup, no API key. Works on mobile and desktop." />
+<link rel="canonical" href="https://getmylocations.com/street-view.html" />
+<meta property="og:title" content="Street View — Any Address" />
+<meta property="og:description" content="See any address in Google Street View instantly." />
+<meta property="og:type" content="website" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="stylesheet" href="/tools.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Street View Tool","url":"https://getmylocations.com/street-view.html","description":"Free Street View viewer that loads any address or coordinate pair in Google Street View.","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"GetMyLocations","url":"https://getmylocations.com/"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Why is there no Street View at my address?","acceptedAnswer":{"@type":"Answer","text":"Street View coverage is uneven worldwide. Most urban roads in North America, Europe, and developed Asia are covered. Rural roads, private property, and many developing-country streets are not. If no imagery exists, Google displays a fallback map view."}},
+{"@type":"Question","name":"Does this need a Google API key?","acceptedAnswer":{"@type":"Answer","text":"No. This tool uses the public Google Maps embed URL format, which does not require an API key for basic viewing."}},
+{"@type":"Question","name":"How current is the Street View imagery?","acceptedAnswer":{"@type":"Answer","text":"Major cities are typically refreshed every 2-3 years. Smaller towns and rural areas may have imagery several years old. Google shows the capture date in the bottom-left of each Street View."}}
+]}
+</script>
+</head>
+<body>
+
+<header class="site">
+  <div class="container">
+    <a href="/" class="brand">GetMy<span>Locations</span></a>
+    <nav class="top"><a href="/">Home</a><a href="/blog">Blog</a><a href="/about">About</a></nav>
+  </div>
+</header>
+
+<main><div class="container">
+
+  <div class="hero">
+    <p class="eyebrow">Free Tool</p>
+    <h1>Street <span class="accent">View</span> — see any address in Google Street View</h1>
+    <p class="lead">Type an address or paste GPS coordinates and see the spot in Google Street View — handy for previewing destinations, checking parking, virtual sightseeing, or just confirming an address before you go.</p>
+  </div>
+
+  <section class="card">
+    <div class="tool-header"><h2 class="tool-title">Load a Street View</h2></div>
+    <div class="row">
+      <input class="input" id="query" type="text" placeholder="Address, landmark, or 'lat, lon'" style="flex:1;min-width:240px" value="Eiffel Tower, Paris" />
+      <button class="btn" id="goBtn" type="button">View →</button>
+      <button class="btn btn-ghost" id="myLocBtn" type="button">📍 My location</button>
+    </div>
+    <div class="status" id="status" role="status" aria-live="polite"></div>
+
+    <div class="embed-box" id="embedBox" style="margin-top:1.25rem">
+      <iframe id="sv" src="" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Street View"></iframe>
+    </div>
+
+    <div class="row" style="margin-top:1rem">
+      <a class="btn btn-ghost" id="openMaps" href="#" target="_blank" rel="noopener">Open in Google Maps</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>How to use Street View</h2>
+    <ol>
+      <li><strong>Enter an address.</strong> Type any address, business name, or landmark. Examples: "1600 Amphitheatre Parkway, Mountain View", "Big Ben London", "Karachi airport".</li>
+      <li><strong>Or paste coordinates.</strong> A decimal-degree pair like <code>48.858420, 2.294500</code> works the same way.</li>
+      <li><strong>Click <em>View</em>.</strong> The Street View image loads in the panel below. Drag to look around; pinch or scroll to zoom; use the arrow overlays to walk forward or back along the road.</li>
+      <li><strong>Use the My location button</strong> to load Street View at your current GPS position.</li>
+    </ol>
+  </section>
+
+  <section class="section">
+    <h2>What is Street View?</h2>
+    <p>Google Street View is a navigable photographic layer over the world&apos;s road network. Vehicles equipped with multi-camera rigs (and, in some places, backpack rigs or boats) capture 360° panoramas every few meters along passable roads. Google stitches the panoramas together so users can virtually walk down any street with imagery.</p>
+    <p>The service launched in 2007 with imagery from five US cities and has since grown to cover most public roads in roughly 100 countries. Major cities are refreshed every 2-3 years, while small towns and rural areas may have imagery several years old. Imagery dates are shown in the bottom-left of each panorama.</p>
+    <p>Beyond convenient sightseeing, Street View is used to preview hotels and rental properties, scout filming locations, confirm address signage, study city architecture, plan accessibility routes, and (for journalists and researchers) verify the location of newsworthy events from photographs.</p>
+    <p>Street View has its limits. Coverage is sparse or absent in many parts of Africa, central Asia, and the Pacific. Private roads, gated communities, and many tourist sites are excluded. Where no imagery exists, Google falls back to a normal map view; the panel below will show that fallback if your query has no Street View available.</p>
+  </section>
+
+  <section class="section faq">
+    <h2>Frequently asked questions</h2>
+    <details><summary>Why does Street View sometimes show a blurred face or license plate?</summary><p>Google automatically blurs faces and license plates worldwide for privacy. The blur is applied to the imagery before publication and cannot be reversed.</p></details>
+    <details><summary>Can I see indoor spaces?</summary><p>Many museums, airports, train stations, restaurants, and large stores have indoor Street View available. They appear in the same interface when you walk inside a building marked with imagery dots.</p></details>
+    <details><summary>How do I report a problem in an image?</summary><p>From any Google Maps Street View, click the three-dot menu in the bottom right and choose <em>Report a problem</em>. Common reports include privacy concerns, sensitive content, or imagery in the wrong place.</p></details>
+    <details><summary>Does this tool share my search with Google?</summary><p>Yes. The Street View iframe is loaded directly from Google Maps, so any address or coordinate you enter is sent to Google to render the embed.</p></details>
+  </section>
+
+  <section class="section">
+    <h2>Related tools</h2>
+    <ul>
+      <li><a href="/my-location.html">My location tool</a></li>
+      <li><a href="/address-finder.html">Address finder</a></li>
+      <li><a href="/driving-directions.html">Driving directions</a></li>
+      <li><a href="/distance-calculator.html">Distance calculator</a></li>
+      <li><a href="/gps-coordinates-converter.html">GPS coordinates converter</a></li>
+    </ul>
+  </section>
+
+</div></main>
+
+<footer class="site"><div class="container">
+  <nav><a href="/about">About</a><a href="/blog">Blog</a><a href="/contact">Contact</a><a href="/privacy-policy">Privacy</a><a href="/disclaimer">Disclaimer</a></nav>
+  <p>&copy; 2026 GetMyLocations. Map data &copy; OpenStreetMap contributors.</p>
+</div></footer>
+
+<script>
+(function(){
+  'use strict';
+  var $=function(id){return document.getElementById(id);};
+  function setStatus(msg,cls){var el=$('status');el.textContent=msg||'';el.className='status'+(cls?' '+cls:'');}
+
+  function isCoords(s){
+    var m=s.match(/^\s*(-?\d+(?:\.\d+)?)\s*[,\s]\s*(-?\d+(?:\.\d+)?)\s*$/);
+    return m?{lat:parseFloat(m[1]),lon:parseFloat(m[2])}:null;
+  }
+  function load(query){
+    var src,mapsUrl;
+    var c=isCoords(query);
+    if(c){
+      src='https://www.google.com/maps?q=&layer=c&cbll='+c.lat+','+c.lon+'&output=embed';
+      mapsUrl='https://www.google.com/maps?q='+c.lat+','+c.lon;
+    } else {
+      var q=encodeURIComponent(query);
+      src='https://www.google.com/maps?q='+q+'&layer=c&output=embed';
+      mapsUrl='https://www.google.com/maps?q='+q;
+    }
+    $('sv').src=src;
+    $('openMaps').href=mapsUrl;
+    setStatus('Loaded.','ok');
+  }
+
+  $('goBtn').addEventListener('click',function(){
+    var q=$('query').value.trim();
+    if(!q){setStatus('Enter an address or coordinates.','err');return;}
+    load(q);
+  });
+  $('query').addEventListener('keydown',function(e){if(e.key==='Enter')$('goBtn').click();});
+  $('myLocBtn').addEventListener('click',function(){
+    if(!('geolocation' in navigator)){setStatus('Geolocation not supported.','err');return;}
+    setStatus('Requesting location…');
+    navigator.geolocation.getCurrentPosition(function(p){
+      var s=p.coords.latitude.toFixed(6)+', '+p.coords.longitude.toFixed(6);
+      $('query').value=s;
+      load(s);
+    },function(err){
+      var m={1:'Permission denied.',2:'Location unavailable.',3:'Request timed out.'};
+      setStatus(m[err.code]||'Could not get location.','err');
+    },{enableHighAccuracy:true,timeout:10000});
+  });
+
+  load($('query').value);
+})();
+</script>
+</body>
+</html>

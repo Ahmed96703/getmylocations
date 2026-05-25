@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>My Location — Where Am I? Find My Current Location | GetMyLocations</title>
+<meta name="description" content="My location now. Instantly find where you are — exact GPS coordinates, city, country, and live map. Free, no signup. Uses your browser's Geolocation API." />
+<link rel="canonical" href="https://getmylocations.com/my-location.html" />
+<meta property="og:title" content="My Location — Where Am I?" />
+<meta property="og:description" content="Find your exact GPS coordinates and city in two seconds." />
+<meta property="og:type" content="website" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="stylesheet" href="/tools.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"My Location Tool","url":"https://getmylocations.com/my-location.html","description":"Instantly find your current GPS coordinates, city, and country using the browser Geolocation API.","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"GetMyLocations","url":"https://getmylocations.com/"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How does this tool find my location?","acceptedAnswer":{"@type":"Answer","text":"It uses your browser's built-in Geolocation API, which asks the operating system to fuse GPS, Wi-Fi, and cell signals into a single best-guess coordinate. The result is delivered straight to the page in your browser."}},
+{"@type":"Question","name":"Why is my location wrong?","acceptedAnswer":{"@type":"Answer","text":"Indoor GPS is weak, so the OS often falls back to Wi-Fi or IP positioning which can be off by tens of kilometers. VPNs and corporate proxies also affect IP-based fallbacks."}},
+{"@type":"Question","name":"Is my location private?","acceptedAnswer":{"@type":"Answer","text":"Your coordinates are processed in your browser and not sent to a server we operate. The optional reverse-geocoding lookup sends just the coordinates to a third-party API to translate them into a city name."}}
+]}
+</script>
+</head>
+<body>
+
+<header class="site">
+  <div class="container">
+    <a href="/" class="brand">GetMy<span>Locations</span></a>
+    <nav class="top"><a href="/">Home</a><a href="/blog">Blog</a><a href="/about">About</a></nav>
+  </div>
+</header>
+
+<main><div class="container">
+
+  <div class="hero">
+    <p class="eyebrow">Free Tool</p>
+    <h1>My <span class="accent">Location</span> — where am I right now?</h1>
+    <p class="lead">Click the button and your current GPS coordinates, accuracy radius, city, and country appear on a live map within two seconds. No signup, no app to install, runs entirely in your browser.</p>
+  </div>
+
+  <section class="card">
+    <div class="tool-header">
+      <h2 class="tool-title">Find my current location</h2>
+      <button class="btn" id="findBtn" type="button">📍 Find my location</button>
+    </div>
+    <div class="status" id="status" role="status" aria-live="polite">Click the button above to start.</div>
+
+    <div id="results" style="margin-top:1.25rem;display:none">
+      <dl class="kv">
+        <dt>Latitude</dt><dd id="rLat">—</dd>
+        <dt>Longitude</dt><dd id="rLon">—</dd>
+        <dt>Accuracy</dt><dd id="rAcc">—</dd>
+        <dt>Altitude</dt><dd id="rAlt">—</dd>
+        <dt>City</dt><dd id="rCity">—</dd>
+        <dt>Country</dt><dd id="rCountry">—</dd>
+      </dl>
+      <div class="row" style="margin-top:1rem">
+        <button class="btn btn-ghost" id="copyBtn" type="button">Copy coordinates</button>
+        <a class="btn btn-ghost" id="mapsLink" href="#" target="_blank" rel="noopener">Open in Google Maps</a>
+      </div>
+    </div>
+
+    <div id="map" class="map-box"></div>
+  </section>
+
+  <section class="section">
+    <h2>How this tool works</h2>
+    <ol>
+      <li><strong>Click <em>Find my location</em>.</strong> Your browser asks for permission the first time. Allow it.</li>
+      <li><strong>The OS fuses signals.</strong> GPS satellites, Wi-Fi BSSID lookup, and cell-tower triangulation are combined into a single best-guess coordinate.</li>
+      <li><strong>Results display.</strong> Latitude, longitude, accuracy radius (in meters), altitude (if available), and the reverse-geocoded city / country show up in the dashboard. A pin is dropped on the map.</li>
+      <li><strong>Copy or share.</strong> One click copies the coordinates to your clipboard. Another opens the location in Google Maps for navigation.</li>
+    </ol>
+  </section>
+
+  <section class="section">
+    <h2>How accurate is "my location"?</h2>
+    <p>The honest answer: it depends on where you are and what hardware you have.</p>
+    <ul>
+      <li><strong>Outdoors on a phone:</strong> 3–5 meters. The GPS chip is the dominant signal.</li>
+      <li><strong>Indoors on a phone:</strong> 10–25 meters. Wi-Fi positioning carries the load because the GPS signal is weak.</li>
+      <li><strong>On a desktop with no GPS chip:</strong> Wi-Fi positioning (~25 m) if Apple/Google can identify your nearby access points, otherwise IP-based estimation (~25 km).</li>
+      <li><strong>Permission denied or VPN active:</strong> The page falls back to pure IP geolocation, which can be off by tens of kilometers or place you in a different city entirely.</li>
+    </ul>
+    <p>The <em>accuracy</em> value shown in the dashboard is the OS&apos;s own estimate of how confident it is — treat it as the radius of a circle the device believes it&apos;s inside.</p>
+    <p>If the location looks wrong, see our <a href="/fix-location-not-working">troubleshooting guide</a> for step-by-step browser-specific fixes.</p>
+  </section>
+
+  <section class="section faq">
+    <h2>Frequently asked questions</h2>
+    <details><summary>Why does my browser ask for permission?</summary><p>Web pages cannot read your location without your explicit consent. The permission prompt is the browser&apos;s built-in privacy guard. You can revoke it at any time from your browser&apos;s site settings.</p></details>
+    <details><summary>Does it work on my computer?</summary><p>Yes, but desktops usually don&apos;t have a GPS chip. The browser falls back to Wi-Fi BSSID lookup or IP geolocation, which is less precise (typically 25 m to a few km).</p></details>
+    <details><summary>Why is my location wrong?</summary><p>Most common reasons: you&apos;re indoors and GPS can&apos;t reach you; you&apos;re on a VPN; you&apos;re on a mobile carrier whose gateway is in a different city; or you denied the precise-location permission. <a href="/fix-location-not-working">Troubleshooting guide</a> walks through each.</p></details>
+    <details><summary>Is my location stored anywhere?</summary><p>Your GPS coordinates are processed entirely in your browser. We do not send them to our own server. The reverse-geocoding lookup sends just the coordinates to a third party (BigDataCloud) to translate them into a city name.</p></details>
+  </section>
+
+  <section class="section">
+    <h2>Related tools</h2>
+    <ul>
+      <li><a href="/gps-coordinates-converter.html">GPS coordinates converter</a></li>
+      <li><a href="/distance-calculator.html">Distance calculator</a></li>
+      <li><a href="/ip-location-finder.html">IP location finder</a></li>
+      <li><a href="/address-finder.html">Address finder</a></li>
+      <li><a href="/fix-location-not-working">Fix location not working</a></li>
+    </ul>
+  </section>
+
+</div></main>
+
+<footer class="site"><div class="container">
+  <nav><a href="/about">About</a><a href="/blog">Blog</a><a href="/contact">Contact</a><a href="/privacy-policy">Privacy</a><a href="/disclaimer">Disclaimer</a></nav>
+  <p>&copy; 2026 GetMyLocations. Map data &copy; OpenStreetMap contributors.</p>
+</div></footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script>
+(function(){
+  'use strict';
+  var $=function(id){return document.getElementById(id);};
+  var map=null,marker=null,circle=null;
+  function initMap(){
+    if(typeof L==='undefined')return;
+    map=L.map('map',{zoomControl:true}).setView([20,0],2);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap contributors'}).addTo(map);
+  }
+  function setStatus(msg,cls){var el=$('status');el.textContent=msg||'';el.className='status'+(cls?' '+cls:'');}
+
+  function reverseGeo(lat,lon){
+    fetch('https://nominatim.openstreetmap.org/reverse?format=json&lat='+lat+'&lon='+lon,{headers:{'Accept':'application/json'}})
+      .then(function(r){return r.json();})
+      .then(function(d){
+        var a=d.address||{};
+        $('rCity').textContent=a.city||a.town||a.village||a.county||'—';
+        $('rCountry').textContent=a.country||'—';
+      }).catch(function(){});
+  }
+
+  $('findBtn').addEventListener('click',function(){
+    if(!('geolocation' in navigator)){setStatus('Geolocation not supported in this browser.','err');return;}
+    setStatus('Requesting your location…');
+    navigator.geolocation.getCurrentPosition(function(p){
+      var lat=p.coords.latitude,lon=p.coords.longitude,acc=p.coords.accuracy,alt=p.coords.altitude;
+      $('rLat').textContent=lat.toFixed(6);
+      $('rLon').textContent=lon.toFixed(6);
+      $('rAcc').textContent=Math.round(acc)+' m';
+      $('rAlt').textContent=alt!=null?Math.round(alt)+' m':'—';
+      $('results').style.display='block';
+      $('mapsLink').href='https://www.google.com/maps?q='+lat+','+lon;
+      setStatus('Location found.','ok');
+      if(map){
+        if(marker)map.removeLayer(marker);
+        if(circle)map.removeLayer(circle);
+        marker=L.marker([lat,lon]).addTo(map).bindPopup('You are here').openPopup();
+        circle=L.circle([lat,lon],{radius:acc,color:'#38bdf8',fillColor:'#38bdf8',fillOpacity:.12}).addTo(map);
+        map.setView([lat,lon],15);
+      }
+      reverseGeo(lat,lon);
+    },function(err){
+      var m={1:'Permission denied. Click the lock icon in your address bar → Site settings → Location → Allow, then reload.',2:'Location unavailable. Try moving closer to a window or check GPS/Wi-Fi is on.',3:'Request timed out. Try again.'};
+      setStatus(m[err.code]||'Could not retrieve location.','err');
+    },{enableHighAccuracy:true,timeout:15000,maximumAge:0});
+  });
+
+  $('copyBtn').addEventListener('click',function(){
+    var t=$('rLat').textContent+', '+$('rLon').textContent;
+    if(!navigator.clipboard){setStatus('Clipboard not supported.','err');return;}
+    navigator.clipboard.writeText(t).then(function(){setStatus('Copied: '+t,'ok');});
+  });
+
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',initMap);}else{initMap();}
+})();
+</script>
+</body>
+</html>

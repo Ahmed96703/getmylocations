@@ -1,0 +1,66 @@
+/* Shared styles for standalone GetMyLocations tool pages */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:linear-gradient(180deg,#060a16 0%,#0b1224 60%,#070b18 100%);color:#f1f5f9;line-height:1.6;min-height:100vh}
+a{color:#38bdf8;text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:1100px;margin:0 auto;padding:0 1.25rem}
+header.site{position:sticky;top:0;z-index:50;background:rgba(11,18,36,.85);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.05)}
+header.site .container{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{font-weight:800;font-size:1.125rem;color:#f1f5f9}
+.brand span{color:#38bdf8}
+nav.top a{color:#cbd5e1;font-size:.875rem;margin-left:1.5rem;font-weight:500}
+nav.top a:hover{color:#38bdf8;text-decoration:none}
+@media(max-width:640px){nav.top a{margin-left:.875rem;font-size:.8125rem}}
+main{padding:2.5rem 0 4rem}
+.hero{margin-bottom:2.5rem}
+.eyebrow{font-size:.6875rem;text-transform:uppercase;letter-spacing:.18em;color:#38bdf8;font-weight:600;margin-bottom:.625rem}
+h1{font-size:clamp(2rem,5vw,2.875rem);font-weight:800;line-height:1.1;letter-spacing:-.02em;margin-bottom:.875rem}
+h1 .accent{color:#38bdf8}
+.lead{font-size:1.0625rem;color:#cbd5e1;max-width:780px}
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:1.25rem;padding:1.75rem;box-shadow:0 10px 30px -15px rgba(0,0,0,.4);margin-bottom:2.5rem}
+.tool-header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1.25rem}
+.tool-title{font-size:1.25rem;font-weight:700}
+.btn{display:inline-flex;align-items:center;gap:.5rem;background:#38bdf8;color:#0b1224;font-weight:600;font-size:.875rem;padding:.625rem 1.125rem;border-radius:.5rem;border:none;cursor:pointer;transition:background .15s;font-family:inherit}
+.btn:hover{background:#0ea5e9}
+.btn:disabled{opacity:.6;cursor:not-allowed}
+.btn-ghost{background:transparent;color:#cbd5e1;border:1px solid rgba(255,255,255,.12)}
+.btn-ghost:hover{background:rgba(255,255,255,.05);color:#f1f5f9}
+.status{font-size:.8125rem;color:#94a3b8;min-height:1.25rem;margin-top:.5rem}
+.status.err{color:#fca5a5}
+.status.ok{color:#86efac}
+.grid{display:grid;gap:1.25rem}
+.grid-2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.field{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1rem}
+.field label{font-size:.6875rem;text-transform:uppercase;letter-spacing:.16em;color:#38bdf8;font-weight:600}
+.input{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:.5rem;padding:.625rem .75rem;color:#f1f5f9;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.9375rem;width:100%;transition:border-color .15s}
+.input:focus{outline:none;border-color:#38bdf8;box-shadow:0 0 0 3px rgba(56,189,248,.2)}
+select.input{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='%2394a3b8' viewBox='0 0 16 16'><path d='M4 6l4 4 4-4'/></svg>");background-repeat:no-repeat;background-position:right .5rem center;background-size:1rem;padding-right:1.75rem}
+.result{margin-top:.75rem;padding:.75rem 1rem;background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.15);border-radius:.5rem;font-family:'JetBrains Mono',monospace;font-size:.9375rem;color:#bae6fd;word-break:break-all}
+.result.big{font-size:1.25rem;font-weight:600;color:#f1f5f9}
+.kv{display:grid;grid-template-columns:max-content 1fr;gap:.5rem 1rem;font-size:.9375rem}
+.kv dt{color:#94a3b8}
+.kv dd{color:#f1f5f9;font-family:'JetBrains Mono',monospace;word-break:break-all}
+.section{margin:3rem 0 2rem}
+.section h2{font-size:1.625rem;font-weight:700;letter-spacing:-.01em;margin-bottom:.875rem}
+.section p{color:#cbd5e1;margin-bottom:1rem;max-width:840px}
+.section ul,.section ol{color:#cbd5e1;margin:0 0 1rem 1.25rem;max-width:840px}
+.section li{margin-bottom:.5rem}
+.section strong{color:#f1f5f9}
+.section code{background:rgba(255,255,255,.08);padding:.125rem .375rem;border-radius:.25rem;color:#bae6fd;font-family:'JetBrains Mono',monospace;font-size:.8125rem}
+.map-box{height:360px;border-radius:.75rem;border:1px solid rgba(255,255,255,.08);margin-top:1.25rem;background:#0b1224;overflow:hidden}
+.embed-box{position:relative;width:100%;height:0;padding-bottom:56.25%;border-radius:.75rem;overflow:hidden;border:1px solid rgba(255,255,255,.08);margin-top:1.25rem}
+.embed-box iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+.faq details{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:.625rem;padding:1rem 1.125rem;margin-bottom:.75rem}
+.faq summary{cursor:pointer;font-weight:600;color:#f1f5f9;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::before{content:'+';color:#38bdf8;font-weight:700;margin-right:.625rem}
+.faq details[open] summary::before{content:'−'}
+.faq details p{margin-top:.625rem;color:#cbd5e1;font-size:.9375rem}
+footer.site{border-top:1px solid rgba(255,255,255,.05);margin-top:3rem;padding:2rem 0}
+footer.site .container{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;font-size:.875rem;color:#94a3b8}
+footer.site nav a{color:#cbd5e1;margin-right:1.25rem}
+.copy-btn{background:transparent;border:none;color:#38bdf8;cursor:pointer;font-size:.75rem;font-weight:600;padding:.25rem .5rem;border-radius:.25rem;font-family:inherit}
+.copy-btn:hover{background:rgba(56,189,248,.1)}
+.row{display:flex;gap:.75rem;flex-wrap:wrap;align-items:center}
+.muted{color:#94a3b8;font-size:.875rem}

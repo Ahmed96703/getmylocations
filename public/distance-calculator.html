@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Distance Calculator — Distance Between Two GPS Coordinates | GetMyLocations</title>
+<meta name="description" content="Free distance calculator. Find the straight-line (great-circle) distance between any two GPS coordinates in kilometers and miles. Uses the Haversine formula. No signup, runs in your browser." />
+<link rel="canonical" href="https://getmylocations.com/distance-calculator.html" />
+<meta property="og:title" content="Distance Calculator — Two GPS Coordinates" />
+<meta property="og:description" content="Calculate the great-circle distance between any two latitude/longitude pairs." />
+<meta property="og:type" content="website" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="stylesheet" href="/tools.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Distance Calculator","url":"https://getmylocations.com/distance-calculator.html","description":"Free online tool to calculate the great-circle distance between two GPS coordinates.","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"GetMyLocations","url":"https://getmylocations.com/"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Which formula does this calculator use?","acceptedAnswer":{"@type":"Answer","text":"The Haversine formula, which gives the great-circle distance between two points on a sphere. It is accurate to within about 0.5% for any pair of points on Earth."}},
+{"@type":"Question","name":"Is this the same as driving distance?","acceptedAnswer":{"@type":"Answer","text":"No. Great-circle distance is the straight-line distance over the Earth's surface. Driving distance is longer because it follows roads. Use a routing service for driving estimates."}},
+{"@type":"Question","name":"How precise is the result?","acceptedAnswer":{"@type":"Answer","text":"The Haversine formula assumes a perfect sphere. Earth is a slightly squashed ellipsoid, so errors are around 0.3 to 0.5% — more than enough precision for most planning, real-estate searches, and trip estimates."}}
+]}
+</script>
+</head>
+<body>
+
+<header class="site">
+  <div class="container">
+    <a href="/" class="brand">GetMy<span>Locations</span></a>
+    <nav class="top"><a href="/">Home</a><a href="/blog">Blog</a><a href="/about">About</a></nav>
+  </div>
+</header>
+
+<main><div class="container">
+
+  <div class="hero">
+    <p class="eyebrow">Free Tool</p>
+    <h1>Distance <span class="accent">Calculator</span> — between two GPS coordinates</h1>
+    <p class="lead">Enter two latitude / longitude pairs and get the great-circle distance between them in kilometers, miles, and nautical miles. Uses the Haversine formula. Runs entirely in your browser — no signup, no API call.</p>
+  </div>
+
+  <section class="card" aria-labelledby="tool-title">
+    <div class="tool-header">
+      <h2 id="tool-title" class="tool-title">Calculate distance</h2>
+      <button class="btn btn-ghost" id="useMyLocation" type="button">📍 Use my location as Point A</button>
+    </div>
+    <div class="status" id="status" role="status" aria-live="polite"></div>
+
+    <div class="grid grid-2" style="margin-top:1rem">
+      <div>
+        <p class="eyebrow" style="margin-bottom:.75rem">Point A</p>
+        <div class="field">
+          <label for="lat1">Latitude</label>
+          <input class="input" id="lat1" type="text" inputmode="decimal" value="48.858420" />
+        </div>
+        <div class="field">
+          <label for="lon1">Longitude</label>
+          <input class="input" id="lon1" type="text" inputmode="decimal" value="2.294500" />
+        </div>
+        <p class="muted">Example: Eiffel Tower</p>
+      </div>
+      <div>
+        <p class="eyebrow" style="margin-bottom:.75rem">Point B</p>
+        <div class="field">
+          <label for="lat2">Latitude</label>
+          <input class="input" id="lat2" type="text" inputmode="decimal" value="40.689200" />
+        </div>
+        <div class="field">
+          <label for="lon2">Longitude</label>
+          <input class="input" id="lon2" type="text" inputmode="decimal" value="-74.044500" />
+        </div>
+        <p class="muted">Example: Statue of Liberty</p>
+      </div>
+    </div>
+
+    <div style="margin-top:1.5rem" class="row">
+      <button class="btn" id="calcBtn" type="button">Calculate distance →</button>
+    </div>
+
+    <div id="results" style="margin-top:1.25rem;display:none">
+      <dl class="kv">
+        <dt>Kilometers</dt><dd id="rKm">—</dd>
+        <dt>Miles</dt><dd id="rMi">—</dd>
+        <dt>Nautical miles</dt><dd id="rNm">—</dd>
+        <dt>Meters</dt><dd id="rM">—</dd>
+      </dl>
+    </div>
+
+    <div id="map" class="map-box"></div>
+  </section>
+
+  <section class="section">
+    <h2>How to use this calculator</h2>
+    <ol>
+      <li><strong>Get Point A coordinates.</strong> Either click <em>Use my location</em> to fill it from your device, or paste a latitude / longitude pair (decimal degrees) you already have.</li>
+      <li><strong>Enter Point B coordinates.</strong> Type any second pair — a destination, a landmark, the address of a vacation rental.</li>
+      <li><strong>Click <em>Calculate distance</em>.</strong> The straight-line distance appears in four units, and a line is drawn on the map showing the great-circle path between the two points.</li>
+      <li><strong>Try other pairs.</strong> Edit either set of coordinates and recalculate — the map redraws each time.</li>
+    </ol>
+  </section>
+
+  <section class="section">
+    <h2>What is "great-circle distance"?</h2>
+    <p>The great-circle distance is the shortest path between two points <em>along the surface</em> of a sphere. Because Earth is roughly spherical, this is the natural way to measure how far apart two locations are. It is what airlines use when they quote flight distances, and what GPS units use when they tell you a destination is "240 km away as the crow flies".</p>
+    <p>The <strong>Haversine formula</strong> is the standard equation for great-circle distance. It is accurate to about 0.5% globally — more than enough for trip planning, real-estate searches, geofence design, and almost every consumer use case. Surveyors who need millimeter-level accuracy use the Vincenty formula instead, which accounts for Earth's slight equatorial bulge.</p>
+    <p>Great-circle distance is <em>not</em> the same as <strong>driving distance</strong>. Driving distance follows roads and is always longer; for an actual driving estimate, use a routing tool that knows about streets, one-ways, and tolls. Great-circle is also not the same as <strong>flight distance</strong>, which is great-circle plus winds and traffic-control re-routing.</p>
+    <p>A quick rule of thumb: <code>1° of latitude ≈ 111 km</code> everywhere on Earth. <code>1° of longitude ≈ 111 km</code> at the equator, shrinking to 0 at the poles. So two points with the same latitude differ in distance by roughly <code>(longitude difference) × 111 × cos(latitude) km</code> — a useful mental shortcut when you don't have a calculator.</p>
+  </section>
+
+  <section class="section faq" aria-labelledby="faq-heading">
+    <h2 id="faq-heading">Frequently asked questions</h2>
+    <details><summary>Why doesn't this match Google Maps' "distance" number?</summary><p>Google Maps reports <em>driving</em> distance by default — the length of the route along roads. Our calculator reports the straight-line distance over the Earth's surface. For a Paris-to-London trip, driving is roughly 460 km, while great-circle is only about 344 km.</p></details>
+    <details><summary>Can I enter DMS (degrees-minutes-seconds) here?</summary><p>This tool takes decimal degrees only. Convert DMS to decimal degrees first using our <a href="/gps-coordinates-converter.html">coordinate converter</a>, then paste the result here.</p></details>
+    <details><summary>How accurate is the result?</summary><p>The Haversine formula assumes a perfect sphere. Earth's true shape introduces about 0.3–0.5% error, so a 1000 km calculation might be off by 3–5 km. For sub-meter accuracy on long distances, use the Vincenty formula.</p></details>
+    <details><summary>Does this work offline?</summary><p>Once the page is loaded, the calculation itself runs entirely in your browser and works without a network. The map underneath needs to download tile images from OpenStreetMap, so it requires a connection to display.</p></details>
+  </section>
+
+  <section class="section">
+    <h2>Related tools</h2>
+    <ul>
+      <li><a href="/gps-coordinates-converter.html">GPS coordinates converter (DD / DMS / DDM)</a></li>
+      <li><a href="/my-location.html">My location — find my GPS position</a></li>
+      <li><a href="/ip-location-finder.html">IP location finder</a></li>
+      <li><a href="/address-finder.html">Address finder (address → coordinates)</a></li>
+      <li><a href="/blog/latitude-vs-longitude-explained">Latitude vs longitude explained</a></li>
+    </ul>
+  </section>
+
+</div></main>
+
+<footer class="site"><div class="container">
+  <nav><a href="/about">About</a><a href="/blog">Blog</a><a href="/contact">Contact</a><a href="/privacy-policy">Privacy</a><a href="/disclaimer">Disclaimer</a></nav>
+  <p>&copy; 2026 GetMyLocations. Map data &copy; OpenStreetMap contributors.</p>
+</div></footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script>
+(function(){
+  'use strict';
+  var $=function(id){return document.getElementById(id);};
+  var clean=function(s){return (s||'').toString().trim().replace(',','.');};
+  var num=function(s){var v=parseFloat(clean(s));return isFinite(v)?v:NaN;};
+  var fmt=function(n,p){return n.toLocaleString('en-US',{minimumFractionDigits:p,maximumFractionDigits:p});};
+
+  function haversineMeters(lat1,lon1,lat2,lon2){
+    var R=6371000;
+    var toRad=Math.PI/180;
+    var dLat=(lat2-lat1)*toRad;
+    var dLon=(lon2-lon1)*toRad;
+    var a=Math.sin(dLat/2)*Math.sin(dLat/2)+Math.cos(lat1*toRad)*Math.cos(lat2*toRad)*Math.sin(dLon/2)*Math.sin(dLon/2);
+    return 2*R*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
+  }
+
+  var map=null,line=null,m1=null,m2=null;
+  function initMap(){
+    if(typeof L==='undefined')return;
+    map=L.map('map',{zoomControl:true}).setView([45,0],2);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap contributors'}).addTo(map);
+  }
+
+  function setStatus(msg,cls){var el=$('status');el.textContent=msg||'';el.className='status'+(cls?' '+cls:'');}
+
+  function calc(){
+    var a1=num($('lat1').value),o1=num($('lon1').value),a2=num($('lat2').value),o2=num($('lon2').value);
+    if(!isFinite(a1)||!isFinite(o1)||!isFinite(a2)||!isFinite(o2)){
+      setStatus('Please enter valid decimal coordinates for both points.','err');return;
+    }
+    if(Math.abs(a1)>90||Math.abs(a2)>90){setStatus('Latitude must be between -90 and 90.','err');return;}
+    if(Math.abs(o1)>180||Math.abs(o2)>180){setStatus('Longitude must be between -180 and 180.','err');return;}
+    var meters=haversineMeters(a1,o1,a2,o2);
+    var km=meters/1000;
+    $('rKm').textContent=fmt(km,3)+' km';
+    $('rMi').textContent=fmt(km*0.621371,3)+' mi';
+    $('rNm').textContent=fmt(km*0.539957,3)+' nmi';
+    $('rM').textContent=fmt(meters,1)+' m';
+    $('results').style.display='block';
+    setStatus('Calculated.','ok');
+    if(map){
+      if(line){map.removeLayer(line);}
+      if(m1){map.removeLayer(m1);}
+      if(m2){map.removeLayer(m2);}
+      m1=L.marker([a1,o1]).addTo(map).bindPopup('Point A');
+      m2=L.marker([a2,o2]).addTo(map).bindPopup('Point B');
+      line=L.polyline([[a1,o1],[a2,o2]],{color:'#38bdf8',weight:3,opacity:.85}).addTo(map);
+      map.fitBounds(line.getBounds(),{padding:[40,40]});
+    }
+  }
+
+  $('calcBtn').addEventListener('click',calc);
+  $('useMyLocation').addEventListener('click',function(){
+    if(!('geolocation' in navigator)){setStatus('Geolocation not supported.','err');return;}
+    setStatus('Requesting location…');
+    navigator.geolocation.getCurrentPosition(function(p){
+      $('lat1').value=p.coords.latitude.toFixed(6);
+      $('lon1').value=p.coords.longitude.toFixed(6);
+      setStatus('Point A set to your location.','ok');
+      calc();
+    },function(err){
+      var m={1:'Permission denied. Allow location in your browser site settings.',2:'Location unavailable.',3:'Request timed out.'};
+      setStatus(m[err.code]||'Could not get location.','err');
+    },{enableHighAccuracy:true,timeout:10000});
+  });
+
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){initMap();calc();});}
+  else{initMap();calc();}
+})();
+</script>
+</body>
+</html>

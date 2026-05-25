@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Driving Directions — Free Route Planner | GetMyLocations</title>
+<meta name="description" content="Free driving directions tool. Get turn-by-turn driving, walking, biking, or transit directions between any two addresses. Powered by Google Maps. No signup, no API key." />
+<link rel="canonical" href="https://getmylocations.com/driving-directions.html" />
+<meta property="og:title" content="Driving Directions — Free Route Planner" />
+<meta property="og:description" content="Turn-by-turn directions between any two places." />
+<meta property="og:type" content="website" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="stylesheet" href="/tools.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Driving Directions Tool","url":"https://getmylocations.com/driving-directions.html","description":"Free directions tool that plans driving, walking, biking, or transit routes between two locations.","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"GetMyLocations","url":"https://getmylocations.com/"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How do I get directions from my current location?","acceptedAnswer":{"@type":"Answer","text":"Click the My location button in the origin field — your browser will ask for GPS permission and fill in your current coordinates as the starting point."}},
+{"@type":"Question","name":"Does this support walking and transit?","acceptedAnswer":{"@type":"Answer","text":"Yes. Pick driving, walking, bicycling, or transit from the mode selector. Different modes use different routing algorithms — transit only works in cities with mapped public transport."}},
+{"@type":"Question","name":"Why is the ETA different from another app?","acceptedAnswer":{"@type":"Answer","text":"Routing services use different traffic data, road preferences, and update frequencies. Variations of 5-15% between services are normal."}}
+]}
+</script>
+</head>
+<body>
+
+<header class="site">
+  <div class="container">
+    <a href="/" class="brand">GetMy<span>Locations</span></a>
+    <nav class="top"><a href="/">Home</a><a href="/blog">Blog</a><a href="/about">About</a></nav>
+  </div>
+</header>
+
+<main><div class="container">
+
+  <div class="hero">
+    <p class="eyebrow">Free Tool</p>
+    <h1>Driving <span class="accent">Directions</span> — between any two places</h1>
+    <p class="lead">Plan a route between any two addresses or coordinate pairs. Choose driving, walking, biking, or public transit. Map and turn-by-turn instructions load directly from Google Maps — no signup, no API key.</p>
+  </div>
+
+  <section class="card">
+    <div class="tool-header"><h2 class="tool-title">Plan a route</h2></div>
+
+    <div class="grid grid-2" style="margin-top:1rem">
+      <div class="field">
+        <label for="from">From (origin)</label>
+        <div class="row">
+          <input class="input" id="from" type="text" placeholder="e.g. Lahore Airport" value="Lahore Airport" style="flex:1" />
+        </div>
+        <div class="row" style="margin-top:.5rem">
+          <button class="btn btn-ghost" id="myLocBtn" type="button">📍 Use my location</button>
+        </div>
+      </div>
+      <div class="field">
+        <label for="to">To (destination)</label>
+        <input class="input" id="to" type="text" placeholder="e.g. Badshahi Mosque, Lahore" value="Badshahi Mosque, Lahore" />
+      </div>
+    </div>
+
+    <div class="field" style="max-width:240px">
+      <label for="mode">Travel mode</label>
+      <select class="input" id="mode">
+        <option value="driving">Driving</option>
+        <option value="walking">Walking</option>
+        <option value="bicycling">Bicycling</option>
+        <option value="transit">Public transit</option>
+      </select>
+    </div>
+
+    <div class="row" style="margin-top:1rem">
+      <button class="btn" id="goBtn" type="button">Get directions →</button>
+      <a class="btn btn-ghost" id="openMaps" href="#" target="_blank" rel="noopener">Open in Google Maps</a>
+    </div>
+    <div class="status" id="status" role="status" aria-live="polite"></div>
+
+    <div class="embed-box" id="embedBox" style="margin-top:1.25rem;padding-bottom:62%">
+      <iframe id="dirIframe" src="" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Directions"></iframe>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>How to use this tool</h2>
+    <ol>
+      <li><strong>Enter origin.</strong> Type any address, landmark, business name, or paste a coordinate pair like <code>31.5497, 74.3436</code>. Click <em>Use my location</em> to start from where you are.</li>
+      <li><strong>Enter destination.</strong> Same — any address or coordinate.</li>
+      <li><strong>Pick travel mode.</strong> Driving is the default. Walking, bicycling, and public transit are also available.</li>
+      <li><strong>Click <em>Get directions</em>.</strong> The route appears on a map with estimated time and distance. Turn-by-turn steps are visible in the embedded view; click <em>Open in Google Maps</em> for the full interactive route.</li>
+    </ol>
+  </section>
+
+  <section class="section">
+    <h2>About route planning</h2>
+    <p>Modern routing engines combine three sources of data: a road graph (which streets connect to which intersections, in which direction, with what speed limits), historical traffic data (typical speed at this time of day on this segment), and real-time traffic feeds (where vehicles are reported slow right now). The engine searches for the path with the lowest predicted travel time, not the shortest distance.</p>
+    <p>This is why two routes between the same two points can differ — one shorter in kilometers, the other faster in minutes. It is also why directions sometimes send you on a longer-looking detour: the algorithm knows a closer route is currently jammed.</p>
+    <p>Public-transit routing is much harder than driving. The engine needs schedules, transfers, walking-segment timing, and live disruption data — and the result has to update as soon as a bus is late or a train is canceled. Most cities outside major capitals only have basic transit support; small towns may have none.</p>
+    <p>For walking and biking, the engine uses pedestrian-safe paths where available — sidewalks, pedestrian crossings, bike lanes. Walking directions sometimes route through parks or staircases that aren&apos;t obvious from a driving map.</p>
+  </section>
+
+  <section class="section faq">
+    <h2>Frequently asked questions</h2>
+    <details><summary>Can I add waypoints (multi-stop routes)?</summary><p>This embed supports a single origin and destination. For multi-stop routes, click <em>Open in Google Maps</em> and add waypoints there.</p></details>
+    <details><summary>Does it show live traffic?</summary><p>The embed shows the same traffic-adjusted ETA Google Maps shows. Color overlays vary by region.</p></details>
+    <details><summary>Why is my walking ETA so different from Google Maps?</summary><p>Walking ETAs assume an average pace of about 5 km/h on flat terrain. Hills, stairs, traffic lights, and accessibility constraints can make real walks substantially slower.</p></details>
+    <details><summary>Does this work offline?</summary><p>No. The embed loads tiles and route data from Google&apos;s servers on demand. Use the official Google Maps app for offline directions.</p></details>
+  </section>
+
+  <section class="section">
+    <h2>Related tools</h2>
+    <ul>
+      <li><a href="/distance-calculator.html">Distance calculator (straight-line)</a></li>
+      <li><a href="/street-view.html">Street View</a></li>
+      <li><a href="/address-finder.html">Address finder</a></li>
+      <li><a href="/my-location.html">My location</a></li>
+      <li><a href="/gps-coordinates-converter.html">GPS coordinates converter</a></li>
+    </ul>
+  </section>
+
+</div></main>
+
+<footer class="site"><div class="container">
+  <nav><a href="/about">About</a><a href="/blog">Blog</a><a href="/contact">Contact</a><a href="/privacy-policy">Privacy</a><a href="/disclaimer">Disclaimer</a></nav>
+  <p>&copy; 2026 GetMyLocations. Map data &copy; OpenStreetMap contributors.</p>
+</div></footer>
+
+<script>
+(function(){
+  'use strict';
+  var $=function(id){return document.getElementById(id);};
+  function setStatus(msg,cls){var el=$('status');el.textContent=msg||'';el.className='status'+(cls?' '+cls:'');}
+
+  function go(){
+    var f=$('from').value.trim(),t=$('to').value.trim(),m=$('mode').value;
+    if(!f||!t){setStatus('Enter both origin and destination.','err');return;}
+    var src='https://www.google.com/maps?saddr='+encodeURIComponent(f)+'&daddr='+encodeURIComponent(t)+'&dirflg='+(m==='walking'?'w':m==='bicycling'?'b':m==='transit'?'r':'d')+'&output=embed';
+    var open='https://www.google.com/maps/dir/?api=1&origin='+encodeURIComponent(f)+'&destination='+encodeURIComponent(t)+'&travelmode='+m;
+    $('dirIframe').src=src;
+    $('openMaps').href=open;
+    setStatus('Route loaded.','ok');
+  }
+
+  $('goBtn').addEventListener('click',go);
+  $('from').addEventListener('keydown',function(e){if(e.key==='Enter')go();});
+  $('to').addEventListener('keydown',function(e){if(e.key==='Enter')go();});
+  $('mode').addEventListener('change',go);
+  $('myLocBtn').addEventListener('click',function(){
+    if(!('geolocation' in navigator)){setStatus('Geolocation not supported.','err');return;}
+    setStatus('Requesting location…');
+    navigator.geolocation.getCurrentPosition(function(p){
+      $('from').value=p.coords.latitude.toFixed(6)+','+p.coords.longitude.toFixed(6);
+      setStatus('Origin set to your location.','ok');
+      go();
+    },function(err){
+      var m={1:'Permission denied.',2:'Location unavailable.',3:'Request timed out.'};
+      setStatus(m[err.code]||'Could not get location.','err');
+    },{enableHighAccuracy:true,timeout:10000});
+  });
+
+  go();
+})();
+</script>
+</body>
+</html>

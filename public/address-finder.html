@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Address Finder — Convert Street Address to GPS Coordinates | GetMyLocations</title>
+<meta name="description" content="Free address finder. Convert any street address, landmark, or place name into GPS coordinates (latitude / longitude) and show it on a map. Also reverse — turn coordinates into an address. Uses OpenStreetMap Nominatim." />
+<link rel="canonical" href="https://getmylocations.com/address-finder.html" />
+<meta property="og:title" content="Address Finder — Address to GPS Coordinates" />
+<meta property="og:description" content="Forward and reverse geocoding tool. Address ↔ latitude/longitude." />
+<meta property="og:type" content="website" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="stylesheet" href="/tools.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Address Finder","url":"https://getmylocations.com/address-finder.html","description":"Geocoding tool that converts between street addresses and GPS coordinates in both directions.","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"GetMyLocations","url":"https://getmylocations.com/"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is geocoding?","acceptedAnswer":{"@type":"Answer","text":"Geocoding is the process of converting a human-readable address (like '1600 Pennsylvania Ave, Washington DC') into latitude and longitude. Reverse geocoding does the opposite — converts a coordinate pair into an address."}},
+{"@type":"Question","name":"Which provider does this use?","acceptedAnswer":{"@type":"Answer","text":"This tool uses the free OpenStreetMap Nominatim service. It is rate-limited to about one request per second per IP, so it is suited to manual / occasional use."}},
+{"@type":"Question","name":"Why didn't my address resolve?","acceptedAnswer":{"@type":"Answer","text":"Nominatim's coverage varies by country. Brand-new streets and informal addresses may not be indexed. Try adding more context (city, country) or use a different spelling."}}
+]}
+</script>
+</head>
+<body>
+
+<header class="site">
+  <div class="container">
+    <a href="/" class="brand">GetMy<span>Locations</span></a>
+    <nav class="top"><a href="/">Home</a><a href="/blog">Blog</a><a href="/about">About</a></nav>
+  </div>
+</header>
+
+<main><div class="container">
+
+  <div class="hero">
+    <p class="eyebrow">Free Tool</p>
+    <h1>Address <span class="accent">Finder</span> — address ↔ GPS coordinates</h1>
+    <p class="lead">Type any address, landmark, or place name and get the GPS coordinates. Or paste a latitude/longitude pair and get the nearest street address back. Powered by OpenStreetMap Nominatim — no signup, no API key.</p>
+  </div>
+
+  <section class="card">
+    <div class="tool-header"><h2 class="tool-title">Address → coordinates (forward geocoding)</h2></div>
+    <div class="row">
+      <input class="input" id="addrInput" type="text" placeholder="e.g. Eiffel Tower, Paris, France" style="flex:1;min-width:240px" />
+      <button class="btn" id="addrBtn" type="button">Find →</button>
+    </div>
+    <div class="status" id="addrStatus" role="status" aria-live="polite"></div>
+    <div id="addrResults" style="margin-top:1.25rem;display:none">
+      <dl class="kv">
+        <dt>Latitude</dt><dd id="aLat">—</dd>
+        <dt>Longitude</dt><dd id="aLon">—</dd>
+        <dt>Display name</dt><dd id="aName">—</dd>
+        <dt>Type</dt><dd id="aType">—</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="tool-header"><h2 class="tool-title">Coordinates → address (reverse geocoding)</h2></div>
+    <div class="row">
+      <input class="input" id="latInput" type="text" inputmode="decimal" placeholder="Latitude" style="flex:1;min-width:160px" />
+      <input class="input" id="lonInput" type="text" inputmode="decimal" placeholder="Longitude" style="flex:1;min-width:160px" />
+      <button class="btn" id="revBtn" type="button">Find →</button>
+    </div>
+    <div class="row" style="margin-top:.75rem">
+      <button class="btn btn-ghost" id="myLocBtn" type="button">📍 Use my current location</button>
+    </div>
+    <div class="status" id="revStatus" role="status" aria-live="polite"></div>
+    <div id="revResults" style="margin-top:1.25rem;display:none">
+      <dl class="kv">
+        <dt>Address</dt><dd id="rAddr">—</dd>
+        <dt>City / town</dt><dd id="rCity">—</dd>
+        <dt>Country</dt><dd id="rCountry">—</dd>
+      </dl>
+    </div>
+  </section>
+
+  <div id="map" class="map-box"></div>
+
+  <section class="section">
+    <h2>How to use this tool</h2>
+    <p><strong>Address → coordinates (forward geocoding).</strong> Type any address or place name into the top box and click <em>Find</em>. Examples that work well: "Eiffel Tower, Paris", "1600 Pennsylvania Ave NW, Washington DC", "Karachi airport". The map flies to the result and the latitude/longitude appear in the dashboard.</p>
+    <p><strong>Coordinates → address (reverse geocoding).</strong> Paste any pair of decimal coordinates into the second box and click <em>Find</em>. The closest street address, city, and country come back. Click <em>Use my current location</em> to fill it from your device&apos;s GPS.</p>
+  </section>
+
+  <section class="section">
+    <h2>What is geocoding?</h2>
+    <p><strong>Geocoding</strong> is the translation between human addresses and machine coordinates. A search box in Google Maps does forward geocoding when you type a city; a courier app does reverse geocoding when it shows the driver&apos;s location as a street name instead of a pair of numbers.</p>
+    <p>Behind the scenes, a geocoder needs three things: a database of place boundaries (countries, regions, cities, postcodes), a database of street centerlines with house-number ranges, and an algorithm that picks the most specific answer containing your input. OpenStreetMap&apos;s Nominatim service does all three from open data; commercial geocoders (Google, Mapbox, HERE) add a points-of-interest layer that resolves "Eiffel Tower" or "Burj Khalifa" to a specific building.</p>
+    <p>Accuracy depends on where you are. Cities in Western Europe, North America, and east Asia have near-perfect address coverage. Rural areas, informal settlements, and brand-new streets are often missing from any dataset. When a geocode fails, adding more context (city + country, or a nearby landmark) usually fixes it.</p>
+    <p>House-number accuracy is interpolated from street centerline ranges — so the result can be off by a few houses. For exact deliveries, surveyors and couriers use specialized address-validation services that have building-polygon ground truth.</p>
+  </section>
+
+  <section class="section faq">
+    <h2>Frequently asked questions</h2>
+    <details><summary>Why is the result slightly off from where I expected?</summary><p>House-number geocoding interpolates from street centerline data. Errors of one or two houses are normal in suburbs; larger errors happen in older neighborhoods with irregular plot sizes. The map gives you a visual sanity check.</p></details>
+    <details><summary>What happens if I enter a partial address?</summary><p>Nominatim tries to match the most specific result it can. "Paris" returns the city of Paris. "10 Downing Street" returns the address in London. Adding city + country always helps disambiguate.</p></details>
+    <details><summary>Does this tool work for non-English addresses?</summary><p>Yes. Nominatim is multilingual — you can search in the local language of the address. Results may come back in the local script.</p></details>
+    <details><summary>What about rate limits?</summary><p>The free Nominatim service is limited to about one request per second per IP. This is fine for manual tools like this one. Heavy automated use needs a self-hosted instance.</p></details>
+  </section>
+
+  <section class="section">
+    <h2>Related tools</h2>
+    <ul>
+      <li><a href="/gps-coordinates-converter.html">GPS coordinates converter</a></li>
+      <li><a href="/distance-calculator.html">Distance calculator</a></li>
+      <li><a href="/my-location.html">My location tool</a></li>
+      <li><a href="/reverse-geocoding">Reverse geocoding — complete guide</a></li>
+      <li><a href="/blog/how-to-find-your-gps-coordinates">How to find your GPS coordinates</a></li>
+    </ul>
+  </section>
+
+</div></main>
+
+<footer class="site"><div class="container">
+  <nav><a href="/about">About</a><a href="/blog">Blog</a><a href="/contact">Contact</a><a href="/privacy-policy">Privacy</a><a href="/disclaimer">Disclaimer</a></nav>
+  <p>&copy; 2026 GetMyLocations. Map data &copy; OpenStreetMap contributors.</p>
+</div></footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script>
+(function(){
+  'use strict';
+  var $=function(id){return document.getElementById(id);};
+  var map=null,marker=null;
+  function initMap(){
+    if(typeof L==='undefined')return;
+    map=L.map('map',{zoomControl:true}).setView([20,0],2);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap contributors'}).addTo(map);
+  }
+  function setStat(id,msg,cls){var el=$(id);el.textContent=msg||'';el.className='status'+(cls?' '+cls:'');}
+  function showOnMap(lat,lon,label){
+    if(!map)return;
+    if(marker)map.removeLayer(marker);
+    marker=L.marker([lat,lon]).addTo(map).bindPopup(label||'').openPopup();
+    map.setView([lat,lon],15);
+  }
+
+  $('addrBtn').addEventListener('click',function(){
+    var q=$('addrInput').value.trim();
+    if(!q){setStat('addrStatus','Please enter an address.','err');return;}
+    setStat('addrStatus','Searching…');
+    fetch('https://nominatim.openstreetmap.org/search?format=json&limit=1&q='+encodeURIComponent(q),{headers:{'Accept':'application/json'}})
+      .then(function(r){return r.json();})
+      .then(function(arr){
+        if(!arr||!arr.length){setStat('addrStatus','No match found. Try adding city / country.','err');return;}
+        var d=arr[0];
+        $('aLat').textContent=parseFloat(d.lat).toFixed(6);
+        $('aLon').textContent=parseFloat(d.lon).toFixed(6);
+        $('aName').textContent=d.display_name||'—';
+        $('aType').textContent=(d.class||'')+' / '+(d.type||'');
+        $('addrResults').style.display='block';
+        setStat('addrStatus','Found.','ok');
+        showOnMap(parseFloat(d.lat),parseFloat(d.lon),d.display_name);
+      })
+      .catch(function(e){setStat('addrStatus','Lookup error: '+(e.message||''),'err');});
+  });
+  $('addrInput').addEventListener('keydown',function(e){if(e.key==='Enter')$('addrBtn').click();});
+
+  function reverseLookup(lat,lon){
+    setStat('revStatus','Searching…');
+    fetch('https://nominatim.openstreetmap.org/reverse?format=json&lat='+lat+'&lon='+lon,{headers:{'Accept':'application/json'}})
+      .then(function(r){return r.json();})
+      .then(function(d){
+        if(!d||d.error){setStat('revStatus','No address found at those coordinates.','err');return;}
+        $('rAddr').textContent=d.display_name||'—';
+        var a=d.address||{};
+        $('rCity').textContent=a.city||a.town||a.village||a.hamlet||a.county||'—';
+        $('rCountry').textContent=a.country||'—';
+        $('revResults').style.display='block';
+        setStat('revStatus','Found.','ok');
+        showOnMap(lat,lon,d.display_name);
+      })
+      .catch(function(e){setStat('revStatus','Lookup error: '+(e.message||''),'err');});
+  }
+
+  $('revBtn').addEventListener('click',function(){
+    var lat=parseFloat($('latInput').value),lon=parseFloat($('lonInput').value);
+    if(!isFinite(lat)||!isFinite(lon)){setStat('revStatus','Enter valid decimal latitude and longitude.','err');return;}
+    reverseLookup(lat,lon);
+  });
+
+  $('myLocBtn').addEventListener('click',function(){
+    if(!('geolocation' in navigator)){setStat('revStatus','Geolocation not supported.','err');return;}
+    setStat('revStatus','Requesting location…');
+    navigator.geolocation.getCurrentPosition(function(p){
+      $('latInput').value=p.coords.latitude.toFixed(6);
+      $('lonInput').value=p.coords.longitude.toFixed(6);
+      reverseLookup(p.coords.latitude,p.coords.longitude);
+    },function(err){
+      var m={1:'Permission denied. Allow location in browser site settings.',2:'Location unavailable.',3:'Request timed out.'};
+      setStat('revStatus',m[err.code]||'Could not get location.','err');
+    },{enableHighAccuracy:true,timeout:10000});
+  });
+
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',initMap);}else{initMap();}
+})();
+</script>
+</body>
+</html>

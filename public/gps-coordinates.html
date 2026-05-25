@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GPS Coordinates — Get Your Current Latitude and Longitude | GetMyLocations</title>
+<meta name="description" content="Get your exact GPS coordinates instantly. Live latitude and longitude with six-decimal precision, accuracy radius, and one-click copy. Free, runs in your browser." />
+<link rel="canonical" href="https://getmylocations.com/gps-coordinates.html" />
+<meta property="og:title" content="GPS Coordinates — My Live Lat / Long" />
+<meta property="og:description" content="Live GPS coordinates from your browser. Decimal degrees, DMS, copy & share." />
+<meta property="og:type" content="website" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="stylesheet" href="/tools.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"GPS Coordinates Tool","url":"https://getmylocations.com/gps-coordinates.html","description":"Live GPS coordinates tool that displays your current latitude and longitude in decimal degrees and DMS, with accuracy radius and share links.","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"GetMyLocations","url":"https://getmylocations.com/"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What format are GPS coordinates in?","acceptedAnswer":{"@type":"Answer","text":"This tool displays coordinates in Decimal Degrees (DD) by default — the format used by Google Maps and most modern apps. Six decimal places give about one meter of precision. The DMS equivalent is also shown."}},
+{"@type":"Question","name":"How many decimal places do I need?","acceptedAnswer":{"@type":"Answer","text":"Three decimals (~110 m) identifies a city block; four (~11 m) a building; five (~1.1 m) a parking space. Six is the standard storage format and exceeds what consumer GPS reliably delivers."}},
+{"@type":"Question","name":"Can I share these coordinates?","acceptedAnswer":{"@type":"Answer","text":"Yes. The Copy button puts a paste-ready 'latitude, longitude' string on your clipboard. The Google Maps link opens that exact point in any device."}}
+]}
+</script>
+</head>
+<body>
+
+<header class="site">
+  <div class="container">
+    <a href="/" class="brand">GetMy<span>Locations</span></a>
+    <nav class="top"><a href="/">Home</a><a href="/blog">Blog</a><a href="/about">About</a></nav>
+  </div>
+</header>
+
+<main><div class="container">
+
+  <div class="hero">
+    <p class="eyebrow">Free Tool</p>
+    <h1>GPS <span class="accent">Coordinates</span> — your live latitude and longitude</h1>
+    <p class="lead">Click the button and your exact GPS latitude and longitude appear in decimal degrees and degrees-minutes-seconds, with an accuracy radius and a copy-ready string. Two seconds, no signup.</p>
+  </div>
+
+  <section class="card">
+    <div class="tool-header">
+      <h2 class="tool-title">Get my GPS coordinates</h2>
+      <button class="btn" id="findBtn" type="button">📍 Get coordinates</button>
+    </div>
+    <div class="status" id="status" role="status" aria-live="polite">Click the button to read your live GPS position.</div>
+
+    <div id="results" style="margin-top:1.25rem;display:none">
+      <div class="result big" id="ddBig">—</div>
+      <p class="muted" style="margin-top:.5rem">Decimal degrees · paste anywhere</p>
+
+      <dl class="kv" style="margin-top:1.25rem">
+        <dt>Latitude (DD)</dt><dd id="latDD">—</dd>
+        <dt>Longitude (DD)</dt><dd id="lonDD">—</dd>
+        <dt>Latitude (DMS)</dt><dd id="latDMS">—</dd>
+        <dt>Longitude (DMS)</dt><dd id="lonDMS">—</dd>
+        <dt>Accuracy</dt><dd id="acc">—</dd>
+        <dt>Altitude</dt><dd id="alt">—</dd>
+        <dt>Heading</dt><dd id="head">—</dd>
+        <dt>Speed</dt><dd id="speed">—</dd>
+      </dl>
+
+      <div class="row" style="margin-top:1rem">
+        <button class="btn" id="copyBtn" type="button">Copy coordinates</button>
+        <a class="btn btn-ghost" id="mapsLink" href="#" target="_blank" rel="noopener">Open in Google Maps</a>
+        <a class="btn btn-ghost" id="osmLink" href="#" target="_blank" rel="noopener">Open in OpenStreetMap</a>
+      </div>
+    </div>
+
+    <div id="map" class="map-box"></div>
+  </section>
+
+  <section class="section">
+    <h2>What are GPS coordinates?</h2>
+    <p>A GPS coordinate is a pair of numbers — latitude and longitude — that pin any point on Earth to within a few meters. Latitude tells you how far north or south of the equator you are (0° to ±90°). Longitude tells you how far east or west of the Greenwich prime meridian you are (0° to ±180°). Together they form a globally unique address.</p>
+    <p>The number after the decimal point determines precision. <code>48.85</code> places you within a neighborhood; <code>48.858</code> within a street; <code>48.8584</code> within a building; <code>48.85842</code> within a parking space. Most consumer smartphones deliver about 3–5 meters of real-world accuracy under clear sky, which corresponds to five decimal places.</p>
+    <p>Modern phones don&apos;t just use the original US GPS satellites — they listen to a hybrid of <strong>GNSS constellations</strong>: GPS (USA), Galileo (EU), GLONASS (Russia), BeiDou (China), and QZSS (Japan). Listening to 20+ satellites at once is why position fixes have gotten dramatically faster and more accurate in the last few years.</p>
+  </section>
+
+  <section class="section">
+    <h2>How to use this tool</h2>
+    <ol>
+      <li><strong>Click <em>Get coordinates</em>.</strong> Your browser will ask permission the first time.</li>
+      <li><strong>Read the result.</strong> The big number is the decimal-degree pair, ready to paste into Maps. Below it, latitude / longitude appear separately in both DD and DMS formats.</li>
+      <li><strong>Check the accuracy.</strong> A value under 10 m means GPS gave a clean fix. 20–100 m means Wi-Fi positioning did. 1000+ m means IP-only — open this page outdoors for a better reading.</li>
+      <li><strong>Share it.</strong> Use the Copy button for clipboard, or click the Google Maps / OpenStreetMap links to open the exact spot.</li>
+    </ol>
+  </section>
+
+  <section class="section faq">
+    <h2>Frequently asked questions</h2>
+    <details><summary>Why is my altitude blank?</summary><p>Altitude comes from GPS only and most desktops lack a GPS chip. Even on phones, altitude is often null indoors or when the OS prefers Wi-Fi positioning. It will populate outdoors with a clear sky.</p></details>
+    <details><summary>What's the difference between DD and DMS?</summary><p>Decimal Degrees (e.g. 48.858420) uses a single signed number. Degrees-Minutes-Seconds (e.g. 48° 51' 30.3" N) splits each degree into 60 minutes and each minute into 60 seconds. They encode the same point. See our <a href="/gps-coordinates-converter.html">coordinate converter</a> for switching between formats.</p></details>
+    <details><summary>Can I get coordinates without granting GPS permission?</summary><p>You can, but the accuracy drops to IP-only — typically 25 km or more. For meter-grade results, allow the precise location prompt.</p></details>
+    <details><summary>Is this safe and private?</summary><p>Your coordinates are processed in your browser. We do not send them to our own server. Map tiles come from OpenStreetMap, which has its own privacy practices.</p></details>
+  </section>
+
+  <section class="section">
+    <h2>Related tools</h2>
+    <ul>
+      <li><a href="/gps-coordinates-converter.html">Coordinate converter — DD / DMS / DDM</a></li>
+      <li><a href="/my-location.html">My location tool</a></li>
+      <li><a href="/distance-calculator.html">Distance calculator</a></li>
+      <li><a href="/address-finder.html">Address ↔ coordinates finder</a></li>
+      <li><a href="/blog/how-to-find-your-gps-coordinates">How to find your GPS coordinates — guide</a></li>
+    </ul>
+  </section>
+
+</div></main>
+
+<footer class="site"><div class="container">
+  <nav><a href="/about">About</a><a href="/blog">Blog</a><a href="/contact">Contact</a><a href="/privacy-policy">Privacy</a><a href="/disclaimer">Disclaimer</a></nav>
+  <p>&copy; 2026 GetMyLocations. Map data &copy; OpenStreetMap contributors.</p>
+</div></footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script>
+(function(){
+  'use strict';
+  var $=function(id){return document.getElementById(id);};
+  var map=null,marker=null,circle=null;
+  function initMap(){
+    if(typeof L==='undefined')return;
+    map=L.map('map',{zoomControl:true}).setView([20,0],2);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap contributors'}).addTo(map);
+  }
+  function ddToDms(v){
+    var sign=v<0?-1:1,abs=Math.abs(v),d=Math.floor(abs),mF=(abs-d)*60,m=Math.floor(mF),s=(mF-m)*60;
+    return {sign:sign,d:d,m:m,s:s};
+  }
+  function dmsStr(v,latOrLon){
+    var x=ddToDms(v);
+    var hem=latOrLon==='lat'?(x.sign<0?'S':'N'):(x.sign<0?'W':'E');
+    return x.d+'° '+x.m+"' "+x.s.toFixed(2)+'" '+hem;
+  }
+  function setStatus(msg,cls){var el=$('status');el.textContent=msg||'';el.className='status'+(cls?' '+cls:'');}
+
+  $('findBtn').addEventListener('click',function(){
+    if(!('geolocation' in navigator)){setStatus('Geolocation not supported.','err');return;}
+    setStatus('Requesting your location…');
+    navigator.geolocation.getCurrentPosition(function(p){
+      var lat=p.coords.latitude,lon=p.coords.longitude,acc=p.coords.accuracy;
+      var alt=p.coords.altitude,head=p.coords.heading,sp=p.coords.speed;
+      $('ddBig').textContent=lat.toFixed(6)+', '+lon.toFixed(6);
+      $('latDD').textContent=lat.toFixed(6);
+      $('lonDD').textContent=lon.toFixed(6);
+      $('latDMS').textContent=dmsStr(lat,'lat');
+      $('lonDMS').textContent=dmsStr(lon,'lon');
+      $('acc').textContent=Math.round(acc)+' m';
+      $('alt').textContent=alt!=null?Math.round(alt)+' m':'—';
+      $('head').textContent=(head!=null&&!isNaN(head))?Math.round(head)+'°':'—';
+      $('speed').textContent=(sp!=null&&!isNaN(sp))?sp.toFixed(2)+' m/s':'—';
+      $('mapsLink').href='https://www.google.com/maps?q='+lat+','+lon;
+      $('osmLink').href='https://www.openstreetmap.org/?mlat='+lat+'&mlon='+lon+'#map=15/'+lat+'/'+lon;
+      $('results').style.display='block';
+      setStatus('Coordinates updated.','ok');
+      if(map){
+        if(marker)map.removeLayer(marker);
+        if(circle)map.removeLayer(circle);
+        marker=L.marker([lat,lon]).addTo(map).bindPopup('You are here').openPopup();
+        circle=L.circle([lat,lon],{radius:acc,color:'#38bdf8',fillColor:'#38bdf8',fillOpacity:.12}).addTo(map);
+        map.setView([lat,lon],15);
+      }
+    },function(err){
+      var m={1:'Permission denied. Allow location in your browser site settings.',2:'Location unavailable.',3:'Request timed out.'};
+      setStatus(m[err.code]||'Could not get location.','err');
+    },{enableHighAccuracy:true,timeout:15000,maximumAge:0});
+  });
+
+  $('copyBtn').addEventListener('click',function(){
+    var t=$('ddBig').textContent;
+    if(!navigator.clipboard){setStatus('Clipboard not supported.','err');return;}
+    navigator.clipboard.writeText(t).then(function(){setStatus('Copied: '+t,'ok');});
+  });
+
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',initMap);}else{initMap();}
+})();
+</script>
+</body>
+</html>
