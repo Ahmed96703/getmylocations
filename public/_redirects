@@ -1,10 +1,12 @@
-# Cloudflare routing rules (v2 — 2026-05-25)
-# Each line: SOURCE  DESTINATION  STATUS
-# 200 = rewrite (URL stays clean in browser)
-# 301 = permanent redirect (URL changes in browser)
+# Cloudflare routing rules (v3 — 2026-05-25)
 #
-# IMPORTANT: Do NOT add /foo.html -> /foo redirects.
-# Cloudflare auto-strips .html, which would cause infinite loops.
+# Only the standalone tool pages need explicit rewrite rules to serve
+# their .html file at a clean URL.
+#
+# SPA fallback for unmatched paths is handled automatically by the
+# wrangler.json "not_found_handling": "single-page-application" setting,
+# so we do NOT add a /* -> /index.html rule (which would create an infinite
+# loop with Cloudflare's automatic .html stripping).
 
 /my-location           /my-location.html           200
 /gps-coordinates       /gps-coordinates.html       200
@@ -14,5 +16,3 @@
 /address-finder        /address-finder.html        200
 /street-view           /street-view.html           200
 /driving-directions    /driving-directions.html    200
-
-/*                     /index.html                 200
