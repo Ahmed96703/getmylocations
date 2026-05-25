@@ -1,7 +1,7 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import Logo from '../components/Logo.jsx';
+import SiteHeader from '../components/SiteHeader.jsx';
 import Dashboard from '../components/Dashboard.jsx';
 import ManualInput from '../components/ManualInput.jsx';
 import Footer from '../components/Footer.jsx';
@@ -49,17 +49,21 @@ const FAQS = [
 ];
 
 const FEATURES = [
-  { icon: '📍', t: 'Find my current coordinates', d: 'Exact latitude and longitude with six-decimal precision, copied to your clipboard in one click.' },
-  { icon: '📡', t: 'Live GPS tracker', d: 'Real-time coordinate updates as you move — watch your latitude and longitude tick live.' },
-  { icon: '🌐', t: 'IP & city lookup', d: 'Reverse-geocodes your location into city, region, and country in milliseconds.' },
-  { icon: '🔒', t: 'Privacy-first', d: '100% client-side coordinate processing. Your GPS reading is not sent to a server we operate. No signup required.' },
+  { t: 'Find my current coordinates', d: 'Exact latitude and longitude with six-decimal precision, copied to your clipboard in one click.' },
+  { t: 'Live GPS tracker', d: 'Real-time coordinate updates as you move — watch your latitude and longitude tick live.' },
+  { t: 'IP & city lookup', d: 'Reverse-geocodes your location into city, region, and country in milliseconds.' },
+  { t: 'Privacy-first', d: '100% client-side coordinate processing. Your GPS reading is not sent to a server we operate. No signup required.' },
 ];
 
 const MORE_TOOLS = [
-  { t: 'Coordinate Converter', d: 'Convert decimal degrees to DMS and back.', tag: 'Coming soon' },
-  { t: 'Distance Calculator', d: 'Compute the great-circle distance between two points.', tag: 'Coming soon' },
-  { t: 'Reverse Geocoder', d: 'Paste any latitude/longitude and get the full address.', tag: 'Coming soon' },
-  { t: 'IP Lookup', d: 'Look up the approximate location of any public IP address.', tag: 'Coming soon' },
+  { href: '/my-location', t: 'My Location', d: 'Where am I right now? Instant GPS coordinates plus city, country, and live map.' },
+  { href: '/gps-coordinates', t: 'GPS Coordinates', d: 'Live latitude and longitude in DD and DMS, accuracy, altitude, and watch mode.' },
+  { href: '/coordinates-converter', t: 'Coordinates Converter', d: 'Convert any coordinate between Decimal Degrees, DMS, DDM, and UTM formats.' },
+  { href: '/ip-location', t: 'IP Location', d: 'Look up the city, country, and ISP of any public IPv4 or IPv6 address.' },
+  { href: '/distance-calculator', t: 'Distance Calculator', d: 'Great-circle distance between two coordinates using the Haversine formula.' },
+  { href: '/address-finder', t: 'Address Finder', d: 'Address-to-coordinates and coordinates-to-address geocoding both ways.' },
+  { href: '/street-view', t: 'Street View', d: 'See any address or coordinate in Google Street View instantly.' },
+  { href: '/driving-directions', t: 'Driving Directions', d: 'Plan a driving, walking, biking, or transit route between two places.' },
 ];
 
 export default function LocationFinder() {
@@ -118,38 +122,7 @@ export default function LocationFinder() {
     <div className="min-h-full">
       <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 bg-electric-500 text-ink-950 px-3 py-2 rounded-lg z-50">Skip to content</a>
 
-      <header role="banner" className="sticky top-0 z-20 border-b border-white/5 bg-ink-950/60 backdrop-blur-xl">
-        <div className="max-w-7xl mx-auto px-5 py-3.5 flex items-center justify-between gap-4">
-          <Link to="/" aria-label="GetMyLocations home" className="flex items-center gap-3 group">
-            <Logo size={36} />
-            <div>
-              <div className="font-display text-lg font-bold leading-none group-hover:text-electric-400 transition">GetMyLocations</div>
-              <div className="text-[11px] text-slate-400 mt-0.5">Real-time Location Finder</div>
-            </div>
-          </Link>
-
-          <div role="tablist" aria-label="Location mode" className="glass rounded-full p-1 flex text-xs font-semibold">
-            {['auto', 'manual'].map((m) => (
-              <button
-                key={m}
-                role="tab"
-                aria-selected={mode === m}
-                onClick={() => setMode(m)}
-                className={`relative px-3.5 py-1.5 rounded-full transition ${mode === m ? 'text-ink-950' : 'text-slate-300 hover:text-white'}`}
-              >
-                {mode === m && (
-                  <motion.span
-                    layoutId="mode-pill"
-                    className="absolute inset-0 bg-electric-400 rounded-full"
-                    transition={{ type: 'spring', stiffness: 400, damping: 32 }}
-                  />
-                )}
-                <span className="relative capitalize">{m === 'auto' ? 'Auto' : 'Advanced'}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-      </header>
+      <SiteHeader />
 
       <main id="main" role="main" className="max-w-7xl mx-auto px-5 py-8">
         <section aria-labelledby="hero" className="mb-7">
@@ -172,9 +145,8 @@ export default function LocationFinder() {
               <li
                 key={f.t}
                 title={f.d}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 ring-1 ring-white/10 text-slate-200"
+                className="inline-flex items-center px-3 py-1.5 rounded-full bg-white/5 ring-1 ring-white/10 text-slate-200"
               >
-                <span aria-hidden="true">{f.icon}</span>
                 <span className="font-medium">{f.t}</span>
               </li>
             ))}
@@ -274,27 +246,25 @@ export default function LocationFinder() {
         <section aria-labelledby="more-tools" className="mt-14 scroll-mt-24" id="more-tools">
           <div className="flex items-end justify-between gap-4 flex-wrap">
             <div>
-              <h2 id="more-tools-h" className="font-display text-2xl font-bold">More location tools</h2>
-              <p className="text-sm text-slate-400 mt-1">Free utilities we’re building next — each one as fast and private as this one.</p>
+              <h2 id="more-tools-h" className="font-display text-2xl font-bold">All location tools</h2>
+              <p className="text-sm text-slate-400 mt-1">Eight free, browser-based tools for everything location, GPS, and IP related. Open any one — no signup, no app.</p>
             </div>
-            <span className="text-xs text-slate-500 uppercase tracking-wider">Roadmap</span>
+            <span className="text-xs text-slate-500 uppercase tracking-wider">8 tools</span>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-5">
             {MORE_TOOLS.map((t) => (
-              <article key={t.t} className="glass rounded-2xl p-5 flex flex-col hover:ring-electric-400/30 ring-1 ring-white/10 transition">
+              <a
+                key={t.href}
+                href={t.href}
+                className="glass rounded-2xl p-5 flex flex-col hover:ring-electric-400/40 ring-1 ring-white/10 transition group no-underline"
+              >
                 <div className="flex items-center justify-between">
-                  <div className="w-9 h-9 rounded-xl bg-electric-500/15 ring-1 ring-electric-400/30 grid place-items-center text-electric-400" aria-hidden="true">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <circle cx="12" cy="12" r="3"/>
-                      <path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>
-                    </svg>
-                  </div>
-                  <span className="text-[10px] uppercase tracking-wider text-amber-300/80 font-semibold">{t.tag}</span>
+                  <h3 className="font-display text-base font-bold text-slate-100 group-hover:text-electric-400 transition">{t.t}</h3>
+                  <span className="text-[10px] uppercase tracking-wider text-electric-400 font-semibold opacity-0 group-hover:opacity-100 transition">Open →</span>
                 </div>
-                <h3 className="font-display text-base font-bold mt-3">{t.t}</h3>
-                <p className="text-sm text-slate-400 mt-1 flex-1">{t.d}</p>
-              </article>
+                <p className="text-sm text-slate-400 mt-2 flex-1 leading-snug">{t.d}</p>
+              </a>
             ))}
           </div>
         </section>
@@ -305,7 +275,7 @@ export default function LocationFinder() {
             {[
               { t: 'Allow access', d: 'Approve the one-time browser location prompt.' },
               { t: 'See it live', d: 'Coordinates and your city/country resolve in real time.' },
-              { t: 'Go advanced', d: 'Switch to Manual to fly the map to any latitude/longitude.' },
+              { t: 'Explore more', d: 'Visit the Tools menu for a coordinates converter, distance calculator, IP lookup, and more.' },
             ].map((s, i) => (
               <div key={s.t} className="glass rounded-2xl p-5">
                 <div className="w-7 h-7 rounded-lg bg-electric-500 text-ink-950 text-sm font-bold grid place-items-center" aria-hidden="true">{i + 1}</div>

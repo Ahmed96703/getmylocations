@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>IP Location — Free IP Address Lookup Tool | GetMyLocations</title>
+<meta name="description" content="Look up the city, country, ISP, and approximate map location of any public IP address. Free IP location tool — no signup, no API key." />
+<meta name="keywords" content="ip location, ip address lookup, ip location finder, my ip address, what is my ip, ip geolocation, ip to location, find ip location" />
+<link rel="canonical" href="https://getmylocations.com/ip-location" />
+<meta name="robots" content="index, follow" />
+<meta name="author" content="GetMyLocations" />
+
+<meta property="og:title" content="IP Location — Free IP Address Lookup" />
+<meta property="og:description" content="Look up the city, country, and ISP of any public IP. Free, no signup." />
+<meta property="og:url" content="https://getmylocations.com/ip-location" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="GetMyLocations" />
+<meta property="og:image" content="https://getmylocations.com/og-image.png" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="IP Location — Free IP Address Lookup" />
+<meta name="twitter:description" content="Look up the city, country, and ISP of any public IP." />
+<meta name="twitter:image" content="https://getmylocations.com/og-image.png" />
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "IP Location Lookup",
+  "description": "Free IP address geolocation lookup tool that shows the city, country, ISP, timezone, and approximate coordinates of any public IPv4 or IPv6 address.",
+  "url": "https://getmylocations.com/ip-location",
+  "applicationCategory": "UtilitiesApplication",
+  "applicationSubCategory": "Network",
+  "operatingSystem": "Web",
+  "browserRequirements": "Requires JavaScript and an internet connection.",
+  "isAccessibleForFree": true,
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "publisher": { "@type": "Organization", "name": "GetMyLocations", "url": "https://getmylocations.com/" }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "How accurate is IP geolocation?", "acceptedAnswer": { "@type": "Answer", "text": "Country-level accuracy is typically 95-99%. City-level accuracy is usually 50-75% and can easily be off by 25 km or more. Street-level accuracy is essentially impossible from IP alone." } },
+    { "@type": "Question", "name": "Why does my real IP show the wrong city?", "acceptedAnswer": { "@type": "Answer", "text": "Common reasons include being behind a VPN that rewrites the visible IP, using a corporate proxy or VPN gateway, mobile carriers back-hauling traffic to a regional aggregation point, or the IP geolocation database being out of date." } },
+    { "@type": "Question", "name": "Can someone find my home address from my IP?", "acceptedAnswer": { "@type": "Answer", "text": "No. Public IP lookup places you within a city or region (typically a few kilometers off). Only your ISP knows the physical address tied to the IP, and they only release it with a legal request." } },
+    { "@type": "Question", "name": "Which IP geolocation database does this tool use?", "acceptedAnswer": { "@type": "Answer", "text": "This tool calls the free ipapi.co public API, which aggregates data from multiple commercial IP geolocation providers. No API key is required for low-volume use." } },
+    { "@type": "Question", "name": "Can I look up an IPv6 address?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The tool accepts both IPv4 (like 8.8.8.8) and IPv6 (like 2001:4860:4860::8888) addresses. IPv6 is often more accurate because most mobile-carrier CGNAT setups only proxy IPv4." } },
+    { "@type": "Question", "name": "Is it legal to look up someone's IP location?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Public IP geolocation databases are public information. Using the result for harassment, stalking, or unauthorized access is illegal regardless of the lookup itself." } }
+  ]
+}
+</script>
+
+<style>
+:root{--sky:#0ea5e9;--sky-h:#38bdf8;--dark:#0b1224;--dark-2:#060a16;--text:#f1f5f9;--text-2:#cbd5e1;--text-3:#94a3b8;--border:rgba(255,255,255,.08);--card:rgba(255,255,255,.03)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:linear-gradient(180deg,var(--dark-2) 0%,var(--dark) 60%,#070b18 100%);color:var(--text);line-height:1.6;min-height:100vh;-webkit-font-smoothing:antialiased}
+a{color:var(--sky-h);text-decoration:none;transition:color .15s}
+a:hover{color:var(--sky);text-decoration:underline}
+.container{max-width:1100px;margin:0 auto;padding:0 1.25rem}
+
+/* HEADER */
+header.site{position:sticky;top:0;z-index:50;background:rgba(11,18,36,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+header.site .container{display:flex;align-items:center;justify-content:space-between;height:64px;gap:1rem}
+.brand{font-weight:800;font-size:1.125rem;color:var(--text);letter-spacing:-.01em;white-space:nowrap}
+.brand span{color:var(--sky-h)}
+.nav-wrap{display:flex;align-items:center;gap:.5rem}
+nav.top{display:flex;align-items:center;gap:1.25rem}
+nav.top > a{color:var(--text-2);font-size:.875rem;font-weight:500;padding:.375rem 0}
+nav.top > a:hover{color:var(--sky-h);text-decoration:none}
+
+/* DROPDOWN */
+.dd{position:relative}
+.dd-toggle{display:inline-flex;align-items:center;gap:.375rem;background:rgba(14,165,233,.1);color:var(--sky-h);font-size:.875rem;font-weight:600;padding:.375rem .75rem;border-radius:.375rem;border:1px solid rgba(14,165,233,.2);cursor:pointer;font-family:inherit;transition:all .15s}
+.dd-toggle:hover{background:rgba(14,165,233,.18);color:var(--text)}
+.dd-toggle .arrow{transition:transform .2s;font-size:.75rem}
+.dd[data-open="true"] .dd-toggle{background:rgba(14,165,233,.2);color:var(--text)}
+.dd[data-open="true"] .dd-toggle .arrow{transform:rotate(180deg)}
+.dd-menu{position:absolute;top:calc(100% + .5rem);right:0;background:rgba(11,18,36,.98);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:.75rem;box-shadow:0 20px 50px -10px rgba(0,0,0,.6);min-width:300px;padding:.5rem;display:none;z-index:100}
+.dd[data-open="true"] .dd-menu{display:block}
+.dd-menu a{display:flex;flex-direction:column;padding:.625rem .75rem;border-radius:.5rem;color:var(--text);font-size:.875rem;transition:background .15s;text-decoration:none}
+.dd-menu a:hover{background:rgba(14,165,233,.1);color:var(--text);text-decoration:none}
+.dd-menu a strong{font-weight:600;color:var(--text);font-size:.875rem;margin-bottom:.125rem}
+.dd-menu a span{font-size:.75rem;color:var(--text-3)}
+.dd-menu a.active{background:rgba(14,165,233,.15)}
+.dd-menu a.active strong{color:var(--sky-h)}
+@media(max-width:720px){
+  nav.top > a:not(.always){display:none}
+  .dd-menu{position:fixed;top:64px;left:0;right:0;border-radius:0;border-left:none;border-right:none;min-width:0;padding:.75rem}
+}
+
+/* MAIN */
+main{padding:2.5rem 0 4rem}
+.hero{margin-bottom:2.5rem}
+.eyebrow{font-size:.6875rem;text-transform:uppercase;letter-spacing:.18em;color:var(--sky-h);font-weight:600;margin-bottom:.625rem}
+h1{font-size:clamp(2rem,5vw,2.875rem);font-weight:800;line-height:1.1;letter-spacing:-.02em;margin-bottom:.875rem}
+h1 .accent{color:var(--sky-h)}
+.lead{font-size:1.0625rem;color:var(--text-2);max-width:780px}
+.lead strong{color:var(--text)}
+
+/* CARD */
+.card{background:var(--card);border:1px solid var(--border);border-radius:1.25rem;padding:1.75rem;box-shadow:0 10px 30px -15px rgba(0,0,0,.4);margin-bottom:2.5rem}
+.tool-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1rem}
+.tool-title{font-size:1.25rem;font-weight:700}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;background:var(--sky);color:var(--dark);font-weight:600;font-size:.9375rem;padding:.75rem 1.25rem;border-radius:.5rem;border:none;cursor:pointer;transition:background .15s,transform .1s;font-family:inherit;white-space:nowrap}
+.btn:hover{background:var(--sky-h);text-decoration:none}
+.btn:active{transform:scale(.98)}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.btn-ghost{background:transparent;color:var(--text-2);border:1px solid rgba(255,255,255,.12);font-weight:500}
+.btn-ghost:hover{background:rgba(255,255,255,.05);color:var(--text)}
+
+/* INPUTS */
+.input{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:.5rem;padding:.75rem 1rem;color:var(--text);font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.9375rem;width:100%;transition:border-color .15s}
+.input:focus{outline:none;border-color:var(--sky);box-shadow:0 0 0 3px rgba(14,165,233,.2)}
+.input-row{display:flex;flex-wrap:wrap;gap:.625rem;align-items:stretch}
+.input-row .input{flex:1;min-width:200px}
+
+/* STATES */
+.state{margin-top:1rem;padding:.875rem 1rem;border-radius:.5rem;font-size:.9375rem;display:none}
+.state.show{display:block}
+.state.loading{background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.2);color:#bae6fd;display:flex;align-items:center;gap:.625rem}
+.state.error{background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.2);color:#fecaca}
+.state.success{background:rgba(134,239,172,.08);border:1px solid rgba(134,239,172,.2);color:#bbf7d0}
+.spinner{width:18px;height:18px;border:2px solid rgba(186,230,253,.25);border-top-color:#bae6fd;border-radius:50%;animation:spin .8s linear infinite;flex-shrink:0}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* RESULTS */
+.results{margin-top:1.5rem;display:none}
+.results.show{display:block}
+dl.kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;font-size:.9375rem}
+dl.kv > div{background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:.5rem;padding:.875rem 1rem}
+dl.kv dt{color:var(--text-3);font-size:.6875rem;text-transform:uppercase;letter-spacing:.12em;font-weight:600;margin-bottom:.375rem}
+dl.kv dd{color:var(--text);font-family:'JetBrains Mono',monospace;font-size:.9375rem;word-break:break-all}
+
+/* MAP */
+#map{height:380px;border-radius:.75rem;border:1px solid var(--border);margin-top:1.5rem;background:#0b1224;overflow:hidden}
+@media(max-width:640px){#map{height:300px}}
+
+/* SECTIONS */
+.section{margin:3rem 0 2.5rem}
+.section h2{font-size:1.75rem;font-weight:700;letter-spacing:-.01em;margin-bottom:1rem;color:var(--text)}
+.section h3{font-size:1.125rem;font-weight:600;color:var(--text);margin:1.5rem 0 .5rem}
+.section p{color:var(--text-2);margin-bottom:1rem;max-width:840px}
+.section ul,.section ol{color:var(--text-2);margin:0 0 1rem 1.25rem;max-width:840px}
+.section li{margin-bottom:.5rem}
+.section strong{color:var(--text)}
+.section code{background:rgba(255,255,255,.08);padding:.125rem .375rem;border-radius:.25rem;color:#bae6fd;font-family:'JetBrains Mono',monospace;font-size:.8125rem}
+
+/* FEATURES */
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin:1.5rem 0}
+.feature{padding:1.25rem;background:var(--card);border:1px solid var(--border);border-radius:.75rem}
+.feature h3{font-size:1rem;font-weight:600;color:var(--text);margin:0 0 .375rem;display:flex;align-items:center;gap:.5rem}
+.feature h3 span{font-size:1.25rem}
+.feature p{font-size:.875rem;color:var(--text-2);margin:0}
+
+/* FAQ */
+.faq details{background:var(--card);border:1px solid var(--border);border-radius:.625rem;padding:1rem 1.25rem;margin-bottom:.75rem}
+.faq summary{cursor:pointer;font-weight:600;color:var(--text);list-style:none;display:flex;align-items:center;gap:.625rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::before{content:'+';color:var(--sky-h);font-weight:700;font-size:1.25rem;width:1rem;text-align:center}
+.faq details[open] summary::before{content:'−'}
+.faq details p{margin-top:.625rem;color:var(--text-2);font-size:.9375rem;padding-left:1.625rem}
+
+/* TOOLS GRID */
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.875rem;margin-top:1rem}
+.tool-link{display:block;padding:1rem 1.125rem;background:var(--card);border:1px solid var(--border);border-radius:.625rem;color:var(--text);text-decoration:none;transition:border-color .15s,background .15s}
+.tool-link:hover{border-color:rgba(56,189,248,.3);background:rgba(56,189,248,.05);text-decoration:none;color:var(--text)}
+.tool-link strong{display:block;font-size:.9375rem;color:var(--text);margin-bottom:.125rem}
+.tool-link span{font-size:.8125rem;color:var(--text-3)}
+
+/* FOOTER */
+footer.site{border-top:1px solid var(--border);margin-top:3rem;padding:2rem 0;background:rgba(6,10,22,.5)}
+footer.site .container{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;font-size:.875rem;color:var(--text-3)}
+footer.site nav{display:flex;flex-wrap:wrap;gap:1.25rem}
+footer.site nav a{color:var(--text-2)}
+footer.site nav a:hover{color:var(--sky-h)}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="container">
+    <a href="/" class="brand">GetMy<span>Locations</span></a>
+    <div class="nav-wrap">
+      <nav class="top">
+        <a href="/" class="always">Home</a>
+        <div class="dd" id="toolsDd">
+          <button class="dd-toggle" id="ddToggle" type="button" aria-haspopup="menu" aria-expanded="false">
+            Tools <span class="arrow">▾</span>
+          </button>
+          <div class="dd-menu" role="menu" aria-label="All tools">
+            <a href="/my-location" role="menuitem"><strong>My Location</strong><span>Where am I right now?</span></a>
+            <a href="/gps-coordinates" role="menuitem"><strong>GPS Coordinates</strong><span>Live latitude &amp; longitude</span></a>
+            <a href="/coordinates-converter" role="menuitem"><strong>Coordinates Converter</strong><span>DD ↔ DMS ↔ UTM</span></a>
+            <a href="/ip-location" role="menuitem" class="active"><strong>IP Location</strong><span>Look up any IP address</span></a>
+            <a href="/distance-calculator" role="menuitem"><strong>Distance Calculator</strong><span>Between two coordinates</span></a>
+            <a href="/address-finder" role="menuitem"><strong>Address Finder</strong><span>Address ↔ coordinates</span></a>
+            <a href="/street-view" role="menuitem"><strong>Street View</strong><span>Google Street View</span></a>
+            <a href="/driving-directions" role="menuitem"><strong>Driving Directions</strong><span>Route planner</span></a>
+          </div>
+        </div>
+        <a href="/blog">Blog</a>
+        <a href="/about">About</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main>
+<div class="container">
+
+  <section class="hero">
+    <p class="eyebrow">Free Tool · No API key required</p>
+    <h1>IP <span class="accent">Location</span> — find any IP address on a map</h1>
+    <p class="lead">Look up the city, country, ISP, timezone, and approximate coordinates of any public IP address — your own or someone else's. Click one button to look up your own IP, or paste any IPv4 / IPv6 address to inspect it.</p>
+  </section>
+
+  <section class="card">
+    <div class="tool-head">
+      <h2 class="tool-title">Lookup an IP address</h2>
+      <button class="btn" id="myIpBtn" type="button">Lookup my IP</button>
+    </div>
+
+    <div class="input-row" style="margin-top:1rem">
+      <input class="input" id="ipInput" type="text" placeholder="e.g. 8.8.8.8 or 2001:4860:4860::8888" />
+      <button class="btn" id="lookupBtn" type="button">Lookup →</button>
+    </div>
+
+    <div class="state loading" id="stateLoading" role="status" aria-live="polite">
+      <span class="spinner" aria-hidden="true"></span>
+      <span id="loadingText">Looking up IP…</span>
+    </div>
+    <div class="state error" id="stateError" role="alert" aria-live="assertive"></div>
+    <div class="state success" id="stateSuccess" role="status" aria-live="polite"></div>
+
+    <div class="results" id="results">
+      <dl class="kv">
+        <div><dt>IP address</dt><dd id="rIp">—</dd></div>
+        <div><dt>Version</dt><dd id="rVer">—</dd></div>
+        <div><dt>City</dt><dd id="rCity">—</dd></div>
+        <div><dt>Region</dt><dd id="rRegion">—</dd></div>
+        <div><dt>Country</dt><dd id="rCountry">—</dd></div>
+        <div><dt>Postal code</dt><dd id="rPostal">—</dd></div>
+        <div><dt>ISP / Org</dt><dd id="rIsp">—</dd></div>
+        <div><dt>ASN</dt><dd id="rAsn">—</dd></div>
+        <div><dt>Timezone</dt><dd id="rTz">—</dd></div>
+        <div><dt>UTC offset</dt><dd id="rOffset">—</dd></div>
+        <div><dt>Currency</dt><dd id="rCur">—</dd></div>
+        <div><dt>Coordinates</dt><dd id="rCoords">—</dd></div>
+      </dl>
+    </div>
+
+    <div id="map" aria-label="Map showing the IP's approximate location"></div>
+  </section>
+
+  <section class="section">
+    <h2>What is IP location?</h2>
+    <p><strong>IP geolocation</strong> is the process of estimating where in the world an IP address is physically located. Every device on the public internet has an IP address — a unique number issued by an Internet Service Provider — and those addresses are assigned in blocks that are registered to specific countries, regions, and (often) cities. Geolocation databases keep a constantly-updated map of which IP range belongs to which ISP and roughly where that ISP serves its customers.</p>
+    <p>When you click the <em>Lookup my IP</em> button, the tool sends a request to a free public geolocation API (ipapi.co), which looks the address up in its database and returns the best-guess city, country, ISP, timezone, and approximate coordinates. The result is fast and free, but it is fundamentally an <strong>educated guess</strong> — country-level accuracy is excellent (95-99%), but the city it shows can easily be 25 kilometers from where you actually are.</p>
+  </section>
+
+  <section class="section">
+    <h2>How to use the IP Location tool</h2>
+    <ol>
+      <li><strong>Look up your own IP.</strong> Click the <em>Lookup my IP</em> button at the top of the tool card. The page asks the API for your visible public IP and the geolocation in one call. No permission prompt is needed because the IP is already visible to any web server you connect to.</li>
+      <li><strong>Look up any other IP.</strong> Paste an IPv4 address like <code>8.8.8.8</code> or an IPv6 address like <code>2001:4860:4860::8888</code> into the input box and click <em>Lookup</em>. Works for any publicly routable address.</li>
+      <li><strong>Read the result carefully.</strong> The country field is essentially always correct. The city is correct roughly 50 to 75% of the time. The street is never visible from IP alone.</li>
+      <li><strong>Check the map pin.</strong> The pin is dropped at the database's best-guess coordinate — typically the centroid of the ISP's service area for that IP block, not the actual subscriber's home.</li>
+    </ol>
+  </section>
+
+  <section class="section">
+    <h2>Why use GetMyLocations?</h2>
+    <div class="features">
+      <div class="feature"><h3>Instant lookup</h3><p>Click and read — typical lookup completes in under a second.</p></div>
+      <div class="feature"><h3>No API key</h3><p>Works without signup, paid tier, or rate-limited developer key.</p></div>
+      <div class="feature"><h3>IPv4 + IPv6</h3><p>Handles both address formats — important since most mobile carriers prefer IPv6.</p></div>
+      <div class="feature"><h3>Map + raw data</h3><p>Visual pin on a real map plus the full data dictionary (ISP, ASN, postal, currency).</p></div>
+      <div class="feature"><h3>Read-only</h3><p>The tool only requests public data. No tracking pixels, no account creation.</p></div>
+      <div class="feature"><h3>Plain-language explanations</h3><p>Inline notes about what each field means and why the city is often wrong.</p></div>
+    </div>
+  </section>
+
+  <section class="section faq">
+    <h2>Frequently asked questions</h2>
+    <details><summary>How accurate is IP geolocation?</summary><p>Country level: 95-99% correct. Region/state: 80-90%. City: 50-75% — and often off by 25 km or more. Street level is essentially never accurate from IP alone.</p></details>
+    <details><summary>Why does my real IP show the wrong city?</summary><p>Usually one of: you are behind a VPN that rewrites the visible IP; you are on a corporate or school network with a single egress; your mobile carrier back-hauls traffic through a regional gateway; or the IP geolocation database is stale because your ISP recently reassigned the block.</p></details>
+    <details><summary>Can someone find my home address from my IP?</summary><p>No. Public IP lookup can place you within a city or region. Your physical address is known only to your ISP, who releases it only with a legal request.</p></details>
+    <details><summary>Which API does this tool use?</summary><p>The free public ipapi.co endpoint. It does not require an API key for low-volume use. Lookups are rate-limited per IP per day by the upstream service.</p></details>
+    <details><summary>Can I look up an IPv6 address?</summary><p>Yes. The tool accepts both IPv4 and IPv6. IPv6 is often more honest because most mobile CGNAT setups only proxy IPv4 — IPv6 traffic usually shows your device's actual prefix.</p></details>
+    <details><summary>Is it legal to look up someone's IP location?</summary><p>Yes. Public IP geolocation is public information. Using the result for harassment, stalking, or unauthorized access is illegal regardless of the lookup itself.</p></details>
+  </section>
+
+  <section class="section">
+    <h2>Related tools on GetMyLocations</h2>
+    <div class="tools-grid">
+      <a href="/my-location" class="tool-link"><strong>My Location</strong><span>Where am I right now?</span></a>
+      <a href="/gps-coordinates" class="tool-link"><strong>GPS Coordinates</strong><span>Live latitude &amp; longitude</span></a>
+      <a href="/coordinates-converter" class="tool-link"><strong>Coordinates Converter</strong><span>DD ↔ DMS ↔ UTM</span></a>
+      <a href="/distance-calculator" class="tool-link"><strong>Distance Calculator</strong><span>Between two coordinates</span></a>
+      <a href="/address-finder" class="tool-link"><strong>Address Finder</strong><span>Address ↔ coordinates</span></a>
+      <a href="/street-view" class="tool-link"><strong>Street View</strong><span>Google Street View</span></a>
+      <a href="/driving-directions" class="tool-link"><strong>Driving Directions</strong><span>Route planner</span></a>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<footer class="site">
+  <div class="container">
+    <nav>
+      <a href="/about">About</a>
+      <a href="/blog">Blog</a>
+      <a href="/contact">Contact</a>
+      <a href="/privacy-policy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/disclaimer">Disclaimer</a>
+    </nav>
+    <p>&copy; 2026 GetMyLocations. Map data &copy; OpenStreetMap contributors.</p>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script>
+(function () {
+  'use strict';
+
+  var $ = function (id) { return document.getElementById(id); };
+
+  // Dropdown
+  var dd = $('toolsDd');
+  var ddToggle = $('ddToggle');
+  function setDd(open) {
+    dd.setAttribute('data-open', open ? 'true' : 'false');
+    ddToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  ddToggle.addEventListener('click', function (e) {
+    e.stopPropagation();
+    setDd(dd.getAttribute('data-open') !== 'true');
+  });
+  document.addEventListener('click', function (e) {
+    if (!dd.contains(e.target)) setDd(false);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') setDd(false);
+  });
+
+  // Map
+  var map = null, marker = null;
+  function initMap() {
+    if (typeof L === 'undefined') return;
+    map = L.map('map', { zoomControl: true }).setView([20, 0], 2);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19, attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+  }
+
+  function hideAllStates() {
+    ['stateLoading', 'stateError', 'stateSuccess'].forEach(function (id) {
+      $(id).classList.remove('show');
+    });
+  }
+  function showLoading(msg) {
+    hideAllStates();
+    $('loadingText').textContent = msg || 'Looking up IP…';
+    $('stateLoading').classList.add('show');
+  }
+  function showError(msg) {
+    hideAllStates();
+    $('stateError').textContent = msg;
+    $('stateError').classList.add('show');
+  }
+  function showSuccess(msg) {
+    hideAllStates();
+    $('stateSuccess').textContent = msg;
+    $('stateSuccess').classList.add('show');
+  }
+
+  function showResult(d) {
+    $('rIp').textContent = d.ip || '—';
+    $('rVer').textContent = d.version || (d.ip && d.ip.indexOf(':') > -1 ? 'IPv6' : 'IPv4') || '—';
+    $('rCity').textContent = d.city || '—';
+    $('rRegion').textContent = d.region || d.region_code || '—';
+    $('rCountry').textContent = (d.country_name || '—') + (d.country_code ? ' (' + d.country_code + ')' : '');
+    $('rPostal').textContent = d.postal || '—';
+    $('rIsp').textContent = d.org || '—';
+    $('rAsn').textContent = d.asn || '—';
+    $('rTz').textContent = d.timezone || '—';
+    $('rOffset').textContent = d.utc_offset || '—';
+    $('rCur').textContent = (d.currency_name || '') + (d.currency ? ' (' + d.currency + ')' : '') || '—';
+
+    var lat = d.latitude, lon = d.longitude;
+    if (typeof lat === 'number' && typeof lon === 'number') {
+      $('rCoords').textContent = lat.toFixed(4) + ', ' + lon.toFixed(4);
+      if (map) {
+        if (marker) map.removeLayer(marker);
+        marker = L.marker([lat, lon]).addTo(map).bindPopup(
+          '<strong>' + (d.ip || 'IP') + '</strong><br>' + (d.city || '') + ', ' + (d.country_name || '')
+        ).openPopup();
+        map.setView([lat, lon], 10);
+      }
+    } else {
+      $('rCoords').textContent = '—';
+    }
+
+    $('results').classList.add('show');
+  }
+
+  function lookup(ip) {
+    showLoading(ip ? 'Looking up ' + ip + '…' : 'Looking up your IP…');
+    var url = ip ? 'https://ipapi.co/' + encodeURIComponent(ip) + '/json/' : 'https://ipapi.co/json/';
+    fetch(url, { headers: { 'Accept': 'application/json' } })
+      .then(function (r) {
+        if (!r.ok) throw new Error('Service returned ' + r.status);
+        return r.json();
+      })
+      .then(function (d) {
+        if (d.error) {
+          showError(d.reason || 'Lookup error. The IP may be invalid or the API rate limit reached.');
+          return;
+        }
+        showResult(d);
+        showSuccess('✓ Lookup complete for ' + (d.ip || ip));
+      })
+      .catch(function (e) {
+        showError('Could not look up that IP. ' + (e.message || ''));
+      });
+  }
+
+  $('myIpBtn').addEventListener('click', function () { lookup(''); });
+  $('lookupBtn').addEventListener('click', function () {
+    var v = $('ipInput').value.trim();
+    if (!v) { showError('Please enter an IP address.'); return; }
+    lookup(v);
+  });
+  $('ipInput').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') $('lookupBtn').click();
+  });
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMap);
+  } else {
+    initMap();
+  }
+})();
+</script>
+
+</body>
+</html>

@@ -4,163 +4,345 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Driving Directions — Free Route Planner | GetMyLocations</title>
-<meta name="description" content="Free driving directions tool. Get turn-by-turn driving, walking, biking, or transit directions between any two addresses. Powered by Google Maps. No signup, no API key." />
-<link rel="canonical" href="https://getmylocations.com/driving-directions.html" />
+<meta name="description" content="Free driving directions tool. Plan a driving, walking, biking, or transit route between any two addresses. Powered by Google Maps. No signup, no API key." />
+<meta name="keywords" content="driving directions, route planner, directions, walking directions, transit directions, biking directions, google maps directions, distance and route, free directions" />
+<link rel="canonical" href="https://getmylocations.com/driving-directions" />
+<meta name="robots" content="index, follow" />
+<meta name="author" content="GetMyLocations" />
+
 <meta property="og:title" content="Driving Directions — Free Route Planner" />
-<meta property="og:description" content="Turn-by-turn directions between any two places." />
+<meta property="og:description" content="Plan a driving, walking, biking, or transit route between any two places." />
+<meta property="og:url" content="https://getmylocations.com/driving-directions" />
 <meta property="og:type" content="website" />
+<meta property="og:site_name" content="GetMyLocations" />
+<meta property="og:image" content="https://getmylocations.com/og-image.png" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Driving Directions — Free Route Planner" />
+<meta name="twitter:description" content="Plan a route between any two addresses, multi-mode." />
+<meta name="twitter:image" content="https://getmylocations.com/og-image.png" />
+
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="stylesheet" href="/tools.css" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"Driving Directions Tool","url":"https://getmylocations.com/driving-directions.html","description":"Free directions tool that plans driving, walking, biking, or transit routes between two locations.","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"GetMyLocations","url":"https://getmylocations.com/"}}
+{"@context":"https://schema.org","@type":"WebApplication","name":"Driving Directions","description":"Free directions tool that plans driving, walking, biking, or transit routes between two locations using the Google Maps embed.","url":"https://getmylocations.com/driving-directions","applicationCategory":"UtilitiesApplication","applicationSubCategory":"Navigation","operatingSystem":"Web","browserRequirements":"Requires JavaScript and an internet connection.","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"GetMyLocations","url":"https://getmylocations.com/"}}
 </script>
+
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"How do I get directions from my current location?","acceptedAnswer":{"@type":"Answer","text":"Click the My location button in the origin field — your browser will ask for GPS permission and fill in your current coordinates as the starting point."}},
-{"@type":"Question","name":"Does this support walking and transit?","acceptedAnswer":{"@type":"Answer","text":"Yes. Pick driving, walking, bicycling, or transit from the mode selector. Different modes use different routing algorithms — transit only works in cities with mapped public transport."}},
-{"@type":"Question","name":"Why is the ETA different from another app?","acceptedAnswer":{"@type":"Answer","text":"Routing services use different traffic data, road preferences, and update frequencies. Variations of 5-15% between services are normal."}}
+{"@type":"Question","name":"Does this support walking and public transit?","acceptedAnswer":{"@type":"Answer","text":"Yes. Choose driving, walking, bicycling, or public transit from the mode selector. Each mode uses a different routing algorithm and produces different ETAs."}},
+{"@type":"Question","name":"Why is the ETA different from another app?","acceptedAnswer":{"@type":"Answer","text":"Routing services use different traffic data, road preferences, and real-time updates. Variations of 5-15% between services are normal."}},
+{"@type":"Question","name":"Can I add multiple stops?","acceptedAnswer":{"@type":"Answer","text":"This embed supports a single origin and destination. For multi-stop routes, click Open in Google Maps and add waypoints there."}},
+{"@type":"Question","name":"Does this need a Google API key?","acceptedAnswer":{"@type":"Answer","text":"No. The tool uses Google Maps' public embed URL format, which does not require an API key or signup."}},
+{"@type":"Question","name":"Does it work offline?","acceptedAnswer":{"@type":"Answer","text":"No. The embed loads map tiles and live route data from Google's servers. Use the official Google Maps mobile app for offline directions."}}
 ]}
 </script>
+
+<style>
+:root{--sky:#0ea5e9;--sky-h:#38bdf8;--dark:#0b1224;--dark-2:#060a16;--text:#f1f5f9;--text-2:#cbd5e1;--text-3:#94a3b8;--border:rgba(255,255,255,.08);--card:rgba(255,255,255,.03)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:linear-gradient(180deg,var(--dark-2) 0%,var(--dark) 60%,#070b18 100%);color:var(--text);line-height:1.6;min-height:100vh;-webkit-font-smoothing:antialiased}
+a{color:var(--sky-h);text-decoration:none;transition:color .15s}
+a:hover{color:var(--sky);text-decoration:underline}
+.container{max-width:1100px;margin:0 auto;padding:0 1.25rem}
+
+header.site{position:sticky;top:0;z-index:50;background:rgba(11,18,36,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+header.site .container{display:flex;align-items:center;justify-content:space-between;height:64px;gap:1rem}
+.brand{font-weight:800;font-size:1.125rem;color:var(--text);letter-spacing:-.01em;white-space:nowrap}
+.brand span{color:var(--sky-h)}
+nav.top{display:flex;align-items:center;gap:1.25rem}
+nav.top > a{color:var(--text-2);font-size:.875rem;font-weight:500;padding:.375rem 0}
+nav.top > a:hover{color:var(--sky-h);text-decoration:none}
+.dd{position:relative}
+.dd-toggle{display:inline-flex;align-items:center;gap:.375rem;background:rgba(14,165,233,.1);color:var(--sky-h);font-size:.875rem;font-weight:600;padding:.375rem .75rem;border-radius:.375rem;border:1px solid rgba(14,165,233,.2);cursor:pointer;font-family:inherit;transition:all .15s}
+.dd-toggle:hover{background:rgba(14,165,233,.18);color:var(--text)}
+.dd-toggle .arrow{transition:transform .2s;font-size:.75rem}
+.dd[data-open="true"] .dd-toggle{background:rgba(14,165,233,.2);color:var(--text)}
+.dd[data-open="true"] .dd-toggle .arrow{transform:rotate(180deg)}
+.dd-menu{position:absolute;top:calc(100% + .5rem);right:0;background:rgba(11,18,36,.98);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:.75rem;box-shadow:0 20px 50px -10px rgba(0,0,0,.6);min-width:300px;padding:.5rem;display:none;z-index:100}
+.dd[data-open="true"] .dd-menu{display:block}
+.dd-menu a{display:flex;flex-direction:column;padding:.625rem .75rem;border-radius:.5rem;color:var(--text);font-size:.875rem;transition:background .15s;text-decoration:none}
+.dd-menu a:hover{background:rgba(14,165,233,.1);color:var(--text);text-decoration:none}
+.dd-menu a strong{font-weight:600;color:var(--text);font-size:.875rem;margin-bottom:.125rem}
+.dd-menu a span{font-size:.75rem;color:var(--text-3)}
+.dd-menu a.active{background:rgba(14,165,233,.15)}
+.dd-menu a.active strong{color:var(--sky-h)}
+@media(max-width:720px){nav.top > a:not(.always){display:none}.dd-menu{position:fixed;top:64px;left:0;right:0;border-radius:0;border-left:none;border-right:none;min-width:0;padding:.75rem}}
+
+main{padding:2.5rem 0 4rem}
+.hero{margin-bottom:2.5rem}
+.eyebrow{font-size:.6875rem;text-transform:uppercase;letter-spacing:.18em;color:var(--sky-h);font-weight:600;margin-bottom:.625rem}
+h1{font-size:clamp(2rem,5vw,2.875rem);font-weight:800;line-height:1.1;letter-spacing:-.02em;margin-bottom:.875rem}
+h1 .accent{color:var(--sky-h)}
+.lead{font-size:1.0625rem;color:var(--text-2);max-width:780px}
+.lead strong{color:var(--text)}
+
+.card{background:var(--card);border:1px solid var(--border);border-radius:1.25rem;padding:1.75rem;box-shadow:0 10px 30px -15px rgba(0,0,0,.4);margin-bottom:2.5rem}
+.tool-title{font-size:1.25rem;font-weight:700;margin-bottom:1rem}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;background:var(--sky);color:var(--dark);font-weight:600;font-size:.9375rem;padding:.75rem 1.25rem;border-radius:.5rem;border:none;cursor:pointer;transition:background .15s,transform .1s;font-family:inherit;white-space:nowrap}
+.btn:hover{background:var(--sky-h);text-decoration:none}
+.btn:active{transform:scale(.98)}
+.btn-ghost{background:transparent;color:var(--text-2);border:1px solid rgba(255,255,255,.12);font-weight:500}
+.btn-ghost:hover{background:rgba(255,255,255,.05);color:var(--text)}
+
+.grid-2{display:grid;grid-template-columns:1fr;gap:1rem;margin-top:1rem}
+@media(min-width:640px){.grid-2{grid-template-columns:1fr 1fr}}
+.field{display:flex;flex-direction:column;gap:.375rem}
+.field label{font-size:.6875rem;text-transform:uppercase;letter-spacing:.16em;color:var(--sky-h);font-weight:600}
+.input{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:.5rem;padding:.625rem .875rem;color:var(--text);font-family:'Inter',sans-serif;font-size:.9375rem;width:100%;transition:border-color .15s}
+.input:focus{outline:none;border-color:var(--sky);box-shadow:0 0 0 3px rgba(14,165,233,.2)}
+select.input{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='%2394a3b8' viewBox='0 0 16 16'><path d='M4 6l4 4 4-4'/></svg>");background-repeat:no-repeat;background-position:right .5rem center;background-size:1rem;padding-right:1.75rem}
+.actions{display:flex;flex-wrap:wrap;gap:.625rem;margin-top:1.25rem;align-items:center}
+
+.state{margin-top:1rem;padding:.875rem 1rem;border-radius:.5rem;font-size:.9375rem;display:none}
+.state.show{display:block}
+.state.loading{background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.2);color:#bae6fd;display:flex;align-items:center;gap:.625rem}
+.state.error{background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.2);color:#fecaca}
+.state.success{background:rgba(134,239,172,.08);border:1px solid rgba(134,239,172,.2);color:#bbf7d0}
+.spinner{width:18px;height:18px;border:2px solid rgba(186,230,253,.25);border-top-color:#bae6fd;border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.embed-box{position:relative;width:100%;height:0;padding-bottom:62%;border-radius:.75rem;overflow:hidden;border:1px solid var(--border);margin-top:1.25rem;background:#0b1224}
+.embed-box iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+
+.section{margin:3rem 0 2.5rem}
+.section h2{font-size:1.75rem;font-weight:700;letter-spacing:-.01em;margin-bottom:1rem;color:var(--text)}
+.section p{color:var(--text-2);margin-bottom:1rem;max-width:840px}
+.section ul,.section ol{color:var(--text-2);margin:0 0 1rem 1.25rem;max-width:840px}
+.section li{margin-bottom:.5rem}
+.section strong{color:var(--text)}
+.section code{background:rgba(255,255,255,.08);padding:.125rem .375rem;border-radius:.25rem;color:#bae6fd;font-family:'JetBrains Mono',monospace;font-size:.8125rem}
+
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin:1.5rem 0}
+.feature{padding:1.25rem;background:var(--card);border:1px solid var(--border);border-radius:.75rem}
+.feature h3{font-size:1rem;font-weight:600;color:var(--text);margin:0 0 .375rem;display:flex;align-items:center;gap:.5rem}
+.feature h3 span{font-size:1.25rem}
+.feature p{font-size:.875rem;color:var(--text-2);margin:0}
+
+.faq details{background:var(--card);border:1px solid var(--border);border-radius:.625rem;padding:1rem 1.25rem;margin-bottom:.75rem}
+.faq summary{cursor:pointer;font-weight:600;color:var(--text);list-style:none;display:flex;align-items:center;gap:.625rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::before{content:'+';color:var(--sky-h);font-weight:700;font-size:1.25rem;width:1rem;text-align:center}
+.faq details[open] summary::before{content:'−'}
+.faq details p{margin-top:.625rem;color:var(--text-2);font-size:.9375rem;padding-left:1.625rem}
+
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.875rem;margin-top:1rem}
+.tool-link{display:block;padding:1rem 1.125rem;background:var(--card);border:1px solid var(--border);border-radius:.625rem;color:var(--text);text-decoration:none;transition:border-color .15s,background .15s}
+.tool-link:hover{border-color:rgba(56,189,248,.3);background:rgba(56,189,248,.05);text-decoration:none;color:var(--text)}
+.tool-link strong{display:block;font-size:.9375rem;color:var(--text);margin-bottom:.125rem}
+.tool-link span{font-size:.8125rem;color:var(--text-3)}
+
+footer.site{border-top:1px solid var(--border);margin-top:3rem;padding:2rem 0;background:rgba(6,10,22,.5)}
+footer.site .container{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;font-size:.875rem;color:var(--text-3)}
+footer.site nav{display:flex;flex-wrap:wrap;gap:1.25rem}
+footer.site nav a{color:var(--text-2)}
+footer.site nav a:hover{color:var(--sky-h)}
+</style>
 </head>
 <body>
 
 <header class="site">
   <div class="container">
     <a href="/" class="brand">GetMy<span>Locations</span></a>
-    <nav class="top"><a href="/">Home</a><a href="/blog">Blog</a><a href="/about">About</a></nav>
+    <nav class="top">
+      <a href="/" class="always">Home</a>
+      <div class="dd" id="toolsDd">
+        <button class="dd-toggle" id="ddToggle" type="button" aria-haspopup="menu" aria-expanded="false">Tools <span class="arrow">▾</span></button>
+        <div class="dd-menu" role="menu" aria-label="All tools">
+          <a href="/my-location" role="menuitem"><strong>My Location</strong><span>Where am I right now?</span></a>
+          <a href="/gps-coordinates" role="menuitem"><strong>GPS Coordinates</strong><span>Live latitude &amp; longitude</span></a>
+          <a href="/coordinates-converter" role="menuitem"><strong>Coordinates Converter</strong><span>DD ↔ DMS ↔ UTM</span></a>
+          <a href="/ip-location" role="menuitem"><strong>IP Location</strong><span>Look up any IP address</span></a>
+          <a href="/distance-calculator" role="menuitem"><strong>Distance Calculator</strong><span>Between two coordinates</span></a>
+          <a href="/address-finder" role="menuitem"><strong>Address Finder</strong><span>Address ↔ coordinates</span></a>
+          <a href="/street-view" role="menuitem"><strong>Street View</strong><span>Google Street View</span></a>
+          <a href="/driving-directions" role="menuitem" class="active"><strong>Driving Directions</strong><span>Route planner</span></a>
+        </div>
+      </div>
+      <a href="/blog">Blog</a>
+      <a href="/about">About</a>
+    </nav>
   </div>
 </header>
 
-<main><div class="container">
+<main>
+<div class="container">
 
-  <div class="hero">
-    <p class="eyebrow">Free Tool</p>
-    <h1>Driving <span class="accent">Directions</span> — between any two places</h1>
-    <p class="lead">Plan a route between any two addresses or coordinate pairs. Choose driving, walking, biking, or public transit. Map and turn-by-turn instructions load directly from Google Maps — no signup, no API key.</p>
-  </div>
+  <section class="hero">
+    <p class="eyebrow">Free Tool · Powered by Google Maps</p>
+    <h1>Driving <span class="accent">Directions</span> — free route planner</h1>
+    <p class="lead">Plan a <strong>driving, walking, bicycling, or public-transit</strong> route between any two addresses or GPS coordinates. Map, ETA, and turn-by-turn directions load directly from Google Maps. No signup, no API key.</p>
+  </section>
 
   <section class="card">
-    <div class="tool-header"><h2 class="tool-title">Plan a route</h2></div>
+    <h2 class="tool-title">Plan a route</h2>
 
-    <div class="grid grid-2" style="margin-top:1rem">
+    <div class="grid-2">
       <div class="field">
         <label for="from">From (origin)</label>
-        <div class="row">
-          <input class="input" id="from" type="text" placeholder="e.g. Lahore Airport" value="Lahore Airport" style="flex:1" />
-        </div>
-        <div class="row" style="margin-top:.5rem">
-          <button class="btn btn-ghost" id="myLocBtn" type="button">📍 Use my location</button>
-        </div>
+        <input class="input" id="from" type="text" placeholder="Address, landmark, or coordinates" value="Lahore Airport" autocomplete="off" />
+        <button class="btn btn-ghost" id="myLocBtn" type="button" style="margin-top:.5rem;align-self:flex-start">Use my location</button>
       </div>
       <div class="field">
         <label for="to">To (destination)</label>
-        <input class="input" id="to" type="text" placeholder="e.g. Badshahi Mosque, Lahore" value="Badshahi Mosque, Lahore" />
+        <input class="input" id="to" type="text" placeholder="Address, landmark, or coordinates" value="Badshahi Mosque, Lahore" autocomplete="off" />
       </div>
     </div>
 
-    <div class="field" style="max-width:240px">
+    <div class="field" style="max-width:260px;margin-top:1rem">
       <label for="mode">Travel mode</label>
       <select class="input" id="mode">
         <option value="driving">Driving</option>
-        <option value="walking">Walking</option>
-        <option value="bicycling">Bicycling</option>
-        <option value="transit">Public transit</option>
+        <option value="walking">🚶 Walking</option>
+        <option value="bicycling">🚴 Bicycling</option>
+        <option value="transit">🚆 Public transit</option>
       </select>
     </div>
 
-    <div class="row" style="margin-top:1rem">
+    <div class="actions">
       <button class="btn" id="goBtn" type="button">Get directions →</button>
+      <button class="btn btn-ghost" id="swapBtn" type="button">Swap origin / destination</button>
       <a class="btn btn-ghost" id="openMaps" href="#" target="_blank" rel="noopener">Open in Google Maps</a>
     </div>
-    <div class="status" id="status" role="status" aria-live="polite"></div>
 
-    <div class="embed-box" id="embedBox" style="margin-top:1.25rem;padding-bottom:62%">
-      <iframe id="dirIframe" src="" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Directions"></iframe>
+    <div class="state loading" id="stateLoading" role="status" aria-live="polite">
+      <span class="spinner" aria-hidden="true"></span>
+      <span id="loadingText">Loading route…</span>
     </div>
+    <div class="state error" id="stateError" role="alert" aria-live="assertive"></div>
+    <div class="state success" id="stateSuccess" role="status" aria-live="polite"></div>
+
+    <div class="embed-box">
+      <iframe id="dirFrame" src="" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Driving Directions"></iframe>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>What is a driving directions tool?</h2>
+    <p>A <strong>driving directions tool</strong> calculates the best route between two places and shows it as a map plus a list of turn-by-turn steps. The version here is powered by Google Maps, which combines a worldwide road graph, historical traffic patterns, and real-time traffic feeds to pick the path with the lowest predicted travel time — not always the shortest distance.</p>
+    <p>This is why two routes between the same two points can differ. One may be shorter in kilometers but slower in minutes because of jams; the other may take a longer-looking detour because the algorithm knows the closer route is currently blocked. Beyond driving, the same engine handles walking (pedestrian paths, stairs, crossings), bicycling (bike lanes where mapped), and public transit (schedules, transfers, walking segments).</p>
   </section>
 
   <section class="section">
     <h2>How to use this tool</h2>
     <ol>
-      <li><strong>Enter origin.</strong> Type any address, landmark, business name, or paste a coordinate pair like <code>31.5497, 74.3436</code>. Click <em>Use my location</em> to start from where you are.</li>
-      <li><strong>Enter destination.</strong> Same — any address or coordinate.</li>
-      <li><strong>Pick travel mode.</strong> Driving is the default. Walking, bicycling, and public transit are also available.</li>
-      <li><strong>Click <em>Get directions</em>.</strong> The route appears on a map with estimated time and distance. Turn-by-turn steps are visible in the embedded view; click <em>Open in Google Maps</em> for the full interactive route.</li>
+      <li><strong>Enter the origin.</strong> Any address, landmark, business name, or paste a coordinate pair like <code>31.5497, 74.3436</code>. Click <em>Use my location</em> to start from where you are right now.</li>
+      <li><strong>Enter the destination.</strong> Same — any address, business, or coordinate.</li>
+      <li><strong>Pick the travel mode.</strong> Driving is the default. Walking, bicycling, and public transit are also available; each uses a different routing algorithm.</li>
+      <li><strong>Click <em>Get directions</em>.</strong> The route appears on a map with estimated time and distance. Turn-by-turn steps are visible in the embedded view.</li>
+      <li><strong>Click <em>Open in Google Maps</em></strong> for the full interactive route — multi-stop waypoints, alternative routes, live traffic overlay, and shareable links.</li>
     </ol>
   </section>
 
   <section class="section">
-    <h2>About route planning</h2>
-    <p>Modern routing engines combine three sources of data: a road graph (which streets connect to which intersections, in which direction, with what speed limits), historical traffic data (typical speed at this time of day on this segment), and real-time traffic feeds (where vehicles are reported slow right now). The engine searches for the path with the lowest predicted travel time, not the shortest distance.</p>
-    <p>This is why two routes between the same two points can differ — one shorter in kilometers, the other faster in minutes. It is also why directions sometimes send you on a longer-looking detour: the algorithm knows a closer route is currently jammed.</p>
-    <p>Public-transit routing is much harder than driving. The engine needs schedules, transfers, walking-segment timing, and live disruption data — and the result has to update as soon as a bus is late or a train is canceled. Most cities outside major capitals only have basic transit support; small towns may have none.</p>
-    <p>For walking and biking, the engine uses pedestrian-safe paths where available — sidewalks, pedestrian crossings, bike lanes. Walking directions sometimes route through parks or staircases that aren&apos;t obvious from a driving map.</p>
+    <h2>Why use GetMyLocations?</h2>
+    <div class="features">
+      <div class="feature"><h3>No API key</h3><p>Works without a Google API key, signup, or billing. The embed URL is publicly accessible.</p></div>
+      <div class="feature"><h3>Four travel modes</h3><p>Driving, walking, biking, and transit — one dropdown switch, no separate tools to learn.</p></div>
+      <div class="feature"><h3>Use my location</h3><p>One-click origin from your GPS, perfect for "directions from where I am right now".</p></div>
+      <div class="feature"><h3>Swap button</h3><p>Reverse origin and destination in one click — useful for return-trip ETAs.</p></div>
+      <div class="feature"><h3>Direct Maps handoff</h3><p>Open the same route in Google Maps for multi-stop waypoints and live traffic.</p></div>
+      <div class="feature"><h3>Lazy-loaded</h3><p>The iframe only loads after the page is interactive, so first paint stays fast.</p></div>
+    </div>
   </section>
 
   <section class="section faq">
     <h2>Frequently asked questions</h2>
-    <details><summary>Can I add waypoints (multi-stop routes)?</summary><p>This embed supports a single origin and destination. For multi-stop routes, click <em>Open in Google Maps</em> and add waypoints there.</p></details>
-    <details><summary>Does it show live traffic?</summary><p>The embed shows the same traffic-adjusted ETA Google Maps shows. Color overlays vary by region.</p></details>
-    <details><summary>Why is my walking ETA so different from Google Maps?</summary><p>Walking ETAs assume an average pace of about 5 km/h on flat terrain. Hills, stairs, traffic lights, and accessibility constraints can make real walks substantially slower.</p></details>
-    <details><summary>Does this work offline?</summary><p>No. The embed loads tiles and route data from Google&apos;s servers on demand. Use the official Google Maps app for offline directions.</p></details>
+    <details><summary>How do I get directions from my current location?</summary><p>Click the <em>Use my location</em> button under the origin field. Your browser will ask for GPS permission and fill in your current coordinates as the starting point. Then enter a destination and click <em>Get directions</em>.</p></details>
+    <details><summary>Does this support walking and public transit?</summary><p>Yes. Pick driving, walking, bicycling, or public transit from the travel-mode dropdown. Each uses a different routing algorithm. Transit only works in cities with mapped public-transport schedules — small towns may have no transit option available.</p></details>
+    <details><summary>Why is the ETA different from another app?</summary><p>Routing services use different traffic data, road preferences, and update frequencies. A 5–15% difference between Google, Apple, and Waze is normal. Real-time traffic conditions and the routing engine's preferences (toll avoidance, highway preference) explain the rest.</p></details>
+    <details><summary>Can I add multiple stops (waypoints)?</summary><p>The embed supports a single origin and single destination. For multi-stop routes, click <em>Open in Google Maps</em> and add waypoints there using the + button.</p></details>
+    <details><summary>Does this need a Google API key?</summary><p>No. The tool uses Google Maps' public embed URL, which does not require an API key, signup, or billing. There is no quota — plan as many routes as you like.</p></details>
+    <details><summary>Does it work offline?</summary><p>No. The embed loads map tiles and live route data from Google's servers. For offline directions, download the area in advance through the official Google Maps mobile app.</p></details>
   </section>
 
   <section class="section">
-    <h2>Related tools</h2>
-    <ul>
-      <li><a href="/distance-calculator.html">Distance calculator (straight-line)</a></li>
-      <li><a href="/street-view.html">Street View</a></li>
-      <li><a href="/address-finder.html">Address finder</a></li>
-      <li><a href="/my-location.html">My location</a></li>
-      <li><a href="/gps-coordinates-converter.html">GPS coordinates converter</a></li>
-    </ul>
+    <h2>Related tools on GetMyLocations</h2>
+    <div class="tools-grid">
+      <a href="/my-location" class="tool-link"><strong>My Location</strong><span>Where am I right now?</span></a>
+      <a href="/gps-coordinates" class="tool-link"><strong>GPS Coordinates</strong><span>Live latitude &amp; longitude</span></a>
+      <a href="/distance-calculator" class="tool-link"><strong>Distance Calculator</strong><span>Straight-line between two points</span></a>
+      <a href="/street-view" class="tool-link"><strong>Street View</strong><span>Preview the destination</span></a>
+      <a href="/address-finder" class="tool-link"><strong>Address Finder</strong><span>Address ↔ coordinates</span></a>
+      <a href="/coordinates-converter" class="tool-link"><strong>Coordinates Converter</strong><span>DD ↔ DMS ↔ UTM</span></a>
+      <a href="/ip-location" class="tool-link"><strong>IP Location</strong><span>Look up any IP address</span></a>
+    </div>
   </section>
 
-</div></main>
+</div>
+</main>
 
-<footer class="site"><div class="container">
-  <nav><a href="/about">About</a><a href="/blog">Blog</a><a href="/contact">Contact</a><a href="/privacy-policy">Privacy</a><a href="/disclaimer">Disclaimer</a></nav>
-  <p>&copy; 2026 GetMyLocations. Map data &copy; OpenStreetMap contributors.</p>
-</div></footer>
+<footer class="site">
+  <div class="container">
+    <nav>
+      <a href="/about">About</a>
+      <a href="/blog">Blog</a>
+      <a href="/contact">Contact</a>
+      <a href="/privacy-policy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/disclaimer">Disclaimer</a>
+    </nav>
+    <p>&copy; 2026 GetMyLocations. Map data &copy; OpenStreetMap contributors.</p>
+  </div>
+</footer>
 
 <script>
-(function(){
+(function () {
   'use strict';
-  var $=function(id){return document.getElementById(id);};
-  function setStatus(msg,cls){var el=$('status');el.textContent=msg||'';el.className='status'+(cls?' '+cls:'');}
+  var $ = function (id) { return document.getElementById(id); };
 
-  function go(){
-    var f=$('from').value.trim(),t=$('to').value.trim(),m=$('mode').value;
-    if(!f||!t){setStatus('Enter both origin and destination.','err');return;}
-    var src='https://www.google.com/maps?saddr='+encodeURIComponent(f)+'&daddr='+encodeURIComponent(t)+'&dirflg='+(m==='walking'?'w':m==='bicycling'?'b':m==='transit'?'r':'d')+'&output=embed';
-    var open='https://www.google.com/maps/dir/?api=1&origin='+encodeURIComponent(f)+'&destination='+encodeURIComponent(t)+'&travelmode='+m;
-    $('dirIframe').src=src;
-    $('openMaps').href=open;
-    setStatus('Route loaded.','ok');
+  var dd = $('toolsDd'), ddToggle = $('ddToggle');
+  function setDd(o) { dd.setAttribute('data-open', o ? 'true' : 'false'); ddToggle.setAttribute('aria-expanded', o ? 'true' : 'false'); }
+  ddToggle.addEventListener('click', function (e) { e.stopPropagation(); setDd(dd.getAttribute('data-open') !== 'true'); });
+  document.addEventListener('click', function (e) { if (!dd.contains(e.target)) setDd(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setDd(false); });
+
+  function hide() { ['stateLoading', 'stateError', 'stateSuccess'].forEach(function (id) { $(id).classList.remove('show'); }); }
+  function loading(m) { hide(); $('loadingText').textContent = m || 'Loading…'; $('stateLoading').classList.add('show'); }
+  function err(m) { hide(); $('stateError').textContent = m; $('stateError').classList.add('show'); }
+  function ok(m) { hide(); $('stateSuccess').textContent = m; $('stateSuccess').classList.add('show'); setTimeout(function () { $('stateSuccess').classList.remove('show'); }, 2500); }
+
+  function flag(m) { return m === 'walking' ? 'w' : m === 'bicycling' ? 'b' : m === 'transit' ? 'r' : 'd'; }
+
+  function go() {
+    var f = $('from').value.trim(), t = $('to').value.trim(), m = $('mode').value;
+    if (!f || !t) { err('Please enter both origin and destination.'); return; }
+    loading('Loading ' + m + ' route…');
+    var src = 'https://www.google.com/maps?saddr=' + encodeURIComponent(f) + '&daddr=' + encodeURIComponent(t) + '&dirflg=' + flag(m) + '&output=embed';
+    var open = 'https://www.google.com/maps/dir/?api=1&origin=' + encodeURIComponent(f) + '&destination=' + encodeURIComponent(t) + '&travelmode=' + m;
+    var iframe = $('dirFrame');
+    iframe.onload = function () { ok('✓ Route loaded. ETA and turn-by-turn steps are visible in the map.'); };
+    iframe.src = src;
+    $('openMaps').href = open;
   }
 
-  $('goBtn').addEventListener('click',go);
-  $('from').addEventListener('keydown',function(e){if(e.key==='Enter')go();});
-  $('to').addEventListener('keydown',function(e){if(e.key==='Enter')go();});
-  $('mode').addEventListener('change',go);
-  $('myLocBtn').addEventListener('click',function(){
-    if(!('geolocation' in navigator)){setStatus('Geolocation not supported.','err');return;}
-    setStatus('Requesting location…');
-    navigator.geolocation.getCurrentPosition(function(p){
-      $('from').value=p.coords.latitude.toFixed(6)+','+p.coords.longitude.toFixed(6);
-      setStatus('Origin set to your location.','ok');
+  $('goBtn').addEventListener('click', go);
+  $('from').addEventListener('keydown', function (e) { if (e.key === 'Enter') go(); });
+  $('to').addEventListener('keydown', function (e) { if (e.key === 'Enter') go(); });
+  $('mode').addEventListener('change', go);
+  $('swapBtn').addEventListener('click', function () { var a = $('from').value; $('from').value = $('to').value; $('to').value = a; go(); });
+
+  $('myLocBtn').addEventListener('click', function () {
+    if (!('geolocation' in navigator)) { err('Geolocation not supported.'); return; }
+    loading('Requesting your location…');
+    navigator.geolocation.getCurrentPosition(function (p) {
+      $('from').value = p.coords.latitude.toFixed(6) + ',' + p.coords.longitude.toFixed(6);
       go();
-    },function(err){
-      var m={1:'Permission denied.',2:'Location unavailable.',3:'Request timed out.'};
-      setStatus(m[err.code]||'Could not get location.','err');
-    },{enableHighAccuracy:true,timeout:10000});
+    }, function (e) {
+      var msgs = { 1: 'Permission denied. Allow location in browser site settings.', 2: 'Location unavailable.', 3: 'Request timed out.' };
+      err(msgs[e.code] || 'Could not get location.');
+    }, { enableHighAccuracy: true, timeout: 10000 });
   });
 
   go();
 })();
 </script>
+
 </body>
 </html>
