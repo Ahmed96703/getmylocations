@@ -1,6 +1,10 @@
-# Cloudflare Pages routing rules
+# Cloudflare routing rules
 # Rules are evaluated TOP to BOTTOM — specific first, catch-all last.
 # Status 200 = rewrite (URL stays clean), 301 = permanent redirect.
+#
+# Note: Cloudflare already auto-strips .html extensions, so we MUST NOT add
+# `/foo.html → /foo  301` rules — they would create infinite loops with the
+# rewrite rules below.
 
 # ── Standalone tool pages: serve .html files at clean URLs ──
 /my-location              /my-location.html              200
@@ -12,22 +16,13 @@
 /street-view              /street-view.html              200
 /driving-directions       /driving-directions.html       200
 
-# ── Legacy URLs from earlier iterations: 301-redirect to canonical ──
+# ── Legacy paths from earlier iterations: 301-redirect to canonical clean URLs ──
+# These are safe because the target path is different from the source.
 /gps-coordinates-converter      /coordinates-converter   301
-/gps-coordinates-converter.html /coordinates-converter   301
 /ip-location-finder             /ip-location             301
-/ip-location-finder.html        /ip-location             301
-/my-location.html               /my-location             301
-/gps-coordinates.html           /gps-coordinates         301
-/coordinates-converter.html     /coordinates-converter   301
-/ip-location.html               /ip-location             301
-/distance-calculator.html       /distance-calculator     301
-/address-finder.html            /address-finder          301
-/street-view.html               /street-view             301
-/driving-directions.html        /driving-directions      301
 
 # ── React SPA fallback: everything else goes to index.html ──
-# React Router will match /, /about, /blog, /privacy-policy, /terms, /disclaimer,
+# React Router handles: /, /about, /blog, /privacy-policy, /terms, /disclaimer,
 # /fix-location-not-working, /gps-coordinates-finder, /ip-location-lookup,
 # /reverse-geocoding, /gps-vs-ip-accuracy, /blog/:slug, etc.
 /*                        /index.html                    200
