@@ -133,49 +133,49 @@
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://getmylocations.com/my-location.html</loc>
+    <loc>https://getmylocations.com/my-location</loc>
     <lastmod>2026-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://getmylocations.com/gps-coordinates.html</loc>
+    <loc>https://getmylocations.com/gps-coordinates</loc>
     <lastmod>2026-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://getmylocations.com/gps-coordinates-converter.html</loc>
+    <loc>https://getmylocations.com/coordinates-converter</loc>
     <lastmod>2026-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://getmylocations.com/distance-calculator.html</loc>
+    <loc>https://getmylocations.com/distance-calculator</loc>
     <lastmod>2026-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://getmylocations.com/ip-location-finder.html</loc>
+    <loc>https://getmylocations.com/ip-location</loc>
     <lastmod>2026-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://getmylocations.com/address-finder.html</loc>
+    <loc>https://getmylocations.com/address-finder</loc>
     <lastmod>2026-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://getmylocations.com/street-view.html</loc>
+    <loc>https://getmylocations.com/street-view</loc>
     <lastmod>2026-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://getmylocations.com/driving-directions.html</loc>
+    <loc>https://getmylocations.com/driving-directions</loc>
     <lastmod>2026-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
