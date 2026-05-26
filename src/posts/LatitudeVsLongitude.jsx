@@ -169,6 +169,20 @@ export default function LatitudeVsLongitude() {
         </li>
       </ul>
 
+      <h2 className="font-display text-2xl font-bold mt-12">What comes first — latitude or longitude?</h2>
+      <p className="mt-3 text-slate-300/90 leading-relaxed">
+        <strong>Latitude comes first in almost every human-readable format.</strong> When you see a coordinate written as <code className="bg-white/10 px-1.5 py-0.5 rounded text-electric-400">48.858420, 2.294500</code>, the first number is the <em>latitude</em> (48.858420 N) and the second is the <em>longitude</em> (2.294500 E). This is the order used by Google Maps, Apple Maps, every smartphone, and almost every navigation app you&rsquo;ll ever paste a coordinate into.
+      </p>
+      <p className="mt-3 text-slate-300/90 leading-relaxed">
+        The reason is historical. Latitude was the easier value to measure in the age of sail — a sextant reading off the noon sun gives it directly — so it was always quoted first in published almanacs and nautical tables. That convention carried straight through to consumer mapping apps and is still the safest assumption today.
+      </p>
+      <p className="mt-3 text-slate-300/90 leading-relaxed">
+        There is one big exception: <strong>GeoJSON and many programming geometry libraries put longitude first</strong> — <code className="bg-white/10 px-1.5 py-0.5 rounded text-electric-400">[2.294500, 48.858420]</code>. Mathematicians prefer (x, y) order and longitude maps to x, so the geospatial standards bodies followed that convention. Loading a GeoJSON file directly into a (lat, lon)-assuming app will reflect every point horizontally — a classic bug source.
+      </p>
+      <p className="mt-3 text-slate-300/90 leading-relaxed">
+        <strong>Quick rule to tell which is which:</strong> the value with the larger absolute maximum is longitude (|lon| can be up to 180) and the smaller is latitude (|lat| can only be up to 90). If one of your numbers has an absolute value greater than 90, that one is definitely longitude. If both are under 90, default to latitude first unless you know the source uses GeoJSON convention.
+      </p>
+
       <h2 className="font-display text-2xl font-bold mt-12">Why “lat, lon” and not “lon, lat”?</h2>
       <p className="mt-3 text-slate-300/90 leading-relaxed">
         Both conventions exist and the choice has cost engineering hours all over the world. The short version: humans read in (latitude, longitude) order because latitude was historically the easier value to measure (a sextant reading off the noon sun), so it came first in published almanacs. Mathematicians, on the other hand, prefer (x, y) — and longitude maps to x — so geometry libraries flipped the order. GeoJSON inherited the math convention; KML, WKT, and most user-facing apps kept the human one.
