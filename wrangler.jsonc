@@ -5,14 +5,14 @@
   "observability": { "enabled": true },
   "compatibility_flags": ["nodejs_compat"],
   "assets": {
-    "directory": "./dist",
+    // Next.js static export output directory
+    "directory": "./out",
 
-    // /my-location.html is served at /my-location (cleanest URL,
-    // .html is auto-stripped, /my-location.html redirects to /my-location)
+    // /my-location.html is served at /my-location, /my-location.html redirects to /my-location
     "html_handling": "drop-trailing-slash",
 
-    // Anything that's not a real asset falls through to index.html
-    // so React Router can handle /about, /blog, /privacy-policy, etc.
-    "not_found_handling": "single-page-application"
+    // Next.js generates real HTML for every route, so the 404 page is enough.
+    // No need for SPA fallback (every route has its own .html file).
+    "not_found_handling": "404-page"
   }
 }

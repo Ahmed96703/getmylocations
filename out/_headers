@@ -1,0 +1,40 @@
+# Long cache for hashed Vite assets
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Medium cache for branded images
+/favicon.svg
+  Cache-Control: public, max-age=2592000
+/favicon-32.png
+  Cache-Control: public, max-age=2592000
+/apple-touch-icon.png
+  Cache-Control: public, max-age=2592000
+/icon-192.png
+  Cache-Control: public, max-age=2592000
+/icon-512.png
+  Cache-Control: public, max-age=2592000
+/og-image.png
+  Cache-Control: public, max-age=2592000
+
+# Crawler/discovery files — fresh but cacheable, do not index
+/sitemap.xml
+  Cache-Control: public, max-age=3600, s-maxage=86400
+  X-Robots-Tag: noindex
+/feed.xml
+  Cache-Control: public, max-age=3600, s-maxage=86400
+  X-Robots-Tag: noindex
+/robots.txt
+  Cache-Control: public, max-age=3600, s-maxage=86400
+  X-Robots-Tag: noindex
+/manifest.webmanifest
+  Cache-Control: public, max-age=3600, s-maxage=86400
+  X-Robots-Tag: noindex
+
+# Global security + indexing headers
+/*
+  X-Robots-Tag: index, follow, max-image-preview:large
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(self), camera=(), microphone=()
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
