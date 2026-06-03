@@ -127,9 +127,10 @@ export default function IpLocationLookup() {
         </ul>
 
         <p className="mt-4 text-slate-300/90 leading-relaxed">
-          The result is fast and free, but inherently fuzzy. Country-level accuracy is usually
-          better than 99%, but city-level accuracy is often only 50&ndash;80%, and street-level
-          accuracy is essentially impossible from IP alone. For why this matters, see our
+          The lookup itself is cheap to run, but the answer is inherently fuzzy.
+          Country-level accuracy is usually better than 99%; city-level accuracy
+          is often only 50&ndash;80%, and street-level accuracy is essentially
+          impossible from IP alone. For why this matters, see our
           {' '}<Link href="/blog/what-is-ip-location-and-how-accurate" className="text-electric-400 hover:underline">deep dive on IP location accuracy</Link>.
         </p>
 

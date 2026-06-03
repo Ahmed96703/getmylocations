@@ -1,6 +1,33 @@
 // Blog post manifest — single source of truth for routing, blog index, and sitemap generation.
 export const POSTS = [
   {
+    slug: 'history-of-latitude-and-longitude',
+    title: 'The history of latitude and longitude — from sextants to satellites',
+    excerpt:
+      'How a Greek scholar, a Yorkshire clockmaker, and a global voting conference in 1884 produced the two numbers your phone shows you today.',
+    date: '2026-06-01',
+    readingTime: 7,
+    tags: ['history', 'coordinates', 'gps'],
+  },
+  {
+    slug: 'why-maps-show-wrong-street',
+    title: 'Why your maps app sometimes puts you on the wrong street',
+    excerpt:
+      'Five common reasons the pin lands at the wrong door, from interpolated house numbers to mislabelled buildings to new streets the database has not caught up with.',
+    date: '2026-05-30',
+    readingTime: 8,
+    tags: ['maps', 'troubleshooting', 'addresses'],
+  },
+  {
+    slug: 'what-your-ip-reveals',
+    title: 'What does my IP address really tell apps about me?',
+    excerpt:
+      'A plain-language look at what an IP lookup actually returns, what it does not, and why mobile data and VPNs make the city wrong so often.',
+    date: '2026-05-28',
+    readingTime: 7,
+    tags: ['ip', 'privacy'],
+  },
+  {
     slug: 'gps-coordinates-emergencies-aml-guide',
     title: 'GPS Coordinates in Emergencies — The Complete AML & 911/112 Guide',
     excerpt: 'How emergency dispatchers use coordinates, what Advanced Mobile Location does automatically, when to read your own coordinates, and how to communicate them over the phone.',

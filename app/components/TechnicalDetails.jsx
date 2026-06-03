@@ -1,36 +1,36 @@
 const SECTIONS = [
   {
-    title: 'How we find your IP location',
+    title: 'What the browser actually sees from your IP',
     body:
-      'When you first open Get My Location, our IP geolocator inspects your network address and runs an IP-to-location lookup against an open geolocation database. This IP address location detector works for both IPv4 lookup and IPv6 — but the result is only city-level: an IP geolocator can tell you your country and likely city, plus a rough latitude and longitude, but it cannot pinpoint a street. Your internet provider lookup also reveals your ISP, but never your name.',
+      'Your IP address is the return address the rest of the internet uses to send packets back to you. Geolocation services keep databases that map blocks of IPs to the cities the ISP that owns them serves. When the page checks your IP, what comes back is a guess based on those records — typically your country and a city that is somewhere within 25 km of you. It is not your street and it is not your name. The accuracy depends on how recently the database was refreshed and how your ISP routes traffic.',
   },
   {
-    title: 'How we find your exact GPS coordinates',
+    title: 'How the GPS reading is taken',
     body:
-      'Our latitude longitude finder uses the browser\'s Geolocation API to access your device\'s GPS chip (on phones) or Wi-Fi triangulation (on laptops). This gives you your exact coordinates in WGS-84 decimal degrees — the same format used by Google Maps, Apple Maps, and every modern GPS tracker. We display live GPS coordinates with six decimals of precision, equivalent to about 11 cm. To convert between decimal degrees and DMS (degrees, minutes, seconds), see our upcoming decimal degrees converter and DMS to decimal coordinates tool.',
+      'When you allow precise location, the browser asks the operating system for a coordinate. On a phone outdoors, the OS uses the GNSS chip — the same hardware Google Maps uses — to triangulate against satellites from the GPS, Galileo, GLONASS, and BeiDou systems. The result is usually accurate to a few meters. Indoors or on a laptop, the OS falls back to whatever it has: nearby Wi-Fi access points cross-referenced against a worldwide database, the cell tower you are connected to, or your IP. The page receives whichever the OS thinks is the best answer.',
   },
   {
-    title: 'How we turn coordinates into a street address',
+    title: 'How we turn the coordinate into a place name',
     body:
-      'Once we have your latitude and longitude, we run a reverse geocode online against OpenStreetMap and BigDataCloud to fetch your street address from GPS data. This map-my-coordinates step transforms raw numbers into "Karachi, Sindh, Pakistan" — instantly, without storing anything. The live map position you see is rendered with Leaflet so you can drop a pin GPS-style anywhere on Earth in Advanced mode. To find an address by lat long manually, switch to the Advanced tab.',
+      'A pair of numbers like 31.5497, 74.3436 is not very useful on its own, so the page sends them to a reverse-geocoding service that returns the matching city, region, and country. We use BigDataCloud as the first choice and OpenStreetMap Nominatim as the fallback when BigDataCloud is rate-limited. Both have their own privacy policies, which the Privacy Policy page links to. The coordinate goes out, the place name comes back, and nothing is stored on our side.',
   },
   {
-    title: 'GPS vs IP accuracy — which one to trust?',
+    title: 'Why GPS and IP often disagree',
     body:
-      'GPS vs IP accuracy is night and day. Browser location vs GPS: GPS gives you 3–5 meters, while pure IP-based browser location can be off by 5–50 km. If you\'re asking "why is my location wrong" or "why is my IP showing wrong city", the answer is usually a VPN, mobile carrier-grade NAT, or a stale geolocation database. To enable browser location in Chrome or fix GPS not working, see the troubleshooting tips in our FAQ. A VPN and GPS location combination is the only way to fool both signals at once.',
+      'GPS measures your position from physics — time of flight from satellites whose orbits are known. IP geolocation looks up a database row. The first can be accurate to meters; the second is rarely better than the city. When the two disagree it is almost always because the IP database is stale, you are on a VPN, or your mobile carrier is routing traffic through a regional gateway in a different city. Trust the GPS reading when you have it. Treat the IP reading as a hint.',
   },
   {
-    title: 'Privacy — your location never leaves your browser',
+    title: 'What the page does with your data',
     body:
-      'Get My Location is 100% client-side. Your GPS coordinates, IP address, and reverse-geocoded address are processed entirely in your browser and never stored on a server we control. If location permission denied is showing, the tool falls back to IP-only mode — useful for travelers and people verifying their VPN. You can revoke browser permission at any time from your site settings.',
+      'The coordinate stays in your browser tab. The reverse-geocoding request sends only the coordinate to the third-party service; it does not include any identifier we control. We do not keep a database that tracks visitors. The hosting provider (Cloudflare) keeps short-lived request logs the way any web host does, and Google AdSense — once approved — sets its own cookies for advertising. The Privacy Policy spells out what each service receives.',
   },
 ];
 
 export default function TechnicalDetails() {
   return (
     <section aria-labelledby="tech-details" className="mt-14">
-      <h2 id="tech-details" className="font-display text-2xl font-bold">Technical details</h2>
-      <p className="text-sm text-slate-400 mt-1">How GetMyLocations finds your IP and GPS, in plain English.</p>
+      <h2 id="tech-details" className="font-display text-2xl font-bold">How the site works</h2>
+      <p className="text-sm text-slate-400 mt-1">The mechanics behind the location reading, in plain English.</p>
       <div className="glass mt-4 rounded-2xl divide-y divide-white/5">
         {SECTIONS.map((s) => (
           <details key={s.title} className="group p-5 [&_summary::-webkit-details-marker]:hidden">

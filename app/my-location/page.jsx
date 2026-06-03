@@ -55,7 +55,7 @@ export default function MyLocationPage() {
         <section className="mb-8">
           <p className="text-[11px] uppercase tracking-[0.18em] text-electric-400 font-semibold mb-2">Free Tool · Browser-based</p>
           <h1 className="font-display text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.05]">
-            My Location — <span className="text-electric-400">where am I right now?</span>
+            Where am I <span className="text-electric-400">right now?</span>
           </h1>
           <p className="text-lg text-slate-300/90 mt-4 max-w-3xl">
             Click one button and see your exact GPS coordinates, accuracy radius, city, and country on a live interactive map within two seconds. No signup, no app to install, and your coordinates stay in your browser.
@@ -63,6 +63,8 @@ export default function MyLocationPage() {
         </section>
 
         <Tool />
+
+        {/* TODO: Ahmed to add a real screenshot of this tool running on his phone — show the GPS pin on the Karachi map with the actual accuracy radius visible. Replace this comment with an <Image /> + alt text once the file is in /public/screenshots/my-location-phone.png */}
 
         <section className="mt-12">
           <h2 className="font-display text-2xl font-bold">What is the My Location tool?</h2>
@@ -107,7 +109,7 @@ export default function MyLocationPage() {
         </section>
 
         <section className="mt-12">
-          <h2 className="font-display text-2xl font-bold">Related tools</h2>
+          <h2 className="font-display text-2xl font-bold">Other things you can do with your location</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-5">
             {[
               { href: '/gps-coordinates', t: 'GPS Coordinates', d: 'Live latitude & longitude' },

@@ -7,7 +7,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Dashboard from './components/Dashboard.jsx';
 import ManualInput from './components/ManualInput.jsx';
 import PermissionBlocked from './components/PermissionBlocked.jsx';
-import AdSlot from './components/AdSlot.jsx';
 import TechnicalDetails from './components/TechnicalDetails.jsx';
 import { useGeolocation } from './hooks/useGeolocation.js';
 import { useReverseGeocode } from './hooks/useReverseGeocode.js';
@@ -20,27 +19,45 @@ const MapView = dynamic(() => import('./components/MapView.jsx'), {
 });
 
 const FAQS = [
-  { q: 'Where am I right now?', a: 'Open GetMyLocations and allow the location prompt — within two seconds the page answers "where am I" with your exact coordinates, city, country, and a live map pin. No signup needed.' },
-  { q: "What's my location now?", a: 'GetMyLocations is the fastest answer to "what\'s my location now" — it combines GPS, Wi-Fi, and IP signals to show your live position on a map the instant you grant permission.' },
-  { q: 'Is there a free lat long finder?', a: 'Yes. GetMyLocations is a free lat long finder (also known as a latitude and longitude finder or longitude and latitude finder) that works in any modern browser without signup.' },
-  { q: 'How do I find my current coordinates?', a: 'Open Get My Location and approve the browser permission. Your exact coordinates — latitude and longitude in WGS-84 decimal degrees — appear instantly with six-digit precision, copyable in one click.' },
-  { q: 'How do I find latitude and longitude?', a: 'Our latitude longitude finder uses your browser\'s GPS chip and Wi-Fi triangulation to display live GPS coordinates. For converting decimal degrees to DMS (degrees-minutes-seconds), use our coordinates converter.' },
-  { q: 'Is this a free GPS tracker?', a: 'Yes — GetMyLocations is a free GPS tracker online. No app, no signup. It uses the same Geolocation API that paid GPS coordinate generator apps use, just free and privacy-respecting.' },
-  { q: 'How do I track my IP?', a: 'When you visit the site, we automatically run an IP geolocator on your address as fallback when GPS is unavailable. This shows your IP city, country, and internet provider — the same data any IP address location detector reveals.' },
-  { q: 'Why is my IP showing wrong city?', a: 'IP geolocation is built from carrier records that lag months behind reality. Mobile networks especially pool thousands of users behind one IP in a distant city. For accurate results, allow precise GPS in the browser prompt.' },
-  { q: 'How do I get a street address from GPS?', a: 'After fetching your coordinates, we run a reverse geocode online via OpenStreetMap to extract your street address from GPS data. The map-my-coordinates step happens automatically — no extra click needed.' },
-  { q: 'Why is my location wrong?', a: 'The most common reasons: a VPN, mobile carrier-grade NAT routing traffic through a distant city, an outdated geolocation database, or denying the GPS permission so the browser falls back to IP-only.' },
-  { q: 'How accurate is browser location?', a: 'On a phone with GPS outdoors: 3–5 meters. On a phone indoors: 10–50 meters. On a laptop with Wi-Fi only: 20–50 meters. On a desktop with no Wi-Fi (IP-only): 5–50 km.' },
-  { q: 'How do I fix GPS not working?', a: 'Check three things: (1) your device has location services enabled in OS settings, (2) you\'ve allowed the site permission, (3) you\'re not in airplane mode. To enable browser location in Chrome: click the lock icon → Site settings → Location → Allow.' },
-  { q: 'Does VPN affect GPS location?', a: 'A VPN hides your IP address (and thus IP geolocation) but does NOT change your GPS chip\'s reading. With GPS allowed, GetMyLocations sees your true position even while connected to a VPN.' },
-  { q: 'Is GetMyLocations free and private?', a: 'Yes. 100% free, no signup needed. Your GPS coordinates are processed in your browser and never sent to a server we operate. We do use third-party services for reverse geocoding and advertising — see our Privacy Policy for details.' },
+  {
+    q: 'How does this site know where I am?',
+    a: 'When you click the location button, your browser asks the operating system for your position. The OS combines what it can: GPS satellite signals, the Wi-Fi networks visible to your device, the mobile cell you are connected to, and your IP address. It picks the most accurate answer available and hands a single coordinate back to the page. Outdoors on a phone, that is usually 3 to 5 meters. On a laptop indoors, it can be 25 meters or more.',
+  },
+  {
+    q: 'Why is the location it shows me wrong?',
+    a: 'Four common reasons. First, you might be indoors, so the OS is using Wi-Fi or IP instead of real GPS. Second, you might be on a VPN, which makes the IP fallback look like the VPN exit. Third, on mobile data the carrier sometimes routes everyone through one regional gateway, so the IP guess can be a city or two off. Fourth, you might have denied the precise location prompt earlier without realising it, which forces the page back to the IP guess.',
+  },
+  {
+    q: 'Do you store my coordinates?',
+    a: 'No. The coordinate the page reads stays inside your browser tab. The only thing we send to a third party is the coordinate itself to OpenStreetMap or BigDataCloud, so they can return the city and country name. Once you close the tab there is nothing left on our side to keep or delete.',
+  },
+  {
+    q: 'How many decimal places do I actually need?',
+    a: 'Three decimals is roughly a city block. Four is a building. Five is a parking space. Six is around 11 centimeters, which is finer than any consumer GPS chip can deliver under normal conditions. We display six because it is the standard storage format, but treat the last digit as noise.',
+  },
+  {
+    q: 'Will this work on my laptop?',
+    a: 'It will work, but accuracy drops sharply because most laptops do not have a GPS chip. Instead the OS falls back to looking up the Wi-Fi access points your laptop can see against Apple and Google databases. In a city with dense Wi-Fi coverage that gets you within about 25 meters. In a rural area with little Wi-Fi, the result might be off by several kilometers because all the OS has left is your IP address.',
+  },
+  {
+    q: 'Does using a VPN change the result?',
+    a: 'It changes the IP-based fallback completely but does not touch your real GPS reading. If you have allowed precise location, the page will still see your actual position — the VPN cannot rewrite a signal coming from a satellite. If you have denied precise location, the page will show whichever city your VPN exit is in.',
+  },
+  {
+    q: 'My browser blocked location permanently. How do I undo that?',
+    a: 'In Chrome, click the small lock icon to the left of the URL, choose Site settings, and change Location from Block to Allow. Reload the tab. Firefox and Edge work the same way. On Safari, the permission lives in Safari → Settings → Websites → Location.',
+  },
+  {
+    q: 'Is there an ad-free version?',
+    a: 'The site is supported by ads served through Google AdSense. There is no paid plan. Everything the site does — reading your location, converting coordinates, displaying the map — is free and works without an account.',
+  },
 ];
 
 const FEATURES = [
-  { t: 'Find my current coordinates', d: 'Exact latitude and longitude with six-decimal precision, copied to your clipboard in one click.' },
-  { t: 'Live GPS tracker', d: 'Real-time coordinate updates as you move — watch your latitude and longitude tick live.' },
-  { t: 'IP & city lookup', d: 'Reverse-geocodes your location into city, region, and country in milliseconds.' },
-  { t: 'Privacy-first', d: '100% client-side coordinate processing. Your GPS reading is not sent to a server we operate. No signup required.' },
+  { t: 'Coordinates in two seconds', d: 'One click reads your position from the browser and shows it with the accuracy the device reports.' },
+  { t: 'Move and watch it update', d: 'Live mode keeps tracking as you walk or drive, so you can see how the fix improves outdoors.' },
+  { t: 'City and country resolution', d: 'The coordinate is reverse-geocoded against OpenStreetMap so you see a readable place name alongside the numbers.' },
+  { t: 'Nothing leaves your browser', d: 'The coordinate stays in your tab. Only the city lookup goes to a third party — see the Privacy Policy for what that means in practice.' },
 ];
 
 const MORE_TOOLS = [
@@ -193,15 +210,13 @@ export default function HomeClient() {
         </div>
       </div>
 
-      <AdSlot label="Advertisement" minHeight={250} />
-
       <section aria-labelledby="more-tools" className="mt-14 scroll-mt-24" id="more-tools">
         <div className="flex items-end justify-between gap-4 flex-wrap">
           <div>
             <h2 id="more-tools-h" className="font-display text-2xl font-bold">All location tools</h2>
             <p className="text-sm text-slate-400 mt-1">Eight free, browser-based tools for everything location, GPS, and IP related. Open any one — no signup, no app.</p>
           </div>
-          <span className="text-xs text-slate-500 uppercase tracking-wider">8 tools</span>
+          <span className="text-xs text-slate-400 uppercase tracking-wider">8 tools</span>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-5">
@@ -239,8 +254,6 @@ export default function HomeClient() {
       </section>
 
       <TechnicalDetails />
-
-      <AdSlot label="Advertisement" minHeight={250} />
 
       <section aria-labelledby="featured-posts" className="mt-14">
         <div className="flex items-end justify-between gap-4 flex-wrap">
@@ -289,7 +302,6 @@ export default function HomeClient() {
         </div>
       </section>
 
-      <AdSlot label="Advertisement" minHeight={250} />
     </>
   );
 }

@@ -1,183 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Homepage -->
   <url>
     <loc>https://getmylocations.com/</loc>
-    <lastmod>2026-05-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <image:image>
-      <image:loc>https://getmylocations.com/og-image.png</image:loc>
-      <image:title>GetMyLocations — Find My Location</image:title>
-    </image:image>
   </url>
-  <url>
-    <loc>https://getmylocations.com/about</loc>
-    <lastmod>2026-05-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://getmylocations.com/blog</loc>
-    <lastmod>2026-05-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://getmylocations.com/blog/gps-coordinates-emergencies-aml-guide</loc>
-    <lastmod>2026-05-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://getmylocations.com/blog/browser-geolocation-api-explained</loc>
-    <lastmod>2026-05-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://getmylocations.com/blog/how-to-share-gps-location-safely</loc>
-    <lastmod>2026-05-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://getmylocations.com/blog/how-to-find-your-gps-coordinates</loc>
-    <lastmod>2026-05-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://getmylocations.com/blog/what-is-ip-location-and-how-accurate</loc>
-    <lastmod>2026-05-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://getmylocations.com/blog/latitude-vs-longitude-explained</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://getmylocations.com/blog/how-gps-works</loc>
-    <lastmod>2026-05-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://getmylocations.com/blog/10-uses-for-gps-coordinates</loc>
-    <lastmod>2026-05-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://getmylocations.com/gps-coordinates-finder</loc>
-    <lastmod>2026-05-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://getmylocations.com/fix-location-not-working</loc>
-    <lastmod>2026-05-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://getmylocations.com/ip-location-lookup</loc>
-    <lastmod>2026-05-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://getmylocations.com/decimal-degrees-converter</loc>
-    <lastmod>2026-05-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://getmylocations.com/reverse-geocoding</loc>
-    <lastmod>2026-05-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://getmylocations.com/gps-vs-ip-accuracy</loc>
-    <lastmod>2026-05-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://getmylocations.com/contact</loc>
-    <lastmod>2026-05-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://getmylocations.com/privacy-policy</loc>
-    <lastmod>2026-05-13</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://getmylocations.com/terms</loc>
-    <lastmod>2026-05-13</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://getmylocations.com/disclaimer</loc>
-    <lastmod>2026-05-20</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://getmylocations.com/my-location</loc>
-    <lastmod>2026-05-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://getmylocations.com/gps-coordinates</loc>
-    <lastmod>2026-05-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://getmylocations.com/coordinates-converter</loc>
-    <lastmod>2026-05-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://getmylocations.com/distance-calculator</loc>
-    <lastmod>2026-05-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://getmylocations.com/ip-location</loc>
-    <lastmod>2026-05-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://getmylocations.com/address-finder</loc>
-    <lastmod>2026-05-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://getmylocations.com/street-view</loc>
-    <lastmod>2026-05-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://getmylocations.com/driving-directions</loc>
-    <lastmod>2026-05-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+
+  <!-- Tools -->
+  <url><loc>https://getmylocations.com/my-location</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://getmylocations.com/gps-coordinates</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://getmylocations.com/coordinates-converter</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://getmylocations.com/ip-location</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://getmylocations.com/distance-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://getmylocations.com/address-finder</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://getmylocations.com/street-view</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getmylocations.com/driving-directions</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Guides -->
+  <url><loc>https://getmylocations.com/fix-location-not-working</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://getmylocations.com/gps-coordinates-finder</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://getmylocations.com/ip-location-lookup</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://getmylocations.com/reverse-geocoding</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://getmylocations.com/gps-vs-ip-accuracy</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://getmylocations.com/decimal-degrees-converter</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Blog index -->
+  <url><loc>https://getmylocations.com/blog</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+
+  <!-- Blog posts -->
+  <url><loc>https://getmylocations.com/blog/history-of-latitude-and-longitude</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://getmylocations.com/blog/why-maps-show-wrong-street</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://getmylocations.com/blog/what-your-ip-reveals</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://getmylocations.com/blog/gps-coordinates-emergencies-aml-guide</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://getmylocations.com/blog/browser-geolocation-api-explained</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://getmylocations.com/blog/how-to-share-gps-location-safely</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://getmylocations.com/blog/how-to-find-your-gps-coordinates</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://getmylocations.com/blog/what-is-ip-location-and-how-accurate</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://getmylocations.com/blog/latitude-vs-longitude-explained</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://getmylocations.com/blog/how-gps-works</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://getmylocations.com/blog/10-uses-for-gps-coordinates</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Site pages -->
+  <url><loc>https://getmylocations.com/about</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://getmylocations.com/contact</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://getmylocations.com/privacy-policy</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://getmylocations.com/terms</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://getmylocations.com/disclaimer</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+
 </urlset>

@@ -42,6 +42,8 @@ export default function GpsCoordinatesPage() {
 
         <Tool />
 
+        {/* TODO: Ahmed to add a real screenshot of this tool running on his phone outdoors — should show the actual six-decimal lat/lon, accuracy radius in meters, and the satellite count if visible. Replace this comment with an <Image /> + alt text once the file is in /public/screenshots/gps-coordinates-phone.png. Also: add a one-line caption with the actual reading ("Tested on a Galaxy S22 outside my apartment in Karachi — fix in 1.3 s, accuracy 4 m"). */}
+
         <section className="mt-12">
           <h2 className="font-display text-2xl font-bold">What are GPS coordinates?</h2>
           <p className="mt-3 text-slate-300/90 leading-relaxed">
@@ -76,7 +78,7 @@ export default function GpsCoordinatesPage() {
         </section>
 
         <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">Related tools</h2>
+          <h2 className="font-display text-2xl font-bold">More tools on this site</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-5">
             {[
               { href: '/my-location', t: 'My Location', d: 'Where am I right now?' },

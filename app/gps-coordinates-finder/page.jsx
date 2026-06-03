@@ -221,7 +221,7 @@ export default function GpsCoordinatesFinder() {
           <li><Link href="/blog/latitude-vs-longitude-explained" className="text-electric-400 hover:underline">Latitude vs longitude &mdash; the difference, explained</Link></li>
           <li><Link href="/blog/how-gps-works" className="text-electric-400 hover:underline">How GPS works &mdash; the satellite math</Link></li>
           <li><Link href="/blog/how-to-find-your-gps-coordinates" className="text-electric-400 hover:underline">How to find your GPS coordinates</Link></li>
-          <li><Link href="/blog/10-uses-gps-coordinates" className="text-electric-400 hover:underline">10 surprising things you can do with a GPS coordinate</Link></li>
+          <li><Link href="/blog/10-uses-for-gps-coordinates" className="text-electric-400 hover:underline">10 surprising things you can do with a GPS coordinate</Link></li>
           <li><Link href="/fix-location-not-working" className="text-electric-400 hover:underline">Fix location not working &mdash; troubleshooting guide</Link></li>
         </ul>
       </article>

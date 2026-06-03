@@ -37,18 +37,74 @@ export default function DistanceCalculatorPage() {
 
         <Tool />
 
+        {/* TODO: Ahmed to add a screenshot of the calculator with a famous well-known pair (Karachi airport KHI 24.9008, 67.1681 to JFK New York 40.6413, -73.7781 — should read ~11,500 km). Replace this comment with the <Image /> + caption "Karachi to New York measured at 11,503 km — matches Google Flights." File goes at /public/screenshots/distance-khi-jfk.png. */}
+
         <section className="mt-12">
-          <h2 className="font-display text-2xl font-bold">What is a distance calculator?</h2>
+          <h2 className="font-display text-2xl font-bold">What this calculator does</h2>
           <p className="mt-3 text-slate-300/90 leading-relaxed">
-            A <strong className="text-slate-100">distance calculator</strong> tells you how far apart two locations are. This version takes two pairs of latitude and longitude coordinates and returns the <em>straight-line distance over Earth&rsquo;s surface</em> — the <strong className="text-slate-100">great-circle distance</strong>. It is what airlines use when they quote flight distances and what GPS units use when they tell you a destination is &ldquo;240 km away as the crow flies&rdquo;.
-          </p>
-          <p className="mt-3 text-slate-300/90 leading-relaxed">
-            The <strong className="text-slate-100">Haversine formula</strong> is the standard equation, accurate to about 0.5% globally — more than enough for trip planning, real-estate searches, and geofence design.
+            The tool above takes two pairs of latitude and longitude and returns the
+            straight-line distance over Earth&rsquo;s surface — the kind of distance an
+            airline quotes when it tells you the flight is 5,000 km, not the longer
+            driving distance that follows roads. The calculation runs in your browser
+            using the Haversine formula, which has been the standard for sea and air
+            navigation for over a century. It is accurate to about 0.5% globally —
+            roughly five kilometers off on a thousand-kilometer trip, which is fine
+            for trip planning and overkill for almost everything else.
           </p>
         </section>
 
         <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">Related tools</h2>
+          <h2 className="font-display text-2xl font-bold">How accurate is great-circle distance, really?</h2>
+          <p className="mt-3 text-slate-300/90 leading-relaxed">
+            Earth is not a perfect sphere. It bulges slightly at the equator because
+            of its own spin — the equatorial radius is about 21 kilometers larger
+            than the polar radius. The Haversine formula assumes a sphere and
+            ignores that bulge. For most pairs of points the error this introduces
+            is well under one percent.
+          </p>
+          <p className="mt-3 text-slate-300/90 leading-relaxed">
+            The points where the error matters are large distances along
+            high-latitude paths — for example, polar flight routes. For those, the
+            Vincenty formula uses the actual ellipsoid shape and gets within
+            millimeters. Survey-grade work uses Vincenty; everyone else uses
+            Haversine because it is simpler and the difference is invisible at the
+            scale humans care about.
+          </p>
+        </section>
+
+        <section className="mt-10">
+          <h2 className="font-display text-2xl font-bold">Why driving distance is always longer</h2>
+          <p className="mt-3 text-slate-300/90 leading-relaxed">
+            People sometimes punch in two coordinates expecting the driving distance
+            and are surprised when the result is much smaller. Driving distance has
+            to follow roads, go around lakes and mountains, respect one-way streets,
+            and divert through interchanges. A drive from London to Paris is about
+            460 km along roads — but only 344 km in a straight line over the
+            English Channel. The straight-line version is the one this page
+            calculates.
+          </p>
+          <p className="mt-3 text-slate-300/90 leading-relaxed">
+            If what you actually want is the road distance, use the{' '}
+            <a className="text-electric-400 hover:underline" href="/driving-directions">Driving Directions tool</a>{' '}
+            instead. It calls the routing engine that does know about roads.
+          </p>
+        </section>
+
+        <section className="mt-10">
+          <h2 className="font-display text-2xl font-bold">What the bearing field tells you</h2>
+          <p className="mt-3 text-slate-300/90 leading-relaxed">
+            Alongside the distance, the calculator returns an initial bearing — the
+            compass direction you would head if you started walking from point A
+            towards point B. The catch with great-circle routes is that the bearing
+            does not stay constant. A great-circle path from London to Tokyo starts
+            heading northeast and ends heading southeast, even though Tokyo is south
+            of London on the map. That is why polar flight routes look curved on a
+            flat map but are actually straight lines on the globe.
+          </p>
+        </section>
+
+        <section className="mt-10">
+          <h2 className="font-display text-2xl font-bold">Useful companion tools</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-5">
             {[
               { href: '/my-location', t: 'My Location' },

@@ -44,13 +44,18 @@ export default function Footer() {
               ))}
             </ul>
           </nav>
-          <p className="text-xs text-slate-500 text-center sm:text-right">
+          <p className="text-xs text-slate-400 text-center sm:text-right">
             &copy; {YEAR} <span className="text-slate-300 font-semibold">GetMyLocations</span>. All rights reserved.
             <br className="sm:hidden" />
             <span className="hidden sm:inline"> · </span>
             Map data © OpenStreetMap contributors.
           </p>
         </div>
+        <p className="mt-6 pt-6 border-t border-white/5 text-xs text-slate-400 text-center leading-relaxed">
+          Articles and guides on this site are researched and drafted with AI assistance and reviewed by{' '}
+          <Link href="/about" className="text-slate-300 hover:text-electric-400 transition">Ahmed Anwar</Link>
+          {' '}before publication. Tools are written and tested by hand.
+        </p>
       </div>
     </footer>
   );
