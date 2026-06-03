@@ -30,15 +30,15 @@ export default function TechnicalDetails() {
   return (
     <section aria-labelledby="tech-details" className="mt-14">
       <h2 id="tech-details" className="font-display text-2xl font-bold">How the site works</h2>
-      <p className="text-sm text-slate-400 mt-1">The mechanics behind the location reading, in plain English.</p>
-      <div className="glass mt-4 rounded-2xl divide-y divide-white/5">
+      <p className="text-sm text-fg-subtle mt-1">The mechanics behind the location reading, in plain English.</p>
+      <div className="glass mt-4 rounded-2xl divide-y divide-line-subtle">
         {SECTIONS.map((s) => (
           <details key={s.title} className="group p-5 [&_summary::-webkit-details-marker]:hidden">
             <summary className="flex items-center justify-between cursor-pointer list-none font-semibold">
               {s.title}
-              <span className="text-electric-400 group-open:rotate-45 transition-transform" aria-hidden="true">+</span>
+              <span className="text-accent group-open:rotate-45 transition-transform" aria-hidden="true">+</span>
             </summary>
-            <p className="mt-3 text-slate-300/90 text-sm leading-relaxed">{s.body}</p>
+            <p className="mt-3 text-fg-muted text-sm leading-relaxed">{s.body}</p>
           </details>
         ))}
       </div>

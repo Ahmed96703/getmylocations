@@ -14,6 +14,8 @@ import WhatIsIpLocation from '../../posts/WhatIsIpLocation.jsx';
 import WhatYourIpReveals from '../../posts/WhatYourIpReveals.jsx';
 import WhyMapsShowWrongStreet from '../../posts/WhyMapsShowWrongStreet.jsx';
 import LatLonHistory from '../../posts/LatLonHistory.jsx';
+import EnableLocationDesktop from '../../posts/EnableLocationDesktop.jsx';
+import EnableLocationMobile from '../../posts/EnableLocationMobile.jsx';
 
 const POST_COMPONENTS = {
   'browser-geolocation-api-explained': BrowserGeolocationApi,
@@ -27,6 +29,8 @@ const POST_COMPONENTS = {
   'what-your-ip-reveals': WhatYourIpReveals,
   'why-maps-show-wrong-street': WhyMapsShowWrongStreet,
   'history-of-latitude-and-longitude': LatLonHistory,
+  'enable-location-on-windows-and-mac': EnableLocationDesktop,
+  'enable-location-on-iphone-and-android': EnableLocationMobile,
 };
 
 export async function generateStaticParams() {
@@ -80,20 +84,20 @@ export default function BlogPost({ params }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
 
       <main role="main" className="max-w-3xl mx-auto px-5 py-12">
-        <nav aria-label="Breadcrumb" className="text-xs text-slate-400 mb-4">
-          <Link href="/" className="hover:text-electric-400">Home</Link>
+        <nav aria-label="Breadcrumb" className="text-xs text-fg-subtle mb-4">
+          <Link href="/" className="hover:text-accent">Home</Link>
           <span aria-hidden="true" className="mx-1.5">/</span>
-          <Link href="/blog" className="hover:text-electric-400">Blog</Link>
+          <Link href="/blog" className="hover:text-accent">Blog</Link>
         </nav>
 
         <h1 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight">{post.title}</h1>
 
         <div className="mt-4 flex items-center gap-3 flex-wrap">
           <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-full bg-gradient-to-br from-electric-400 to-electric-600 grid place-items-center text-ink-950 font-bold text-sm" aria-hidden="true">A</div>
+            <div className="w-9 h-9 rounded-full bg-gradient-to-br from-accent to-accent-strong grid place-items-center text-accent-fg font-bold text-sm" aria-hidden="true">A</div>
             <div className="text-sm leading-tight">
-              <div className="font-semibold text-slate-100">Ahmed Anwar</div>
-              <div className="text-xs text-slate-400">
+              <div className="font-semibold text-fg">Ahmed Anwar</div>
+              <div className="text-xs text-fg-subtle">
                 <time dateTime={post.date}>{dateStr}</time>
                 <span className="mx-1.5" aria-hidden="true">·</span>
                 <span>{post.readingTime} min read</span>
@@ -103,19 +107,19 @@ export default function BlogPost({ params }) {
           {post.tags?.length > 0 && (
             <ul className="flex gap-1.5 ml-auto">
               {post.tags.map((t) => (
-                <li key={t} className="px-2 py-0.5 rounded-full bg-white/5 ring-1 ring-white/10 text-[11px] uppercase tracking-wider text-slate-300">{t}</li>
+                <li key={t} className="px-2 py-0.5 rounded-full bg-tint/5 ring-1 ring-line text-[11px] uppercase tracking-wider text-fg-muted">{t}</li>
               ))}
             </ul>
           )}
         </div>
 
-        <hr className="my-8 border-white/10" />
+        <hr className="my-8 border-line" />
 
         <Body />
 
         <AuthorBio />
 
-        <Link href="/blog" className="block mt-10 text-sm text-electric-400 hover:underline">← Back to all posts</Link>
+        <Link href="/blog" className="block mt-10 text-sm text-accent hover:underline">← Back to all posts</Link>
       </main>
     </>
   );

@@ -39,18 +39,18 @@ export default function Tool() {
 
       <div className="grid sm:grid-cols-2 gap-3">
         <div>
-          <label className="text-[10px] uppercase tracking-wider text-electric-400 font-semibold">From (origin)</label>
+          <label className="text-[10px] uppercase tracking-wider text-accent font-semibold">From (origin)</label>
           <input className="field mt-1" value={from} onChange={(e) => setFrom(e.target.value)} placeholder="Address, landmark, or coords" onKeyDown={(e) => e.key === 'Enter' && go()} />
           <button onClick={myLocation} className="btn-ghost text-xs mt-2">📍 Use my location</button>
         </div>
         <div>
-          <label className="text-[10px] uppercase tracking-wider text-electric-400 font-semibold">To (destination)</label>
+          <label className="text-[10px] uppercase tracking-wider text-accent font-semibold">To (destination)</label>
           <input className="field mt-1" value={to} onChange={(e) => setTo(e.target.value)} placeholder="Address or landmark" onKeyDown={(e) => e.key === 'Enter' && go()} />
         </div>
       </div>
 
       <div className="mt-3 max-w-[260px]">
-        <label className="text-[10px] uppercase tracking-wider text-electric-400 font-semibold">Travel mode</label>
+        <label className="text-[10px] uppercase tracking-wider text-accent font-semibold">Travel mode</label>
         <select className="field mt-1" value={mode} onChange={(e) => setMode(e.target.value)}>
           <option value="driving">🚗 Driving</option>
           <option value="walking">🚶 Walking</option>
@@ -66,15 +66,15 @@ export default function Tool() {
       </div>
 
       {status.type === 'loading' && (
-        <div className="bg-electric-500/10 border border-electric-400/30 text-electric-200 rounded-lg p-3 text-sm mt-3 flex items-center gap-2">
-          <span className="w-4 h-4 rounded-full border-2 border-electric-300 border-t-transparent animate-spin" />
+        <div className="bg-accent/10 border border-accent/40 text-accent rounded-lg p-3 text-sm mt-3 flex items-center gap-2">
+          <span className="w-4 h-4 rounded-full border-2 border-accent border-t-transparent animate-spin" />
           {status.msg}
         </div>
       )}
       {status.type === 'err' && <div className="bg-rose-500/10 border border-rose-400/30 text-rose-200 rounded-lg p-3 text-sm mt-3">{status.msg}</div>}
       {status.type === 'ok' && <div className="bg-emerald-500/10 border border-emerald-400/30 text-emerald-200 rounded-lg p-3 text-sm mt-3">{status.msg}</div>}
 
-      <div className="relative w-full mt-4 rounded-2xl overflow-hidden border border-white/10 bg-ink-900" style={{ paddingBottom: '62%' }}>
+      <div className="relative w-full mt-4 rounded-2xl overflow-hidden border border-line bg-ink-900" style={{ paddingBottom: '62%' }}>
         {src && <iframe src={src} className="absolute inset-0 w-full h-full" allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Google Maps Directions" />}
       </div>
     </section>

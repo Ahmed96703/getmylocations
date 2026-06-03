@@ -77,7 +77,7 @@ export default function PermissionBlocked({ onRetry, onManualMode }) {
         </div>
       </div>
 
-      <ol className="mt-5 space-y-2 text-sm text-slate-200 list-decimal list-inside marker:text-electric-400">
+      <ol className="mt-5 space-y-2 text-sm text-fg-muted list-decimal list-inside marker:text-accent">
         {steps.map((s) => <li key={s}>{s}</li>)}
       </ol>
 

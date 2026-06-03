@@ -59,19 +59,19 @@ export default function Tool() {
 
       <div className="flex flex-wrap gap-1 mt-3">
         {PRESETS.map((p) => (
-          <button key={p} onClick={() => { setQuery(p); load(p); }} className="text-xs px-3 py-1.5 rounded-md bg-white/5 hover:bg-electric-500/10 hover:text-electric-400 border border-white/10 transition">{p}</button>
+          <button key={p} onClick={() => { setQuery(p); load(p); }} className="text-xs px-3 py-1.5 rounded-md bg-tint/5 hover:bg-accent/10 hover:text-accent border border-line transition">{p}</button>
         ))}
       </div>
 
       {status.type === 'loading' && (
-        <div className="bg-electric-500/10 border border-electric-400/30 text-electric-200 rounded-lg p-3 text-sm mt-3 flex items-center gap-2">
-          <span className="w-4 h-4 rounded-full border-2 border-electric-300 border-t-transparent animate-spin" />
+        <div className="bg-accent/10 border border-accent/40 text-accent rounded-lg p-3 text-sm mt-3 flex items-center gap-2">
+          <span className="w-4 h-4 rounded-full border-2 border-accent border-t-transparent animate-spin" />
           {status.msg}
         </div>
       )}
       {status.type === 'ok' && <div className="bg-emerald-500/10 border border-emerald-400/30 text-emerald-200 rounded-lg p-3 text-sm mt-3">{status.msg}</div>}
 
-      <div className="relative w-full mt-4 rounded-2xl overflow-hidden border border-white/10 bg-ink-900" style={{ paddingBottom: '56.25%' }}>
+      <div className="relative w-full mt-4 rounded-2xl overflow-hidden border border-line bg-ink-900" style={{ paddingBottom: '56.25%' }}>
         {src && <iframe src={src} className="absolute inset-0 w-full h-full" allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Google Street View" />}
       </div>
 

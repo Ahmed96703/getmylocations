@@ -3,7 +3,7 @@ import Link from 'next/link';
 export default function LatLonHistory() {
   return (
     <article className="prose-invert">
-      <p className="text-lg text-slate-300/90 leading-relaxed">
+      <p className="text-lg text-fg-muted leading-relaxed">
         In October 1884, twenty-five countries sat down in a conference room
         in Washington and voted on which line should count as the middle of
         the world. France lost the vote, abstained from the result, and
@@ -13,7 +13,7 @@ export default function LatLonHistory() {
         London observatory.
       </p>
 
-      <p className="mt-4 text-slate-300/90 leading-relaxed">
+      <p className="mt-4 text-fg-muted leading-relaxed">
         Latitude was never really in dispute &mdash; the equator picks itself,
         sitting halfway between the poles because that&rsquo;s where the
         planet&rsquo;s own spin tells you it should. Longitude had no such
@@ -26,7 +26,7 @@ export default function LatLonHistory() {
       {/* TODO: Ahmed to find or photograph an image of the Greenwich Prime Meridian brass line for this article. A close-up of the actual strip embedded in the observatory courtyard would beat any stock illustration. /public/screenshots/greenwich-meridian.jpg, caption it with "The 0° longitude line at the Royal Observatory — every coordinate on your phone is measured from here." */}
 
       <h2 className="font-display text-2xl font-bold mt-12">The Greeks drew the first grid</h2>
-      <p className="mt-3 text-slate-300/90 leading-relaxed">
+      <p className="mt-3 text-fg-muted leading-relaxed">
         Around 230 BC the Greek scholar Eratosthenes &mdash; the same man who
         calculated the size of the Earth by watching shadows in two cities
         &mdash; sketched the first coordinate system on a map of the known
@@ -35,7 +35,7 @@ export default function LatLonHistory() {
         and proposed using astronomical observations to actually assign
         coordinates to specific places.
       </p>
-      <p className="mt-3 text-slate-300/90 leading-relaxed">
+      <p className="mt-3 text-fg-muted leading-relaxed">
         By 150 AD, Ptolemy&rsquo;s <em>Geography</em> listed about eight thousand
         places with their latitude and longitude. He got the size of the
         Mediterranean wrong by 40%, but the framework is unmistakable. If you
@@ -44,7 +44,7 @@ export default function LatLonHistory() {
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-12">Latitude was the easy half</h2>
-      <p className="mt-3 text-slate-300/90 leading-relaxed">
+      <p className="mt-3 text-fg-muted leading-relaxed">
         Finding how far north or south you are turns out to be straightforward
         if you can see the stars. The angle the sun sits above the horizon at
         noon, or the angle of the North Star above your spot in the northern
@@ -55,7 +55,7 @@ export default function LatLonHistory() {
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-12">Longitude was the disaster that killed people</h2>
-      <p className="mt-3 text-slate-300/90 leading-relaxed">
+      <p className="mt-3 text-fg-muted leading-relaxed">
         Longitude requires you to know the time. If it is noon where you are
         &mdash; which the sun tells you &mdash; and it is, say, 4 PM at
         Greenwich, then the four-hour difference tells you how far east or
@@ -65,7 +65,7 @@ export default function LatLonHistory() {
         astronomical alternatives were complex, slow, and only worked at
         night in clear weather.
       </p>
-      <p className="mt-3 text-slate-300/90 leading-relaxed">
+      <p className="mt-3 text-fg-muted leading-relaxed">
         The result was a regular slaughter at sea. Ships missed their islands
         by hundreds of miles and ran aground. In 1707 a British fleet wrecked
         itself on the rocks of the Isles of Scilly because the navigators
@@ -77,7 +77,7 @@ export default function LatLonHistory() {
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-12">John Harrison&rsquo;s clocks</h2>
-      <p className="mt-3 text-slate-300/90 leading-relaxed">
+      <p className="mt-3 text-fg-muted leading-relaxed">
         John Harrison was a Yorkshire carpenter who taught himself clockmaking.
         Over forty years he built a series of marine chronometers &mdash; the
         first portable clocks accurate enough to keep Greenwich time on a
@@ -86,14 +86,14 @@ export default function LatLonHistory() {
         The Royal Navy still owed him most of the prize money for decades
         afterwards; he had to petition the king personally to get it.
       </p>
-      <p className="mt-3 text-slate-300/90 leading-relaxed">
+      <p className="mt-3 text-fg-muted leading-relaxed">
         All four of Harrison&rsquo;s clocks still work and are on display at
         the Royal Observatory in Greenwich today. H4 is the size of a large
         pocket watch.
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-12">Whose meridian is zero?</h2>
-      <p className="mt-3 text-slate-300/90 leading-relaxed">
+      <p className="mt-3 text-fg-muted leading-relaxed">
         With reliable clocks, every seafaring nation could measure longitude
         from somewhere. The French ran theirs through Paris. The Spanish
         through Cadiz. Americans through Washington. The Portuguese through
@@ -101,7 +101,7 @@ export default function LatLonHistory() {
         country&rsquo;s ships, and that became expensive once steamships and
         international cabling made commerce continuous.
       </p>
-      <p className="mt-3 text-slate-300/90 leading-relaxed">
+      <p className="mt-3 text-fg-muted leading-relaxed">
         The 1884 Washington conference settled it. Greenwich won &mdash; not
         because it was geographically special, but because British nautical
         charts were already the most widely used and reprinting every chart
@@ -112,7 +112,7 @@ export default function LatLonHistory() {
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-12">From sextants to satellites</h2>
-      <p className="mt-3 text-slate-300/90 leading-relaxed">
+      <p className="mt-3 text-fg-muted leading-relaxed">
         The instruments changed entirely; the coordinate system did not. GPS,
         launched by the US Department of Defense in the late 1970s and made
         fully available for civilian use in 2000, gives you latitude and
@@ -122,7 +122,7 @@ export default function LatLonHistory() {
         phone reads from all of them simultaneously and hands the result to
         whichever app asked for it.
       </p>
-      <p className="mt-3 text-slate-300/90 leading-relaxed">
+      <p className="mt-3 text-fg-muted leading-relaxed">
         What I think is worth pausing on: a Greek scholar in Alexandria, an
         English clockmaker in Yorkshire, and twenty-five governments arguing
         in Washington all contributed to the number your weather app needs
@@ -131,9 +131,9 @@ export default function LatLonHistory() {
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-12">See your own coordinates</h2>
-      <p className="mt-3 text-slate-300/90 leading-relaxed">
+      <p className="mt-3 text-fg-muted leading-relaxed">
         Two clicks on the{' '}
-        <Link href="/gps-coordinates" className="text-electric-400 hover:underline font-semibold">GPS Coordinates tool</Link>{' '}
+        <Link href="/gps-coordinates" className="text-accent hover:underline font-semibold">GPS Coordinates tool</Link>{' '}
         give you the latitude and longitude that took two millennia to make
         readable. The latitude number you see comes from astronomical
         principles a Greek scholar would have recognised; the longitude

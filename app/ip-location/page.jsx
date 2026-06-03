@@ -26,11 +26,11 @@ export default function IpLocationPage() {
 
       <main className="max-w-5xl mx-auto px-5 py-10">
         <section className="mb-8">
-          <p className="text-[11px] uppercase tracking-[0.18em] text-electric-400 font-semibold mb-2">Free Tool · No API key required</p>
+          <p className="text-[11px] uppercase tracking-[0.18em] text-accent font-semibold mb-2">Free Tool · No API key required</p>
           <h1 className="font-display text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.05]">
-            Look up any IP address — yours or <span className="text-electric-400">someone else&rsquo;s</span>
+            Look up any IP address — yours or <span className="text-accent">someone else&rsquo;s</span>
           </h1>
-          <p className="text-lg text-slate-300/90 mt-4 max-w-3xl">
+          <p className="text-lg text-fg-muted mt-4 max-w-3xl">
             Look up the city, country, ISP, timezone, and approximate coordinates of any public IP address — your own or someone else&apos;s. Click one button to look up your own IP, or paste any IPv4 / IPv6 address.
           </p>
         </section>
@@ -41,7 +41,7 @@ export default function IpLocationPage() {
 
         <section className="mt-12">
           <h2 className="font-display text-2xl font-bold">How this tool works</h2>
-          <p className="mt-3 text-slate-300/90 leading-relaxed">
+          <p className="mt-3 text-fg-muted leading-relaxed">
             Click <em>Lookup my IP</em> and the page calls ipapi.co with no
             arguments. Their server sees the IP you came from and replies with
             its best guess of the city, region, country, internet provider, and
@@ -50,18 +50,18 @@ export default function IpLocationPage() {
             back, and we display it in the table below. Nothing is stored on our
             side.
           </p>
-          <p className="mt-3 text-slate-300/90 leading-relaxed">
+          <p className="mt-3 text-fg-muted leading-relaxed">
             For a longer discussion of how the underlying databases are built,
             how mobile carriers and VPNs distort the result, and what an IP
             lookup actually does and does not reveal, see the dedicated{' '}
-            <a className="text-electric-400 hover:underline" href="/ip-location-lookup">IP location lookup guide</a>.
+            <a className="text-accent hover:underline" href="/ip-location-lookup">IP location lookup guide</a>.
             That article goes into the bits this tool page deliberately keeps short.
           </p>
         </section>
 
         <section className="mt-10">
           <h2 className="font-display text-2xl font-bold">Reading the result</h2>
-          <ul className="mt-3 space-y-2 text-slate-300/90 list-disc list-inside">
+          <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside">
             <li>The <strong>country</strong> field is almost always right.</li>
             <li>The <strong>city</strong> field is correct about half the time on residential broadband and much less on mobile networks, because carriers route traffic through regional gateways.</li>
             <li>The <strong>ISP</strong> field tells you which company owns the IP block — useful for spotting VPN exits and data-centre IPs.</li>
@@ -71,7 +71,7 @@ export default function IpLocationPage() {
 
         <section className="mt-10">
           <h2 className="font-display text-2xl font-bold">Free API limits</h2>
-          <p className="mt-3 text-slate-300/90 leading-relaxed">
+          <p className="mt-3 text-fg-muted leading-relaxed">
             ipapi.co lets unauthenticated users do up to 1,000 lookups per IP per
             day. That is enough for a manual page like this. If you hit the
             limit you will see an error from their server until the next day
@@ -88,8 +88,8 @@ export default function IpLocationPage() {
               { href: '/address-finder', t: 'Address Finder' },
               { href: '/distance-calculator', t: 'Distance Calculator' },
             ].map((t) => (
-              <Link key={t.href} href={t.href} className="glass rounded-2xl p-4 hover:ring-electric-400/40 ring-1 ring-white/10 transition no-underline">
-                <h3 className="font-display text-base font-bold text-slate-100 hover:text-electric-400 transition">{t.t}</h3>
+              <Link key={t.href} href={t.href} className="glass rounded-2xl p-4 hover:ring-accent/40 ring-1 ring-line transition no-underline">
+                <h3 className="font-display text-base font-bold text-fg hover:text-accent transition">{t.t}</h3>
               </Link>
             ))}
           </div>

@@ -35,10 +35,10 @@ export default function ManualInput({ pos, onApply }) {
       className="glass rounded-2xl p-4 mt-4 overflow-hidden"
       aria-label="Manual coordinate input"
     >
-      <div className="text-xs uppercase tracking-[0.16em] text-electric-400 font-semibold mb-3">Manual coordinates</div>
+      <div className="text-xs uppercase tracking-[0.16em] text-accent font-semibold mb-3">Manual coordinates</div>
       <div className="grid grid-cols-2 gap-3">
         <label className="block">
-          <span className="text-xs text-slate-400">Latitude</span>
+          <span className="text-xs text-fg-subtle">Latitude</span>
           <input
             value={lat}
             onChange={(e) => setLat(e.target.value)}
@@ -49,7 +49,7 @@ export default function ManualInput({ pos, onApply }) {
           />
         </label>
         <label className="block">
-          <span className="text-xs text-slate-400">Longitude</span>
+          <span className="text-xs text-fg-subtle">Longitude</span>
           <input
             value={lon}
             onChange={(e) => setLon(e.target.value)}

@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 
 const MapView = dynamic(() => import('../components/MapView.jsx'), {
   ssr: false,
-  loading: () => <div className="w-full h-full bg-white/5 animate-pulse rounded-2xl" />,
+  loading: () => <div className="w-full h-full bg-tint/5 animate-pulse rounded-2xl" />,
 });
 
 export default function Tool() {
@@ -65,8 +65,8 @@ export default function Tool() {
       </div>
 
       {status.type === 'loading' && (
-        <div className="bg-electric-500/10 border border-electric-400/30 text-electric-200 rounded-lg p-3 text-sm flex items-center gap-2">
-          <span className="w-4 h-4 rounded-full border-2 border-electric-300 border-t-transparent animate-spin" />
+        <div className="bg-accent/10 border border-accent/40 text-accent rounded-lg p-3 text-sm flex items-center gap-2">
+          <span className="w-4 h-4 rounded-full border-2 border-accent border-t-transparent animate-spin" />
           {status.msg}
         </div>
       )}
@@ -79,24 +79,24 @@ export default function Tool() {
 
       {pos && (
         <>
-          <div className="bg-electric-500/10 border border-electric-400/30 rounded-lg p-4 mt-4 text-center">
-            <div className="font-mono text-xl font-bold text-slate-100">
+          <div className="bg-accent/10 border border-accent/40 rounded-lg p-4 mt-4 text-center">
+            <div className="font-mono text-xl font-bold text-fg">
               {pos[0].toFixed(6)}, {pos[1].toFixed(6)}
             </div>
-            <div className="text-xs text-slate-400 mt-1 uppercase tracking-wider">Decimal degrees</div>
+            <div className="text-xs text-fg-subtle mt-1 uppercase tracking-wider">Decimal degrees</div>
           </div>
 
           <dl className="grid sm:grid-cols-3 gap-3 mt-4 text-sm">
-            <div className="bg-white/5 border border-white/10 rounded-lg p-3">
-              <dt className="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">Accuracy</dt>
+            <div className="bg-tint/5 border border-line rounded-lg p-3">
+              <dt className="text-[10px] uppercase tracking-wider text-fg-subtle font-semibold">Accuracy</dt>
               <dd className="font-mono mt-1">{Math.round(meta.accuracy)} m</dd>
             </div>
-            <div className="bg-white/5 border border-white/10 rounded-lg p-3">
-              <dt className="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">Altitude</dt>
+            <div className="bg-tint/5 border border-line rounded-lg p-3">
+              <dt className="text-[10px] uppercase tracking-wider text-fg-subtle font-semibold">Altitude</dt>
               <dd className="font-mono mt-1">{meta.altitude != null ? `${Math.round(meta.altitude)} m` : '—'}</dd>
             </div>
-            <div className="bg-white/5 border border-white/10 rounded-lg p-3">
-              <dt className="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">Location</dt>
+            <div className="bg-tint/5 border border-line rounded-lg p-3">
+              <dt className="text-[10px] uppercase tracking-wider text-fg-subtle font-semibold">Location</dt>
               <dd className="mt-1 text-sm">{city}{country !== '—' ? `, ${country}` : ''}</dd>
             </div>
           </dl>
@@ -107,14 +107,14 @@ export default function Tool() {
             <a href={`https://www.openstreetmap.org/?mlat=${pos[0]}&mlon=${pos[1]}#map=15/${pos[0]}/${pos[1]}`} target="_blank" rel="noopener" className="btn-ghost">OpenStreetMap</a>
           </div>
 
-          <div className="h-[380px] rounded-2xl overflow-hidden ring-1 ring-white/10 mt-4">
+          <div className="h-[380px] rounded-2xl overflow-hidden ring-1 ring-line mt-4">
             <MapView pos={pos} />
           </div>
         </>
       )}
 
       {!pos && status.type === 'idle' && (
-        <p className="text-sm text-slate-400 mt-2">Click the button above to start.</p>
+        <p className="text-sm text-fg-subtle mt-2">Click the button above to start.</p>
       )}
     </section>
   );

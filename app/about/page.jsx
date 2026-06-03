@@ -10,7 +10,7 @@ export default function About() {
   return (
     <main role="main" className="max-w-3xl mx-auto px-5 py-12 prose-invert">
       <h1 className="font-display text-4xl font-extrabold tracking-tight">About GetMyLocations</h1>
-      <p className="mt-4 text-slate-300/90 leading-relaxed">
+      <p className="mt-4 text-fg-muted leading-relaxed">
         GetMyLocations is a small independent site that does one thing: it reads
         your GPS coordinates straight from the browser and turns them into a
         place name you can copy, share, or feed into a map. The site also hosts
@@ -20,7 +20,7 @@ export default function About() {
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-10">Why this site exists</h2>
-      <p className="mt-3 text-slate-300/90 leading-relaxed">
+      <p className="mt-3 text-fg-muted leading-relaxed">
         Most &ldquo;find my location&rdquo; pages on the web are wrappers around an
         ad-loaded IP lookup, which is why they place you in the wrong city
         about half the time. The browser already has a high-accuracy geolocation
@@ -30,20 +30,20 @@ export default function About() {
         server we run. The reverse-geocoding lookup that turns the coordinate
         into a city name goes to a third party (BigDataCloud or OpenStreetMap
         Nominatim) and the response stays in the tab. The{' '}
-        <Link href="/privacy-policy" className="text-electric-400 hover:underline">Privacy Policy</Link>{' '}
+        <Link href="/privacy-policy" className="text-accent hover:underline">Privacy Policy</Link>{' '}
         lists every third party in plain language.
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-10">About Ahmed Anwar</h2>
-      <p className="mt-3 text-slate-300/90 leading-relaxed">
-        I&rsquo;m <strong className="text-slate-100">Ahmed Anwar</strong>, an
+      <p className="mt-3 text-fg-muted leading-relaxed">
+        I&rsquo;m <strong className="text-fg">Ahmed Anwar</strong>, an
         independent web developer based in Karachi, Pakistan. I&rsquo;ve been
         building production web apps for roughly five years, mostly around
         React, Next.js, and the kind of mapping tooling this site is built on
         &mdash; Leaflet, OpenStreetMap tiles, browser geolocation, and the
         free-tier IP-geolocation APIs you see referenced throughout the guides.
       </p>
-      <p className="mt-3 text-slate-300/90 leading-relaxed">
+      <p className="mt-3 text-fg-muted leading-relaxed">
         The reason I&rsquo;m comfortable writing about this stuff is that I
         ship it. Every tool on this site &mdash; the my-location reader, the
         coordinates converter with live UTM math, the distance calculator using
@@ -54,7 +54,7 @@ export default function About() {
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-10">How the writing is done</h2>
-      <p className="mt-3 text-slate-300/90 leading-relaxed">
+      <p className="mt-3 text-fg-muted leading-relaxed">
         Honest disclosure: the long-form articles and guides on this site are
         researched and drafted with the help of an AI writing assistant, then
         edited and fact-checked by me before they go live. I add the specific
@@ -66,8 +66,8 @@ export default function About() {
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-10">Contact</h2>
-      <p className="mt-3 text-slate-300/90 leading-relaxed">
-        Email <a className="text-electric-400 hover:underline" href="mailto:hello@getmylocations.com">hello@getmylocations.com</a> for
+      <p className="mt-3 text-fg-muted leading-relaxed">
+        Email <a className="text-accent hover:underline" href="mailto:hello@getmylocations.com">hello@getmylocations.com</a> for
         questions, feedback, corrections, or partnership ideas. I read everything;
         I reply to most things within a day or two.
       </p>

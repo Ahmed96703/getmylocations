@@ -15,7 +15,7 @@ import { POSTS } from './posts/manifest.js';
 // Leaflet must be loaded client-only (uses window/document at module level)
 const MapView = dynamic(() => import('./components/MapView.jsx'), {
   ssr: false,
-  loading: () => <div className="w-full h-full bg-white/5 animate-pulse" aria-label="Loading map" />,
+  loading: () => <div className="w-full h-full bg-tint/5 animate-pulse" aria-label="Loading map" />,
 });
 
 const FAQS = [
@@ -128,7 +128,7 @@ export default function HomeClient() {
           <li
             key={f.t}
             title={f.d}
-            className="inline-flex items-center px-3 py-1.5 rounded-full bg-white/5 ring-1 ring-white/10 text-slate-200"
+            className="inline-flex items-center px-3 py-1.5 rounded-full bg-tint/5 ring-1 ring-line text-fg-muted"
           >
             <span className="font-medium">{f.t}</span>
           </li>
@@ -157,11 +157,11 @@ export default function HomeClient() {
             <div
               role="region"
               aria-label="Interactive map"
-              className="relative rounded-3xl overflow-hidden ring-1 ring-white/10 shadow-2xl shadow-black/40 h-[480px] sm:h-[560px] glass"
+              className="relative rounded-3xl overflow-hidden ring-1 ring-line shadow-2xl shadow-black/40 h-[480px] sm:h-[560px] glass"
             >
               {loading && !pos && mode === 'auto' && (
                 <div className="absolute inset-0 grid place-items-center" aria-busy="true">
-                  <div className="flex flex-col items-center gap-3 text-slate-300">
+                  <div className="flex flex-col items-center gap-3 text-fg-muted">
                     <div className="w-10 h-10 rounded-full border-2 border-electric-400 border-t-transparent animate-spin" />
                     <div className="text-sm">Locating you…</div>
                   </div>
@@ -214,9 +214,9 @@ export default function HomeClient() {
         <div className="flex items-end justify-between gap-4 flex-wrap">
           <div>
             <h2 id="more-tools-h" className="font-display text-2xl font-bold">All location tools</h2>
-            <p className="text-sm text-slate-400 mt-1">Eight free, browser-based tools for everything location, GPS, and IP related. Open any one — no signup, no app.</p>
+            <p className="text-sm text-fg-subtle mt-1">Eight free, browser-based tools for everything location, GPS, and IP related. Open any one — no signup, no app.</p>
           </div>
-          <span className="text-xs text-slate-400 uppercase tracking-wider">8 tools</span>
+          <span className="text-xs text-fg-subtle uppercase tracking-wider">8 tools</span>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-5">
@@ -224,13 +224,13 @@ export default function HomeClient() {
             <a
               key={t.href}
               href={t.href}
-              className="glass rounded-2xl p-5 flex flex-col hover:ring-electric-400/40 ring-1 ring-white/10 transition group no-underline"
+              className="glass rounded-2xl p-5 flex flex-col hover:ring-accent/40 ring-1 ring-line transition group no-underline"
             >
               <div className="flex items-center justify-between">
-                <h3 className="font-display text-base font-bold text-slate-100 group-hover:text-electric-400 transition">{t.t}</h3>
-                <span className="text-[10px] uppercase tracking-wider text-electric-400 font-semibold opacity-0 group-hover:opacity-100 transition">Open →</span>
+                <h3 className="font-display text-base font-bold text-fg group-hover:text-accent transition">{t.t}</h3>
+                <span className="text-[10px] uppercase tracking-wider text-accent font-semibold opacity-0 group-hover:opacity-100 transition">Open →</span>
               </div>
-              <p className="text-sm text-slate-400 mt-2 flex-1 leading-snug">{t.d}</p>
+              <p className="text-sm text-fg-subtle mt-2 flex-1 leading-snug">{t.d}</p>
             </a>
           ))}
         </div>
@@ -245,9 +245,9 @@ export default function HomeClient() {
             { t: 'Explore more', d: 'Visit the Tools menu for a coordinates converter, distance calculator, IP lookup, and more.' },
           ].map((s, i) => (
             <div key={s.t} className="glass rounded-2xl p-5">
-              <div className="w-7 h-7 rounded-lg bg-electric-500 text-ink-950 text-sm font-bold grid place-items-center" aria-hidden="true">{i + 1}</div>
+              <div className="w-7 h-7 rounded-lg bg-electric-500 text-accent-fg text-sm font-bold grid place-items-center" aria-hidden="true">{i + 1}</div>
               <div className="mt-3 font-semibold">{s.t}</div>
-              <p className="text-sm text-slate-300/90 mt-1">{s.d}</p>
+              <p className="text-sm text-fg-muted mt-1">{s.d}</p>
             </div>
           ))}
         </div>
@@ -259,9 +259,9 @@ export default function HomeClient() {
         <div className="flex items-end justify-between gap-4 flex-wrap">
           <div>
             <h2 id="featured-posts" className="font-display text-2xl font-bold">From the blog</h2>
-            <p className="text-sm text-slate-400 mt-1">Guides on GPS, geolocation, and finding your way online.</p>
+            <p className="text-sm text-fg-subtle mt-1">Guides on GPS, geolocation, and finding your way online.</p>
           </div>
-          <Link href="/blog" className="text-sm font-semibold text-electric-400 hover:text-electric-300 transition">
+          <Link href="/blog" className="text-sm font-semibold text-accent hover:text-accent transition">
             View all posts →
           </Link>
         </div>
@@ -271,16 +271,16 @@ export default function HomeClient() {
             <li key={p.slug}>
               <Link
                 href={`/blog/${p.slug}`}
-                className="block h-full glass rounded-2xl p-5 ring-1 ring-white/10 hover:ring-electric-400/40 transition group"
+                className="block h-full glass rounded-2xl p-5 ring-1 ring-line hover:ring-accent/40 transition group"
               >
-                <time className="text-[11px] text-slate-400 uppercase tracking-wider">
+                <time className="text-[11px] text-fg-subtle uppercase tracking-wider">
                   {new Date(p.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
                   <span className="mx-1.5" aria-hidden="true">·</span>
                   {p.readingTime} min read
                 </time>
-                <h3 className="font-display text-base font-bold mt-1.5 leading-snug group-hover:text-electric-400 transition line-clamp-2">{p.title}</h3>
-                <p className="text-sm text-slate-300/80 mt-2 line-clamp-3">{p.excerpt}</p>
-                <span className="inline-block mt-3 text-xs text-electric-400 font-semibold uppercase tracking-wider">Read →</span>
+                <h3 className="font-display text-base font-bold mt-1.5 leading-snug group-hover:text-accent transition line-clamp-2">{p.title}</h3>
+                <p className="text-sm text-fg-muted/80 mt-2 line-clamp-3">{p.excerpt}</p>
+                <span className="inline-block mt-3 text-xs text-accent font-semibold uppercase tracking-wider">Read →</span>
               </Link>
             </li>
           ))}
@@ -289,14 +289,14 @@ export default function HomeClient() {
 
       <section aria-labelledby="faq" className="mt-14">
         <h2 id="faq" className="font-display text-2xl font-bold">Frequently asked questions</h2>
-        <div className="glass mt-4 rounded-2xl divide-y divide-white/5">
+        <div className="glass mt-4 rounded-2xl divide-y divide-line-subtle">
           {FAQS.map((f) => (
             <details key={f.q} className="group p-5 [&_summary::-webkit-details-marker]:hidden">
               <summary className="flex items-center justify-between cursor-pointer list-none font-semibold">
                 {f.q}
-                <span className="text-electric-400 group-open:rotate-45 transition-transform" aria-hidden="true">+</span>
+                <span className="text-accent group-open:rotate-45 transition-transform" aria-hidden="true">+</span>
               </summary>
-              <p className="mt-2 text-slate-300/90 text-sm leading-relaxed">{f.a}</p>
+              <p className="mt-2 text-fg-muted text-sm leading-relaxed">{f.a}</p>
             </details>
           ))}
         </div>

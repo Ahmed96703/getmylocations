@@ -21,12 +21,12 @@ export default function StreetViewPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }} />
       <main className="max-w-5xl mx-auto px-5 py-10">
         <section className="mb-8">
-          <p className="text-[11px] uppercase tracking-[0.18em] text-electric-400 font-semibold mb-2">Free Tool · Powered by Google Street View</p>
+          <p className="text-[11px] uppercase tracking-[0.18em] text-accent font-semibold mb-2">Free Tool · Powered by Google Street View</p>
           <h1 className="font-display text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.05]">
-            Street <span className="text-electric-400">View</span> — see any address in Google Street View
+            Street <span className="text-accent">View</span> — see any address in Google Street View
           </h1>
-          <p className="text-lg text-slate-300/90 mt-4 max-w-3xl">
-            Type any address, landmark, or GPS coordinate pair, and instantly walk down the street in <strong className="text-slate-100">Google Street View</strong>. No signup, no app to install.
+          <p className="text-lg text-fg-muted mt-4 max-w-3xl">
+            Type any address, landmark, or GPS coordinate pair, and instantly walk down the street in <strong className="text-fg">Google Street View</strong>. No signup, no app to install.
           </p>
         </section>
 
@@ -36,7 +36,7 @@ export default function StreetViewPage() {
 
         <section className="mt-10">
           <h2 className="font-display text-2xl font-bold">How Street View imagery is captured</h2>
-          <p className="mt-3 text-slate-300/90 leading-relaxed">
+          <p className="mt-3 text-fg-muted leading-relaxed">
             Most of the imagery you see comes from cars driving the public road
             network with a rooftop rig of about nine cameras shooting overlapping
             panoramas every few meters. Google&rsquo;s fleet has covered roughly five
@@ -51,7 +51,7 @@ export default function StreetViewPage() {
 
         <section className="mt-10">
           <h2 className="font-display text-2xl font-bold">Coverage and limitations</h2>
-          <p className="mt-3 text-slate-300/90 leading-relaxed">
+          <p className="mt-3 text-fg-muted leading-relaxed">
             Coverage is uneven and that is a feature of the service, not a bug.
             Most public roads in North America, western Europe, Japan, South Korea,
             and Australia have current imagery. Many cities in Pakistan, India,
@@ -66,7 +66,7 @@ export default function StreetViewPage() {
 
         <section className="mt-10">
           <h2 className="font-display text-2xl font-bold">How old is what you are looking at?</h2>
-          <p className="mt-3 text-slate-300/90 leading-relaxed">
+          <p className="mt-3 text-fg-muted leading-relaxed">
             Every Street View image is dated. Look at the bottom-left corner of
             the embed once it loads — the capture month and year are shown there.
             Busy city centres get refreshed every two or three years; smaller
@@ -79,7 +79,7 @@ export default function StreetViewPage() {
 
         <section className="mt-10">
           <h2 className="font-display text-2xl font-bold">Privacy and what you can ask Google to blur</h2>
-          <p className="mt-3 text-slate-300/90 leading-relaxed">
+          <p className="mt-3 text-fg-muted leading-relaxed">
             Faces and licence plates are automatically blurred before any panorama
             is published. The blur is applied at upload time and is not reversible
             from the viewer side. If you find yourself or your home in the
@@ -94,8 +94,8 @@ export default function StreetViewPage() {
           <h2 className="font-display text-2xl font-bold">Try these next</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-5">
             {[{ href: '/my-location', t: 'My Location' }, { href: '/driving-directions', t: 'Driving Directions' }, { href: '/address-finder', t: 'Address Finder' }, { href: '/gps-coordinates', t: 'GPS Coordinates' }].map((t) => (
-              <Link key={t.href} href={t.href} className="glass rounded-2xl p-4 hover:ring-electric-400/40 ring-1 ring-white/10 transition no-underline">
-                <h3 className="font-display text-base font-bold text-slate-100 hover:text-electric-400 transition">{t.t}</h3>
+              <Link key={t.href} href={t.href} className="glass rounded-2xl p-4 hover:ring-accent/40 ring-1 ring-line transition no-underline">
+                <h3 className="font-display text-base font-bold text-fg hover:text-accent transition">{t.t}</h3>
               </Link>
             ))}
           </div>

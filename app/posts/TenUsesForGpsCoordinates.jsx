@@ -3,7 +3,7 @@ import Link from 'next/link';
 export default function TenUsesForGpsCoordinates() {
   return (
     <article className="prose-invert">
-      <p className="text-lg text-slate-300/90 leading-relaxed">
+      <p className="text-lg text-fg-muted leading-relaxed">
         I have a note on my phone called &ldquo;coords&rdquo; with about
         thirty latitude&ndash;longitude pairs in it. The dentist&rsquo;s
         side entrance because the front door is impossible to find at
@@ -16,7 +16,7 @@ export default function TenUsesForGpsCoordinates() {
         numbers.
       </p>
 
-      <p className="mt-4 text-slate-300/90 leading-relaxed">
+      <p className="mt-4 text-fg-muted leading-relaxed">
         Most people only think about GPS coordinates when their
         navigation app refuses to find an address. Here are ten of the
         things I&rsquo;ve actually used coordinates for &mdash; or
@@ -24,7 +24,7 @@ export default function TenUsesForGpsCoordinates() {
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-12">1. Marking a place that has no address</h2>
-      <p className="mt-3 text-slate-300/90 leading-relaxed">
+      <p className="mt-3 text-fg-muted leading-relaxed">
         A favourite fishing hole. A tent site in the middle of a forest.
         The exact spot where a trail crosses a stream. The car park for
         a beach without a town. None of these have postal addresses, but
@@ -34,7 +34,7 @@ export default function TenUsesForGpsCoordinates() {
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-12">2. Sharing your location in an emergency</h2>
-      <p className="mt-3 text-slate-300/90 leading-relaxed">
+      <p className="mt-3 text-fg-muted leading-relaxed">
         If you&rsquo;re lost and 911/112 asks where you are, a
         six-decimal coordinate is the most precise answer you can give
         &mdash; accurate to within a meter or two. It works even when
@@ -42,11 +42,11 @@ export default function TenUsesForGpsCoordinates() {
         smartphones do this automatically via Advanced Mobile Location,
         but knowing how to read and say your own coordinates is the
         backup you want when AML doesn&rsquo;t fire. Full walkthrough:
-        {' '}<Link href="/blog/gps-coordinates-emergencies-aml-guide" className="text-electric-400 hover:underline">GPS coordinates in emergencies</Link>.
+        {' '}<Link href="/blog/gps-coordinates-emergencies-aml-guide" className="text-accent hover:underline">GPS coordinates in emergencies</Link>.
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-12">3. Geotagging photos that lost their EXIF</h2>
-      <p className="mt-3 text-slate-300/90 leading-relaxed">
+      <p className="mt-3 text-fg-muted leading-relaxed">
         Instagram, WhatsApp, and most chat apps strip the EXIF metadata
         (including embedded GPS) from photos before posting. If you want
         to remember where a shot was taken, save the coordinates in a
@@ -57,10 +57,10 @@ export default function TenUsesForGpsCoordinates() {
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-12">4. Measuring exact distance between two places</h2>
-      <p className="mt-3 text-slate-300/90 leading-relaxed">
+      <p className="mt-3 text-fg-muted leading-relaxed">
         Need the straight-line distance between two coordinates &mdash;
         say, your home and a planned holiday rental? Plug them into the
-        {' '}<Link href="/distance-calculator" className="text-electric-400 hover:underline">distance calculator</Link>{' '}
+        {' '}<Link href="/distance-calculator" className="text-accent hover:underline">distance calculator</Link>{' '}
         and the Haversine formula returns the great-circle distance.
         This is how airlines calculate flight distances and how
         real-estate apps tell you a property is &ldquo;4.2 km from the
@@ -68,7 +68,7 @@ export default function TenUsesForGpsCoordinates() {
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-12">5. Building a geofence</h2>
-      <p className="mt-3 text-slate-300/90 leading-relaxed">
+      <p className="mt-3 text-fg-muted leading-relaxed">
         A geofence is an invisible perimeter defined by a centre
         coordinate and a radius. Phone automations (iOS Shortcuts,
         Android Tasker, Home Assistant) trigger actions when you cross
@@ -79,7 +79,7 @@ export default function TenUsesForGpsCoordinates() {
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-12">6. Proving (or disproving) a delivery</h2>
-      <p className="mt-3 text-slate-300/90 leading-relaxed">
+      <p className="mt-3 text-fg-muted leading-relaxed">
         Some delivery apps share the courier&rsquo;s drop-off coordinates
         as part of the confirmation. If a driver claims
         &ldquo;delivered&rdquo; but no package arrives, comparing their
@@ -90,7 +90,7 @@ export default function TenUsesForGpsCoordinates() {
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-12">7. Geocaching</h2>
-      <p className="mt-3 text-slate-300/90 leading-relaxed">
+      <p className="mt-3 text-fg-muted leading-relaxed">
         Over three million caches are hidden around the world, each
         pinpointed by a precise GPS coordinate. Players use the
         coordinate alone &mdash; no other directions, no street address
@@ -101,9 +101,9 @@ export default function TenUsesForGpsCoordinates() {
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-12">8. Sanity-checking your VPN</h2>
-      <p className="mt-3 text-slate-300/90 leading-relaxed">
+      <p className="mt-3 text-fg-muted leading-relaxed">
         Connect to a VPN that claims to be in Tokyo, then open
-        {' '}<Link href="/ip-location" className="text-electric-400 hover:underline">IP Location</Link>.
+        {' '}<Link href="/ip-location" className="text-accent hover:underline">IP Location</Link>.
         If it places you near Tokyo, the IP-based signal is leaking
         properly. If your real city shows up instead, the VPN has a
         DNS or WebRTC leak somewhere and you should know about it
@@ -112,7 +112,7 @@ export default function TenUsesForGpsCoordinates() {
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-12">9. Plotting weather stations and microclimates</h2>
-      <p className="mt-3 text-slate-300/90 leading-relaxed">
+      <p className="mt-3 text-fg-muted leading-relaxed">
         Personal weather stations from Davis, Tempest, and Ambient ask
         for exact GPS coordinates during setup so the public weather
         network knows where each reading came from. Hyperlocal
@@ -124,7 +124,7 @@ export default function TenUsesForGpsCoordinates() {
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-12">10. Precision agriculture</h2>
-      <p className="mt-3 text-slate-300/90 leading-relaxed">
+      <p className="mt-3 text-fg-muted leading-relaxed">
         Modern tractors use centimetre-accurate GPS to drive themselves
         along perfectly parallel rows, drop fertiliser on the exact
         square meter where soil samples flagged a deficiency, and stop
@@ -136,7 +136,7 @@ export default function TenUsesForGpsCoordinates() {
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-12">Bonus: a privacy-friendly way to share a property listing</h2>
-      <p className="mt-3 text-slate-300/90 leading-relaxed">
+      <p className="mt-3 text-fg-muted leading-relaxed">
         Selling a property privately? Share the listing photo with the
         coordinate pasted underneath. The recipient can click straight
         into Maps or Street View to evaluate the neighbourhood &mdash;
@@ -148,10 +148,10 @@ export default function TenUsesForGpsCoordinates() {
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-12">How to grab a coordinate in two seconds</h2>
-      <p className="mt-3 text-slate-300/90 leading-relaxed">
+      <p className="mt-3 text-fg-muted leading-relaxed">
         Whenever you need a coordinate for any of the above &mdash;
         open
-        {' '}<Link href="/" className="text-electric-400 hover:underline font-semibold">GetMyLocations</Link>,
+        {' '}<Link href="/" className="text-accent hover:underline font-semibold">GetMyLocations</Link>,
         approve the location prompt, copy the six-decimal lat/lon from
         the dashboard. Paste it into your notes app and it&rsquo;ll
         still work in 2036.

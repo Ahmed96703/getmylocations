@@ -108,22 +108,22 @@ export default function Tool() {
       </div>
 
       {/* DD */}
-      <div className="bg-white/5 border border-white/10 rounded-lg p-4 mb-3">
-        <div className="text-[11px] uppercase tracking-wider text-electric-400 font-semibold mb-2">① Decimal Degrees (DD)</div>
+      <div className="bg-tint/5 border border-line rounded-lg p-4 mb-3">
+        <div className="text-[11px] uppercase tracking-wider text-accent font-semibold mb-2">① Decimal Degrees (DD)</div>
         <div className="grid grid-cols-2 gap-2">
           <input className="field font-mono" value={latDD} onChange={(e) => setLatDD(e.target.value)} placeholder="Latitude" />
           <input className="field font-mono" value={lonDD} onChange={(e) => setLonDD(e.target.value)} placeholder="Longitude" />
         </div>
-        <div className="bg-electric-500/10 border border-electric-400/30 rounded-md p-2 mt-2 flex justify-between items-center">
-          <span className="font-mono text-sm text-slate-100">{latDD}, {lonDD}</span>
-          <button onClick={() => copy(`${latDD}, ${lonDD}`)} className="text-xs text-electric-400 hover:underline">Copy</button>
+        <div className="bg-accent/10 border border-accent/40 rounded-md p-2 mt-2 flex justify-between items-center">
+          <span className="font-mono text-sm text-fg">{latDD}, {lonDD}</span>
+          <button onClick={() => copy(`${latDD}, ${lonDD}`)} className="text-xs text-accent hover:underline">Copy</button>
         </div>
       </div>
 
       {/* DMS */}
-      <div className="bg-white/5 border border-white/10 rounded-lg p-4 mb-3">
-        <div className="text-[11px] uppercase tracking-wider text-electric-400 font-semibold mb-2">② DMS — Degrees Minutes Seconds</div>
-        <div className="text-[10px] text-slate-400 mb-1">Latitude</div>
+      <div className="bg-tint/5 border border-line rounded-lg p-4 mb-3">
+        <div className="text-[11px] uppercase tracking-wider text-accent font-semibold mb-2">② DMS — Degrees Minutes Seconds</div>
+        <div className="text-[10px] text-fg-subtle mb-1">Latitude</div>
         <div className="grid grid-cols-[1fr_1fr_1fr_70px] gap-1 mb-2">
           <input className="field font-mono text-center" value={dms.latD} onChange={(e) => setDms({ ...dms, latD: e.target.value })} onBlur={syncFromDms} placeholder="deg" />
           <input className="field font-mono text-center" value={dms.latM} onChange={(e) => setDms({ ...dms, latM: e.target.value })} onBlur={syncFromDms} placeholder="min" />
@@ -132,7 +132,7 @@ export default function Tool() {
             <option>N</option><option>S</option>
           </select>
         </div>
-        <div className="text-[10px] text-slate-400 mb-1">Longitude</div>
+        <div className="text-[10px] text-fg-subtle mb-1">Longitude</div>
         <div className="grid grid-cols-[1fr_1fr_1fr_70px] gap-1">
           <input className="field font-mono text-center" value={dms.lonD} onChange={(e) => setDms({ ...dms, lonD: e.target.value })} onBlur={syncFromDms} placeholder="deg" />
           <input className="field font-mono text-center" value={dms.lonM} onChange={(e) => setDms({ ...dms, lonM: e.target.value })} onBlur={syncFromDms} placeholder="min" />
@@ -144,8 +144,8 @@ export default function Tool() {
       </div>
 
       {/* DDM */}
-      <div className="bg-white/5 border border-white/10 rounded-lg p-4 mb-3">
-        <div className="text-[11px] uppercase tracking-wider text-electric-400 font-semibold mb-2">③ DDM — Degrees Decimal Minutes</div>
+      <div className="bg-tint/5 border border-line rounded-lg p-4 mb-3">
+        <div className="text-[11px] uppercase tracking-wider text-accent font-semibold mb-2">③ DDM — Degrees Decimal Minutes</div>
         <div className="grid grid-cols-[1fr_2fr_70px] gap-1 mb-2">
           <input className="field font-mono text-center" value={ddm.latD} onChange={(e) => setDdm({ ...ddm, latD: e.target.value })} onBlur={syncFromDdm} placeholder="lat deg" />
           <input className="field font-mono text-center" value={ddm.latM} onChange={(e) => setDdm({ ...ddm, latM: e.target.value })} onBlur={syncFromDdm} placeholder="decimal min" />
@@ -164,17 +164,17 @@ export default function Tool() {
 
       {/* UTM */}
       {utm && (
-        <div className="bg-white/5 border border-white/10 rounded-lg p-4">
-          <div className="text-[11px] uppercase tracking-wider text-electric-400 font-semibold mb-3">④ UTM</div>
+        <div className="bg-tint/5 border border-line rounded-lg p-4">
+          <div className="text-[11px] uppercase tracking-wider text-accent font-semibold mb-3">④ UTM</div>
           <div className="grid grid-cols-2 gap-3 text-sm">
-            <div><span className="text-slate-400 text-xs">Zone</span><div className="font-mono">{utm.zone}</div></div>
-            <div><span className="text-slate-400 text-xs">Band</span><div className="font-mono">{utm.band}</div></div>
-            <div><span className="text-slate-400 text-xs">Easting (m)</span><div className="font-mono">{utm.easting.toFixed(2)}</div></div>
-            <div><span className="text-slate-400 text-xs">Northing (m)</span><div className="font-mono">{utm.northing.toFixed(2)}</div></div>
+            <div><span className="text-fg-subtle text-xs">Zone</span><div className="font-mono">{utm.zone}</div></div>
+            <div><span className="text-fg-subtle text-xs">Band</span><div className="font-mono">{utm.band}</div></div>
+            <div><span className="text-fg-subtle text-xs">Easting (m)</span><div className="font-mono">{utm.easting.toFixed(2)}</div></div>
+            <div><span className="text-fg-subtle text-xs">Northing (m)</span><div className="font-mono">{utm.northing.toFixed(2)}</div></div>
           </div>
-          <div className="bg-electric-500/10 border border-electric-400/30 rounded-md p-2 mt-3 flex justify-between items-center">
-            <span className="font-mono text-sm text-slate-100">{utm.zone}{utm.band} {Math.round(utm.easting)} {Math.round(utm.northing)}</span>
-            <button onClick={() => copy(`${utm.zone}${utm.band} ${Math.round(utm.easting)} ${Math.round(utm.northing)}`)} className="text-xs text-electric-400 hover:underline">Copy</button>
+          <div className="bg-accent/10 border border-accent/40 rounded-md p-2 mt-3 flex justify-between items-center">
+            <span className="font-mono text-sm text-fg">{utm.zone}{utm.band} {Math.round(utm.easting)} {Math.round(utm.northing)}</span>
+            <button onClick={() => copy(`${utm.zone}${utm.band} ${Math.round(utm.easting)} ${Math.round(utm.northing)}`)} className="text-xs text-accent hover:underline">Copy</button>
           </div>
         </div>
       )}

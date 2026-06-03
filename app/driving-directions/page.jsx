@@ -21,12 +21,12 @@ export default function DrivingDirectionsPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }} />
       <main className="max-w-5xl mx-auto px-5 py-10">
         <section className="mb-8">
-          <p className="text-[11px] uppercase tracking-[0.18em] text-electric-400 font-semibold mb-2">Free Tool · Powered by Google Maps</p>
+          <p className="text-[11px] uppercase tracking-[0.18em] text-accent font-semibold mb-2">Free Tool · Powered by Google Maps</p>
           <h1 className="font-display text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.05]">
-            Driving <span className="text-electric-400">Directions</span> — free route planner
+            Driving <span className="text-accent">Directions</span> — free route planner
           </h1>
-          <p className="text-lg text-slate-300/90 mt-4 max-w-3xl">
-            Plan a <strong className="text-slate-100">driving, walking, bicycling, or public-transit</strong> route between any two addresses or GPS coordinates.
+          <p className="text-lg text-fg-muted mt-4 max-w-3xl">
+            Plan a <strong className="text-fg">driving, walking, bicycling, or public-transit</strong> route between any two addresses or GPS coordinates.
           </p>
         </section>
 
@@ -36,7 +36,7 @@ export default function DrivingDirectionsPage() {
 
         <section className="mt-10">
           <h2 className="font-display text-2xl font-bold">Why the suggested route is not always the shortest</h2>
-          <p className="mt-3 text-slate-300/90 leading-relaxed">
+          <p className="mt-3 text-fg-muted leading-relaxed">
             Routing engines do not optimise for distance. They optimise for time.
             Two routes between the same pair of points can differ wildly because
             the longer one might be a motorway with steady traffic while the
@@ -46,7 +46,7 @@ export default function DrivingDirectionsPage() {
             real-time traffic from millions of phones, and picks whichever
             combination produces the lowest predicted arrival time.
           </p>
-          <p className="mt-3 text-slate-300/90 leading-relaxed">
+          <p className="mt-3 text-fg-muted leading-relaxed">
             This is also why the route can change between two attempts a few
             minutes apart. A crash on the motorway gets reported, the predicted
             speed for that segment drops, and the engine reroutes everyone through
@@ -56,7 +56,7 @@ export default function DrivingDirectionsPage() {
 
         <section className="mt-10">
           <h2 className="font-display text-2xl font-bold">Walking, biking, and transit use different graphs</h2>
-          <p className="mt-3 text-slate-300/90 leading-relaxed">
+          <p className="mt-3 text-fg-muted leading-relaxed">
             Picking a different travel mode is not just a slower version of the
             same route. Walking directions include pedestrian-only streets,
             staircases, and pedestrian crossings that a driving route cannot use.
@@ -66,7 +66,7 @@ export default function DrivingDirectionsPage() {
             minutes, and walk three minutes at the other end, with the timings
             tied to the next scheduled departure.
           </p>
-          <p className="mt-3 text-slate-300/90 leading-relaxed">
+          <p className="mt-3 text-fg-muted leading-relaxed">
             Transit coverage is the unevenest of the four. London, Tokyo, and New
             York have minute-by-minute schedules; many smaller cities only have
             major bus and metro lines mapped, and rural areas often have no
@@ -76,7 +76,7 @@ export default function DrivingDirectionsPage() {
 
         <section className="mt-10">
           <h2 className="font-display text-2xl font-bold">Why two apps quote different arrival times</h2>
-          <p className="mt-3 text-slate-300/90 leading-relaxed">
+          <p className="mt-3 text-fg-muted leading-relaxed">
             Open Google Maps, Apple Maps, and Waze at the same time with the same
             destination, and you will often see three different ETAs. Each app
             has its own traffic data set, its own preferences (some default to
@@ -89,7 +89,7 @@ export default function DrivingDirectionsPage() {
 
         <section className="mt-10">
           <h2 className="font-display text-2xl font-bold">When the embed gives up</h2>
-          <p className="mt-3 text-slate-300/90 leading-relaxed">
+          <p className="mt-3 text-fg-muted leading-relaxed">
             The Google Maps embed used here is a lightweight version of the full
             Maps app. It handles one origin and one destination cleanly, and it
             shows traffic-adjusted ETAs. What it does not do is multi-stop routes,
@@ -103,8 +103,8 @@ export default function DrivingDirectionsPage() {
           <h2 className="font-display text-2xl font-bold">Plan something else</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-5">
             {[{ href: '/distance-calculator', t: 'Distance Calculator' }, { href: '/street-view', t: 'Street View' }, { href: '/address-finder', t: 'Address Finder' }, { href: '/my-location', t: 'My Location' }].map((t) => (
-              <Link key={t.href} href={t.href} className="glass rounded-2xl p-4 hover:ring-electric-400/40 ring-1 ring-white/10 transition no-underline">
-                <h3 className="font-display text-base font-bold text-slate-100 hover:text-electric-400 transition">{t.t}</h3>
+              <Link key={t.href} href={t.href} className="glass rounded-2xl p-4 hover:ring-accent/40 ring-1 ring-line transition no-underline">
+                <h3 className="font-display text-base font-bold text-fg hover:text-accent transition">{t.t}</h3>
               </Link>
             ))}
           </div>

@@ -1,6 +1,24 @@
 // Blog post manifest — single source of truth for routing, blog index, and sitemap generation.
 export const POSTS = [
   {
+    slug: 'enable-location-on-windows-and-mac',
+    title: 'Enable Location Services on Windows and Mac — Step-by-Step Fix',
+    excerpt:
+      'When a website needs your location and your laptop refuses, the problem is usually one of three switches. Here is where each one lives on Windows 10, Windows 11, and macOS, plus the browser settings most people forget.',
+    date: '2026-06-03',
+    readingTime: 7,
+    tags: ['troubleshooting', 'desktop', 'browser'],
+  },
+  {
+    slug: 'enable-location-on-iphone-and-android',
+    title: 'Enable Location on iPhone and Android — A Complete Setup Guide',
+    excerpt:
+      'Three layers control whether an app or website can read your phone’s location: the OS-wide switch, the per-app permission, and the browser’s per-site permission. Walk through all three for iPhone and Android.',
+    date: '2026-06-03',
+    readingTime: 7,
+    tags: ['troubleshooting', 'mobile', 'privacy'],
+  },
+  {
     slug: 'history-of-latitude-and-longitude',
     title: 'The history of latitude and longitude — from sextants to satellites',
     excerpt:

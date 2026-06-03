@@ -16,11 +16,11 @@ export default function ReverseGeocoding() {
   return (
     <main role="main" className="max-w-3xl mx-auto px-5 py-12 prose-invert">
       <article>
-        <p className="text-xs uppercase tracking-[0.18em] text-electric-400 font-semibold">Complete Guide</p>
+        <p className="text-xs uppercase tracking-[0.18em] text-accent font-semibold">Complete Guide</p>
         <h1 className="font-display text-4xl font-extrabold tracking-tight mt-2 leading-[1.1]">
           Reverse geocoding &mdash; turn a pair of GPS coordinates into a street address
         </h1>
-        <p className="mt-4 text-lg text-slate-300/90 leading-relaxed">
+        <p className="mt-4 text-lg text-fg-muted leading-relaxed">
           You have a latitude and longitude. You want the street, the neighborhood, the city, or even
           the building name. That translation &mdash; coordinates to a human-readable address &mdash;
           is called <strong>reverse geocoding</strong>. It powers ride-hailing apps, courier
@@ -29,49 +29,49 @@ export default function ReverseGeocoding() {
           accurate, when it isn&apos;t, and how to do it yourself.
         </p>
 
-        <div className="mt-6 glass rounded-2xl p-5 ring-1 ring-electric-400/30">
-          <p className="text-sm text-slate-300/90 leading-relaxed">
-            <strong className="text-slate-100">Quick way to try it.</strong> Open
-            {' '}<Link href="/" className="text-electric-400 hover:underline font-semibold">GetMyLocations</Link>{' '}
+        <div className="mt-6 glass rounded-2xl p-5 ring-1 ring-accent/30">
+          <p className="text-sm text-fg-muted leading-relaxed">
+            <strong className="text-fg">Quick way to try it.</strong> Open
+            {' '}<Link href="/" className="text-accent hover:underline font-semibold">GetMyLocations</Link>{' '}
             and allow the location prompt. The reverse-geocoded result &mdash; city, region, and
             country &mdash; appears under your coordinates within a second.
           </p>
         </div>
 
-        <hr className="my-10 border-white/10" />
+        <hr className="my-10 border-line" />
 
         <h2 className="font-display text-2xl font-bold">What reverse geocoding is (and isn&apos;t)</h2>
-        <p className="mt-3 text-slate-300/90 leading-relaxed">
+        <p className="mt-3 text-fg-muted leading-relaxed">
           <strong>Forward geocoding</strong> goes from text to coordinates: you type
           &ldquo;1600 Amphitheatre Parkway, Mountain View, CA&rdquo; and you get
-          {' '}<code className="bg-white/10 px-1.5 py-0.5 rounded text-electric-400 text-sm">37.4220, -122.0841</code>.
+          {' '}<code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">37.4220, -122.0841</code>.
           That&apos;s what a search box in Google Maps does.
         </p>
-        <p className="mt-3 text-slate-300/90 leading-relaxed">
+        <p className="mt-3 text-fg-muted leading-relaxed">
           <strong>Reverse geocoding</strong> is the opposite direction: you have the coordinates and
           want the text. It&apos;s harder than it sounds, because the same coordinate can be inside a
           building, inside a park, inside a body of water, or on a private road that has no
           official address.
         </p>
-        <p className="mt-3 text-slate-300/90 leading-relaxed">
+        <p className="mt-3 text-fg-muted leading-relaxed">
           Reverse geocoding is also not the same as <strong>IP geolocation</strong>. Reverse geocoding
           starts from real coordinates (typically from a GPS chip); IP geolocation guesses
           coordinates from a network address. Read more in our
-          {' '}<Link href="/ip-location-lookup" className="text-electric-400 hover:underline">IP location lookup guide</Link>.
+          {' '}<Link href="/ip-location-lookup" className="text-accent hover:underline">IP location lookup guide</Link>.
         </p>
 
-        <hr className="my-10 border-white/10" />
+        <hr className="my-10 border-line" />
 
         <h2 className="font-display text-2xl font-bold">How it works under the hood</h2>
-        <p className="mt-3 text-slate-300/90 leading-relaxed">
+        <p className="mt-3 text-fg-muted leading-relaxed">
           Every reverse geocoder needs three things: a database of place boundaries (countries,
           regions, cities, postal codes), a database of street centerlines with house-number ranges,
           and an algorithm to pick the most specific answer that still contains your point.
         </p>
-        <p className="mt-3 text-slate-300/90 leading-relaxed">
+        <p className="mt-3 text-fg-muted leading-relaxed">
           The algorithm is roughly:
         </p>
-        <ol className="mt-3 space-y-2 text-slate-300/90 list-decimal list-inside">
+        <ol className="mt-3 space-y-2 text-fg-muted list-decimal list-inside">
           <li>
             <strong>Country.</strong> A point-in-polygon test against world country borders. This
             is fast and almost always correct.
@@ -97,45 +97,45 @@ export default function ReverseGeocoding() {
             <strong>Postal code.</strong> A separate polygon dataset gives the zip / postcode.
           </li>
         </ol>
-        <p className="mt-3 text-slate-300/90 leading-relaxed">
+        <p className="mt-3 text-fg-muted leading-relaxed">
           Big providers (Google, Mapbox, HERE) add a points-of-interest layer on top: if your
           coordinate is inside a known building polygon, the response can include the building name
           (&ldquo;Eiffel Tower&rdquo;, &ldquo;Sydney Opera House&rdquo;) instead of just a street address. Open data
           sources like OpenStreetMap have the same idea but with patchier coverage.
         </p>
 
-        <hr className="my-10 border-white/10" />
+        <hr className="my-10 border-line" />
 
         <h2 className="font-display text-2xl font-bold">Find the address from a latitude / longitude pair</h2>
-        <p className="mt-3 text-slate-300/90 leading-relaxed">
+        <p className="mt-3 text-fg-muted leading-relaxed">
           Three practical ways to do it, in order of how much work they take:
         </p>
 
-        <h3 className="font-display text-lg font-semibold mt-6 text-slate-100">1. Use GetMyLocations</h3>
-        <p className="mt-2 text-slate-300/90 leading-relaxed">
+        <h3 className="font-display text-lg font-semibold mt-6 text-fg">1. Use GetMyLocations</h3>
+        <p className="mt-2 text-fg-muted leading-relaxed">
           The fastest way: paste your coordinates into the
-          {' '}<Link href="/" className="text-electric-400 hover:underline">main tool</Link>, drop a manual pin,
+          {' '}<Link href="/" className="text-accent hover:underline">main tool</Link>, drop a manual pin,
           and the reverse-geocoded result appears next to it. The pipeline uses BigDataCloud
           first, with OpenStreetMap Nominatim as a fallback for areas BigDataCloud doesn&apos;t cover
           well.
         </p>
 
-        <h3 className="font-display text-lg font-semibold mt-6 text-slate-100">2. Use Google Maps directly</h3>
-        <p className="mt-2 text-slate-300/90 leading-relaxed">
+        <h3 className="font-display text-lg font-semibold mt-6 text-fg">2. Use Google Maps directly</h3>
+        <p className="mt-2 text-fg-muted leading-relaxed">
           Type the coordinates straight into the Google Maps search box, separated by a comma:
-          {' '}<code className="bg-white/10 px-1.5 py-0.5 rounded text-electric-400 text-sm">48.8584, 2.2945</code>.
+          {' '}<code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">48.8584, 2.2945</code>.
           Maps centers on the location and shows the address in the left panel. Useful for one-off
           checks but not bulk work.
         </p>
 
-        <h3 className="font-display text-lg font-semibold mt-6 text-slate-100">3. Hit an API directly</h3>
-        <p className="mt-2 text-slate-300/90 leading-relaxed">
+        <h3 className="font-display text-lg font-semibold mt-6 text-fg">3. Hit an API directly</h3>
+        <p className="mt-2 text-fg-muted leading-relaxed">
           For programmatic work, two free options:
         </p>
-        <ul className="mt-3 space-y-2 text-slate-300/90 list-disc list-inside">
+        <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside">
           <li>
             <strong>OpenStreetMap Nominatim</strong>:
-            {' '}<code className="bg-white/10 px-1.5 py-0.5 rounded text-electric-400 text-sm">https://nominatim.openstreetmap.org/reverse?lat=48.8584&amp;lon=2.2945&amp;format=json</code>.
+            {' '}<code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">https://nominatim.openstreetmap.org/reverse?lat=48.8584&amp;lon=2.2945&amp;format=json</code>.
             Free, no API key. Rate-limited to ~1 request per second &mdash; respect their fair-use policy.
           </li>
           <li>
@@ -144,14 +144,14 @@ export default function ReverseGeocoding() {
           </li>
         </ul>
 
-        <hr className="my-10 border-white/10" />
+        <hr className="my-10 border-line" />
 
         <h2 className="font-display text-2xl font-bold">Accuracy &mdash; when reverse geocoding gets it wrong</h2>
-        <p className="mt-3 text-slate-300/90 leading-relaxed">
+        <p className="mt-3 text-fg-muted leading-relaxed">
           Reverse geocoding is one of those features that&apos;s 95% correct and the remaining 5% is
           memorable. Common failure modes:
         </p>
-        <ul className="mt-3 space-y-2 text-slate-300/90 list-disc list-inside">
+        <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside">
           <li>
             <strong>House number is off by a few.</strong> Street centerline interpolation assumes
             evenly numbered houses, but real streets have gaps, irregular plots, and renumbered
@@ -181,10 +181,10 @@ export default function ReverseGeocoding() {
           </li>
         </ul>
 
-        <hr className="my-10 border-white/10" />
+        <hr className="my-10 border-line" />
 
         <h2 className="font-display text-2xl font-bold">Typical uses for reverse geocoding</h2>
-        <ul className="mt-3 space-y-2 text-slate-300/90 list-disc list-inside">
+        <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside">
           <li>
             <strong>Ride-hailing and delivery confirmations.</strong> &ldquo;Driver is at 24 Main St&rdquo; comes
             from reverse-geocoding the driver&apos;s GPS in real time.
@@ -211,39 +211,39 @@ export default function ReverseGeocoding() {
           </li>
         </ul>
 
-        <hr className="my-10 border-white/10" />
+        <hr className="my-10 border-line" />
 
         <h2 className="font-display text-2xl font-bold">Drop a pin on the map and reverse-geocode it</h2>
-        <p className="mt-3 text-slate-300/90 leading-relaxed">
+        <p className="mt-3 text-fg-muted leading-relaxed">
           The most visual way to do reverse geocoding is to drop a pin. Open
-          {' '}<Link href="/" className="text-electric-400 hover:underline font-semibold">GetMyLocations</Link>,
+          {' '}<Link href="/" className="text-accent hover:underline font-semibold">GetMyLocations</Link>,
           switch to manual input mode, type or paste any coordinates, and the map flies to that
           point with a pin. The address text appears in the dashboard underneath, with separate
           fields for city, region, country, and (where available) the nearest street.
         </p>
-        <p className="mt-3 text-slate-300/90 leading-relaxed">
+        <p className="mt-3 text-fg-muted leading-relaxed">
           For a refresher on coordinate formats before you paste anything in, see our
-          {' '}<Link href="/gps-coordinates-finder" className="text-electric-400 hover:underline">GPS coordinates finder guide</Link>{' '}
-          and the <Link href="/decimal-degrees-converter" className="text-electric-400 hover:underline">decimal degrees converter</Link>.
+          {' '}<Link href="/gps-coordinates-finder" className="text-accent hover:underline">GPS coordinates finder guide</Link>{' '}
+          and the <Link href="/decimal-degrees-converter" className="text-accent hover:underline">decimal degrees converter</Link>.
         </p>
 
-        <hr className="my-10 border-white/10" />
+        <hr className="my-10 border-line" />
 
         <h2 className="font-display text-2xl font-bold">Privacy and what we (don&apos;t) keep</h2>
-        <p className="mt-3 text-slate-300/90 leading-relaxed">
+        <p className="mt-3 text-fg-muted leading-relaxed">
           When you reverse-geocode through GetMyLocations, the coordinates are sent in real time to
           a third-party API to produce the address &mdash; we don&apos;t cache or store them on a
           server we operate. The third parties (BigDataCloud, OpenStreetMap Nominatim) have their
           own privacy practices, summarized in our
-          {' '}<Link href="/privacy-policy" className="text-electric-400 hover:underline">Privacy Policy</Link>.
+          {' '}<Link href="/privacy-policy" className="text-accent hover:underline">Privacy Policy</Link>.
         </p>
 
         <h2 className="font-display text-2xl font-bold mt-10">Related guides</h2>
-        <ul className="mt-3 space-y-2 text-slate-300/90 list-disc list-inside">
-          <li><Link href="/gps-coordinates-finder" className="text-electric-400 hover:underline">GPS coordinates finder &mdash; complete guide</Link></li>
-          <li><Link href="/decimal-degrees-converter" className="text-electric-400 hover:underline">Decimal degrees converter (DD &harr; DMS)</Link></li>
-          <li><Link href="/ip-location-lookup" className="text-electric-400 hover:underline">IP location lookup &mdash; complete guide</Link></li>
-          <li><Link href="/fix-location-not-working" className="text-electric-400 hover:underline">Fix location not working &mdash; troubleshooting</Link></li>
+        <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside">
+          <li><Link href="/gps-coordinates-finder" className="text-accent hover:underline">GPS coordinates finder &mdash; complete guide</Link></li>
+          <li><Link href="/decimal-degrees-converter" className="text-accent hover:underline">Decimal degrees converter (DD &harr; DMS)</Link></li>
+          <li><Link href="/ip-location-lookup" className="text-accent hover:underline">IP location lookup &mdash; complete guide</Link></li>
+          <li><Link href="/fix-location-not-working" className="text-accent hover:underline">Fix location not working &mdash; troubleshooting</Link></li>
         </ul>
       </article>
     </main>

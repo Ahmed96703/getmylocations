@@ -45,9 +45,9 @@ export default function HomePage() {
       <main id="main" role="main" className="max-w-7xl mx-auto px-5 py-8">
         <section className="mb-7">
           <h1 className="font-display text-4xl sm:text-5xl font-extrabold tracking-tight">
-            <span className="text-electric-400">Find your location</span> in two seconds.
+            <span className="text-accent">Find your location</span> in two seconds.
           </h1>
-          <p className="text-slate-300/90 mt-3 max-w-2xl leading-relaxed">
+          <p className="text-fg-muted mt-3 max-w-2xl leading-relaxed">
             Click the button below and the page reads your GPS coordinates straight from
             the browser. You get the latitude and longitude, an accuracy radius, the
             nearest city, and a live map pin — without an account or an app install.

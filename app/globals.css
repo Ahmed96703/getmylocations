@@ -2,55 +2,179 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body { height: 100%; }
-body {
-  @apply text-slate-100 antialiased font-sans;
-  background:
+/* ─────────────────────────────────────────────
+   THEME VARIABLES
+   Light theme is the default (no attribute or [data-theme="light"]).
+   Dark theme activates with [data-theme="dark"] on <html>.
+   ───────────────────────────────────────────── */
+
+:root, [data-theme="light"] {
+  /* Foregrounds */
+  --fg: 15 23 42;                /* slate-900 */
+  --fg-muted: 51 65 85;          /* slate-700 */
+  --fg-subtle: 71 85 105;        /* slate-600 — passes WCAG AA on white */
+
+  /* Tint: an overlay color opposite to the surface */
+  --tint: 15 23 42;              /* dark tint on light surfaces */
+
+  /* Surfaces */
+  --bg: 248 250 252;             /* slate-50 — page background */
+  --surface: 255 255 255;        /* white — cards */
+  --surface-elevated: 241 245 249; /* slate-100 — raised within a card */
+  --line: 226 232 240;           /* slate-200 — borders */
+  --line-subtle: 241 245 249;    /* slate-100 — fainter borders */
+
+  /* Accent (sky-600 hits 4.71:1 on white — passes WCAG AA) */
+  --accent: 2 132 199;           /* sky-600 */
+  --accent-strong: 3 105 161;    /* sky-700 */
+  --accent-fg: 255 255 255;      /* text on accent buttons */
+
+  /* Body background for light mode — subtle warm-to-cool wash */
+  --body-bg:
+    radial-gradient(1200px 600px at 80% -10%, rgba(2,132,199,.05), transparent 60%),
+    radial-gradient(900px 500px at -10% 30%, rgba(56,189,248,.04), transparent 60%),
+    linear-gradient(180deg, #ffffff 0%, #f8fafc 60%, #f1f5f9 100%);
+
+  /* Glass card (light) — subtle elevation on white */
+  --glass-bg: linear-gradient(180deg, rgba(255,255,255,1), rgba(248,250,252,0.8));
+  --glass-border: rgba(15,23,42,0.08);
+  --glass-shadow: 0 10px 30px -12px rgba(15,23,42,0.10), inset 0 1px 0 rgba(255,255,255,0.6);
+  --glass-strong-bg: linear-gradient(180deg, rgba(255,255,255,1), rgba(248,250,252,0.95));
+  --glass-strong-border: rgba(15,23,42,0.10);
+
+  /* Input/field */
+  --field-bg: 255 255 255;       /* white */
+  --field-border: 226 232 240;   /* slate-200 */
+  --field-placeholder: 100 116 139; /* slate-500 */
+
+  /* Map */
+  --map-bg: #e2e8f0;
+  --map-attribution-bg: rgba(255,255,255,0.85);
+  --map-attribution-fg: #475569;
+
+  /* Scrollbar */
+  --scrollbar-thumb: rgba(100,116,139,0.35);
+  --scrollbar-thumb-hover: rgba(100,116,139,0.55);
+
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  /* Foregrounds */
+  --fg: 241 245 249;             /* slate-100 */
+  --fg-muted: 203 213 225;       /* slate-300 */
+  --fg-subtle: 148 163 184;      /* slate-400 */
+
+  /* Tint: light overlay on dark surfaces */
+  --tint: 255 255 255;
+
+  /* Surfaces */
+  --bg: 11 18 36;                /* ink-900 */
+  --surface: 26 32 49;           /* approximate of dark bg + white/6 overlay */
+  --surface-elevated: 33 41 60;
+  --line: 38 49 73;
+  --line-subtle: 24 34 56;
+
+  /* Accent */
+  --accent: 56 189 248;          /* electric-400 */
+  --accent-strong: 14 165 233;   /* electric-500 */
+  --accent-fg: 7 11 24;          /* ink-950 — readable on cyan */
+
+  /* Body background — original dark gradient */
+  --body-bg:
     radial-gradient(1200px 600px at 80% -10%, rgba(56,189,248,.18), transparent 60%),
     radial-gradient(900px 500px at -10% 30%, rgba(14,165,233,.14), transparent 60%),
     linear-gradient(180deg, #060a16 0%, #0b1224 60%, #070b18 100%);
+
+  /* Glass card (dark) — original frosted look */
+  --glass-bg: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  --glass-border: rgba(255,255,255,0.08);
+  --glass-shadow: 0 10px 30px -10px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.05);
+  --glass-strong-bg: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+  --glass-strong-border: rgba(255,255,255,0.1);
+
+  /* Input/field */
+  --field-bg: 255 255 255;       /* white with low opacity in usage */
+  --field-border: 255 255 255;
+  --field-placeholder: 148 163 184;
+
+  /* Map */
+  --map-bg: #0b1224;
+  --map-attribution-bg: rgba(11,18,36,0.7);
+  --map-attribution-fg: #94a3b8;
+
+  /* Scrollbar */
+  --scrollbar-thumb: rgba(148,163,184,0.25);
+  --scrollbar-thumb-hover: rgba(148,163,184,0.4);
+
+  color-scheme: dark;
+}
+
+/* ─────────────────────────────────────────────
+   BASE
+   ───────────────────────────────────────────── */
+
+html, body { height: 100%; }
+body {
+  @apply antialiased font-sans;
+  color: rgb(var(--fg));
+  background: var(--body-bg);
   background-attachment: fixed;
 }
 
 .font-display { font-family: 'Sora', 'Inter', ui-sans-serif, system-ui, sans-serif; letter-spacing: -0.01em; }
 
-/* Glassmorphism */
+/* ─────────────────────────────────────────────
+   GLASS CARDS (theme-aware)
+   ───────────────────────────────────────────── */
+
 .glass {
-  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-  border: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 10px 30px -10px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.05);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
   backdrop-filter: blur(14px) saturate(140%);
   -webkit-backdrop-filter: blur(14px) saturate(140%);
 }
 .glass-strong {
-  background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
-  border: 1px solid rgba(255,255,255,0.1);
+  background: var(--glass-strong-bg);
+  border: 1px solid var(--glass-strong-border);
   backdrop-filter: blur(18px) saturate(160%);
   -webkit-backdrop-filter: blur(18px) saturate(160%);
 }
 
-/* Map */
+/* ─────────────────────────────────────────────
+   MAP
+   ───────────────────────────────────────────── */
+
 .leaflet-container {
-  background: #0b1224;
+  background: var(--map-bg);
   border-radius: 1.25rem;
   contain: layout paint;
   will-change: transform;
 }
 .leaflet-control-attribution {
-  background: rgba(11,18,36,.7) !important; color: #94a3b8 !important;
-  border-radius: 6px; backdrop-filter: blur(6px);
+  background: var(--map-attribution-bg) !important;
+  color: var(--map-attribution-fg) !important;
+  border-radius: 6px;
+  backdrop-filter: blur(6px);
 }
-.leaflet-control-attribution a { color: #38bdf8 !important; }
+.leaflet-control-attribution a {
+  color: rgb(var(--accent)) !important;
+}
 
-/* Pulse marker */
+/* ─────────────────────────────────────────────
+   PULSE MARKER (uses accent)
+   ───────────────────────────────────────────── */
+
 .pulse-marker {
   width: 18px; height: 18px; border-radius: 9999px;
-  background: #38bdf8; position: relative;
-  box-shadow: 0 0 0 4px rgba(56,189,248,.25), 0 0 20px rgba(56,189,248,.6);
+  background: rgb(var(--accent)); position: relative;
+  box-shadow: 0 0 0 4px rgb(var(--accent) / 0.25), 0 0 20px rgb(var(--accent) / 0.6);
 }
 .pulse-marker::after {
   content: ''; position: absolute; inset: -8px; border-radius: 9999px;
-  border: 2px solid #38bdf8; animation: pulse-ring 1.6s cubic-bezier(0,0,.2,1) infinite;
+  border: 2px solid rgb(var(--accent));
+  animation: pulse-ring 1.6s cubic-bezier(0,0,.2,1) infinite;
 }
 @keyframes pulse-ring {
   0% { transform: scale(.6); opacity: .9; }
@@ -63,17 +187,77 @@ body {
 }
 .logo-pulse-ring { animation: logo-pulse 2s ease-in-out infinite; transform-origin: center; }
 
-/* Inputs */
+/* ─────────────────────────────────────────────
+   INPUTS & BUTTONS (theme-aware)
+   ───────────────────────────────────────────── */
+
 .field {
-  @apply w-full bg-white/5 border border-white/10 rounded-xl px-3.5 py-2.5 text-sm text-slate-100 placeholder-slate-400
-         focus:outline-none focus:ring-2 focus:ring-electric-400/60 focus:border-electric-400/50 transition;
+  width: 100%;
+  background: rgb(var(--field-bg) / 0.6);
+  border: 1px solid rgb(var(--field-border) / 0.5);
+  border-radius: 0.75rem;
+  padding: 0.625rem 0.875rem;
+  font-size: 0.875rem;
+  color: rgb(var(--fg));
+  transition: all 0.15s ease;
 }
+.field::placeholder { color: rgb(var(--field-placeholder)); }
+.field:focus {
+  outline: none;
+  border-color: rgb(var(--accent) / 0.6);
+  box-shadow: 0 0 0 2px rgb(var(--accent) / 0.3);
+}
+
+[data-theme="dark"] .field {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.10);
+}
+
 .btn {
-  @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.75rem;
+  padding: 0.625rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all 0.15s ease;
 }
-.btn-primary { @apply btn bg-electric-500 hover:bg-electric-400 text-ink-950 shadow-glow; }
-.btn-ghost { @apply btn bg-white/5 hover:bg-white/10 text-slate-100 border border-white/10; }
+.btn-primary {
+  @apply btn;
+  background: rgb(var(--accent));
+  color: rgb(var(--accent-fg));
+  box-shadow: 0 0 0 1px rgb(var(--accent) / 0.25), 0 10px 40px -10px rgb(var(--accent) / 0.4);
+}
+.btn-primary:hover {
+  background: rgb(var(--accent-strong));
+}
+[data-theme="dark"] .btn-primary:hover {
+  background: rgb(var(--accent));
+  filter: brightness(1.1);
+}
+.btn-ghost {
+  @apply btn;
+  background: rgb(var(--surface));
+  color: rgb(var(--fg));
+  border: 1px solid rgb(var(--line));
+}
+.btn-ghost:hover {
+  background: rgb(var(--surface-elevated));
+}
+[data-theme="dark"] .btn-ghost {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.10);
+}
+[data-theme="dark"] .btn-ghost:hover {
+  background: rgba(255,255,255,0.10);
+}
+
+/* ─────────────────────────────────────────────
+   SCROLLBAR
+   ───────────────────────────────────────────── */
 
 ::-webkit-scrollbar { width: 10px; height: 10px; }
-::-webkit-scrollbar-thumb { background: rgba(148,163,184,.25); border-radius: 8px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(148,163,184,.4); }
+::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-thumb-hover); }

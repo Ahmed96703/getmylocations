@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Logo from './Logo.jsx';
+import ThemeToggle from './ThemeToggle.jsx';
 
 const NAV = [
   { href: '/', label: 'Home' },
@@ -19,6 +20,9 @@ const TOOLS = [
   { href: '/ip-location', label: 'IP Location', desc: 'Look up any IP address' },
   { href: '/distance-calculator', label: 'Distance Calculator', desc: 'Between two coordinates' },
   { href: '/address-finder', label: 'Address Finder', desc: 'Address ↔ coordinates' },
+  { href: '/maps', label: 'Interactive Maps', desc: 'World map with layers' },
+  { href: '/satellite', label: 'Satellite View', desc: 'Imagery of any address' },
+  { href: '/us-map', label: 'US Map', desc: 'United States map' },
   { href: '/street-view', label: 'Street View', desc: 'Google Street View' },
   { href: '/driving-directions', label: 'Driving Directions', desc: 'Route planner' },
 ];
@@ -38,13 +42,13 @@ export default function SiteHeader() {
   }, [open]);
 
   return (
-    <header role="banner" className="sticky top-0 z-30 border-b border-white/5 bg-ink-950/70 backdrop-blur-xl">
+    <header role="banner" className="sticky top-0 z-30 border-b border-line bg-bg/80 backdrop-blur-xl">
       <div className="max-w-7xl mx-auto px-5 py-3.5 flex items-center justify-between gap-4">
         <Link href="/" aria-label="GetMyLocations home" className="flex items-center gap-3 group">
           <Logo size={36} />
           <div>
-            <div className="font-display text-lg font-bold leading-none group-hover:text-electric-400 transition">GetMyLocations</div>
-            <div className="text-[11px] text-slate-400 mt-0.5">Real-time Location Finder</div>
+            <div className="font-display text-lg font-bold leading-none text-fg group-hover:text-accent transition">GetMyLocations</div>
+            <div className="text-[11px] text-fg-subtle mt-0.5">Real-time Location Finder</div>
           </div>
         </Link>
 
@@ -53,7 +57,7 @@ export default function SiteHeader() {
             <li>
               <Link
                 href="/"
-                className={`px-3 py-1.5 rounded-full transition ${pathname === '/' ? 'text-electric-400' : 'text-slate-300 hover:text-white'}`}
+                className={`px-3 py-1.5 rounded-full transition ${pathname === '/' ? 'text-accent' : 'text-fg-muted hover:text-fg'}`}
               >
                 Home
               </Link>
@@ -67,8 +71,8 @@ export default function SiteHeader() {
                 aria-expanded={open}
                 className={`inline-flex items-center gap-1 px-3 py-1.5 rounded-full transition border ${
                   open
-                    ? 'bg-electric-500/20 border-electric-400/30 text-white'
-                    : 'bg-electric-500/10 border-electric-400/20 text-electric-300 hover:text-white'
+                    ? 'bg-accent/15 border-accent/40 text-fg'
+                    : 'bg-accent/10 border-accent/20 text-accent hover:text-fg'
                 }`}
               >
                 Tools <span className={`text-xs transition-transform ${open ? 'rotate-180' : ''}`}>▾</span>
@@ -77,7 +81,7 @@ export default function SiteHeader() {
                 <div
                   role="menu"
                   aria-label="All tools"
-                  className="absolute right-0 mt-2 w-[320px] max-w-[calc(100vw-2rem)] rounded-xl border border-white/10 bg-ink-950/95 backdrop-blur-xl shadow-2xl p-1.5 z-40"
+                  className="absolute right-0 mt-2 w-[320px] max-w-[calc(100vw-2rem)] rounded-xl border border-line bg-surface/95 backdrop-blur-xl shadow-2xl p-1.5 z-40"
                 >
                   {TOOLS.map((t) => (
                     <Link
@@ -85,14 +89,14 @@ export default function SiteHeader() {
                       href={t.href}
                       role="menuitem"
                       onClick={() => setOpen(false)}
-                      className={`flex flex-col gap-0.5 px-3 py-2 rounded-lg hover:bg-electric-500/10 transition group ${
-                        pathname === t.href ? 'bg-electric-500/10' : ''
+                      className={`flex flex-col gap-0.5 px-3 py-2 rounded-lg hover:bg-accent/10 transition group ${
+                        pathname === t.href ? 'bg-accent/10' : ''
                       }`}
                     >
-                      <span className={`block text-sm font-semibold ${pathname === t.href ? 'text-electric-400' : 'text-slate-100 group-hover:text-electric-400'}`}>
+                      <span className={`block text-sm font-semibold ${pathname === t.href ? 'text-accent' : 'text-fg group-hover:text-accent'}`}>
                         {t.label}
                       </span>
-                      <span className="block text-[11px] text-slate-400">{t.desc}</span>
+                      <span className="block text-[11px] text-fg-subtle">{t.desc}</span>
                     </Link>
                   ))}
                 </div>
@@ -103,12 +107,16 @@ export default function SiteHeader() {
               <li key={n.href} className="hidden sm:block">
                 <Link
                   href={n.href}
-                  className={`px-3 py-1.5 rounded-full transition ${pathname === n.href ? 'text-electric-400' : 'text-slate-300 hover:text-white'}`}
+                  className={`px-3 py-1.5 rounded-full transition ${pathname === n.href ? 'text-accent' : 'text-fg-muted hover:text-fg'}`}
                 >
                   {n.label}
                 </Link>
               </li>
             ))}
+
+            <li className="ml-1">
+              <ThemeToggle />
+            </li>
           </ul>
         </nav>
       </div>

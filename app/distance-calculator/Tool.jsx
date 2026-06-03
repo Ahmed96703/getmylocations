@@ -68,21 +68,21 @@ export default function Tool() {
 
       <div className="flex flex-wrap gap-2 mb-4">
         {PRESETS.map((p) => (
-          <button key={p.name} onClick={() => { setLat1(String(p.a[0])); setLon1(String(p.a[1])); setLat2(String(p.b[0])); setLon2(String(p.b[1])); setTimeout(calc, 0); }} className="text-xs px-3 py-1.5 rounded-md bg-white/5 hover:bg-electric-500/10 hover:text-electric-400 border border-white/10 transition">
+          <button key={p.name} onClick={() => { setLat1(String(p.a[0])); setLon1(String(p.a[1])); setLat2(String(p.b[0])); setLon2(String(p.b[1])); setTimeout(calc, 0); }} className="text-xs px-3 py-1.5 rounded-md bg-tint/5 hover:bg-accent/10 hover:text-accent border border-line transition">
             {p.name}
           </button>
         ))}
       </div>
 
       <div className="grid sm:grid-cols-2 gap-4">
-        <div className="bg-white/5 border border-white/10 rounded-lg p-4">
-          <div className="text-[11px] uppercase tracking-wider text-electric-400 font-semibold mb-2">Point A</div>
+        <div className="bg-tint/5 border border-line rounded-lg p-4">
+          <div className="text-[11px] uppercase tracking-wider text-accent font-semibold mb-2">Point A</div>
           <input className="field mb-2" value={lat1} onChange={(e) => setLat1(e.target.value)} placeholder="Latitude" inputMode="decimal" />
           <input className="field mb-2" value={lon1} onChange={(e) => setLon1(e.target.value)} placeholder="Longitude" inputMode="decimal" />
           <button onClick={useMyLocation} className="text-xs btn-ghost w-full">📍 Use my location</button>
         </div>
-        <div className="bg-white/5 border border-white/10 rounded-lg p-4">
-          <div className="text-[11px] uppercase tracking-wider text-electric-400 font-semibold mb-2">Point B</div>
+        <div className="bg-tint/5 border border-line rounded-lg p-4">
+          <div className="text-[11px] uppercase tracking-wider text-accent font-semibold mb-2">Point B</div>
           <input className="field mb-2" value={lat2} onChange={(e) => setLat2(e.target.value)} placeholder="Latitude" inputMode="decimal" />
           <input className="field" value={lon2} onChange={(e) => setLon2(e.target.value)} placeholder="Longitude" inputMode="decimal" />
         </div>
@@ -104,17 +104,17 @@ export default function Tool() {
               ['Nautical miles', fmt(result.nmi, 3)],
               ['Meters', fmt(result.m, 1)],
             ].map(([k, v]) => (
-              <div key={k} className="bg-electric-500/10 border border-electric-400/30 rounded-lg p-3 text-center">
-                <div className="font-mono text-lg font-bold text-slate-100">{v}</div>
-                <div className="text-[10px] uppercase tracking-wider text-slate-400 mt-1 font-semibold">{k}</div>
+              <div key={k} className="bg-accent/10 border border-accent/40 rounded-lg p-3 text-center">
+                <div className="font-mono text-lg font-bold text-fg">{v}</div>
+                <div className="text-[10px] uppercase tracking-wider text-fg-subtle mt-1 font-semibold">{k}</div>
               </div>
             ))}
           </div>
-          <div className="bg-white/5 border border-white/10 rounded-lg p-3 mt-3 text-sm text-center">
-            <span className="text-slate-400">Initial bearing: </span>
+          <div className="bg-tint/5 border border-line rounded-lg p-3 mt-3 text-sm text-center">
+            <span className="text-fg-subtle">Initial bearing: </span>
             <span className="font-mono">{fmt(result.bearing, 2)}° ({result.compass})</span>
           </div>
-          <div className="h-[360px] rounded-2xl overflow-hidden ring-1 ring-white/10 mt-4">
+          <div className="h-[360px] rounded-2xl overflow-hidden ring-1 ring-line mt-4">
             <MapView a={result.a} b={result.b} />
           </div>
         </>
