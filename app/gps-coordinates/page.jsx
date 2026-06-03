@@ -3,21 +3,21 @@ import Tool from './Tool.jsx';
 import ProofPanel from '../components/ProofPanel.jsx';
 
 export const metadata = {
-  title: 'GPS Coordinates — My Live Latitude & Longitude',
-  description: 'Get your live GPS coordinates instantly — latitude and longitude in DD and DMS, accuracy, altitude, speed. Free tool, no signup.',
+  title: 'GPS Coordinates of My Location — My Live Latitude & Longitude',
+  description: 'Find the GPS coordinates of my location instantly — latitude and longitude in DD and DMS, accuracy, altitude, speed. Free tool, no signup.',
   keywords: ['gps coordinates', 'my gps coordinates', 'find my gps coordinates', 'live gps coordinates', 'current gps coordinates', 'gps coordinates of my location'],
   alternates: { canonical: '/gps-coordinates' },
   openGraph: {
-    title: 'GPS Coordinates — My Live Latitude & Longitude',
-    description: 'Get your live GPS coordinates in DD and DMS. Free, no signup.',
+    title: 'GPS Coordinates of My Location — My Live Latitude & Longitude',
+    description: 'Find the GPS coordinates of my location in DD and DMS. Free, no signup.',
     url: 'https://getmylocations.com/gps-coordinates',
     type: 'website',
     images: ['/og-image.png'],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'GPS Coordinates — My Live Latitude & Longitude',
-    description: 'Get your live GPS coordinates in DD and DMS. Free, no signup.',
+    title: 'GPS Coordinates of My Location — My Live Latitude & Longitude',
+    description: 'Find the GPS coordinates of my location in DD and DMS. Free, no signup.',
     images: ['/og-image.png'],
   },
 };
@@ -42,7 +42,7 @@ export default function GpsCoordinatesPage() {
         <section className="mb-8">
           <p className="text-[11px] uppercase tracking-[0.18em] text-accent font-semibold mb-2">Free Tool · Live GPS Reading</p>
           <h1 className="font-display text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.05]">
-            GPS <span className="text-accent">Coordinates</span> — your live latitude and longitude
+            GPS coordinates of my location — your live latitude and longitude
           </h1>
           <p className="text-lg text-fg-muted mt-4 max-w-3xl">
             Read your exact <strong className="text-fg">GPS coordinates</strong> straight from your device&apos;s GNSS chip. Six-decimal latitude and longitude, instant DMS conversion, accuracy radius, altitude, speed, and heading — all displayed live on a real map.

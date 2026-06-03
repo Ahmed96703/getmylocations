@@ -7,21 +7,21 @@ import HomeClient from './HomeClient.jsx';
 // (the FAQ, "How it works", and SEO content). Tool UI loads on the client.
 
 export const metadata = {
-  title: 'GetMyLocations — Find your GPS coordinates and city',
+  title: 'What Is My Location? Find My Current Coordinates — GetMyLocations',
   description:
-    'A free browser tool that reads your GPS coordinates and reverse-geocodes them into a city and country. Works without an account or install.',
+    'What is my location? Find my current coordinates in seconds with a free browser tool that reads your GPS location and reverse-geocodes it into a city and country. Works without an account or install.',
   alternates: { canonical: '/' },
   openGraph: {
-    title: 'GetMyLocations — Find your GPS coordinates and city',
+    title: 'What Is My Location? Find My Current Coordinates — GetMyLocations',
     description:
-      'A free browser tool that reads your GPS coordinates and reverse-geocodes them into a city and country.',
+      'What is my location? Find your current coordinates in seconds with a free browser tool that reads your GPS location and reverse-geocodes it into a city and country.',
     url: 'https://getmylocations.com/',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'GetMyLocations — Find your GPS coordinates and city',
+    title: 'What Is My Location? Find My Current Coordinates — GetMyLocations',
     description:
-      'A free browser tool that reads your GPS coordinates and reverse-geocodes them into a city and country.',
+      'What is my location? Find your current coordinates in seconds with a free browser tool that reads your GPS location and reverse-geocodes it into a city and country.',
     images: ['/og-image.png'],
   },
 };
@@ -55,7 +55,7 @@ export default function HomePage() {
             Tested on real phone and laptop
           </p>
           <h1 className="font-display text-4xl sm:text-5xl font-extrabold tracking-tight">
-            <span className="text-accent">Find your location</span> in two seconds.
+            <span className="text-accent">What is my location?</span> Find my current coordinates in two seconds.
           </h1>
           <p className="text-fg-muted mt-3 max-w-2xl leading-relaxed">
             Click the button below and the page reads your GPS coordinates straight from

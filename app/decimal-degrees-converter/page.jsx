@@ -1,13 +1,21 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Decimal Degrees Converter — DD to DMS Conversion Guide',
+  title: 'Decimal Degrees Converter — DD to DMS & Back',
   description: "Convert decimal degrees to DMS (degrees, minutes, seconds) and back. Complete reference with formula, examples, and precision guidelines.",
   alternates: { canonical: '/decimal-degrees-converter' },
   openGraph: {
-    title: 'Decimal Degrees Converter — DD to DMS Conversion Guide',
+    title: 'Decimal Degrees Converter — DD to DMS & Back',
     description: "Convert decimal degrees to DMS and back. Complete reference with formula and examples.",
     url: 'https://getmylocations.com/decimal-degrees-converter',
+    type: 'article',
+    images: ['/og-image.png'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Decimal Degrees Converter — DD to DMS & Back',
+    description: "Convert decimal degrees to DMS and back. Complete reference with formula and examples.",
+    images: ['/og-image.png'],
   },
 };
 

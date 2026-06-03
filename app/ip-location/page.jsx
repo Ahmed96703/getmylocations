@@ -3,23 +3,23 @@ import Tool from './Tool.jsx';
 import ProofPanel from '../components/ProofPanel.jsx';
 
 export const metadata = {
-  title: 'IP Location — Find My IP Address Country, City & ISP Free',
-  description: 'Free IP location finder. Find my IP address with country, city, ISP, timezone, and map. Lookup any IPv4 or IPv6 address. No signup, no API key.',
+  title: 'What Is My IP? IP Location — Find My IP Address Country, City & ISP',
+  description: 'What is my IP? Find my IP location with country, city, ISP, timezone, and map. Lookup any IPv4 or IPv6 address. No signup, no API key.',
   keywords: ['ip location', 'ip address lookup', 'ip location finder', 'my ip address', 'what is my ip', 'ip geolocation'],
   alternates: { canonical: '/ip-location' },
   openGraph: {
-    title: 'IP Location — Find My IP Address Country, City & ISP Free',
+    title: 'What Is My IP? IP Location — Find My IP Address Country, City & ISP',
     description:
-      'Look up your public IP address and compare the city result against GPS.',
+      'What is my IP? Look up your public IP address and compare the city result against GPS.',
     url: 'https://getmylocations.com/ip-location',
     type: 'website',
     images: ['/og-image.png'],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'IP Location — Find My IP Address Country, City & ISP Free',
+    title: 'What Is My IP? IP Location — Find My IP Address Country, City & ISP',
     description:
-      'Look up your public IP address and compare the city result against GPS.',
+      'What is my IP? Look up your public IP address and compare the city result against GPS.',
     images: ['/og-image.png'],
   },
 };
@@ -44,7 +44,7 @@ export default function IpLocationPage() {
         <section className="mb-8">
           <p className="text-[11px] uppercase tracking-[0.18em] text-accent font-semibold mb-2">Free Tool · No API key required</p>
           <h1 className="font-display text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.05]">
-            Look up any IP address — yours or <span className="text-accent">someone else&rsquo;s</span>
+            What is my IP? Look up any IP address — yours or <span className="text-accent">someone else&rsquo;s</span>
           </h1>
           <p className="text-lg text-fg-muted mt-4 max-w-3xl">
             Look up the city, country, ISP, timezone, and approximate coordinates of any public IP address — your own or someone else&apos;s. Click one button to look up your own IP, or paste any IPv4 / IPv6 address.

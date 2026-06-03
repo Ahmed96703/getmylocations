@@ -3,23 +3,23 @@ import Tool from './Tool.jsx';
 import ProofPanel from '../components/ProofPanel.jsx';
 
 export const metadata = {
-  title: 'Driving Directions — Free Route Planner',
-  description: 'Free driving directions tool. Plan a driving, walking, biking, or transit route between any two addresses. Powered by Google Maps.',
+  title: 'Get Directions — Free Driving Directions Route Planner',
+  description: 'Get directions between any two addresses with free driving, walking, biking, or transit routes. Plan from and to directions powered by Google Maps.',
   keywords: ['driving directions', 'route planner', 'directions', 'walking directions', 'transit directions'],
   alternates: { canonical: '/driving-directions' },
   openGraph: {
-    title: 'Driving Directions — Free Route Planner',
+    title: 'Get Directions — Free Driving Directions Route Planner',
     description:
-      'Plan a driving, walking, biking, or transit route between any two addresses.',
+      'Get directions between any two addresses with free driving, walking, biking, or transit routes.',
     url: 'https://getmylocations.com/driving-directions',
     type: 'website',
     images: ['/og-image.png'],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Driving Directions — Free Route Planner',
+    title: 'Get Directions — Free Driving Directions Route Planner',
     description:
-      'Plan a driving, walking, biking, or transit route between any two addresses.',
+      'Get directions between any two addresses with free driving, walking, biking, or transit routes.',
     images: ['/og-image.png'],
   },
 };
@@ -39,7 +39,7 @@ export default function DrivingDirectionsPage() {
         <section className="mb-8">
           <p className="text-[11px] uppercase tracking-[0.18em] text-accent font-semibold mb-2">Free Tool · Powered by Google Maps</p>
           <h1 className="font-display text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.05]">
-            Driving <span className="text-accent">Directions</span> — free route planner
+            Get directions — free <span className="text-accent">driving directions</span> route planner
           </h1>
           <p className="text-lg text-fg-muted mt-4 max-w-3xl">
             Plan a <strong className="text-fg">driving, walking, bicycling, or public-transit</strong> route between any two addresses or GPS coordinates.

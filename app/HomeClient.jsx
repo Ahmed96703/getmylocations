@@ -74,6 +74,15 @@ const MORE_TOOLS = [
   { href: '/driving-directions', t: 'Driving Directions', d: 'Plan a driving, walking, biking, or transit route between two places.' },
 ];
 
+const POPULAR_SEARCHES = [
+  { href: '/my-location', q: 'What is my location?', d: 'Find my current coordinates, city, country, and live map in one click.' },
+  { href: '/gps-coordinates', q: 'GPS coordinates of my location', d: 'Live latitude, longitude, accuracy radius, and altitude from your device.' },
+  { href: '/driving-directions', q: 'Get directions', d: 'Driving, walking, biking, or transit routes between two places.' },
+  { href: '/ip-location', q: 'What is my IP?', d: 'Lookup the country, city, and ISP of any public IPv4 or IPv6 address.' },
+  { href: '/blog/browser-geolocation-api-explained', q: 'Geolocation API', d: 'How browser geolocation actually works and what it can see.' },
+  { href: '/decimal-degrees-converter', q: 'Decimal degrees', d: 'Learn DD vs DMS and convert formats without guessing.' },
+];
+
 export default function HomeClient() {
   const [mode, setMode] = useState('auto');
   const [manualPos, setManualPos] = useState(null);
@@ -212,6 +221,28 @@ export default function HomeClient() {
           />
         </div>
       </div>
+
+      <section aria-labelledby="popular-searches" className="mt-14">
+        <div className="flex items-end justify-between gap-4 flex-wrap">
+          <div>
+            <h2 id="popular-searches" className="font-display text-2xl font-bold">Popular searches we answer</h2>
+            <p className="text-sm text-fg-subtle mt-1">A few of the exact questions people use to find this site.</p>
+          </div>
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-5">
+          {POPULAR_SEARCHES.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="glass rounded-2xl p-5 hover:ring-accent/40 ring-1 ring-line transition group no-underline"
+            >
+              <h3 className="font-display text-base font-bold text-fg group-hover:text-accent transition">{item.q}</h3>
+              <p className="text-sm text-fg-subtle mt-2 leading-snug">{item.d}</p>
+            </Link>
+          ))}
+        </div>
+      </section>
 
       <section aria-labelledby="more-tools" className="mt-14 scroll-mt-24" id="more-tools">
         <div className="flex items-end justify-between gap-4 flex-wrap">

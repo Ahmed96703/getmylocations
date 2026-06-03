@@ -3,21 +3,21 @@ import Tool from './Tool.jsx';
 import ProofPanel from '../components/ProofPanel.jsx';
 
 export const metadata = {
-  title: 'Get My Location Now — Free GPS & IP Tool (No Signup)',
+  title: 'What Is My Location? Find My Current Coordinates — My Location Tool',
   description:
-    'Get my location instantly — free tool shows your live GPS coordinates, city, country, and live map in 2 seconds. Where am I right now? Find out free, no signup.',
+    'What is my location? Find my current coordinates instantly — free tool shows your live GPS coordinates, city, country, and live map in 2 seconds. Get my location free, no signup.',
   keywords: ['my location', 'my current location', 'where am i', 'find my location', 'my location now', 'what is my location'],
   alternates: { canonical: '/my-location' },
   openGraph: {
-    title: 'My Location — Where Am I Right Now?',
-    description: 'Find your exact GPS location instantly. Free tool, no signup.',
+    title: 'What Is My Location? Find My Current Coordinates — My Location Tool',
+    description: 'What is my location? Find your exact GPS location instantly. Free tool, no signup.',
     url: 'https://getmylocations.com/my-location',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'My Location — Where Am I Right Now?',
-    description: 'Find your exact GPS location instantly. Free tool, no signup.',
+    title: 'What Is My Location? Find My Current Coordinates — My Location Tool',
+    description: 'What is my location? Find your exact GPS location instantly. Free tool, no signup.',
   },
 };
 
@@ -56,7 +56,7 @@ export default function MyLocationPage() {
         <section className="mb-8">
           <p className="text-[11px] uppercase tracking-[0.18em] text-accent font-semibold mb-2">Free Tool · Browser-based</p>
           <h1 className="font-display text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.05]">
-            Where am I <span className="text-accent">right now?</span>
+            What is my location? Find my current <span className="text-accent">coordinates</span> right now.
           </h1>
           <p className="text-lg text-fg-muted mt-4 max-w-3xl">
             Click one button and see your exact GPS coordinates, accuracy radius, city, and country on a live interactive map within two seconds. No signup, no app to install, and your coordinates stay in your browser.
