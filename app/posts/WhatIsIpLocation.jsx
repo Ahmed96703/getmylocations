@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ProofPanel from '../components/ProofPanel.jsx';
 
 export default function WhatIsIpLocation() {
   return (
@@ -14,7 +15,12 @@ export default function WhatIsIpLocation() {
         different city?&rdquo; story you&rsquo;ve ever heard.
       </p>
 
-      {/* TODO: Ahmed to add a side-by-side image &mdash; left panel: actual ipapi.co response showing city/country/ISP from his real home connection; right panel: actual browser-geolocation reading from /my-location on the same machine. Caption the offset in km. /public/screenshots/ip-vs-gps-side-by-side.png. Once added, edit the paragraph below to cite the real offset instead of "tens of kilometers" generalities. */}
+      <ProofPanel
+        title="IP versus GPS side-by-side"
+        device="Show the IP lookup beside the browser GPS reading from the same machine so readers can compare the two signals directly."
+        caption="Seeing the two data sources together makes the accuracy gap impossible to miss."
+        fileHint="/public/screenshots/ip-vs-gps-side-by-side.png"
+      />
 
       <h2 className="font-display text-2xl font-bold mt-12">What an IP actually is</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">

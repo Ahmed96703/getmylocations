@@ -1,11 +1,27 @@
 import Link from 'next/link';
 import Tool from './Tool.jsx';
+import ProofPanel from './components/ProofPanel.jsx';
 
 export const metadata = {
   title: 'Latitude and Longitude Converter — DD ↔ DMS ↔ UTM Free',
   description: 'Free latitude and longitude converter. Convert GPS coordinates between Decimal Degrees, DMS, DDM, and UTM in real time. With map. No signup.',
   keywords: ['coordinates converter', 'gps coordinates converter', 'dd to dms', 'decimal degrees converter', 'utm converter', 'lat long converter'],
   alternates: { canonical: '/coordinates-converter' },
+  openGraph: {
+    title: 'Latitude and Longitude Converter — DD ↔ DMS ↔ UTM Free',
+    description:
+      'Convert GPS coordinates between Decimal Degrees, DMS, DDM, and UTM in real time.',
+    url: 'https://getmylocations.com/coordinates-converter',
+    type: 'website',
+    images: ['/og-image.png'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Latitude and Longitude Converter — DD ↔ DMS ↔ UTM Free',
+    description:
+      'Convert GPS coordinates between Decimal Degrees, DMS, DDM, and UTM in real time.',
+    images: ['/og-image.png'],
+  },
 };
 
 const webAppSchema = {
@@ -37,7 +53,12 @@ export default function CoordinatesConverterPage() {
 
         <Tool />
 
-        {/* TODO: Ahmed to add an annotated screenshot of the converter with a real famous coordinate (Eiffel Tower 48.8584° N, 2.2945° E) so readers see DD, DMS, DDM, and UTM side-by-side. Replace this comment with the <Image /> tag pointing at /public/screenshots/converter-eiffel-annotated.png. */}
+        <ProofPanel
+          title="Annotated format comparison"
+          device="Show a famous coordinate such as the Eiffel Tower so the DD, DMS, DDM, and UTM fields are all visible in one shot."
+          caption="A side-by-side proof card makes the conversions feel concrete instead of theoretical."
+          fileHint="/public/screenshots/converter-eiffel-annotated.png"
+        />
 
         <section className="mt-10">
           <h2 className="font-display text-2xl font-bold">How the tool handles each format</h2>

@@ -17,6 +17,13 @@ export const metadata = {
       'A free browser tool that reads your GPS coordinates and reverse-geocodes them into a city and country.',
     url: 'https://getmylocations.com/',
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'GetMyLocations — Find your GPS coordinates and city',
+    description:
+      'A free browser tool that reads your GPS coordinates and reverse-geocodes them into a city and country.',
+    images: ['/og-image.png'],
+  },
 };
 
 const webAppSchema = {
@@ -44,6 +51,9 @@ export default function HomePage() {
       {/* Static, server-rendered SEO content (Googlebot sees this in raw HTML) */}
       <main id="main" role="main" className="max-w-7xl mx-auto px-5 py-8">
         <section className="mb-7">
+          <p className="text-[11px] uppercase tracking-[0.18em] text-accent font-semibold">
+            Tested on real phone and laptop
+          </p>
           <h1 className="font-display text-4xl sm:text-5xl font-extrabold tracking-tight">
             <span className="text-accent">Find your location</span> in two seconds.
           </h1>
@@ -52,6 +62,37 @@ export default function HomePage() {
             the browser. You get the latitude and longitude, an accuracy radius, the
             nearest city, and a live map pin — without an account or an app install.
           </p>
+          <p className="mt-3 text-sm text-fg-subtle">
+            Last reviewed June 3, 2026. If you spot a bad explanation, use the Contact
+            page and we will patch factual fixes quickly.
+          </p>
+        </section>
+
+        <section className="grid gap-4 md:grid-cols-3 mb-8">
+          <div className="glass rounded-2xl p-5 ring-1 ring-line">
+            <p className="text-[11px] uppercase tracking-[0.18em] text-accent font-semibold">Start here</p>
+            <h2 className="font-display text-xl font-bold mt-1">Use the live location reader first</h2>
+            <p className="mt-2 text-sm text-fg-muted leading-relaxed">
+              It is the shortest path from browser permission to a usable coordinate,
+              and it shows how the rest of the site&rsquo;s tools fit together.
+            </p>
+          </div>
+          <div className="glass rounded-2xl p-5 ring-1 ring-line">
+            <p className="text-[11px] uppercase tracking-[0.18em] text-accent font-semibold">Trust signal</p>
+            <h2 className="font-display text-xl font-bold mt-1">Checked on real devices</h2>
+            <p className="mt-2 text-sm text-fg-muted leading-relaxed">
+              The core pages are exercised on an actual phone and laptop before publish,
+              so the screenshots, device notes, and explanations stay grounded.
+            </p>
+          </div>
+          <div className="glass rounded-2xl p-5 ring-1 ring-line">
+            <p className="text-[11px] uppercase tracking-[0.18em] text-accent font-semibold">Corrections</p>
+            <h2 className="font-display text-xl font-bold mt-1">Report issues directly</h2>
+            <p className="mt-2 text-sm text-fg-muted leading-relaxed">
+              If a number, label, or API detail is off, send the exact page and line to
+              the Contact page and it gets fixed quickly.
+            </p>
+          </div>
         </section>
 
         {/* Client-side interactive tool (Geolocation API, Leaflet map, etc.) */}

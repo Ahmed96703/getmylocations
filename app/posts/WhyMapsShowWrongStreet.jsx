@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ProofPanel from '../components/ProofPanel.jsx';
 
 export default function WhyMapsShowWrongStreet() {
   return (
@@ -20,7 +21,12 @@ export default function WhyMapsShowWrongStreet() {
         catastrophic, all of them fixable if you know what to look for.
       </p>
 
-      {/* TODO: Ahmed to take a screenshot of his own street in Google Maps with the pin he reported (if it&rsquo;s now correct) or a still-wrong example. Annotate with arrows showing the actual entrance vs the mapped pin. /public/screenshots/wrong-pin-real.png, caption "My own gate sat one building over for two years. Reporting it through Google Maps fixed it in three weeks." */}
+      <ProofPanel
+        title="Wrong-pin before and after"
+        device="Annotate a real street screenshot with arrows showing the actual entrance versus the mapped pin so the failure mode is obvious."
+        caption="A before-and-after proof card makes the interpolation problem concrete instead of theoretical."
+        fileHint="/public/screenshots/wrong-pin-real.png"
+      />
 
       <h2 className="font-display text-2xl font-bold mt-12">The address itself is being interpolated</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">

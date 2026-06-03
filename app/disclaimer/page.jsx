@@ -5,6 +5,21 @@ export const metadata = {
   description:
     'Important limits on the accuracy of the location, IP, and coordinate data shown on GetMyLocations.',
   alternates: { canonical: '/disclaimer' },
+  openGraph: {
+    title: 'Disclaimer — GetMyLocations',
+    description:
+      'Important limits on the accuracy of the location, IP, and coordinate data shown on GetMyLocations.',
+    url: 'https://getmylocations.com/disclaimer',
+    type: 'website',
+    images: ['/og-image.png'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Disclaimer — GetMyLocations',
+    description:
+      'Important limits on the accuracy of the location, IP, and coordinate data shown on GetMyLocations.',
+    images: ['/og-image.png'],
+  },
 };
 
 export default function Disclaimer() {

@@ -1,11 +1,27 @@
 import Link from 'next/link';
 import Tool from './Tool.jsx';
+import ProofPanel from './components/ProofPanel.jsx';
 
 export const metadata = {
   title: 'Street View — See Any Address in Google Street View',
   description: 'Free Street View tool. Enter any address or GPS coordinates and see the location in Google Street View. No signup, no API key.',
   keywords: ['street view', 'google street view', 'street view by address', 'virtual tour'],
   alternates: { canonical: '/street-view' },
+  openGraph: {
+    title: 'Street View — See Any Address in Google Street View',
+    description:
+      'Enter any address or GPS coordinates and see the location in Google Street View.',
+    url: 'https://getmylocations.com/street-view',
+    type: 'website',
+    images: ['/og-image.png'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Street View — See Any Address in Google Street View',
+    description:
+      'Enter any address or GPS coordinates and see the location in Google Street View.',
+    images: ['/og-image.png'],
+  },
 };
 
 const webAppSchema = {
@@ -32,7 +48,12 @@ export default function StreetViewPage() {
 
         <Tool />
 
-        {/* TODO: Ahmed to add a screenshot of the embed loaded on a recognisable street (e.g. Times Square or M.A. Jinnah Road, Karachi) so the image clearly shows the Street View pegman controls — not generic map tiles. /public/screenshots/street-view-mta-jinnah.png */}
+        <ProofPanel
+          title="Recognisable street-level proof"
+          device="Use a landmark or street name that readers can instantly recognise so the Street View controls and panorama are obvious."
+          caption="A real street-level capture is stronger than generic map tiles because it proves the embed is actually loading Street View."
+          fileHint="/public/screenshots/street-view-mta-jinnah.png"
+        />
 
         <section className="mt-10">
           <h2 className="font-display text-2xl font-bold">How Street View imagery is captured</h2>

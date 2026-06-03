@@ -1,11 +1,27 @@
 import Link from 'next/link';
 import Tool from './Tool.jsx';
+import ProofPanel from './components/ProofPanel.jsx';
 
 export const metadata = {
   title: 'Distance Calculator — Between Two GPS Coordinates',
   description: 'Calculate the great-circle distance between two GPS coordinates in km, miles, nautical miles, meters. Haversine formula, no signup.',
   keywords: ['distance calculator', 'distance between two coordinates', 'haversine calculator', 'great circle distance'],
   alternates: { canonical: '/distance-calculator' },
+  openGraph: {
+    title: 'Distance Calculator — Between Two GPS Coordinates',
+    description:
+      'Calculate the great-circle distance between two GPS coordinates in km, miles, nautical miles, and meters.',
+    url: 'https://getmylocations.com/distance-calculator',
+    type: 'website',
+    images: ['/og-image.png'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Distance Calculator — Between Two GPS Coordinates',
+    description:
+      'Calculate the great-circle distance between two GPS coordinates in km, miles, nautical miles, and meters.',
+    images: ['/og-image.png'],
+  },
 };
 
 const webAppSchema = {
@@ -37,7 +53,12 @@ export default function DistanceCalculatorPage() {
 
         <Tool />
 
-        {/* TODO: Ahmed to add a screenshot of the calculator with a famous well-known pair (Karachi airport KHI 24.9008, 67.1681 to JFK New York 40.6413, -73.7781 — should read ~11,500 km). Replace this comment with the <Image /> + caption "Karachi to New York measured at 11,503 km — matches Google Flights." File goes at /public/screenshots/distance-khi-jfk.png. */}
+        <ProofPanel
+          title="Cross-continent sanity check"
+          device="Test the calculator with a famous pair such as Karachi airport to JFK so readers can verify the output against a known long-haul distance."
+          caption="A concrete example like this proves the Haversine math is doing what the article says it does."
+          fileHint="/public/screenshots/distance-khi-jfk.png"
+        />
 
         <section className="mt-12">
           <h2 className="font-display text-2xl font-bold">What this calculator does</h2>

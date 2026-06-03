@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ProofPanel from '../components/ProofPanel.jsx';
 
 export default function WhatYourIpReveals() {
   return (
@@ -13,7 +14,12 @@ export default function WhatYourIpReveals() {
         fears and more interesting than the dismissals.
       </p>
 
-      {/* TODO: Ahmed to add a screenshot of the actual ipapi.co JSON response for his home IP &mdash; full field dump (country, region, city, ISP, ASN, timezone). Black out the last octet of the IP. /public/screenshots/ipapi-real-response.png. Caption with the takeaway: "This is the entire payload &mdash; there is no street address in here." */}
+      <ProofPanel
+        title="Raw IP lookup payload"
+        device="Show the full ipapi.co JSON response for a real connection, with the IP partially redacted and the city/ISP fields still visible."
+        caption="A raw payload screenshot is useful because it shows exactly how little location data an IP address really carries."
+        fileHint="/public/screenshots/ipapi-real-response.png"
+      />
 
       <h2 className="font-display text-2xl font-bold mt-12">An IP is a return label, nothing more</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">

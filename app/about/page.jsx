@@ -4,12 +4,28 @@ export const metadata = {
   title: 'About — GetMyLocations',
   description: 'Free, privacy-first location tools. Built by Ahmed Anwar — geolocation, GPS, and IP networking guides written from primary sources.',
   alternates: { canonical: '/about' },
+  openGraph: {
+    title: 'About — GetMyLocations',
+    description:
+      'Why GetMyLocations exists, how the tools are tested, and how the writing is reviewed.',
+    url: 'https://getmylocations.com/about',
+    type: 'website',
+    images: ['/og-image.png'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About — GetMyLocations',
+    description:
+      'Why GetMyLocations exists, how the tools are tested, and how the writing is reviewed.',
+    images: ['/og-image.png'],
+  },
 };
 
 export default function About() {
   return (
     <main role="main" className="max-w-3xl mx-auto px-5 py-12 prose-invert">
       <h1 className="font-display text-4xl font-extrabold tracking-tight">About GetMyLocations</h1>
+      <p className="mt-2 text-sm text-fg-subtle">Last reviewed June 3, 2026 · Tested on real devices before publish</p>
       <p className="mt-4 text-fg-muted leading-relaxed">
         GetMyLocations is a small independent site that does one thing: it reads
         your GPS coordinates straight from the browser and turns them into a

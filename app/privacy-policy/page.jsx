@@ -5,6 +5,21 @@ export const metadata = {
   description:
     'How GetMyLocations handles your location data, what the third-party reverse-geocoding services receive, and what cookies Google AdSense sets.',
   alternates: { canonical: '/privacy-policy' },
+  openGraph: {
+    title: 'Privacy Policy — GetMyLocations',
+    description:
+      'How GetMyLocations handles location data, third-party services, and advertising cookies.',
+    url: 'https://getmylocations.com/privacy-policy',
+    type: 'website',
+    images: ['/og-image.png'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Privacy Policy — GetMyLocations',
+    description:
+      'How GetMyLocations handles location data, third-party services, and advertising cookies.',
+    images: ['/og-image.png'],
+  },
 };
 
 export default function Privacy() {

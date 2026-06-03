@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ProofPanel from '../components/ProofPanel.jsx';
 
 export default function LatLonHistory() {
   return (
@@ -23,7 +24,12 @@ export default function LatLonHistory() {
         actually uses was finalised within the last 50.
       </p>
 
-      {/* TODO: Ahmed to find or photograph an image of the Greenwich Prime Meridian brass line for this article. A close-up of the actual strip embedded in the observatory courtyard would beat any stock illustration. /public/screenshots/greenwich-meridian.jpg, caption it with "The 0° longitude line at the Royal Observatory — every coordinate on your phone is measured from here." */}
+      <ProofPanel
+        title="Greenwich meridian photo"
+        device="Use a close-up of the brass 0° longitude strip at the Royal Observatory so the article has a real historical anchor."
+        caption="A real photo of the prime meridian gives the history section a tangible place on Earth, not just abstract dates."
+        fileHint="/public/screenshots/greenwich-meridian.jpg"
+      />
 
       <h2 className="font-display text-2xl font-bold mt-12">The Greeks drew the first grid</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">

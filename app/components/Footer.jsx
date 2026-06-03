@@ -52,9 +52,9 @@ export default function Footer() {
           </p>
         </div>
         <p className="mt-6 pt-6 border-t border-line-subtle text-xs text-fg-subtle text-center leading-relaxed">
-          Articles and guides on this site are researched and drafted with AI assistance and reviewed by{' '}
+          Articles and guides are reviewed by{' '}
           <Link href="/about" className="text-fg-muted hover:text-accent transition">Ahmed Anwar</Link>
-          {' '}before publication. Tools are written and tested by hand.
+          {' '}before publication. See About for the full writing process and device-testing notes.
         </p>
       </div>
     </footer>

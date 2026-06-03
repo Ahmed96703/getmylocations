@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ProofPanel from '../components/ProofPanel.jsx';
 
 export default function EnableLocationMobile() {
   return (
@@ -41,7 +42,12 @@ export default function EnableLocationMobile() {
         <li>Toggle <strong>Location Services</strong> on. The toggle has to be green.</li>
       </ol>
 
-      {/* TODO: Ahmed to add a screenshot of iPhone Settings → Privacy & Security → Location Services with the master toggle on. /public/screenshots/ios-location-services-master.png */}
+      <ProofPanel
+        title="iPhone master toggle"
+        device="Show iPhone Settings → Privacy & Security → Location Services with the master toggle switched on."
+        caption="A first-party iPhone settings shot helps readers trust the device-specific instructions."
+        fileHint="/public/screenshots/ios-location-services-master.png"
+      />
 
       <p className="mt-3 text-fg-muted leading-relaxed">
         Below the master toggle is a list of every app that has ever
@@ -61,7 +67,12 @@ export default function EnableLocationMobile() {
         (fitness apps recording a run, navigation apps doing turn-by-turn).
       </p>
 
-      {/* TODO: Ahmed to add a screenshot of iPhone per-app location settings showing the four-option list. /public/screenshots/ios-per-app-location.png */}
+      <ProofPanel
+        title="iPhone per-app permissions"
+        device="Show the four-option list for a real app so the distinction between Never, While Using, and Always is visible."
+        caption="This is the clearest way to explain the app-level permission layer on iOS."
+        fileHint="/public/screenshots/ios-per-app-location.png"
+      />
 
       <p className="mt-3 text-fg-muted leading-relaxed">
         While you&rsquo;re on the app&rsquo;s settings screen, look for
@@ -88,7 +99,12 @@ export default function EnableLocationMobile() {
         <li>Refresh the page.</li>
       </ol>
 
-      {/* TODO: Ahmed to add a screenshot of iOS Safari's AA menu → Website Settings → Location dropdown. /public/screenshots/ios-safari-website-settings.png */}
+      <ProofPanel
+        title="iOS Safari website settings"
+        device="Capture Safari's AA menu → Website Settings → Location dropdown on an iPhone."
+        caption="That tiny menu is where many people accidentally block a site, so it deserves a real visual."
+        fileHint="/public/screenshots/ios-safari-website-settings.png"
+      />
 
       <p className="mt-3 text-fg-muted leading-relaxed">
         Chrome on iPhone uses Apple&rsquo;s WebKit under the hood (every
@@ -120,7 +136,12 @@ export default function EnableLocationMobile() {
         Settings screen.
       </p>
 
-      {/* TODO: Ahmed to add a screenshot of Android Settings → Location with the main toggle visible. /public/screenshots/android-location-main.png */}
+      <ProofPanel
+        title="Android master toggle"
+        device="Show Android Settings → Location with the master toggle visible on a real handset."
+        caption="Android’s wording shifts by manufacturer, so a real screenshot prevents the guide from feeling generic."
+        fileHint="/public/screenshots/android-location-main.png"
+      />
 
       <h2 className="font-display text-2xl font-bold mt-12">Android per-app permissions &mdash; four options, three timings</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
@@ -143,7 +164,12 @@ export default function EnableLocationMobile() {
         it&rsquo;s off, the app gets a coarsened position.
       </p>
 
-      {/* TODO: Ahmed to add a screenshot of Android per-app location permission with the four buckets. /public/screenshots/android-per-app-permission.png */}
+      <ProofPanel
+        title="Android per-app buckets"
+        device="Capture the app-specific permission screen with the four buckets shown clearly."
+        caption="The per-app buckets are the Android equivalent of iOS’s app permission list."
+        fileHint="/public/screenshots/android-per-app-permission.png"
+      />
 
       <h2 className="font-display text-2xl font-bold mt-12">Chrome on Android &mdash; per-site permission</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
@@ -159,7 +185,12 @@ export default function EnableLocationMobile() {
         <li>Refresh the page.</li>
       </ol>
 
-      {/* TODO: Ahmed to add a screenshot of Chrome on Android with the lock-icon permission panel showing Location. /public/screenshots/chrome-android-site-permission.png */}
+      <ProofPanel
+        title="Chrome on Android permission"
+        device="Capture the lock-icon permission panel in Chrome for Android with Location visible."
+        caption="This confirms the browser layer is separate from the OS toggle."
+        fileHint="/public/screenshots/chrome-android-site-permission.png"
+      />
 
       <p className="mt-3 text-fg-muted leading-relaxed">
         To clear all site-level location blocks at once, open Chrome&rsquo;s

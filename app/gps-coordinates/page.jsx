@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Tool from './Tool.jsx';
+import ProofPanel from './components/ProofPanel.jsx';
 
 export const metadata = {
   title: 'GPS Coordinates — My Live Latitude & Longitude',
@@ -10,6 +11,14 @@ export const metadata = {
     title: 'GPS Coordinates — My Live Latitude & Longitude',
     description: 'Get your live GPS coordinates in DD and DMS. Free, no signup.',
     url: 'https://getmylocations.com/gps-coordinates',
+    type: 'website',
+    images: ['/og-image.png'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'GPS Coordinates — My Live Latitude & Longitude',
+    description: 'Get your live GPS coordinates in DD and DMS. Free, no signup.',
+    images: ['/og-image.png'],
   },
 };
 
@@ -42,7 +51,12 @@ export default function GpsCoordinatesPage() {
 
         <Tool />
 
-        {/* TODO: Ahmed to add a real screenshot of this tool running on his phone outdoors — should show the actual six-decimal lat/lon, accuracy radius in meters, and the satellite count if visible. Replace this comment with an <Image /> + alt text once the file is in /public/screenshots/gps-coordinates-phone.png. Also: add a one-line caption with the actual reading ("Tested on a Galaxy S22 outside my apartment in Karachi — fix in 1.3 s, accuracy 4 m"). */}
+        <ProofPanel
+          title="Outdoor phone fix"
+          device="Capture the tool outdoors on a real phone so the six-decimal latitude, accuracy radius, and satellite count are visible together."
+          caption="A real outdoor capture is the most convincing proof that the coordinates are coming from the device, not a canned example."
+          fileHint="/public/screenshots/gps-coordinates-phone.png"
+        />
 
         <section className="mt-12">
           <h2 className="font-display text-2xl font-bold">What are GPS coordinates?</h2>

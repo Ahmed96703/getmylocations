@@ -74,11 +74,6 @@ const websiteSchema = {
   '@type': 'WebSite',
   name: 'GetMyLocations',
   url: 'https://getmylocations.com/',
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: 'https://getmylocations.com/?q={search_term_string}',
-    'query-input': 'required name=search_term_string',
-  },
 };
 
 // Runs synchronously before paint to apply the user's preferred theme.

@@ -5,6 +5,21 @@ export const metadata = {
   description:
     'The terms that govern your use of the GetMyLocations website and tools.',
   alternates: { canonical: '/terms' },
+  openGraph: {
+    title: 'Terms of Service — GetMyLocations',
+    description:
+      'The terms that govern your use of the GetMyLocations website and tools.',
+    url: 'https://getmylocations.com/terms',
+    type: 'website',
+    images: ['/og-image.png'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Terms of Service — GetMyLocations',
+    description:
+      'The terms that govern your use of the GetMyLocations website and tools.',
+    images: ['/og-image.png'],
+  },
 };
 
 export default function Terms() {

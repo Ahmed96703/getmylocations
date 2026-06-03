@@ -67,6 +67,9 @@ const MORE_TOOLS = [
   { href: '/ip-location', t: 'IP Location', d: 'Look up the city, country, and ISP of any public IPv4 or IPv6 address.' },
   { href: '/distance-calculator', t: 'Distance Calculator', d: 'Great-circle distance between two coordinates using the Haversine formula.' },
   { href: '/address-finder', t: 'Address Finder', d: 'Address-to-coordinates and coordinates-to-address geocoding both ways.' },
+  { href: '/maps', t: 'Interactive Maps', d: 'Explore places with map layers and a cleaner visual context.' },
+  { href: '/satellite', t: 'Satellite View', d: 'See a satellite image of any address or coordinate.' },
+  { href: '/us-map', t: 'US Map', d: 'Browse a map of the United States at a glance.' },
   { href: '/street-view', t: 'Street View', d: 'See any address or coordinate in Google Street View instantly.' },
   { href: '/driving-directions', t: 'Driving Directions', d: 'Plan a driving, walking, biking, or transit route between two places.' },
 ];
@@ -213,10 +216,10 @@ export default function HomeClient() {
       <section aria-labelledby="more-tools" className="mt-14 scroll-mt-24" id="more-tools">
         <div className="flex items-end justify-between gap-4 flex-wrap">
           <div>
-            <h2 id="more-tools-h" className="font-display text-2xl font-bold">All location tools</h2>
-            <p className="text-sm text-fg-subtle mt-1">Eight free, browser-based tools for everything location, GPS, and IP related. Open any one — no signup, no app.</p>
+            <h2 id="more-tools-h" className="font-display text-2xl font-bold">Core location tools</h2>
+            <p className="text-sm text-fg-subtle mt-1">Eleven free, browser-based tools for everything location, GPS, and IP related. Open any one — no signup, no app.</p>
           </div>
-          <span className="text-xs text-fg-subtle uppercase tracking-wider">8 tools</span>
+          <span className="text-xs text-fg-subtle uppercase tracking-wider">11 tools</span>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-5">

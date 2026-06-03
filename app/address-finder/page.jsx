@@ -1,11 +1,27 @@
 import Link from 'next/link';
 import Tool from './Tool.jsx';
+import ProofPanel from './components/ProofPanel.jsx';
 
 export const metadata = {
   title: 'Address Finder — Address to GPS Coordinates & Reverse',
   description: 'Free address finder. Convert street address into GPS coordinates, or paste coordinates to get the address. Two-way geocoding via Nominatim.',
   keywords: ['address finder', 'geocoding', 'address to coordinates', 'coordinates to address', 'reverse geocoding'],
   alternates: { canonical: '/address-finder' },
+  openGraph: {
+    title: 'Address Finder — Address to GPS Coordinates & Reverse',
+    description:
+      'Convert street addresses into GPS coordinates or reverse coordinates back into an address.',
+    url: 'https://getmylocations.com/address-finder',
+    type: 'website',
+    images: ['/og-image.png'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Address Finder — Address to GPS Coordinates & Reverse',
+    description:
+      'Convert street addresses into GPS coordinates or reverse coordinates back into an address.',
+    images: ['/og-image.png'],
+  },
 };
 
 const webAppSchema = {
@@ -37,7 +53,12 @@ export default function AddressFinderPage() {
 
         <Tool />
 
-        {/* TODO: Ahmed to add a screenshot showing the tool resolving "Badshahi Mosque, Lahore" forward (to ~31.5882, 74.3104) and the reverse lookup of those coordinates returning the mosque name. Two-panel image at /public/screenshots/address-finder-badshahi.png. */}
+        <ProofPanel
+          title="Two-way geocoding proof"
+          device='Resolve "Badshahi Mosque, Lahore" forward and then reverse the coordinates to prove the address is not just a one-way guess.'
+          caption="A two-panel proof is the clearest way to show that the forward and reverse lookups both work in real use."
+          fileHint="/public/screenshots/address-finder-badshahi.png"
+        />
 
         <section className="mt-12">
           <h2 className="font-display text-2xl font-bold">What this tool does</h2>

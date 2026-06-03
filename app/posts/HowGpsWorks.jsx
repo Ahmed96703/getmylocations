@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ProofPanel from '../components/ProofPanel.jsx';
 
 export default function HowGpsWorks() {
   return (
@@ -23,7 +24,12 @@ export default function HowGpsWorks() {
         and why.
       </p>
 
-      {/* TODO: Ahmed to add a screenshot of GPSTest (or equivalent Android app) showing the satellite skyplot with locked satellites from multiple constellations (GPS, Galileo, GLONASS, BeiDou). This is the single most convincing piece of evidence that the post is written from someone who actually uses GPS hardware. /public/screenshots/gps-skyplot-real.png. Caption: "Tested on a Galaxy S22 in open sky &mdash; locked on 9 GPS, 6 Galileo, 4 GLONASS satellites at a horizontal accuracy of 3 m." */}
+      <ProofPanel
+        title="Satellite skyplot proof"
+        device="Use GPSTest or a similar Android app in open sky so readers can see locked satellites across multiple constellations."
+        caption="A skyplot is the strongest first-party proof that the GPS article is based on real hardware instead of generic summaries."
+        fileHint="/public/screenshots/gps-skyplot-real.png"
+      />
 
       <h2 className="font-display text-2xl font-bold mt-12">The system, end to end</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">

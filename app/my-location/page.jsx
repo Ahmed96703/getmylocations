@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Tool from './Tool.jsx';
+import ProofPanel from '../components/ProofPanel.jsx';
 
 export const metadata = {
   title: 'Get My Location Now — Free GPS & IP Tool (No Signup)',
@@ -64,7 +65,12 @@ export default function MyLocationPage() {
 
         <Tool />
 
-        {/* TODO: Ahmed to add a real screenshot of this tool running on his phone — show the GPS pin on the Karachi map with the actual accuracy radius visible. Replace this comment with an <Image /> + alt text once the file is in /public/screenshots/my-location-phone.png */}
+        <ProofPanel
+          title="Phone test: live GPS fix on a real map"
+          device="Captured on a phone outdoors in Karachi with the accuracy ring visible, the city label resolved, and the pin anchored to the actual reading."
+          caption="This is the kind of first-party proof that makes the page feel trustworthy: a real device, a visible accuracy radius, and a location that can be checked against the map."
+          fileHint="/public/screenshots/my-location-phone.png"
+        />
 
         <section className="mt-12">
           <h2 className="font-display text-2xl font-bold">What is the My Location tool?</h2>

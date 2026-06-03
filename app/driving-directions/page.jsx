@@ -1,11 +1,27 @@
 import Link from 'next/link';
 import Tool from './Tool.jsx';
+import ProofPanel from './components/ProofPanel.jsx';
 
 export const metadata = {
   title: 'Driving Directions — Free Route Planner',
   description: 'Free driving directions tool. Plan a driving, walking, biking, or transit route between any two addresses. Powered by Google Maps.',
   keywords: ['driving directions', 'route planner', 'directions', 'walking directions', 'transit directions'],
   alternates: { canonical: '/driving-directions' },
+  openGraph: {
+    title: 'Driving Directions — Free Route Planner',
+    description:
+      'Plan a driving, walking, biking, or transit route between any two addresses.',
+    url: 'https://getmylocations.com/driving-directions',
+    type: 'website',
+    images: ['/og-image.png'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Driving Directions — Free Route Planner',
+    description:
+      'Plan a driving, walking, biking, or transit route between any two addresses.',
+    images: ['/og-image.png'],
+  },
 };
 
 const webAppSchema = {
@@ -32,7 +48,12 @@ export default function DrivingDirectionsPage() {
 
         <Tool />
 
-        {/* TODO: Ahmed to add a screenshot of the embed showing a real route from his place to a known landmark (e.g. home → Karachi airport) so the ETA, distance, and route polyline are all visible. /public/screenshots/driving-directions-khi.png */}
+        <ProofPanel
+          title="Real route and ETA proof"
+          device="Capture a route from a real origin to a well-known landmark so the ETA, distance, and polyline are all visible together."
+          caption="Showing a believable route makes the page feel like a working tool instead of an empty embed."
+          fileHint="/public/screenshots/driving-directions-khi.png"
+        />
 
         <section className="mt-10">
           <h2 className="font-display text-2xl font-bold">Why the suggested route is not always the shortest</h2>
