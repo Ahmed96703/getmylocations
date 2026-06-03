@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import ProofPanel from '../components/ProofPanel.jsx';
 
 export default function HowToFindGpsCoordinates() {
   return (
@@ -23,13 +22,6 @@ export default function HowToFindGpsCoordinates() {
         the methods, ranked by how quickly each one actually gets you to
         a coordinate.
       </p>
-
-      <ProofPanel
-        title="Three ways to read coordinates"
-        device="Show the iPhone Compass app, an Android long-press pin, and the browser permission prompt so the reader sees all three paths at once."
-        caption="A small gallery of real device steps makes the guide feel grounded and practical."
-        fileHint="/public/screenshots/find-coords-three-ways.png"
-      />
 
       <h2 className="font-display text-2xl font-bold mt-12">A 30-second mental model of what you&rsquo;re reading</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">

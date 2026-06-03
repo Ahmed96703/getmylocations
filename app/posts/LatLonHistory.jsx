@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import ProofPanel from '../components/ProofPanel.jsx';
 
 export default function LatLonHistory() {
   return (
@@ -23,13 +22,6 @@ export default function LatLonHistory() {
         settled. The grid is 2,200 years old, but the version of it your phone
         actually uses was finalised within the last 50.
       </p>
-
-      <ProofPanel
-        title="Greenwich meridian photo"
-        device="Use a close-up of the brass 0° longitude strip at the Royal Observatory so the article has a real historical anchor."
-        caption="A real photo of the prime meridian gives the history section a tangible place on Earth, not just abstract dates."
-        fileHint="/public/screenshots/greenwich-meridian.jpg"
-      />
 
       <h2 className="font-display text-2xl font-bold mt-12">The Greeks drew the first grid</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">

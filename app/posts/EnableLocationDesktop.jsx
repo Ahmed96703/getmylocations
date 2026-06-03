@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import ProofPanel from '../components/ProofPanel.jsx';
 
 export default function EnableLocationDesktop() {
   return (
@@ -43,13 +42,6 @@ export default function EnableLocationDesktop() {
         <li>Scroll further down to the list of apps and make sure your browser (Microsoft Edge, Google Chrome, Firefox &mdash; whichever you use) has its individual toggle on.</li>
       </ol>
 
-      <ProofPanel
-        title="Windows 11 Location settings"
-        device='Capture the main "Location services" toggle and the app list on a real Windows 11 machine.'
-        caption="A first-party Windows settings shot proves the guide matches the current UI, not an outdated blog post."
-        fileHint="/public/screenshots/windows-11-location-settings.png"
-      />
-
       <p className="mt-3 text-fg-muted leading-relaxed">
         One detail people miss: the per-app toggle below the main one is
         the second switch in our three-layer model. Turning the main
@@ -89,13 +81,6 @@ export default function EnableLocationDesktop() {
         <li>Scroll the app list below it and make sure your browser (Safari, Chrome, Firefox) is checked.</li>
       </ol>
 
-      <ProofPanel
-        title="macOS Location Services"
-        device="Show System Settings → Privacy & Security → Location Services with the main toggle and browser entries visible."
-        caption="The macOS panel is the easiest way to show that the OS-level permission is really the first switch in the chain."
-        fileHint="/public/screenshots/macos-location-services.png"
-      />
-
       <p className="mt-3 text-fg-muted leading-relaxed">
         On older macOS (Big Sur and earlier, with the original System
         Preferences app), the equivalent is <strong>System
@@ -127,13 +112,6 @@ export default function EnableLocationDesktop() {
         <li>Refresh the tab and the location prompt should reappear.</li>
       </ol>
 
-      <ProofPanel
-        title="Chrome site permission"
-        device="Capture the lock-icon menu in Chrome with the Location row visible and set to Allow or Ask."
-        caption="Showing the site-level permission makes the browser layer obvious instead of hiding it in the text."
-        fileHint="/public/screenshots/chrome-site-permission-location.png"
-      />
-
       <p className="mt-3 text-fg-muted leading-relaxed">
         To reset permission for many sites at once, type
         {' '}<code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">chrome://settings/content/location</code>{' '}
@@ -143,13 +121,6 @@ export default function EnableLocationDesktop() {
         visit will prompt fresh.
       </p>
 
-      <ProofPanel
-        title="Chrome permission reset list"
-        device="Open chrome://settings/content/location and show the blocked-sites list so readers can see the global reset path."
-        caption="This proof shot helps users who accidentally blocked the site and need a clean way to undo it."
-        fileHint="/public/screenshots/chrome-content-location.png"
-      />
-
       <h3 className="font-display text-lg font-bold mt-8">Safari (macOS) &mdash; per-site permission</h3>
       <ol className="mt-3 space-y-2 text-fg-muted list-decimal list-inside">
         <li>With Safari open, click <strong>Safari</strong> &rarr; <strong>Settings</strong> in the menu bar (or press &#x2318;,).</li>
@@ -158,13 +129,6 @@ export default function EnableLocationDesktop() {
         <li>Find the site in the list, and use the dropdown next to it to set <strong>Allow</strong> or <strong>Ask</strong>.</li>
         <li>At the bottom, set <em>When visiting other websites</em> to <strong>Ask</strong> so new sites can prompt.</li>
       </ol>
-
-      <ProofPanel
-        title="Safari websites permission"
-        device="Show Safari → Settings → Websites → Location with a site set to Allow on a real Mac."
-        caption="Safari is the odd one out for many users, so a real screenshot removes a lot of confusion."
-        fileHint="/public/screenshots/safari-websites-location.png"
-      />
 
       <h3 className="font-display text-lg font-bold mt-8">Firefox &mdash; per-site, and the global reset</h3>
       <ol className="mt-3 space-y-2 text-fg-muted list-decimal list-inside">
@@ -179,13 +143,6 @@ export default function EnableLocationDesktop() {
         click <strong>Settings</strong> next to Location, and edit
         per-site rules from there.
       </p>
-
-      <ProofPanel
-        title="Firefox permission reset"
-        device="Capture Firefox's lock-panel with the clear-permission link visible so the reset path is unambiguous."
-        caption="This gives readers the exact action needed when they previously blocked location by mistake."
-        fileHint="/public/screenshots/firefox-clear-permission.png"
-      />
 
       <h3 className="font-display text-lg font-bold mt-8">Microsoft Edge &mdash; the same as Chrome, slightly relabelled</h3>
       <p className="mt-3 text-fg-muted leading-relaxed">

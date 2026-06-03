@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import ProofPanel from '../components/ProofPanel.jsx';
 
 export default function HowGpsWorks() {
   return (
@@ -23,13 +22,6 @@ export default function HowGpsWorks() {
         you&rsquo;ll get a 3-meter fix, when you&rsquo;ll get nothing,
         and why.
       </p>
-
-      <ProofPanel
-        title="Satellite skyplot proof"
-        device="Use GPSTest or a similar Android app in open sky so readers can see locked satellites across multiple constellations."
-        caption="A skyplot is the strongest first-party proof that the GPS article is based on real hardware instead of generic summaries."
-        fileHint="/public/screenshots/gps-skyplot-real.png"
-      />
 
       <h2 className="font-display text-2xl font-bold mt-12">The system, end to end</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
