@@ -1,50 +1,9 @@
 {
   "app/HomeClient.jsx -> ./components/MapView.jsx": {
-    "id": 4467,
+    "id": "app/HomeClient.jsx -> ./components/MapView.jsx",
     "files": [
-      "static/css/fc1c9daac70c093b.css",
-      "static/chunks/d0deef33.bd75b11a952a2d3d.js",
-      "static/chunks/467.f2a5dc47d8d39422.js"
-    ]
-  },
-  "app/address-finder/Tool.jsx -> ../ip-location/MapMarker.jsx": {
-    "id": 1860,
-    "files": [
-      "static/css/fc1c9daac70c093b.css",
-      "static/chunks/d0deef33.bd75b11a952a2d3d.js",
-      "static/chunks/860.659927e932fa22a7.js"
-    ]
-  },
-  "app/distance-calculator/Tool.jsx -> ./MapPair.jsx": {
-    "id": 3148,
-    "files": [
-      "static/css/fc1c9daac70c093b.css",
-      "static/chunks/d0deef33.bd75b11a952a2d3d.js",
-      "static/chunks/148.cec3b6f79d2d3ff5.js"
-    ]
-  },
-  "app/gps-coordinates/Tool.jsx -> ../components/MapView.jsx": {
-    "id": 4467,
-    "files": [
-      "static/css/fc1c9daac70c093b.css",
-      "static/chunks/d0deef33.bd75b11a952a2d3d.js",
-      "static/chunks/467.f2a5dc47d8d39422.js"
-    ]
-  },
-  "app/ip-location/Tool.jsx -> ./MapMarker.jsx": {
-    "id": 1860,
-    "files": [
-      "static/css/fc1c9daac70c093b.css",
-      "static/chunks/d0deef33.bd75b11a952a2d3d.js",
-      "static/chunks/860.659927e932fa22a7.js"
-    ]
-  },
-  "app/my-location/Tool.jsx -> ../components/MapView.jsx": {
-    "id": 4467,
-    "files": [
-      "static/css/fc1c9daac70c093b.css",
-      "static/chunks/d0deef33.bd75b11a952a2d3d.js",
-      "static/chunks/467.f2a5dc47d8d39422.js"
+      "static/css/_app-pages-browser_app_components_MapView_jsx.css",
+      "static/chunks/_app-pages-browser_app_components_MapView_jsx.js"
     ]
   }
 }
