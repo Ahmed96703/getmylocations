@@ -42,8 +42,8 @@ export default function SiteHeader() {
   }, [open]);
 
   return (
-    <header role="banner" className="sticky top-0 z-30 border-b border-line bg-bg/80 backdrop-blur-xl">
-      <div className="max-w-7xl mx-auto px-5 py-3.5 flex items-center justify-between gap-4">
+    <header role="banner" className="sticky top-0 z-30 px-3 sm:px-4 pt-3">
+      <div className="max-w-7xl mx-auto glass-strong rounded-[1.5rem] border border-line-subtle shadow-2xl px-4 py-3.5 flex items-center justify-between gap-4">
         <Link href="/" aria-label="GetMyLocations home" className="flex items-center gap-3 group">
           <Logo size={36} />
           <div>
@@ -69,7 +69,7 @@ export default function SiteHeader() {
                 onClick={(e) => { e.stopPropagation(); setOpen((v) => !v); }}
                 aria-haspopup="menu"
                 aria-expanded={open}
-                className={`inline-flex items-center gap-1 px-3 py-1.5 rounded-full transition border ${
+                className={`inline-flex items-center gap-1.5 px-3.5 py-1.75 rounded-full transition border ${
                   open
                     ? 'bg-accent/15 border-accent/40 text-fg'
                     : 'bg-accent/10 border-accent/20 text-accent hover:text-fg'
@@ -81,7 +81,7 @@ export default function SiteHeader() {
                 <div
                   role="menu"
                   aria-label="All tools"
-                  className="absolute right-0 mt-2 w-[320px] max-w-[calc(100vw-2rem)] rounded-xl border border-line bg-surface/95 backdrop-blur-xl shadow-2xl p-1.5 z-40"
+                  className="absolute right-0 mt-2 w-[320px] max-w-[calc(100vw-2rem)] rounded-2xl border border-line bg-surface/95 backdrop-blur-xl shadow-2xl p-2 z-40"
                 >
                   {TOOLS.map((t) => (
                     <Link
@@ -89,7 +89,7 @@ export default function SiteHeader() {
                       href={t.href}
                       role="menuitem"
                       onClick={() => setOpen(false)}
-                      className={`flex flex-col gap-0.5 px-3 py-2 rounded-lg hover:bg-accent/10 transition group ${
+                      className={`flex flex-col gap-0.5 px-3 py-2.5 rounded-xl hover:bg-accent/10 transition group ${
                         pathname === t.href ? 'bg-accent/10' : ''
                       }`}
                     >
@@ -114,7 +114,7 @@ export default function SiteHeader() {
               </li>
             ))}
 
-            <li className="ml-1">
+            <li className="ml-1 hidden sm:block">
               <ThemeToggle />
             </li>
           </ul>

@@ -4,12 +4,12 @@ export default function AuthorBio() {
   return (
     <aside
       aria-label="About the author"
-      className="mt-14 not-prose rounded-2xl border border-line bg-white/[0.03] p-6 sm:p-7"
+      className="mt-14 not-prose rounded-[1.5rem] border border-line-subtle glass-strong p-6 sm:p-7 shadow-2xl"
     >
       <div className="flex items-start gap-4">
         <div
           aria-hidden="true"
-          className="shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-accent to-accent-strong flex items-center justify-center font-bold text-accent-fg"
+          className="shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-accent to-accent-strong flex items-center justify-center font-bold text-accent-fg shadow-lg shadow-accent/25"
         >
           AA
         </div>

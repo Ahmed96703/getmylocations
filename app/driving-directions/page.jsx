@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Tool from './Tool.jsx';
-import ProofPanel from './components/ProofPanel.jsx';
+import ProofPanel from '../components/ProofPanel.jsx';
 
 export const metadata = {
   title: 'Driving Directions — Free Route Planner',

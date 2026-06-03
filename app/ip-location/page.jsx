@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Tool from './Tool.jsx';
-import ProofPanel from './components/ProofPanel.jsx';
+import ProofPanel from '../components/ProofPanel.jsx';
 
 export const metadata = {
   title: 'IP Location — Find My IP Address Country, City & ISP Free',
