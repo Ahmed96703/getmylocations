@@ -3,6 +3,14 @@ import Link from 'next/link';
 export default function WhatIsIpLocation() {
   return (
     <article className="prose-invert">
+      <figure className="mb-8 -mt-2">
+        <img
+          src="/blog-images/what-is-ip-location-and-how-accurate-hero.jpg"
+          alt="Minimalist globe outline with continents in soft slate and teal, suggesting global IP geolocation coverage"
+          className="w-full h-auto rounded-xl"
+          loading="eager"
+        />
+      </figure>
       <p className="text-lg text-fg-muted leading-relaxed">
         Industry studies of IP geolocation accuracy come back with a
         number that surprises people: the city the database returns is
@@ -13,6 +21,36 @@ export default function WhatIsIpLocation() {
         almost every &ldquo;why does the website think I&rsquo;m in a
         different city?&rdquo; story you&rsquo;ve ever heard.
       </p>
+
+      <figure className="my-10">
+        <svg viewBox="0 0 480 290" className="w-full max-w-2xl mx-auto" role="img" aria-label="Bar chart of IP geolocation accuracy at country, region, city, and street levels">
+          <text x="240" y="22" textAnchor="middle" className="fill-fg" fontSize="13" fontWeight="700">How often IP geolocation is right</text>
+          <line x1="70" y1="60" x2="70" y2="240" className="stroke-line" strokeWidth="1" />
+          <line x1="70" y1="240" x2="440" y2="240" className="stroke-line" strokeWidth="1" />
+          <line x1="65" y1="60" x2="75" y2="60" className="stroke-line" strokeWidth="1" />
+          <text x="60" y="64" textAnchor="end" className="fill-fg-subtle" fontSize="10">100%</text>
+          <line x1="65" y1="150" x2="75" y2="150" className="stroke-line" strokeWidth="1" />
+          <text x="60" y="154" textAnchor="end" className="fill-fg-subtle" fontSize="10">50%</text>
+          <line x1="65" y1="240" x2="75" y2="240" className="stroke-line" strokeWidth="1" />
+          <text x="60" y="244" textAnchor="end" className="fill-fg-subtle" fontSize="10">0%</text>
+          <rect x="100" y="64" width="70" height="176" rx="4" className="fill-accent" opacity="0.9" />
+          <text x="135" y="56" textAnchor="middle" className="fill-fg" fontSize="12" fontWeight="700">97%</text>
+          <text x="135" y="262" textAnchor="middle" className="fill-fg-muted" fontSize="11" fontWeight="500">Country</text>
+          <rect x="190" y="91" width="70" height="149" rx="4" className="fill-accent" opacity="0.72" />
+          <text x="225" y="83" textAnchor="middle" className="fill-fg" fontSize="12" fontWeight="700">85%</text>
+          <text x="225" y="262" textAnchor="middle" className="fill-fg-muted" fontSize="11" fontWeight="500">Region</text>
+          <rect x="280" y="132" width="70" height="108" rx="4" className="fill-accent" opacity="0.55" />
+          <text x="315" y="124" textAnchor="middle" className="fill-fg" fontSize="12" fontWeight="700">60%</text>
+          <text x="315" y="262" textAnchor="middle" className="fill-fg-muted" fontSize="11" fontWeight="500">City</text>
+          <rect x="370" y="231" width="70" height="9" rx="2" className="fill-accent" opacity="0.4" />
+          <text x="405" y="225" textAnchor="middle" className="fill-fg" fontSize="12" fontWeight="700">~5%</text>
+          <text x="405" y="262" textAnchor="middle" className="fill-fg-muted" fontSize="11" fontWeight="500">Street</text>
+          <text x="240" y="282" textAnchor="middle" className="fill-fg-subtle" fontSize="10" fontStyle="italic">Approximate hit-rates from common geolocation databases</text>
+        </svg>
+        <figcaption className="mt-3 text-xs text-fg-subtle text-center max-w-md mx-auto leading-relaxed">
+          The country is almost always right; the street level is almost never. Most &ldquo;wrong city&rdquo; complaints fall into the middle.
+        </figcaption>
+      </figure>
 
       <h2 className="font-display text-2xl font-bold mt-12">What an IP actually is</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">

@@ -3,6 +3,14 @@ import Link from 'next/link';
 export default function HowGpsWorks() {
   return (
     <article className="prose-invert">
+      <figure className="mb-8 -mt-2">
+        <img
+          src="/blog-images/how-gps-works-hero.jpg"
+          alt="GPS satellites orbiting Earth with signal lines beaming down toward the planet"
+          className="w-full h-auto rounded-xl"
+          loading="eager"
+        />
+      </figure>
       <p className="text-lg text-fg-muted leading-relaxed">
         The signal a GPS satellite sends to your phone, by the time it
         arrives, is about as faint as a 25-watt light bulb seen from
@@ -22,6 +30,38 @@ export default function HowGpsWorks() {
         you&rsquo;ll get a 3-meter fix, when you&rsquo;ll get nothing,
         and why.
       </p>
+
+      <figure className="my-10 flex flex-col items-center">
+        <svg viewBox="0 0 360 300" className="w-full max-w-md" role="img" aria-label="GPS trilateration: three satellite signal ranges intersecting at one point on the ground">
+          <circle cx="120" cy="110" r="85" fill="none" className="stroke-accent" strokeWidth="1.5" opacity="0.55" />
+          <circle cx="240" cy="110" r="85" fill="none" className="stroke-accent" strokeWidth="1.5" opacity="0.55" />
+          <circle cx="180" cy="210" r="85" fill="none" className="stroke-accent" strokeWidth="1.5" opacity="0.55" />
+          <g className="fill-accent">
+            <rect x="113" y="35" width="14" height="8" rx="1" />
+            <rect x="104" y="38" width="32" height="2" />
+            <rect x="104" y="40" width="32" height="2" />
+          </g>
+          <text x="120" y="28" textAnchor="middle" className="fill-fg-muted" fontSize="10" fontWeight="600">Satellite 1</text>
+          <g className="fill-accent">
+            <rect x="233" y="35" width="14" height="8" rx="1" />
+            <rect x="224" y="38" width="32" height="2" />
+            <rect x="224" y="40" width="32" height="2" />
+          </g>
+          <text x="240" y="28" textAnchor="middle" className="fill-fg-muted" fontSize="10" fontWeight="600">Satellite 2</text>
+          <g className="fill-accent">
+            <rect x="173" y="278" width="14" height="8" rx="1" />
+            <rect x="164" y="281" width="32" height="2" />
+            <rect x="164" y="283" width="32" height="2" />
+          </g>
+          <text x="180" y="296" textAnchor="middle" className="fill-fg-muted" fontSize="10" fontWeight="600">Satellite 3</text>
+          <circle cx="180" cy="145" r="6" className="fill-accent" />
+          <circle cx="180" cy="145" r="13" fill="none" className="stroke-accent" strokeWidth="1.5" opacity="0.45" />
+          <text x="192" y="148" className="fill-fg" fontSize="11" fontWeight="600">Your phone</text>
+        </svg>
+        <figcaption className="mt-3 text-xs text-fg-subtle text-center max-w-md leading-relaxed">
+          Trilateration: each satellite tells your phone where it is and what time it is. The time difference reveals distance; three distances narrow your position to one point. A fourth satellite resolves clock error.
+        </figcaption>
+      </figure>
 
       <h2 className="font-display text-2xl font-bold mt-12">The system, end to end</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">

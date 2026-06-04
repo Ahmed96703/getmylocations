@@ -3,6 +3,14 @@ import Link from 'next/link';
 export default function LatLonHistory() {
   return (
     <article className="prose-invert">
+      <figure className="mb-8 -mt-2">
+        <img
+          src="/blog-images/history-of-latitude-and-longitude-hero.jpg"
+          alt="Vintage brass sextant overlaid on an antique world map at sunset, evoking the age of celestial navigation"
+          className="w-full h-auto rounded-xl"
+          loading="eager"
+        />
+      </figure>
       <p className="text-lg text-fg-muted leading-relaxed">
         In October 1884, twenty-five countries sat down in a conference room
         in Washington and voted on which line should count as the middle of
@@ -22,6 +30,29 @@ export default function LatLonHistory() {
         settled. The grid is 2,200 years old, but the version of it your phone
         actually uses was finalised within the last 50.
       </p>
+
+      <figure className="my-10 flex flex-col items-center">
+        <svg viewBox="0 0 360 240" className="w-full max-w-md" role="img" aria-label="Earth with latitude and longitude grid lines, showing the equator and prime meridian as the two reference lines">
+          <circle cx="180" cy="120" r="100" fill="none" className="stroke-line" strokeWidth="1.5" />
+          <ellipse cx="180" cy="80" rx="92" ry="8" fill="none" className="stroke-line" strokeWidth="1" opacity="0.55" />
+          <ellipse cx="180" cy="100" rx="98" ry="11" fill="none" className="stroke-line" strokeWidth="1" opacity="0.55" />
+          <ellipse cx="180" cy="120" rx="100" ry="14" fill="none" className="stroke-accent" strokeWidth="2" />
+          <ellipse cx="180" cy="140" rx="98" ry="11" fill="none" className="stroke-line" strokeWidth="1" opacity="0.55" />
+          <ellipse cx="180" cy="160" rx="92" ry="8" fill="none" className="stroke-line" strokeWidth="1" opacity="0.55" />
+          <ellipse cx="180" cy="120" rx="20" ry="100" fill="none" className="stroke-accent" strokeWidth="2" />
+          <ellipse cx="180" cy="120" rx="50" ry="100" fill="none" className="stroke-line" strokeWidth="1" opacity="0.55" />
+          <ellipse cx="180" cy="120" rx="80" ry="100" fill="none" className="stroke-line" strokeWidth="1" opacity="0.55" />
+          <circle cx="180" cy="20" r="2.5" className="fill-fg-muted" />
+          <circle cx="180" cy="220" r="2.5" className="fill-fg-muted" />
+          <text x="285" y="124" className="fill-accent" fontSize="11" fontWeight="600">Equator (0&deg;)</text>
+          <text x="195" y="42" className="fill-accent" fontSize="11" fontWeight="600">Prime Meridian</text>
+          <text x="180" y="14" textAnchor="middle" className="fill-fg-subtle" fontSize="9">North Pole</text>
+          <text x="180" y="234" textAnchor="middle" className="fill-fg-subtle" fontSize="9">South Pole</text>
+        </svg>
+        <figcaption className="mt-3 text-xs text-fg-subtle text-center max-w-md leading-relaxed">
+          The grid in one image. The equator picks itself; the prime meridian was chosen by international vote in 1884 and now runs through Greenwich.
+        </figcaption>
+      </figure>
 
       <h2 className="font-display text-2xl font-bold mt-12">The Greeks drew the first grid</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
@@ -73,6 +104,15 @@ export default function LatLonHistory() {
         &mdash; &pound;20,000, the equivalent of millions today &mdash; for
         a workable solution.
       </p>
+
+      <figure className="my-10">
+        <img
+          src="/blog-images/history-of-latitude-and-longitude-mid.jpg"
+          alt="Interlocking mechanical clockwork gears in cool teal and blue, evoking John Harrison's marine chronometer"
+          className="w-full h-auto rounded-xl"
+          loading="lazy"
+        />
+      </figure>
 
       <h2 className="font-display text-2xl font-bold mt-12">John Harrison&rsquo;s clocks</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">

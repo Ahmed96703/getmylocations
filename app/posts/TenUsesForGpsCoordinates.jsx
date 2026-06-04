@@ -3,6 +3,14 @@ import Link from 'next/link';
 export default function TenUsesForGpsCoordinates() {
   return (
     <article className="prose-invert">
+      <figure className="mb-8 -mt-2">
+        <img
+          src="/blog-images/10-uses-for-gps-coordinates-hero.jpg"
+          alt="Grid of small flat-design icons (tent, compass, fishing rod, sailboat, mountain, weather) all in a cool blue-and-green palette, representing varied uses for GPS coordinates"
+          className="w-full h-auto rounded-xl"
+          loading="eager"
+        />
+      </figure>
       <p className="text-lg text-fg-muted leading-relaxed">
         I have a note on my phone called &ldquo;coords&rdquo; with about
         thirty latitude&ndash;longitude pairs in it. The dentist&rsquo;s

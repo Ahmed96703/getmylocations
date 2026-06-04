@@ -3,6 +3,14 @@ import Link from 'next/link';
 export default function WhyMapsShowWrongStreet() {
   return (
     <article className="prose-invert">
+      <figure className="mb-8 -mt-2">
+        <img
+          src="/blog-images/why-maps-show-wrong-street-hero.jpg"
+          alt="Two map pins sitting slightly offset from each other on a stylised street grid, illustrating address mismatch"
+          className="w-full h-auto rounded-xl"
+          loading="eager"
+        />
+      </figure>
       <p className="text-lg text-fg-muted leading-relaxed">
         A few months ago a courier rang the gate next to mine, stood there
         for ten minutes, called me, sent me a screenshot of his maps app

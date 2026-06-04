@@ -3,6 +3,14 @@ import Link from 'next/link';
 export default function GpsCoordinatesEmergencies() {
   return (
     <article className="prose-invert">
+      <figure className="mb-8 -mt-2">
+        <img
+          src="/blog-images/gps-coordinates-emergencies-aml-guide-hero.jpg"
+          alt="Location pin surrounded by concentric signal rings against a starry night sky, evoking emergency-call positioning"
+          className="w-full h-auto rounded-xl"
+          loading="eager"
+        />
+      </figure>
       <p className="text-lg text-fg-muted leading-relaxed">
         In 2014, a Lithuanian teenager named Karol Otulakowski phoned the
         emergency services from a forest. He couldn&rsquo;t describe where
@@ -43,6 +51,15 @@ export default function GpsCoordinatesEmergencies() {
         address &mdash; the coordinate is the canonical reference, the
         address text is derived from it.
       </p>
+
+      <figure className="my-10">
+        <img
+          src="/blog-images/gps-coordinates-emergencies-aml-guide-mid.jpg"
+          alt="Stylised phone broadcasting signal waves toward an abstract dispatcher tower, illustrating Advanced Mobile Location"
+          className="w-full h-auto rounded-xl"
+          loading="lazy"
+        />
+      </figure>
 
       <h2 className="font-display text-2xl font-bold mt-12">What your phone does automatically</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">

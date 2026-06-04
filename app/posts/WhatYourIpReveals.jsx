@@ -3,6 +3,14 @@ import Link from 'next/link';
 export default function WhatYourIpReveals() {
   return (
     <article className="prose-invert">
+      <figure className="mb-8 -mt-2">
+        <img
+          src="/blog-images/what-your-ip-reveals-hero.jpg"
+          alt="Envelope at the centre of an abstract network with paths radiating outward, evoking IP-based routing"
+          className="w-full h-auto rounded-xl"
+          loading="eager"
+        />
+      </figure>
       <p className="text-lg text-fg-muted leading-relaxed">
         Most of what people believe their IP address &ldquo;reveals&rdquo;
         about them is wrong. It does not contain your name. It does not
@@ -81,6 +89,15 @@ export default function WhatYourIpReveals() {
         any IP-based service can tell, you really are wherever the exit
         node is sitting.
       </p>
+
+      <figure className="my-10">
+        <img
+          src="/blog-images/what-your-ip-reveals-mid.jpg"
+          alt="Soft concentric rings on a muted gradient background with a small central dot, evoking how identity radiates outward"
+          className="w-full h-auto rounded-xl"
+          loading="lazy"
+        />
+      </figure>
 
       <h2 className="font-display text-2xl font-bold mt-12">What a long-running session can infer</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">

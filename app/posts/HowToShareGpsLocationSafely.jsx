@@ -3,6 +3,14 @@ import Link from 'next/link';
 export default function HowToShareGpsLocationSafely() {
   return (
     <article className="prose-invert">
+      <figure className="mb-8 -mt-2">
+        <img
+          src="/blog-images/how-to-share-gps-location-safely-hero.jpg"
+          alt="Translucent shield protecting a location pin with a soft glow, illustrating safe location sharing"
+          className="w-full h-auto rounded-xl"
+          loading="eager"
+        />
+      </figure>
       <p className="text-lg text-fg-muted leading-relaxed">
         Two years ago I shared my live location with a friend on Google
         Maps so she could find a caf&eacute; we&rsquo;d agreed on. We met,

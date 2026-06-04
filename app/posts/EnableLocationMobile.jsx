@@ -3,6 +3,14 @@ import Link from 'next/link';
 export default function EnableLocationMobile() {
   return (
     <article className="prose-invert">
+      <figure className="mb-8 -mt-2">
+        <img
+          src="/blog-images/enable-location-on-iphone-and-android-hero.jpg"
+          alt="Two smartphone silhouettes side by side, each glowing with a location pin in the centre"
+          className="w-full h-auto rounded-xl"
+          loading="eager"
+        />
+      </figure>
       <p className="text-lg text-fg-muted leading-relaxed">
         A phone with location turned off is a phone that can&rsquo;t do
         half of what people use a phone for. Maps stops navigating.
@@ -93,6 +101,15 @@ export default function EnableLocationMobile() {
         Settings</strong> &rarr; <strong>Default browser
         permissions</strong>.
       </p>
+
+      <figure className="my-10">
+        <img
+          src="/blog-images/enable-location-on-iphone-and-android-mid.jpg"
+          alt="Single smartphone surrounded by concentric circles on a light blue background, evoking layered location permissions"
+          className="w-full h-auto rounded-xl"
+          loading="lazy"
+        />
+      </figure>
 
       <h2 className="font-display text-2xl font-bold mt-12">Android &mdash; the master toggle</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">

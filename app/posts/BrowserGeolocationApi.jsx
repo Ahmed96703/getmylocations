@@ -24,6 +24,42 @@ export default function BrowserGeolocationApi() {
         really does. Which error codes are recoverable and which aren&rsquo;t.
       </p>
 
+      <figure className="my-10 flex flex-col items-center">
+        <svg viewBox="0 0 520 280" className="w-full max-w-2xl" role="img" aria-label="Flow of a browser geolocation request: page calls the browser, which asks the operating system, which fuses GPS, Wi-Fi, cell, and IP signals into one coordinate">
+          <rect x="10" y="120" width="90" height="44" rx="8" fill="none" className="stroke-line" strokeWidth="1.5" />
+          <text x="55" y="140" textAnchor="middle" className="fill-fg" fontSize="11" fontWeight="700">Page</text>
+          <text x="55" y="156" textAnchor="middle" className="fill-fg-subtle" fontSize="9">getCurrentPosition()</text>
+          <rect x="130" y="120" width="90" height="44" rx="8" fill="none" className="stroke-line" strokeWidth="1.5" />
+          <text x="175" y="140" textAnchor="middle" className="fill-fg" fontSize="11" fontWeight="700">Browser</text>
+          <text x="175" y="156" textAnchor="middle" className="fill-fg-subtle" fontSize="9">permission check</text>
+          <rect x="250" y="120" width="90" height="44" rx="8" fill="none" className="stroke-accent" strokeWidth="2" />
+          <text x="295" y="140" textAnchor="middle" className="fill-fg" fontSize="11" fontWeight="700">OS</text>
+          <text x="295" y="156" textAnchor="middle" className="fill-fg-subtle" fontSize="9">signal fusion</text>
+          <rect x="370" y="30" width="140" height="34" rx="6" fill="none" className="stroke-line" strokeWidth="1.5" />
+          <text x="440" y="51" textAnchor="middle" className="fill-fg-muted" fontSize="11">GPS satellites · 3–5 m</text>
+          <rect x="370" y="78" width="140" height="34" rx="6" fill="none" className="stroke-line" strokeWidth="1.5" />
+          <text x="440" y="99" textAnchor="middle" className="fill-fg-muted" fontSize="11">Wi-Fi BSSID · 10–25 m</text>
+          <rect x="370" y="126" width="140" height="34" rx="6" fill="none" className="stroke-line" strokeWidth="1.5" />
+          <text x="440" y="147" textAnchor="middle" className="fill-fg-muted" fontSize="11">Cell tower · 500 m+</text>
+          <rect x="370" y="174" width="140" height="34" rx="6" fill="none" className="stroke-line" strokeWidth="1.5" />
+          <text x="440" y="195" textAnchor="middle" className="fill-fg-muted" fontSize="11">IP fallback · kilometres</text>
+          <line x1="100" y1="142" x2="128" y2="142" className="stroke-fg-subtle" strokeWidth="1.5" />
+          <polygon points="125,138 132,142 125,146" className="fill-fg-subtle" />
+          <line x1="220" y1="142" x2="248" y2="142" className="stroke-fg-subtle" strokeWidth="1.5" />
+          <polygon points="245,138 252,142 245,146" className="fill-fg-subtle" />
+          <line x1="340" y1="132" x2="370" y2="47" className="stroke-fg-subtle" strokeWidth="1" opacity="0.55" />
+          <line x1="340" y1="138" x2="370" y2="95" className="stroke-fg-subtle" strokeWidth="1" opacity="0.55" />
+          <line x1="340" y1="146" x2="370" y2="143" className="stroke-fg-subtle" strokeWidth="1" opacity="0.55" />
+          <line x1="340" y1="152" x2="370" y2="191" className="stroke-fg-subtle" strokeWidth="1" opacity="0.55" />
+          <text x="200" y="248" textAnchor="middle" className="fill-fg-subtle" fontSize="10" fontStyle="italic">single coordinate flows back</text>
+          <path d="M 290 224 Q 175 200 70 224" fill="none" className="stroke-accent" strokeWidth="1.5" strokeDasharray="4,3" />
+          <polygon points="76,221 67,225 73,229" className="fill-accent" />
+        </svg>
+        <figcaption className="mt-3 text-xs text-fg-subtle text-center max-w-md mx-auto leading-relaxed">
+          The browser never measures location itself. It asks the OS, which picks whichever combination of signals is available and hands one coordinate back.
+        </figcaption>
+      </figure>
+
       <h2 className="font-display text-2xl font-bold mt-12">The surface area is tiny</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
         The browser exposes

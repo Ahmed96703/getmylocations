@@ -3,6 +3,14 @@ import Link from 'next/link';
 export default function LatitudeVsLongitude() {
   return (
     <article className="prose-invert">
+      <figure className="mb-8 -mt-2">
+        <img
+          src="/blog-images/latitude-vs-longitude-explained-hero.jpg"
+          alt="Stylized globe with prominent latitude and longitude grid lines glowing in sky blue against a navy background"
+          className="w-full h-auto rounded-xl"
+          loading="eager"
+        />
+      </figure>
       <p className="text-lg text-fg-muted leading-relaxed">
         I forget which one runs sideways at least once a year, and I
         write about coordinates for a living. The trick that finally
@@ -22,6 +30,33 @@ export default function LatitudeVsLongitude() {
         A latitude&ndash;longitude pair is a single unique point. Every
         spot on Earth has exactly one.
       </p>
+
+      <figure className="my-10">
+        <svg viewBox="0 0 480 230" className="w-full max-w-2xl mx-auto" role="img" aria-label="How coordinate precision narrows down location as you add decimal places">
+          <text x="240" y="20" textAnchor="middle" className="fill-fg" fontSize="13" fontWeight="700">How decimal places narrow you down</text>
+          <text x="20" y="55" className="fill-fg-muted" fontSize="11" fontWeight="500">0 decimals</text>
+          <rect x="120" y="44" width="280" height="16" rx="3" className="fill-accent" opacity="0.9" />
+          <text x="410" y="56" className="fill-fg-subtle" fontSize="11">~111 km — country</text>
+          <text x="20" y="85" className="fill-fg-muted" fontSize="11" fontWeight="500">2 decimals</text>
+          <rect x="120" y="74" width="120" height="16" rx="3" className="fill-accent" opacity="0.78" />
+          <text x="250" y="86" className="fill-fg-subtle" fontSize="11">~1.1 km — neighbourhood</text>
+          <text x="20" y="115" className="fill-fg-muted" fontSize="11" fontWeight="500">3 decimals</text>
+          <rect x="120" y="104" width="60" height="16" rx="3" className="fill-accent" opacity="0.7" />
+          <text x="190" y="116" className="fill-fg-subtle" fontSize="11">~110 m — street block</text>
+          <text x="20" y="145" className="fill-fg-muted" fontSize="11" fontWeight="500">4 decimals</text>
+          <rect x="120" y="134" width="22" height="16" rx="3" className="fill-accent" opacity="0.6" />
+          <text x="152" y="146" className="fill-fg-subtle" fontSize="11">~11 m — single building</text>
+          <text x="20" y="175" className="fill-fg-muted" fontSize="11" fontWeight="500">5 decimals</text>
+          <rect x="120" y="164" width="8" height="16" rx="2" className="fill-accent" opacity="0.5" />
+          <text x="138" y="176" className="fill-fg-subtle" fontSize="11">~1.1 m — parked car</text>
+          <text x="20" y="205" className="fill-fg-muted" fontSize="11" fontWeight="500">6 decimals</text>
+          <rect x="120" y="194" width="3" height="16" rx="1" className="fill-accent" opacity="0.45" />
+          <text x="133" y="206" className="fill-fg-subtle" fontSize="11">~11 cm — survey grade</text>
+        </svg>
+        <figcaption className="mt-3 text-xs text-fg-subtle text-center max-w-md mx-auto leading-relaxed">
+          Each decimal place divides the uncertainty by ten. For most everyday uses, four decimals is plenty.
+        </figcaption>
+      </figure>
 
       <h2 className="font-display text-2xl font-bold mt-12">Latitude: north and south, easy half</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
