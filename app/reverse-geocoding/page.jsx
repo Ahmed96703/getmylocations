@@ -1,20 +1,112 @@
 import Link from 'next/link';
-
+import AuthorBio from '../components/AuthorBio.jsx';
 
 export const metadata = {
-  title: 'Reverse Geocoding — Convert GPS Coordinates to an Address',
-  description: "Reverse geocoding explained. Turn GPS coordinates into a street address using OpenStreetMap Nominatim and BigDataCloud. With accuracy notes and use cases.",
+  title: 'Reverse Geocoding Explained — How Coordinates Become a Street Address',
+  description:
+    'Reverse geocoding explained — how GPS coordinates become a street address, the algorithm step by step, common failure modes, and free APIs (Nominatim, BigDataCloud) to call yourself.',
+  keywords: [
+    'reverse geocoding',
+    'coordinates to address',
+    'what is reverse geocoding',
+    'gps to address',
+    'lat long to address',
+    'nominatim reverse geocoding',
+  ],
   alternates: { canonical: '/reverse-geocoding' },
   openGraph: {
-    title: 'Reverse Geocoding — Convert GPS Coordinates to an Address',
-    description: "Reverse geocoding explained. Turn GPS coordinates into a street address using OpenStreetMap Nominatim and BigDataCloud. With accuracy notes and use cases.",
+    title: 'Reverse Geocoding Explained — Coordinates → Street Address',
+    description:
+      'How GPS coordinates become a street address, step by step. With accuracy notes, common failure modes, and free APIs.',
     url: 'https://getmylocations.com/reverse-geocoding',
+    type: 'article',
+    images: ['/og-image.png'],
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Reverse Geocoding — Coordinates to Address Explained',
+    description: 'How the algorithm picks an address from a lat/long. With APIs and accuracy notes.',
+    images: ['/og-image.png'],
+  },
+};
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Reverse Geocoding Explained — How Coordinates Become a Street Address',
+  description:
+    'A complete explainer on reverse geocoding: how a GPS coordinate is translated into a human-readable street address, the algorithm, accuracy limits, and how to call the free APIs yourself.',
+  author: { '@type': 'Person', name: 'Ahmed Anwar' },
+  publisher: {
+    '@type': 'Organization',
+    name: 'GetMyLocations',
+    logo: { '@type': 'ImageObject', url: 'https://getmylocations.com/icon-512.png' },
+  },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://getmylocations.com/reverse-geocoding' },
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://getmylocations.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Reverse Geocoding', item: 'https://getmylocations.com/reverse-geocoding' },
+  ],
+};
+
+const faqs = [
+  {
+    q: 'What is reverse geocoding in simple terms?',
+    a: 'Reverse geocoding is the translation of a GPS coordinate (a pair of numbers like 48.858420, 2.294500) into a human-readable address like "5 Avenue Anatole France, 75007 Paris, France." It is the opposite direction of forward geocoding, which takes an address as input and returns coordinates. Every modern ride-hailing app, courier confirmation, and "share my location" message relies on reverse geocoding behind the scenes.',
+  },
+  {
+    q: 'How does reverse geocoding actually work?',
+    a: 'The algorithm runs a series of point-in-polygon tests at increasing specificity: country, region/state, city, then street. For the street level, it finds the nearest street centerline within ~50–200 m and interpolates between the start and end house numbers stored for that segment. A separate polygon dataset returns the postal code. Big providers also overlay a points-of-interest layer so a coordinate inside a known building can return the building name instead of a street address.',
+  },
+  {
+    q: 'Why does reverse geocoding sometimes return the wrong house number?',
+    a: 'Map databases rarely store a coordinate for every individual house. Instead they store the start and end of each street and the range of numbers along it, then linearly interpolate. This assumes evenly spaced houses, which is almost never true in practice. Off-by-two house numbers are normal in suburbs; off-by-ten can happen in older neighborhoods with irregular plot sizes or renumbered blocks.',
+  },
+  {
+    q: 'Is reverse geocoding the same as IP geolocation?',
+    a: 'No. Reverse geocoding starts from real GPS coordinates (typically from a device GPS chip, accurate to a few metres) and produces an address. IP geolocation starts from a network address (visible to any website) and guesses a coordinate from a database — accurate only to a city, often only to a country. They use different inputs, different algorithms, and have wildly different accuracy guarantees.',
+  },
+  {
+    q: 'What are the best free reverse-geocoding APIs?',
+    a: 'OpenStreetMap Nominatim is the most-used free option — no API key required, but rate-limited to about one request per second per IP. The endpoint is https://nominatim.openstreetmap.org/reverse?format=json&lat=…&lon=… and returns JSON with country, region, city, road, and house number where available. BigDataCloud offers a free client-side tier with decent global coverage. For high-volume or commercial use, MapBox, HERE, and Google Geocoding offer paid plans with higher accuracy and SLAs.',
+  },
+  {
+    q: 'How do I reverse-geocode coordinates right now?',
+    a: 'For a one-off lookup, use the Address Finder tool — paste a lat/long pair (latitude first) and it returns the nearest street address via Nominatim in under a second. For your own current location, the My Current Location tool reads your GPS and reverse-geocodes it in one tap. For programmatic use, call the Nominatim or BigDataCloud API endpoints directly with a standard HTTP GET.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
 };
 
 export default function ReverseGeocoding() {
   return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+
     <main role="main" className="max-w-3xl mx-auto px-5 py-12 prose-invert">
+      <nav aria-label="Breadcrumb" className="text-xs text-fg-subtle mb-4 not-prose">
+        <ol className="flex items-center gap-1.5">
+          <li><Link href="/" className="hover:text-accent transition">Home</Link></li>
+          <li aria-hidden="true">›</li>
+          <li className="text-fg-muted">Reverse Geocoding</li>
+        </ol>
+      </nav>
+
       <article>
         <p className="text-xs uppercase tracking-[0.18em] text-accent font-semibold">Complete Guide</p>
         <h1 className="font-display text-4xl font-extrabold tracking-tight mt-2 leading-[1.1]">
@@ -31,10 +123,11 @@ export default function ReverseGeocoding() {
 
         <div className="mt-6 glass rounded-2xl p-5 ring-1 ring-accent/30">
           <p className="text-sm text-fg-muted leading-relaxed">
-            <strong className="text-fg">Quick way to try it.</strong> Open
-            {' '}<Link href="/" className="text-accent hover:underline font-semibold">GetMyLocations</Link>{' '}
-            and allow the location prompt. The reverse-geocoded result &mdash; city, region, and
-            country &mdash; appears under your coordinates within a second.
+            <strong className="text-fg">Want to try it right now?</strong> The{' '}
+            <Link href="/address-finder" className="text-accent hover:underline font-semibold">Address Finder tool</Link>{' '}
+            does reverse geocoding on demand — paste any lat/long and get the nearest street address in under a second. For your own current location, the{' '}
+            <Link href="/my-current-location" className="text-accent hover:underline font-semibold">My Current Location tool</Link>{' '}
+            reads your GPS and reverse-geocodes it in one tap.
           </p>
         </div>
 
@@ -111,13 +204,14 @@ export default function ReverseGeocoding() {
           Three practical ways to do it, in order of how much work they take:
         </p>
 
-        <h3 className="font-display text-lg font-semibold mt-6 text-fg">1. Use GetMyLocations</h3>
+        <h3 className="font-display text-lg font-semibold mt-6 text-fg">1. Use the Address Finder tool</h3>
         <p className="mt-2 text-fg-muted leading-relaxed">
-          The fastest way: paste your coordinates into the
-          {' '}<Link href="/" className="text-accent hover:underline">main tool</Link>, drop a manual pin,
-          and the reverse-geocoded result appears next to it. The pipeline uses BigDataCloud
-          first, with OpenStreetMap Nominatim as a fallback for areas BigDataCloud doesn&apos;t cover
-          well.
+          The fastest way: paste your coordinates into the{' '}
+          <Link href="/address-finder" className="text-accent hover:underline">Address Finder</Link>, drop a manual pin,
+          and the reverse-geocoded result appears next to it. The pipeline uses OpenStreetMap
+          Nominatim with a free fallback. For your own live coordinates, the{' '}
+          <Link href="/my-current-location" className="text-accent hover:underline">My Current Location tool</Link>{' '}
+          reads your GPS first and then reverse-geocodes in the same flow.
         </p>
 
         <h3 className="font-display text-lg font-semibold mt-6 text-fg">2. Use Google Maps directly</h3>
@@ -215,8 +309,8 @@ export default function ReverseGeocoding() {
 
         <h2 className="font-display text-2xl font-bold">Drop a pin on the map and reverse-geocode it</h2>
         <p className="mt-3 text-fg-muted leading-relaxed">
-          The most visual way to do reverse geocoding is to drop a pin. Open
-          {' '}<Link href="/" className="text-accent hover:underline font-semibold">GetMyLocations</Link>,
+          The most visual way to do reverse geocoding is to drop a pin. Open the{' '}
+          <Link href="/address-finder" className="text-accent hover:underline font-semibold">Address Finder</Link>,
           switch to manual input mode, type or paste any coordinates, and the map flies to that
           point with a pin. The address text appears in the dashboard underneath, with separate
           fields for city, region, country, and (where available) the nearest street.
@@ -231,21 +325,41 @@ export default function ReverseGeocoding() {
 
         <h2 className="font-display text-2xl font-bold">Privacy and what we (don&apos;t) keep</h2>
         <p className="mt-3 text-fg-muted leading-relaxed">
-          When you reverse-geocode through GetMyLocations, the coordinates are sent in real time to
-          a third-party API to produce the address &mdash; we don&apos;t cache or store them on a
-          server we operate. The third parties (BigDataCloud, OpenStreetMap Nominatim) have their
-          own privacy practices, summarized in our
+          When you reverse-geocode through any tool on this site, the coordinates are sent in real time to
+          a third-party API (OpenStreetMap Nominatim) to produce the address &mdash; we don&apos;t cache or store them on a
+          server we operate. Nominatim has its own privacy practices, summarized in our
           {' '}<Link href="/privacy-policy" className="text-accent hover:underline">Privacy Policy</Link>.
         </p>
 
-        <h2 className="font-display text-2xl font-bold mt-10">Related guides</h2>
+        <hr className="my-10 border-line" />
+
+        <h2 className="font-display text-2xl font-bold">Frequently asked questions</h2>
+        <div className="glass mt-4 rounded-2xl divide-y divide-line-subtle not-prose">
+          {faqs.map((f) => (
+            <details key={f.q} className="group p-5">
+              <summary className="flex items-center justify-between cursor-pointer list-none font-semibold">
+                {f.q}
+                <span className="text-accent group-open:rotate-45 transition-transform" aria-hidden="true">+</span>
+              </summary>
+              <p className="mt-3 text-fg-muted text-sm leading-relaxed">{f.a}</p>
+            </details>
+          ))}
+        </div>
+
+        <h2 className="font-display text-2xl font-bold mt-10">Related tools and guides</h2>
         <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside">
+          <li><Link href="/address-finder" className="text-accent hover:underline">Address Finder &mdash; the two-way geocoding tool</Link></li>
+          <li><Link href="/my-current-location" className="text-accent hover:underline">My Current Location &mdash; your address in one tap</Link></li>
           <li><Link href="/gps-coordinates-finder" className="text-accent hover:underline">GPS coordinates finder &mdash; complete guide</Link></li>
           <li><Link href="/decimal-degrees-converter" className="text-accent hover:underline">Decimal degrees converter (DD &harr; DMS)</Link></li>
           <li><Link href="/ip-location-lookup" className="text-accent hover:underline">IP location lookup &mdash; complete guide</Link></li>
+          <li><Link href="/blog/why-maps-show-wrong-street" className="text-accent hover:underline">Why maps put you on the wrong street</Link></li>
           <li><Link href="/fix-location-not-working" className="text-accent hover:underline">Fix location not working &mdash; troubleshooting</Link></li>
         </ul>
+
+        <AuthorBio />
       </article>
     </main>
+    </>
   );
 }

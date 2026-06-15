@@ -1,20 +1,114 @@
 import Link from 'next/link';
-
+import Tool from '../ip-location/Tool.jsx';
+import AuthorBio from '../components/AuthorBio.jsx';
 
 export const metadata = {
-  title: 'IP Location Lookup — How IP Geolocation Works',
-  description: "Complete IP location guide. How databases map IPs to cities, what your public IP reveals, IPv4 vs IPv6, why the city is often wrong, and privacy.",
+  title: 'IP Location Lookup — Find Any IP\'s City, ISP, and Geolocation (Free)',
+  description:
+    'Free IP location lookup — find any IP\'s city, country, ISP, and approximate geolocation in two seconds. Plus a complete guide to how IP geolocation works and why the city is often wrong.',
+  keywords: [
+    'ip location',
+    'ip location lookup',
+    'my geolocation',
+    'geolocation finder',
+    'geolocation tracker',
+    'isp lookup',
+    'find my ip',
+  ],
   alternates: { canonical: '/ip-location-lookup' },
   openGraph: {
-    title: 'IP Location Lookup — How IP Geolocation Works',
-    description: "Complete IP location guide. How databases map IPs to cities, what your public IP reveals, IPv4 vs IPv6, why the city is often wrong, and privacy.",
+    title: 'IP Location Lookup — Find Any IP\'s City, ISP, and Geolocation',
+    description:
+      'Free IP location lookup — city, country, ISP, and approximate geolocation in two seconds. Plus a complete guide.',
     url: 'https://getmylocations.com/ip-location-lookup',
+    type: 'website',
+    images: ['/og-image.png'],
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'IP Location Lookup — City, ISP, and Geolocation',
+    description: 'Look up any IP free. Plus a complete guide to how IP geolocation works.',
+    images: ['/og-image.png'],
+  },
+};
+
+const webAppSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'IP Location Lookup',
+  description:
+    'Free browser-based tool that looks up any IP address and returns the database-guessed city, country, ISP, and approximate geolocation.',
+  url: 'https://getmylocations.com/ip-location-lookup',
+  applicationCategory: 'UtilitiesApplication',
+  operatingSystem: 'Web',
+  isAccessibleForFree: true,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+  publisher: { '@type': 'Organization', name: 'GetMyLocations' },
+  author: { '@type': 'Person', name: 'Ahmed Anwar' },
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://getmylocations.com/' },
+    { '@type': 'ListItem', position: 2, name: 'IP Location Lookup', item: 'https://getmylocations.com/ip-location-lookup' },
+  ],
+};
+
+const faqs = [
+  {
+    q: 'How do I look up my own IP location?',
+    a: 'Tap the "Lookup my IP" button on the tool above. Within a second or two the page returns your public IP (IPv4 or IPv6), the database-guessed city and country, the ISP that owns the IP block, and whether you appear to be on a residential, mobile, hosting, or VPN connection. No permission prompt — IP geolocation reads only what your browser already sent on the network connection.',
+  },
+  {
+    q: 'How do I look up someone else\'s IP location?',
+    a: 'Paste the IP address into the input field on the tool above and the lookup runs against that IP instead of yours. The same fields come back: city, country, ISP, connection type. Important caveat: an IP reveals at most a city and an ISP — never a street address, never a name. Anything more requires legal process served on the ISP.',
+  },
+  {
+    q: 'How accurate is IP geolocation?',
+    a: 'Country level: 95–99% accurate. Region or state: 80–90%. City level: only 50–75%, and often off by tens of kilometres. Street level: essentially zero — the best you can squeeze out of a public database is a 5–50 km radius. Mobile traffic is the worst case because cellular Carrier-Grade NAT routes thousands of subscribers through a single regional gateway.',
+  },
+  {
+    q: 'Why is the city it shows wrong?',
+    a: 'Five common causes: (1) a VPN is rewriting your IP to its exit-server location, (2) cellular CGNAT is routing you through a far-away gateway, (3) a corporate or school network exits via a distant office, (4) the database is stale and has not caught up with an ISP block reassignment, or (5) you are connecting through a CDN that reports its own location. Disconnect any VPN, switch from cellular to Wi-Fi, and re-run the lookup.',
+  },
+  {
+    q: 'What is the difference between IP geolocation and GPS?',
+    a: 'IP geolocation reads your visible IP and looks it up in a database — accuracy 5–50 km, no permission prompt, defeated by VPN. GPS reads satellite signals directly through your device — accuracy 3–5 m outdoors, requires browser permission, unaffected by VPN. They are complementary, not interchangeable. For "what country is this user in?" IP is fine; for "where exactly is this user standing?" GPS is the only option.',
+  },
+  {
+    q: 'Can someone find my home address from my IP?',
+    a: 'No — not without a court order. A public IP lookup reveals your country, usually your city, your ISP, and whether you are on a VPN or proxy. It does not reveal your name or street. Tying an IP to a specific human address requires a subpoena served on the ISP that owns the IP block. Films routinely overstate this; news stories about someone being "tracked through their IP" almost always have a court order in the middle.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
 };
 
 export default function IpLocationLookup() {
   return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+
     <main role="main" className="max-w-3xl mx-auto px-5 py-12 prose-invert">
+      <nav aria-label="Breadcrumb" className="text-xs text-fg-subtle mb-4 not-prose">
+        <ol className="flex items-center gap-1.5">
+          <li><Link href="/" className="hover:text-accent transition">Home</Link></li>
+          <li aria-hidden="true">›</li>
+          <li className="text-fg-muted">IP Location Lookup</li>
+        </ol>
+      </nav>
+
       <article>
         <p className="text-xs uppercase tracking-[0.18em] text-accent font-semibold">Complete Guide</p>
         <h1 className="font-display text-4xl font-extrabold tracking-tight mt-2 leading-[1.1]">
@@ -29,14 +123,8 @@ export default function IpLocationLookup() {
           when the city it reports is wrong.
         </p>
 
-        <div className="mt-6 glass rounded-2xl p-5 ring-1 ring-accent/30">
-          <p className="text-sm text-fg-muted leading-relaxed">
-            <strong className="text-fg">Quick answer.</strong> Open the
-            {' '}<Link href="/" className="text-accent hover:underline font-semibold">GetMyLocations</Link>{' '}
-            tool. Even if you deny the precise-location prompt, the IP fallback shows your public
-            IPv4 / IPv6 address, the carrier or ISP that owns the IP block, and the city the
-            database has it registered to &mdash; usually within seconds.
-          </p>
+        <div className="not-prose my-8">
+          <Tool />
         </div>
 
         <hr className="my-10 border-line" />
@@ -66,8 +154,9 @@ export default function IpLocationLookup() {
 
         <h3 className="font-display text-lg font-semibold mt-6 text-fg">1. Use a browser tool</h3>
         <p className="mt-2 text-fg-muted leading-relaxed">
-          Easiest by far. Open <Link href="/" className="text-accent hover:underline">GetMyLocations</Link> and
-          the IP appears in the dashboard panel. You don&apos;t need to grant any permission &mdash;
+          Easiest by far. Tap the button on the tool above and the IP, ISP, and database-guessed city appear in the dashboard panel. The dedicated{' '}
+          <Link href="/ip-location" className="text-accent hover:underline">IP Location tool</Link>{' '}
+          does the same thing in a tighter standalone widget. You don&apos;t need to grant any permission &mdash;
           the page just reads the IP visible to the server when your browser connected.
         </p>
 
@@ -288,22 +377,34 @@ export default function IpLocationLookup() {
 
         <hr className="my-10 border-line" />
 
-        <h2 className="font-display text-2xl font-bold">Try the IP lookup now</h2>
-        <p className="mt-3 text-fg-muted leading-relaxed">
-          Open <Link href="/" className="text-accent hover:underline font-semibold">GetMyLocations</Link>. Your
-          public IP, the ISP that owns it, and the database-guessed city all appear in the
-          dashboard &mdash; no permission prompt required, since the page reads what your browser
-          already sent on the connection.
-        </p>
+        <h2 className="font-display text-2xl font-bold">Frequently asked questions</h2>
+        <div className="glass mt-4 rounded-2xl divide-y divide-line-subtle not-prose">
+          {faqs.map((f) => (
+            <details key={f.q} className="group p-5">
+              <summary className="flex items-center justify-between cursor-pointer list-none font-semibold">
+                {f.q}
+                <span className="text-accent group-open:rotate-45 transition-transform" aria-hidden="true">+</span>
+              </summary>
+              <p className="mt-3 text-fg-muted text-sm leading-relaxed">{f.a}</p>
+            </details>
+          ))}
+        </div>
 
-        <h2 className="font-display text-2xl font-bold mt-10">Related guides</h2>
+        <h2 className="font-display text-2xl font-bold mt-10">Related tools and guides</h2>
         <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside">
+          <li><Link href="/ip-location" className="text-accent hover:underline">IP Location &mdash; the standalone tool</Link></li>
           <li><Link href="/blog/what-is-ip-location-and-how-accurate" className="text-accent hover:underline">What is IP location and how accurate is it?</Link></li>
+          <li><Link href="/gps-vs-ip-accuracy" className="text-accent hover:underline">GPS vs IP accuracy &mdash; side-by-side comparison</Link></li>
+          <li><Link href="/blog/what-your-ip-reveals" className="text-accent hover:underline">What your IP address really tells apps about you</Link></li>
+          <li><Link href="/my-location" className="text-accent hover:underline">My Location &mdash; GPS-based reading (more precise than IP)</Link></li>
           <li><Link href="/gps-coordinates-finder" className="text-accent hover:underline">GPS coordinates finder &mdash; complete guide</Link></li>
           <li><Link href="/fix-location-not-working" className="text-accent hover:underline">Fix location not working &mdash; troubleshooting</Link></li>
           <li><Link href="/blog/how-gps-works" className="text-accent hover:underline">How GPS works &mdash; satellite math</Link></li>
         </ul>
+
+        <AuthorBio />
       </article>
     </main>
+    </>
   );
 }
