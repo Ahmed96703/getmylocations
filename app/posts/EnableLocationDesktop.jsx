@@ -1,7 +1,46 @@
 import Link from 'next/link';
 
+const faqs = [
+  {
+    q: 'How do I enable Location Services on Windows 11?',
+    a: 'Open Settings (Win + I) → Privacy & security → Location. Toggle "Location services" on at the top, then turn on "Let apps access your location" below it. Finally, scroll to the per-app list and confirm your browser (Edge, Chrome, Firefox) has its individual toggle on as well. Three switches, all required.',
+  },
+  {
+    q: 'How do I turn on Location Services on Windows 10?',
+    a: 'Open Settings → Privacy → Location. Under "Allow access to location on this device" click Change and turn it on. Then toggle "Allow apps to access your location" and scroll to confirm your browser is enabled in the per-app list. If the toggle is greyed out, your machine is managed by an IT policy or — on a personal machine — possibly compromised by software that installed a fake group policy.',
+  },
+  {
+    q: 'How do I enable Location Services on a Mac?',
+    a: 'Click the Apple menu → System Settings → Privacy & Security → Location Services. Toggle Location Services on, then scroll the app list below it and check the box next to your browser (Safari, Chrome, Firefox). On older macOS versions the same setting lives at System Preferences → Security & Privacy → Privacy tab → Location Services, and you may need to click the padlock at the bottom to unlock changes.',
+  },
+  {
+    q: 'Why is the Location Services toggle greyed out on my work laptop?',
+    a: 'A managed device — a work laptop, a school computer, a domain-joined machine — can have Location Services locked off at the group-policy level. The toggle is visible but unresponsive, often with a tooltip that reads "Some of these settings are managed by your organization." There is no way around this without your IT department lifting the policy; they usually have a documented compliance reason for it.',
+  },
+  {
+    q: 'I enabled Location Services but my browser still cannot read it — why?',
+    a: 'Either the per-app toggle for your specific browser is off (in the same Windows or macOS Location panel), or the per-site permission inside the browser is set to Block from a previous visit. Click the lock icon left of the address bar → Site settings / Permissions → Location → Ask, refresh the page, and click Allow on the prompt that reappears.',
+  },
+  {
+    q: 'Why is my laptop location so much less accurate than my phone?',
+    a: 'Hardware. Most laptops have no GPS chip, so they fall back to Wi-Fi positioning (10–50 metres in a dense city) or, if no usable Wi-Fi is visible, IP geolocation (5–50 kilometres). A phone with GPS gets 3–5 metres outdoors. Plugging in via Ethernet often makes laptop accuracy worse because the wired connection turns off the Wi-Fi radio that was supplying the precision.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
 export default function EnableLocationDesktop() {
   return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
     <article className="prose-invert">
       <p className="text-lg text-fg-muted leading-relaxed">
         You open a maps site, a weather app, or a delivery page on your
@@ -201,12 +240,16 @@ export default function EnableLocationDesktop() {
       <h2 className="font-display text-2xl font-bold mt-12">Testing whether it actually works</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
         Once you&rsquo;ve flipped the switches, the fastest way to
-        confirm the fix is to open
-        {' '}<Link href="/" className="text-accent hover:underline font-semibold">GetMyLocations</Link>{' '}
+        confirm the fix is to open the{' '}
+        <Link href="/my-location" className="text-accent hover:underline font-semibold">My Location tool</Link>{' '}
         and click the location button. If the prompt appears and you
         click Allow, your latitude and longitude land on screen within a
         couple of seconds along with an accuracy radius in meters.
-        That&rsquo;s a clean success.
+        That&rsquo;s a clean success. To check that <em>continuous</em>
+        live updates work as well, the{' '}
+        <Link href="/live-location" className="text-accent hover:underline">Live Location tracker</Link>{' '}
+        keeps refreshing as you move the laptop &mdash; useful for
+        verifying watch-based features.
       </p>
       <p className="mt-3 text-fg-muted leading-relaxed">
         If the page tells you it can&rsquo;t get your location, the most
@@ -217,6 +260,19 @@ export default function EnableLocationDesktop() {
         should be sorted.
       </p>
 
+      <h2 className="font-display text-2xl font-bold mt-12">Frequently asked questions</h2>
+      <div className="glass mt-4 rounded-2xl divide-y divide-line-subtle not-prose">
+        {faqs.map((f) => (
+          <details key={f.q} className="group p-5">
+            <summary className="flex items-center justify-between cursor-pointer list-none font-semibold">
+              {f.q}
+              <span className="text-accent group-open:rotate-45 transition-transform" aria-hidden="true">+</span>
+            </summary>
+            <p className="mt-3 text-fg-muted text-sm leading-relaxed">{f.a}</p>
+          </details>
+        ))}
+      </div>
+
       <h2 className="font-display text-2xl font-bold mt-12">Related reading</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
         For the deeper technical story of what your browser actually
@@ -225,11 +281,14 @@ export default function EnableLocationDesktop() {
         If your problem turns out to be wrong-city accuracy rather than
         a denied prompt, the
         {' '}<Link href="/gps-vs-ip-accuracy" className="text-accent hover:underline">GPS vs IP accuracy guide</Link>{' '}
-        covers why that happens. And the
+        covers why that happens. The
         {' '}<Link href="/fix-location-not-working" className="text-accent hover:underline">general fix-location guide</Link>{' '}
         has a broader troubleshooting list that includes browser
-        extensions, VPNs, and corporate networks.
+        extensions, VPNs, and corporate networks. For the mobile
+        equivalent of this article, see the{' '}
+        <Link href="/blog/enable-location-on-iphone-and-android" className="text-accent hover:underline">iPhone and Android setup guide</Link>.
       </p>
     </article>
+    </>
   );
 }

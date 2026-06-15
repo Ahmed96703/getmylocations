@@ -1,7 +1,46 @@
 import Link from 'next/link';
 
+const faqs = [
+  {
+    q: 'How do I turn on Location Services on my iPhone?',
+    a: 'Open Settings → Privacy & Security → Location Services and toggle the master switch on (it should be green). Then scroll down to the app list and confirm each app you care about is set to "While Using the App" or "Always," with the Precise Location toggle on if you want exact positioning. Without precise mode, the app gets a deliberately fuzzed coordinate accurate only to a few kilometres.',
+  },
+  {
+    q: 'How do I enable location on Android?',
+    a: 'Open Settings → Location and toggle "Use location" on at the top. The same screen also shows "App location permissions" — tap any app to choose Allow all the time, Allow only while in use, Ask every time, or Not allowed. Confirm "Use precise location" is on for maps and navigation apps. On Samsung and Xiaomi phones the path may be under Privacy → Permission manager → Location.',
+  },
+  {
+    q: 'Why is Location Services greyed out on my iPhone?',
+    a: 'Usually because Screen Time restrictions are blocking it. Open Settings → Screen Time → Content & Privacy Restrictions → Location Services and make sure changes are allowed. A managed work phone (MDM-enrolled) can also lock the switch — in that case your IT administrator controls it.',
+  },
+  {
+    q: 'What does Precise Location actually do?',
+    a: 'It controls whether the app gets your real GPS coordinate (a few metres) or a deliberately coarsened one (a few kilometres). The toggle is per-app on iOS and per-app on Android. Turn it on for maps, navigation, and ride-hailing; leave it off for apps that only need to know your city (weather, news, retail loyalty apps) as a privacy compromise.',
+  },
+  {
+    q: 'How do I let one website (not an app) use my location on my phone?',
+    a: 'On iOS Safari, open the site, tap the AA icon in the address bar, choose Website Settings, and set Location to Allow. In Chrome on Android, tap the lock icon to the left of the URL, then Permissions → Location → Allow. Refresh the page after either change to trigger the permission prompt again.',
+  },
+  {
+    q: 'My app still does not get location after I enabled everything — what now?',
+    a: 'Three usual culprits: (1) battery optimisation is killing the background process — exempt the app under Settings → Apps → [App] → Battery → Unrestricted on Android; (2) the app needs Precise Location specifically, and you granted only Approximate; or (3) on iOS, Low Power Mode is throttling background GPS sampling. Disable Low Power Mode for a quick test.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
 export default function EnableLocationMobile() {
   return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
     <article className="prose-invert">
       <figure className="mb-8 -mt-2">
         <img
@@ -221,8 +260,8 @@ export default function EnableLocationMobile() {
 
       <h2 className="font-display text-2xl font-bold mt-12">Test the fix</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
-        Quickest way to confirm everything is working: open
-        {' '}<Link href="/" className="text-accent hover:underline font-semibold">GetMyLocations</Link>{' '}
+        Quickest way to confirm everything is working: open the{' '}
+        <Link href="/my-location" className="text-accent hover:underline font-semibold">My Location tool</Link>{' '}
         on your phone, tap the location button, and tap Allow on the
         permission prompt if it appears. Within a couple of seconds
         you&rsquo;ll see your six-decimal latitude and longitude plus
@@ -236,8 +275,37 @@ export default function EnableLocationMobile() {
         kilometres), GPS is probably off or unavailable and your phone
         fell back to Wi-Fi positioning or IP geolocation. Stepping
         outside fixes that almost instantly &mdash; the satellites need
-        line-of-sight.
+        line-of-sight. For a deeper look at the resulting address rather
+        than just the coordinate, try the{' '}
+        <Link href="/my-current-location" className="text-accent hover:underline">My Current Location page</Link>,
+        which also reverse-geocodes the reading into a readable street
+        address.
       </p>
+
+      <h2 className="font-display text-2xl font-bold mt-12">Still not working?</h2>
+      <p className="mt-3 text-fg-muted leading-relaxed">
+        If you&rsquo;ve walked through every switch above and an app or
+        website still cannot read your location, the problem is usually
+        deeper in the permission stack &mdash; a denied per-site
+        permission, an OS-level privacy restriction, or an
+        insecure-context error on the page itself. Our{' '}
+        <Link href="/fix-location-not-working" className="text-accent hover:underline font-semibold">fix location not working guide</Link>{' '}
+        runs through the seven most common reasons, in order, with the
+        exact menu paths for each browser.
+      </p>
+
+      <h2 className="font-display text-2xl font-bold mt-12">Frequently asked questions</h2>
+      <div className="glass mt-4 rounded-2xl divide-y divide-line-subtle not-prose">
+        {faqs.map((f) => (
+          <details key={f.q} className="group p-5">
+            <summary className="flex items-center justify-between cursor-pointer list-none font-semibold">
+              {f.q}
+              <span className="text-accent group-open:rotate-45 transition-transform" aria-hidden="true">+</span>
+            </summary>
+            <p className="mt-3 text-fg-muted text-sm leading-relaxed">{f.a}</p>
+          </details>
+        ))}
+      </div>
 
       <h2 className="font-display text-2xl font-bold mt-12">Related reading</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
@@ -251,8 +319,14 @@ export default function EnableLocationMobile() {
         {' '}<Link href="/blog/enable-location-on-windows-and-mac" className="text-accent hover:underline">Windows and Mac guide</Link>.
         And if you just want to read your current coordinates fast, the
         {' '}<Link href="/blog/how-to-find-your-gps-coordinates" className="text-accent hover:underline">how to find your GPS coordinates</Link>{' '}
-        guide covers every shortcut.
+        guide covers every shortcut. To understand the difference between
+        the question form and the live-tracking form, the{' '}
+        <Link href="/what-is-my-location" className="text-accent hover:underline">what is my location guide</Link>{' '}
+        and the{' '}
+        <Link href="/live-location" className="text-accent hover:underline">live location tracker</Link>{' '}
+        each take a different angle.
       </p>
     </article>
+    </>
   );
 }

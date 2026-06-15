@@ -14,6 +14,9 @@ const NAV = [
 ];
 
 const TOOLS = [
+  { href: '/what-is-my-location', label: 'What Is My Location?', desc: 'Plain-English answer + tool' },
+  { href: '/my-current-location', label: 'My Current Location', desc: 'Exact address + coordinates' },
+  { href: '/live-location', label: 'Live Location', desc: 'Real-time tracking as you move' },
   { href: '/my-location', label: 'My Location', desc: 'Where am I right now?' },
   { href: '/gps-coordinates', label: 'GPS Coordinates', desc: 'Live latitude & longitude' },
   { href: '/coordinates-converter', label: 'Coordinates Converter', desc: 'DD ↔ DMS ↔ UTM' },

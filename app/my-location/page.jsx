@@ -118,6 +118,9 @@ export default function MyLocationPage() {
           <h2 className="font-display text-2xl font-bold">Other things you can do with your location</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-5">
             {[
+              { href: '/what-is-my-location', t: 'What Is My Location?', d: 'In-depth answer + tool' },
+              { href: '/my-current-location', t: 'My Current Location', d: 'Address + coordinates now' },
+              { href: '/live-location', t: 'Live Location', d: 'Real-time tracking as you move' },
               { href: '/gps-coordinates', t: 'GPS Coordinates', d: 'Live latitude & longitude' },
               { href: '/coordinates-converter', t: 'Coordinates Converter', d: 'DD ↔ DMS ↔ UTM' },
               { href: '/ip-location', t: 'IP Location', d: 'Look up any IP address' },

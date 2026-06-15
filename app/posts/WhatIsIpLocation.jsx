@@ -1,7 +1,46 @@
 import Link from 'next/link';
 
+const faqs = [
+  {
+    q: 'How accurate is IP geolocation, really?',
+    a: 'Country level: 95–99% accurate. Region or state: 80–90% in developed markets, lower elsewhere. City: only 50–75%, and often points to a different city in the same metropolitan area. Street level from an IP alone is essentially impossible — the best you can squeeze out of a public database is a 5 to 50 km radius around your real position.',
+  },
+  {
+    q: 'How can I check my own IP location?',
+    a: 'Open any IP-lookup tool — our own IP Location page returns your apparent IP, the database city and country, the ISP, and whether you appear to be behind a VPN or proxy. Treat what it shows as a sample of what every website you visit sees by default. The reading is wrong roughly a quarter of the time on residential broadband and much more on cellular.',
+  },
+  {
+    q: 'Why does the website think I am in a different city than I actually am?',
+    a: 'Five usual suspects: a VPN whose exit server is in another city, cellular Carrier-Grade NAT routing your traffic through a far-away gateway, a corporate or school network exiting via a distant data centre, a CDN cache reporting its own location rather than yours, or a stale database entry that has not caught up with an ISP reassignment.',
+  },
+  {
+    q: 'How do I change or hide my IP location?',
+    a: 'A reputable paid VPN is the easiest answer — pick an exit server in the city you want websites to see, connect, and your apparent IP changes to one in that range. Tor anonymises more aggressively but is slow and many sites block it. Mobile data from a different carrier or a hotspot from a friend in another city also changes your IP. Switching off Wi-Fi for cellular on a phone often moves your apparent city by tens of kilometres because of how CGNAT gateways work.',
+  },
+  {
+    q: 'Can someone find my exact address from my IP address?',
+    a: 'No — not without legal process. An IP reveals your country, usually your city, your ISP, and whether you are on a VPN or proxy. It does not reveal your name, your street, or your identity. Tying an IP to a specific human requires a subpoena served on the ISP that owns the block. News stories about people being "tracked through their IP" almost always have a court order hidden somewhere in the middle.',
+  },
+  {
+    q: 'Is IP location better than GPS for finding where I am?',
+    a: 'No — they are not comparable. GPS gives you 3 to 5 metres of accuracy outdoors. IP gives you 5 to 50 kilometres in the best case. IP is the right tool for country-level licensing, fraud detection, and rough localisation; GPS is the right tool for "where am I, exactly?" If you want a single coordinate you can copy into a map, use a browser geolocation tool instead of an IP lookup.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
 export default function WhatIsIpLocation() {
   return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
     <article className="prose-invert">
       <figure className="mb-8 -mt-2">
         <img
@@ -101,11 +140,13 @@ export default function WhatIsIpLocation() {
         <li><strong>Street:</strong> essentially impossible from IP alone. Best the public databases get you is a 5&ndash;50 km radius.</li>
       </ul>
       <p className="mt-3 text-fg-muted leading-relaxed">
-        The easiest way to feel the difference is to open
-        {' '}<Link href="/" className="text-accent hover:underline">GetMyLocations</Link>{' '}
-        and decline the precise GPS prompt. The page falls back to IP
-        estimation, and you&rsquo;ll often see a city kilometres from
-        where you actually are.
+        The easiest way to feel the difference is to open the{' '}
+        <Link href="/ip-location" className="text-accent hover:underline">IP Location tool</Link>{' '}
+        — it shows the city your IP resolves to without asking for a GPS
+        permission — and then compare against the{' '}
+        <Link href="/my-location" className="text-accent hover:underline">My Location tool</Link>,
+        which uses GPS. You will often see the two readings kilometres
+        apart, and that gap is the IP error in a single screenshot.
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-12">Why the city is wrong so often</h2>
@@ -227,16 +268,120 @@ export default function WhatIsIpLocation() {
         always a court order somewhere in the middle of the story.
       </p>
 
-      <h2 className="font-display text-2xl font-bold mt-12">See it for yourself</h2>
+      <h2 className="font-display text-2xl font-bold mt-12">How to check your own IP location right now</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
-        Open
-        {' '}<Link href="/" className="text-accent hover:underline font-semibold">GetMyLocations</Link>{' '}
-        and decline the precise GPS prompt. You&rsquo;ll get the IP-only
-        estimate, often pleasantly wrong by 10+ km. Then allow GPS and
-        watch the accuracy number jump by four or five orders of
-        magnitude. That direct A/B is the single fastest way to grok the
-        difference between the two systems.
+        Treat the next two readings as a sample of what every website you
+        visit sees by default. Open the{' '}
+        <Link href="/ip-location" className="text-accent hover:underline font-semibold">IP Location tool</Link>{' '}
+        first — it queries an IP database with your visible address and
+        reports the city, country, ISP, and whether you appear to be
+        behind a VPN or proxy. Note how confident the page is and what it
+        gets wrong about you.
       </p>
+      <p className="mt-3 text-fg-muted leading-relaxed">
+        Then open the{' '}
+        <Link href="/my-location" className="text-accent hover:underline font-semibold">My Location tool</Link>{' '}
+        and allow the GPS prompt. The accuracy radius typically drops
+        from kilometres to single metres in front of your eyes. That A/B
+        is the fastest way to internalise the difference between the two
+        systems. For an even deeper side-by-side of where each one wins
+        and loses, our{' '}
+        <Link href="/gps-vs-ip-accuracy" className="text-accent hover:underline">GPS vs IP accuracy guide</Link>{' '}
+        breaks it down by use case.
+      </p>
+
+      <h2 className="font-display text-2xl font-bold mt-12">How to change or hide your IP location</h2>
+      <p className="mt-3 text-fg-muted leading-relaxed">
+        Because IP geolocation is read straight off your visible IP
+        address, anything that changes the IP also changes the location.
+        The four practical options, ranked by how reliably they shift you
+        to a chosen place:
+      </p>
+      <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside">
+        <li>
+          <strong>Reputable paid VPN.</strong> Pick an exit server in the
+          city you want websites to see, connect, and the visible IP
+          becomes one from that range. Free VPNs work but are heavily
+          blocked and often log your traffic.
+        </li>
+        <li>
+          <strong>Tor Browser.</strong> Routes traffic through three
+          relays before exiting; your apparent IP is the last relay,
+          which can be anywhere. The strongest privacy posture, but slow,
+          and a growing list of sites refuse Tor exit IPs.
+        </li>
+        <li>
+          <strong>Switching to mobile data.</strong> Cellular puts you
+          behind Carrier-Grade NAT, often anchored to a city far from
+          yours. A simple way to move your apparent location by tens of
+          kilometres without any extra software, though you can&rsquo;t
+          choose the destination.
+        </li>
+        <li>
+          <strong>A friend&rsquo;s hotspot in another city.</strong>
+          Tethering through someone else&rsquo;s mobile carrier or home
+          broadband gives you their IP. Good for testing what a website
+          looks like in another region; useless for hiding from a
+          determined adversary, since the new IP is just a different
+          identifiable account.
+        </li>
+      </ul>
+      <p className="mt-3 text-fg-muted leading-relaxed">
+        Important caveat: none of these hide your <em>real</em> location
+        from a website that uses{' '}
+        <Link href="/blog/browser-geolocation-api-explained" className="text-accent hover:underline">browser geolocation</Link>{' '}
+        with your permission. The geolocation API reads your GPS or
+        Wi-Fi position from the operating system, not your IP, so a VPN
+        does nothing to it. If you want to be invisible at the location
+        level, decline the GPS prompt as well.
+      </p>
+
+      <h2 className="font-display text-2xl font-bold mt-12">When IP geolocation is the right tool &mdash; and when it isn&rsquo;t</h2>
+      <p className="mt-3 text-fg-muted leading-relaxed">
+        Pick the right tool for the question. IP geolocation excels at
+        the jobs where a city-level guess is enough and the work has to
+        scale to millions of requests with zero permission prompts:
+      </p>
+      <ul className="mt-3 space-y-1.5 text-fg-muted list-disc list-inside">
+        <li>Country-level licensing and regional pricing</li>
+        <li>Default-language detection on first page load</li>
+        <li>Fraud signals (an IP from one country, a card billed in another)</li>
+        <li>Server-log analysis and traffic reporting</li>
+        <li>Coarse local-ad targeting (&ldquo;plumber near you&rdquo;)</li>
+      </ul>
+      <p className="mt-3 text-fg-muted leading-relaxed">
+        Where IP geolocation is the wrong tool — and where I see people
+        repeatedly mis-deploy it:
+      </p>
+      <ul className="mt-3 space-y-1.5 text-fg-muted list-disc list-inside">
+        <li>Driving directions or any nearby-search that needs street precision</li>
+        <li>Emergency dispatch (covered in our{' '}
+          <Link href="/blog/gps-coordinates-emergencies-aml-guide" className="text-accent hover:underline">emergency GPS coordinates guide</Link>)
+        </li>
+        <li>Compliance with strict regional rules (eg. age-gating in a single state)</li>
+        <li>Anything where being wrong by 50 km would actually hurt the user</li>
+      </ul>
+      <p className="mt-3 text-fg-muted leading-relaxed">
+        For those jobs, GPS or another sensor-based reading is the
+        only safe choice. Our{' '}
+        <Link href="/ip-location-lookup" className="text-accent hover:underline">IP location lookup guide</Link>{' '}
+        goes further into the API and database choices if you&rsquo;re
+        implementing IP geolocation in software yourself.
+      </p>
+
+      <h2 className="font-display text-2xl font-bold mt-12">Frequently asked questions</h2>
+      <div className="glass mt-4 rounded-2xl divide-y divide-line-subtle not-prose">
+        {faqs.map((f) => (
+          <details key={f.q} className="group p-5">
+            <summary className="flex items-center justify-between cursor-pointer list-none font-semibold">
+              {f.q}
+              <span className="text-accent group-open:rotate-45 transition-transform" aria-hidden="true">+</span>
+            </summary>
+            <p className="mt-3 text-fg-muted text-sm leading-relaxed">{f.a}</p>
+          </details>
+        ))}
+      </div>
     </article>
+    </>
   );
 }

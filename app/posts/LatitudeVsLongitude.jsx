@@ -1,7 +1,46 @@
 import Link from 'next/link';
 
+const faqs = [
+  {
+    q: 'What is the difference between latitude and longitude in simple terms?',
+    a: 'Latitude is the horizontal rungs of a ladder around the globe — it tells you how far north or south of the equator you are, between -90° and +90°. Longitude is the vertical orange-slice lines from pole to pole — it tells you how far east or west of the prime meridian (which runs through Greenwich, England) you are, between -180° and +180°. Two numbers together identify any point on Earth.',
+  },
+  {
+    q: 'Which comes first, latitude or longitude?',
+    a: 'In almost every human-readable format — Google Maps, Apple Maps, smartphone displays, navigation apps — latitude comes first. So in "48.858420, 2.294500" the first number is latitude. The big exception is GeoJSON and most programming geometry libraries (PostGIS, Mapbox, Turf), which use [longitude, latitude] order because mathematicians prefer (x, y) and longitude maps to x. Pasting GeoJSON into a lat-first app reflects every point horizontally.',
+  },
+  {
+    q: 'How many decimal places do I need for GPS coordinates?',
+    a: 'Each decimal divides the uncertainty by ten. Four decimals (~11 m) is plenty for a single building. Five (~1.1 m) lands on a parked car. Six (~11 cm) is survey-grade. For posting your home publicly without giving away the doorway, two or three decimals coarsens you to a neighbourhood.',
+  },
+  {
+    q: 'What does a negative latitude or longitude mean?',
+    a: 'A negative latitude is south of the equator (Sydney is -33.9°), and a positive one is north. A negative longitude is west of Greenwich (New York is -74.0°), and a positive one is east. Some older formats use letters instead of signs — "33.9° S" and "74.0° W" mean the same thing as -33.9 and -74.0 in decimal degrees.',
+  },
+  {
+    q: 'How do I find my own latitude and longitude?',
+    a: 'On a phone, open the My Location tool in any browser and tap Allow on the permission prompt — your six-decimal latitude and longitude appear within two seconds. The Compass app on iPhone shows them at the bottom of the screen. On Android, long-press your blue dot in Google Maps and the coordinates appear in the search bar. All three give the same number, in the same format, in lat-first order.',
+  },
+  {
+    q: 'How do I convert latitude and longitude between decimal degrees and DMS?',
+    a: 'Decimal degrees and degrees-minutes-seconds are the same point in different notations. 40.712776° is the same as 40°42′45.99″. To convert manually: keep the integer part as degrees, multiply the fractional part by 60 to get minutes, then multiply the fraction of that by 60 again to get seconds. Or open our free coordinates converter, paste a coordinate in any format, and it returns all three (DD, DMS, DDM, plus UTM) instantly.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
 export default function LatitudeVsLongitude() {
   return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
     <article className="prose-invert">
       <figure className="mb-8 -mt-2">
         <img
@@ -146,7 +185,10 @@ export default function LatitudeVsLongitude() {
 
       <h2 className="font-display text-2xl font-bold mt-12">The three formats you&rsquo;ll see</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
-        All three encode the same point in different notations:
+        All three encode the same point in different notations. Need to
+        convert between them? Our free{' '}
+        <Link href="/coordinates-converter" className="text-accent hover:underline">coordinates converter</Link>{' '}
+        translates DD ↔ DMS ↔ DDM ↔ UTM with one click.
       </p>
       <ol className="mt-3 list-decimal list-inside space-y-2 text-fg-muted">
         <li>
@@ -271,14 +313,36 @@ export default function LatitudeVsLongitude() {
 
       <h2 className="font-display text-2xl font-bold mt-12">Read your own coordinates</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
-        Open
-        {' '}<Link href="/" className="text-accent hover:underline font-semibold">GetMyLocations</Link>{' '}
+        Open the{' '}
+        <Link href="/my-location" className="text-accent hover:underline font-semibold">My Location tool</Link>{' '}
         and you&rsquo;ll see your own latitude and longitude in decimal
         degrees, with six decimals of precision, plus a live map pin.
-        Toggle into Advanced mode to type any coordinates and watch the
-        map fly there in real time. Worth doing once just to anchor what
+        For the raw coordinate display without the address lookup, the{' '}
+        <Link href="/gps-coordinates" className="text-accent hover:underline">GPS Coordinates page</Link>{' '}
+        does the same job. Worth doing once just to anchor what
         the numbers feel like for the place you&rsquo;re sitting in.
       </p>
+      <p className="mt-3 text-fg-muted leading-relaxed">
+        If you want to watch the coordinates update as you move &mdash; a
+        good way to internalise how small a 0.0001° change actually is in
+        the real world &mdash; the{' '}
+        <Link href="/live-location" className="text-accent hover:underline">Live Location tracker</Link>{' '}
+        streams a fresh fix every second or two.
+      </p>
+
+      <h2 className="font-display text-2xl font-bold mt-12">Frequently asked questions</h2>
+      <div className="glass mt-4 rounded-2xl divide-y divide-line-subtle not-prose">
+        {faqs.map((f) => (
+          <details key={f.q} className="group p-5">
+            <summary className="flex items-center justify-between cursor-pointer list-none font-semibold">
+              {f.q}
+              <span className="text-accent group-open:rotate-45 transition-transform" aria-hidden="true">+</span>
+            </summary>
+            <p className="mt-3 text-fg-muted text-sm leading-relaxed">{f.a}</p>
+          </details>
+        ))}
+      </div>
     </article>
+    </>
   );
 }
