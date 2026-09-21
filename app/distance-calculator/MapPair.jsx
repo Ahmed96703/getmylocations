@@ -3,6 +3,7 @@
 import { MapContainer, TileLayer, Marker, Polyline, useMap } from 'react-leaflet';
 import { useEffect } from 'react';
 import 'leaflet/dist/leaflet.css';
+import { TILES } from '../components/tileLayers.js';
 import L from 'leaflet';
 
 // Fix default marker icons in Leaflet + Next.js
@@ -27,9 +28,10 @@ export default function MapPair({ a, b }) {
   return (
     <MapContainer center={a} zoom={3} className="w-full h-full">
       <TileLayer
-        attribution='&copy; OpenStreetMap, &copy; CARTO'
-        url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-        subdomains="abcd"
+        attribution={TILES.dark.attribution}
+        url={TILES.dark.url}
+        maxZoom={TILES.dark.maxZoom}
+        className={TILES.dark.className}
       />
       <Marker position={a} />
       <Marker position={b} />

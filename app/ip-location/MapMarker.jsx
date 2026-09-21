@@ -2,6 +2,7 @@
 
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+import { TILES } from '../components/tileLayers.js';
 import L from 'leaflet';
 
 delete L.Icon.Default.prototype._getIconUrl;
@@ -15,9 +16,10 @@ export default function MapMarker({ lat, lon, label }) {
   return (
     <MapContainer center={[lat, lon]} zoom={10} className="w-full h-full">
       <TileLayer
-        attribution='&copy; OpenStreetMap, &copy; CARTO'
-        url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-        subdomains="abcd"
+        attribution={TILES.dark.attribution}
+        url={TILES.dark.url}
+        maxZoom={TILES.dark.maxZoom}
+        className={TILES.dark.className}
       />
       <Marker position={[lat, lon]}>
         <Popup>{label}</Popup>

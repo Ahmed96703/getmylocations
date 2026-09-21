@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import { FlyTo, LocateButton, CopyFloating } from './MapControls.jsx';
+import { TILES } from './tileLayers.js';
 import 'leaflet/dist/leaflet.css';
 
 const pulseIcon = L.divIcon({
@@ -12,17 +13,6 @@ const pulseIcon = L.divIcon({
   iconSize: [18, 18],
   iconAnchor: [9, 9],
 });
-
-const TILES = {
-  light: {
-    url: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
-    attribution: '&copy; OpenStreetMap, &copy; CARTO',
-  },
-  dark: {
-    url: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
-    attribution: '&copy; OpenStreetMap, &copy; CARTO',
-  },
-};
 
 function useTheme() {
   const [theme, setTheme] = useState('light');
@@ -52,7 +42,8 @@ export default function MapView({ pos, onLocate, onCopied }) {
         key={theme}
         attribution={tiles.attribution}
         url={tiles.url}
-        subdomains="abcd"
+        maxZoom={tiles.maxZoom}
+        className={tiles.className}
       />
       <Marker position={pos} icon={pulseIcon} alt="Current location marker">
         <Popup>

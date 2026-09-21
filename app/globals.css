@@ -258,6 +258,16 @@ article.prose-invert li {
   color: rgb(var(--accent)) !important;
 }
 
+/* Dark basemap. OpenStreetMap ships only a light raster style, so the dark
+   theme inverts it rather than loading a second tile source. hue-rotate puts
+   the inverted blues back where they belong (water reads as water, not
+   orange); the brightness/contrast trim stops the result glaring against the
+   page. Applied to the tile pane only, so markers, popups and controls keep
+   their real colours. */
+.map-tiles-dark {
+  filter: invert(1) hue-rotate(180deg) brightness(0.92) contrast(0.88) saturate(0.7);
+}
+
 /* ─────────────────────────────────────────────
    PULSE MARKER (uses accent)
    ───────────────────────────────────────────── */

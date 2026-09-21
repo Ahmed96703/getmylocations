@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap, useMapEvents } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import { TILES } from '../components/tileLayers.js';
 
 const pinIcon = L.divIcon({
   className: 'pulse-icon-wrapper',
@@ -11,27 +12,6 @@ const pinIcon = L.divIcon({
   iconSize: [18, 18],
   iconAnchor: [9, 9],
 });
-
-const TILE_CONFIG = {
-  standard: {
-    url: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
-    attribution: '&copy; OpenStreetMap, &copy; CARTO',
-    subdomains: 'abcd',
-    maxZoom: 19,
-  },
-  satellite: {
-    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, Maxar, Earthstar Geographics, USDA, USGS, GeoEye, IGN, IGP, and the GIS User Community',
-    subdomains: '',
-    maxZoom: 19,
-  },
-  dark: {
-    url: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
-    attribution: '&copy; OpenStreetMap, &copy; CARTO',
-    subdomains: 'abcd',
-    maxZoom: 19,
-  },
-};
 
 function FlyTo({ center, zoom }) {
   const map = useMap();
@@ -45,7 +25,7 @@ function ClickHandler({ onPin }) {
 }
 
 export default function Map({ center, zoom, pin, layer, onPin }) {
-  const cfg = TILE_CONFIG[layer] || TILE_CONFIG.standard;
+  const cfg = TILES[layer] || TILES.standard;
   return (
     <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden border border-line">
       <MapContainer
@@ -60,8 +40,8 @@ export default function Map({ center, zoom, pin, layer, onPin }) {
           key={layer}
           attribution={cfg.attribution}
           url={cfg.url}
-          subdomains={cfg.subdomains || undefined}
           maxZoom={cfg.maxZoom}
+          className={cfg.className}
         />
         <FlyTo center={center} zoom={zoom} />
         <ClickHandler onPin={onPin} />
