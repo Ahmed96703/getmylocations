@@ -171,7 +171,7 @@ export default function LatLonHistory() {
       <h2 className="font-display text-2xl font-bold mt-12">See your own coordinates</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
         Two clicks on the{' '}
-        <Link href="/gps-coordinates" className="text-accent hover:underline font-semibold">GPS Coordinates tool</Link>{' '}
+        <Link href="/my-location" className="text-accent hover:underline font-semibold">GPS Coordinates tool</Link>{' '}
         give you the latitude and longitude that took two millennia to make
         readable. The latitude number you see comes from astronomical
         principles a Greek scholar would have recognised; the longitude

@@ -182,7 +182,7 @@ export default function GpsCoordinatesEmergencies() {
           Open{' '}
           <Link href="/my-location" className="text-accent hover:underline font-semibold">the My Location tool</Link>
           {' '}or{' '}
-          <Link href="/gps-coordinates" className="text-accent hover:underline font-semibold">the GPS Coordinates page</Link>.
+          <Link href="/my-location" className="text-accent hover:underline font-semibold">the GPS Coordinates page</Link>.
           Click Allow on the location prompt. The coordinates appear in the
           dashboard with a one-click copy button. If the prompt is missing
           or denied, our{' '}

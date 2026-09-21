@@ -57,14 +57,12 @@ const faqSchema = {
 };
 
 const HUB_TOOLS = [
-  { href: '/gps-coordinates-finder', t: 'GPS Coordinates Finder', d: 'Read your latitude, longitude, accuracy, and altitude in two seconds.' },
-  { href: '/my-current-location', t: 'My Current Location', d: 'Your exact street address and coordinates, reverse-geocoded in one tap.' },
+  { href: '/my-location', t: 'My Location', d: 'Your GPS coordinates + address, one tap' },
   { href: '/live-location', t: 'Live Location', d: 'Continuous GPS tracking that updates as you move.' },
   { href: '/coordinates-converter', t: 'Coordinates Converter', d: 'Translate DD ↔ DMS ↔ DDM ↔ UTM in real time.' },
   { href: '/distance-calculator', t: 'Distance Calculator', d: 'Great-circle distance between two coordinates (Haversine).' },
   { href: '/ip-location', t: 'IP Location', d: 'Look up the city, country, and ISP of any IPv4 or IPv6 address.' },
   { href: '/address-finder', t: 'Address Finder', d: 'Two-way geocoding — address ↔ coordinates.' },
-  { href: '/what-is-my-location', t: 'What Is My Location?', d: 'The in-depth explainer plus the tool, in one page.' },
 ];
 
 export default function HomePage() {

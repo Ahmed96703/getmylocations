@@ -130,7 +130,7 @@ export default function GpsVsIpAccuracy() {
           GPS chip needed), and is exactly precise enough for the use cases where you only need a
           country or region &mdash; localizing language, currency, or content licensing. For the
           full picture, see the
-          {' '}<Link href="/ip-location-lookup" className="text-accent hover:underline">IP location lookup guide</Link>.
+          {' '}<Link href="/ip-location" className="text-accent hover:underline">IP location lookup guide</Link>.
         </p>
 
         <hr className="my-10 border-line" />
@@ -245,8 +245,8 @@ export default function GpsVsIpAccuracy() {
 
         <h2 className="font-display text-2xl font-bold mt-10">Related guides</h2>
         <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside">
-          <li><Link href="/ip-location-lookup" className="text-accent hover:underline">IP location lookup &mdash; complete guide</Link></li>
-          <li><Link href="/gps-coordinates-finder" className="text-accent hover:underline">GPS coordinates finder &mdash; complete guide</Link></li>
+          <li><Link href="/ip-location" className="text-accent hover:underline">IP location lookup &mdash; complete guide</Link></li>
+          <li><Link href="/my-location" className="text-accent hover:underline">GPS coordinates finder &mdash; complete guide</Link></li>
           <li><Link href="/fix-location-not-working" className="text-accent hover:underline">Fix location not working &mdash; troubleshooting</Link></li>
           <li><Link href="/reverse-geocoding" className="text-accent hover:underline">Reverse geocoding &mdash; coordinates to address</Link></li>
           <li><Link href="/blog/how-gps-works" className="text-accent hover:underline">How GPS works &mdash; the satellite math</Link></li>

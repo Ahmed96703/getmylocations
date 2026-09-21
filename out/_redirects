@@ -1,0 +1,19 @@
+# 301 redirects — duplicate-tool consolidation (AdSense low-value-content remediation).
+# Each source URL wrapped the same tool component as its target; the unique prose
+# from every source page was merged into the target before removal.
+
+# Geolocation tool cluster -> /my-location
+/my-current-location        /my-location            301
+/what-is-my-location        /my-location            301
+/gps-coordinates            /my-location            301
+/gps-coordinates-finder     /my-location            301
+
+# IP lookup cluster -> /ip-location
+/ip-location-lookup         /ip-location            301
+
+# Coordinate conversion cluster -> /coordinates-converter
+/decimal-degrees-converter  /coordinates-converter  301
+
+# Map cluster -> /maps
+/satellite                  /maps                   301
+/us-map                     /maps                   301

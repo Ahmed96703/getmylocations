@@ -83,7 +83,7 @@ export default function About() {
 
       <h2 className="font-display text-2xl font-bold mt-10">Contact</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
-        Email <a className="text-accent hover:underline" href="mailto:hello@getmylocations.com">hello@getmylocations.com</a> for
+        Email <a className="text-accent hover:underline" href="mailto:ahmed@getmylocations.com">ahmed@getmylocations.com</a> for
         questions, feedback, corrections, or partnership ideas. I read everything;
         I reply to most things within a day or two.
       </p>

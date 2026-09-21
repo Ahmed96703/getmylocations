@@ -135,7 +135,7 @@ export default function AddressFinderPage() {
           </p>
           <p className="mt-3 text-fg-muted leading-relaxed">
             If you only need <em>your own</em> current address rather than someone else&apos;s, the{' '}
-            <Link href="/my-current-location" className="text-accent hover:underline">My Current Location tool</Link>{' '}
+            <Link href="/my-location" className="text-accent hover:underline">My Current Location tool</Link>{' '}
             is more direct — it reads your GPS, reverse-geocodes it, and shows the street/city in one tap. For the conceptual deep-dive on the coordinates-to-address direction, our{' '}
             <Link href="/reverse-geocoding" className="text-accent hover:underline">reverse geocoding guide</Link>{' '}
             walks through how the algorithm actually picks the nearest address.
@@ -215,12 +215,10 @@ export default function AddressFinderPage() {
           <h2 className="font-display text-2xl font-bold">Related tools and guides</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-5">
             {[
-              { href: '/my-current-location', t: 'My Current Location', d: 'Your address right now, one tap' },
-              { href: '/my-location', t: 'My Location', d: 'Live GPS coordinates' },
+              { href: '/my-location', t: 'My Location', d: 'Your GPS coordinates + address, one tap' },
               { href: '/reverse-geocoding', t: 'Reverse Geocoding', d: 'The concept, explained' },
               { href: '/coordinates-converter', t: 'Coordinates Converter', d: 'DD ↔ DMS ↔ UTM' },
               { href: '/distance-calculator', t: 'Distance Calculator', d: 'Between two addresses' },
-              { href: '/gps-coordinates-finder', t: 'GPS Coordinates Finder', d: 'Tool + complete guide' },
             ].map((t) => (
               <Link key={t.href} href={t.href} className="glass rounded-2xl p-4 hover:ring-accent/40 ring-1 ring-line transition group no-underline">
                 <h3 className="font-display text-base font-bold text-fg group-hover:text-accent transition">{t.t}</h3>

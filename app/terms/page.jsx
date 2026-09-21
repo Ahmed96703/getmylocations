@@ -124,7 +124,7 @@ export default function Terms() {
       <h2 className="font-display text-2xl font-bold mt-10">11. Contact</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
         Questions about these terms can go to{' '}
-        <a className="text-accent hover:underline" href="mailto:hello@getmylocations.com">hello@getmylocations.com</a>.
+        <a className="text-accent hover:underline" href="mailto:ahmed@getmylocations.com">ahmed@getmylocations.com</a>.
       </p>
     </main>
   );

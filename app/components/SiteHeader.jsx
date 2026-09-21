@@ -14,18 +14,13 @@ const NAV = [
 ];
 
 const TOOLS = [
-  { href: '/what-is-my-location', label: 'What Is My Location?', desc: 'Plain-English answer + tool' },
-  { href: '/my-current-location', label: 'My Current Location', desc: 'Exact address + coordinates' },
+  { href: '/my-location', label: 'My Location', desc: 'Your GPS coordinates + address, one tap' },
   { href: '/live-location', label: 'Live Location', desc: 'Real-time tracking as you move' },
-  { href: '/my-location', label: 'My Location', desc: 'Where am I right now?' },
-  { href: '/gps-coordinates', label: 'GPS Coordinates', desc: 'Live latitude & longitude' },
   { href: '/coordinates-converter', label: 'Coordinates Converter', desc: 'DD ↔ DMS ↔ UTM' },
   { href: '/ip-location', label: 'IP Location', desc: 'Look up any IP address' },
   { href: '/distance-calculator', label: 'Distance Calculator', desc: 'Between two coordinates' },
   { href: '/address-finder', label: 'Address Finder', desc: 'Address ↔ coordinates' },
   { href: '/maps', label: 'Interactive Maps', desc: 'World map with layers' },
-  { href: '/satellite', label: 'Satellite View', desc: 'Imagery of any address' },
-  { href: '/us-map', label: 'US Map', desc: 'United States map' },
   { href: '/street-view', label: 'Street View', desc: 'Google Street View' },
   { href: '/driving-directions', label: 'Driving Directions', desc: 'Route planner' },
 ];

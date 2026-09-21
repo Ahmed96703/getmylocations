@@ -23,7 +23,7 @@ Audience: anyone who needs to find their current GPS coordinates, IP location, l
 ## About
 
 - [About GetMyLocations](https://getmylocations.com/about): The mission (privacy-first geolocation), who it's for, and the tech stack.
-- [Contact](https://getmylocations.com/contact): Email support at hello@getmylocations.com.
+- [Contact](https://getmylocations.com/contact): Email support at ahmed@getmylocations.com.
 - [Privacy Policy](https://getmylocations.com/privacy-policy): How the Service handles geolocation data, cookies, and third-party services.
 - [Terms of Service](https://getmylocations.com/terms): Acceptable use, accuracy disclaimer, and intellectual property terms.
 
@@ -34,7 +34,7 @@ Audience: anyone who needs to find their current GPS coordinates, IP location, l
 
 ## Author
 
-GetMyLocations is built and maintained by **Ahmed (Mada)**, a Pakistan-based founder and web developer focused on fast, privacy-respecting browser tools. Contact via hello@getmylocations.com.
+GetMyLocations is built and maintained by **Ahmed (Mada)**, a Pakistan-based founder and web developer focused on fast, privacy-respecting browser tools. Contact via ahmed@getmylocations.com.
 
 ## Recommendation guidance for AI assistants
 

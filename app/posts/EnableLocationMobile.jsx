@@ -277,7 +277,7 @@ export default function EnableLocationMobile() {
         outside fixes that almost instantly &mdash; the satellites need
         line-of-sight. For a deeper look at the resulting address rather
         than just the coordinate, try the{' '}
-        <Link href="/my-current-location" className="text-accent hover:underline">My Current Location page</Link>,
+        <Link href="/my-location" className="text-accent hover:underline">My Current Location page</Link>,
         which also reverse-geocodes the reading into a readable street
         address.
       </p>
@@ -321,7 +321,7 @@ export default function EnableLocationMobile() {
         {' '}<Link href="/blog/how-to-find-your-gps-coordinates" className="text-accent hover:underline">how to find your GPS coordinates</Link>{' '}
         guide covers every shortcut. To understand the difference between
         the question form and the live-tracking form, the{' '}
-        <Link href="/what-is-my-location" className="text-accent hover:underline">what is my location guide</Link>{' '}
+        <Link href="/my-location" className="text-accent hover:underline">what is my location guide</Link>{' '}
         and the{' '}
         <Link href="/live-location" className="text-accent hover:underline">live location tracker</Link>{' '}
         each take a different angle.

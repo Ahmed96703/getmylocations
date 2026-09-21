@@ -364,7 +364,7 @@ export default function WhatIsIpLocation() {
       <p className="mt-3 text-fg-muted leading-relaxed">
         For those jobs, GPS or another sensor-based reading is the
         only safe choice. Our{' '}
-        <Link href="/ip-location-lookup" className="text-accent hover:underline">IP location lookup guide</Link>{' '}
+        <Link href="/ip-location" className="text-accent hover:underline">IP location lookup guide</Link>{' '}
         goes further into the API and database choices if you&rsquo;re
         implementing IP geolocation in software yourself.
       </p>

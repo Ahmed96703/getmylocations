@@ -291,7 +291,7 @@ export default function FixLocationNotWorking() {
           works without any permission prompt at all.
         </p>
         <p className="mt-3 text-fg-muted leading-relaxed">
-          Still stuck? Email us at <a className="text-accent hover:underline" href="mailto:hello@getmylocations.com">hello@getmylocations.com</a> with your browser,
+          Still stuck? Email us at <a className="text-accent hover:underline" href="mailto:ahmed@getmylocations.com">ahmed@getmylocations.com</a> with your browser,
           OS version, and a screenshot. We answer every troubleshooting email within a day.
         </p>
 
@@ -320,7 +320,7 @@ export default function FixLocationNotWorking() {
           <li><Link href="/blog/browser-geolocation-api-explained" className="text-accent hover:underline">Browser Geolocation API explained — what websites can and can&apos;t see</Link></li>
           <li><Link href="/blog/how-gps-works" className="text-accent hover:underline">How GPS works — the satellite math behind your coordinates</Link></li>
           <li><Link href="/blog/how-to-find-your-gps-coordinates" className="text-accent hover:underline">How to find your GPS coordinates</Link></li>
-          <li><Link href="/what-is-my-location" className="text-accent hover:underline">What is my location? — the in-depth guide</Link></li>
+          <li><Link href="/my-location" className="text-accent hover:underline">What is my location? — the in-depth guide</Link></li>
         </ul>
 
         <AuthorBio />

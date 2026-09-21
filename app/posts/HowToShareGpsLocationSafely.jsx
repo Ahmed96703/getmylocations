@@ -207,7 +207,7 @@ export default function HowToShareGpsLocationSafely() {
         copy-paste-ready DD format &mdash; from the{' '}
         <Link href="/my-location" className="text-accent hover:underline">My Location tool</Link>{' '}
         or the{' '}
-        <Link href="/gps-coordinates" className="text-accent hover:underline">GPS Coordinates page</Link>{' '}
+        <Link href="/my-location" className="text-accent hover:underline">GPS Coordinates page</Link>{' '}
         in two seconds.
       </p>
 

@@ -28,25 +28,21 @@ const FEATURES = [
 
 const MORE_TOOLS = [
   { href: '/my-location', t: 'My Location', d: 'Where am I right now? Instant GPS coordinates plus city, country, and live map.' },
-  { href: '/gps-coordinates', t: 'GPS Coordinates', d: 'Live latitude and longitude in DD and DMS, accuracy, altitude, and watch mode.' },
   { href: '/coordinates-converter', t: 'Coordinates Converter', d: 'Convert any coordinate between Decimal Degrees, DMS, DDM, and UTM formats.' },
   { href: '/ip-location', t: 'IP Location', d: 'Look up the city, country, and ISP of any public IPv4 or IPv6 address.' },
   { href: '/distance-calculator', t: 'Distance Calculator', d: 'Great-circle distance between two coordinates using the Haversine formula.' },
   { href: '/address-finder', t: 'Address Finder', d: 'Address-to-coordinates and coordinates-to-address geocoding both ways.' },
   { href: '/maps', t: 'Interactive Maps', d: 'Explore places with map layers and a cleaner visual context.' },
-  { href: '/satellite', t: 'Satellite View', d: 'See a satellite image of any address or coordinate.' },
-  { href: '/us-map', t: 'US Map', d: 'Browse a map of the United States at a glance.' },
   { href: '/street-view', t: 'Street View', d: 'See any address or coordinate in Google Street View instantly.' },
   { href: '/driving-directions', t: 'Driving Directions', d: 'Plan a driving, walking, biking, or transit route between two places.' },
 ];
 
 const POPULAR_SEARCHES = [
-  { href: '/my-location', q: 'What is my location?', d: 'Find my current coordinates, city, country, and live map in one click.' },
-  { href: '/gps-coordinates', q: 'GPS coordinates of my location', d: 'Live latitude, longitude, accuracy radius, and altitude from your device.' },
+  { href: '/my-location', q: 'My Location', d: 'Your GPS coordinates + address, one tap' },
   { href: '/driving-directions', q: 'Get directions', d: 'Driving, walking, biking, or transit routes between two places.' },
   { href: '/ip-location', q: 'What is my IP?', d: 'Lookup the country, city, and ISP of any public IPv4 or IPv6 address.' },
   { href: '/blog/browser-geolocation-api-explained', q: 'Geolocation API', d: 'How browser geolocation actually works and what it can see.' },
-  { href: '/decimal-degrees-converter', q: 'Decimal degrees', d: 'Learn DD vs DMS and convert formats without guessing.' },
+  { href: '/coordinates-converter', q: 'Coordinates Converter', d: 'DD ↔ DMS ↔ UTM' },
 ];
 
 export default function HomeClient() {

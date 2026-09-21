@@ -318,7 +318,7 @@ export default function LatitudeVsLongitude() {
         and you&rsquo;ll see your own latitude and longitude in decimal
         degrees, with six decimals of precision, plus a live map pin.
         For the raw coordinate display without the address lookup, the{' '}
-        <Link href="/gps-coordinates" className="text-accent hover:underline">GPS Coordinates page</Link>{' '}
+        <Link href="/my-location" className="text-accent hover:underline">GPS Coordinates page</Link>{' '}
         does the same job. Worth doing once just to anchor what
         the numbers feel like for the place you&rsquo;re sitting in.
       </p>

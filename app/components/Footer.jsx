@@ -12,9 +12,9 @@ const SITE_LINKS = [
 ];
 
 const GUIDE_LINKS = [
-  { href: '/gps-coordinates-finder', label: 'GPS Coordinates Guide' },
-  { href: '/ip-location-lookup', label: 'IP Location Lookup' },
-  { href: '/decimal-degrees-converter', label: 'Decimal Degrees Converter' },
+  { href: '/my-location', label: 'GPS Coordinates Guide' },
+  { href: '/ip-location', label: 'IP Location Lookup' },
+  { href: '/coordinates-converter', label: 'Coordinates Converter' },
   { href: '/reverse-geocoding', label: 'Reverse Geocoding' },
   { href: '/gps-vs-ip-accuracy', label: 'GPS vs IP Accuracy' },
   { href: '/fix-location-not-working', label: 'Fix Location Issues' },

@@ -110,7 +110,7 @@ export default function Disclaimer() {
       <h2 className="font-display text-2xl font-bold mt-10">Contact</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
         If you spot an error on the Service or have a question about this disclaimer,
-        email <a className="text-accent hover:underline" href="mailto:hello@getmylocations.com">hello@getmylocations.com</a>.
+        email <a className="text-accent hover:underline" href="mailto:ahmed@getmylocations.com">ahmed@getmylocations.com</a>.
       </p>
     </main>
   );

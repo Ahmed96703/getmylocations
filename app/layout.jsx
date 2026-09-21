@@ -54,6 +54,10 @@ export const metadata = {
   manifest: '/manifest.webmanifest',
 };
 
+// Google Analytics 4. Set NEXT_PUBLIC_GA_ID in the build environment to enable;
+// without it the tag is omitted entirely rather than firing against a blank ID.
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+
 export const viewport = {
   width: 'device-width',
   initialScale: 1,
@@ -99,6 +103,16 @@ export default function RootLayout({ children }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
+        {GA_ID && (
+          <>
+            <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${GA_ID}');`,
+              }}
+            />
+          </>
+        )}
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2240955720087760"

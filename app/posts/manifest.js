@@ -2,9 +2,9 @@
 export const POSTS = [
   {
     slug: 'enable-location-on-windows-and-mac',
-    title: 'How to Enable Location Services on Windows 10, Windows 11, and Mac',
+    title: 'How to Turn On Location on a Laptop (Windows 10, 11 & Mac)',
     excerpt:
-      'Step-by-step fix for Windows 10, Windows 11, and macOS: turn on Location Services, allow your browser, reset the per-site permission in Chrome / Safari / Firefox / Edge, and beat the greyed-out toggle problem.',
+      'Turn on location on any laptop — Windows 10, Windows 11, or Mac. Enable Location Services, allow your browser, and fix the greyed-out toggle on a work laptop.',
     date: '2026-06-03',
     readingTime: 9,
     tags: ['troubleshooting', 'desktop', 'browser'],

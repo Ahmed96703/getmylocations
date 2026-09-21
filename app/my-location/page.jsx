@@ -1,108 +1,470 @@
 import Link from 'next/link';
 import Tool from './Tool.jsx';
-import ProofPanel from '../components/ProofPanel.jsx';
+import AuthorBio from '../components/AuthorBio.jsx';
 
 export const metadata = {
-  title: 'What Is My Location? Find My Current Coordinates — My Location Tool',
+  title: 'What Is My Location? Find My GPS Coordinates & Address (Free)',
   description:
-    'What is my location? Find my current coordinates instantly — free tool shows your live GPS coordinates, city, country, and live map in 2 seconds. Get my location free, no signup.',
-  keywords: ['my location', 'my current location', 'where am i', 'find my location', 'my location now', 'what is my location'],
+    'Find your exact location in two seconds — GPS coordinates, accuracy radius, and street address, read straight from your browser. Plus a complete guide to reading DD, DMS, and UTM coordinates.',
+  keywords: [
+    'my location',
+    'what is my location',
+    'my current location',
+    'where am i',
+    'gps coordinates of my location',
+    'find my coordinates',
+  ],
   alternates: { canonical: '/my-location' },
   openGraph: {
-    title: 'What Is My Location? Find My Current Coordinates — My Location Tool',
-    description: 'What is my location? Find your exact GPS location instantly. Free tool, no signup.',
+    title: 'What Is My Location? Find My GPS Coordinates & Address',
+    description:
+      'Your exact GPS coordinates, accuracy radius, and street address — free, in the browser, no signup.',
     url: 'https://getmylocations.com/my-location',
     type: 'website',
+    images: ['/og-image.png'],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'What Is My Location? Find My Current Coordinates — My Location Tool',
-    description: 'What is my location? Find your exact GPS location instantly. Free tool, no signup.',
+    title: 'What Is My Location? Find My GPS Coordinates & Address',
+    description: 'Coordinates, accuracy, and address in two seconds. Free, browser-based, no signup.',
+    images: ['/og-image.png'],
   },
 };
 
 const webAppSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebApplication',
-  name: 'My Location Finder',
-  description: 'Free browser-based tool that finds your current GPS location and shows it on a live map.',
+  name: 'My Location',
+  description:
+    'Free browser-based tool that reads your GPS coordinates, reverse-geocodes them into a street address, and plots the result on a live map with an accuracy radius.',
   url: 'https://getmylocations.com/my-location',
   applicationCategory: 'UtilitiesApplication',
   operatingSystem: 'Web',
   isAccessibleForFree: true,
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
   publisher: { '@type': 'Organization', name: 'GetMyLocations' },
+  author: { '@type': 'Person', name: 'Ahmed Anwar' },
 };
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://getmylocations.com/' },
+    { '@type': 'ListItem', position: 2, name: 'My Location', item: 'https://getmylocations.com/my-location' },
+  ],
+};
+
+const faqs = [
+  {
+    q: 'What does "my location" actually mean?',
+    a: 'Two decimal numbers — a latitude and a longitude — that identify any spot on Earth to within a meter, plus an accuracy radius saying how confident the device is. Everything else, including your street address, is derived from that pair. A street address is a label applied to a coordinate, not the other way round.',
+  },
+  {
+    q: 'How do I find my GPS coordinates right now?',
+    a: 'Tap the button on the tool above and allow the location permission. Your six-decimal latitude and longitude appear within two seconds, along with an accuracy radius. The "Copy coordinates" button puts the pair on your clipboard in the standard "lat, lon" format every map app understands. On iPhone the Compass app also shows live coordinates at the bottom of the screen; on Android, long-press your blue dot in Google Maps.',
+  },
+  {
+    q: 'How does this tool know where I am?',
+    a: 'It asks your browser, which asks your operating system, which fuses GNSS satellite signals, nearby Wi-Fi access points, cell-tower positions, and — as a last resort — your IP address into a single best-guess coordinate. The website itself receives only the resulting latitude, longitude, and accuracy. It never learns which satellites or access points were involved.',
+  },
+  {
+    q: 'How accurate are GPS coordinates from a browser?',
+    a: 'On a phone outdoors with a clean satellite view: 3–5 metres. On a phone indoors using Wi-Fi positioning: 10–25 metres. On a laptop with no GPS chip: 25–100 metres via Wi-Fi, or 5–50 kilometres if it falls back to IP geolocation. The accuracy radius reported next to the coordinates is the device’s own 95% confidence circle — trust it.',
+  },
+  {
+    q: 'Why is the location my browser shows wrong or out of date?',
+    a: 'Three common causes. (1) You are indoors with weak satellite reception, so the OS is using Wi-Fi or IP positioning with a much larger error radius. (2) You denied "precise" permission, so the browser is given a deliberately fuzzed coordinate. (3) A VPN is rewriting your IP, which only matters if no GPS or Wi-Fi positioning is available. A fourth, easy-to-miss case is staleness: browsers cache the last good fix. This page sets maximumAge: 0 so every tap requests a fresh reading.',
+  },
+  {
+    q: 'How many decimal places should I keep when writing down coordinates?',
+    a: 'Six is the sweet spot. Four decimals (~11 m) lands on a building; five (~1.1 m) lands on a parked car; six (~11 cm) is survey-grade. Most consumer GPS receivers can deliver three-to-five meters under ideal conditions, so writing more than six digits is false precision. For posting your home publicly, two or three decimals (~110 m – 1 km) coarsens you to a neighborhood without giving away the doorway.',
+  },
+  {
+    q: 'What is the difference between DD, DMS, and UTM?',
+    a: 'They all encode the same point in different notations. Decimal degrees (DD) is the modern default — "48.858420, 2.294500." Degrees-minutes-seconds (DMS) is the old nautical and aviation format — "48° 51\' 30.3" N, 2° 17\' 40.2" E." UTM divides the world into 60 zones and expresses position in metric eastings and northings — preferred by hikers and search-and-rescue because grid distance maps directly to meters on the ground. Our coordinates converter translates between all three with one click.',
+  },
+  {
+    q: 'Is my location data sent to your servers?',
+    a: 'No. The coordinates are handed to JavaScript running in your tab and processed there. The only outgoing call is the reverse-geocoding lookup to OpenStreetMap Nominatim, which contains the two numbers and no identifier — no name, no account, no fingerprint. We do not log readings or build a profile around them.',
+  },
+  {
+    q: 'Does this work on my laptop or desktop?',
+    a: 'Yes, but less precisely. Most laptops have no GPS chip, so the browser falls back to Wi-Fi positioning — typically 25–100 metres, enough for a neighborhood but often the wrong street on a dense grid. If the machine is on Ethernet with Wi-Fi disabled, it may fall back to IP geolocation and be off by kilometres.',
+  },
+  {
+    q: 'How do I get the most accurate reading possible?',
+    a: 'Step outside, give the phone fifteen seconds to lock onto satellites, make sure Location Services is set to Precise, then tap the button. Indoors, the resolution caps at roughly the room you are sitting in no matter what you do.',
+  },
+];
 
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: [
-    { '@type': 'Question', name: 'How does the My Location tool know where I am?', acceptedAnswer: { '@type': 'Answer', text: 'It uses your browser\'s built-in Geolocation API. Your operating system fuses GPS satellite signals, nearby Wi-Fi access points, cell-tower triangulation, and IP geolocation into a single best-guess coordinate.' } },
-    { '@type': 'Question', name: 'Why is the location my browser shows wrong?', acceptedAnswer: { '@type': 'Answer', text: 'Common reasons: you are indoors and GPS is weak, you use a VPN that rewrites your IP, battery saver mode is downsampling GPS, or you denied the precise location permission.' } },
-    { '@type': 'Question', name: 'Is my location data sent to your servers?', acceptedAnswer: { '@type': 'Answer', text: 'No. Your GPS coordinates are processed in your browser. The optional reverse-geocoding step sends only the coordinates to a third-party service (OpenStreetMap Nominatim).' } },
-    { '@type': 'Question', name: 'Does this work on my laptop or desktop?', acceptedAnswer: { '@type': 'Answer', text: 'Yes, but most desktops do not have a GPS chip, so accuracy is lower. The browser falls back to Wi-Fi positioning (10-25 m) or IP geolocation (5-50 km).' } },
-    { '@type': 'Question', name: 'What does the accuracy radius mean?', acceptedAnswer: { '@type': 'Answer', text: 'The accuracy value is the radius (in meters) of a circle the device is 95% confident contains your real position.' } },
-  ],
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
 };
 
 export default function MyLocationPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
-      <main className="max-w-5xl mx-auto px-5 py-10">
-        <section className="mb-8">
-          <p className="text-[11px] uppercase tracking-[0.18em] text-accent font-semibold mb-2">Free Tool · Browser-based</p>
-          <h1 className="font-display text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.05]">
-            What is my location? Find my current <span className="text-accent">coordinates</span> right now.
-          </h1>
-          <p className="text-lg text-fg-muted mt-4 max-w-3xl">
-            Click one button and see your exact GPS coordinates, accuracy radius, city, and country on a live interactive map within two seconds. No signup, no app to install, and your coordinates stay in your browser.
-          </p>
-        </section>
-
-        <Tool />
-
-        <ProofPanel
-          title="Phone test: live GPS fix on a real map"
-          device="Captured on a phone outdoors in Karachi with the accuracy ring visible, the city label resolved, and the pin anchored to the actual reading."
-          caption="This is the kind of first-party proof that makes the page feel trustworthy: a real device, a visible accuracy radius, and a location that can be checked against the map."
-          fileHint="/public/screenshots/my-location-phone.png"
-        />
-
-        <section className="mt-12">
-          <h2 className="font-display text-2xl font-bold">What is the My Location tool?</h2>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            The <strong className="text-fg">My Location</strong> tool is a free browser-based utility that answers the simple question — <em>where am I right now?</em> — without making you install an app, sign up for an account, or trust your data to a server we control. When you click the button, your browser asks the operating system for your current position; the operating system combines GPS satellite signals, nearby Wi-Fi access points, cell-tower information, and IP geolocation to produce a single best-guess coordinate.
-          </p>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            Behind the scenes the tool calls the W3C Geolocation API — the same standard interface that Google Maps, Uber, and every weather app on the web use. Outdoor accuracy on a phone is typically 3 to 5 meters; indoors or on a desktop, 10 to 50 meters from Wi-Fi positioning.
-          </p>
-        </section>
-
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">How to use this tool</h2>
-          <ol className="mt-3 space-y-2 text-fg-muted list-decimal list-inside">
-            <li><strong>Click <em>Find my location</em></strong> above. Your browser shows a permission prompt the first time.</li>
-            <li><strong>Click Allow</strong> on the permission prompt. You only do this once per browser per site.</li>
-            <li><strong>Wait one or two seconds</strong> while the OS collects GPS / Wi-Fi signals.</li>
-            <li><strong>Read the result.</strong> Latitude, longitude, accuracy, altitude, and reverse-geocoded city / country appear in the dashboard.</li>
-            <li><strong>Copy or share</strong> the coordinates with one click.</li>
+      <main role="main" className="max-w-3xl mx-auto px-5 py-12 prose-invert">
+        <nav aria-label="Breadcrumb" className="text-xs text-fg-subtle mb-4 not-prose">
+          <ol className="flex items-center gap-1.5">
+            <li><Link href="/" className="hover:text-accent transition">Home</Link></li>
+            <li aria-hidden="true">›</li>
+            <li className="text-fg-muted">My Location</li>
           </ol>
-        </section>
+        </nav>
 
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">Frequently asked questions</h2>
-          <div className="glass mt-4 rounded-2xl divide-y divide-line-subtle">
+        <article>
+          <p className="text-xs uppercase tracking-[0.18em] text-accent font-semibold">Free Tool · Complete Guide</p>
+          <h1 className="font-display text-4xl font-extrabold tracking-tight mt-2 leading-[1.1]">
+            What is my location? Your GPS coordinates and address, in two seconds
+          </h1>
+          <p className="mt-4 text-lg text-fg-muted leading-relaxed">
+            Tap the button below and the page reads your exact position straight from your browser —
+            latitude, longitude, accuracy radius, street address, and a live map pin, without signing up
+            or installing anything. Below the tool, the guide covers what the two numbers mean, how to
+            read DD/DMS/UTM notation, how your device works out where you are, and what to do when the
+            reading looks wrong.
+          </p>
+
+          <div className="not-prose my-8">
+            <Tool />
+          </div>
+
+          <hr className="my-10 border-line" />
+
+          <h2 className="font-display text-2xl font-bold">What latitude and longitude actually are</h2>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            Think of Earth as an orange covered in two sets of lines. The horizontal rings &mdash; running
+            parallel to the equator &mdash; are <strong>lines of latitude</strong>. They tell you how far
+            north or south you are. The vertical lines that run pole to pole are <strong>lines of
+            longitude</strong>. They tell you how far east or west you are.
+          </p>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            Latitude runs from 0&deg; at the equator to 90&deg; at the poles. The North Pole is +90&deg;
+            (latitude 90&deg;&nbsp;N) and the South Pole is &minus;90&deg; (latitude 90&deg;&nbsp;S).
+            Longitude runs from 0&deg; at the Prime Meridian in Greenwich, England, to 180&deg; in either
+            direction, meeting at the International Date Line in the Pacific. East is positive, west is negative.
+          </p>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            Any pair of these two numbers identifies one and only one point on Earth&apos;s surface. The
+            Eiffel Tower is at <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">48.8584, 2.2945</code>.
+            The Sydney Opera House is at <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">&minus;33.8568, 151.2153</code>. The negative latitude tells you it&apos;s in the
+            southern hemisphere; the longitude tells you it&apos;s east of Greenwich. For the deep history
+            of <em>why</em> we measure from Greenwich at all, see{' '}
+            <Link href="/blog/history-of-latitude-and-longitude" className="text-accent hover:underline">the history of latitude and longitude</Link>.
+          </p>
+
+          <hr className="my-10 border-line" />
+
+          <h2 className="font-display text-2xl font-bold">From two numbers to a real address</h2>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            Your phone always knows your location as two raw numbers. The first half of the work above is
+            reading those numbers; the second half &mdash; the part most people actually care about &mdash; is
+            turning <code className="font-mono text-sm bg-tint/10 px-1.5 py-0.5 rounded">29.749907, -95.358421</code> into
+            something like &ldquo;Houston, Texas, United States&rdquo; that you can paste into a delivery form
+            or share with a friend.
+          </p>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            That second step is called <strong className="text-fg">reverse geocoding</strong>. The page calls a
+            free OpenStreetMap service that holds a global index of every road, building footprint, and
+            administrative boundary, and asks it for the closest match to your coordinates. The match is
+            usually a street name when you are outdoors with a clean GPS fix, and a neighborhood or city
+            center when your reading is fuzzier. Either way, you see the same two numbers you started with
+            &mdash; just dressed up as words. The{' '}
+            <Link href="/reverse-geocoding" className="text-accent hover:underline">reverse geocoding guide</Link>{' '}
+            explains how that lookup works in more detail.
+          </p>
+
+          <hr className="my-10 border-line" />
+
+          <h2 className="font-display text-2xl font-bold">How to find your location on any device</h2>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            The tool above does the same thing on every platform, but the permission flow differs. The goal
+            in each case is to make sure the browser gets a fresh, precise reading rather than a stale or
+            fuzzy one.
+          </p>
+
+          <h3 className="font-display text-lg font-semibold mt-6 text-fg">iPhone (Safari or Chrome)</h3>
+          <ol className="mt-2 space-y-1.5 text-fg-muted list-decimal list-inside leading-relaxed">
+            <li>Pull down Control Center and check that Location Services is enabled (the arrow icon).</li>
+            <li>If you have used the page before and it remembers an old permission, go to Safari → Settings → Privacy &amp; Security → Location and reset it to <em>Ask</em>.</li>
+            <li>Tap the button, and when iOS asks, choose <em>Allow Once</em> with <em>Precise: On</em>.</li>
+            <li>Wait two or three seconds. The street address shows up under the accuracy radius once the lookup responds.</li>
+          </ol>
+
+          <h3 className="font-display text-lg font-semibold mt-6 text-fg">Android (Chrome)</h3>
+          <ol className="mt-2 space-y-1.5 text-fg-muted list-decimal list-inside leading-relaxed">
+            <li>Pull down the quick-settings panel and confirm Location is on.</li>
+            <li>In Chrome, tap the address bar lock icon → Permissions → Location → Allow if the site is remembered.</li>
+            <li>Tap the button. Android offers a precise/approximate choice — choose <em>Precise</em>.</li>
+            <li>The address line resolves as soon as the OS returns the GPS fix.</li>
+          </ol>
+
+          <h3 className="font-display text-lg font-semibold mt-6 text-fg">Desktop or laptop</h3>
+          <ol className="mt-2 space-y-1.5 text-fg-muted list-decimal list-inside leading-relaxed">
+            <li>Click the button. A permission prompt appears under the address bar.</li>
+            <li>Click <em>Allow</em>. Because most laptops have no GPS chip, the browser uses Wi-Fi positioning instead.</li>
+            <li>Expect the address to resolve to your neighborhood or city center rather than your exact street, with an accuracy radius of 10 to 50 meters.</li>
+          </ol>
+          <p className="mt-4 text-fg-muted leading-relaxed">
+            If the permission prompt never appears, or the reading fails outright, the{' '}
+            <Link href="/fix-location-not-working" className="text-accent hover:underline">location troubleshooting checklist</Link>{' '}
+            walks through the causes in order.
+          </p>
+
+          <hr className="my-10 border-line" />
+
+          <h2 className="font-display text-2xl font-bold">How to read each part of a coordinate</h2>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            Every decimal-degree coordinate has the same shape: <em>latitude</em>, then <em>longitude</em>,
+            separated by a comma. <strong>Latitude always comes first.</strong> This trips people up because
+            mapping APIs disagree &mdash; Google Maps and most consumer apps use the (lat, lon) order, but
+            GeoJSON and many GIS systems use (lon, lat). When in doubt, the larger of the two absolute
+            values is usually longitude (since longitude goes up to 180 and latitude only to 90). The{' '}
+            <Link href="/blog/latitude-vs-longitude-explained" className="text-accent hover:underline">latitude vs longitude guide</Link>{' '}
+            covers the memory tricks and edge cases.
+          </p>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            The number of decimal places tells you how precise the coordinate is:
+          </p>
+          <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside">
+            <li><code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">48.8</code> &mdash; ~11 km. Enough to identify a city.</li>
+            <li><code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">48.86</code> &mdash; ~1.1 km. Enough to identify a neighborhood.</li>
+            <li><code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">48.858</code> &mdash; ~110 m. Enough to identify a city block.</li>
+            <li><code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">48.8584</code> &mdash; ~11 m. Enough to identify a building.</li>
+            <li><code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">48.85842</code> &mdash; ~1.1 m. Enough to identify a parking space.</li>
+            <li><code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">48.858420</code> &mdash; ~11 cm. More than consumer GPS can reliably deliver.</li>
+          </ul>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            Six decimals (about one meter) is the practical sweet spot. Most smartphone GPS chips are
+            accurate to roughly 3&ndash;5 meters under ideal conditions, so writing down more digits than
+            that creates false precision.
+          </p>
+
+          <hr className="my-10 border-line" />
+
+          <h2 className="font-display text-2xl font-bold">The three coordinate formats you&apos;ll see</h2>
+
+          <h3 className="font-display text-lg font-semibold mt-6 text-fg">Decimal degrees (DD) &mdash; the modern default</h3>
+          <p className="mt-2 text-fg-muted leading-relaxed">
+            Example: <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">48.858420, 2.294500</code>. Two
+            decimal numbers, comma-separated. This is what every smartphone, GPS receiver, Google Maps URL,
+            and modern API produces. It&apos;s the easiest to read, the easiest to paste, and the format
+            the tool above defaults to.
+          </p>
+
+          <h3 className="font-display text-lg font-semibold mt-6 text-fg">Degrees, minutes, seconds (DMS) &mdash; the paper-map classic</h3>
+          <p className="mt-2 text-fg-muted leading-relaxed">
+            Example: <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">48&deg; 51&apos; 30.3&quot; N, 2&deg; 17&apos; 40.2&quot; E</code>.
+            Each degree is divided into 60 minutes; each minute is divided into 60 seconds. Hemisphere
+            letters (N/S, E/W) replace the &plusmn; sign. Older nautical charts, aviation maps, and most
+            land-survey documents use DMS.
+          </p>
+          <p className="mt-2 text-fg-muted leading-relaxed">
+            Converting between DD and DMS isn&apos;t hard. The integer part of the decimal degree is the
+            degrees value. Multiply the remainder by 60 to get minutes (taking the integer part), and
+            multiply <em>that</em> remainder by 60 to get seconds. For example, 48.8584&deg; becomes
+            48&deg; + (0.8584 &times; 60)&apos; = 48&deg; 51.504&apos;, then 48&deg; 51&apos; (0.504 &times; 60)&quot; = 48&deg; 51&apos; 30.24&quot;.
+            Our{' '}
+            <Link href="/coordinates-converter" className="text-accent hover:underline">coordinates converter</Link>{' '}
+            does this in one click if you would rather skip the arithmetic.
+          </p>
+
+          <h3 className="font-display text-lg font-semibold mt-6 text-fg">UTM (Universal Transverse Mercator)</h3>
+          <p className="mt-2 text-fg-muted leading-relaxed">
+            Example: <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">31U 448262 5411917</code>.
+            UTM divides the world into 60 vertical zones, each treated as a flat plane, then expresses
+            your position as &ldquo;eastings&rdquo; and &ldquo;northings&rdquo; in meters. It&apos;s preferred by hikers,
+            search-and-rescue teams, and the military because distances on a UTM grid translate
+            directly to real-world meters, so you can pace them out on the ground.
+          </p>
+
+          <hr className="my-10 border-line" />
+
+          <h2 className="font-display text-2xl font-bold">How a browser actually finds your coordinates</h2>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            When you click &ldquo;Allow&rdquo; on a location prompt, the browser doesn&apos;t magically know where
+            you are. It asks the operating system, which fuses several signals into a single best-guess
+            coordinate:
+          </p>
+          <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside">
+            <li>
+              <strong>GNSS satellites.</strong> Your phone or laptop&apos;s chip listens for signals from GPS
+              (US), Galileo (EU), GLONASS (Russia), BeiDou (China), and QZSS (Japan). With four or more
+              satellites in view, it triangulates a 3D position. Read{' '}
+              <Link href="/blog/how-gps-works" className="text-accent hover:underline">how GPS works</Link>{' '}
+              for the satellite math.
+            </li>
+            <li>
+              <strong>Wi-Fi BSSID lookup.</strong> Apple and Google maintain global databases of Wi-Fi
+              access point MAC addresses paired to GPS coordinates collected from millions of phones. If
+              your device can hear three or more known access points, your OS can infer your position to
+              within ~25 meters even with no GPS signal at all.
+            </li>
+            <li>
+              <strong>Cell-tower triangulation.</strong> On mobile, the carrier&apos;s knowledge of which
+              tower you&apos;re connected to (and signal strength) provides a fallback when GPS is
+              unavailable. Accuracy: a few hundred meters in cities, several kilometers in rural areas.
+            </li>
+            <li>
+              <strong>IP geolocation.</strong> The slowest, least accurate fallback. Used when none of
+              the above are available, or when the user denies precise location.{' '}
+              <Link href="/blog/what-is-ip-location-and-how-accurate" className="text-accent hover:underline">IP location accuracy explained</Link>.
+            </li>
+          </ul>
+
+          <hr className="my-10 border-line" />
+
+          <h2 className="font-display text-2xl font-bold">Why your location may be stale, not just wrong</h2>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            A reading can be wrong in two very different ways: the GPS fix itself can be off, or the fix can
+            be perfectly accurate but stale. The second case is easy to miss, because the page still reports
+            a confident-looking address.
+          </p>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            Browsers cache the last good fix and may hand it back instantly if the OS thinks nothing has
+            changed. If you just got off a train or walked a few blocks, the cached reading can show you
+            starting from where you were five minutes ago. The Find button on this page disables that cache
+            explicitly &mdash; it sets <code className="font-mono text-sm bg-tint/10 px-1.5 py-0.5 rounded">maximumAge: 0</code> on
+            the geolocation request &mdash; so every tap asks for a brand-new reading rather than a recycled
+            one. If a result still looks stale, reload the tab and try again.
+          </p>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            GPS drift is the other gotcha. When you are stationary indoors, the chip will quietly wander a
+            few meters in random directions as it loses and regains satellites. The address rarely changes,
+            but the dot on the map will jiggle. That is normal &mdash; the radius drawn around the pin shows
+            where the device is 95% confident you actually are. If you need the position to update
+            continuously as you move rather than one fix at a time, use the{' '}
+            <Link href="/live-location" className="text-accent hover:underline">live location tracker</Link>,
+            which streams readings through the <code className="font-mono text-sm bg-tint/10 px-1.5 py-0.5 rounded">watchPosition</code> API.
+          </p>
+
+          <hr className="my-10 border-line" />
+
+          <h2 className="font-display text-2xl font-bold">When the address is precise &mdash; and when it is not</h2>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            How specific the resolved address gets depends entirely on the accuracy of the underlying
+            coordinate. A rough guide:
+          </p>
+          <ul className="mt-4 space-y-2 text-fg-muted leading-relaxed">
+            <li><strong className="text-fg">Outdoors, phone, GPS:</strong> 3&ndash;5 m accuracy → exact street address, often the right building.</li>
+            <li><strong className="text-fg">Indoors, phone, Wi-Fi:</strong> 10&ndash;25 m → street name, possibly wrong house number.</li>
+            <li><strong className="text-fg">Laptop, Wi-Fi only:</strong> 25&ndash;100 m → neighborhood, sometimes the wrong street on a grid.</li>
+            <li><strong className="text-fg">Cell-tower fallback:</strong> a few hundred meters to several km → district or city center.</li>
+            <li><strong className="text-fg">IP geolocation only:</strong> 5&ndash;50 km → city or metropolitan area, never a street.</li>
+          </ul>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            If you need the most exact address possible, step outside, give your phone fifteen seconds to
+            lock onto satellites, and only then tap the button. Indoors, the resolution caps at the room you
+            are sitting in. The{' '}
+            <Link href="/gps-vs-ip-accuracy" className="text-accent hover:underline">GPS vs IP accuracy comparison</Link>{' '}
+            has the measured numbers behind that table.
+          </p>
+
+          <hr className="my-10 border-line" />
+
+          <h2 className="font-display text-2xl font-bold">Practical uses for your coordinates</h2>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            You almost certainly already use coordinates without thinking about them. A few uses where
+            knowing how to read them by hand really pays off:
+          </p>
+          <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside">
+            <li>
+              <strong>Emergency calls.</strong> If a dispatcher can&apos;t find your address (no street sign,
+              wrong house number, foreign country), six decimals of latitude and longitude give them an
+              unambiguous fix. Our{' '}
+              <Link href="/blog/gps-coordinates-emergencies-aml-guide" className="text-accent hover:underline">emergency-GPS guide</Link>{' '}
+              covers the four-line script to say on the call.
+            </li>
+            <li>
+              <strong>Sharing a place that has no address.</strong> A trailhead, a campsite, a fishing
+              spot, the entrance to a cave. Coordinates beat written directions every time. To convert a
+              coordinate <em>back</em> into a readable street address, the{' '}
+              <Link href="/address-finder" className="text-accent hover:underline">address finder</Link>{' '}
+              handles both directions.
+            </li>
+            <li>
+              <strong>Measuring distance between two points.</strong> The{' '}
+              <Link href="/distance-calculator" className="text-accent hover:underline">distance calculator</Link>{' '}
+              uses the Haversine great-circle formula on a pair of coordinates.
+            </li>
+            <li>
+              <strong>Geocaching.</strong> The world&apos;s biggest treasure hunt. Over three million caches
+              are hidden globally, each identified only by coordinates.
+            </li>
+            <li>
+              <strong>Verifying a VPN.</strong> Connect to a VPN claiming to be in another country, then
+              open the{' '}
+              <Link href="/ip-location" className="text-accent hover:underline">IP Location tool</Link>{' '}
+              to see what your IP looks like. Compare against the GPS reading above — if the IP places you
+              elsewhere but GPS still shows your real city, the VPN&apos;s IP-side is working but GPS leaks
+              your real location.
+            </li>
+            <li>
+              <strong>Calibrating GPS-tagged photos.</strong> Cameras and phones embed GPS in EXIF
+              metadata. Comparing the EXIF to a known-good reading on the same spot helps you spot
+              a drifting GPS module.
+            </li>
+          </ul>
+
+          <hr className="my-10 border-line" />
+
+          <h2 className="font-display text-2xl font-bold">Privacy: what the website actually sees</h2>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            When you grant the Geolocation API permission, the website receives only the resulting
+            latitude/longitude/accuracy &mdash; not which satellites your phone heard or which Wi-Fi
+            access points helped. The tool above processes those numbers entirely in your browser. The only
+            outgoing call the page makes is the reverse-geocoding lookup to OpenStreetMap Nominatim, and
+            that request contains just the two numbers and no identifier &mdash; no name, no account, no
+            fingerprint. We don&apos;t store your coordinates &mdash; see our{' '}
+            <Link href="/privacy-policy" className="text-accent hover:underline">Privacy Policy</Link>{' '}
+            for the full breakdown of third parties involved.
+          </p>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            If you want a deeper read on how the W3C Geolocation API decides what to share with a webpage,
+            our{' '}
+            <Link href="/blog/browser-geolocation-api-explained" className="text-accent hover:underline">browser geolocation guide</Link>{' '}
+            walks through it line by line.
+          </p>
+
+          <hr className="my-10 border-line" />
+
+          <h2 className="font-display text-2xl font-bold">Related tools on this site</h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-5 not-prose">
             {[
-              { q: 'How does the My Location tool know where I am?', a: 'It uses your browser\'s built-in Geolocation API. Your operating system fuses GPS satellite signals, nearby Wi-Fi access points, cell-tower triangulation, and IP geolocation into a single best-guess coordinate.' },
-              { q: 'Why is the location my browser shows wrong?', a: 'Common reasons: you are indoors and GPS is weak, you use a VPN that rewrites your IP, battery saver mode is downsampling GPS, or you denied the precise location permission.' },
-              { q: 'Is my location data sent to your servers?', a: 'No. Your GPS coordinates are processed in your browser. The optional reverse-geocoding step sends only the coordinates to a third-party service.' },
-              { q: 'Does this work on my laptop or desktop?', a: 'Yes, but most desktops do not have a GPS chip, so accuracy is lower. Browser falls back to Wi-Fi positioning (10-25 m) or IP geolocation (5-50 km).' },
-              { q: 'What does the accuracy radius mean?', a: 'The radius (in meters) of a circle the device is 95% confident contains your real position.' },
-            ].map((f) => (
+              { href: '/live-location', t: 'Live Location', d: 'Continuous tracking as you move' },
+              { href: '/coordinates-converter', t: 'Coordinates Converter', d: 'DD ↔ DMS ↔ UTM' },
+              { href: '/distance-calculator', t: 'Distance Calculator', d: 'Between two coordinates' },
+              { href: '/address-finder', t: 'Address Finder', d: 'Address ↔ coordinates' },
+              { href: '/ip-location', t: 'IP Location', d: 'Look up any IP address' },
+              { href: '/maps', t: 'Interactive Maps', d: 'World map with layers' },
+              { href: '/driving-directions', t: 'Driving Directions', d: 'Route planner' },
+              { href: '/reverse-geocoding', t: 'Reverse Geocoding', d: 'Coordinates → address' },
+              { href: '/fix-location-not-working', t: 'Fix Location Issues', d: 'Troubleshooting checklist' },
+            ].map((t) => (
+              <Link key={t.href} href={t.href} className="glass rounded-2xl p-4 hover:ring-accent/40 ring-1 ring-line transition group no-underline">
+                <h3 className="font-display text-base font-bold text-fg group-hover:text-accent transition">{t.t}</h3>
+                <p className="text-xs text-fg-subtle mt-1">{t.d}</p>
+              </Link>
+            ))}
+          </div>
+
+          <hr className="my-10 border-line" />
+
+          <h2 className="font-display text-2xl font-bold">Frequently asked questions</h2>
+          <div className="glass mt-4 rounded-2xl divide-y divide-line-subtle not-prose">
+            {faqs.map((f) => (
               <details key={f.q} className="group p-5">
                 <summary className="flex items-center justify-between cursor-pointer list-none font-semibold">
                   {f.q}
@@ -112,31 +474,19 @@ export default function MyLocationPage() {
               </details>
             ))}
           </div>
-        </section>
 
-        <section className="mt-12">
-          <h2 className="font-display text-2xl font-bold">Other things you can do with your location</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-5">
-            {[
-              { href: '/what-is-my-location', t: 'What Is My Location?', d: 'In-depth answer + tool' },
-              { href: '/my-current-location', t: 'My Current Location', d: 'Address + coordinates now' },
-              { href: '/live-location', t: 'Live Location', d: 'Real-time tracking as you move' },
-              { href: '/gps-coordinates', t: 'GPS Coordinates', d: 'Live latitude & longitude' },
-              { href: '/coordinates-converter', t: 'Coordinates Converter', d: 'DD ↔ DMS ↔ UTM' },
-              { href: '/ip-location', t: 'IP Location', d: 'Look up any IP address' },
-              { href: '/distance-calculator', t: 'Distance Calculator', d: 'Between two coordinates' },
-              { href: '/address-finder', t: 'Address Finder', d: 'Address ↔ coordinates' },
-              { href: '/street-view', t: 'Street View', d: 'Google Street View' },
-              { href: '/driving-directions', t: 'Driving Directions', d: 'Route planner' },
-              { href: '/fix-location-not-working', t: 'Fix Location Issues', d: 'Troubleshooting guide' },
-            ].map((t) => (
-              <Link key={t.href} href={t.href} className="glass rounded-2xl p-4 hover:ring-accent/40 ring-1 ring-line transition group no-underline">
-                <h3 className="font-display text-base font-bold text-fg group-hover:text-accent transition">{t.t}</h3>
-                <p className="text-xs text-fg-subtle mt-1">{t.d}</p>
-              </Link>
-            ))}
-          </div>
-        </section>
+          <h2 className="font-display text-2xl font-bold mt-10">Related guides</h2>
+          <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside">
+            <li><Link href="/blog/latitude-vs-longitude-explained" className="text-accent hover:underline">Latitude vs longitude &mdash; the difference, explained</Link></li>
+            <li><Link href="/blog/how-gps-works" className="text-accent hover:underline">How GPS works &mdash; the satellite math</Link></li>
+            <li><Link href="/blog/how-to-find-your-gps-coordinates" className="text-accent hover:underline">How to find your GPS coordinates</Link></li>
+            <li><Link href="/blog/10-uses-for-gps-coordinates" className="text-accent hover:underline">10 surprising things you can do with a GPS coordinate</Link></li>
+            <li><Link href="/blog/gps-coordinates-emergencies-aml-guide" className="text-accent hover:underline">GPS coordinates in an emergency &mdash; how to send your location to 911 or 112</Link></li>
+            <li><Link href="/fix-location-not-working" className="text-accent hover:underline">Fix location not working &mdash; troubleshooting guide</Link></li>
+          </ul>
+
+          <AuthorBio />
+        </article>
       </main>
     </>
   );

@@ -140,7 +140,7 @@ export default function Privacy() {
       <p className="mt-3 text-fg-muted leading-relaxed">
         The site is a general-audience utility and is not directed at children under
         13. If you believe a child has provided personal information through the site,
-        contact us at <a className="text-accent hover:underline" href="mailto:hello@getmylocations.com">hello@getmylocations.com</a> and
+        contact us at <a className="text-accent hover:underline" href="mailto:ahmed@getmylocations.com">ahmed@getmylocations.com</a> and
         we will respond promptly.
       </p>
 
@@ -163,7 +163,7 @@ export default function Privacy() {
       <h2 className="font-display text-2xl font-bold mt-10">11. Contact</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
         Questions about anything on this page can go to{' '}
-        <a className="text-accent hover:underline" href="mailto:hello@getmylocations.com">hello@getmylocations.com</a>.
+        <a className="text-accent hover:underline" href="mailto:ahmed@getmylocations.com">ahmed@getmylocations.com</a>.
         See the <Link href="/contact" className="text-accent hover:underline">Contact page</Link> for response-time expectations.
       </p>
     </main>

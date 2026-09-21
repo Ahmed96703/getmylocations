@@ -138,7 +138,7 @@ export default function DistanceCalculatorPage() {
             Need the coordinates first? The{' '}
             <Link href="/my-location" className="text-accent hover:underline">My Location tool</Link>{' '}
             gives you yours in two seconds, and the{' '}
-            <Link href="/gps-coordinates-finder" className="text-accent hover:underline">GPS coordinates finder</Link>{' '}
+            <Link href="/my-location" className="text-accent hover:underline">GPS coordinates finder</Link>{' '}
             covers every way to read your own. To find the coordinates of <em>another</em> place, long-press the location on Google Maps and the coordinates appear in the search bar.
           </p>
         </section>
@@ -226,7 +226,6 @@ export default function DistanceCalculatorPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-5">
             {[
               { href: '/my-location', t: 'My Location', d: 'Get your live GPS coordinates' },
-              { href: '/gps-coordinates-finder', t: 'GPS Coordinates Finder', d: 'Tool + complete guide' },
               { href: '/coordinates-converter', t: 'Coordinates Converter', d: 'DD ↔ DMS ↔ UTM' },
               { href: '/address-finder', t: 'Address Finder', d: 'Address ↔ coordinates' },
               { href: '/driving-directions', t: 'Driving Directions', d: 'Road-following route' },

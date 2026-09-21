@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Tool from './Tool.jsx';
-import ProofPanel from '../components/ProofPanel.jsx';
+import AuthorBio from '../components/AuthorBio.jsx';
 
 export const metadata = {
   title: 'Street View — See Any Address in Google Street View',
@@ -31,10 +31,45 @@ const webAppSchema = {
   isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
 };
 
+
+const faqs = [
+  {
+    q: 'Is this the real Google Street View?',
+    a: 'Yes. The panorama below is the official Google Street View embed, rendered inside this page. The imagery, the navigation arrows, and the capture date all come straight from Google. This page just gives you a faster way to jump to an address without opening the full Maps app.',
+  },
+  {
+    q: 'Why does my address show a map instead of a panorama?',
+    a: 'There is no Street View coverage at that point. The embed falls back to the standard map rather than showing an error. Try dragging to a nearby main road — coverage follows the public road network, so a house on a private lane often has no panorama while the road at the end of it does.',
+  },
+  {
+    q: 'How do I see older imagery of the same address?',
+    a: 'The embed shows only the current capture. To scroll through history, open the location in the full Google Maps site and use the time-slider in the top-left corner of the Street View panel. Coverage history typically goes back to 2007 in major cities and much less elsewhere.',
+  },
+  {
+    q: 'Can I use Street View to check a property before renting or buying?',
+    a: 'It is a useful first pass — you can see the street, the parking situation, and the general condition of neighbouring buildings. Check the capture date first, though. A panorama from four years ago tells you nothing about construction that started last spring. Pair it with current satellite imagery on the maps tool.',
+  },
+  {
+    q: 'Does this page track where I search?',
+    a: 'No. The address you type is passed to the Google Maps embed to render the panorama and is not logged or stored by this site. Google applies its own terms to the embed — see our privacy policy for the list of third parties involved.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
 export default function StreetViewPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <main className="max-w-5xl mx-auto px-5 py-10">
         <section className="mb-8">
           <p className="text-[11px] uppercase tracking-[0.18em] text-accent font-semibold mb-2">Free Tool · Powered by Google Street View</p>
@@ -47,13 +82,6 @@ export default function StreetViewPage() {
         </section>
 
         <Tool />
-
-        <ProofPanel
-          title="Recognisable street-level proof"
-          device="Use a landmark or street name that readers can instantly recognise so the Street View controls and panorama are obvious."
-          caption="A real street-level capture is stronger than generic map tiles because it proves the embed is actually loading Street View."
-          fileHint="/public/screenshots/street-view-mta-jinnah.png"
-        />
 
         <section className="mt-10">
           <h2 className="font-display text-2xl font-bold">How Street View imagery is captured</h2>
@@ -111,16 +139,83 @@ export default function StreetViewPage() {
           </p>
         </section>
 
+
+        <section className="mt-10">
+          <h2 className="font-display text-2xl font-bold">Street view, satellite, or standard map &mdash; which one answers your question</h2>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            The three ways of looking at a place answer genuinely different questions, and picking the
+            wrong one wastes time. A quick decision guide:
+          </p>
+          <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside">
+            <li>
+              <strong>Street view</strong> answers &ldquo;what does this look like from the pavement?&rdquo;
+              &mdash; house numbers, shopfronts, whether there is a step at the entrance, what the parking
+              is like, whether the street feels busy. It is the only view that shows a building&rsquo;s face.
+            </li>
+            <li>
+              <strong>Satellite imagery</strong> answers &ldquo;what is the shape and context of this place?&rdquo;
+              &mdash; the footprint of a building, whether there is a garden or a pool, how far it sits from
+              a main road, what the surrounding land is. Switch the layer toggle on the{' '}
+              <Link href="/maps" className="text-accent hover:underline">interactive map</Link> to see it.
+            </li>
+            <li>
+              <strong>A standard map</strong> answers &ldquo;what is this called and how do I get there?&rdquo;
+              &mdash; street names, one-way arrows, the road network, nearby amenities. Best for planning
+              rather than inspecting.
+            </li>
+          </ul>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            In practice most questions need two of the three. Checking out an unfamiliar address before a
+            visit usually means one pass in street view for the frontage and one in satellite for the
+            approach and parking.
+          </p>
+        </section>
+
+        <section className="mt-10">
+          <h2 className="font-display text-2xl font-bold">Searching by coordinates instead of an address</h2>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            The search box accepts a decimal-degree coordinate pair as readily as a street address &mdash;
+            paste <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">48.858420, 2.294500</code> and
+            the panorama jumps to the Eiffel Tower. This is the reliable way to reach somewhere that has no
+            postal address at all: a trailhead, a layby, a field entrance, a spot a friend sent you from
+            their phone.
+          </p>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            To get a coordinate pair for where you are standing, use the{' '}
+            <Link href="/my-location" className="text-accent hover:underline">My Location tool</Link>, which
+            reads your GPS position and gives you a copyable &ldquo;lat, lon&rdquo; string. If you have a
+            coordinate in degrees-minutes-seconds and need it in decimal form first, the{' '}
+            <Link href="/coordinates-converter" className="text-accent hover:underline">coordinates converter</Link>{' '}
+            handles the translation.
+          </p>
+        </section>
+
+        <section className="mt-10">
+          <h2 className="font-display text-2xl font-bold">Frequently asked questions</h2>
+          <div className="glass mt-4 rounded-2xl divide-y divide-line-subtle">
+            {faqs.map((f) => (
+              <details key={f.q} className="group p-5">
+                <summary className="flex items-center justify-between cursor-pointer list-none font-semibold">
+                  {f.q}
+                  <span className="text-accent group-open:rotate-45 transition-transform" aria-hidden="true">+</span>
+                </summary>
+                <p className="mt-3 text-fg-muted text-sm leading-relaxed">{f.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+
         <section className="mt-10">
           <h2 className="font-display text-2xl font-bold">Try these next</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-5">
-            {[{ href: '/my-location', t: 'My Location' }, { href: '/driving-directions', t: 'Driving Directions' }, { href: '/address-finder', t: 'Address Finder' }, { href: '/gps-coordinates', t: 'GPS Coordinates' }].map((t) => (
+            {[{ href: '/my-location', t: 'My Location' }, { href: '/driving-directions', t: 'Driving Directions' }, { href: '/address-finder', t: 'Address Finder' }, { href: '/maps', t: 'Interactive Maps' }].map((t) => (
               <Link key={t.href} href={t.href} className="glass rounded-2xl p-4 hover:ring-accent/40 ring-1 ring-line transition no-underline">
                 <h3 className="font-display text-base font-bold text-fg hover:text-accent transition">{t.t}</h3>
               </Link>
             ))}
           </div>
         </section>
+        <AuthorBio />
       </main>
     </>
   );

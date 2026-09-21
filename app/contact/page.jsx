@@ -33,8 +33,8 @@ export default function Contact() {
 
       <div className="glass rounded-2xl p-6 mt-8">
         <div className="text-xs uppercase tracking-[0.18em] text-accent font-semibold">Email</div>
-        <a href="mailto:hello@getmylocations.com" className="font-display text-2xl font-bold mt-1 inline-block hover:text-accent transition">
-          hello@getmylocations.com
+        <a href="mailto:ahmed@getmylocations.com" className="font-display text-2xl font-bold mt-1 inline-block hover:text-accent transition">
+          ahmed@getmylocations.com
         </a>
         <p className="text-sm text-fg-subtle mt-2">We typically reply within 24 hours.</p>
       </div>

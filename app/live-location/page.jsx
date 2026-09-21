@@ -224,10 +224,7 @@ export default function LiveLocationPage() {
           <h2 className="font-display text-2xl font-bold">Related tools and guides</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-5">
             {[
-              { href: '/my-current-location', t: 'My Current Location', d: 'Address + coordinates from a single fix' },
-              { href: '/what-is-my-location', t: 'What Is My Location?', d: 'In-depth answer to the question' },
-              { href: '/my-location', t: 'My Location', d: 'Action-first one-click tool' },
-              { href: '/gps-coordinates', t: 'GPS Coordinates', d: 'Raw latitude and longitude' },
+              { href: '/my-location', t: 'My Location', d: 'Your GPS coordinates + address, one tap' },
               { href: '/blog/latitude-vs-longitude-explained', t: 'Latitude vs Longitude', d: 'What the two numbers mean' },
               { href: '/ip-location', t: 'IP Location', d: 'Look up any IP address' },
             ].map((t) => (

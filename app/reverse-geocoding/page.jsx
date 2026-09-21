@@ -126,7 +126,7 @@ export default function ReverseGeocoding() {
             <strong className="text-fg">Want to try it right now?</strong> The{' '}
             <Link href="/address-finder" className="text-accent hover:underline font-semibold">Address Finder tool</Link>{' '}
             does reverse geocoding on demand — paste any lat/long and get the nearest street address in under a second. For your own current location, the{' '}
-            <Link href="/my-current-location" className="text-accent hover:underline font-semibold">My Current Location tool</Link>{' '}
+            <Link href="/my-location" className="text-accent hover:underline font-semibold">My Current Location tool</Link>{' '}
             reads your GPS and reverse-geocodes it in one tap.
           </p>
         </div>
@@ -150,7 +150,7 @@ export default function ReverseGeocoding() {
           Reverse geocoding is also not the same as <strong>IP geolocation</strong>. Reverse geocoding
           starts from real coordinates (typically from a GPS chip); IP geolocation guesses
           coordinates from a network address. Read more in our
-          {' '}<Link href="/ip-location-lookup" className="text-accent hover:underline">IP location lookup guide</Link>.
+          {' '}<Link href="/ip-location" className="text-accent hover:underline">IP location lookup guide</Link>.
         </p>
 
         <hr className="my-10 border-line" />
@@ -210,7 +210,7 @@ export default function ReverseGeocoding() {
           <Link href="/address-finder" className="text-accent hover:underline">Address Finder</Link>, drop a manual pin,
           and the reverse-geocoded result appears next to it. The pipeline uses OpenStreetMap
           Nominatim with a free fallback. For your own live coordinates, the{' '}
-          <Link href="/my-current-location" className="text-accent hover:underline">My Current Location tool</Link>{' '}
+          <Link href="/my-location" className="text-accent hover:underline">My Current Location tool</Link>{' '}
           reads your GPS first and then reverse-geocodes in the same flow.
         </p>
 
@@ -317,8 +317,8 @@ export default function ReverseGeocoding() {
         </p>
         <p className="mt-3 text-fg-muted leading-relaxed">
           For a refresher on coordinate formats before you paste anything in, see our
-          {' '}<Link href="/gps-coordinates-finder" className="text-accent hover:underline">GPS coordinates finder guide</Link>{' '}
-          and the <Link href="/decimal-degrees-converter" className="text-accent hover:underline">decimal degrees converter</Link>.
+          {' '}<Link href="/my-location" className="text-accent hover:underline">GPS coordinates finder guide</Link>{' '}
+          and the <Link href="/coordinates-converter" className="text-accent hover:underline">decimal degrees converter</Link>.
         </p>
 
         <hr className="my-10 border-line" />
@@ -349,10 +349,10 @@ export default function ReverseGeocoding() {
         <h2 className="font-display text-2xl font-bold mt-10">Related tools and guides</h2>
         <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside">
           <li><Link href="/address-finder" className="text-accent hover:underline">Address Finder &mdash; the two-way geocoding tool</Link></li>
-          <li><Link href="/my-current-location" className="text-accent hover:underline">My Current Location &mdash; your address in one tap</Link></li>
-          <li><Link href="/gps-coordinates-finder" className="text-accent hover:underline">GPS coordinates finder &mdash; complete guide</Link></li>
-          <li><Link href="/decimal-degrees-converter" className="text-accent hover:underline">Decimal degrees converter (DD &harr; DMS)</Link></li>
-          <li><Link href="/ip-location-lookup" className="text-accent hover:underline">IP location lookup &mdash; complete guide</Link></li>
+          <li><Link href="/my-location" className="text-accent hover:underline">My Current Location &mdash; your address in one tap</Link></li>
+          <li><Link href="/my-location" className="text-accent hover:underline">GPS coordinates finder &mdash; complete guide</Link></li>
+          <li><Link href="/coordinates-converter" className="text-accent hover:underline">Decimal degrees converter (DD &harr; DMS)</Link></li>
+          <li><Link href="/ip-location" className="text-accent hover:underline">IP location lookup &mdash; complete guide</Link></li>
           <li><Link href="/blog/why-maps-show-wrong-street" className="text-accent hover:underline">Why maps put you on the wrong street</Link></li>
           <li><Link href="/fix-location-not-working" className="text-accent hover:underline">Fix location not working &mdash; troubleshooting</Link></li>
         </ul>
