@@ -1,23 +1,27 @@
+import { readFileSync } from 'node:fs';
+
 // Submit URLs to IndexNow (Bing, Yandex, Seznam, Naver).
 // Usage:  node scripts/indexnow.mjs
-// After deploy, also do: curl "https://www.bing.com/indexnow?url=https://getmylocations.com/&key=ee1554a41cb26eb4c13925cd6bd63fa2"
+//
+// The URL list is read from public/sitemap.xml rather than hardcoded. It used
+// to be a hand-maintained array that had drifted to 11 of 32 URLs, missing
+// every tool page, so the pages that matter most were never submitted.
+// Run this after a deploy, especially one that adds or redirects URLs.
 
 const HOST = 'getmylocations.com';
 const KEY = 'ee1554a41cb26eb4c13925cd6bd63fa2';
 const KEY_LOCATION = `https://${HOST}/${KEY}.txt`;
-const URLS = [
-  `https://${HOST}/`,
-  `https://${HOST}/about`,
-  `https://${HOST}/blog`,
-  `https://${HOST}/contact`,
-  `https://${HOST}/privacy-policy`,
-  `https://${HOST}/terms`,
-  `https://${HOST}/blog/how-to-find-your-gps-coordinates`,
-  `https://${HOST}/blog/what-is-ip-location-and-how-accurate`,
-  `https://${HOST}/blog/latitude-vs-longitude-explained`,
-  `https://${HOST}/blog/how-gps-works`,
-  `https://${HOST}/blog/10-uses-for-gps-coordinates`,
-];
+const sitemap = readFileSync(
+  new URL('../public/sitemap.xml', import.meta.url),
+  'utf8',
+);
+const URLS = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1].trim());
+
+if (URLS.length === 0) {
+  console.error('No <loc> entries found in public/sitemap.xml — nothing to submit.');
+  process.exit(1);
+}
+console.log(`Submitting ${URLS.length} URLs from sitemap.xml`);
 
 const body = { host: HOST, key: KEY, keyLocation: KEY_LOCATION, urlList: URLS };
 
