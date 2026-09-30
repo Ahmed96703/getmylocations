@@ -3,3 +3,6 @@ dist
 .DS_Store
 *.log
 .next/
+
+# Third-party tooling cloned into the project dir; installs to ~/.claude
+claude-seo/
