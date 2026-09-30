@@ -8,6 +8,8 @@ export default function HowGpsWorks() {
           src="/blog-images/how-gps-works-hero.jpg"
           alt="GPS satellites orbiting Earth with signal lines beaming down toward the planet"
           className="w-full h-auto rounded-xl"
+          width={1600}
+          height={770}
           loading="eager"
         />
       </figure>

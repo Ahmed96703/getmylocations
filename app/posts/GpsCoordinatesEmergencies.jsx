@@ -61,6 +61,8 @@ export default function GpsCoordinatesEmergencies() {
             src="/blog-images/gps-coordinates-emergencies-aml-guide-hero.jpg"
             alt="Location pin surrounded by concentric signal rings against a starry night sky, evoking emergency-call positioning"
             className="w-full h-auto rounded-xl"
+            width={1600}
+            height={771}
             loading="eager"
           />
         </figure>
@@ -112,6 +114,8 @@ export default function GpsCoordinatesEmergencies() {
             src="/blog-images/gps-coordinates-emergencies-aml-guide-mid.jpg"
             alt="Stylised phone broadcasting signal waves toward an abstract dispatcher tower, illustrating Advanced Mobile Location"
             className="w-full h-auto rounded-xl"
+            width={1600}
+            height={780}
             loading="lazy"
           />
         </figure>

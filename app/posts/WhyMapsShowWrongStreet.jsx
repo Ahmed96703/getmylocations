@@ -8,6 +8,8 @@ export default function WhyMapsShowWrongStreet() {
           src="/blog-images/why-maps-show-wrong-street-hero.jpg"
           alt="Two map pins sitting slightly offset from each other on a stylised street grid, illustrating address mismatch"
           className="w-full h-auto rounded-xl"
+          width={1600}
+          height={775}
           loading="eager"
         />
       </figure>

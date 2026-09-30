@@ -56,6 +56,8 @@ export default function HowToShareGpsLocationSafely() {
           src="/blog-images/how-to-share-gps-location-safely-hero.jpg"
           alt="Translucent shield protecting a location pin with a soft glow, illustrating safe location sharing"
           className="w-full h-auto rounded-xl"
+          width={1600}
+          height={772}
           loading="eager"
         />
       </figure>

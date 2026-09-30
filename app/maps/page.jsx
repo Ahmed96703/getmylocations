@@ -12,11 +12,14 @@ export const metadata = {
     title: 'Maps — Free Interactive World & Satellite Map with Search',
     description: 'Free interactive map with search, pin-drop coordinates, and a toggle for standard, satellite and dark views. Worldwide, no signup, no API key.',
     url: 'https://getmylocations.com/maps',
+    type: 'website',
+    images: ['/og-image.png'],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Maps — Free Interactive World & Satellite Map',
     description: 'Free interactive map with search, pin-drop coordinates, standard/satellite/dark views. No signup.',
+    images: ['/og-image.png'],
   },
 };
 

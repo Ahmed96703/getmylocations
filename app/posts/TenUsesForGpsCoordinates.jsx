@@ -8,6 +8,8 @@ export default function TenUsesForGpsCoordinates() {
           src="/blog-images/10-uses-for-gps-coordinates-hero.jpg"
           alt="Grid of small flat-design icons (tent, compass, fishing rod, sailboat, mountain, weather) all in a cool blue-and-green palette, representing varied uses for GPS coordinates"
           className="w-full h-auto rounded-xl"
+          width={1600}
+          height={776}
           loading="eager"
         />
       </figure>

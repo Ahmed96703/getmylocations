@@ -8,6 +8,8 @@ export default function WhatYourIpReveals() {
           src="/blog-images/what-your-ip-reveals-hero.jpg"
           alt="Envelope at the centre of an abstract network with paths radiating outward, evoking IP-based routing"
           className="w-full h-auto rounded-xl"
+          width={1600}
+          height={779}
           loading="eager"
         />
       </figure>
@@ -95,6 +97,8 @@ export default function WhatYourIpReveals() {
           src="/blog-images/what-your-ip-reveals-mid.jpg"
           alt="Soft concentric rings on a muted gradient background with a small central dot, evoking how identity radiates outward"
           className="w-full h-auto rounded-xl"
+          width={1600}
+          height={872}
           loading="lazy"
         />
       </figure>

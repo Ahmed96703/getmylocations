@@ -47,6 +47,8 @@ export default function WhatIsIpLocation() {
           src="/blog-images/what-is-ip-location-and-how-accurate-hero.jpg"
           alt="Minimalist globe outline with continents in soft slate and teal, suggesting global IP geolocation coverage"
           className="w-full h-auto rounded-xl"
+          width={1600}
+          height={767}
           loading="eager"
         />
       </figure>

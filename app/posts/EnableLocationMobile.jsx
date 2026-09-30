@@ -47,6 +47,8 @@ export default function EnableLocationMobile() {
           src="/blog-images/enable-location-on-iphone-and-android-hero.jpg"
           alt="Two smartphone silhouettes side by side, each glowing with a location pin in the centre"
           className="w-full h-auto rounded-xl"
+          width={1600}
+          height={783}
           loading="eager"
         />
       </figure>
@@ -146,6 +148,8 @@ export default function EnableLocationMobile() {
           src="/blog-images/enable-location-on-iphone-and-android-mid.jpg"
           alt="Single smartphone surrounded by concentric circles on a light blue background, evoking layered location permissions"
           className="w-full h-auto rounded-xl"
+          width={1600}
+          height={803}
           loading="lazy"
         />
       </figure>

@@ -8,6 +8,8 @@ export default function LatLonHistory() {
           src="/blog-images/history-of-latitude-and-longitude-hero.jpg"
           alt="Vintage brass sextant overlaid on an antique world map at sunset, evoking the age of celestial navigation"
           className="w-full h-auto rounded-xl"
+          width={1600}
+          height={766}
           loading="eager"
         />
       </figure>
@@ -110,6 +112,8 @@ export default function LatLonHistory() {
           src="/blog-images/history-of-latitude-and-longitude-mid.jpg"
           alt="Interlocking mechanical clockwork gears in cool teal and blue, evoking John Harrison's marine chronometer"
           className="w-full h-auto rounded-xl"
+          width={1600}
+          height={759}
           loading="lazy"
         />
       </figure>

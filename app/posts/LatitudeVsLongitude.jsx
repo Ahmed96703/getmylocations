@@ -47,6 +47,8 @@ export default function LatitudeVsLongitude() {
           src="/blog-images/latitude-vs-longitude-explained-hero.jpg"
           alt="Stylized globe with prominent latitude and longitude grid lines glowing in sky blue against a navy background"
           className="w-full h-auto rounded-xl"
+          width={1600}
+          height={771}
           loading="eager"
         />
       </figure>
