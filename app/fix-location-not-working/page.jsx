@@ -56,6 +56,36 @@ const faqs = [
   },
 ];
 
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Location Not Working? 7 Fixes for Any Browser or Phone',
+  description:
+    'Step-by-step fixes for Chrome, Safari, Firefox, Edge, iOS and Android — re-enable permissions, fix wrong-city errors, and stop GPS drift.',
+  datePublished: '2026-05-15',
+  dateModified: '2026-09-30',
+  author: {
+    '@type': 'Person',
+    name: 'Ahmed Anwar',
+    url: 'https://getmylocations.com/about',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'GetMyLocations',
+    logo: { '@type': 'ImageObject', url: 'https://getmylocations.com/icon-512.png' },
+  },
+  image: {
+    '@type': 'ImageObject',
+    url: 'https://getmylocations.com/og-image.png',
+    width: 1200,
+    height: 630,
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': 'https://getmylocations.com/fix-location-not-working',
+  },
+};
+
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -79,6 +109,7 @@ const breadcrumbSchema = {
 export default function FixLocationNotWorking() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 

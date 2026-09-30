@@ -36,11 +36,23 @@ const articleSchema = {
   headline: 'Reverse Geocoding — How Coordinates Become an Address',
   description:
     'A complete explainer on reverse geocoding: how a GPS coordinate is translated into a human-readable street address, the algorithm, accuracy limits, and how to call the free APIs yourself.',
-  author: { '@type': 'Person', name: 'Ahmed Anwar' },
+  datePublished: '2026-05-15',
+  dateModified: '2026-09-30',
+  author: {
+    '@type': 'Person',
+    name: 'Ahmed Anwar',
+    url: 'https://getmylocations.com/about',
+  },
   publisher: {
     '@type': 'Organization',
     name: 'GetMyLocations',
     logo: { '@type': 'ImageObject', url: 'https://getmylocations.com/icon-512.png' },
+  },
+  image: {
+    '@type': 'ImageObject',
+    url: 'https://getmylocations.com/og-image.png',
+    width: 1200,
+    height: 630,
   },
   mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://getmylocations.com/reverse-geocoding' },
 };

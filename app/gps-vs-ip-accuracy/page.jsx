@@ -10,11 +10,14 @@ export const metadata = {
     title: 'GPS vs IP Accuracy — Which Is More Precise?',
     description: "GPS vs IP geolocation compared. Accuracy tables, when each method fails, how VPNs affect location, and which one to use for which task.",
     url: 'https://getmylocations.com/gps-vs-ip-accuracy',
+    type: 'article',
+    images: ['/og-image.png'],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'GPS vs IP Accuracy — Which Is More Precise?',
     description: 'GPS vs IP geolocation compared. Accuracy tables, when each method fails, and which one to use.',
+    images: ['/og-image.png'],
   },
 };
 
