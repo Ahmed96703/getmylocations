@@ -75,25 +75,10 @@ const breadcrumbSchema = {
   ],
 };
 
-const howToSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'HowTo',
-  name: 'Fix Location Not Working in Any Browser',
-  description: 'Step-by-step guide to fixing browser geolocation across Chrome, Safari, Firefox, Edge, iOS, and Android.',
-  author: { '@type': 'Person', name: 'Ahmed Anwar' },
-  step: [
-    { '@type': 'HowToStep', name: 'Identify the symptom', text: 'Match the symptom (blocked icon, no prompt, wrong city, drifting coordinates, or page hangs) to the correct fix.' },
-    { '@type': 'HowToStep', name: 'Re-enable browser permission', text: 'Reset the per-site permission via the address-bar lock icon → Site settings → Location → Ask.' },
-    { '@type': 'HowToStep', name: 'Re-enable OS-level location', text: 'Open the system Privacy or Location panel and confirm the master switch and the browser entry are both on.' },
-    { '@type': 'HowToStep', name: 'Switch from IP to GPS', text: 'Grant precise location on the permission prompt so the page uses GPS instead of IP geolocation.' },
-    { '@type': 'HowToStep', name: 'Verify with a known-good tool', text: 'Open the My Location tool to confirm the fix worked.' },
-  ],
-};
 
 export default function FixLocationNotWorking() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 

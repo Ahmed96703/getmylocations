@@ -3,7 +3,7 @@ import SiteHeader from './components/SiteHeader.jsx';
 import Footer from './components/Footer.jsx';
 
 export const metadata = {
-  metadataBase: new URL('https://getmylocations.com'),
+  metadataBase: new URL('https://getmylocations.com/'),
   title: {
     default: 'GetMyLocations — Find My Location, GPS Coordinates & IP',
     // No brand suffix: it cost 17 of the ~60 characters Google renders, on a
@@ -18,7 +18,6 @@ export const metadata = {
   referrer: 'strict-origin-when-cross-origin',
   alternates: {
     canonical: '/',
-    languages: { 'en': '/' },
   },
   robots: {
     index: true,

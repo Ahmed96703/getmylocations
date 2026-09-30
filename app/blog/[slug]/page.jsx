@@ -51,6 +51,17 @@ export async function generateMetadata({ params }) {
       url: `https://getmylocations.com/blog/${post.slug}`,
       type: 'article',
       publishedTime: post.date,
+      images: post.heroImage
+        ? [`/blog-images/${post.heroImage}`]
+        : ['/og-image.png'],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt,
+      images: post.heroImage
+        ? [`/blog-images/${post.heroImage}`]
+        : ['/og-image.png'],
     },
   };
 }
@@ -78,6 +89,14 @@ export default function BlogPost({ params }) {
       logo: { '@type': 'ImageObject', url: 'https://getmylocations.com/icon-512.png' },
     },
     mainEntityOfPage: { '@type': 'WebPage', '@id': `https://getmylocations.com/blog/${post.slug}` },
+    image: {
+      '@type': 'ImageObject',
+      url: post.heroImage
+        ? `https://getmylocations.com/blog-images/${post.heroImage}`
+        : 'https://getmylocations.com/og-image.png',
+      width: 1200,
+      height: 630,
+    },
   };
 
   const crumbs = breadcrumbSchema([

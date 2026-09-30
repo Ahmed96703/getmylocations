@@ -11,12 +11,48 @@ export const metadata = {
     description: "GPS vs IP geolocation compared. Accuracy tables, when each method fails, how VPNs affect location, and which one to use for which task.",
     url: 'https://getmylocations.com/gps-vs-ip-accuracy',
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'GPS vs IP Accuracy — Which Is More Precise?',
+    description: 'GPS vs IP geolocation compared. Accuracy tables, when each method fails, and which one to use.',
+  },
+};
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'GPS vs IP Accuracy — Which Is More Precise?',
+  description:
+    'GPS vs IP geolocation compared. Accuracy tables, when each method fails, how VPNs affect location, and which one to use for which task.',
+  datePublished: '2026-05-15',
+  dateModified: '2026-09-30',
+  author: {
+    '@type': 'Person',
+    name: 'Ahmed Anwar',
+    url: 'https://getmylocations.com/about',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'GetMyLocations',
+    logo: { '@type': 'ImageObject', url: 'https://getmylocations.com/icon-512.png' },
+  },
+  image: {
+    '@type': 'ImageObject',
+    url: 'https://getmylocations.com/og-image.png',
+    width: 1200,
+    height: 630,
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': 'https://getmylocations.com/gps-vs-ip-accuracy',
+  },
 };
 
 export default function GpsVsIpAccuracy() {
   const crumbs = breadcrumbSchema([{ name: 'GPS vs IP Accuracy', path: '/gps-vs-ip-accuracy' }]);
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs) }} />
       <main role="main" className="max-w-3xl mx-auto px-5 py-12 prose-invert">
       <article>

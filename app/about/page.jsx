@@ -22,10 +22,42 @@ export const metadata = {
   },
 };
 
+const profilePageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  '@id': 'https://getmylocations.com/about',
+  name: 'About Ahmed Anwar — GetMyLocations',
+  url: 'https://getmylocations.com/about',
+  mainEntity: {
+    '@type': 'Person',
+    '@id': 'https://getmylocations.com/about#ahmed-anwar',
+    name: 'Ahmed Anwar',
+    jobTitle: 'Independent Web Developer',
+    url: 'https://getmylocations.com/about',
+    worksFor: {
+      '@type': 'Organization',
+      name: 'GetMyLocations',
+      url: 'https://getmylocations.com/',
+    },
+    description:
+      'Independent web developer based in Karachi, Pakistan. Builds geolocation tools, mapping pages, and coordinate utilities. Writes about GPS, browser geolocation, and IP geolocation.',
+    knowsAbout: [
+      'GPS',
+      'Browser Geolocation API',
+      'IP Geolocation',
+      'Leaflet',
+      'OpenStreetMap',
+      'React',
+      'Next.js',
+    ],
+  },
+};
+
 export default function About() {
   const crumbs = breadcrumbSchema([{ name: 'About', path: '/about' }]);
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs) }} />
       <main role="main" className="max-w-3xl mx-auto px-5 py-12 prose-invert">
       <h1 className="font-display text-4xl font-extrabold tracking-tight">About GetMyLocations</h1>

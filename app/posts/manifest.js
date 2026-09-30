@@ -16,6 +16,7 @@ export const POSTS = [
       "Enable Location Services on iPhone and Android, fix per-app and per-site permissions, turn on Precise Location, and beat the battery-saver gotcha.",
     date: '2026-06-03',
     readingTime: 9,
+    heroImage: 'enable-location-on-iphone-and-android-hero.jpg',
     tags: ['troubleshooting', 'mobile', 'privacy'],
   },
   {
@@ -25,6 +26,7 @@ export const POSTS = [
       'How a Greek scholar, a Yorkshire clockmaker, and a global voting conference in 1884 produced the two numbers your phone shows you today.',
     date: '2026-06-01',
     readingTime: 7,
+    heroImage: 'history-of-latitude-and-longitude-hero.jpg',
     tags: ['history', 'coordinates', 'gps'],
   },
   {
@@ -34,6 +36,7 @@ export const POSTS = [
       'Five reasons the pin lands at the wrong door — interpolated house numbers, mislabelled buildings, and new streets the database has not caught up with.',
     date: '2026-05-30',
     readingTime: 8,
+    heroImage: 'why-maps-show-wrong-street-hero.jpg',
     tags: ['maps', 'troubleshooting', 'addresses'],
   },
   {
@@ -43,6 +46,7 @@ export const POSTS = [
       'A plain-language look at what an IP lookup actually returns, what it does not, and why mobile data and VPNs make the city wrong so often.',
     date: '2026-05-28',
     readingTime: 7,
+    heroImage: 'what-your-ip-reveals-hero.jpg',
     tags: ['ip', 'privacy'],
   },
   {
@@ -51,6 +55,7 @@ export const POSTS = [
     excerpt: 'How to send GPS coordinates to a 911 or 112 dispatcher: what AML does automatically, the script to say on the call, and how to read them off any phone.',
     date: '2026-05-20',
     readingTime: 12,
+    heroImage: 'gps-coordinates-emergencies-aml-guide-hero.jpg',
     tags: ['emergency', 'gps', 'safety'],
   },
   {
@@ -67,6 +72,7 @@ export const POSTS = [
     excerpt: 'Compare WhatsApp, iMessage, Google Maps and Signal for sharing your location. What each leaks, which duration to pick, and how to stop a share.',
     date: '2026-05-18',
     readingTime: 10,
+    heroImage: 'how-to-share-gps-location-safely-hero.jpg',
     tags: ['privacy', 'sharing', 'safety'],
   },
   {
@@ -83,6 +89,7 @@ export const POSTS = [
     excerpt: 'Country accuracy 95–99%, city 50–75%, street level basically zero. The real numbers behind IP geolocation and why mobile and VPN break it.',
     date: '2026-05-12',
     readingTime: 10,
+    heroImage: 'what-is-ip-location-and-how-accurate-hero.jpg',
     tags: ['ip', 'geolocation', 'privacy'],
   },
   {
@@ -91,6 +98,7 @@ export const POSTS = [
     excerpt: 'Which is which, the order in coordinates, signs, decimal precision, the three formats you will meet, and the antimeridian bug that breaks naive code.',
     date: '2026-05-11',
     readingTime: 8,
+    heroImage: 'latitude-vs-longitude-explained-hero.jpg',
     tags: ['coordinates', 'basics', 'guide'],
   },
   {
@@ -99,6 +107,7 @@ export const POSTS = [
     excerpt: 'A clear, no-buzzword walkthrough of how satellites 20,000 km overhead let your phone know exactly where you are — and what can go wrong.',
     date: '2026-05-10',
     readingTime: 9,
+    heroImage: 'how-gps-works-hero.jpg',
     tags: ['gps', 'satellites', 'technology'],
   },
   {
@@ -107,6 +116,7 @@ export const POSTS = [
     excerpt: 'From geocaching to verifying VPNs to precision farming — ten practical things you can do once you know how to read your own latitude and longitude.',
     date: '2026-05-09',
     readingTime: 6,
+    heroImage: '10-uses-for-gps-coordinates-hero.jpg',
     tags: ['gps', 'use-cases', 'guide'],
   },
 ];
