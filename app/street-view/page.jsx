@@ -26,10 +26,18 @@ export const metadata = {
 };
 
 const webAppSchema = {
-  '@context': 'https://schema.org', '@type': 'WebApplication',
-  name: 'Street View Tool', url: 'https://getmylocations.com/street-view',
-  applicationCategory: 'UtilitiesApplication', operatingSystem: 'Web',
-  isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Street View Tool',
+  description:
+    'Enter any address, landmark, or GPS coordinates and instantly explore the location in Google Street View. Free, no signup, no app to install.',
+  url: 'https://getmylocations.com/street-view',
+  applicationCategory: 'UtilitiesApplication',
+  operatingSystem: 'Web',
+  isAccessibleForFree: true,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+  publisher: { '@type': 'Organization', name: 'GetMyLocations' },
+  author: { '@type': 'Person', name: 'Ahmed Anwar', url: 'https://getmylocations.com/about' },
 };
 
 

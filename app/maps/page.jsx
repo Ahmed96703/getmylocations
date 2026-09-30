@@ -27,11 +27,15 @@ const webAppSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebApplication',
   name: 'Interactive Maps',
+  description:
+    'Free interactive world map with search, pin-drop GPS coordinates, and a toggle for standard, satellite, and dark views. No signup, no API key.',
   url: 'https://getmylocations.com/maps',
   applicationCategory: 'UtilitiesApplication',
   operatingSystem: 'Web',
   isAccessibleForFree: true,
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+  publisher: { '@type': 'Organization', name: 'GetMyLocations' },
+  author: { '@type': 'Person', name: 'Ahmed Anwar', url: 'https://getmylocations.com/about' },
 };
 
 export default function MapsPage() {

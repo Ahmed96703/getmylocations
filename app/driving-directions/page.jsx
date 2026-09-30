@@ -26,10 +26,18 @@ export const metadata = {
 };
 
 const webAppSchema = {
-  '@context': 'https://schema.org', '@type': 'WebApplication',
-  name: 'Driving Directions', url: 'https://getmylocations.com/driving-directions',
-  applicationCategory: 'UtilitiesApplication', operatingSystem: 'Web',
-  isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Driving Directions',
+  description:
+    'Plan a driving, walking, biking, or public-transit route between any two addresses or GPS coordinates. Free, powered by Google Maps.',
+  url: 'https://getmylocations.com/driving-directions',
+  applicationCategory: 'UtilitiesApplication',
+  operatingSystem: 'Web',
+  isAccessibleForFree: true,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+  publisher: { '@type': 'Organization', name: 'GetMyLocations' },
+  author: { '@type': 'Person', name: 'Ahmed Anwar', url: 'https://getmylocations.com/about' },
 };
 
 

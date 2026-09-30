@@ -83,7 +83,7 @@ export default function BlogPost({ params }) {
     description: post.excerpt,
     datePublished: post.date,
     dateModified: post.modifiedDate || post.date,
-    author: { '@type': 'Person', name: 'Ahmed Anwar' },
+    author: { '@type': 'Person', name: 'Ahmed Anwar', url: 'https://getmylocations.com/about' },
     publisher: {
       '@type': 'Organization',
       name: 'GetMyLocations',

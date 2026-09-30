@@ -43,7 +43,7 @@ const webAppSchema = {
   isAccessibleForFree: true,
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
   publisher: { '@type': 'Organization', name: 'GetMyLocations' },
-  author: { '@type': 'Person', name: 'Ahmed Anwar' },
+  author: { '@type': 'Person', name: 'Ahmed Anwar', url: 'https://getmylocations.com/about' },
 };
 
 const breadcrumbSchema = {
