@@ -147,6 +147,10 @@ export default function MapsPage() {
             To read your own position with a full accuracy radius and a resolved street address rather than
             just a map pin, use the{' '}
             <Link href="/my-location" className="text-accent hover:underline">My Location tool</Link>.
+            If you have a coordinate in DMS or UTM and need it in decimal degrees before searching, the{' '}
+            <Link href="/coordinates-converter" className="text-accent hover:underline">Coordinates Converter</Link>{' '}
+            handles the translation. To go from a place name to coordinates (or back), try the{' '}
+            <Link href="/address-finder" className="text-accent hover:underline">Address Finder</Link>.
           </p>
         </section>
 

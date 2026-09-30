@@ -219,9 +219,9 @@ export default function CoordinatesConverterPage() {
             Decimal degrees are the master input. Type a value into either of the two top boxes and the page recalculates the DMS, DDM, and UTM versions on the fly. If you have the coordinate in DMS or DDM, type it in the corresponding row and the tool back-converts to decimal degrees. UTM is shown as a read-only output because typing easting and northing by hand is uncommon and error-prone — almost everyone who works in UTM already has it in a GIS file or a topographic chart.
           </p>
           <p className="mt-3 text-fg-muted leading-relaxed">
-            For a deeper read on what each format actually represents and why anyone would use one over another, the{' '}
-            <Link href="/coordinates-converter" className="text-accent hover:underline">decimal degrees guide</Link>{' '}
-            zooms in on DD specifically, and the{' '}
+            Need a coordinate to convert? The{' '}
+            <Link href="/my-location" className="text-accent hover:underline">My Location tool</Link>{' '}
+            reads your GPS and gives you a copyable DD pair in two seconds. For a deeper read on what each format represents, the{' '}
             <Link href="/blog/latitude-vs-longitude-explained" className="text-accent hover:underline">latitude vs longitude post</Link>{' '}
             covers signs, order, and the memory tricks.
           </p>
@@ -270,9 +270,11 @@ export default function CoordinatesConverterPage() {
             Example: 48° 51′ 30.31″ N = 48 + 51/60 + 30.31/3600 = 48.858420°.
           </p>
           <p className="mt-3 text-fg-muted leading-relaxed">
-            For all four formats at once (including DDM and UTM), the{' '}
-            <Link href="/coordinates-converter" className="text-accent hover:underline">multi-format coordinates converter</Link>{' '}
-            has the same engine with a broader interface.
+            Once you have two coordinates in decimal degrees, the{' '}
+            <Link href="/distance-calculator" className="text-accent hover:underline">Distance Calculator</Link>{' '}
+            gives you the great-circle distance between them. If you have an address instead of a coordinate, the{' '}
+            <Link href="/address-finder" className="text-accent hover:underline">Address Finder</Link>{' '}
+            converts it to DD for you.
           </p>
 
           </section>

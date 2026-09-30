@@ -103,7 +103,14 @@ export default function Blog() {
         <p className="mt-2 text-sm text-fg-muted leading-relaxed">
           The short guides answer one problem fast. The longer posts explain why the
           problem happens, how the underlying systems work, and when the browser or
-          OS is the thing that is actually lying to you.
+          OS is the thing that is actually lying to you. Most articles reference the
+          tools on this site — start with the{' '}
+          <Link href="/my-location" className="text-accent hover:underline">My Location</Link>{' '}
+          finder to see your own GPS fix, then try the{' '}
+          <Link href="/coordinates-converter" className="text-accent hover:underline">Coordinates Converter</Link>{' '}
+          or{' '}
+          <Link href="/distance-calculator" className="text-accent hover:underline">Distance Calculator</Link>{' '}
+          to see the concepts in action.
         </p>
       </section>
 

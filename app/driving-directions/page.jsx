@@ -163,7 +163,11 @@ export default function DrivingDirectionsPage() {
             shows traffic-adjusted ETAs. What it does not do is multi-stop routes,
             offline downloads, or step-by-step navigation. For any of those, the
             <em> Open in Google Maps</em> button hands the same route off to the
-            full app on your device.
+            full app on your device. Before you leave, you might also want to
+            preview the destination in{' '}
+            <Link href="/street-view" className="text-accent hover:underline">Street View</Link>{' '}
+            to check the entrance, or explore the area around it on the{' '}
+            <Link href="/maps" className="text-accent hover:underline">interactive map</Link>.
           </p>
         </section>
 

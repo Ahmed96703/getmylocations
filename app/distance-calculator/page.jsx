@@ -137,9 +137,11 @@ export default function DistanceCalculatorPage() {
           <p className="mt-3 text-fg-muted leading-relaxed">
             Need the coordinates first? The{' '}
             <Link href="/my-location" className="text-accent hover:underline">My Location tool</Link>{' '}
-            gives you yours in two seconds, and the{' '}
-            <Link href="/my-location" className="text-accent hover:underline">GPS coordinates finder</Link>{' '}
-            covers every way to read your own. To find the coordinates of <em>another</em> place, long-press the location on Google Maps and the coordinates appear in the search bar.
+            gives you yours in two seconds. If your coordinates are in DMS or UTM rather than decimal degrees, run them through the{' '}
+            <Link href="/coordinates-converter" className="text-accent hover:underline">Coordinates Converter</Link>{' '}
+            first. To pick two points visually instead of typing them, drop pins on the{' '}
+            <Link href="/maps" className="text-accent hover:underline">interactive map</Link>{' '}
+            and read off the coordinates.
           </p>
         </section>
 

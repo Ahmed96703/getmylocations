@@ -176,7 +176,9 @@ export default function LiveLocationPage() {
           <p className="mt-3 text-fg-muted leading-relaxed">
             There is also a sneakier tradeoff: <em>jitter</em>. A static one-shot reading hides the natural noise in any GPS fix, because you only see the final smoothed coordinate. Live tracking exposes the noise — you watch the dot wander a few meters as the chip recomputes. That is not the tool being wrong; it is the GPS being honest. If you need a single clean reading, our{' '}
             <Link href="/my-location" className="text-accent hover:underline">one-shot My Location page</Link>{' '}
-            is the better fit.
+            is the better fit. If you want to explore the area around your position with satellite imagery or switch between map styles, the{' '}
+            <Link href="/maps" className="text-accent hover:underline">interactive map</Link>{' '}
+            gives you a larger, freeform canvas.
           </p>
         </section>
 

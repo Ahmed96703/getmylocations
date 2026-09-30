@@ -136,7 +136,9 @@ export default function AddressFinderPage() {
           <p className="mt-3 text-fg-muted leading-relaxed">
             If you only need <em>your own</em> current address rather than someone else&apos;s, the{' '}
             <Link href="/my-location" className="text-accent hover:underline">My Current Location tool</Link>{' '}
-            is more direct — it reads your GPS, reverse-geocodes it, and shows the street/city in one tap. For the conceptual deep-dive on the coordinates-to-address direction, our{' '}
+            is more direct — it reads your GPS, reverse-geocodes it, and shows the street/city in one tap. If the result comes back in DMS or UTM and you need decimal degrees, the{' '}
+            <Link href="/coordinates-converter" className="text-accent hover:underline">Coordinates Converter</Link>{' '}
+            handles the translation. For the conceptual deep-dive on the coordinates-to-address direction, our{' '}
             <Link href="/reverse-geocoding" className="text-accent hover:underline">reverse geocoding guide</Link>{' '}
             walks through how the algorithm actually picks the nearest address.
           </p>

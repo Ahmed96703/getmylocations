@@ -185,8 +185,10 @@ export default function StreetViewPage() {
           </ul>
           <p className="mt-3 text-fg-muted leading-relaxed">
             In practice most questions need two of the three. Checking out an unfamiliar address before a
-            visit usually means one pass in street view for the frontage and one in satellite for the
-            approach and parking.
+            visit usually means one pass in street view for the frontage, one in satellite for the
+            approach and parking, and then the{' '}
+            <Link href="/driving-directions" className="text-accent hover:underline">Driving Directions</Link>{' '}
+            tool to plan the actual route.
           </p>
         </section>
 
