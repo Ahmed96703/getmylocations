@@ -6,7 +6,10 @@ export const metadata = {
   metadataBase: new URL('https://getmylocations.com'),
   title: {
     default: 'GetMyLocations — Find My Location, GPS Coordinates & IP',
-    template: '%s | GetMyLocations',
+    // No brand suffix: it cost 17 of the ~60 characters Google renders, on a
+    // brand that drew 5 impressions in three months. Pages carry their own
+    // full title instead.
+    template: '%s',
   },
   description:
     'Free, privacy-first location tools — find my GPS coordinates, IP location, distance calculator, address finder, and more. No signup, runs in your browser.',
@@ -48,7 +51,12 @@ export const metadata = {
     images: ['/og-image.png'],
   },
   icons: {
-    icon: '/favicon.svg',
+    // SVG for modern browsers, with a raster fallback — Google's favicon
+    // crawler and some SERP surfaces do not render SVG.
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon-32.png', sizes: '32x32', type: 'image/png' },
+    ],
     apple: '/apple-touch-icon.png',
   },
   manifest: '/manifest.webmanifest',

@@ -3,9 +3,9 @@ import Tool from './Tool.jsx';
 import AuthorBio from '../components/AuthorBio.jsx';
 
 export const metadata = {
-  title: 'What Is My Location? Find My GPS Coordinates & Address (Free)',
+  title: 'What Is My Location? Free GPS Coordinates & Address',
   description:
-    'Find your exact location in two seconds — GPS coordinates, accuracy radius, and street address, read straight from your browser. Plus a complete guide to reading DD, DMS, and UTM coordinates.',
+    'Find your exact location in two seconds — GPS coordinates, accuracy radius and street address, straight from your browser. Free, no signup.',
   keywords: [
     'my location',
     'what is my location',

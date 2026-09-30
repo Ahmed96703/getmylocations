@@ -10,9 +10,9 @@ import { HOME_FAQS } from './home-faqs.js';
 // the initial HTML that Googlebot sees.
 
 export const metadata = {
-  title: 'GetMyLocations — Find Your Location, GPS Coordinates & Address Instantly',
+  title: 'Find My Location — GPS Coordinates, Address & IP Tools',
   description:
-    'Free all-in-one location tool — find your location, GPS coordinates, and address instantly in your browser. Plus coordinates converter, IP lookup, distance calculator. No signup.',
+    'Find your location, GPS coordinates and address instantly in your browser. Plus coordinates converter, IP lookup and distance calculator. Free, no signup.',
   alternates: { canonical: '/' },
   openGraph: {
     title: 'GetMyLocations — Find Your Location, GPS Coordinates & Address Instantly',
