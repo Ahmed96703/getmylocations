@@ -309,14 +309,26 @@ export default function HowGpsWorks() {
 
       <h2 className="font-display text-2xl font-bold mt-12">See what your chip is reporting right now</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
-        Open
-        {' '}<Link href="/" className="text-accent hover:underline font-semibold">GetMyLocations</Link>{' '}
-        on a phone outdoors. The accuracy radius on the dashboard is
+        Open the{' '}
+        <Link href="/my-location" className="text-accent hover:underline font-semibold">My Location</Link>{' '}
+        tool on a phone outdoors. The accuracy radius on the dashboard is
         your real-time DOP estimate translated into meters. If
         you&rsquo;ve never paid attention to it before, walk from a
         sheltered spot to open sky and watch the number drop. That&rsquo;s
         the constellation locking on satellites in real time, in front
-        of you.
+        of you. To watch the fix update continuously as you walk, try the{' '}
+        <Link href="/live-location" className="text-accent hover:underline">live tracker</Link>.
+        The coordinate the tool gives you is in decimal degrees — if you need DMS or UTM for a chart or a survey report, the{' '}
+        <Link href="/coordinates-converter" className="text-accent hover:underline">Coordinates Converter</Link>{' '}
+        handles the translation.
+      </p>
+      <p className="mt-3 text-fg-muted leading-relaxed">
+        For the practical side — ten real-world uses for the coordinates your chip produces — see{' '}
+        <Link href="/blog/10-uses-for-gps-coordinates" className="text-accent hover:underline">Ten uses for GPS coordinates</Link>.
+        For a quick refresher on what latitude and longitude actually mean and how to read them, start with{' '}
+        <Link href="/blog/latitude-vs-longitude-explained" className="text-accent hover:underline">Latitude vs longitude explained</Link>.
+        And for step-by-step instructions to read your coordinates on any device, there&rsquo;s{' '}
+        <Link href="/blog/how-to-find-your-gps-coordinates" className="text-accent hover:underline">How to find your GPS coordinates</Link>.
       </p>
     </article>
   );

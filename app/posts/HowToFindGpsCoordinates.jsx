@@ -177,13 +177,23 @@ export default function HowToFindGpsCoordinates() {
 
       <h2 className="font-display text-2xl font-bold mt-12">Try it</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
-        Open
-        {' '}<Link href="/" className="text-accent hover:underline font-semibold">GetMyLocations</Link>{' '}
-        and allow the location prompt. The latitude, longitude, accuracy
+        Open the{' '}
+        <Link href="/my-location" className="text-accent hover:underline font-semibold">My Location</Link>{' '}
+        tool and allow the location prompt. The latitude, longitude, accuracy
         radius, city, and country will be on screen in under two seconds.
-        If you&rsquo;ve never read your own coordinates before, do it
-        once now &mdash; it&rsquo;s the kind of skill you forget you
-        don&rsquo;t have until you need it.
+        If you need the coordinate in DMS or UTM instead of decimal degrees, paste it into the{' '}
+        <Link href="/coordinates-converter" className="text-accent hover:underline">Coordinates Converter</Link>.
+        To watch the fix update continuously as you walk, switch to the{' '}
+        <Link href="/live-location" className="text-accent hover:underline">live tracker</Link>.
+      </p>
+      <p className="mt-3 text-fg-muted leading-relaxed">
+        For the theory behind how your phone actually computes this number, read{' '}
+        <Link href="/blog/how-gps-works" className="text-accent hover:underline">How GPS works</Link>.
+        For a primer on reading and interpreting the two numbers, see{' '}
+        <Link href="/blog/latitude-vs-longitude-explained" className="text-accent hover:underline">Latitude vs longitude explained</Link>.
+        And if you plan to share your coordinates with someone, the{' '}
+        <Link href="/blog/how-to-share-gps-location-safely" className="text-accent hover:underline">safe sharing guide</Link>{' '}
+        covers what to strip before posting publicly.
       </p>
     </article>
   );

@@ -150,7 +150,14 @@ export default function WhyMapsShowWrongStreet() {
         it&rsquo;s on the wrong building, you now know why the courier
         keeps getting confused, and you have the coordinate of where the
         pin actually <em>is</em> so you can give people a sentence to
-        explain the offset.
+        explain the offset. You can also check the satellite imagery on the{' '}
+        <Link href="/maps" className="text-accent hover:underline">interactive map</Link>{' '}
+        to confirm the building footprint, or preview the street frontage in{' '}
+        <Link href="/street-view" className="text-accent hover:underline">Street View</Link>.
+        For the underlying algorithm that translates coordinates into addresses, see the{' '}
+        <Link href="/reverse-geocoding" className="text-accent hover:underline">reverse geocoding guide</Link>.
+        And for the basics on how your phone produces the GPS fix that feeds into all of this, read{' '}
+        <Link href="/blog/how-gps-works" className="text-accent hover:underline">How GPS works</Link>.
       </p>
     </article>
   );

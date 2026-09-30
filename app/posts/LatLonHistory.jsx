@@ -180,7 +180,14 @@ export default function LatLonHistory() {
         give you the latitude and longitude that took two millennia to make
         readable. The latitude number you see comes from astronomical
         principles a Greek scholar would have recognised; the longitude
-        number comes from a Yorkshire clock and an 1884 vote.
+        number comes from a Yorkshire clock and an 1884 vote. Your phone
+        gives you decimal degrees; to see the same position in the older
+        degrees-minutes-seconds notation sailors actually used, paste it
+        into the{' '}
+        <Link href="/coordinates-converter" className="text-accent hover:underline">Coordinates Converter</Link>.
+        For a quick primer on what the two numbers mean and how to tell
+        them apart, see{' '}
+        <Link href="/blog/latitude-vs-longitude-explained" className="text-accent hover:underline">Latitude vs longitude explained</Link>.
       </p>
     </article>
   );

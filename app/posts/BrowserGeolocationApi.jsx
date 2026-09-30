@@ -204,10 +204,25 @@ export default function BrowserGeolocationApi() {
       </p>
       <p className="mt-3 text-fg-muted leading-relaxed">
         If you want to feel the difference between accuracy values
-        directly, open the tool and toggle precise-location off and back
+        directly, open the{' '}
+        <Link href="/my-location" className="text-accent hover:underline">My Location</Link>{' '}
+        tool and toggle precise-location off and back
         on in your browser&rsquo;s site settings. The accuracy radius
-        drawn on the map jumps from ~5 m to ~10 km in real time. More
-        intuitive than any blog post.
+        drawn on the map jumps from ~5 m to ~10 km in real time. To see{' '}
+        <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">watchPosition</code>{' '}
+        in action, try the{' '}
+        <Link href="/live-location" className="text-accent hover:underline">Live Location</Link>{' '}
+        tracker — it streams coordinates continuously and shows the update
+        count climbing. For a comparison of GPS accuracy versus IP-based
+        positioning, see{' '}
+        <Link href="/gps-vs-ip-accuracy" className="text-accent hover:underline">GPS vs IP accuracy</Link>.
+      </p>
+      <p className="mt-3 text-fg-muted leading-relaxed">
+        If location isn&rsquo;t working at all, the step-by-step guides for{' '}
+        <Link href="/blog/enable-location-on-iphone-and-android" className="text-accent hover:underline">iPhone &amp; Android</Link>{' '}
+        and{' '}
+        <Link href="/blog/enable-location-on-windows-and-mac" className="text-accent hover:underline">Windows &amp; Mac</Link>{' '}
+        walk through every toggle.
       </p>
     </article>
   );
