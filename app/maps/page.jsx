@@ -4,7 +4,7 @@ import AuthorBio from '../components/AuthorBio.jsx';
 
 export const metadata = {
   title: 'Maps — Free Interactive World & Satellite Map with Search',
-  description: 'Free interactive map with search, pin-drop coordinates, and a layer toggle for standard, satellite, and dark views. Covers the whole world including the United States. No signup, no API key.',
+  description: 'Free interactive map with search, pin-drop coordinates, and a toggle for standard, satellite and dark views. Worldwide, no signup, no API key.',
   keywords: ['free online map', 'interactive map online', 'satellite map', 'satellite view of my address', 'us map', 'map of the united states', 'map with coordinates', 'world map online'],
   alternates: { canonical: '/maps' },
 };

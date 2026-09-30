@@ -3,9 +3,9 @@ import Tool from './Tool.jsx';
 import AuthorBio from '../components/AuthorBio.jsx';
 
 export const metadata = {
-  title: 'IP Location Lookup — Find Any IP\'s City, ISP, and Geolocation (Free)',
+  title: 'IP Location Lookup — Find Any IP\'s City and ISP (Free)',
   description:
-    'Free IP location lookup — find any IP\'s city, country, ISP, and approximate geolocation in two seconds. Plus a complete guide to how IP geolocation works and why the city is often wrong.',
+    'Find any IP\'s city, country, ISP and approximate location in two seconds. Plus how IP geolocation works and why the city is often wrong.',
   keywords: [
     'ip location',
     'ip location lookup',
@@ -17,7 +17,7 @@ export const metadata = {
   ],
   alternates: { canonical: '/ip-location' },
   openGraph: {
-    title: 'IP Location Lookup — Find Any IP\'s City, ISP, and Geolocation',
+    title: 'IP Location Lookup — Find Any IP\'s City and ISP',
     description:
       'Free IP location lookup — city, country, ISP, and approximate geolocation in two seconds. Plus a complete guide.',
     url: 'https://getmylocations.com/ip-location',

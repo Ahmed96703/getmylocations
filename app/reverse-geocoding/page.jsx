@@ -2,9 +2,9 @@ import Link from 'next/link';
 import AuthorBio from '../components/AuthorBio.jsx';
 
 export const metadata = {
-  title: 'Reverse Geocoding Explained — How Coordinates Become a Street Address',
+  title: 'Reverse Geocoding — How Coordinates Become an Address',
   description:
-    'Reverse geocoding explained — how GPS coordinates become a street address, the algorithm step by step, common failure modes, and free APIs (Nominatim, BigDataCloud) to call yourself.',
+    'How GPS coordinates become a street address: the algorithm step by step, common failure modes, and free APIs (Nominatim, BigDataCloud) to call.',
   keywords: [
     'reverse geocoding',
     'coordinates to address',
@@ -33,7 +33,7 @@ export const metadata = {
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: 'Reverse Geocoding Explained — How Coordinates Become a Street Address',
+  headline: 'Reverse Geocoding — How Coordinates Become an Address',
   description:
     'A complete explainer on reverse geocoding: how a GPS coordinate is translated into a human-readable street address, the algorithm, accuracy limits, and how to call the free APIs yourself.',
   author: { '@type': 'Person', name: 'Ahmed Anwar' },

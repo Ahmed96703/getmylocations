@@ -3,9 +3,9 @@ import Tool from './Tool.jsx';
 import AuthorBio from '../components/AuthorBio.jsx';
 
 export const metadata = {
-  title: 'GPS Distance Calculator — Distance Between Two Coordinates (Haversine, Free)',
+  title: 'GPS Distance Calculator — Between Two Coordinates (Free)',
   description:
-    'Free GPS distance calculator — distance between two latitude/longitude pairs in km, miles, nautical miles, and meters. Haversine formula, plus initial bearing. No signup.',
+    'Distance between two latitude/longitude pairs in km, miles, nautical miles and meters. Haversine formula plus initial bearing. Free, no signup.',
   keywords: [
     'distance calculator',
     'gps distance calculator',

@@ -3,9 +3,9 @@ import Tool from './Tool.jsx';
 import AuthorBio from '../components/AuthorBio.jsx';
 
 export const metadata = {
-  title: 'Address Finder — Convert Address to GPS Coordinates (and Back) Free',
+  title: 'Address Finder — Convert Address to GPS Coordinates',
   description:
-    'Free address finder — convert any street address to GPS coordinates, or paste a lat/long pair to get the nearest street address. Two-way geocoding, instant, no signup.',
+    'Convert any street address to GPS coordinates, or a lat/long pair to the nearest address. Two-way geocoding, instant, free, no signup.',
   keywords: [
     'address finder',
     'geocoding',

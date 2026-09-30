@@ -3,7 +3,7 @@ import Tool from './Tool.jsx';
 import AuthorBio from '../components/AuthorBio.jsx';
 
 export const metadata = {
-  title: 'Coordinates Converter — Convert DD, DMS, DDM, UTM Free (Live Tool)',
+  title: 'Coordinates Converter — DD, DMS, DDM & UTM (Free Tool)',
   description:
     'Free coordinates converter — convert GPS latitude and longitude between Decimal Degrees, DMS, DDM, and UTM in real time. Live map, no signup, no install.',
   keywords: [

@@ -2,9 +2,9 @@ import Link from 'next/link';
 import AuthorBio from '../components/AuthorBio.jsx';
 
 export const metadata = {
-  title: 'Location Not Working? 7 Fixes for Chrome, Safari, Firefox, Edge, iOS & Android',
+  title: 'Location Not Working? 7 Fixes for Any Browser or Phone',
   description:
-    "Location not working in your browser? Step-by-step fixes for Chrome, Safari, Firefox, Edge, iOS, and Android — re-enable permissions, fix wrong-city errors, and stop GPS drift.",
+    "Step-by-step fixes for Chrome, Safari, Firefox, Edge, iOS and Android — re-enable permissions, fix wrong-city errors, and stop GPS drift.",
   keywords: [
     'location not working',
     'fix location',

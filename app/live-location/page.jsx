@@ -5,7 +5,7 @@ import AuthorBio from '../components/AuthorBio.jsx';
 export const metadata = {
   title: 'My Live Location Now — Track Your Real-Time Position Free',
   description:
-    'Free live location tracker — watch your real-time GPS position update as you move. Continuous browser tracking, accuracy radius, no signup, nothing leaves the page.',
+    'Watch your real-time GPS position update as you move. Continuous browser tracking with accuracy radius. Free, no signup, nothing leaves the page.',
   keywords: [
     'my live location now',
     'my location live',

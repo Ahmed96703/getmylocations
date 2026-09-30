@@ -4,7 +4,7 @@ import { POSTS } from '../posts/manifest.js';
 export const metadata = {
   title: 'Blog — Notes on GPS, geolocation, and online privacy',
   description:
-    'Articles about how GPS actually works, how the browser Geolocation API behaves, how IP geolocation is built, and what to do when the location your phone shows is wrong.',
+    'How GPS actually works, how the browser Geolocation API behaves, how IP geolocation is built, and what to do when your phone shows the wrong place.',
   alternates: { canonical: '/blog' },
   openGraph: {
     title: 'Blog — GPS, geolocation, and privacy notes',
