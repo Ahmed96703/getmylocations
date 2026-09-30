@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { breadcrumbSchema } from '../components/breadcrumbSchema.js';
 import { POSTS } from '../posts/manifest.js';
 
 export const metadata = {
@@ -24,8 +25,29 @@ export const metadata = {
 };
 
 export default function Blog() {
+  const crumbs = breadcrumbSchema([{ name: 'Blog', path: '/blog' }]);
+  const blogSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    name: 'GetMyLocations Blog',
+    url: 'https://getmylocations.com/blog',
+    description:
+      'Long-form guides on GPS, IP geolocation, browser permissions, and location accuracy.',
+    publisher: { '@type': 'Organization', name: 'GetMyLocations' },
+    blogPost: POSTS.map((p) => ({
+      '@type': 'BlogPosting',
+      headline: p.title,
+      description: p.excerpt,
+      datePublished: p.date,
+      author: { '@type': 'Person', name: 'Ahmed Anwar' },
+      url: `https://getmylocations.com/blog/${p.slug}`,
+    })),
+  };
   return (
-    <main role="main" className="max-w-3xl mx-auto px-5 py-12">
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }} />
+      <main role="main" className="max-w-3xl mx-auto px-5 py-12">
       <h1 className="font-display text-4xl font-extrabold tracking-tight">Blog</h1>
       <p className="mt-3 text-fg-muted">
         Notes on GPS, geolocation, and the small ways the location your phone shows
@@ -92,5 +114,6 @@ export default function Blog() {
         ))}
       </ul>
     </main>
+    </>
   );
 }

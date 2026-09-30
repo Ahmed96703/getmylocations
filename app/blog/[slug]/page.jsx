@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { POSTS, findPost } from '../../posts/manifest.js';
+import { breadcrumbSchema } from '../../components/breadcrumbSchema.js';
 import AuthorBio from '../../components/AuthorBio.jsx';
 
 import BrowserGeolocationApi from '../../posts/BrowserGeolocationApi.jsx';
@@ -79,9 +80,15 @@ export default function BlogPost({ params }) {
     mainEntityOfPage: { '@type': 'WebPage', '@id': `https://getmylocations.com/blog/${post.slug}` },
   };
 
+  const crumbs = breadcrumbSchema([
+    { name: 'Blog', path: '/blog' },
+    { name: post.title, path: `/blog/${post.slug}` },
+  ]);
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs) }} />
 
       <main role="main" className="max-w-3xl mx-auto px-5 py-12">
         <nav aria-label="Breadcrumb" className="text-xs text-fg-subtle mb-4">

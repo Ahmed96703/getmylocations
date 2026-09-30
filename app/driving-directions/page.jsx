@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { breadcrumbSchema } from '../components/breadcrumbSchema.js';
 import Tool from './Tool.jsx';
 import AuthorBio from '../components/AuthorBio.jsx';
 
@@ -66,9 +67,11 @@ const faqSchema = {
 };
 
 export default function DrivingDirectionsPage() {
+  const crumbs = breadcrumbSchema([{ name: 'Driving Directions', path: '/driving-directions' }]);
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <main className="max-w-5xl mx-auto px-5 py-10">
         <section className="mb-8">

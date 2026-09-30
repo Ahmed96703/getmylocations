@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { breadcrumbSchema } from '../components/breadcrumbSchema.js';
 import Tool from './Tool.jsx';
 import AuthorBio from '../components/AuthorBio.jsx';
 
@@ -21,9 +22,11 @@ const webAppSchema = {
 };
 
 export default function MapsPage() {
+  const crumbs = breadcrumbSchema([{ name: 'Interactive Maps', path: '/maps' }]);
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs) }} />
 
       <main className="max-w-5xl mx-auto px-5 py-10">
         <section className="mb-8">

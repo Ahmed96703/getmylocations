@@ -1,3 +1,4 @@
+import { breadcrumbSchema } from '../components/breadcrumbSchema.js';
 export const metadata = {
   title: 'Contact — GetMyLocations',
   description: 'Get in touch with GetMyLocations for questions, feedback, corrections, or partnership ideas. We reply within 24 hours.',
@@ -20,8 +21,11 @@ export const metadata = {
 };
 
 export default function Contact() {
+  const crumbs = breadcrumbSchema([{ name: 'Contact', path: '/contact' }]);
   return (
-    <main role="main" className="max-w-3xl mx-auto px-5 py-12 prose-invert">
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs) }} />
+      <main role="main" className="max-w-3xl mx-auto px-5 py-12 prose-invert">
       <h1 className="font-display text-4xl font-extrabold tracking-tight">Contact</h1>
       <p className="mt-4 text-fg-muted leading-relaxed">
         Questions, feedback, or a partnership idea? We&rsquo;d love to hear from you.
@@ -83,5 +87,6 @@ export default function Contact() {
         </p>
       </section>
     </main>
+    </>
   );
 }

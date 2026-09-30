@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { breadcrumbSchema } from '../components/breadcrumbSchema.js';
 
 
 export const metadata = {
@@ -13,8 +14,11 @@ export const metadata = {
 };
 
 export default function GpsVsIpAccuracy() {
+  const crumbs = breadcrumbSchema([{ name: 'GPS vs IP Accuracy', path: '/gps-vs-ip-accuracy' }]);
   return (
-    <main role="main" className="max-w-3xl mx-auto px-5 py-12 prose-invert">
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs) }} />
+      <main role="main" className="max-w-3xl mx-auto px-5 py-12 prose-invert">
       <article>
         <p className="text-xs uppercase tracking-[0.18em] text-accent font-semibold">Comparison Guide</p>
         <h1 className="font-display text-4xl font-extrabold tracking-tight mt-2 leading-[1.1]">
@@ -254,5 +258,6 @@ export default function GpsVsIpAccuracy() {
         </ul>
       </article>
     </main>
+    </>
   );
 }

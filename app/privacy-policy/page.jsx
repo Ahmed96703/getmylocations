@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { breadcrumbSchema } from '../components/breadcrumbSchema.js';
 
 export const metadata = {
   title: 'Privacy Policy',
@@ -23,8 +24,11 @@ export const metadata = {
 };
 
 export default function Privacy() {
+  const crumbs = breadcrumbSchema([{ name: 'Privacy Policy', path: '/privacy-policy' }]);
   return (
-    <main role="main" className="max-w-3xl mx-auto px-5 py-12 prose-invert">
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs) }} />
+      <main role="main" className="max-w-3xl mx-auto px-5 py-12 prose-invert">
       <h1 className="font-display text-4xl font-extrabold tracking-tight">Privacy Policy</h1>
       <p className="text-sm text-fg-subtle mt-2">Last updated: 2026</p>
 
@@ -167,5 +171,6 @@ export default function Privacy() {
         See the <Link href="/contact" className="text-accent hover:underline">Contact page</Link> for response-time expectations.
       </p>
     </main>
+    </>
   );
 }

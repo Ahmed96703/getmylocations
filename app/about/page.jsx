@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { breadcrumbSchema } from '../components/breadcrumbSchema.js';
 
 export const metadata = {
   title: 'About — GetMyLocations',
@@ -22,8 +23,11 @@ export const metadata = {
 };
 
 export default function About() {
+  const crumbs = breadcrumbSchema([{ name: 'About', path: '/about' }]);
   return (
-    <main role="main" className="max-w-3xl mx-auto px-5 py-12 prose-invert">
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs) }} />
+      <main role="main" className="max-w-3xl mx-auto px-5 py-12 prose-invert">
       <h1 className="font-display text-4xl font-extrabold tracking-tight">About GetMyLocations</h1>
       <p className="mt-2 text-sm text-fg-subtle">Last reviewed June 3, 2026 · Tested on real devices before publish</p>
       <p className="mt-4 text-fg-muted leading-relaxed">
@@ -88,5 +92,6 @@ export default function About() {
         I reply to most things within a day or two.
       </p>
     </main>
+    </>
   );
 }
