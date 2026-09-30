@@ -132,7 +132,7 @@ export default function CoordinatesConverterPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
-      <main className="max-w-5xl mx-auto px-5 py-10">
+      <main role="main" className="max-w-5xl mx-auto px-5 py-10">
         <nav aria-label="Breadcrumb" className="text-xs text-fg-subtle mb-3">
           <ol className="flex items-center gap-1.5">
             <li><Link href="/" className="hover:text-accent transition">Home</Link></li>

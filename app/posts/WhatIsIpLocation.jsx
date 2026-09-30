@@ -50,6 +50,7 @@ export default function WhatIsIpLocation() {
           width={1600}
           height={767}
           loading="eager"
+          fetchPriority="high"
         />
       </figure>
       <p className="text-lg text-fg-muted leading-relaxed">

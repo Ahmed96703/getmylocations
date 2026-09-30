@@ -11,6 +11,7 @@ export default function WhyMapsShowWrongStreet() {
           width={1600}
           height={775}
           loading="eager"
+          fetchPriority="high"
         />
       </figure>
       <p className="text-lg text-fg-muted leading-relaxed">

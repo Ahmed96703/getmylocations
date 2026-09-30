@@ -58,6 +58,14 @@ export default function GpsVsIpAccuracy() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs) }} />
       <main role="main" className="max-w-3xl mx-auto px-5 py-12 prose-invert">
+        <nav aria-label="Breadcrumb" className="text-xs text-fg-subtle mb-3">
+          <ol className="flex items-center gap-1.5">
+            <li><Link href="/" className="hover:text-accent transition">Home</Link></li>
+            <li aria-hidden="true">›</li>
+            <li className="text-fg-muted">GPS vs IP Accuracy</li>
+          </ol>
+        </nav>
+
       <article>
         <p className="text-xs uppercase tracking-[0.18em] text-accent font-semibold">Comparison Guide</p>
         <h1 className="font-display text-4xl font-extrabold tracking-tight mt-2 leading-[1.1]">

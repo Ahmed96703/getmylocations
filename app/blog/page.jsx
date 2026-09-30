@@ -53,6 +53,14 @@ export default function Blog() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }} />
       <main role="main" className="max-w-3xl mx-auto px-5 py-12">
+        <nav aria-label="Breadcrumb" className="text-xs text-fg-subtle mb-3">
+          <ol className="flex items-center gap-1.5">
+            <li><Link href="/" className="hover:text-accent transition">Home</Link></li>
+            <li aria-hidden="true">›</li>
+            <li className="text-fg-muted">Blog</li>
+          </ol>
+        </nav>
+
       <h1 className="font-display text-4xl font-extrabold tracking-tight">Blog</h1>
       <p className="mt-3 text-fg-muted">
         Notes on GPS, geolocation, and the small ways the location your phone shows

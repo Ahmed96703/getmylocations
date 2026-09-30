@@ -11,6 +11,7 @@ export default function WhatYourIpReveals() {
           width={1600}
           height={779}
           loading="eager"
+          fetchPriority="high"
         />
       </figure>
       <p className="text-lg text-fg-muted leading-relaxed">

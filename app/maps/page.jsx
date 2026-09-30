@@ -45,7 +45,15 @@ export default function MapsPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs) }} />
 
-      <main className="max-w-5xl mx-auto px-5 py-10">
+      <main role="main" className="max-w-5xl mx-auto px-5 py-10">
+        <nav aria-label="Breadcrumb" className="text-xs text-fg-subtle mb-3">
+          <ol className="flex items-center gap-1.5">
+            <li><Link href="/" className="hover:text-accent transition">Home</Link></li>
+            <li aria-hidden="true">›</li>
+            <li className="text-fg-muted">Interactive Maps</li>
+          </ol>
+        </nav>
+
         <section className="mb-8">
           <p className="text-[11px] uppercase tracking-[0.18em] text-accent font-semibold mb-2">Free Tool · World Map</p>
           <h1 className="font-display text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.05]">

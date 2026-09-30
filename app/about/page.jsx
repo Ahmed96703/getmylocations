@@ -60,6 +60,14 @@ export default function About() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs) }} />
       <main role="main" className="max-w-3xl mx-auto px-5 py-12 prose-invert">
+        <nav aria-label="Breadcrumb" className="text-xs text-fg-subtle mb-3">
+          <ol className="flex items-center gap-1.5">
+            <li><Link href="/" className="hover:text-accent transition">Home</Link></li>
+            <li aria-hidden="true">›</li>
+            <li className="text-fg-muted">About</li>
+          </ol>
+        </nav>
+
       <h1 className="font-display text-4xl font-extrabold tracking-tight">About GetMyLocations</h1>
       <p className="mt-2 text-sm text-fg-subtle">Last reviewed June 3, 2026 · Tested on real devices before publish</p>
       <p className="mt-4 text-fg-muted leading-relaxed">

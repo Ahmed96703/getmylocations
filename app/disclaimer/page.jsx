@@ -29,6 +29,14 @@ export default function Disclaimer() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs) }} />
       <main role="main" className="max-w-3xl mx-auto px-5 py-12 prose-invert">
+        <nav aria-label="Breadcrumb" className="text-xs text-fg-subtle mb-3">
+          <ol className="flex items-center gap-1.5">
+            <li><Link href="/" className="hover:text-accent transition">Home</Link></li>
+            <li aria-hidden="true">›</li>
+            <li className="text-fg-muted">Disclaimer</li>
+          </ol>
+        </nav>
+
       <h1 className="font-display text-4xl font-extrabold tracking-tight">Disclaimer</h1>
       <p className="text-sm text-fg-subtle mt-2">Last updated: 2026</p>
 
