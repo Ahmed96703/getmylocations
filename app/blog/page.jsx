@@ -39,7 +39,12 @@ export default function Blog() {
       headline: p.title,
       description: p.excerpt,
       datePublished: p.date,
-      author: { '@type': 'Person', name: 'Ahmed Anwar' },
+      dateModified: p.modifiedDate || p.date,
+      author: {
+        '@type': 'Person',
+        name: 'Ahmed Anwar',
+        url: 'https://getmylocations.com/about',
+      },
       url: `https://getmylocations.com/blog/${p.slug}`,
     })),
   };

@@ -102,6 +102,26 @@ const websiteSchema = {
   url: 'https://getmylocations.com/',
 };
 
+const siteNavSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SiteNavigationElement',
+  name: 'Main Navigation',
+  hasPart: [
+    { '@type': 'WebPage', name: 'My Location', url: 'https://getmylocations.com/my-location' },
+    { '@type': 'WebPage', name: 'Live Location', url: 'https://getmylocations.com/live-location' },
+    { '@type': 'WebPage', name: 'Coordinates Converter', url: 'https://getmylocations.com/coordinates-converter' },
+    { '@type': 'WebPage', name: 'IP Location', url: 'https://getmylocations.com/ip-location' },
+    { '@type': 'WebPage', name: 'Distance Calculator', url: 'https://getmylocations.com/distance-calculator' },
+    { '@type': 'WebPage', name: 'Address Finder', url: 'https://getmylocations.com/address-finder' },
+    { '@type': 'WebPage', name: 'Maps', url: 'https://getmylocations.com/maps' },
+    { '@type': 'WebPage', name: 'Street View', url: 'https://getmylocations.com/street-view' },
+    { '@type': 'WebPage', name: 'Driving Directions', url: 'https://getmylocations.com/driving-directions' },
+    { '@type': 'WebPage', name: 'Blog', url: 'https://getmylocations.com/blog' },
+    { '@type': 'WebPage', name: 'About', url: 'https://getmylocations.com/about' },
+    { '@type': 'WebPage', name: 'Contact', url: 'https://getmylocations.com/contact' },
+  ],
+};
+
 // Runs synchronously before paint to apply the user's preferred theme.
 // Avoids the flash-of-wrong-theme on first load.
 const THEME_INIT_SCRIPT = `(function(){try{var t=localStorage.getItem('theme');if(!t){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','light');}})();`;
@@ -118,6 +138,10 @@ export default function RootLayout({ children }) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteNavSchema) }}
         />
         {GA_ID && (
           <>
