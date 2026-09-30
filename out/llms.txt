@@ -8,17 +8,40 @@ The tool is free, requires no account, and runs entirely in the browser — mean
 
 Audience: anyone who needs to find their current GPS coordinates, IP location, latitude, longitude, city, or country online — from travelers and hikers to developers testing geolocation features.
 
-## Core tool
+## Tools
 
-- [Find My Location — Home](https://getmylocations.com/): The main tool. Shows your live latitude, longitude, accuracy, city, and country with a one-click "Share My Location" feature and a "Locate Me" recenter button. Includes Advanced mode for entering coordinates manually.
+- [Find My Location — Home](https://getmylocations.com/): The main tool. Shows your live latitude, longitude, accuracy, city, and country with a one-click "Share My Location" feature and a "Locate Me" recenter button.
+- [Live Location Tracker](https://getmylocations.com/live-location): Real-time GPS tracking with a moving map, speed, and altitude readout.
+- [My Location](https://getmylocations.com/my-location): Quick one-tap current location with coordinates and city name.
+- [Coordinates Converter](https://getmylocations.com/coordinates-converter): Convert between decimal degrees, DMS, UTM, and MGRS coordinate formats.
+- [IP Location Lookup](https://getmylocations.com/ip-location): Find the approximate location of any IP address using free geolocation APIs.
+- [Distance Calculator](https://getmylocations.com/distance-calculator): Measure the straight-line (haversine) distance between two points on Earth.
+- [Address Finder](https://getmylocations.com/address-finder): Reverse-geocode GPS coordinates into a street address.
+- [Street View](https://getmylocations.com/street-view): Explore any location with embedded street-level imagery.
+- [Driving Directions](https://getmylocations.com/driving-directions): Get turn-by-turn driving directions between two addresses or coordinates.
+- [Maps](https://getmylocations.com/maps): Interactive full-screen map with multiple tile layers.
 
-## Guides and articles (Blog)
+## Guides
 
-- [How to Find Your GPS Coordinates (2026 Guide for Any Device)](https://getmylocations.com/blog/how-to-find-your-gps-coordinates): Step-by-step methods for finding latitude and longitude on iPhone, Android, Mac, Windows, and any web browser. Includes accuracy expectations and privacy considerations.
-- [What Is IP Location and How Accurate Is It Really?](https://getmylocations.com/blog/what-is-ip-location-and-how-accurate): A clear explainer of IP geolocation — how databases map IPs to cities, why VPNs throw it off, and how it compares to GPS in real-world accuracy.
-- [Latitude vs Longitude — A Beginner's Guide](https://getmylocations.com/blog/latitude-vs-longitude-explained): Plain-English explanation of geographic coordinates, decimal degrees vs DMS format, how many decimals you need for what precision, and common confusions.
-- [How GPS Works: From Satellites to Your Phone](https://getmylocations.com/blog/how-gps-works): A no-buzzword walkthrough of how satellites 20,000 km overhead let your phone calculate its position via trilateration. Covers GPS, GLONASS, Galileo, BeiDou, atmospheric delay, and spoofing.
-- [10 Surprising Uses for GPS Coordinates in Everyday Life](https://getmylocations.com/blog/10-uses-for-gps-coordinates): Practical applications — emergency sharing, geocaching, geofencing, photo geotagging, precision agriculture, and verifying VPNs — once you know how to read latitude and longitude.
+- [Fix Location Not Working](https://getmylocations.com/fix-location-not-working): Troubleshoot browser and device location permission issues step by step.
+- [Reverse Geocoding Explained](https://getmylocations.com/reverse-geocoding): How reverse geocoding turns coordinates into place names, which APIs are available, and accuracy trade-offs.
+- [GPS vs IP Accuracy](https://getmylocations.com/gps-vs-ip-accuracy): Side-by-side comparison of GPS and IP geolocation — when each is accurate, when each fails, and which to use.
+
+## Blog
+
+- [How to Turn On Location on a Laptop (Windows 10, 11 & Mac)](https://getmylocations.com/blog/enable-location-on-windows-and-mac): Enable Location Services on Windows and Mac, allow your browser, and fix the greyed-out toggle.
+- [How to Turn On Location Services on iPhone & Android](https://getmylocations.com/blog/enable-location-on-iphone-and-android): Enable Location Services, fix per-app permissions, turn on Precise Location, and beat the battery-saver gotcha.
+- [History of Latitude and Longitude](https://getmylocations.com/blog/history-of-latitude-and-longitude): From Greek astronomers to GPS satellites — how the coordinate system we use today was invented.
+- [Why Maps Show the Wrong Street](https://getmylocations.com/blog/why-maps-show-wrong-street): Five reasons the pin lands at the wrong door — interpolated house numbers, mislabelled buildings, and database lag.
+- [What Your IP Address Reveals](https://getmylocations.com/blog/what-your-ip-reveals): What an IP lookup actually returns, what it does not, and why mobile data and VPNs make the city wrong.
+- [GPS Coordinates in an Emergency](https://getmylocations.com/blog/gps-coordinates-emergencies-aml-guide): How to send GPS coordinates to 911/112, what AML does automatically, and the script to say on the call.
+- [Browser Geolocation API Explained](https://getmylocations.com/blog/browser-geolocation-api-explained): How navigator.geolocation works, the permission model, and privacy implications for developers.
+- [Share Your Location Safely](https://getmylocations.com/blog/how-to-share-gps-location-safely): Compare WhatsApp, iMessage, Google Maps, and Signal for location sharing — what each leaks and how to stop a share.
+- [How to Find Your GPS Coordinates](https://getmylocations.com/blog/how-to-find-your-gps-coordinates): Step-by-step methods for finding latitude and longitude on iPhone, Android, Mac, Windows, and any browser.
+- [What Is IP Location and How Accurate Is It Really?](https://getmylocations.com/blog/what-is-ip-location-and-how-accurate): IP geolocation accuracy — country 95–99%, city 50–75%, street level basically zero — and why mobile and VPN break it.
+- [Latitude vs Longitude Explained](https://getmylocations.com/blog/latitude-vs-longitude-explained): Which is which, the order in coordinates, signs, decimal precision, and the antimeridian bug.
+- [How GPS Works: From Satellites to Your Phone](https://getmylocations.com/blog/how-gps-works): How satellites 20,000 km overhead let your phone know where you are via trilateration.
+- [10 Surprising Uses for GPS Coordinates](https://getmylocations.com/blog/10-uses-for-gps-coordinates): Practical applications — emergency sharing, geocaching, geofencing, precision agriculture, and more.
 
 ## About
 

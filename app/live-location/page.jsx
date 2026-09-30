@@ -19,7 +19,7 @@ export const metadata = {
     description:
       'Live, continuously-updating GPS position in your browser. Free, no signup, nothing transmitted.',
     url: 'https://getmylocations.com/live-location',
-    type: 'article',
+    type: 'website',
   },
   twitter: {
     card: 'summary_large_image',

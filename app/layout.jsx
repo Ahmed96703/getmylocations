@@ -1,6 +1,21 @@
+import { Inter, Sora } from 'next/font/google';
 import './globals.css';
 import SiteHeader from './components/SiteHeader.jsx';
 import Footer from './components/Footer.jsx';
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-inter',
+  display: 'swap',
+});
+
+const sora = Sora({
+  subsets: ['latin'],
+  weight: ['600', '700', '800'],
+  variable: '--font-sora',
+  display: 'swap',
+});
 
 export const metadata = {
   metadataBase: new URL('https://getmylocations.com/'),
@@ -77,7 +92,7 @@ const orgSchema = {
   name: 'GetMyLocations',
   url: 'https://getmylocations.com/',
   logo: 'https://getmylocations.com/icon-512.png',
-  sameAs: [],
+  sameAs: ['https://github.com/Ahmed96703'],
 };
 
 const websiteSchema = {
@@ -93,14 +108,8 @@ const THEME_INIT_SCRIPT = `(function(){try{var t=localStorage.getItem('theme');i
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" dir="ltr" data-theme="light">
+    <html lang="en" dir="ltr" data-theme="light" className={`${inter.variable} ${sora.variable}`}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap"
-        />
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
         <script
           type="application/ld+json"

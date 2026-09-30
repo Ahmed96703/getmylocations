@@ -51,6 +51,7 @@ export async function generateMetadata({ params }) {
       url: `https://getmylocations.com/blog/${post.slug}`,
       type: 'article',
       publishedTime: post.date,
+      modifiedTime: post.modifiedDate || post.date,
       images: post.heroImage
         ? [`/blog-images/${post.heroImage}`]
         : ['/og-image.png'],
@@ -81,7 +82,7 @@ export default function BlogPost({ params }) {
     headline: post.title,
     description: post.excerpt,
     datePublished: post.date,
-    dateModified: post.date,
+    dateModified: post.modifiedDate || post.date,
     author: { '@type': 'Person', name: 'Ahmed Anwar' },
     publisher: {
       '@type': 'Organization',

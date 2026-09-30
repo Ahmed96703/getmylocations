@@ -1,18 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>GetMyLocations — Location Tools</title>
-    <link>https://getmylocations.com/</link>
-    <description>Free, privacy-first IP and GPS location tools.</description>
+    <title>GetMyLocations Blog</title>
+    <link>https://getmylocations.com/blog</link>
+    <description>Guides on GPS, geolocation, IP lookup, and privacy-first location tools.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 13 May 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 03 Jun 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://getmylocations.com/feed.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Location Finder — Find My Location, IP &amp; GPS Coordinates</title>
-      <link>https://getmylocations.com/</link>
-      <guid isPermaLink="true">https://getmylocations.com/</guid>
-      <description>Free real-time location finder. Detects IP, Wi-Fi, and GPS to show latitude, longitude, city, and country on an interactive map.</description>
-      <pubDate>Tue, 13 May 2026 00:00:00 GMT</pubDate>
+      <title>How to Turn On Location on a Laptop (Windows 10, 11 &amp; Mac)</title>
+      <link>https://getmylocations.com/blog/enable-location-on-windows-and-mac</link>
+      <guid isPermaLink="true">https://getmylocations.com/blog/enable-location-on-windows-and-mac</guid>
+      <description>Turn on location on any laptop — Windows 10, Windows 11, or Mac. Enable Location Services, allow your browser, and fix the greyed-out toggle on a work laptop.</description>
+      <pubDate>Wed, 03 Jun 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>How to Turn On Location Services on iPhone &amp; Android</title>
+      <link>https://getmylocations.com/blog/enable-location-on-iphone-and-android</link>
+      <guid isPermaLink="true">https://getmylocations.com/blog/enable-location-on-iphone-and-android</guid>
+      <description>Enable Location Services on iPhone and Android, fix per-app and per-site permissions, turn on Precise Location, and beat the battery-saver gotcha.</description>
+      <pubDate>Wed, 03 Jun 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>History of Latitude and Longitude — Sextants to Satellites</title>
+      <link>https://getmylocations.com/blog/history-of-latitude-and-longitude</link>
+      <guid isPermaLink="true">https://getmylocations.com/blog/history-of-latitude-and-longitude</guid>
+      <description>How a Greek scholar, a Yorkshire clockmaker, and a global voting conference in 1884 produced the two numbers your phone shows you today.</description>
+      <pubDate>Mon, 01 Jun 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Why your maps app sometimes puts you on the wrong street</title>
+      <link>https://getmylocations.com/blog/why-maps-show-wrong-street</link>
+      <guid isPermaLink="true">https://getmylocations.com/blog/why-maps-show-wrong-street</guid>
+      <description>Five reasons the pin lands at the wrong door — interpolated house numbers, mislabelled buildings, and new streets the database has not caught up with.</description>
+      <pubDate>Sat, 30 May 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>What does my IP address really tell apps about me?</title>
+      <link>https://getmylocations.com/blog/what-your-ip-reveals</link>
+      <guid isPermaLink="true">https://getmylocations.com/blog/what-your-ip-reveals</guid>
+      <description>A plain-language look at what an IP lookup actually returns, what it does not, and why mobile data and VPNs make the city wrong so often.</description>
+      <pubDate>Thu, 28 May 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>GPS Coordinates in an Emergency — Send Your Location to 911</title>
+      <link>https://getmylocations.com/blog/gps-coordinates-emergencies-aml-guide</link>
+      <guid isPermaLink="true">https://getmylocations.com/blog/gps-coordinates-emergencies-aml-guide</guid>
+      <description>How to send GPS coordinates to a 911 or 112 dispatcher: what AML does automatically, the script to say on the call, and how to read them off any phone.</description>
+      <pubDate>Wed, 20 May 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Browser Geolocation API — What Websites Can and Can't See</title>
+      <link>https://getmylocations.com/blog/browser-geolocation-api-explained</link>
+      <guid isPermaLink="true">https://getmylocations.com/blog/browser-geolocation-api-explained</guid>
+      <description>A walkthrough of navigator.geolocation: how it works, what the OS fuses into a coordinate, the permission model, and the privacy implications.</description>
+      <pubDate>Tue, 19 May 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Share Your Location Safely — WhatsApp, Maps &amp; Signal</title>
+      <link>https://getmylocations.com/blog/how-to-share-gps-location-safely</link>
+      <guid isPermaLink="true">https://getmylocations.com/blog/how-to-share-gps-location-safely</guid>
+      <description>Compare WhatsApp, iMessage, Google Maps and Signal for sharing your location. What each leaks, which duration to pick, and how to stop a share.</description>
+      <pubDate>Mon, 18 May 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>How to Find Your GPS Coordinates on Any Device (2026)</title>
+      <link>https://getmylocations.com/blog/how-to-find-your-gps-coordinates</link>
+      <guid isPermaLink="true">https://getmylocations.com/blog/how-to-find-your-gps-coordinates</guid>
+      <description>The fastest, most accurate ways to get your exact latitude and longitude — on iPhone, Android, Mac, Windows, and any browser. With privacy tips and free tools.</description>
+      <pubDate>Wed, 13 May 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>What Is IP Location, and How Accurate Is It Really?</title>
+      <link>https://getmylocations.com/blog/what-is-ip-location-and-how-accurate</link>
+      <guid isPermaLink="true">https://getmylocations.com/blog/what-is-ip-location-and-how-accurate</guid>
+      <description>Country accuracy 95–99%, city 50–75%, street level basically zero. The real numbers behind IP geolocation and why mobile and VPN break it.</description>
+      <pubDate>Tue, 12 May 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Latitude vs Longitude — Which Is Which, and How to Remember</title>
+      <link>https://getmylocations.com/blog/latitude-vs-longitude-explained</link>
+      <guid isPermaLink="true">https://getmylocations.com/blog/latitude-vs-longitude-explained</guid>
+      <description>Which is which, the order in coordinates, signs, decimal precision, the three formats you will meet, and the antimeridian bug that breaks naive code.</description>
+      <pubDate>Mon, 11 May 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>How GPS Works: From Satellites to Your Phone</title>
+      <link>https://getmylocations.com/blog/how-gps-works</link>
+      <guid isPermaLink="true">https://getmylocations.com/blog/how-gps-works</guid>
+      <description>A clear, no-buzzword walkthrough of how satellites 20,000 km overhead let your phone know exactly where you are — and what can go wrong.</description>
+      <pubDate>Sun, 10 May 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>10 Surprising Uses for GPS Coordinates in Everyday Life</title>
+      <link>https://getmylocations.com/blog/10-uses-for-gps-coordinates</link>
+      <guid isPermaLink="true">https://getmylocations.com/blog/10-uses-for-gps-coordinates</guid>
+      <description>From geocaching to verifying VPNs to precision farming — ten practical things you can do once you know how to read your own latitude and longitude.</description>
+      <pubDate>Sat, 09 May 2026 00:00:00 GMT</pubDate>
     </item>
   </channel>
 </rss>
