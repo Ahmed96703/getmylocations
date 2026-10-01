@@ -67,15 +67,15 @@ When a web page calls the browser's Geolocation API, what comes back is whatever
 -   **On a desktop with no GPS chip:** ~25 m to ~5 km. Wi-Fi if available, otherwise IP-only.
 -   **Permission denied:** the API throws an error. The page falls back to IP geolocation, which is wildly less accurate.
 
-Every reading also comes with an `accuracy` field in meters. Treat it as the radius of a circle the device thinks it's probably inside. An accuracy of 8 means the OS is fairly confident you're within an 8-meter radius; an accuracy of 5000 (yes, common indoors) means it's essentially guessing.
+Every reading also comes with an `accuracy` field in meters. Treat it as the radius of a circle the device thinks it's probably inside — the W3C Geolocation API specification defines it at a 95% confidence level. An accuracy of 8 means the OS is fairly confident you're within an 8-meter radius; an accuracy of 5000 (yes, common indoors) means it's essentially guessing.
 
 * * *
 
 ## Why GPS wins for “where am I right now”
 
-GPS measures your position from physics: time-of-flight from at least four satellites, each broadcasting an atomic-clock-stamped signal from a known orbit. Solve the system, get a coordinate. Nothing about it depends on a database, a network connection, or someone's prior visit.
+GPS measures your position from physics: time-of-flight from at least four satellites, each broadcasting an atomic-clock-stamped signal from a known orbit about 20,200 km up. The US Space Force keeps a baseline of 24 satellites in six orbital planes (around 31 are usually active), so at least four are above the horizon almost anywhere on Earth. Solve the system, get a coordinate. Nothing about it depends on a database, a network connection, or someone's prior visit.
 
-The downsides: it takes a few seconds to a few minutes to get a first fix (acquiring the satellites' orbit data, called the almanac, takes time). It needs a reasonably clear sky — indoors and in “urban canyons” the signal multi-paths off buildings and accuracy degrades. It also requires hardware — most laptops and desktops don't have a GPS chip at all and fall back to Wi-Fi or IP. For the deeper physics, read our [how GPS works](https://getmylocations.com/blog/how-gps-works) guide.
+The downsides: it takes a few seconds to a few minutes to get a first fix. The navigation message trickles down at just 50 bits per second, and each satellite repeats its precise orbit data — the _ephemeris_ — only every 30 seconds; the full almanac of the whole constellation takes 12.5 minutes. Phones cheat with Assisted GPS (A-GPS), downloading that data over the mobile network instead, which is why a phone locks on in seconds while a standalone receiver can take a minute. It needs a reasonably clear sky — indoors and in “urban canyons” the signal multi-paths off buildings and accuracy degrades. It also requires hardware — most laptops and desktops don't have a GPS chip at all and fall back to Wi-Fi or IP. For the deeper physics, read our [how GPS works](https://getmylocations.com/blog/how-gps-works) guide.
 
 * * *
 
@@ -110,7 +110,7 @@ Useful trick: a quick way to verify a VPN actually works is to open [GetMyLocati
 -   You're in an urban canyon and signals are multi-pathing.
 -   The device is in battery-saver mode and downsampled GPS.
 -   You're on a desktop with no GPS hardware.
--   The OS hasn't acquired the satellite almanac yet (cold start).
+-   The receiver hasn't downloaded the satellites' ephemeris yet (cold start, no A-GPS data).
 
 **Fix:** move closer to a window, give it a minute, and turn on Wi-Fi so the OS can fuse signals.
 

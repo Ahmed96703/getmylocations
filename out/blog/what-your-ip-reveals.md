@@ -23,9 +23,9 @@ Most of what people believe their IP address “reveals” about them is wrong. 
 
 ## An IP is a return label, nothing more
 
-Your IP is a number your internet provider hands you so that traffic from the rest of the network can find its way back. On a home connection it looks like `203.0.113.42`. On a mobile or newer setup it might be IPv6, something like `2001:db8::1`. Either way, the moment your browser opens a connection, the server on the other end logs the IP because the reply has to go somewhere.
+Your IP is a number your internet provider hands you so that traffic from the rest of the network can find its way back. On a home connection it looks like `203.0.113.42`. On a mobile or newer setup it might be IPv6, something like `2001:db8::1`. (Both of those are reserved for documentation by RFC 5737 and RFC 3849, so they will never point at a real person.) Either way, the moment your browser opens a connection, the server on the other end logs the IP because the reply has to go somewhere.
 
-A lot of people picture the IP as a fingerprint — some unique signature that ties them personally to every site they visit. It isn’t. Every device on your home router shares the same public IP. On mobile networks, thousands of subscribers can share a single IP at once because the carrier is using a scheme called CGNAT to stretch the limited IPv4 pool. Two people in different cities on the same carrier can show the same address.
+A lot of people picture the IP as a fingerprint — some unique signature that ties them personally to every site they visit. It isn’t. Every device on your home router shares the same public IP. On mobile networks, thousands of subscribers can share a single IP at once because the carrier is using a scheme called CGNAT to stretch the limited IPv4 pool. That pool is only 32 bits — about 4.3 billion addresses for the whole planet — and IANA handed out the last free blocks in February 2011. RFC 6598 even reserves a range, `100.64.0.0/10`, specifically for carriers to put subscribers behind. Two people in different cities on the same carrier can show the same address.
 
 ## What actually comes back from a lookup
 
@@ -34,11 +34,13 @@ Paste any IP into a public geolocation lookup and the response is smaller than p
 -   The country — almost always right.
 -   The region or state — usually right.
 -   A city — right roughly half the time on home broadband, far worse on mobile.
--   The name of the ISP that owns the block (Comcast, BT, Jazz, Reliance Jio, etc).
+-   The name of the ISP that owns the block (Comcast, BT, Jazz, Reliance Jio, etc). This part is public record: the five Regional Internet Registries — ARIN, RIPE NCC, APNIC, LACNIC and AFRINIC — publish who every block is assigned to.
 -   Whether the address belongs to a known VPN exit or a data centre.
 -   A latitude and longitude that is typically the centroid of the ISP’s service area, not your house.
 
 Notice the absence of the dramatic stuff: your name, your street, your phone number, your device model, your email. None of that lives in the public databases. The films and TV shows that dramatise an IP lookup as a magic identifier are wrong about this in roughly the same way they’re wrong about “enhance, zoom in” pixel magic.
+
+That centroid coordinate causes real trouble when people mistake it for an address. For years, US IPs that MaxMind could only place “somewhere in the United States” were given the default point 38°N, 97°W — which happened to be a farm near Potwin, Kansas. Its owners spent years fielding police visits and angry strangers over IPs they had nothing to do with, until a 2016 Fusion investigation led MaxMind to move the default into the middle of a nearby lake.
 
 ## Why the city is wrong so often
 
@@ -54,7 +56,7 @@ The same logic applies behind corporate VPNs. The IP the world sees is the compa
 
 A single IP lookup is a snapshot. A site that watches the same IP across many sessions can infer a lot more without ever knowing your name. Times you’re online, the rough places you visit from (home Wi-Fi, office Wi-Fi, your favourite café), and the device fingerprint they can derive from your browser headers all combine into a profile.
 
-This is the part regulators care about, and it’s the part most articles about IP privacy get wrong by focusing on the IP itself. The IP is rarely the limiting factor; the long-running cookie that ties multiple sessions to the same person is. If you only worry about one thing, worry about that one.
+This is the part regulators care about. In _Breyer v Germany_ (2016), the Court of Justice of the European Union ruled that even a dynamic IP address can be personal data once a site has a legal route to link it to a person, which is why GDPR consent banners treat IP logging seriously. It’s also the part most articles about IP privacy get wrong by focusing on the IP itself. The IP is rarely the limiting factor; the long-running cookie that ties multiple sessions to the same person is. If you only worry about one thing, worry about that one.
 
 ## When somebody actually needs your real identity
 

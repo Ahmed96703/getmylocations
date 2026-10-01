@@ -145,7 +145,8 @@ export default function GpsVsIpAccuracy() {
           Every reading also comes with an
           {' '}<code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">accuracy</code>{' '}
           field in meters. Treat it as the radius of a circle the device thinks it&apos;s probably
-          inside. An accuracy of 8 means the OS is fairly confident you&apos;re within an 8-meter
+          inside &mdash; the W3C Geolocation API specification defines it at a 95% confidence
+          level. An accuracy of 8 means the OS is fairly confident you&apos;re within an 8-meter
           radius; an accuracy of 5000 (yes, common indoors) means it&apos;s essentially guessing.
         </p>
 
@@ -154,13 +155,19 @@ export default function GpsVsIpAccuracy() {
         <h2 className="font-display text-2xl font-bold">Why GPS wins for &ldquo;where am I right now&rdquo;</h2>
         <p className="mt-3 text-fg-muted leading-relaxed">
           GPS measures your position from physics: time-of-flight from at least four satellites,
-          each broadcasting an atomic-clock-stamped signal from a known orbit. Solve the system,
-          get a coordinate. Nothing about it depends on a database, a network connection, or
+          each broadcasting an atomic-clock-stamped signal from a known orbit about 20,200 km up.
+          The US Space Force keeps a baseline of 24 satellites in six orbital planes (around 31
+          are usually active), so at least four are above the horizon almost anywhere on
+          Earth. Solve the system, get a coordinate. Nothing about it depends on a database, a network connection, or
           someone&apos;s prior visit.
         </p>
         <p className="mt-3 text-fg-muted leading-relaxed">
-          The downsides: it takes a few seconds to a few minutes to get a first fix (acquiring
-          the satellites&apos; orbit data, called the almanac, takes time). It needs a reasonably
+          The downsides: it takes a few seconds to a few minutes to get a first fix. The
+          navigation message trickles down at just 50 bits per second, and each satellite
+          repeats its precise orbit data &mdash; the <em>ephemeris</em> &mdash; only every 30
+          seconds; the full almanac of the whole constellation takes 12.5 minutes. Phones cheat
+          with Assisted GPS (A-GPS), downloading that data over the mobile network instead, which
+          is why a phone locks on in seconds while a standalone receiver can take a minute. It needs a reasonably
           clear sky &mdash; indoors and in &ldquo;urban canyons&rdquo; the signal multi-paths off
           buildings and accuracy degrades. It also requires hardware &mdash; most laptops and
           desktops don&apos;t have a GPS chip at all and fall back to Wi-Fi or IP. For the deeper
@@ -233,7 +240,7 @@ export default function GpsVsIpAccuracy() {
               <li>You&apos;re in an urban canyon and signals are multi-pathing.</li>
               <li>The device is in battery-saver mode and downsampled GPS.</li>
               <li>You&apos;re on a desktop with no GPS hardware.</li>
-              <li>The OS hasn&apos;t acquired the satellite almanac yet (cold start).</li>
+              <li>The receiver hasn&apos;t downloaded the satellites&apos; ephemeris yet (cold start, no A-GPS data).</li>
             </ul>
             <p className="mt-3 text-fg-muted text-sm">
               <strong className="text-fg">Fix:</strong> move closer to a window, give it a minute, and turn on Wi-Fi so the OS can fuse signals.

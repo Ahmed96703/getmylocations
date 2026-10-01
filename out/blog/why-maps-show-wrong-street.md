@@ -26,9 +26,11 @@ The short answer is that maps don’t actually know where every address is. They
 
 ## The address itself is being interpolated
 
-When you type a street address into a map, the app does not look up an exact coordinate for that specific house number. It looks up the start and end of the street, sees the house-number range that belongs to it (say 1–199 on the north side, 2–200 on the south), and works out where number 47 should sit by sliding along the line. The technique is called _address interpolation_ and it predates GPS by about a century — surveyors were doing it on paper maps in the 1800s.
+When you type a street address into a map, the app does not look up an exact coordinate for that specific house number. It looks up the start and end of the street, sees the house-number range that belongs to it (say 1–199 on the north side, 2–200 on the south), and works out where number 47 should sit by sliding along the line. The technique is called _address interpolation_. It went mainstream with the US Census Bureau’s DIME street files for the 1970 census, and their successor, TIGER, built for the 1990 census, still sits underneath many US geocoders today.
 
 It works fine on a tidy suburban street where houses are evenly spaced. It falls apart the moment something irregular happens. A builder skipped a plot. A single big building took the space of four. The block was renumbered in the 1980s and the records still reflect the old layout. The result is the familiar off-by-two-houses problem I started this article with.
+
+Countries with a national address register suffer far less. In Great Britain, Ordnance Survey’s AddressBase gives every address a Unique Property Reference Number (UPRN) tied to an actual building, so there is nothing to interpolate. Where no such register exists — much of South Asia and Africa, and plenty of rural America — interpolation and guesswork fill the gap.
 
 ## The building outline has the wrong address attached
 
@@ -44,7 +46,7 @@ The workaround that actually works: in the delivery app, type the entrance into 
 
 ## Your phone’s GPS is drifting, not the map
 
-Sometimes the address is fine and the map is fine and the building outline is correctly tagged. Your phone is the thing that’s wrong. GPS works poorly in tall, narrow streets because the signal bounces off the buildings on either side before reaching you, and the receiver can’t always tell the difference between a direct signal and a reflected one that took a longer path. The effect is called _multipath_, and it can throw your reading off by 20 or 30 meters. Walk down a street in the financial district of any big city and the blue dot will jump back and forth across the road like it’s having a small breakdown.
+Sometimes the address is fine and the map is fine and the building outline is correctly tagged. Your phone is the thing that’s wrong. GPS works poorly in tall, narrow streets because the signal bounces off the buildings on either side before reaching you, and the receiver can’t always tell the difference between a direct signal and a reflected one that took a longer path. The effect is called _multipath_, and it can throw your reading off by 20 or 30 meters. For comparison, GPS.gov puts a typical smartphone under open sky at about 4.9 meters. Walk down a street in the financial district of any big city and the blue dot will jump back and forth across the road like it’s having a small breakdown.
 
 Indoors it gets worse. GPS can barely see the satellites through a roof, so the OS falls back to Wi-Fi positioning. If the building’s Wi-Fi access points are not in Google or Apple’s databases — new build, deep basement, rural area — your position can be off by several hundred meters. Open the map outside on the pavement, not inside the lobby, when you’re trying to confirm a location.
 
@@ -53,6 +55,8 @@ Indoors it gets worse. GPS can barely see the satellites through a roof, so the 
 New housing developments are a perennial source of wrong pins. The street exists in real life, has signs at both ends, and is lined with houses that have numbers on the gates — but the map won’t catch up for six to twelve months. The map will route you to the nearest road it does know about and then leave you stranded.
 
 The most reliable workaround for new addresses is to skip the address entirely and share the destination as raw coordinates. The courier’s map app will navigate to a latitude and longitude even when it has never heard of the street the coordinates fall on. There is no edge case where coordinates fail and the address works; the reverse happens constantly.
+
+If a full coordinate pair feels clumsy to read out, Google Maps also shows a Plus Code for every spot — a short code like `V2GR+49 Karachi`, which lands on the Mazar-e-Quaid. It’s built on Open Location Code, which Google open-sourced in 2014 for places that have no street address at all.
 
 ## What to do when it actually matters
 

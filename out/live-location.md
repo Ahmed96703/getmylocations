@@ -20,6 +20,8 @@ Most location tools return a single fix and then go quiet. You tap, you see a co
 
 Live tracking is the opposite. The page asks the browser to _keep handing back new readings_ as the GPS receiver computes them. The browser provides this through a standard call called `watchPosition`: you supply a callback once, and it fires every time the operating system has a fresh fix to report. That is exactly what the tool above does, and it is why the “Updates” counter rises on its own while the “Live” badge is showing.
 
+The tool asks for the strictest settings the API allows: `enableHighAccuracy: true` so the OS powers up the GPS receiver rather than settling for Wi-Fi, `maximumAge: 0` so it never replays a cached fix, and a `timeout` of 20 seconds before it reports that no reading arrived.
+
 ## How real-time positioning actually works
 
 Inside your phone, the GPS chip is solving the same equation several times per second. It hears timestamps from four or more satellites overhead and back-solves for the only position on Earth where those particular delays line up. When you walk, the math changes — you are slightly closer to one satellite, slightly farther from another — and the chip outputs a new coordinate. The operating system passes that coordinate up to the browser, which passes it to this page, which redraws the dot.
@@ -37,16 +39,16 @@ Two practical knobs decide how lively the “live” reading actually feels. The
 
 ### Android
 
-1.  In Settings → Location, switch Location on and confirm the mode is set to _High accuracy_ (uses GPS plus Wi-Fi).
+1.  In Settings → Location, switch Location on, then open _Location services_ and make sure _Google Location Accuracy_ is on (it adds Wi-Fi and cell positioning to GPS). Android 9 and older call this the _High accuracy_ mode.
 2.  In Chrome, tap the address-bar lock icon → Permissions → Location → Allow.
-3.  Tap _Start live tracking_. Android may ask you to choose between precise and approximate — choose precise; approximate will not update meaningfully as you walk.
+3.  Tap _Start live tracking_. On Android 12 and later, the prompt asks you to choose between precise and approximate — choose precise; approximate will not update meaningfully as you walk.
 4.  Like iOS, Android throttles GPS to background tabs; keep this one focused while tracking.
 
 ### Desktop or laptop
 
 1.  Click _Start live tracking_ and allow the permission prompt under the address bar.
 2.  Expect slow, infrequent updates. Most laptops have no GPS chip, so the browser falls back to Wi-Fi positioning, which only changes when you move between buildings or float between access points.
-3.  If you carry the laptop and want crisp updates, tether it to a phone’s GPS by enabling Location Sharing between the two — laptops then inherit the phone’s precise fix.
+3.  If you need crisp updates while moving, open this page on your phone instead. Neither macOS nor Windows passes a phone’s GPS fix through to a laptop browser, so a laptop will only ever see Wi-Fi or IP positioning.
 
 ## Battery, accuracy, and the live-tracking tradeoff
 

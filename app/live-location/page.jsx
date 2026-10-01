@@ -129,6 +129,9 @@ export default function LiveLocationPage() {
           <p className="mt-3 text-fg-muted leading-relaxed">
             Live tracking is the opposite. The page asks the browser to <em>keep handing back new readings</em> as the GPS receiver computes them. The browser provides this through a standard call called <code className="font-mono text-sm bg-tint/10 px-1.5 py-0.5 rounded">watchPosition</code>: you supply a callback once, and it fires every time the operating system has a fresh fix to report. That is exactly what the tool above does, and it is why the &ldquo;Updates&rdquo; counter rises on its own while the &ldquo;Live&rdquo; badge is showing.
           </p>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            The tool asks for the strictest settings the API allows: <code className="font-mono text-sm bg-tint/10 px-1.5 py-0.5 rounded">enableHighAccuracy: true</code> so the OS powers up the GPS receiver rather than settling for Wi-Fi, <code className="font-mono text-sm bg-tint/10 px-1.5 py-0.5 rounded">maximumAge: 0</code> so it never replays a cached fix, and a <code className="font-mono text-sm bg-tint/10 px-1.5 py-0.5 rounded">timeout</code> of 20 seconds before it reports that no reading arrived.
+          </p>
         </section>
 
         <section className="mt-10">
@@ -154,9 +157,9 @@ export default function LiveLocationPage() {
 
           <h3 className="font-display text-lg font-bold mt-5">Android</h3>
           <ol className="mt-2 space-y-1.5 text-fg-muted list-decimal list-inside leading-relaxed">
-            <li>In Settings → Location, switch Location on and confirm the mode is set to <em>High accuracy</em> (uses GPS plus Wi-Fi).</li>
+            <li>In Settings → Location, switch Location on, then open <em>Location services</em> and make sure <em>Google Location Accuracy</em> is on (it adds Wi-Fi and cell positioning to GPS). Android 9 and older call this the <em>High accuracy</em> mode.</li>
             <li>In Chrome, tap the address-bar lock icon → Permissions → Location → Allow.</li>
-            <li>Tap <em>Start live tracking</em>. Android may ask you to choose between precise and approximate — choose precise; approximate will not update meaningfully as you walk.</li>
+            <li>Tap <em>Start live tracking</em>. On Android 12 and later, the prompt asks you to choose between precise and approximate — choose precise; approximate will not update meaningfully as you walk.</li>
             <li>Like iOS, Android throttles GPS to background tabs; keep this one focused while tracking.</li>
           </ol>
 
@@ -164,7 +167,7 @@ export default function LiveLocationPage() {
           <ol className="mt-2 space-y-1.5 text-fg-muted list-decimal list-inside leading-relaxed">
             <li>Click <em>Start live tracking</em> and allow the permission prompt under the address bar.</li>
             <li>Expect slow, infrequent updates. Most laptops have no GPS chip, so the browser falls back to Wi-Fi positioning, which only changes when you move between buildings or float between access points.</li>
-            <li>If you carry the laptop and want crisp updates, tether it to a phone&rsquo;s GPS by enabling Location Sharing between the two — laptops then inherit the phone&rsquo;s precise fix.</li>
+            <li>If you need crisp updates while moving, open this page on your phone instead. Neither macOS nor Windows passes a phone&rsquo;s GPS fix through to a laptop browser, so a laptop will only ever see Wi-Fi or IP positioning.</li>
           </ol>
         </section>
 

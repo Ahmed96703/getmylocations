@@ -28,7 +28,7 @@ Transit coverage is the unevenest of the four. London, Tokyo, and New York have 
 
 ## Why two apps quote different arrival times
 
-Open Google Maps, Apple Maps, and Waze at the same time with the same destination, and you will often see three different ETAs. Each app has its own traffic data set, its own preferences (some default to avoiding tolls, some weight motorway speed more aggressively), and its own model for how aggressively a typical driver actually drives. A 5 to 15% difference between them is normal. For a long trip, that is half an hour of disagreement.
+Open Google Maps, Apple Maps, and Waze at the same time with the same destination, and you will often see three different ETAs. Each app has its own traffic data set, its own preferences (some default to avoiding tolls, some weight motorway speed more aggressively), and its own model for how aggressively a typical driver actually drives. Even Google Maps and Waze, both owned by Google since it bought Waze in 2013, regularly disagree because each app weighs traffic reports and route preferences differently. A 5 to 15% difference between them is normal. For a long trip, that is half an hour of disagreement.
 
 ## When the embed gives up
 
@@ -64,7 +64,7 @@ One caveat worth knowing: routing snaps your coordinate to the nearest routable 
 
 The distance this planner reports is the length of the actual driven path — every bend, every detour around a river, every one-way system. That is almost always longer than the straight-line distance between the same two points, sometimes dramatically so in mountainous or coastal terrain where the road has to go the long way round.
 
-If what you actually want is the great-circle distance — the “as the crow flies” figure used for flight planning, radio range, geofencing, and delivery-zone rules — the [distance calculator](https://getmylocations.com/distance-calculator) computes it directly from two coordinate pairs using the Haversine formula. Comparing the two numbers is a quick sanity check on how indirect a journey really is: a road distance more than about 1.4× the straight-line figure usually means a significant natural obstacle in the way.
+If what you actually want is the great-circle distance — the “as the crow flies” figure used for flight planning, radio range, geofencing, and delivery-zone rules — the [distance calculator](https://getmylocations.com/distance-calculator) computes it directly from two coordinate pairs using the Haversine formula. Comparing the two numbers is a quick sanity check on how indirect a journey really is. Some detour is normal: a 2012 nationwide US study by Boscoe, Henry and Zdeb measured an average road-to-straight-line ratio of about 1.4. A ratio of 2 or more usually means a river, mountain range, or coastline the road has to go around.
 
 ## Frequently asked questions
 
@@ -78,7 +78,7 @@ Not in this embed — it handles one origin and one destination. For a multi-sto
 
 Can I get directions from my current location?+
 
-Yes. Leave the origin field empty and allow the location prompt, or paste your coordinates into it. To get a precise coordinate pair first, use the My Location tool and copy the "lat, lon" string it produces.
+Yes. Tap "Use my location" under the origin field and allow the location prompt; it fills in your GPS coordinates and reloads the route. You can also paste coordinates into the field yourself. To get a precise coordinate pair first, use the My Location tool and copy the "lat, lon" string it produces.
 
 Does the route avoid tolls or motorways?+
 

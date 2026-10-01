@@ -52,7 +52,7 @@ const faqs = [
   },
   {
     q: 'Can I get directions from my current location?',
-    a: 'Yes. Leave the origin field empty and allow the location prompt, or paste your coordinates into it. To get a precise coordinate pair first, use the My Location tool and copy the "lat, lon" string it produces.',
+    a: 'Yes. Tap "Use my location" under the origin field and allow the location prompt; it fills in your GPS coordinates and reloads the route. You can also paste coordinates into the field yourself. To get a precise coordinate pair first, use the My Location tool and copy the "lat, lon" string it produces.',
   },
   {
     q: 'Does the route avoid tolls or motorways?',
@@ -150,6 +150,9 @@ export default function DrivingDirectionsPage() {
             has its own traffic data set, its own preferences (some default to
             avoiding tolls, some weight motorway speed more aggressively), and
             its own model for how aggressively a typical driver actually drives.
+            Even Google Maps and Waze, both owned by Google since it bought
+            Waze in 2013, regularly disagree because each app weighs traffic
+            reports and route preferences differently.
             A 5 to 15% difference between them is normal. For a long trip, that
             is half an hour of disagreement.
           </p>
@@ -214,8 +217,10 @@ export default function DrivingDirectionsPage() {
             figure used for flight planning, radio range, geofencing, and delivery-zone rules &mdash; the{' '}
             <Link href="/distance-calculator" className="text-accent hover:underline">distance calculator</Link>{' '}
             computes it directly from two coordinate pairs using the Haversine formula. Comparing the two
-            numbers is a quick sanity check on how indirect a journey really is: a road distance more than
-            about 1.4&times; the straight-line figure usually means a significant natural obstacle in the way.
+            numbers is a quick sanity check on how indirect a journey really is. Some detour is normal: a
+            2012 nationwide US study by Boscoe, Henry and Zdeb measured an average road-to-straight-line
+            ratio of about 1.4. A ratio of 2 or more usually means a river, mountain range, or coastline
+            the road has to go around.
           </p>
         </section>
 
