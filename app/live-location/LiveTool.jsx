@@ -18,7 +18,9 @@ export default function LiveTool() {
   const [lastUpdate, setLastUpdate] = useState(null);
   const [watching, setWatching] = useState(false);
   const watchIdRef = useRef(null);
-  // Throttle reverse-geocoding so we respect Nominatim's 1 req/sec policy.
+  // Throttle reverse-geocoding: at most once per 10 s, and only after moving
+  // 100 m. The page promises users this cap, and it keeps us well inside
+  // Nominatim's 1 req/sec policy.
   const lastGeocodeRef = useRef({ lat: null, lon: null, at: 0 });
 
   function maybeGeocode(lat, lon) {
@@ -31,7 +33,7 @@ export default function LiveTool() {
             (lat - last.lat) * 111000,
             (lon - last.lon) * 111000 * Math.cos((lat * Math.PI) / 180),
           );
-    if (now - last.at < 10000 && movedMeters < 100) return;
+    if (now - last.at < 10000 || movedMeters < 100) return;
     lastGeocodeRef.current = { lat, lon, at: now };
     fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`)
       .then((r) => r.json())
