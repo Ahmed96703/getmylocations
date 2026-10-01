@@ -189,7 +189,7 @@ export default function GpsVsIpAccuracy() {
         <h2 className="font-display text-2xl font-bold">VPN and GPS &mdash; what gets rewritten and what doesn&apos;t</h2>
         <p className="mt-3 text-fg-muted leading-relaxed">
           This is the single biggest source of confusion. A VPN tunnels your network traffic
-          through a server somewhere else. That changes your <em>IP-visible location</em>
+          through a server somewhere else. That changes your <em>IP-visible location</em>{' '}
           completely. It does <em>not</em> touch the GPS chip in your phone or the Wi-Fi BSSID
           scan your OS performs.
         </p>

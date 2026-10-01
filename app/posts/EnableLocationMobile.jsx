@@ -103,7 +103,7 @@ export default function EnableLocationMobile() {
         <li><strong>Always</strong> &mdash; the app can read your location whenever it wants, including in the background.</li>
       </ul>
       <p className="mt-3 text-fg-muted leading-relaxed">
-        Tap any app to change its setting. <em>While Using the App</em>
+        Tap any app to change its setting. <em>While Using the App</em>{' '}
         is the right answer for most things. <em>Always</em> should be
         reserved for apps that genuinely need background tracking
         (fitness apps recording a run, navigation apps doing turn-by-turn).
@@ -191,7 +191,7 @@ export default function EnableLocationMobile() {
       </ul>
       <p className="mt-3 text-fg-muted leading-relaxed">
         Tap any app to change which bucket it&rsquo;s in. On the same
-        screen you&rsquo;ll also find <strong>Use precise location</strong>
+        screen you&rsquo;ll also find <strong>Use precise location</strong>{' '}
         &mdash; same idea as iOS&rsquo;s Precise Location toggle. If
         it&rsquo;s off, the app gets a coarsened position.
       </p>

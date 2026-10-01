@@ -19,7 +19,7 @@ export default function WhatYourIpReveals() {
         about them is wrong. It does not contain your name. It does not
         contain your street. It does not let a stranger on a forum find
         your house. It is closer to a return address on a parcel than to a
-        passport. The interesting question is what an IP <em>does</em>
+        passport. The interesting question is what an IP <em>does</em>{' '}
         actually give away, because the answer is more mundane than the
         fears and more interesting than the dismissals.
       </p>

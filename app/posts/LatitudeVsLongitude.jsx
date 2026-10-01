@@ -170,7 +170,7 @@ export default function LatitudeVsLongitude() {
       </p>
       <p className="mt-3 text-fg-muted leading-relaxed">
         The one big exception: <strong>GeoJSON, PostGIS, and many
-        programming geometry libraries put longitude first</strong>
+        programming geometry libraries put longitude first</strong>{' '}
         &mdash; <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent">[2.294500, 48.858420]</code>.
         Mathematicians prefer (x, y) order, longitude maps to x, and the
         geospatial standards bodies followed the math. Loading a GeoJSON
@@ -275,7 +275,7 @@ export default function LatitudeVsLongitude() {
       <h2 className="font-display text-2xl font-bold mt-12">Three edge cases that break poorly-written software</h2>
       <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside">
         <li>
-          <strong>The antimeridian (longitude &plusmn;180&deg;).</strong>
+          <strong>The antimeridian (longitude &plusmn;180&deg;).</strong>{' '}
           Where east meets west in the Pacific. A great-circle line from
           Alaska to Vladivostok crosses &plusmn;180&deg;, but naive code
           treating longitude as a flat number draws the line all the way

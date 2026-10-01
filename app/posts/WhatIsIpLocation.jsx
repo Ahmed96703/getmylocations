@@ -321,7 +321,7 @@ export default function WhatIsIpLocation() {
           choose the destination.
         </li>
         <li>
-          <strong>A friend&rsquo;s hotspot in another city.</strong>
+          <strong>A friend&rsquo;s hotspot in another city.</strong>{' '}
           Tethering through someone else&rsquo;s mobile carrier or home
           broadband gives you their IP. Good for testing what a website
           looks like in another region; useless for hiding from a

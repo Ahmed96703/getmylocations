@@ -123,7 +123,7 @@ export default function EnableLocationDesktop() {
       <p className="mt-3 text-fg-muted leading-relaxed">
         On older macOS (Big Sur and earlier, with the original System
         Preferences app), the equivalent is <strong>System
-        Preferences</strong> &rarr; <strong>Security &amp; Privacy</strong>
+        Preferences</strong> &rarr; <strong>Security &amp; Privacy</strong>{' '}
         &rarr; <strong>Privacy</strong> tab &rarr; <strong>Location
         Services</strong> in the left list. You may need to click the
         padlock at the bottom of the window and authenticate before
@@ -245,7 +245,7 @@ export default function EnableLocationDesktop() {
         and click the location button. If the prompt appears and you
         click Allow, your latitude and longitude land on screen within a
         couple of seconds along with an accuracy radius in meters.
-        That&rsquo;s a clean success. To check that <em>continuous</em>
+        That&rsquo;s a clean success. To check that <em>continuous</em>{' '}
         live updates work as well, the{' '}
         <Link href="/live-location" className="text-accent hover:underline">Live Location tracker</Link>{' '}
         keeps refreshing as you move the laptop &mdash; useful for

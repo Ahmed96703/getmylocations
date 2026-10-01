@@ -220,7 +220,7 @@ export default function HowGpsWorks() {
       <p className="mt-3 text-fg-muted leading-relaxed">
         Consumer GPS hovers around 3&ndash;5 meters. For surveying,
         agriculture, and drone work, that&rsquo;s nowhere near enough.
-        The technique called <strong>Real-Time Kinematic (RTK)</strong>
+        The technique called <strong>Real-Time Kinematic (RTK)</strong>{' '}
         closes the gap to centimetres using a fixed base station at a
         precisely surveyed point.
       </p>

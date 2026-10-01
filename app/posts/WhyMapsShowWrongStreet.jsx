@@ -38,7 +38,7 @@ export default function WhyMapsShowWrongStreet() {
         start and end of the street, sees the house-number range that
         belongs to it (say 1&ndash;199 on the north side, 2&ndash;200 on the
         south), and works out where number 47 should sit by sliding along
-        the line. The technique is called <em>address interpolation</em>
+        the line. The technique is called <em>address interpolation</em>{' '}
         and it predates GPS by about a century &mdash; surveyors were doing
         it on paper maps in the 1800s.
       </p>
