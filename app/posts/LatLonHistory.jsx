@@ -1,10 +1,11 @@
 import Link from 'next/link';
+import BlogImage from '../components/BlogImage.jsx';
 
 export default function LatLonHistory() {
   return (
     <article className="prose-invert">
       <figure className="mb-8 -mt-2">
-        <img
+        <BlogImage
           src="/blog-images/history-of-latitude-and-longitude-hero.jpg"
           alt="Vintage brass sextant overlaid on an antique world map at sunset, evoking the age of celestial navigation"
           className="w-full h-auto rounded-xl"
@@ -109,7 +110,7 @@ export default function LatLonHistory() {
       </p>
 
       <figure className="my-10">
-        <img
+        <BlogImage
           src="/blog-images/history-of-latitude-and-longitude-mid.jpg"
           alt="Interlocking mechanical clockwork gears in cool teal and blue, evoking John Harrison's marine chronometer"
           className="w-full h-auto rounded-xl"

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import BlogImage from '../components/BlogImage.jsx';
 
 const faqs = [
   {
@@ -57,7 +58,7 @@ export default function GpsCoordinatesEmergencies() {
 
       <article className="prose-invert">
         <figure className="mb-8 -mt-2">
-          <img
+          <BlogImage
             src="/blog-images/gps-coordinates-emergencies-aml-guide-hero.jpg"
             alt="Location pin surrounded by concentric signal rings against a starry night sky, evoking emergency-call positioning"
             className="w-full h-auto rounded-xl"
@@ -111,7 +112,7 @@ export default function GpsCoordinatesEmergencies() {
         </p>
 
         <figure className="my-10">
-          <img
+          <BlogImage
             src="/blog-images/gps-coordinates-emergencies-aml-guide-mid.jpg"
             alt="Stylised phone broadcasting signal waves toward an abstract dispatcher tower, illustrating Advanced Mobile Location"
             className="w-full h-auto rounded-xl"

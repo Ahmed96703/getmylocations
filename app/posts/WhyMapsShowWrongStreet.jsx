@@ -1,10 +1,11 @@
 import Link from 'next/link';
+import BlogImage from '../components/BlogImage.jsx';
 
 export default function WhyMapsShowWrongStreet() {
   return (
     <article className="prose-invert">
       <figure className="mb-8 -mt-2">
-        <img
+        <BlogImage
           src="/blog-images/why-maps-show-wrong-street-hero.jpg"
           alt="Two map pins sitting slightly offset from each other on a stylised street grid, illustrating address mismatch"
           className="w-full h-auto rounded-xl"

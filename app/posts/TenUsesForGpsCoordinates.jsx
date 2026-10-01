@@ -1,10 +1,11 @@
 import Link from 'next/link';
+import BlogImage from '../components/BlogImage.jsx';
 
 export default function TenUsesForGpsCoordinates() {
   return (
     <article className="prose-invert">
       <figure className="mb-8 -mt-2">
-        <img
+        <BlogImage
           src="/blog-images/10-uses-for-gps-coordinates-hero.jpg"
           alt="Grid of small flat-design icons (tent, compass, fishing rod, sailboat, mountain, weather) all in a cool blue-and-green palette, representing varied uses for GPS coordinates"
           className="w-full h-auto rounded-xl"

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import BlogImage from '../components/BlogImage.jsx';
 
 const faqs = [
   {
@@ -43,7 +44,7 @@ export default function EnableLocationMobile() {
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
     <article className="prose-invert">
       <figure className="mb-8 -mt-2">
-        <img
+        <BlogImage
           src="/blog-images/enable-location-on-iphone-and-android-hero.jpg"
           alt="Two smartphone silhouettes side by side, each glowing with a location pin in the centre"
           className="w-full h-auto rounded-xl"
@@ -145,7 +146,7 @@ export default function EnableLocationMobile() {
       </p>
 
       <figure className="my-10">
-        <img
+        <BlogImage
           src="/blog-images/enable-location-on-iphone-and-android-mid.jpg"
           alt="Single smartphone surrounded by concentric circles on a light blue background, evoking layered location permissions"
           className="w-full h-auto rounded-xl"

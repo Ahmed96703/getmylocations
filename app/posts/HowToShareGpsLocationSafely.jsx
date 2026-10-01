@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import BlogImage from '../components/BlogImage.jsx';
 
 const faqs = [
   {
@@ -52,7 +53,7 @@ export default function HowToShareGpsLocationSafely() {
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
     <article className="prose-invert">
       <figure className="mb-8 -mt-2">
-        <img
+        <BlogImage
           src="/blog-images/how-to-share-gps-location-safely-hero.jpg"
           alt="Translucent shield protecting a location pin with a soft glow, illustrating safe location sharing"
           className="w-full h-auto rounded-xl"

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import BlogImage from '../components/BlogImage.jsx';
 
 const faqs = [
   {
@@ -43,7 +44,7 @@ export default function WhatIsIpLocation() {
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
     <article className="prose-invert">
       <figure className="mb-8 -mt-2">
-        <img
+        <BlogImage
           src="/blog-images/what-is-ip-location-and-how-accurate-hero.jpg"
           alt="Minimalist globe outline with continents in soft slate and teal, suggesting global IP geolocation coverage"
           className="w-full h-auto rounded-xl"

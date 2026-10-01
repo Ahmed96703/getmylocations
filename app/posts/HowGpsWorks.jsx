@@ -1,10 +1,11 @@
 import Link from 'next/link';
+import BlogImage from '../components/BlogImage.jsx';
 
 export default function HowGpsWorks() {
   return (
     <article className="prose-invert">
       <figure className="mb-8 -mt-2">
-        <img
+        <BlogImage
           src="/blog-images/how-gps-works-hero.jpg"
           alt="GPS satellites orbiting Earth with signal lines beaming down toward the planet"
           className="w-full h-auto rounded-xl"

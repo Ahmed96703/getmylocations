@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import BlogImage from '../components/BlogImage.jsx';
 
 const faqs = [
   {
@@ -43,7 +44,7 @@ export default function LatitudeVsLongitude() {
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
     <article className="prose-invert">
       <figure className="mb-8 -mt-2">
-        <img
+        <BlogImage
           src="/blog-images/latitude-vs-longitude-explained-hero.jpg"
           alt="Stylized globe with prominent latitude and longitude grid lines glowing in sky blue against a navy background"
           className="w-full h-auto rounded-xl"

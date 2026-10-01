@@ -15,6 +15,8 @@
   Cache-Control: public, max-age=2592000
 /og-image.png
   Cache-Control: public, max-age=2592000
+/blog-images/*
+  Cache-Control: public, max-age=2592000
 
 # Crawler/discovery files — fresh but cacheable, do not index
 /sitemap.xml
