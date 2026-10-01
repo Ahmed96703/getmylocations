@@ -1,0 +1,129 @@
+---
+title: "My Live Location Now — Track Your Real-Time Position Free"
+description: "Watch your real-time GPS position update as you move. Continuous browser tracking with accuracy radius. Free, no signup, nothing leaves the page."
+url: https://getmylocations.com/live-location
+---
+
+Free Tool · Continuous GPS stream in your browser
+
+# My live location now — watch your real-time position update.
+
+Tap one button and the page subscribes to your device’s GPS stream. Coordinates, accuracy, speed, and the map pin all refresh automatically as you move — not a single snapshot, but a running fix. Nothing leaves your browser; the stream stops the moment you tap _Stop_.
+
+## Live location tracker
+
+Tap _Start live tracking_ to begin. Your position refreshes automatically as you move; tap _Stop_ when you are done.
+
+## Live vs. one-shot — the difference matters
+
+Most location tools return a single fix and then go quiet. You tap, you see a coordinate, the page is done. That is fine if you are standing still and want to copy your position into a form. It is useless the moment you start moving — the pin stays where you were five seconds ago.
+
+Live tracking is the opposite. The page asks the browser to _keep handing back new readings_ as the GPS receiver computes them. The browser provides this through a standard call called `watchPosition`: you supply a callback once, and it fires every time the operating system has a fresh fix to report. That is exactly what the tool above does, and it is why the “Updates” counter rises on its own while the “Live” badge is showing.
+
+## How real-time positioning actually works
+
+Inside your phone, the GPS chip is solving the same equation several times per second. It hears timestamps from four or more satellites overhead and back-solves for the only position on Earth where those particular delays line up. When you walk, the math changes — you are slightly closer to one satellite, slightly farther from another — and the chip outputs a new coordinate. The operating system passes that coordinate up to the browser, which passes it to this page, which redraws the dot.
+
+Two practical knobs decide how lively the “live” reading actually feels. The first is the GPS sample rate, which most chipsets run at 1 Hz (one fix per second) by default. The second is the operating system’s smoothing layer, which sometimes withholds a new reading if it has not changed enough to matter. A clean outdoor walk should generate one update every second or two; a stationary indoor reading often updates only every five to ten seconds because the OS sees no real movement.
+
+## Enabling live updates on each device
+
+### iPhone
+
+1.  In Settings → Privacy & Security → Location Services, make sure the service is on at the system level.
+2.  Scroll to your browser, tap it, and select _While Using the App_ with _Precise Location_ turned on. Without precise mode iOS feeds the browser a deliberately fuzzed coordinate that does not update as you move.
+3.  Come back, tap _Start live tracking_, and choose _Allow While Using App_ on the permission prompt.
+4.  Keep the tab in the foreground — iOS pauses the GPS stream to background tabs to save battery.
+
+### Android
+
+1.  In Settings → Location, switch Location on and confirm the mode is set to _High accuracy_ (uses GPS plus Wi-Fi).
+2.  In Chrome, tap the address-bar lock icon → Permissions → Location → Allow.
+3.  Tap _Start live tracking_. Android may ask you to choose between precise and approximate — choose precise; approximate will not update meaningfully as you walk.
+4.  Like iOS, Android throttles GPS to background tabs; keep this one focused while tracking.
+
+### Desktop or laptop
+
+1.  Click _Start live tracking_ and allow the permission prompt under the address bar.
+2.  Expect slow, infrequent updates. Most laptops have no GPS chip, so the browser falls back to Wi-Fi positioning, which only changes when you move between buildings or float between access points.
+3.  If you carry the laptop and want crisp updates, tether it to a phone’s GPS by enabling Location Sharing between the two — laptops then inherit the phone’s precise fix.
+
+## Battery, accuracy, and the live-tracking tradeoff
+
+High-accuracy live tracking is the most expensive geolocation mode a browser can run. It keeps the GPS radio warm, the Wi-Fi scanner active, and the application processor awake to deliver each callback. On a modern phone that costs roughly five to twelve percent of battery per hour — noticeable if you leave it on for a long road trip, negligible for a fifteen-minute walk. The widget above releases all of those handles the instant you tap _Stop tracking_, and disconnects them automatically if you navigate away from this page.
+
+There is also a sneakier tradeoff: _jitter_. A static one-shot reading hides the natural noise in any GPS fix, because you only see the final smoothed coordinate. Live tracking exposes the noise — you watch the dot wander a few meters as the chip recomputes. That is not the tool being wrong; it is the GPS being honest. If you need a single clean reading, our [one-shot My Location page](https://getmylocations.com/my-location) is the better fit. If you want to explore the area around your position with satellite imagery or switch between map styles, the [interactive map](https://getmylocations.com/maps) gives you a larger, freeform canvas.
+
+## When the live feed lags or freezes
+
+If the update counter stops climbing or the timestamp goes stale, one of these is usually the cause:
+
+-   **Tab moved to the background.** Both iOS and Android pause the GPS stream to inactive tabs. Bring this page back to the foreground.
+-   **Indoor signal loss.** Walking from a parking lot into a steel-framed building can drop GPS within seconds; the OS waits to see if the signal returns before falling back to Wi-Fi.
+-   **Battery-saver kicked in.** Low-power modes downsample GPS or block the radio entirely while the screen is dim. Disable battery saver for the session.
+-   **Browser denied background permission.** Some browsers stop firing the watch callback after a few minutes if they decide the page is idle. Close and re-open the tab to restart the stream.
+-   **No movement.** If you are sitting still, the OS may legitimately have nothing new to report. The last fix on screen is still your current position.
+
+## Privacy: the stream stays with you
+
+Live tracking sounds invasive, but the data path is no different from a single-shot reading — there are just more readings. Every coordinate is delivered to JavaScript inside your own tab; none of them are posted to a server we control, written to any database, or correlated with anything else about your session. The page makes one throttled network call per ten seconds (at most) to translate the latest coordinate into a readable place name, and that request contains nothing but two numbers.
+
+If you want to dig further into what a browser is — and is not — allowed to do with your GPS, our [guide to the W3C Geolocation API](https://getmylocations.com/blog/browser-geolocation-api-explained) walks through the permission model and the difference between `getCurrentPosition` and `watchPosition` in plain English.
+
+## Frequently asked questions
+
+What does "live location" actually mean?+
+
+A live location is a position that keeps updating, not a single one-shot reading. The tracker subscribes to a stream of GPS fixes — usually one every one to five seconds — and replaces the displayed coordinates with the newest one each time. As long as the page stays open and the button is in the "Live" state, the map pin follows wherever you walk, drive, or ride.
+
+How do I share my live location with someone?+
+
+This page shows your own live position; it does not generate a shareable link other people can open. For sharing, use the dedicated feature in Google Maps ("Share location" → choose a contact and a duration) or Apple Maps ("Share My Location"). Both encrypt and time-limit the link, which is the right way to share a moving position with someone you trust.
+
+Why does my live location keep jumping around?+
+
+Two normal causes. (1) The GPS chip is constantly recomputing the fix from the satellites it can hear; even when you are standing still, the noise floor pulls each new reading a few meters in a random direction. (2) When the OS switches between GPS, Wi-Fi, and cell-tower estimates, the coordinates can jump tens of meters as the source changes. Both look like jitter but are working as designed.
+
+Does live tracking drain my battery?+
+
+Yes — measurably, though not dramatically. Holding the GPS receiver in high-accuracy mode and waking the radio every couple of seconds typically costs 5 to 12 percent of battery per hour on a modern phone. Stop tracking with the button above whenever you are not actively using the page; the tool releases the GPS handle immediately.
+
+Is my live location private?+
+
+Yes. The coordinate stream is delivered to JavaScript running in your own browser tab and is never posted to a server we control. The only outgoing request the page makes with your coordinates is a throttled reverse-geocoding call to OpenStreetMap (no more than once every ten seconds), so the city label can update as you move. We do not store, log, or correlate any of it.
+
+How often does the position update?+
+
+The browser delivers a new fix whenever the operating system has one it considers a real change. On a phone with a clean GPS signal, that is usually every one to two seconds while moving and every five to ten seconds while still. On a laptop using Wi-Fi positioning, updates can be sparser — sometimes only every fifteen or twenty seconds — because Wi-Fi fixes are inherently slower.
+
+## Related tools and guides
+
+[
+
+### My Location
+
+Your GPS coordinates + address, one tap
+
+](https://getmylocations.com/my-location)[
+
+### Latitude vs Longitude
+
+What the two numbers mean
+
+](https://getmylocations.com/blog/latitude-vs-longitude-explained)[
+
+### IP Location
+
+Look up any IP address
+
+](https://getmylocations.com/ip-location)
+
+AA
+
+Written by
+
+### Ahmed Anwar
+
+Independent web developer in Karachi. Builds the geolocation tools, mapping pages, and coordinate utilities on GetMyLocations. Writes about GPS, browser geolocation, and IP geolocation from the perspective of someone who ships the code, not the marketing.
+
+This article was researched and drafted with AI assistance, then edited and fact-checked by Ahmed before publication. [More about the author](https://getmylocations.com/about).

@@ -30,6 +30,13 @@
   Cache-Control: public, max-age=3600, s-maxage=86400
   X-Robots-Tag: noindex
 
+# Markdown copies of pages for AI agents (written by scripts/markdown.mjs).
+# Not indexed: the HTML page is the canonical version.
+/*.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=3600, s-maxage=86400
+  X-Robots-Tag: noindex
+
 # Global security + indexing headers
 /*
   X-Robots-Tag: index, follow, max-image-preview:large
