@@ -300,9 +300,10 @@ export default function MyLocationPage() {
           </p>
           <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside">
             <li>
-              <strong>GNSS satellites.</strong> Your phone or laptop&apos;s chip listens for signals from GPS
-              (US), Galileo (EU), GLONASS (Russia), BeiDou (China), and QZSS (Japan). With four or more
-              satellites in view, it triangulates a 3D position. Read{' '}
+              <strong>GNSS satellites.</strong> Your phone&apos;s GNSS chip (most laptops have none) listens for signals
+              from GPS (US), Galileo (EU), GLONASS (Russia), BeiDou (China), and QZSS (Japan). With four or
+              more satellites in view, it measures its distance to each and solves for a 3D position
+              (trilateration). Read{' '}
               <Link href="/blog/how-gps-works" className="text-accent hover:underline">how GPS works</Link>{' '}
               for the satellite math.
             </li>

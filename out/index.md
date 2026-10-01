@@ -8,9 +8,9 @@ Free · No signup · Runs in your browser
 
 # GetMyLocations — find your location, coordinates, and address instantly.
 
-An all-in-one location toolkit, free in your browser. The [My Location](https://getmylocations.com/my-location) finder reads your GPS coordinates, resolves the city and country, and drops a live map pin in two seconds. No account, no app install, no tracking — the coordinates stay in your tab. Eleven more focused tools live one click away: a [coordinates converter](https://getmylocations.com/coordinates-converter), an [IP location lookup](https://getmylocations.com/ip-location), a [distance calculator](https://getmylocations.com/distance-calculator), an [address finder](https://getmylocations.com/address-finder), and a [live tracker](https://getmylocations.com/live-location) that updates as you move.
+An all-in-one location toolkit, free in your browser. The [My Location](https://getmylocations.com/my-location) finder reads your GPS coordinates, resolves the city and country, and drops a live map pin in two seconds. No account, no app install, and your coordinates are never sent to a server we run. Eight more focused tools live one click away, including a [coordinates converter](https://getmylocations.com/coordinates-converter), an [IP location lookup](https://getmylocations.com/ip-location), a [distance calculator](https://getmylocations.com/distance-calculator), an [address finder](https://getmylocations.com/address-finder), and a [live tracker](https://getmylocations.com/live-location) that updates as you move.
 
-Last reviewed June 16, 2026. Articles and tools are reviewed by [Ahmed Anwar](https://getmylocations.com/about) before publication; report any inaccurate detail via the [Contact page](https://getmylocations.com/contact).
+Last reviewed October 1, 2026. Articles and tools are reviewed by [Ahmed Anwar](https://getmylocations.com/about) before publication; report any inaccurate detail via the [Contact page](https://getmylocations.com/contact).
 
 One fast tool
 
@@ -18,7 +18,7 @@ One fast tool
 
 The widget below reads your live GPS, reverse-geocodes the coordinate into a street, city, and country, and draws a live map pin — all in one tap.
 
-Eleven tools, one hub
+Nine tools, one hub
 
 ## A focused tool for every job
 
@@ -28,17 +28,17 @@ Private by default
 
 ## Your location stays in your browser
 
-Coordinates are read by JavaScript in your tab. The only outgoing call is a throttled reverse-geocoding lookup to OpenStreetMap to translate the numbers into a place name — no server we operate sees them.
+Coordinates are read by JavaScript in your tab. The only place they are sent is a reverse-geocoding lookup (BigDataCloud, with OpenStreetMap as the fallback) that turns the numbers into a place name — no server we operate sees them.
 
 ## All-in-one location toolkit — pick a tool
 
-The full set of focused, single-job tools on this site. Each one is free, runs in your browser, and is linked back here from related tools and guides.
+All nine single-job tools on this site. Each one is free, runs in your browser, and needs no signup.
 
 -   [
     
     ### My Location
     
-    Your GPS coordinates + address, one tap
+    Where am I right now? Instant GPS coordinates plus city, country, and live map.
     
     ](https://getmylocations.com/my-location)
 -   [
@@ -52,39 +52,60 @@ The full set of focused, single-job tools on this site. Each one is free, runs i
     
     ### Coordinates Converter
     
-    Translate DD ↔ DMS ↔ DDM ↔ UTM in real time.
+    Convert any coordinate between Decimal Degrees, DMS, DDM, and UTM formats.
     
     ](https://getmylocations.com/coordinates-converter)
 -   [
     
-    ### Distance Calculator
-    
-    Great-circle distance between two coordinates (Haversine).
-    
-    ](https://getmylocations.com/distance-calculator)
--   [
-    
     ### IP Location
     
-    Look up the city, country, and ISP of any IPv4 or IPv6 address.
+    Look up the city, country, and ISP of any public IPv4 or IPv6 address.
     
     ](https://getmylocations.com/ip-location)
 -   [
     
+    ### Distance Calculator
+    
+    Great-circle distance between two coordinates using the Haversine formula.
+    
+    ](https://getmylocations.com/distance-calculator)
+-   [
+    
     ### Address Finder
     
-    Two-way geocoding — address ↔ coordinates.
+    Address-to-coordinates and coordinates-to-address geocoding both ways.
     
     ](https://getmylocations.com/address-finder)
+-   [
+    
+    ### Interactive Maps
+    
+    Explore places with street, satellite, and terrain map layers.
+    
+    ](https://getmylocations.com/maps)
+-   [
+    
+    ### Street View
+    
+    See any address or coordinate in Google Street View instantly.
+    
+    ](https://getmylocations.com/street-view)
+-   [
+    
+    ### Driving Directions
+    
+    Plan a driving, walking, biking, or transit route between two places.
+    
+    ](https://getmylocations.com/driving-directions)
 
 -   Coordinates in two seconds
 -   Move and watch it update
 -   City and country resolution
--   Nothing leaves your browser
+-   No server of ours sees it
 
 Locating you…
 
-[Explore more tools](#more-tools)
+[Explore more tools](#tools)
 
 Live · Auto
 
@@ -112,114 +133,6 @@ Updated
 
 —
 
-## Popular searches we answer
-
-A few of the exact questions people use to find this site.
-
-[
-
-### My Location
-
-Your GPS coordinates + address, one tap
-
-](https://getmylocations.com/my-location)[
-
-### Get directions
-
-Driving, walking, biking, or transit routes between two places.
-
-](https://getmylocations.com/driving-directions)[
-
-### What is my IP?
-
-Lookup the country, city, and ISP of any public IPv4 or IPv6 address.
-
-](https://getmylocations.com/ip-location)[
-
-### Geolocation API
-
-How browser geolocation actually works and what it can see.
-
-](https://getmylocations.com/blog/browser-geolocation-api-explained)[
-
-### Coordinates Converter
-
-DD ↔ DMS ↔ UTM
-
-](https://getmylocations.com/coordinates-converter)
-
-## Core location tools
-
-Eleven free, browser-based tools for everything location, GPS, and IP related. Open any one — no signup, no app.
-
-11 tools
-
-[
-
-### My Location
-
-Open →
-
-Where am I right now? Instant GPS coordinates plus city, country, and live map.
-
-](https://getmylocations.com/my-location)[
-
-### Coordinates Converter
-
-Open →
-
-Convert any coordinate between Decimal Degrees, DMS, DDM, and UTM formats.
-
-](https://getmylocations.com/coordinates-converter)[
-
-### IP Location
-
-Open →
-
-Look up the city, country, and ISP of any public IPv4 or IPv6 address.
-
-](https://getmylocations.com/ip-location)[
-
-### Distance Calculator
-
-Open →
-
-Great-circle distance between two coordinates using the Haversine formula.
-
-](https://getmylocations.com/distance-calculator)[
-
-### Address Finder
-
-Open →
-
-Address-to-coordinates and coordinates-to-address geocoding both ways.
-
-](https://getmylocations.com/address-finder)[
-
-### Interactive Maps
-
-Open →
-
-Explore places with map layers and a cleaner visual context.
-
-](https://getmylocations.com/maps)[
-
-### Street View
-
-Open →
-
-See any address or coordinate in Google Street View instantly.
-
-](https://getmylocations.com/street-view)[
-
-### Driving Directions
-
-Open →
-
-Plan a driving, walking, biking, or transit route between two places.
-
-](https://getmylocations.com/driving-directions)
-
 ## How GetMyLocations works
 
 1
@@ -240,7 +153,7 @@ Explore more
 
 Visit the Tools menu for a coordinates converter, distance calculator, IP lookup, and more.
 
-## How the site works
+## Behind the location reading
 
 The mechanics behind the location reading, in plain English.
 
@@ -250,7 +163,7 @@ Your IP address is the return address the rest of the internet uses to send pack
 
 How the GPS reading is taken+
 
-When you allow precise location, the browser asks the operating system for a coordinate. On a phone outdoors, the OS uses the GNSS chip — the same hardware Google Maps uses — to triangulate against satellites from the GPS, Galileo, GLONASS, and BeiDou systems. The result is usually accurate to a few meters. Indoors or on a laptop, the OS falls back to whatever it has: nearby Wi-Fi access points cross-referenced against a worldwide database, the cell tower you are connected to, or your IP. The page receives whichever the OS thinks is the best answer.
+When you allow precise location, the browser asks the operating system for a coordinate. On a phone outdoors, the OS uses the GNSS chip — the same hardware Google Maps uses — to measure its distance from satellites in the GPS, Galileo, GLONASS, and BeiDou systems and work out the one point where those distances meet (trilateration). The result is usually accurate to a few meters. Indoors or on a laptop, the OS falls back to whatever it has: nearby Wi-Fi access points cross-referenced against a worldwide database, the cell tower you are connected to, or your IP. The page receives whichever the OS thinks is the best answer.
 
 How we turn the coordinate into a place name+
 
@@ -262,7 +175,7 @@ GPS measures your position from physics — time of flight from satellites whose
 
 What the page does with your data+
 
-The coordinate stays in your browser tab. The reverse-geocoding request sends only the coordinate to the third-party service; it does not include any identifier we control. We do not keep a database that tracks visitors. The hosting provider (Cloudflare) keeps short-lived request logs the way any web host does, and Google AdSense — once approved — sets its own cookies for advertising. The Privacy Policy spells out what each service receives.
+The coordinate stays in your browser tab. The reverse-geocoding request sends only the coordinate to the third-party service; it does not include any identifier we control. We do not keep a database that tracks visitors. The hosting provider (Cloudflare) keeps short-lived request logs the way any web host does, and Google AdSense sets its own advertising cookies when it serves ads on the site. The Privacy Policy spells out what each service receives.
 
 ## From the blog
 

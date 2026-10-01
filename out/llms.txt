@@ -1,6 +1,6 @@
 # GetMyLocations
 
-> Free, privacy-first geolocation tool that finds your latitude, longitude, city, and country in real time — using your browser's IP, Wi-Fi, and GPS signals. 100% client-side, no signup, no tracking.
+> Free, privacy-first geolocation tool that finds your latitude, longitude, city, and country in real time — using your browser's IP, Wi-Fi, and GPS signals. Coordinates are read in the browser and never sent to a server we run; no signup.
 
 GetMyLocations is a single-purpose web utility built by Ahmed (Mada). It solves one job well: tell users their exact current location on Earth, with a live interactive map, in under two seconds.
 

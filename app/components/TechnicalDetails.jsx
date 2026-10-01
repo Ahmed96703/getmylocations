@@ -7,7 +7,7 @@ const SECTIONS = [
   {
     title: 'How the GPS reading is taken',
     body:
-      'When you allow precise location, the browser asks the operating system for a coordinate. On a phone outdoors, the OS uses the GNSS chip — the same hardware Google Maps uses — to triangulate against satellites from the GPS, Galileo, GLONASS, and BeiDou systems. The result is usually accurate to a few meters. Indoors or on a laptop, the OS falls back to whatever it has: nearby Wi-Fi access points cross-referenced against a worldwide database, the cell tower you are connected to, or your IP. The page receives whichever the OS thinks is the best answer.',
+      'When you allow precise location, the browser asks the operating system for a coordinate. On a phone outdoors, the OS uses the GNSS chip — the same hardware Google Maps uses — to measure its distance from satellites in the GPS, Galileo, GLONASS, and BeiDou systems and work out the one point where those distances meet (trilateration). The result is usually accurate to a few meters. Indoors or on a laptop, the OS falls back to whatever it has: nearby Wi-Fi access points cross-referenced against a worldwide database, the cell tower you are connected to, or your IP. The page receives whichever the OS thinks is the best answer.',
   },
   {
     title: 'How we turn the coordinate into a place name',
@@ -22,14 +22,14 @@ const SECTIONS = [
   {
     title: 'What the page does with your data',
     body:
-      'The coordinate stays in your browser tab. The reverse-geocoding request sends only the coordinate to the third-party service; it does not include any identifier we control. We do not keep a database that tracks visitors. The hosting provider (Cloudflare) keeps short-lived request logs the way any web host does, and Google AdSense — once approved — sets its own cookies for advertising. The Privacy Policy spells out what each service receives.',
+      'The coordinate stays in your browser tab. The reverse-geocoding request sends only the coordinate to the third-party service; it does not include any identifier we control. We do not keep a database that tracks visitors. The hosting provider (Cloudflare) keeps short-lived request logs the way any web host does, and Google AdSense sets its own advertising cookies when it serves ads on the site. The Privacy Policy spells out what each service receives.',
   },
 ];
 
 export default function TechnicalDetails() {
   return (
     <section aria-labelledby="tech-details" className="mt-14">
-      <h2 id="tech-details" className="font-display text-2xl font-bold">How the site works</h2>
+      <h2 id="tech-details" className="font-display text-2xl font-bold">Behind the location reading</h2>
       <p className="text-sm text-fg-subtle mt-1">The mechanics behind the location reading, in plain English.</p>
       <div className="glass mt-4 rounded-2xl divide-y divide-line-subtle">
         {SECTIONS.map((s) => (

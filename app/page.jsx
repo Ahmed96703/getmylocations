@@ -56,13 +56,17 @@ const faqSchema = {
   })),
 };
 
+// Every tool on the site, in the same order as the header Tools menu.
 const HUB_TOOLS = [
-  { href: '/my-location', t: 'My Location', d: 'Your GPS coordinates + address, one tap' },
+  { href: '/my-location', t: 'My Location', d: 'Where am I right now? Instant GPS coordinates plus city, country, and live map.' },
   { href: '/live-location', t: 'Live Location', d: 'Continuous GPS tracking that updates as you move.' },
-  { href: '/coordinates-converter', t: 'Coordinates Converter', d: 'Translate DD ↔ DMS ↔ DDM ↔ UTM in real time.' },
-  { href: '/distance-calculator', t: 'Distance Calculator', d: 'Great-circle distance between two coordinates (Haversine).' },
-  { href: '/ip-location', t: 'IP Location', d: 'Look up the city, country, and ISP of any IPv4 or IPv6 address.' },
-  { href: '/address-finder', t: 'Address Finder', d: 'Two-way geocoding — address ↔ coordinates.' },
+  { href: '/coordinates-converter', t: 'Coordinates Converter', d: 'Convert any coordinate between Decimal Degrees, DMS, DDM, and UTM formats.' },
+  { href: '/ip-location', t: 'IP Location', d: 'Look up the city, country, and ISP of any public IPv4 or IPv6 address.' },
+  { href: '/distance-calculator', t: 'Distance Calculator', d: 'Great-circle distance between two coordinates using the Haversine formula.' },
+  { href: '/address-finder', t: 'Address Finder', d: 'Address-to-coordinates and coordinates-to-address geocoding both ways.' },
+  { href: '/maps', t: 'Interactive Maps', d: 'Explore places with street, satellite, and terrain map layers.' },
+  { href: '/street-view', t: 'Street View', d: 'See any address or coordinate in Google Street View instantly.' },
+  { href: '/driving-directions', t: 'Driving Directions', d: 'Plan a driving, walking, biking, or transit route between two places.' },
 ];
 
 export default function HomePage() {
@@ -90,8 +94,8 @@ export default function HomePage() {
             An all-in-one location toolkit, free in your browser. The{' '}
             <Link href="/my-location" className="text-accent hover:underline">My Location</Link>{' '}
             finder reads your GPS coordinates, resolves the city and country, and drops a live
-            map pin in two seconds. No account, no app install, no tracking — the
-            coordinates stay in your tab. Eleven more focused tools live one click away:
+            map pin in two seconds. No account, no app install, and your coordinates are never
+            sent to a server we run. Eight more focused tools live one click away, including
             a{' '}
             <Link href="/coordinates-converter" className="text-accent hover:underline">coordinates converter</Link>,
             an{' '}
@@ -105,7 +109,7 @@ export default function HomePage() {
             that updates as you move.
           </p>
           <p className="mt-3 text-sm text-fg-subtle">
-            Last reviewed June 16, 2026. Articles and tools are reviewed by{' '}
+            Last reviewed October 1, 2026. Articles and tools are reviewed by{' '}
             <Link href="/about" className="text-accent hover:underline">Ahmed Anwar</Link>{' '}
             before publication; report any inaccurate detail via the{' '}
             <Link href="/contact" className="text-accent hover:underline">Contact page</Link>.
@@ -122,7 +126,7 @@ export default function HomePage() {
             </p>
           </div>
           <div className="glass rounded-2xl p-5 ring-1 ring-line">
-            <p className="text-[11px] uppercase tracking-[0.18em] text-accent font-semibold">Eleven tools, one hub</p>
+            <p className="text-[11px] uppercase tracking-[0.18em] text-accent font-semibold">Nine tools, one hub</p>
             <h2 className="font-display text-xl font-bold mt-1">A focused tool for every job</h2>
             <p className="mt-2 text-sm text-fg-muted leading-relaxed">
               Need DD ↔ DMS, the distance between two points, the city of an IP, or the
@@ -133,20 +137,20 @@ export default function HomePage() {
             <p className="text-[11px] uppercase tracking-[0.18em] text-accent font-semibold">Private by default</p>
             <h2 className="font-display text-xl font-bold mt-1">Your location stays in your browser</h2>
             <p className="mt-2 text-sm text-fg-muted leading-relaxed">
-              Coordinates are read by JavaScript in your tab. The only outgoing call is a
-              throttled reverse-geocoding lookup to OpenStreetMap to translate the numbers
-              into a place name — no server we operate sees them.
+              Coordinates are read by JavaScript in your tab. The only place they are sent is a
+              reverse-geocoding lookup (BigDataCloud, with OpenStreetMap as the fallback) that
+              turns the numbers into a place name — no server we operate sees them.
             </p>
           </div>
         </section>
 
         {/* Tool hub — prerendered links so Googlebot sees the cluster on first byte */}
-        <section aria-labelledby="hub" className="mb-10">
+        <section id="tools" aria-labelledby="hub" className="mb-10 scroll-mt-24">
           <h2 id="hub" className="font-display text-2xl font-bold">All-in-one location toolkit — pick a tool</h2>
           <p className="text-sm text-fg-muted mt-1 max-w-3xl">
-            The full set of focused, single-job tools on this site. Each one is free, runs in your browser, and is linked back here from related tools and guides.
+            All nine single-job tools on this site. Each one is free, runs in your browser, and needs no signup.
           </p>
-          <ul className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-5">
+          <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-5">
             {HUB_TOOLS.map((t) => (
               <li key={t.href}>
                 <Link href={t.href} className="glass rounded-2xl p-4 ring-1 ring-line hover:ring-accent/40 transition group block no-underline h-full">

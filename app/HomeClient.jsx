@@ -22,28 +22,10 @@ const MapView = dynamic(() => import('./components/MapView.jsx'), {
 const FEATURES = [
   { t: 'Coordinates in two seconds', d: 'One click reads your position from the browser and shows it with the accuracy the device reports.' },
   { t: 'Move and watch it update', d: 'Live mode keeps tracking as you walk or drive, so you can see how the fix improves outdoors.' },
-  { t: 'City and country resolution', d: 'The coordinate is reverse-geocoded against OpenStreetMap so you see a readable place name alongside the numbers.' },
-  { t: 'Nothing leaves your browser', d: 'The coordinate stays in your tab. Only the city lookup goes to a third party — see the Privacy Policy for what that means in practice.' },
+  { t: 'City and country resolution', d: 'The coordinate is reverse-geocoded by BigDataCloud, with OpenStreetMap as the fallback, so you see a readable place name alongside the numbers.' },
+  { t: 'No server of ours sees it', d: 'The coordinate stays in your tab. Only the city lookup goes to a third party — see the Privacy Policy for what that means in practice.' },
 ];
 
-const MORE_TOOLS = [
-  { href: '/my-location', t: 'My Location', d: 'Where am I right now? Instant GPS coordinates plus city, country, and live map.' },
-  { href: '/coordinates-converter', t: 'Coordinates Converter', d: 'Convert any coordinate between Decimal Degrees, DMS, DDM, and UTM formats.' },
-  { href: '/ip-location', t: 'IP Location', d: 'Look up the city, country, and ISP of any public IPv4 or IPv6 address.' },
-  { href: '/distance-calculator', t: 'Distance Calculator', d: 'Great-circle distance between two coordinates using the Haversine formula.' },
-  { href: '/address-finder', t: 'Address Finder', d: 'Address-to-coordinates and coordinates-to-address geocoding both ways.' },
-  { href: '/maps', t: 'Interactive Maps', d: 'Explore places with map layers and a cleaner visual context.' },
-  { href: '/street-view', t: 'Street View', d: 'See any address or coordinate in Google Street View instantly.' },
-  { href: '/driving-directions', t: 'Driving Directions', d: 'Plan a driving, walking, biking, or transit route between two places.' },
-];
-
-const POPULAR_SEARCHES = [
-  { href: '/my-location', q: 'My Location', d: 'Your GPS coordinates + address, one tap' },
-  { href: '/driving-directions', q: 'Get directions', d: 'Driving, walking, biking, or transit routes between two places.' },
-  { href: '/ip-location', q: 'What is my IP?', d: 'Lookup the country, city, and ISP of any public IPv4 or IPv6 address.' },
-  { href: '/blog/browser-geolocation-api-explained', q: 'Geolocation API', d: 'How browser geolocation actually works and what it can see.' },
-  { href: '/coordinates-converter', q: 'Coordinates Converter', d: 'DD ↔ DMS ↔ UTM' },
-];
 
 export default function HomeClient() {
   const [mode, setMode] = useState('auto');
@@ -158,7 +140,7 @@ export default function HomeClient() {
               </button>
 
               <a
-                href="#more-tools"
+                href="#tools"
                 className="btn-ghost flex-1 sm:flex-none justify-center"
               >
                 Explore more tools
@@ -183,54 +165,6 @@ export default function HomeClient() {
           />
         </div>
       </div>
-
-      <section aria-labelledby="popular-searches" className="mt-14">
-        <div className="flex items-end justify-between gap-4 flex-wrap">
-          <div>
-            <h2 id="popular-searches" className="font-display text-2xl font-bold">Popular searches we answer</h2>
-            <p className="text-sm text-fg-subtle mt-1">A few of the exact questions people use to find this site.</p>
-          </div>
-        </div>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-5">
-          {POPULAR_SEARCHES.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="glass rounded-2xl p-5 hover:ring-accent/40 ring-1 ring-line transition group no-underline"
-            >
-              <h3 className="font-display text-base font-bold text-fg group-hover:text-accent transition">{item.q}</h3>
-              <p className="text-sm text-fg-subtle mt-2 leading-snug">{item.d}</p>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      <section aria-labelledby="more-tools" className="mt-14 scroll-mt-24" id="more-tools">
-        <div className="flex items-end justify-between gap-4 flex-wrap">
-          <div>
-            <h2 id="more-tools-h" className="font-display text-2xl font-bold">Core location tools</h2>
-            <p className="text-sm text-fg-subtle mt-1">Eleven free, browser-based tools for everything location, GPS, and IP related. Open any one — no signup, no app.</p>
-          </div>
-          <span className="text-xs text-fg-subtle uppercase tracking-wider">11 tools</span>
-        </div>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-5">
-          {MORE_TOOLS.map((t) => (
-            <a
-              key={t.href}
-              href={t.href}
-              className="glass rounded-2xl p-5 flex flex-col hover:ring-accent/40 ring-1 ring-line transition group no-underline"
-            >
-              <div className="flex items-center justify-between">
-                <h3 className="font-display text-base font-bold text-fg group-hover:text-accent transition">{t.t}</h3>
-                <span className="text-[10px] uppercase tracking-wider text-accent font-semibold opacity-0 group-hover:opacity-100 transition">Open →</span>
-              </div>
-              <p className="text-sm text-fg-subtle mt-2 flex-1 leading-snug">{t.d}</p>
-            </a>
-          ))}
-        </div>
-      </section>
 
       <section aria-labelledby="how" className="mt-14">
         <h2 id="how" className="font-display text-2xl font-bold">How GetMyLocations works</h2>
