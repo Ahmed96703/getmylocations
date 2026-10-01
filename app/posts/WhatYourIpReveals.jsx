@@ -32,8 +32,10 @@ export default function WhatYourIpReveals() {
         {' '}<code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent">203.0.113.42</code>.
         On a mobile or newer setup it might be IPv6, something like
         {' '}<code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent">2001:db8::1</code>.
-        Either way, the moment your browser opens a connection, the server
-        on the other end logs the IP because the reply has to go somewhere.
+        (Both of those are reserved for documentation by RFC 5737 and
+        RFC 3849, so they will never point at a real person.) Either way,
+        the moment your browser opens a connection, the server on the other
+        end logs the IP because the reply has to go somewhere.
       </p>
       <p className="mt-3 text-fg-muted leading-relaxed">
         A lot of people picture the IP as a fingerprint &mdash; some
@@ -41,7 +43,12 @@ export default function WhatYourIpReveals() {
         visit. It isn&rsquo;t. Every device on your home router shares the
         same public IP. On mobile networks, thousands of subscribers can
         share a single IP at once because the carrier is using a scheme
-        called CGNAT to stretch the limited IPv4 pool. Two people in
+        called CGNAT to stretch the limited IPv4 pool. That pool is only
+        32 bits &mdash; about 4.3 billion addresses for the whole planet
+        &mdash; and IANA handed out the last free blocks in February 2011.
+        RFC 6598 even reserves a range,{' '}
+        <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent">100.64.0.0/10</code>,
+        specifically for carriers to put subscribers behind. Two people in
         different cities on the same carrier can show the same address.
       </p>
 
@@ -54,7 +61,7 @@ export default function WhatYourIpReveals() {
         <li>The country &mdash; almost always right.</li>
         <li>The region or state &mdash; usually right.</li>
         <li>A city &mdash; right roughly half the time on home broadband, far worse on mobile.</li>
-        <li>The name of the ISP that owns the block (Comcast, BT, Jazz, Reliance Jio, etc).</li>
+        <li>The name of the ISP that owns the block (Comcast, BT, Jazz, Reliance Jio, etc). This part is public record: the five Regional Internet Registries &mdash; ARIN, RIPE NCC, APNIC, LACNIC and AFRINIC &mdash; publish who every block is assigned to.</li>
         <li>Whether the address belongs to a known VPN exit or a data centre.</li>
         <li>A latitude and longitude that is typically the centroid of the ISP&rsquo;s service area, not your house.</li>
       </ul>
@@ -65,6 +72,16 @@ export default function WhatYourIpReveals() {
         dramatise an IP lookup as a magic identifier are wrong about this
         in roughly the same way they&rsquo;re wrong about &ldquo;enhance,
         zoom in&rdquo; pixel magic.
+      </p>
+      <p className="mt-3 text-fg-muted leading-relaxed">
+        That centroid coordinate causes real trouble when people mistake it
+        for an address. For years, US IPs that MaxMind could only place
+        &ldquo;somewhere in the United States&rdquo; were given the default
+        point 38&deg;N, 97&deg;W &mdash; which happened to be a farm near
+        Potwin, Kansas. Its owners spent years fielding police visits and
+        angry strangers over IPs they had nothing to do with, until a 2016
+        Fusion investigation led MaxMind to move the default into the
+        middle of a nearby lake.
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-12">Why the city is wrong so often</h2>
@@ -114,9 +131,13 @@ export default function WhatYourIpReveals() {
         all combine into a profile.
       </p>
       <p className="mt-3 text-fg-muted leading-relaxed">
-        This is the part regulators care about, and it&rsquo;s the part
-        most articles about IP privacy get wrong by focusing on the IP
-        itself. The IP is rarely the limiting factor; the long-running
+        This is the part regulators care about. In <em>Breyer v
+        Germany</em> (2016), the Court of Justice of the European Union
+        ruled that even a dynamic IP address can be personal data once a
+        site has a legal route to link it to a person, which is why GDPR
+        consent banners treat IP logging seriously. It&rsquo;s also the
+        part most articles about IP privacy get wrong by focusing on the
+        IP itself. The IP is rarely the limiting factor; the long-running
         cookie that ties multiple sessions to the same person is. If you
         only worry about one thing, worry about that one.
       </p>

@@ -38,7 +38,7 @@ export const POSTS = [
     excerpt:
       'Five reasons the pin lands at the wrong door — interpolated house numbers, mislabelled buildings, and new streets the database has not caught up with.',
     date: '2026-05-30',
-    modifiedDate: '2026-05-30',
+    modifiedDate: '2026-10-01',
     readingTime: 8,
     heroImage: 'why-maps-show-wrong-street-hero.jpg',
     tags: ['maps', 'troubleshooting', 'addresses'],
@@ -49,7 +49,7 @@ export const POSTS = [
     excerpt:
       'A plain-language look at what an IP lookup actually returns, what it does not, and why mobile data and VPNs make the city wrong so often.',
     date: '2026-05-28',
-    modifiedDate: '2026-05-28',
+    modifiedDate: '2026-10-01',
     readingTime: 7,
     heroImage: 'what-your-ip-reveals-hero.jpg',
     tags: ['ip', 'privacy'],

@@ -38,9 +38,10 @@ export default function WhyMapsShowWrongStreet() {
         start and end of the street, sees the house-number range that
         belongs to it (say 1&ndash;199 on the north side, 2&ndash;200 on the
         south), and works out where number 47 should sit by sliding along
-        the line. The technique is called <em>address interpolation</em>{' '}
-        and it predates GPS by about a century &mdash; surveyors were doing
-        it on paper maps in the 1800s.
+        the line. The technique is called <em>address interpolation</em>.
+        It went mainstream with the US Census Bureau&rsquo;s DIME street
+        files for the 1970 census, and their successor, TIGER, built for
+        the 1990 census, still sits underneath many US geocoders today.
       </p>
       <p className="mt-3 text-fg-muted leading-relaxed">
         It works fine on a tidy suburban street where houses are evenly
@@ -49,6 +50,14 @@ export default function WhyMapsShowWrongStreet() {
         four. The block was renumbered in the 1980s and the records still
         reflect the old layout. The result is the familiar off-by-two-houses
         problem I started this article with.
+      </p>
+      <p className="mt-3 text-fg-muted leading-relaxed">
+        Countries with a national address register suffer far less. In
+        Great Britain, Ordnance Survey&rsquo;s AddressBase gives every
+        address a Unique Property Reference Number (UPRN) tied to an actual
+        building, so there is nothing to interpolate. Where no such
+        register exists &mdash; much of South Asia and Africa, and plenty of
+        rural America &mdash; interpolation and guesswork fill the gap.
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-12">The building outline has the wrong address attached</h2>
@@ -94,7 +103,8 @@ export default function WhyMapsShowWrongStreet() {
         the receiver can&rsquo;t always tell the difference between a
         direct signal and a reflected one that took a longer path. The
         effect is called <em>multipath</em>, and it can throw your reading
-        off by 20 or 30 meters. Walk down a street in the financial
+        off by 20 or 30 meters. For comparison, GPS.gov puts a typical
+        smartphone under open sky at about 4.9 meters. Walk down a street in the financial
         district of any big city and the blue dot will jump back and forth
         across the road like it&rsquo;s having a small breakdown.
       </p>
@@ -124,6 +134,14 @@ export default function WhyMapsShowWrongStreet() {
         even when it has never heard of the street the coordinates fall
         on. There is no edge case where coordinates fail and the address
         works; the reverse happens constantly.
+      </p>
+      <p className="mt-3 text-fg-muted leading-relaxed">
+        If a full coordinate pair feels clumsy to read out, Google Maps
+        also shows a Plus Code for every spot &mdash; a short code like{' '}
+        <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent">V2GR+49 Karachi</code>,
+        which lands on the Mazar-e-Quaid. It&rsquo;s built on Open Location
+        Code, which Google open-sourced in 2014 for places that have no
+        street address at all.
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-12">What to do when it actually matters</h2>
