@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, Polyline } from 'react-leaflet';
 import L from 'leaflet';
 import { FlyTo, LocateButton, CopyFloating } from './MapControls.jsx';
 import { TILES } from './tileLayers.js';
@@ -26,7 +26,7 @@ function useTheme() {
   return theme;
 }
 
-export default function MapView({ pos, onLocate, onCopied }) {
+export default function MapView({ pos, trail, onLocate, onCopied }) {
   const theme = useTheme();
   const tiles = TILES[theme] || TILES.light;
   const fmt = (n, d = 5) => Number(n).toFixed(d);
@@ -45,6 +45,9 @@ export default function MapView({ pos, onLocate, onCopied }) {
         maxZoom={tiles.maxZoom}
         className={tiles.className}
       />
+      {trail && trail.length > 1 && (
+        <Polyline positions={trail} pathOptions={{ color: '#0ea5e9', weight: 4, opacity: 0.8 }} />
+      )}
       <Marker position={pos} icon={pulseIcon} alt="Current location marker">
         <Popup>
           <div className="font-semibold">You are here</div>

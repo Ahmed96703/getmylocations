@@ -1,6 +1,6 @@
 ---
 title: "My Live Location Now — Track Your Real-Time Position Free"
-description: "Watch your real-time GPS position update as you move. Continuous browser tracking with accuracy radius. Free, no signup, nothing leaves the page."
+description: "Watch your GPS position, speed and accuracy update live as you move. Runs in your browser with no signup, and we never store a coordinate. Start now."
 url: https://getmylocations.com/live-location
 ---
 
@@ -8,7 +8,7 @@ Free Tool · Continuous GPS stream in your browser
 
 # My live location now — watch your real-time position update.
 
-Tap one button and the page subscribes to your device’s GPS stream. Coordinates, accuracy, speed, and the map pin all refresh automatically as you move — not a single snapshot, but a running fix. Nothing leaves your browser; the stream stops the moment you tap _Stop_.
+Tap one button and the page subscribes to your device’s GPS stream. Coordinates, accuracy, speed, heading, and the map pin all refresh automatically as you move, and the map draws the path you have walked — not a single snapshot, but a running fix. Your coordinates never reach a server we run, and the stream stops the moment you tap _Stop_.
 
 ## Live location tracker
 
@@ -22,11 +22,71 @@ Live tracking is the opposite. The page asks the browser to _keep handing back n
 
 The tool asks for the strictest settings the API allows: `enableHighAccuracy: true` so the OS powers up the GPS receiver rather than settling for Wi-Fi, `maximumAge: 0` so it never replays a cached fix, and a `timeout` of 20 seconds before it reports that no reading arrived.
 
+## What each live GPS location reading means
+
+Every update the browser delivers carries more than a coordinate. Here is what each tile in the tracker shows, and when it is allowed to be blank under the W3C Geolocation API specification.
+
+Reading
+
+Unit
+
+What it tells you
+
+Latitude, longitude
+
+degrees
+
+Your position, shown to six decimal places.
+
+Accuracy
+
+meters
+
+The radius of a circle the device is 95% confident you are inside. Smaller is better.
+
+Speed
+
+km/h
+
+Reported by the device in meters per second and converted here. Blank when the device cannot measure it.
+
+Heading
+
+degrees from true north
+
+Your direction of travel, with a compass point. Always blank while you are standing still.
+
+Altitude
+
+meters
+
+Height reported by the device. Often blank on laptops and on Wi-Fi-only fixes.
+
+Distance
+
+m or km
+
+Length of the path drawn on the map since you tapped Start.
+
+Updates
+
+count, time
+
+How many readings have arrived, and when the latest one did.
+
+For how the browser decides which of these values to fill in, see our guide to[how the browser Geolocation API works](https://getmylocations.com/blog/browser-geolocation-api-explained).
+
 ## How real-time positioning actually works
 
 Inside your phone, the GPS chip is solving the same equation several times per second. It hears timestamps from four or more satellites overhead and back-solves for the only position on Earth where those particular delays line up. When you walk, the math changes — you are slightly closer to one satellite, slightly farther from another — and the chip outputs a new coordinate. The operating system passes that coordinate up to the browser, which passes it to this page, which redraws the dot.
 
 Two practical knobs decide how lively the “live” reading actually feels. The first is the GPS sample rate, which most chipsets run at 1 Hz (one fix per second) by default. The second is the operating system’s smoothing layer, which sometimes withholds a new reading if it has not changed enough to matter. A clean outdoor walk should generate one update every second or two; a stationary indoor reading often updates only every five to ten seconds because the OS sees no real movement.
+
+## Track my location on the map: path and distance travelled
+
+While tracking is on, the map draws a line along the route you have taken and the Distance tile adds up its length. GPS jitter would normally turn a person standing still into a growing scribble, so the tracker is strict about which readings join the path: a new point is only added once you have moved at least 10 meters from the last one, and only from a reading accurate to 50 meters or better. Standing still therefore adds nothing, and a sudden indoor Wi-Fi guess hundreds of meters off is left out.
+
+The trade-off is that very small movements, like pacing around a room, will not register. The path and distance reset each time you tap _Start live tracking_, and nothing is saved once you close the tab.
 
 ## Enabling live updates on each device
 
@@ -52,9 +112,15 @@ Two practical knobs decide how lively the “live” reading actually feels. The
 
 ## Battery, accuracy, and the live-tracking tradeoff
 
-High-accuracy live tracking is the most expensive geolocation mode a browser can run. It keeps the GPS radio warm, the Wi-Fi scanner active, and the application processor awake to deliver each callback. On a modern phone that costs roughly five to twelve percent of battery per hour — noticeable if you leave it on for a long road trip, negligible for a fifteen-minute walk. The widget above releases all of those handles the instant you tap _Stop tracking_, and disconnects them automatically if you navigate away from this page.
+High-accuracy live tracking is the most expensive geolocation mode a browser can run. It keeps the GPS radio warm, the Wi-Fi scanner active, and the application processor awake to deliver each callback. How much battery that costs depends on the phone, the signal, and above all whether the screen stays on, so the honest way to know is to note your battery percentage before and after a ten-minute session. It matters on a long road trip and barely registers on a short walk. The widget above releases all of those handles the instant you tap _Stop tracking_, and disconnects them automatically if you navigate away from this page.
 
-There is also a sneakier tradeoff: _jitter_. A static one-shot reading hides the natural noise in any GPS fix, because you only see the final smoothed coordinate. Live tracking exposes the noise — you watch the dot wander a few meters as the chip recomputes. That is not the tool being wrong; it is the GPS being honest. If you need a single clean reading, our [one-shot My Location page](https://getmylocations.com/my-location) is the better fit. If you want to explore the area around your position with satellite imagery or switch between map styles, the [interactive map](https://getmylocations.com/maps) gives you a larger, freeform canvas.
+There is also a sneakier tradeoff: _jitter_. A static one-shot reading hides the natural noise in any GPS fix, because you only see the final smoothed coordinate. Live tracking exposes the noise — you watch the dot wander a few meters as the chip recomputes. That is not the tool being wrong; it is the GPS being honest. (If the dot sits in the wrong city entirely, the browser has probably fallen back to IP location; see [why GPS and IP disagree](https://getmylocations.com/gps-vs-ip-accuracy).) If you need a single clean reading, our [one-shot My Location page](https://getmylocations.com/my-location) is the better fit. If you want to explore the area around your position with satellite imagery or switch between map styles, the [interactive map](https://getmylocations.com/maps) gives you a larger, freeform canvas.
+
+## Keep the screen awake while tracking
+
+Phones pause location updates to a web page once the screen turns off, so a walk with the phone in your pocket can leave long gaps in the path. Tick _Keep screen on_ next to the start button and the page asks the browser for a screen wake lock (the Screen Wake Lock API), which stops the display from sleeping while tracking is running.
+
+The lock is released the moment you stop tracking or untick the box. If you switch to another app the browser drops it automatically, and the page asks for it again when you come back. If your browser does not support wake locks, the option is simply not shown. Battery-saver modes can also refuse the request; tracking still works, but the screen may sleep.
 
 ## When the live feed lags or freezes
 
@@ -62,9 +128,22 @@ If the update counter stops climbing or the timestamp goes stale, one of these i
 
 -   **Tab moved to the background.** Both iOS and Android pause the GPS stream to inactive tabs. Bring this page back to the foreground.
 -   **Indoor signal loss.** Walking from a parking lot into a steel-framed building can drop GPS within seconds; the OS waits to see if the signal returns before falling back to Wi-Fi.
+-   **Screen went to sleep.** A dark screen pauses the stream on most phones. Tick _Keep screen on_ before you start, as described above.
 -   **Battery-saver kicked in.** Low-power modes downsample GPS or block the radio entirely while the screen is dim. Disable battery saver for the session.
 -   **Browser denied background permission.** Some browsers stop firing the watch callback after a few minutes if they decide the page is idle. Close and re-open the tab to restart the stream.
 -   **No movement.** If you are sitting still, the OS may legitimately have nothing new to report. The last fix on screen is still your current position.
+
+If tracking never starts at all, work through the [location not working fix guide](https://getmylocations.com/fix-location-not-working).
+
+## How to share your live location with someone
+
+This page only ever shows your own position to you. It cannot create a link for someone else to follow, because that would mean sending your coordinates to a server, which this site deliberately never does. To share a moving position with someone you trust, use an app built for it:
+
+1.  **Google Maps:** tap your profile picture → _Location sharing_ → _New share_, choose how long, then pick a contact.
+2.  **Apple Find My or Messages:** in a conversation, tap the contact’s name → _Share My Location_, then choose one hour, until the end of the day, or indefinitely.
+3.  **WhatsApp:** in a chat, tap the attachment button → _Location_ → _Share live location_, then choose 15 minutes, 1 hour, or 8 hours.
+
+All three let you stop sharing early. Before you share, read[how to share your GPS location safely](https://getmylocations.com/blog/how-to-share-gps-location-safely).
 
 ## Privacy: the stream stays with you
 
@@ -88,7 +167,7 @@ Two normal causes. (1) The GPS chip is constantly recomputing the fix from the s
 
 Does live tracking drain my battery?+
 
-Yes — measurably, though not dramatically. Holding the GPS receiver in high-accuracy mode and waking the radio every couple of seconds typically costs 5 to 12 percent of battery per hour on a modern phone. Stop tracking with the button above whenever you are not actively using the page; the tool releases the GPS handle immediately.
+Yes. Holding the GPS receiver in high-accuracy mode and waking the processor for every reading costs real battery, and keeping the screen on (the "Keep screen on" option) usually costs more than the GPS itself. How much depends on the phone, the signal, and screen brightness, so the honest way to know is to note your battery percentage before and after a ten-minute session. Stop tracking with the button above whenever you are not actively using the page; the tool releases the GPS handle immediately.
 
 Is my live location private?+
 
@@ -97,6 +176,14 @@ Yes. The coordinate stream is delivered to JavaScript running in your own browse
 How often does the position update?+
 
 The browser delivers a new fix whenever the operating system has one it considers a real change. On a phone with a clean GPS signal, that is usually every one to two seconds while moving and every five to ten seconds while still. On a laptop using Wi-Fi positioning, updates can be sparser — sometimes only every fifteen or twenty seconds — because Wi-Fi fixes are inherently slower.
+
+Why is my heading blank?+
+
+Heading is the direction you are moving, measured in degrees clockwise from true north. The W3C Geolocation specification says a device that is standing still must report no heading, because a direction of travel only exists while you are travelling. Start walking and it fills in. Laptops and some phones never report it at all, in which case it stays blank.
+
+How accurate is live location indoors?+
+
+Usually far worse than outdoors. Indoors the GPS signal is too weak, so the phone falls back to Wi-Fi positioning, which is typically accurate to tens of meters and sometimes hundreds. Watch the Accuracy tile: it is the radius the device is 95% confident you are inside. The path trail ignores any reading worse than 50 m, so indoor guesses do not scribble across the map.
 
 ## Related tools and guides
 

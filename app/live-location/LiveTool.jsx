@@ -8,6 +8,27 @@ const MapView = dynamic(() => import('../components/MapView.jsx'), {
   loading: () => <div className="w-full h-full bg-tint/5 animate-pulse rounded-2xl" />,
 });
 
+// A trail point is only added after moving at least this far, and only from
+// a reading at least this accurate, so GPS jitter while standing still does
+// not draw scribbles or inflate the distance. The page text quotes both.
+const TRAIL_MIN_STEP_M = 10;
+const TRAIL_MAX_ACCURACY_M = 50;
+
+function metersBetween([lat1, lon1], [lat2, lon2]) {
+  const R = 6371000;
+  const toRad = (d) => (d * Math.PI) / 180;
+  const dLat = toRad(lat2 - lat1);
+  const dLon = toRad(lon2 - lon1);
+  const a = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) ** 2;
+  return 2 * R * Math.asin(Math.sqrt(a));
+}
+
+const COMPASS = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
+
+function formatDistance(m) {
+  return m < 1000 ? `${Math.round(m)} m` : `${(m / 1000).toFixed(2)} km`;
+}
+
 export default function LiveTool() {
   const [pos, setPos] = useState(null);
   const [meta, setMeta] = useState({});
@@ -18,6 +39,12 @@ export default function LiveTool() {
   const [lastUpdate, setLastUpdate] = useState(null);
   const [watching, setWatching] = useState(false);
   const watchIdRef = useRef(null);
+  const [trail, setTrail] = useState([]);
+  const [distance, setDistance] = useState(0);
+  const [keepAwake, setKeepAwake] = useState(false);
+  const [wakeSupported, setWakeSupported] = useState(false);
+  const wakeLockRef = useRef(null);
+  const lastTrailPointRef = useRef(null);
   // Throttle reverse-geocoding: at most once per 10 s, and only after moving
   // 100 m. The page promises users this cap, and it keeps us well inside
   // Nominatim's 1 req/sec policy.
@@ -52,11 +79,23 @@ export default function LiveTool() {
     }
     setStatus({ type: 'loading', msg: 'Starting live tracking…' });
     setUpdates(0);
+    setTrail([]);
+    setDistance(0);
+    lastTrailPointRef.current = null;
     const id = navigator.geolocation.watchPosition(
       (p) => {
         const lat = p.coords.latitude;
         const lon = p.coords.longitude;
         setPos([lat, lon]);
+        if (p.coords.accuracy <= TRAIL_MAX_ACCURACY_M) {
+          const last = lastTrailPointRef.current;
+          const step = last ? metersBetween(last, [lat, lon]) : 0;
+          if (!last || step >= TRAIL_MIN_STEP_M) {
+            lastTrailPointRef.current = [lat, lon];
+            setTrail((t) => [...t, [lat, lon]]);
+            setDistance((d) => d + step);
+          }
+        }
         setMeta({
           accuracy: p.coords.accuracy,
           altitude: p.coords.altitude,
@@ -101,6 +140,38 @@ export default function LiveTool() {
     [],
   );
 
+  useEffect(() => {
+    setWakeSupported(typeof navigator !== 'undefined' && 'wakeLock' in navigator);
+  }, []);
+
+  // Screen Wake Lock: hold it only while tracking with the toggle on. The
+  // browser drops the lock whenever the tab is hidden, so re-request it when
+  // the tab becomes visible again.
+  useEffect(() => {
+    if (!wakeSupported || !keepAwake || !watching) return undefined;
+    let cancelled = false;
+    const acquire = async () => {
+      try {
+        const lock = await navigator.wakeLock.request('screen');
+        if (cancelled) lock.release();
+        else wakeLockRef.current = lock;
+      } catch {
+        // Denied (e.g. battery saver); tracking still works without it.
+      }
+    };
+    const onVisible = () => {
+      if (document.visibilityState === 'visible') acquire();
+    };
+    acquire();
+    document.addEventListener('visibilitychange', onVisible);
+    return () => {
+      cancelled = true;
+      document.removeEventListener('visibilitychange', onVisible);
+      wakeLockRef.current?.release().catch(() => {});
+      wakeLockRef.current = null;
+    };
+  }, [wakeSupported, keepAwake, watching]);
+
   const copy = () => {
     if (!pos) return;
     navigator.clipboard.writeText(`${pos[0].toFixed(6)}, ${pos[1].toFixed(6)}`);
@@ -118,11 +189,24 @@ export default function LiveTool() {
             </span>
           )}
         </div>
-        {watching ? (
-          <button onClick={stop} className="btn-ghost">⏸ Stop tracking</button>
-        ) : (
-          <button onClick={start} className="btn-primary">📍 Start live tracking</button>
-        )}
+        <div className="flex flex-wrap items-center gap-3">
+          {wakeSupported && (
+            <label className="inline-flex items-center gap-2 text-sm text-fg-muted cursor-pointer">
+              <input
+                type="checkbox"
+                checked={keepAwake}
+                onChange={(e) => setKeepAwake(e.target.checked)}
+                className="accent-sky-500"
+              />
+              Keep screen on
+            </label>
+          )}
+          {watching ? (
+            <button onClick={stop} className="btn-ghost">⏸ Stop tracking</button>
+          ) : (
+            <button onClick={start} className="btn-primary">📍 Start live tracking</button>
+          )}
+        </div>
       </div>
 
       {status.type === 'loading' && (
@@ -149,7 +233,7 @@ export default function LiveTool() {
             </div>
           </div>
 
-          <dl className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4 text-sm">
+          <dl className="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-4 text-sm">
             <div className="bg-tint/5 border border-line rounded-lg p-3">
               <dt className="text-[10px] uppercase tracking-wider text-fg-subtle font-semibold">Accuracy</dt>
               <dd className="font-mono mt-1">{Math.round(meta.accuracy)} m</dd>
@@ -161,12 +245,27 @@ export default function LiveTool() {
               </dd>
             </div>
             <div className="bg-tint/5 border border-line rounded-lg p-3">
-              <dt className="text-[10px] uppercase tracking-wider text-fg-subtle font-semibold">Updates</dt>
-              <dd className="font-mono mt-1">{updates}</dd>
+              <dt className="text-[10px] uppercase tracking-wider text-fg-subtle font-semibold">Heading</dt>
+              <dd className="font-mono mt-1">
+                {meta.heading != null && !Number.isNaN(meta.heading)
+                  ? `${Math.round(meta.heading)}° ${COMPASS[Math.round(meta.heading / 45) % 8]}`
+                  : '—'}
+              </dd>
             </div>
             <div className="bg-tint/5 border border-line rounded-lg p-3">
-              <dt className="text-[10px] uppercase tracking-wider text-fg-subtle font-semibold">Last update</dt>
-              <dd className="font-mono mt-1 text-xs">{lastUpdate ? lastUpdate.toLocaleTimeString() : '—'}</dd>
+              <dt className="text-[10px] uppercase tracking-wider text-fg-subtle font-semibold">Altitude</dt>
+              <dd className="font-mono mt-1">{meta.altitude != null ? `${Math.round(meta.altitude)} m` : '—'}</dd>
+            </div>
+            <div className="bg-tint/5 border border-line rounded-lg p-3">
+              <dt className="text-[10px] uppercase tracking-wider text-fg-subtle font-semibold">Distance</dt>
+              <dd className="font-mono mt-1">{formatDistance(distance)}</dd>
+            </div>
+            <div className="bg-tint/5 border border-line rounded-lg p-3">
+              <dt className="text-[10px] uppercase tracking-wider text-fg-subtle font-semibold">Updates</dt>
+              <dd className="font-mono mt-1">
+                {updates}
+                <span className="text-xs text-fg-subtle"> · {lastUpdate ? lastUpdate.toLocaleTimeString() : '—'}</span>
+              </dd>
             </div>
           </dl>
 
@@ -198,7 +297,7 @@ export default function LiveTool() {
           </div>
 
           <div className="h-[380px] rounded-2xl overflow-hidden ring-1 ring-line mt-4">
-            <MapView pos={pos} />
+            <MapView pos={pos} trail={trail} />
           </div>
         </>
       )}
