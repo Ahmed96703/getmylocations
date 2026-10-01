@@ -69,7 +69,7 @@ export default function About() {
         </nav>
 
       <h1 className="font-display text-4xl font-extrabold tracking-tight">About GetMyLocations</h1>
-      <p className="mt-2 text-sm text-fg-subtle">Last reviewed June 3, 2026 · Tested on real devices before publish</p>
+      <p className="mt-2 text-sm text-fg-subtle">Last reviewed October 1, 2026 · Tested on real devices before publish</p>
       <p className="mt-4 text-fg-muted leading-relaxed">
         GetMyLocations is a small independent site that does one thing: it reads
         your GPS coordinates straight from the browser and turns them into a
@@ -122,8 +122,23 @@ export default function About() {
         reads like filler. The code for every tool is hand-written and tested
         on a real phone and laptop before it ships. If you ever spot something
         that&rsquo;s wrong, vague, or feels generated, email me at the address
-        below &mdash; corrections go up the same day.
+        below &mdash; corrections go up the same day and are logged in{' '}
+        <a href="#corrections" className="text-accent hover:underline">Corrections</a> below.
       </p>
+
+      <h2 id="corrections" className="font-display text-2xl font-bold mt-10">Corrections</h2>
+      <p className="mt-3 text-fg-muted leading-relaxed">
+        Mistakes that made it past review, and what changed. Typos and
+        wording tweaks are not listed; anything that was factually wrong is.
+      </p>
+      <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside">
+        <li><strong>October 1, 2026 &mdash; <Link href="/blog/why-maps-show-wrong-street" className="text-accent hover:underline">Why maps show the wrong street</Link>.</strong> Said address interpolation dates back to 1800s surveyors. It went mainstream with the US Census Bureau&rsquo;s DIME files for the 1970 census and the later TIGER files.</li>
+        <li><strong>October 1, 2026 &mdash; <Link href="/gps-vs-ip-accuracy" className="text-accent hover:underline">GPS vs IP accuracy</Link>.</strong> Blamed a slow first GPS fix on downloading the almanac. The receiver is waiting for each satellite&rsquo;s ephemeris, which repeats every 30 seconds.</li>
+        <li><strong>October 1, 2026 &mdash; <Link href="/live-location" className="text-accent hover:underline">Live Location</Link>.</strong> Android steps named a &ldquo;High accuracy&rdquo; mode removed in Android 10, and a tip about tethering a laptop to a phone&rsquo;s GPS described a feature macOS and Windows do not have. The page also promised the place-name lookup runs at most once every 10 seconds, but the code could run it more often while driving; the code now keeps that promise.</li>
+        <li><strong>October 1, 2026 &mdash; <Link href="/driving-directions" className="text-accent hover:underline">Driving Directions</Link>.</strong> The FAQ said leaving the origin empty uses your location; it shows an error instead. The &ldquo;Use my location&rdquo; button is the way. A 1.4&times; road-to-straight-line ratio was described as unusual when it is the US average.</li>
+        <li><strong>October 1, 2026 &mdash; <Link href="/" className="text-accent hover:underline">Homepage</Link>.</strong> Claimed eleven tools (there are nine), said &ldquo;no tracking&rdquo; although Google AdSense runs on the site, and named only OpenStreetMap as the reverse-geocoding service when BigDataCloud is tried first.</li>
+        <li><strong>October 1, 2026 &mdash; <Link href="/my-location" className="text-accent hover:underline">My Location</Link>.</strong> Said six decimal places is about one meter; it is about 11 centimeters. The <Link href="/coordinates-converter" className="text-accent hover:underline">Coordinates Converter</Link> FAQ said phones deliver five-decimal (~1.1 m) precision; they typically manage 3&ndash;5 m.</li>
+      </ul>
 
       <h2 className="font-display text-2xl font-bold mt-10">Contact</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">

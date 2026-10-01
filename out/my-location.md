@@ -75,7 +75,7 @@ The number of decimal places tells you how precise the coordinate is:
 -   `48.85842` — ~1.1 m. Enough to identify a parking space.
 -   `48.858420` — ~11 cm. More than consumer GPS can reliably deliver.
 
-Six decimals (about one meter) is the practical sweet spot. Most smartphone GPS chips are accurate to roughly 3–5 meters under ideal conditions, so writing down more digits than that creates false precision.
+Five decimals (about 1.1 meters) is already finer than a phone can measure: most smartphone GPS chips are accurate to roughly 3–5 meters under ideal conditions. Six decimals (about 11 centimeters) is the standard storage format, which is why this tool and most apps show it, but treat the last digit as noise rather than real precision.
 
 * * *
 
@@ -237,7 +237,7 @@ Three common causes. (1) You are indoors with weak satellite reception, so the O
 
 How many decimal places should I keep when writing down coordinates?+
 
-Six is the sweet spot. Four decimals (~11 m) lands on a building; five (~1.1 m) lands on a parked car; six (~11 cm) is survey-grade. Most consumer GPS receivers can deliver three-to-five meters under ideal conditions, so writing more than six digits is false precision. For posting your home publicly, two or three decimals (~110 m – 1 km) coarsens you to a neighborhood without giving away the doorway.
+Five is enough; six is the standard format. Four decimals (~11 m) lands on a building; five (~1.1 m) lands on a parked car; six (~11 cm) is survey-grade. Most consumer GPS receivers deliver three-to-five meters under ideal conditions, so anything past five decimals is false precision — keep six when a form or API expects it, but do not read meaning into the last digit. For posting your home publicly, two or three decimals (~110 m – 1 km) coarsens you to a neighborhood without giving away the doorway.
 
 What is the difference between DD, DMS, and UTM?+
 

@@ -4,24 +4,24 @@
   <!-- Homepage -->
   <url>
     <loc>https://getmylocations.com/</loc>
-    <lastmod>2026-09-30</lastmod>
+    <lastmod>2026-10-01</lastmod>
   </url>
 
   <!-- Tools -->
-  <url><loc>https://getmylocations.com/live-location</loc><lastmod>2026-09-30</lastmod></url>
-  <url><loc>https://getmylocations.com/my-location</loc><lastmod>2026-09-30</lastmod></url>
-  <url><loc>https://getmylocations.com/coordinates-converter</loc><lastmod>2026-09-30</lastmod></url>
+  <url><loc>https://getmylocations.com/live-location</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://getmylocations.com/my-location</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://getmylocations.com/coordinates-converter</loc><lastmod>2026-10-01</lastmod></url>
   <url><loc>https://getmylocations.com/ip-location</loc><lastmod>2026-09-30</lastmod></url>
   <url><loc>https://getmylocations.com/distance-calculator</loc><lastmod>2026-09-30</lastmod></url>
   <url><loc>https://getmylocations.com/address-finder</loc><lastmod>2026-09-30</lastmod></url>
   <url><loc>https://getmylocations.com/street-view</loc><lastmod>2026-09-30</lastmod></url>
-  <url><loc>https://getmylocations.com/driving-directions</loc><lastmod>2026-09-30</lastmod></url>
+  <url><loc>https://getmylocations.com/driving-directions</loc><lastmod>2026-10-01</lastmod></url>
   <url><loc>https://getmylocations.com/maps</loc><lastmod>2026-09-30</lastmod></url>
 
   <!-- Guides -->
   <url><loc>https://getmylocations.com/fix-location-not-working</loc><lastmod>2026-09-30</lastmod></url>
   <url><loc>https://getmylocations.com/reverse-geocoding</loc><lastmod>2026-09-30</lastmod></url>
-  <url><loc>https://getmylocations.com/gps-vs-ip-accuracy</loc><lastmod>2026-09-30</lastmod></url>
+  <url><loc>https://getmylocations.com/gps-vs-ip-accuracy</loc><lastmod>2026-10-01</lastmod></url>
 
   <!-- Blog index -->
   <url><loc>https://getmylocations.com/blog</loc><lastmod>2026-06-03</lastmod></url>
@@ -42,7 +42,7 @@
   <url><loc>https://getmylocations.com/blog/10-uses-for-gps-coordinates</loc><lastmod>2026-05-09</lastmod></url>
 
   <!-- Site pages -->
-  <url><loc>https://getmylocations.com/about</loc><lastmod>2026-09-30</lastmod></url>
+  <url><loc>https://getmylocations.com/about</loc><lastmod>2026-10-01</lastmod></url>
   <url><loc>https://getmylocations.com/contact</loc><lastmod>2026-09-30</lastmod></url>
   <url><loc>https://getmylocations.com/privacy-policy</loc><lastmod>2026-09-30</lastmod></url>
   <url><loc>https://getmylocations.com/terms</loc><lastmod>2026-09-30</lastmod></url>

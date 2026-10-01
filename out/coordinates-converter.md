@@ -268,7 +268,7 @@ Decimal degrees (DD) write a latitude or longitude as a single signed number wit
 
 How many decimal places does a DD coordinate need?+
 
-Each decimal divides the uncertainty by ten. Three decimals (~110 m) is enough for a city block; four (~11 m) lands on a building; five (~1.1 m) is what most smartphone GPS realistically delivers; six (~11 cm) is the de facto storage format. Writing more than six is false precision because consumer GPS rarely beats one metre under ideal conditions.
+Each decimal divides the uncertainty by ten. Three decimals (~110 m) is enough for a city block; four (~11 m) lands on a building; five (~1.1 m) is already finer than smartphone GPS, which typically manages 3–5 m outdoors; six (~11 cm) is the de facto storage format. Anything past five decimals is false precision for a phone reading, so treat the sixth digit as noise.
 
 Why are some decimal-degree coordinates negative?+
 
