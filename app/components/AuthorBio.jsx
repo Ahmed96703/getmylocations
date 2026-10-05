@@ -17,7 +17,7 @@ export default function AuthorBio() {
           <p className="text-xs uppercase tracking-[0.16em] text-accent font-semibold">Written by</p>
           <h3 className="font-display text-lg font-bold text-fg mt-1">Ahmed Anwar</h3>
           <p className="text-sm text-fg-muted leading-relaxed mt-2">
-            Independent web developer in Karachi. Builds the geolocation tools,
+            Senior software engineer in Karachi. Builds the geolocation tools,
             mapping pages, and coordinate utilities on GetMyLocations. Writes
             about GPS, browser geolocation, and IP geolocation from the
             perspective of someone who ships the code, not the marketing.

@@ -1,6 +1,6 @@
 ---
 title: "Find My Location — GPS Coordinates, Address & IP Tools"
-description: "Find your location, GPS coordinates and address instantly in your browser. Plus coordinates converter, IP lookup and distance calculator. Free, no signup."
+description: "Find your GPS coordinates and address instantly in your browser. Plus a coordinates converter, IP lookup and distance calculator. Free, no signup."
 url: https://getmylocations.com/
 ---
 

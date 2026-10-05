@@ -32,7 +32,7 @@ const profilePageSchema = {
     '@type': 'Person',
     '@id': 'https://getmylocations.com/about#ahmed-anwar',
     name: 'Ahmed Anwar',
-    jobTitle: 'Independent Web Developer',
+    jobTitle: 'Senior Software Engineer',
     url: 'https://getmylocations.com/about',
     worksFor: {
       '@type': 'Organization',
@@ -40,7 +40,7 @@ const profilePageSchema = {
       url: 'https://getmylocations.com/',
     },
     description:
-      'Independent web developer based in Karachi, Pakistan. Builds geolocation tools, mapping pages, and coordinate utilities. Writes about GPS, browser geolocation, and IP geolocation.',
+      'Senior software engineer based in Karachi, Pakistan. Builds geolocation tools, mapping pages, and coordinate utilities. Writes about GPS, browser geolocation, and IP geolocation.',
     knowsAbout: [
       'GPS',
       'Browser Geolocation API',
@@ -96,8 +96,8 @@ export default function About() {
 
       <h2 className="font-display text-2xl font-bold mt-10">About Ahmed Anwar</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
-        I&rsquo;m <strong className="text-fg">Ahmed Anwar</strong>, an
-        independent web developer based in Karachi, Pakistan. I&rsquo;ve been
+        I&rsquo;m <strong className="text-fg">Ahmed Anwar</strong>, a
+        senior software engineer based in Karachi, Pakistan, and I build this site independently. I&rsquo;ve been
         building production web apps for roughly five years, mostly around
         React, Next.js, and the kind of mapping tooling this site is built on
         &mdash; Leaflet, OpenStreetMap tiles, browser geolocation, and the

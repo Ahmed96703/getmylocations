@@ -13,7 +13,7 @@ import AdSense from './components/AdSense.jsx';
 export const metadata = {
   title: 'Find My Location — GPS Coordinates, Address & IP Tools',
   description:
-    'Find your location, GPS coordinates and address instantly in your browser. Plus coordinates converter, IP lookup and distance calculator. Free, no signup.',
+    'Find your GPS coordinates and address instantly in your browser. Plus a coordinates converter, IP lookup and distance calculator. Free, no signup.',
   alternates: { canonical: '/' },
   openGraph: {
     title: 'GetMyLocations — Find Your Location, GPS Coordinates & Address Instantly',
@@ -37,7 +37,7 @@ const webAppSchema = {
   '@type': 'WebApplication',
   name: 'GetMyLocations',
   description:
-    'Free browser-based all-in-one location toolkit. Reads your GPS coordinates, reverse-geocodes them into a readable address, and links out to ten more tools — coordinates converter, IP lookup, distance calculator, address finder, live tracker, and more.',
+    'Free browser-based all-in-one location toolkit. Reads your GPS coordinates, reverse-geocodes them into a readable address, and links out to eight more tools — coordinates converter, IP lookup, distance calculator, address finder, live tracker, and more.',
   url: 'https://getmylocations.com/',
   applicationCategory: 'UtilitiesApplication',
   operatingSystem: 'Web',

@@ -16,7 +16,7 @@ Most “find my location” pages on the web are wrappers around an ad-loaded IP
 
 ## About Ahmed Anwar
 
-I’m **Ahmed Anwar**, an independent web developer based in Karachi, Pakistan. I’ve been building production web apps for roughly five years, mostly around React, Next.js, and the kind of mapping tooling this site is built on — Leaflet, OpenStreetMap tiles, browser geolocation, and the free-tier IP-geolocation APIs you see referenced throughout the guides.
+I’m **Ahmed Anwar**, a senior software engineer based in Karachi, Pakistan, and I build this site independently. I’ve been building production web apps for roughly five years, mostly around React, Next.js, and the kind of mapping tooling this site is built on — Leaflet, OpenStreetMap tiles, browser geolocation, and the free-tier IP-geolocation APIs you see referenced throughout the guides.
 
 The reason I’m comfortable writing about this stuff is that I ship it. Every tool on this site — the my-location reader, the coordinates converter with live UTM math, the distance calculator using the haversine formula, the driving-directions embed — I wrote and debugged personally, on real devices, in real browsers, with the same API rate limits and CORS quirks any other developer would hit. The articles explain what I learned while building.
 
