@@ -81,8 +81,8 @@ export default function Privacy() {
           <span className="text-fg-muted font-mono text-sm">bigdatacloud.com/privacy-and-cookie-policy</span>.
         </li>
         <li>
-          <strong>OpenStreetMap Nominatim</strong> — used by the Address Finder and as
-          a fallback elsewhere. Their privacy policy is published at{' '}
+          <strong>OpenStreetMap Nominatim</strong> — used by the Address Finder, by the
+          Street View tool to turn a typed address into coordinates, and as a fallback elsewhere. Their privacy policy is published at{' '}
           <span className="text-fg-muted font-mono text-sm">wiki.osmfoundation.org/wiki/Privacy_Policy</span>.
         </li>
       </ul>
@@ -95,12 +95,20 @@ export default function Privacy() {
       <h2 className="font-display text-2xl font-bold mt-10">3. Map tiles</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
         The maps you see are rendered with Leaflet and use tile images from
-        OpenStreetMap and CARTO. Loading a tile reveals your IP and the tile coordinate
+        OpenStreetMap, plus Esri (ArcGIS) imagery when you switch the Interactive Map to
+        satellite view. Loading a tile reveals your IP and the tile coordinate
         to those providers, the same as any embedded map would. Their privacy policies
         are published at{' '}
         <span className="text-fg-muted font-mono text-sm">wiki.osmfoundation.org/wiki/Privacy_Policy</span>{' '}
         and{' '}
-        <span className="text-fg-muted font-mono text-sm">carto.com/privacy</span>.
+        <span className="text-fg-muted font-mono text-sm">esri.com/en-us/privacy</span>.
+      </p>
+      <p className="mt-3 text-fg-muted leading-relaxed">
+        The Driving Directions tool embeds a Google Maps route, and the Street View tool
+        opens Google Street View (or embeds it on the page when enabled). Those embeds and
+        links are served by Google, which receives your IP and the place or route shown,
+        under the Google Privacy Policy at{' '}
+        <span className="text-fg-muted font-mono text-sm">policies.google.com/privacy</span>.
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-10">4. IP lookups (IP Location tool)</h2>

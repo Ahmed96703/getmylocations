@@ -6,7 +6,7 @@ import AdSense from '../components/AdSense.jsx';
 
 export const metadata = {
   title: 'Street View — See Any Address in Google Street View',
-  description: 'Free Street View tool. Enter any address or GPS coordinates and see the location in Google Street View. No signup, no API key.',
+  description: 'Find any address or GPS coordinate and open it in Google Street View facing the direction you choose. Accepts any coordinate format. Free.',
   keywords: ['street view', 'google street view', 'street view by address', 'virtual tour'],
   alternates: { canonical: '/street-view' },
   openGraph: {
@@ -31,7 +31,7 @@ const webAppSchema = {
   '@type': 'WebApplication',
   name: 'Street View Tool',
   description:
-    'Enter any address, landmark, or GPS coordinates and instantly explore the location in Google Street View. Free, no signup, no app to install.',
+    'Free tool that finds any address, landmark, or GPS coordinate (any format), pins it on a map, and opens the nearest Google Street View panorama facing the chosen direction.',
   url: 'https://getmylocations.com/street-view',
   applicationCategory: 'UtilitiesApplication',
   operatingSystem: 'Web',
@@ -45,23 +45,23 @@ const webAppSchema = {
 const faqs = [
   {
     q: 'Is this the real Google Street View?',
-    a: 'Yes. The panorama below is the official Google Street View embed, rendered inside this page. The imagery, the navigation arrows, and the capture date all come straight from Google. This page just gives you a faster way to jump to an address without opening the full Maps app.',
+    a: 'Yes. The panorama comes straight from Google: the imagery, the arrows for moving along the street, and the capture date are Google\'s own. This page finds the exact spot first, pins it, and then opens Google Street View there, facing the direction you picked. When the embedded viewer is enabled on this page the panorama appears below the search box; otherwise the Open Street View button opens it in Google Maps or the Google Maps app.',
   },
   {
-    q: 'Why does my address show a map instead of a panorama?',
-    a: 'There is no Street View coverage at that point. The embed falls back to the standard map rather than showing an error. Try dragging to a nearby main road — coverage follows the public road network, so a house on a private lane often has no panorama while the road at the end of it does.',
+    q: 'Why does Street View open somewhere slightly different from my pin?',
+    a: 'Street View panoramas only exist where Google has photographed, mostly along public roads. Google jumps to the panorama nearest your point, which is usually the road in front of a building rather than its exact center. If there is no imagery nearby at all, Google Maps shows its normal map instead. Try a point on the nearest main road, or check the place from above with satellite view on our interactive map.',
   },
   {
     q: 'How do I see older imagery of the same address?',
-    a: 'The embed shows only the current capture. To scroll through history, open the location in the full Google Maps site and use the time-slider in the top-left corner of the Street View panel. Coverage history typically goes back to 2007 in major cities and much less elsewhere.',
+    a: 'Open the panorama in the full Google Maps site on a computer and look for the date and the "See more dates" option in the panel at the top left. It lets you scroll back through earlier captures of the same spot. History goes back to 2007 in the first cities Google photographed and is much shorter elsewhere.',
   },
   {
     q: 'Can I use Street View to check a property before renting or buying?',
-    a: 'It is a useful first pass — you can see the street, the parking situation, and the general condition of neighbouring buildings. Check the capture date first, though. A panorama from four years ago tells you nothing about construction that started last spring. Pair it with current satellite imagery on the maps tool.',
+    a: 'It is a useful first pass: you can see the street, the parking situation, and the condition of neighbouring buildings. Check the capture date first, though. A panorama from four years ago tells you nothing about construction that started last spring. Pair it with current satellite imagery on the maps tool.',
   },
   {
     q: 'Does this page track where I search?',
-    a: 'No. The address you type is passed to the Google Maps embed to render the panorama and is not logged or stored by this site. Google applies its own terms to the embed — see our privacy policy for the list of third parties involved.',
+    a: 'This site does not log or store your searches. If you type an address, it is sent to OpenStreetMap\'s free geocoder to turn it into coordinates; typed coordinates are not sent anywhere until you open Street View. The coordinates are then shared with Google when it shows the panorama. Both services apply their own privacy terms, listed in our privacy policy.',
   },
 ];
 
@@ -98,24 +98,39 @@ export default function StreetViewPage() {
             Street <span className="text-accent">View</span> — see any address in Google Street View
           </h1>
           <p className="text-lg text-fg-muted mt-4 max-w-3xl">
-            Type any address, landmark, or GPS coordinate pair, and instantly walk down the street in <strong className="text-fg">Google Street View</strong>. No signup, no app to install.
+            Type any address, landmark, or GPS coordinates, pick the direction you want to face, and open the spot in <strong className="text-fg">Google Street View</strong>. The tool finds the exact point first, so Street View lands on the right street. No signup, no app to install.
           </p>
         </section>
 
         <Tool />
 
         <section className="mt-10">
+          <h2 className="font-display text-2xl font-bold">How to see any address in Street View</h2>
+          <ol className="mt-3 space-y-1.5 text-fg-muted list-decimal list-inside leading-relaxed">
+            <li>Type an address or landmark, or paste coordinates in any format (decimal degrees, DMS, UTM, or a Google Maps link), and press <em>Find</em>. Or tap one of the example places.</li>
+            <li>Check the pin on the map and the place name above it. If the name is wrong, add the city and country and search again.</li>
+            <li>Pick the direction to face: N, E, S, or W.</li>
+            <li>Open Street View. Google shows the panorama nearest your pin, and you can turn, zoom, and move along the street from there.</li>
+          </ol>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            Typed addresses are turned into coordinates with OpenStreetMap&rsquo;s free geocoder, which allows one request per second, so a lookup may pause for a moment. Coordinates skip that step entirely.
+          </p>
+        </section>
+
+        <section className="mt-10">
           <h2 className="font-display text-2xl font-bold">How Street View imagery is captured</h2>
           <p className="mt-3 text-fg-muted leading-relaxed">
-            Most of the imagery you see comes from cars driving the public road
-            network with a rooftop rig of about nine cameras shooting overlapping
-            panoramas every few meters. Google&rsquo;s fleet has covered roughly five
-            million miles of public roads since the service launched in 2007. For
+            Most of the imagery comes from cars driving the public road network with a
+            rooftop camera rig that shoots overlapping photos, stitched into 360-degree
+            panoramas a few meters apart. By Street View&rsquo;s 15th anniversary in 2022,
+            Google said it had published more than 220 billion images from over 10 million
+            miles of travel in 100 countries and territories, starting with five US cities
+            in 2007. For
             places cars cannot reach — hiking trails, narrow alleys, museum
             interiors — the same panoramic kit is mounted on a backpack, a
             snowmobile, a small boat, or in the case of some museums, a trolley.
-            All of it goes through the same stitching pipeline before it reaches
-            the embed below.
+            All of it goes through the same stitching process before it appears in
+            Street View.
           </p>
         </section>
 
@@ -128,22 +143,21 @@ export default function StreetViewPage() {
             Brazil, and Indonesia have partial coverage — major streets are
             mapped, side streets are not. A few countries (parts of Germany, until
             recently, plus most of mainland China, Iran, and North Korea) have
-            very limited Street View for legal or political reasons. When the
-            embed below cannot find a panorama for an address, it quietly falls
-            back to the normal map.
+            very limited Street View for legal or political reasons. When there is no
+            panorama near your pin, Google Maps shows its normal map instead, which is
+            the quickest sign that a place has no coverage.
           </p>
         </section>
 
         <section className="mt-10">
           <h2 className="font-display text-2xl font-bold">How old is what you are looking at?</h2>
           <p className="mt-3 text-fg-muted leading-relaxed">
-            Every Street View image is dated. Look at the bottom-left corner of
-            the embed once it loads — the capture month and year are shown there.
-            Busy city centres get refreshed every two or three years; smaller
-            towns might still be showing imagery from five years ago. For
-            historical research this is occasionally useful: Street View has a
-            time-slider feature on the full Google Maps site that lets you scroll
-            back through older captures of the same address.
+            Every Street View image is dated. In Google Maps the capture month and year
+            appear in the panel at the top left of the panorama; check it before drawing
+            conclusions, because busy city centers are re-photographed far more often than
+            small towns and rural roads, where imagery can be many years old. On a computer,
+            the same panel has a &ldquo;See more dates&rdquo; option that lets you scroll
+            back through older captures of the same spot.
           </p>
         </section>
 
@@ -153,10 +167,9 @@ export default function StreetViewPage() {
             Faces and licence plates are automatically blurred before any panorama
             is published. The blur is applied at upload time and is not reversible
             from the viewer side. If you find yourself or your home in the
-            imagery and want it removed or further blurred, Google has a
-            self-service report tool inside Maps — three dots, &ldquo;Report a
-            problem&rdquo; — that handles requests for additional blurring within a
-            few business days.
+            imagery and want it blurred, open the panorama in Google Maps and use
+            &ldquo;Report a problem&rdquo; to request blurring of a face, a car, or a
+            whole house. Google says blurring is permanent once applied.
           </p>
         </section>
 
@@ -198,18 +211,26 @@ export default function StreetViewPage() {
           <h2 className="font-display text-2xl font-bold">Searching by coordinates instead of an address</h2>
           <p className="mt-3 text-fg-muted leading-relaxed">
             The search box accepts a decimal-degree coordinate pair as readily as a street address &mdash;
-            paste <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">48.858420, 2.294500</code> and
-            the panorama jumps to the Eiffel Tower. This is the reliable way to reach somewhere that has no
+            paste <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">48.858420, 2.294500</code> and the pin drops on the Eiffel Tower, ready to open in Street View.
+            Degrees-minutes-seconds such as <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">48°51'30"N 2°17'40"E</code>, UTM, and Google Maps links work too. This is the reliable way to reach somewhere that has no
             postal address at all: a trailhead, a layby, a field entrance, a spot a friend sent you from
             their phone.
           </p>
           <p className="mt-3 text-fg-muted leading-relaxed">
             To get a coordinate pair for where you are standing, use the{' '}
             <Link href="/my-location" className="text-accent hover:underline">My Location tool</Link>, which
-            reads your GPS position and gives you a copyable &ldquo;lat, lon&rdquo; string. If you have a
-            coordinate in degrees-minutes-seconds and need it in decimal form first, the{' '}
-            <Link href="/coordinates-converter" className="text-accent hover:underline">coordinates converter</Link>{' '}
-            handles the translation.
+            reads your GPS position and gives you a copyable &ldquo;lat, lon&rdquo; string, or simply tap
+            <em> My location</em> in the tool above. To see a coordinate in every format, use the{' '}
+            <Link href="/coordinates-converter" className="text-accent hover:underline">coordinates converter</Link>.
+          </p>
+        </section>
+
+        <section className="mt-10">
+          <h2 className="font-display text-2xl font-bold">When there&rsquo;s no Street View here</h2>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            If Google Maps opens a normal map instead of a panorama, there is no imagery near your pin. Common reasons: the place is on a private road or estate, deep in a park, or in a country or region with little or no coverage. Try moving the pin to the nearest public road (get its coordinates from the{' '}
+            <Link href="/address-finder" className="text-accent hover:underline">Address Finder</Link>), or look at the place from above in satellite view on the{' '}
+            <Link href="/maps" className="text-accent hover:underline">interactive map</Link>.
           </p>
         </section>
 

@@ -29,13 +29,15 @@ Some tools also call `navigator.geolocation.watchPosition`, which subscribes to 
 A coordinate on its own is just numbers. To show a readable city and country, the page sends the coordinate to a reverse-geocoding service. We use:
 
 -   **BigDataCloud** — the first choice for the homepage tool. Their privacy policy is published at bigdatacloud.com/privacy-and-cookie-policy.
--   **OpenStreetMap Nominatim** — used by the Address Finder and as a fallback elsewhere. Their privacy policy is published at wiki.osmfoundation.org/wiki/Privacy\_Policy.
+-   **OpenStreetMap Nominatim** — used by the Address Finder, by the Street View tool to turn a typed address into coordinates, and as a fallback elsewhere. Their privacy policy is published at wiki.osmfoundation.org/wiki/Privacy\_Policy.
 
 Each request contains the coordinate and your IP (visible to any web service you connect to). It does not contain a username, an email, or any identifier we attach. Both services have their own retention policies linked above.
 
 ## 3\. Map tiles
 
-The maps you see are rendered with Leaflet and use tile images from OpenStreetMap and CARTO. Loading a tile reveals your IP and the tile coordinate to those providers, the same as any embedded map would. Their privacy policies are published at wiki.osmfoundation.org/wiki/Privacy\_Policy and carto.com/privacy.
+The maps you see are rendered with Leaflet and use tile images from OpenStreetMap, plus Esri (ArcGIS) imagery when you switch the Interactive Map to satellite view. Loading a tile reveals your IP and the tile coordinate to those providers, the same as any embedded map would. Their privacy policies are published at wiki.osmfoundation.org/wiki/Privacy\_Policy and esri.com/en-us/privacy.
+
+The Driving Directions tool embeds a Google Maps route, and the Street View tool opens Google Street View (or embeds it on the page when enabled). Those embeds and links are served by Google, which receives your IP and the place or route shown, under the Google Privacy Policy at policies.google.com/privacy.
 
 ## 4\. IP lookups (IP Location tool)
 
