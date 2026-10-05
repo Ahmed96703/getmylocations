@@ -6,7 +6,7 @@ import AdSense from '../components/AdSense.jsx';
 export const metadata = {
   title: 'IP Location Lookup — Find Any IP\'s City and ISP (Free)',
   description:
-    'Find any IP\'s city, country, ISP and approximate location in two seconds. Plus how IP geolocation works and why the city is often wrong.',
+    'Look up any IPv4 or IPv6 address to see its city, country, ISP and ASN on a map, plus how far your IP location is from where you actually are. Try it.',
   keywords: [
     'ip location',
     'ip location lookup',
@@ -38,7 +38,7 @@ const webAppSchema = {
   '@type': 'WebApplication',
   name: 'IP Location Lookup',
   description:
-    'Free browser-based tool that looks up any IP address and returns the database-guessed city, country, ISP, and approximate geolocation.',
+    'Free browser-based tool that looks up any IPv4 or IPv6 address or domain name and returns the database-estimated city, country, ISP, ASN, and timezone on a map. Recognises private and reserved addresses locally, and can measure how far your IP location is from your GPS position.',
   url: 'https://getmylocations.com/ip-location',
   applicationCategory: 'UtilitiesApplication',
   operatingSystem: 'Web',
@@ -60,15 +60,15 @@ const breadcrumbSchema = {
 const faqs = [
   {
     q: 'How do I look up my own IP location?',
-    a: 'Tap the "Lookup my IP" button on the tool above. Within a second or two the page returns your public IP (IPv4 or IPv6), the database-guessed city and country, the ISP that owns the IP block, and whether you appear to be on a residential, mobile, hosting, or VPN connection. No permission prompt — IP geolocation reads only what your browser already sent on the network connection.',
+    a: 'Tap the "Lookup my IP" button on the tool above. Within a second or two the page returns your public IP (IPv4 or IPv6), the database-guessed city and country, the ISP and ASN that own the IP block, the timezone, and a map pin. No permission prompt is needed — IP geolocation uses only the address your connection already exposes. If you then tap "Measure the gap", the tool compares that estimate with your device location and shows the distance between them.',
   },
   {
     q: 'How do I look up someone else\'s IP location?',
-    a: 'Paste the IP address into the input field on the tool above and the lookup runs against that IP instead of yours. The same fields come back: city, country, ISP, connection type. Important caveat: an IP reveals at most a city and an ISP — never a street address, never a name. Anything more requires legal process served on the ISP.',
+    a: 'Paste the IP address into the input field on the tool above and the lookup runs against that IP instead of yours. The same fields come back: city, region, country, ISP, ASN, and timezone. You can also type a domain name such as example.com; the tool resolves it to an IP address first. Important caveat: an IP reveals at most a city and an ISP — never a street address, never a name. Anything more requires legal process served on the ISP.',
   },
   {
     q: 'How accurate is IP geolocation?',
-    a: 'Country level: 95–99% accurate. Region or state: 80–90%. City level: only 50–75%, and often off by tens of kilometres. Street level: essentially zero — the best you can squeeze out of a public database is a 5–50 km radius. Mobile traffic is the worst case because cellular Carrier-Grade NAT routes thousands of subscribers through a single regional gateway.',
+    a: 'MaxMind, one of the largest IP database providers, estimates 99.8% accuracy at the country level; for US addresses, about 80% at the state level and 66% for the city (within 50 km). Accuracy varies widely by country and is usually worst on mobile data, where carrier-grade NAT routes many subscribers through one regional gateway. Street-level accuracy from an IP alone is essentially impossible.',
   },
   {
     q: 'Why is the city it shows wrong?',
@@ -80,7 +80,15 @@ const faqs = [
   },
   {
     q: 'Can someone find my home address from my IP?',
-    a: 'No — not without a court order. A public IP lookup reveals your country, usually your city, your ISP, and whether you are on a VPN or proxy. It does not reveal your name or street. Tying an IP to a specific human address requires a subpoena served on the ISP that owns the IP block. Films routinely overstate this; news stories about someone being "tracked through their IP" almost always have a court order in the middle.',
+    a: 'No — not without a court order. A public IP lookup reveals your country, usually your city, and your ISP; some commercial databases also flag known VPN and proxy addresses. It does not reveal your name or street. Tying an IP to a specific human address requires a subpoena served on the ISP that owns the IP block. Films routinely overstate this; news stories about someone being "tracked through their IP" almost always have a court order in the middle.',
+  },
+  {
+    q: 'Why does the tool say my IP is a private address?',
+    a: 'Addresses such as 192.168.x.x, 10.x.x.x, and 172.16.x.x to 172.31.x.x are private (RFC 1918): your router hands them out inside your home or office, and the same numbers are reused on millions of other networks. 100.64.x.x to 100.127.x.x is carrier-grade NAT space (RFC 6598) used inside ISP networks. None of these are visible on the public internet, so they have no location. The tool recognises them in your browser without sending them anywhere. Leave the box empty to look up your public IP.',
+  },
+  {
+    q: 'Which database does this IP lookup use?',
+    a: 'Public addresses are looked up with ipapi.co. Domain names are first resolved to an IP address using Cloudflare\'s public DNS (1.1.1.1). Different providers often disagree at city level because each builds its database from different signals, so another site may show a different city for the same IP.',
   },
 ];
 
@@ -120,7 +128,7 @@ export default function IpLocationLookup() {
         <p className="mt-4 text-lg text-fg-muted leading-relaxed">
           Every device on the public internet has an IP address. That address quietly leaks a
           surprising amount about you &mdash; your approximate city, your internet provider, the
-          kind of connection you&apos;re on &mdash; but also <em>less</em> than most people assume.
+          network that owns your address &mdash; but also <em>less</em> than most people assume.
           This guide explains exactly what an IP lookup can and can&apos;t tell, how to find your
           own public IP, how IP-based geolocation actually works under the hood, and what to do
           when the city it reports is wrong.
@@ -128,6 +136,33 @@ export default function IpLocationLookup() {
 
         <div className="not-prose my-8">
           <Tool />
+        </div>
+
+        <hr className="my-10 border-line" />
+
+        <h2 className="font-display text-2xl font-bold">What each IP address lookup result means</h2>
+        <p className="mt-3 text-fg-muted leading-relaxed">
+          The lookup returns a dozen fields. Some come straight from public registration records and are nearly always right; others are database estimates. Here is how far to trust each one.
+        </p>
+        <div className="not-prose mt-4 overflow-x-auto rounded-xl ring-1 ring-line">
+          <table className="w-full text-sm text-left">
+            <thead>
+              <tr className="bg-tint/5 text-fg-muted">
+                <th className="px-3 py-2 font-semibold">Field</th>
+                <th className="px-3 py-2 font-semibold">What it is</th>
+                <th className="px-3 py-2 font-semibold">How reliable</th>
+              </tr>
+            </thead>
+            <tbody className="text-fg-muted">
+              <tr className="border-t border-line-subtle"><td className="px-3 py-2 text-fg">IP address, version</td><td className="px-3 py-2">The public address, IPv4 or IPv6</td><td className="px-3 py-2">Exact</td></tr>
+              <tr className="border-t border-line-subtle"><td className="px-3 py-2 text-fg">ISP / Org</td><td className="px-3 py-2">The organisation the address block is registered to</td><td className="px-3 py-2">High: comes from registry records</td></tr>
+              <tr className="border-t border-line-subtle"><td className="px-3 py-2 text-fg">ASN</td><td className="px-3 py-2">Autonomous System Number, the ID of the network that routes the address on the internet</td><td className="px-3 py-2">High</td></tr>
+              <tr className="border-t border-line-subtle"><td className="px-3 py-2 text-fg">Country</td><td className="px-3 py-2">Where the address is registered and used</td><td className="px-3 py-2">Very high, unless you are on a VPN</td></tr>
+              <tr className="border-t border-line-subtle"><td className="px-3 py-2 text-fg">Region, city, postal code</td><td className="px-3 py-2">The database&rsquo;s best guess at where the network serves</td><td className="px-3 py-2">Moderate to low; often the ISP&rsquo;s hub, not you</td></tr>
+              <tr className="border-t border-line-subtle"><td className="px-3 py-2 text-fg">Coordinates</td><td className="px-3 py-2">A point for that city or region, used for the map pin</td><td className="px-3 py-2">Low: never a street address</td></tr>
+              <tr className="border-t border-line-subtle"><td className="px-3 py-2 text-fg">Timezone, UTC offset, currency</td><td className="px-3 py-2">Derived from the estimated location</td><td className="px-3 py-2">As reliable as the country or region</td></tr>
+            </tbody>
+          </table>
         </div>
 
         <hr className="my-10 border-line" />
@@ -150,6 +185,16 @@ export default function IpLocationLookup() {
           your local Wi-Fi. The outside world never sees it &mdash; only your public IP is
           visible to websites.
         </p>
+        <p className="mt-3 text-fg-muted leading-relaxed">
+          These ranges are never public, and the tool recognises them without sending them anywhere:
+        </p>
+        <ul className="mt-3 space-y-1.5 text-fg-muted list-disc list-inside">
+          <li><code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">10.0.0.0/8</code>, <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">172.16.0.0/12</code>, <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">192.168.0.0/16</code>: private networks (RFC 1918)</li>
+          <li><code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">100.64.0.0/10</code>: carrier-grade NAT inside ISP and mobile networks (RFC 6598)</li>
+          <li><code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">127.0.0.0/8</code> and <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">::1</code>: loopback, meaning &ldquo;this device&rdquo;</li>
+          <li><code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">169.254.0.0/16</code> and <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">fe80::/10</code>: link-local, self-assigned when no router answers</li>
+          <li><code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">fc00::/7</code>: IPv6 unique local addresses, the IPv6 equivalent of private ranges (RFC 4193)</li>
+        </ul>
 
         <hr className="my-10 border-line" />
 
@@ -157,10 +202,8 @@ export default function IpLocationLookup() {
 
         <h3 className="font-display text-lg font-semibold mt-6 text-fg">1. Use a browser tool</h3>
         <p className="mt-2 text-fg-muted leading-relaxed">
-          Easiest by far. Tap the button on the tool above and the IP, ISP, and database-guessed city appear in the dashboard panel. The dedicated{' '}
-          IP Location tool{' '}
-          does the same thing in a tighter standalone widget. You don&apos;t need to grant any permission &mdash;
-          the page just reads the IP visible to the server when your browser connected.
+          Easiest by far. Tap <em>Lookup my IP</em> in the tool at the top of this page and your public IP, ISP, and estimated city appear below it. You don&apos;t need to grant any permission &mdash;
+          the lookup service simply reports the address your browser connected from.
         </p>
 
         <h3 className="font-display text-lg font-semibold mt-6 text-fg">2. Ask your router</h3>
@@ -188,7 +231,7 @@ export default function IpLocationLookup() {
           When a website turns your IP into &ldquo;Lahore, Pakistan&rdquo; or &ldquo;Mumbai, India&rdquo;, it isn&apos;t
           reading anything from your computer. It&apos;s looking up the IP in a database. The
           database itself is built by companies like MaxMind, IPinfo, IP2Location, and
-          BigDataCloud from several signals:
+          BigDataCloud from several signals. The tool on this page uses ipapi.co&rsquo;s database:
         </p>
         <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside">
           <li>
@@ -219,11 +262,41 @@ export default function IpLocationLookup() {
         </ul>
 
         <p className="mt-4 text-fg-muted leading-relaxed">
-          The lookup itself is cheap to run, but the answer is inherently fuzzy.
-          Country-level accuracy is usually better than 99%; city-level accuracy
-          is often only 50&ndash;80%, and street-level accuracy is essentially
-          impossible from IP alone. For why this matters, see our
+          The lookup itself is cheap to run, but the answer is inherently fuzzy, as the next section shows. For why this matters, see our
           {' '}<Link href="/blog/what-is-ip-location-and-how-accurate" className="text-accent hover:underline">deep dive on IP location accuracy</Link>.
+        </p>
+
+        <hr className="my-10 border-line" />
+
+        <h2 className="font-display text-2xl font-bold">How accurate is IP geolocation?</h2>
+        <p className="mt-3 text-fg-muted leading-relaxed">
+          MaxMind, one of the largest IP database providers, publishes its own estimates: <strong className="text-fg">99.8% accuracy at the country level</strong>, and for US addresses about <strong className="text-fg">80% at the state or region level</strong> and <strong className="text-fg">66% for the city</strong>, where &ldquo;correct&rdquo; means within 50 km. So even by a major provider&rsquo;s own measure, one US city guess in three is more than 50 km out.
+        </p>
+        <div className="not-prose mt-4 overflow-x-auto rounded-xl ring-1 ring-line">
+          <table className="w-full text-sm text-left">
+            <thead><tr className="bg-tint/5 text-fg-muted"><th className="px-3 py-2 font-semibold">Level</th><th className="px-3 py-2 font-semibold">Typical accuracy</th></tr></thead>
+            <tbody className="text-fg-muted">
+              <tr className="border-t border-line-subtle"><td className="px-3 py-2 text-fg">Country</td><td className="px-3 py-2">99.8%</td></tr>
+              <tr className="border-t border-line-subtle"><td className="px-3 py-2 text-fg">State or region (US)</td><td className="px-3 py-2">about 80%</td></tr>
+              <tr className="border-t border-line-subtle"><td className="px-3 py-2 text-fg">City, within 50 km (US)</td><td className="px-3 py-2">about 66%</td></tr>
+              <tr className="border-t border-line-subtle"><td className="px-3 py-2 text-fg">Street address</td><td className="px-3 py-2">not possible from an IP</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-3 text-fg-muted leading-relaxed">
+          Source: MaxMind&rsquo;s published accuracy estimates, checked October 2026. MaxMind notes that accuracy varies widely by country, by connection type (mobile is usually worse than fixed broadband), by IPv4 versus IPv6, and by how each ISP manages its addresses; its online accuracy comparison breaks this down country by country. Other providers, including the one this tool uses, publish their own figures, and providers often disagree at city level for the same address.
+        </p>
+
+        <hr className="my-10 border-line" />
+
+        <h2 className="font-display text-2xl font-bold">How far off is your IP location?</h2>
+        <p className="mt-3 text-fg-muted leading-relaxed">
+          Averages only go so far; what matters is how wrong the guess is for your connection. After you look up your own IP, the tool offers a <em>Measure the gap</em> button. With your permission it reads your device&rsquo;s location, the same way our 
+          <Link href="/my-location" className="text-accent hover:underline">My Location tool</Link> does, and shows how many kilometres separate it from the IP database&rsquo;s estimate. Your device location stays in the browser; only the distance is displayed.
+        </p>
+        <p className="mt-3 text-fg-muted leading-relaxed">
+          A gap of a few kilometres means the database knows your ISP&rsquo;s local network well. Tens of kilometres usually means you are being placed at the ISP&rsquo;s regional hub. Hundreds of kilometres or a different country almost always means a VPN, a corporate network, or a mobile carrier routing you through a distant gateway. Try it on Wi-Fi and again on mobile data to see the difference. For the full comparison of the two methods, see 
+          <Link href="/gps-vs-ip-accuracy" className="text-accent hover:underline">GPS vs IP accuracy</Link>.
         </p>
 
         <hr className="my-10 border-line" />
@@ -235,7 +308,7 @@ export default function IpLocationLookup() {
           <li>Your country (almost always correct).</li>
           <li>Your region or state (often correct).</li>
           <li>The internet service provider (ISP) that owns your IP block.</li>
-          <li>Whether you&apos;re on residential broadband, mobile data, a hosting provider, or a known VPN exit node.</li>
+          <li>For some commercial databases (not the free one used here), whether the address belongs to a hosting provider or a known VPN exit node.</li>
           <li>An approximate city, accurate to ~25 km on a good day.</li>
         </ul>
 
@@ -325,7 +398,17 @@ export default function IpLocationLookup() {
           against your IP in a terminal. The
           {' '}<code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">OrgName</code>{' '}
           or <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">netname</code>{' '}
-          field is the ISP that registered the IP block.
+          field is the ISP that registered the IP block. The ASN in the results identifies the network that announces the address on the internet; large ISPs and cloud providers each have their own, so the same ASN across two lookups means the same network operator.
+        </p>
+
+        <hr className="my-10 border-line" />
+
+        <h2 className="font-display text-2xl font-bold">Look up a domain&rsquo;s IP location</h2>
+        <p className="mt-3 text-fg-muted leading-relaxed">
+          You can type a domain name such as <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">example.com</code> (or paste a full URL) instead of an IP. The tool resolves it to an IPv4 address using Cloudflare&rsquo;s public DNS, falling back to IPv6 if there is none, then looks that address up.
+        </p>
+        <p className="mt-3 text-fg-muted leading-relaxed">
+          Expect a surprise with big websites: most sit behind a content delivery network, so the location you see is the CDN&rsquo;s nearest edge server, often in or near your own country, not where the company or its servers actually are. The ISP field will usually name the CDN, such as Cloudflare or Akamai, which is the giveaway.
         </p>
 
         <hr className="my-10 border-line" />
@@ -355,6 +438,10 @@ export default function IpLocationLookup() {
           </li>
         </ul>
         <p className="mt-3 text-fg-muted leading-relaxed">
+          If a database has your network in the wrong place and it causes you problems (the wrong country&rsquo;s content, for example), you can ask the providers to correct it. MaxMind takes corrections at{' '}
+          <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">maxmind.com/en/geoip-location-correction</code> and IPinfo at <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">ipinfo.io/corrections</code>; others usually accept corrections through their contact pages. Corrections tend to take weeks to reach every site that uses the data.
+        </p>
+        <p className="mt-3 text-fg-muted leading-relaxed">
           The fix, if you need accurate location, is to grant GPS-level browser geolocation
           instead of relying on IP. Step-by-step browser fixes are in our
           {' '}<Link href="/fix-location-not-working" className="text-accent hover:underline">troubleshooting guide</Link>.
@@ -367,8 +454,9 @@ export default function IpLocationLookup() {
           Every website you visit can see your IP &mdash; that&apos;s required for the connection
           to work. What they do with it varies. GetMyLocations doesn&apos;t log your IP for
           analytics, but our hosting provider (Cloudflare) keeps short-lived request logs for
-          abuse prevention, and our third-party services (reverse geocoding, advertising) may
-          process your IP for their own purposes. The full breakdown is in our
+          abuse prevention. Using this tool sends the IP being looked up to ipapi.co, and a typed
+          domain name to Cloudflare&rsquo;s DNS resolver. Private and reserved addresses are recognised
+          in your browser and never sent. Advertising services may process your IP for their own purposes. The full breakdown is in our
           {' '}<Link href="/privacy-policy" className="text-accent hover:underline">Privacy Policy</Link>.
         </p>
         <p className="mt-3 text-fg-muted leading-relaxed">
@@ -395,12 +483,10 @@ export default function IpLocationLookup() {
 
         <h2 className="font-display text-2xl font-bold mt-10">Related tools and guides</h2>
         <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside">
-          <li>IP Location &mdash; the standalone tool</li>
           <li><Link href="/blog/what-is-ip-location-and-how-accurate" className="text-accent hover:underline">What is IP location and how accurate is it?</Link></li>
           <li><Link href="/gps-vs-ip-accuracy" className="text-accent hover:underline">GPS vs IP accuracy &mdash; side-by-side comparison</Link></li>
           <li><Link href="/blog/what-your-ip-reveals" className="text-accent hover:underline">What your IP address really tells apps about you</Link></li>
           <li><Link href="/my-location" className="text-accent hover:underline">My Location &mdash; GPS-based reading (more precise than IP)</Link></li>
-          <li><Link href="/my-location" className="text-accent hover:underline">GPS coordinates finder &mdash; complete guide</Link></li>
           <li><Link href="/fix-location-not-working" className="text-accent hover:underline">Fix location not working &mdash; troubleshooting</Link></li>
           <li><Link href="/blog/how-gps-works" className="text-accent hover:underline">How GPS works &mdash; satellite math</Link></li>
         </ul>

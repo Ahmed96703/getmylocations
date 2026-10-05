@@ -6,7 +6,7 @@ url: https://getmylocations.com/privacy-policy
 
 # Privacy Policy
 
-Last updated: 2026
+Last updated: October 5, 2026
 
 This page explains what information GetMyLocations receives when you use the site, what we do with it, and which third parties are involved. The summary at the top covers the common questions; the sections below give the details for anyone who wants them.
 
@@ -40,6 +40,8 @@ The maps you see are rendered with Leaflet and use tile images from OpenStreetMa
 ## 4\. IP lookups (IP Location tool)
 
 The IP Location tool calls the public ipapi.co endpoint (privacy policy at ipapi.co/privacy). The IP you look up — your own when you click _Lookup my IP_, or any IP you paste — is sent to ipapi.co, which returns the geolocation data. Their policy covers what they keep.
+
+If you type a domain name (such as example.com) into the IP Location tool, your browser first asks Cloudflare’s public DNS resolver (cloudflare-dns.com, the 1.1.1.1 service) for the domain’s IP address, then looks that IP up at ipapi.co. Cloudflare receives the domain name and your IP address as part of that DNS request; see 1.1.1.1/privacy. Private and reserved addresses (such as 192.168.x.x) are recognised in your browser and are not sent to either service. The optional “Measure the gap” check reads your device location in the browser and only compares it with the lookup result there; that reading is not sent anywhere.
 
 ## 5\. Hosting and request logs
 

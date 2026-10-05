@@ -38,7 +38,7 @@ export default function Privacy() {
         </nav>
 
       <h1 className="font-display text-4xl font-extrabold tracking-tight">Privacy Policy</h1>
-      <p className="text-sm text-fg-subtle mt-2">Last updated: 2026</p>
+      <p className="text-sm text-fg-subtle mt-2">Last updated: October 5, 2026</p>
 
       <p className="mt-6 text-fg-muted leading-relaxed">
         This page explains what information GetMyLocations receives when you use the
@@ -111,6 +111,16 @@ export default function Privacy() {
         The IP you look up — your own when you click <em>Lookup my IP</em>,
         or any IP you paste — is sent to ipapi.co, which returns the geolocation data.
         Their policy covers what they keep.
+      </p>
+      <p className="mt-3 text-fg-muted leading-relaxed">
+        If you type a domain name (such as example.com) into the IP Location tool, your browser
+        first asks Cloudflare&rsquo;s public DNS resolver (cloudflare-dns.com, the 1.1.1.1 service) for
+        the domain&rsquo;s IP address, then looks that IP up at ipapi.co. Cloudflare receives the domain
+        name and your IP address as part of that DNS request; see{' '}
+        <span className="text-fg-muted font-mono text-sm">1.1.1.1/privacy</span>. Private and reserved
+        addresses (such as 192.168.x.x) are recognised in your browser and are not sent to either service.
+        The optional &ldquo;Measure the gap&rdquo; check reads your device location in the browser and only
+        compares it with the lookup result there; that reading is not sent anywhere.
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-10">5. Hosting and request logs</h2>
