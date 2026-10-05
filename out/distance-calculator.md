@@ -78,103 +78,14 @@ You can mix formats: a DMS point A and a UTM point B work fine. Out-of-range val
 
 The first time you use any distance calculator, it pays to verify it against pairs you already know. These six city pairs are calculated with the calculator’s own code when the page is built, so pasting any pair into the tool gives exactly these numbers. The last two columns show what a spherical haversine calculator would say instead, and how far off that is.
 
-From
-
-To
-
-km
-
-mi
-
-NM
-
-Sphere km
-
-Sphere error
-
-London (51.5074, -0.1278)
-
-Paris (48.8566, 2.3522)
-
-344
-
-214
-
-186
-
-344
-
-−0.4 km
-
-New York JFK (40.6413, -73.7781)
-
-London LHR (51.47, -0.4543)
-
-5,555
-
-3,452
-
-2,999
-
-5,540
-
-−14.9 km
-
-Karachi (24.8607, 67.0011)
-
-Dubai (25.2048, 55.2708)
-
-1,184
-
-736
-
-639
-
-1,182
-
-−2.0 km
-
-Sydney (-33.8688, 151.2093)
-
-Tokyo (35.6762, 139.6503)
-
-7,792
-
-4,842
-
-4,207
-
-7,826
-
-+33.7 km
-
-San Francisco (37.7749, -122.4194)
-
-Los Angeles (34.0522, -118.2437)
-
-559
-
-347
-
-302
-
-559
-
-+0.1 km
-
-Cape Town (-33.9249, 18.4241)
-
-Cairo (30.0444, 31.2357)
-
-7,207
-
-4,479
-
-3,892
-
-7,239
-
-+31.8 km
+| From | To | km | mi | NM | Sphere km | Sphere error |
+| --- | --- | --- | --- | --- | --- | --- |
+| London (51.5074, -0.1278) | Paris (48.8566, 2.3522) | 344 | 214 | 186 | 344 | −0.4 km |
+| New York JFK (40.6413, -73.7781) | London LHR (51.47, -0.4543) | 5,555 | 3,452 | 2,999 | 5,540 | −14.9 km |
+| Karachi (24.8607, 67.0011) | Dubai (25.2048, 55.2708) | 1,184 | 736 | 639 | 1,182 | −2.0 km |
+| Sydney (-33.8688, 151.2093) | Tokyo (35.6762, 139.6503) | 7,792 | 4,842 | 4,207 | 7,826 | +33.7 km |
+| San Francisco (37.7749, -122.4194) | Los Angeles (34.0522, -118.2437) | 559 | 347 | 302 | 559 | +0.1 km |
+| Cape Town (-33.9249, 18.4241) | Cairo (30.0444, 31.2357) | 7,207 | 4,479 | 3,892 | 7,239 | +31.8 km |
 
 Distances are rounded to the nearest whole unit. Checked against the GeographicLib reference library in October 2026.
 

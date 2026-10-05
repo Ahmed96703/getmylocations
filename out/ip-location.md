@@ -18,53 +18,15 @@ Every device on the public internet has an IP address. That address quietly leak
 
 The lookup returns a dozen fields. Some come straight from public registration records and are nearly always right; others are database estimates. Here is how far to trust each one.
 
-Field
-
-What it is
-
-How reliable
-
-IP address, version
-
-The public address, IPv4 or IPv6
-
-Exact
-
-ISP / Org
-
-The organisation the address block is registered to
-
-High: comes from registry records
-
-ASN
-
-Autonomous System Number, the ID of the network that routes the address on the internet
-
-High
-
-Country
-
-Where the address is registered and used
-
-Very high, unless you are on a VPN
-
-Region, city, postal code
-
-The database’s best guess at where the network serves
-
-Moderate to low; often the ISP’s hub, not you
-
-Coordinates
-
-A point for that city or region, used for the map pin
-
-Low: never a street address
-
-Timezone, UTC offset, currency
-
-Derived from the estimated location
-
-As reliable as the country or region
+| Field | What it is | How reliable |
+| --- | --- | --- |
+| IP address, version | The public address, IPv4 or IPv6 | Exact |
+| ISP / Org | The organisation the address block is registered to | High: comes from registry records |
+| ASN | Autonomous System Number, the ID of the network that routes the address on the internet | High |
+| Country | Where the address is registered and used | Very high, unless you are on a VPN |
+| Region, city, postal code | The database’s best guess at where the network serves | Moderate to low; often the ISP’s hub, not you |
+| Coordinates | A point for that city or region, used for the map pin | Low: never a street address |
+| Timezone, UTC offset, currency | Derived from the estimated location | As reliable as the country or region |
 
 * * *
 
@@ -118,25 +80,12 @@ The lookup itself is cheap to run, but the answer is inherently fuzzy, as the ne
 
 MaxMind, one of the largest IP database providers, publishes its own estimates: **99.8% accuracy at the country level**, and for US addresses about **80% at the state or region level** and **66% for the city**, where “correct” means within 50 km. So even by a major provider’s own measure, one US city guess in three is more than 50 km out.
 
-Level
-
-Typical accuracy
-
-Country
-
-99.8%
-
-State or region (US)
-
-about 80%
-
-City, within 50 km (US)
-
-about 66%
-
-Street address
-
-not possible from an IP
+| Level | Typical accuracy |
+| --- | --- |
+| Country | 99.8% |
+| State or region (US) | about 80% |
+| City, within 50 km (US) | about 66% |
+| Street address | not possible from an IP |
 
 Source: MaxMind’s published accuracy estimates, checked October 2026. MaxMind notes that accuracy varies widely by country, by connection type (mobile is usually worse than fixed broadband), by IPv4 versus IPv6, and by how each ISP manages its addresses; its online accuracy comparison breaks this down country by country. Other providers, including the one this tool uses, publish their own figures, and providers often disagree at city level for the same address.
 

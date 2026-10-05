@@ -54,53 +54,15 @@ To read your own position with a full accuracy radius and a resolved street addr
 
 Handy starting points if you want to jump the map somewhere specific, or check a coordinate you have been given against a known city centre. Latitude first, longitude second, as always.
 
-City
-
-Latitude
-
-Longitude
-
-New York, NY
-
-40.7128
-
-\-74.0060
-
-Los Angeles, CA
-
-34.0522
-
-\-118.2437
-
-Chicago, IL
-
-41.8781
-
-\-87.6298
-
-Houston, TX
-
-29.7604
-
-\-95.3698
-
-Miami, FL
-
-25.7617
-
-\-80.1918
-
-Seattle, WA
-
-47.6062
-
-\-122.3321
-
-Denver, CO
-
-39.7392
-
-\-104.9903
+| City | Latitude | Longitude |
+| --- | --- | --- |
+| New York, NY | 40.7128 | \-74.0060 |
+| Los Angeles, CA | 34.0522 | \-118.2437 |
+| Chicago, IL | 41.8781 | \-87.6298 |
+| Houston, TX | 29.7604 | \-95.3698 |
+| Miami, FL | 25.7617 | \-80.1918 |
+| Seattle, WA | 47.6062 | \-122.3321 |
+| Denver, CO | 39.7392 | \-104.9903 |
 
 ## Related tools
 

@@ -4,7 +4,7 @@ import BlogImage from '../components/BlogImage.jsx';
 const faqs = [
   {
     q: 'How accurate is IP geolocation, really?',
-    a: 'Country level: 95–99% accurate. Region or state: 80–90% in developed markets, lower elsewhere. City: only 50–75%, and often points to a different city in the same metropolitan area. Street level from an IP alone is essentially impossible — the best you can squeeze out of a public database is a 5 to 50 km radius around your real position.',
+    a: 'MaxMind, one of the largest IP database providers, estimates 99.8% accuracy at the country level; for US addresses, about 80% at the state level and 66% for the city, where correct means within 50 km. Accuracy varies widely by country and is usually worse on mobile networks. Street level from an IP alone is essentially impossible.',
   },
   {
     q: 'How can I check my own IP location?',
@@ -55,11 +55,12 @@ export default function WhatIsIpLocation() {
         />
       </figure>
       <p className="text-lg text-fg-muted leading-relaxed">
-        Industry studies of IP geolocation accuracy come back with a
-        number that surprises people: the city the database returns is
-        right only 50 to 75% of the time on residential broadband, and
-        significantly worse on mobile networks. The country, by contrast,
-        is right 95 to 99% of the time. This gap &mdash; very accurate at
+        IP location is the city, region, and country a database
+        associates with your internet address, and it is far less precise
+        than most people assume. MaxMind, one of the largest providers,
+        puts its own country-level accuracy at 99.8%, but for US addresses
+        only about 66% of city guesses land within 50 km of the right
+        place, and mobile networks are usually worse. This gap &mdash; very accurate at
         the country level, fairly bad at the city level &mdash; explains
         almost every &ldquo;why does the website think I&rsquo;m in a
         different city?&rdquo; story you&rsquo;ve ever heard.
@@ -76,22 +77,21 @@ export default function WhatIsIpLocation() {
           <text x="60" y="154" textAnchor="end" className="fill-fg-subtle" fontSize="10">50%</text>
           <line x1="65" y1="240" x2="75" y2="240" className="stroke-line" strokeWidth="1" />
           <text x="60" y="244" textAnchor="end" className="fill-fg-subtle" fontSize="10">0%</text>
-          <rect x="100" y="64" width="70" height="176" rx="4" className="fill-accent" opacity="0.9" />
-          <text x="135" y="56" textAnchor="middle" className="fill-fg" fontSize="12" fontWeight="700">97%</text>
+          <rect x="100" y="60" width="70" height="180" rx="4" className="fill-accent" opacity="0.9" />
+          <text x="135" y="52" textAnchor="middle" className="fill-fg" fontSize="12" fontWeight="700">99.8%</text>
           <text x="135" y="262" textAnchor="middle" className="fill-fg-muted" fontSize="11" fontWeight="500">Country</text>
-          <rect x="190" y="91" width="70" height="149" rx="4" className="fill-accent" opacity="0.72" />
-          <text x="225" y="83" textAnchor="middle" className="fill-fg" fontSize="12" fontWeight="700">85%</text>
-          <text x="225" y="262" textAnchor="middle" className="fill-fg-muted" fontSize="11" fontWeight="500">Region</text>
-          <rect x="280" y="132" width="70" height="108" rx="4" className="fill-accent" opacity="0.55" />
-          <text x="315" y="124" textAnchor="middle" className="fill-fg" fontSize="12" fontWeight="700">60%</text>
-          <text x="315" y="262" textAnchor="middle" className="fill-fg-muted" fontSize="11" fontWeight="500">City</text>
-          <rect x="370" y="231" width="70" height="9" rx="2" className="fill-accent" opacity="0.4" />
-          <text x="405" y="225" textAnchor="middle" className="fill-fg" fontSize="12" fontWeight="700">~5%</text>
+          <rect x="190" y="96" width="70" height="144" rx="4" className="fill-accent" opacity="0.72" />
+          <text x="225" y="88" textAnchor="middle" className="fill-fg" fontSize="12" fontWeight="700">~80%</text>
+          <text x="225" y="262" textAnchor="middle" className="fill-fg-muted" fontSize="11" fontWeight="500">State (US)</text>
+          <rect x="280" y="121" width="70" height="119" rx="4" className="fill-accent" opacity="0.55" />
+          <text x="315" y="113" textAnchor="middle" className="fill-fg" fontSize="12" fontWeight="700">66%</text>
+          <text x="315" y="262" textAnchor="middle" className="fill-fg-muted" fontSize="11" fontWeight="500">City ≤50 km (US)</text>
+          <text x="405" y="232" textAnchor="middle" className="fill-fg-muted" fontSize="11">not possible</text>
           <text x="405" y="262" textAnchor="middle" className="fill-fg-muted" fontSize="11" fontWeight="500">Street</text>
-          <text x="240" y="282" textAnchor="middle" className="fill-fg-subtle" fontSize="10" fontStyle="italic">Approximate hit-rates from common geolocation databases</text>
+          <text x="240" y="282" textAnchor="middle" className="fill-fg-subtle" fontSize="10" fontStyle="italic">Source: MaxMind&apos;s published accuracy estimates (checked October 2026)</text>
         </svg>
         <figcaption className="mt-3 text-xs text-fg-subtle text-center max-w-md mx-auto leading-relaxed">
-          The country is almost always right; the street level is almost never. Most &ldquo;wrong city&rdquo; complaints fall into the middle.
+          The country is almost always right; a street address is never available. Most &ldquo;wrong city&rdquo; complaints fall into the gap between the two. Figures are MaxMind&rsquo;s own estimates; other providers publish different ones.
         </figcaption>
       </figure>
 
@@ -114,17 +114,16 @@ export default function WhatIsIpLocation() {
 
       <h2 className="font-display text-2xl font-bold mt-12">How the databases are actually built</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
-        The four or five companies that dominate IP geolocation &mdash;
-        MaxMind, IPinfo, IP2Location, BigDataCloud &mdash; each spend
-        tens of millions of dollars a year keeping their databases
-        current. The raw inputs are the same for everyone:
+        A handful of companies dominate IP geolocation &mdash; MaxMind,
+        IPinfo, IP2Location, BigDataCloud, among others &mdash; and each
+        keeps its database current from broadly the same raw inputs:
       </p>
       <ol className="mt-3 list-decimal list-inside space-y-1.5 text-fg-muted">
         <li><strong>Regional Internet Registry records</strong> &mdash; RIPE, ARIN, APNIC, etc. publish which ISPs own which IP ranges.</li>
         <li><strong>BGP routing snapshots</strong> &mdash; which network operator announces which prefix on which backbone.</li>
         <li><strong>Reverse-DNS PTR records</strong> &mdash; which sometimes encode a city or point-of-presence name.</li>
         <li><strong>Latency probes</strong> &mdash; servers around the world ping the IP; the response time helps narrow which city it&rsquo;s near.</li>
-        <li><strong>Wi-Fi BSSID corroboration</strong> &mdash; for mobile devices, cross-checking against the Apple/Google Wi-Fi databases.</li>
+        <li><strong>Device-reported locations</strong> &mdash; apps and services that see both an IP address and a GPS or Wi-Fi position can tag that IP with a real place.</li>
         <li><strong>User corrections</strong> &mdash; when someone reports &ldquo;my location is wrong,&rdquo; the database updates.</li>
       </ol>
       <p className="mt-3 text-fg-muted leading-relaxed">
@@ -132,15 +131,16 @@ export default function WhatIsIpLocation() {
         Pakistani ISP last week may be correct in BigDataCloud&rsquo;s
         daily refresh but show up as &ldquo;unknown&rdquo; in a
         six-month-old free dataset. This is why ad networks and fraud
-        teams pay for premium feeds while small developers (myself
-        included, for this site) use the free monthly snapshots.
+        teams pay for premium feeds. The IP Location tool on this site
+        uses ipapi.co&rsquo;s free lookup service, so its answers are only
+        as current as that provider&rsquo;s data.
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-12">The accuracy numbers, in order of how often they&rsquo;re right</h2>
       <ul className="mt-3 space-y-1.5 text-fg-muted list-disc list-inside">
-        <li><strong>Country level:</strong> 95&ndash;99%. The one thing IP geolocation reliably does well.</li>
-        <li><strong>Region or state:</strong> 80&ndash;90% in developed countries; lower elsewhere.</li>
-        <li><strong>City:</strong> 50&ndash;75% &mdash; often pointing to a different city in the same metro area.</li>
+        <li><strong>Country level:</strong> 99.8% (MaxMind). The one thing IP geolocation reliably does well.</li>
+        <li><strong>Region or state:</strong> about 80% for US addresses (MaxMind); usually lower in countries with less data.</li>
+        <li><strong>City:</strong> about 66% of US addresses land within 50 km of the right city (MaxMind), often pointing to a different city in the same metro area.</li>
         <li><strong>Street:</strong> essentially impossible from IP alone. Best the public databases get you is a 5&ndash;50 km radius.</li>
       </ul>
       <p className="mt-3 text-fg-muted leading-relaxed">

@@ -26,53 +26,15 @@ The tool asks for the strictest settings the API allows: `enableHighAccuracy: tr
 
 Every update the browser delivers carries more than a coordinate. Here is what each tile in the tracker shows, and when it is allowed to be blank under the W3C Geolocation API specification.
 
-Reading
-
-Unit
-
-What it tells you
-
-Latitude, longitude
-
-degrees
-
-Your position, shown to six decimal places.
-
-Accuracy
-
-meters
-
-The radius of a circle the device is 95% confident you are inside. Smaller is better.
-
-Speed
-
-km/h
-
-Reported by the device in meters per second and converted here. Blank when the device cannot measure it.
-
-Heading
-
-degrees from true north
-
-Your direction of travel, with a compass point. Always blank while you are standing still.
-
-Altitude
-
-meters
-
-Height reported by the device. Often blank on laptops and on Wi-Fi-only fixes.
-
-Distance
-
-m or km
-
-Length of the path drawn on the map since you tapped Start.
-
-Updates
-
-count, time
-
-How many readings have arrived, and when the latest one did.
+| Reading | Unit | What it tells you |
+| --- | --- | --- |
+| Latitude, longitude | degrees | Your position, shown to six decimal places. |
+| Accuracy | meters | The radius of a circle the device is 95% confident you are inside. Smaller is better. |
+| Speed | km/h | Reported by the device in meters per second and converted here. Blank when the device cannot measure it. |
+| Heading | degrees from true north | Your direction of travel, with a compass point. Always blank while you are standing still. |
+| Altitude | meters | Height reported by the device. Often blank on laptops and on Wi-Fi-only fixes. |
+| Distance | m or km | Length of the path drawn on the map since you tapped Start. |
+| Updates | count, time | How many readings have arrived, and when the latest one did. |
 
 For how the browser decides which of these values to fill in, see our guide to[how the browser Geolocation API works](https://getmylocations.com/blog/browser-geolocation-api-explained).
 

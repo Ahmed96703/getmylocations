@@ -20,6 +20,10 @@ May 18, 2026·10 min read
 
 ![Translucent shield protecting a location pin with a soft glow, illustrating safe location sharing](https://getmylocations.com/blog-images/how-to-share-gps-location-safely-hero.jpg)
 
+Quick answer
+
+Share with one person, for a limited time, and stop when you no longer need it. WhatsApp live location lasts 15 minutes, 1 hour, or 8 hours; Google Maps and Apple’s Find My let you pick a duration too, so avoid “until I turn it off.” For a one-off meeting point, send a static pin or raw coordinates instead of a live location, and check your active shares now and then for any you have forgotten.
+
 Two years ago I shared my live location with a friend on Google Maps so she could find a café we’d agreed on. We met, ate, went home. Three months later I happened to open the location-sharing screen for something else and her name was still on the list. I’d set it to “until I turn it off” and forgotten. She’d been able to see where I was, in real time, for ninety-odd days. She hadn’t looked, because she isn’t weird. But she could have.
 
 The lesson, which I now live by: pick a duration every single time you share. Never “forever.” That one rule prevents the most common location-sharing privacy mistake. The rest of this guide is the practical stuff — which app is right for which situation, what they actually leak, and a checklist for the seconds before you hit Send.
@@ -88,75 +92,14 @@ Use raw coordinates when you’re sending across ecosystems (Apple to Android to
 
 Six common ways to share a location, ordered roughly from “use this by default” to “use this when you need maximum control.” End-to-end encryption protects the coordinate itself from the platform; it doesn’t protect you from a careless recipient or a long-running share you forgot about.
 
-App
-
-End-to-end
-
-Durations
-
-Platforms
-
-Best for
-
-WhatsApp
-
-Yes
-
-15 min · 1 hr · 8 hr
-
-iOS / Android
-
-Cross-platform default
-
-iMessage
-
-Yes (Apple-to-Apple)
-
-1 hr · end of day · indefinite
-
-Apple only
-
-Apple-to-Apple family
-
-Find My
-
-Yes (Apple-to-Apple)
-
-1 hr · end of day · indefinite
-
-Apple only
-
-Long-term family setups
-
-Google Maps
-
-No
-
-1 hr → indefinite
-
-iOS / Android
-
-Casual + non-sensitive
-
-Signal
-
-Yes (strongest)
-
-Static + live
-
-iOS / Android / desktop
-
-Sensitive / journalists
-
-Raw coordinates
-
-N/A (no live stream)
-
-Static only
-
-Universal
-
-Cross-ecosystem, long-term
+| App | End-to-end | Durations | Platforms | Best for |
+| --- | --- | --- | --- | --- |
+| WhatsApp | Yes | 15 min · 1 hr · 8 hr | iOS / Android | Cross-platform default |
+| iMessage | Yes (Apple-to-Apple) | 1 hr · end of day · indefinite | Apple only | Apple-to-Apple family |
+| Find My | Yes (Apple-to-Apple) | 1 hr · end of day · indefinite | Apple only | Long-term family setups |
+| Google Maps | No | 1 hr → indefinite | iOS / Android | Casual + non-sensitive |
+| Signal | Yes (strongest) | Static + live | iOS / Android / desktop | Sensitive / journalists |
+| Raw coordinates | N/A (no live stream) | Static only | Universal | Cross-ecosystem, long-term |
 
 ## How to stop a share you already sent
 

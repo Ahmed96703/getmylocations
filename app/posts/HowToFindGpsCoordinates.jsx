@@ -3,6 +3,10 @@ import Link from 'next/link';
 export default function HowToFindGpsCoordinates() {
   return (
     <article className="prose-invert">
+      <aside className="mb-6 rounded-xl border border-accent/40 bg-accent/5 p-4" aria-label="Quick answer">
+        <p className="text-[11px] uppercase tracking-wider text-accent font-semibold">Quick answer</p>
+        <p className="mt-1 text-fg leading-relaxed">The quickest way on any device is to open a browser location tool such as our <Link href="/my-location" className="text-accent hover:underline">My Location</Link> page and allow location; your latitude and longitude appear in seconds. On an iPhone the built-in Compass app shows them at the bottom of the screen. On Android, open Google Maps and press and hold the blue dot. On a Mac or a Windows PC, use the browser method.</p>
+      </aside>
       <p className="text-lg text-fg-muted leading-relaxed">
         You&rsquo;re standing in front of a plot of land and the surveyor
         you hired wants the coordinates so he can pull the right cadastral
@@ -109,10 +113,14 @@ export default function HowToFindGpsCoordinates() {
         desktops don&rsquo;t).
       </p>
       <ol className="mt-3 list-decimal list-inside space-y-1.5 text-fg-muted">
-        <li>Open <strong>Settings &rarr; Privacy &amp; security &rarr; Location</strong> and enable it.</li>
-        <li>Open the pre-installed Maps app and click the location-arrow icon &mdash; coordinates appear at the bottom.</li>
-        <li>Or, more simply, open <Link href="/" className="text-accent hover:underline">GetMyLocations</Link> in Edge or Chrome.</li>
+        <li>Open <strong>Settings &rarr; Privacy &amp; security &rarr; Location</strong> and turn location on, including the setting for desktop apps further down the page, which covers Chrome and Firefox.</li>
+        <li>Open <Link href="/" className="text-accent hover:underline">GetMyLocations</Link> in Edge or Chrome and allow location; your coordinates appear in a few seconds.</li>
       </ol>
+      <p className="mt-3 text-fg-muted leading-relaxed">
+        Older guides suggest the built-in Windows Maps app; it no longer works. Microsoft removed it from
+        the Store in July 2025, pushed a final update that disabled it, and stopped preinstalling it from
+        Windows 11 version 24H2.
+      </p>
 
       <h2 className="font-display text-2xl font-bold mt-12">How accurate is the number you just read?</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">

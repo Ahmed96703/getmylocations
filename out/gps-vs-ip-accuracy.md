@@ -14,45 +14,12 @@ Every “find my location” tool quietly chooses between two very different sig
 
 ## The short answer
 
-Method
-
-Typical accuracy
-
-Best case
-
-Worst case
-
-GPS (outdoor)
-
-3–5 m
-
-~30 cm (RTK, surveying gear)
-
-~10 m (urban canyon)
-
-Wi-Fi positioning
-
-10–25 m
-
-~5 m (dense Wi-Fi, dense BSSID db)
-
-~100 m (rural, sparse Wi-Fi)
-
-Cell tower
-
-500–2000 m
-
-~50 m (5G small cells)
-
-several km (rural macro cells)
-
-IP geolocation
-
-city-level (~25 km)
-
-~1 km (residential ISP, fresh data)
-
-wrong country (VPN, mobile gateway)
+| Method | Typical accuracy | Best case | Worst case |
+| --- | --- | --- | --- |
+| GPS (outdoor) | 3–5 m | ~30 cm (RTK, surveying gear) | ~10 m (urban canyon) |
+| Wi-Fi positioning | 10–25 m | ~5 m (dense Wi-Fi, dense BSSID db) | ~100 m (rural, sparse Wi-Fi) |
+| Cell tower | 500–2000 m | ~50 m (5G small cells) | several km (rural macro cells) |
+| IP geolocation | city-level (~25 km) | ~1 km (residential ISP, fresh data) | wrong country (VPN, mobile gateway) |
 
 GPS is two to four orders of magnitude more accurate than IP for finding _where you are right now_. IP is much faster and works without permission, which is why so many websites use it as a default. Both are useful — for different things.
 

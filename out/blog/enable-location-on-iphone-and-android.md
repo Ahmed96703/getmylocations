@@ -20,6 +20,10 @@ June 3, 2026·9 min read
 
 ![Two smartphone silhouettes side by side, each glowing with a location pin in the centre](https://getmylocations.com/blog-images/enable-location-on-iphone-and-android-hero.jpg)
 
+Quick answer
+
+On iPhone, open Settings → Privacy & Security → Location Services, turn it on, then set the app you need to _While Using_. On Android, open Settings → Location and turn on _Use location_, then allow the app when it asks. For a website, also allow Location in the browser’s site settings: the _AA_ menu in Safari, or the icon left of the address in Chrome.
+
 A phone with location turned off is a phone that can’t do half of what people use a phone for. Maps stops navigating. Ride-hailing apps can’t find you. Delivery apps stop showing nearby restaurants. Weather defaults to the wrong city. It’s usually one of three switches that’s in the wrong position, and there’s a logical order to checking them.
 
 The three layers, same as on a laptop:

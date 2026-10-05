@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { breadcrumbSchema } from '../components/breadcrumbSchema.js';
+import { AUTHOR_PROFILES } from '../components/author.js';
 
 export const metadata = {
   title: 'About — GetMyLocations',
@@ -34,6 +35,7 @@ const profilePageSchema = {
     name: 'Ahmed Anwar',
     jobTitle: 'Senior Software Engineer',
     url: 'https://getmylocations.com/about',
+    sameAs: AUTHOR_PROFILES,
     worksFor: {
       '@type': 'Organization',
       name: 'GetMyLocations',
@@ -145,6 +147,9 @@ export default function About() {
         <li><strong>October 5, 2026 &mdash; <Link href="/street-view" className="text-accent hover:underline">Street View</Link>.</strong> The tool never showed a Street View panorama: the embed it used displayed an ordinary map for addresses and a blank box for coordinates, while the page described navigation arrows, a capture date in the corner, and a panorama that &ldquo;jumps to the Eiffel Tower&rdquo;. It also said Google had covered about five million miles; Google&rsquo;s own figure is over 10 million. The tool now pins the exact spot and opens the real panorama through Google&rsquo;s official Street View link.</li>
         <li><strong>October 5, 2026 &mdash; <Link href="/privacy-policy" className="text-accent hover:underline">Privacy Policy</Link>.</strong> Listed CARTO as a map-tile provider after the site had stopped using it, and did not mention the Google Maps embeds on the Driving Directions and Street View pages. Both are corrected.</li>
         <li><strong>October 5, 2026 &mdash; <Link href="/driving-directions" className="text-accent hover:underline">Driving Directions</Link>.</strong> The embedded Google map never drew a route, yet the page said the route, its traffic-adjusted travel time, and turn-by-turn steps were shown on the page. The tool now previews both places with the straight-line distance and opens the real route in Google Maps; the page describes exactly that.</li>
+        <li><strong>October 5, 2026 &mdash; <Link href="/blog/enable-location-on-windows-and-mac" className="text-accent hover:underline">How to turn on location on a laptop</Link>.</strong> Told Windows users to find their browser&rsquo;s own toggle in the per-app location list; Chrome and Firefox are desktop apps that Windows does not list there, and are controlled by a separate desktop-apps setting. Also gave the wrong macOS version for the switch to System Settings (it was Ventura, not after Big Sur), and wrongly said plugging in Ethernet turns off Wi-Fi.</li>
+        <li><strong>October 5, 2026 &mdash; <Link href="/blog/what-is-ip-location-and-how-accurate" className="text-accent hover:underline">What is IP location, and how accurate is it?</Link></strong> Opened with unsourced accuracy figures (country 95&ndash;99%, city 50&ndash;75%) and a chart of made-up hit rates, and said this site uses free monthly database snapshots when its IP tool actually calls ipapi.co. The figures and chart now use MaxMind&rsquo;s published estimates.</li>
+        <li><strong>October 5, 2026 &mdash; <Link href="/blog/how-to-find-your-gps-coordinates" className="text-accent hover:underline">How to find your GPS coordinates</Link>.</strong> Told Windows users to open the built-in Maps app, which Microsoft withdrew in July 2025.</li>
       </ul>
 
       <h2 className="font-display text-2xl font-bold mt-10">Contact</h2>

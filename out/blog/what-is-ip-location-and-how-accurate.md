@@ -1,6 +1,6 @@
 ---
 title: "What Is IP Location, and How Accurate Is It Really?"
-description: "Country accuracy 95–99%, city 50–75%, street level basically zero. The real numbers behind IP geolocation and why mobile and VPN break it."
+description: "IP location gets the country right 99.8% of the time but often misses the city. The real accuracy figures, and why mobile networks and VPNs break it."
 url: https://getmylocations.com/blog/what-is-ip-location-and-how-accurate
 ---
 
@@ -20,9 +20,9 @@ May 12, 2026·10 min read
 
 ![Minimalist globe outline with continents in soft slate and teal, suggesting global IP geolocation coverage](https://getmylocations.com/blog-images/what-is-ip-location-and-how-accurate-hero.jpg)
 
-Industry studies of IP geolocation accuracy come back with a number that surprises people: the city the database returns is right only 50 to 75% of the time on residential broadband, and significantly worse on mobile networks. The country, by contrast, is right 95 to 99% of the time. This gap — very accurate at the country level, fairly bad at the city level — explains almost every “why does the website think I’m in a different city?” story you’ve ever heard.
+IP location is the city, region, and country a database associates with your internet address, and it is far less precise than most people assume. MaxMind, one of the largest providers, puts its own country-level accuracy at 99.8%, but for US addresses only about 66% of city guesses land within 50 km of the right place, and mobile networks are usually worse. This gap — very accurate at the country level, fairly bad at the city level — explains almost every “why does the website think I’m in a different city?” story you’ve ever heard.
 
-The country is almost always right; the street level is almost never. Most “wrong city” complaints fall into the middle.
+The country is almost always right; a street address is never available. Most “wrong city” complaints fall into the gap between the two. Figures are MaxMind’s own estimates; other providers publish different ones.
 
 ## What an IP actually is
 
@@ -35,22 +35,22 @@ IP addresses aren’t random. Your ISP draws them from a block it owns, and thos
 
 ## How the databases are actually built
 
-The four or five companies that dominate IP geolocation — MaxMind, IPinfo, IP2Location, BigDataCloud — each spend tens of millions of dollars a year keeping their databases current. The raw inputs are the same for everyone:
+A handful of companies dominate IP geolocation — MaxMind, IPinfo, IP2Location, BigDataCloud, among others — and each keeps its database current from broadly the same raw inputs:
 
 1.  **Regional Internet Registry records** — RIPE, ARIN, APNIC, etc. publish which ISPs own which IP ranges.
 2.  **BGP routing snapshots** — which network operator announces which prefix on which backbone.
 3.  **Reverse-DNS PTR records** — which sometimes encode a city or point-of-presence name.
 4.  **Latency probes** — servers around the world ping the IP; the response time helps narrow which city it’s near.
-5.  **Wi-Fi BSSID corroboration** — for mobile devices, cross-checking against the Apple/Google Wi-Fi databases.
+5.  **Device-reported locations** — apps and services that see both an IP address and a GPS or Wi-Fi position can tag that IP with a real place.
 6.  **User corrections** — when someone reports “my location is wrong,” the database updates.
 
-Updates propagate unevenly. A new IP block allocated to a Pakistani ISP last week may be correct in BigDataCloud’s daily refresh but show up as “unknown” in a six-month-old free dataset. This is why ad networks and fraud teams pay for premium feeds while small developers (myself included, for this site) use the free monthly snapshots.
+Updates propagate unevenly. A new IP block allocated to a Pakistani ISP last week may be correct in BigDataCloud’s daily refresh but show up as “unknown” in a six-month-old free dataset. This is why ad networks and fraud teams pay for premium feeds. The IP Location tool on this site uses ipapi.co’s free lookup service, so its answers are only as current as that provider’s data.
 
 ## The accuracy numbers, in order of how often they’re right
 
--   **Country level:** 95–99%. The one thing IP geolocation reliably does well.
--   **Region or state:** 80–90% in developed countries; lower elsewhere.
--   **City:** 50–75% — often pointing to a different city in the same metro area.
+-   **Country level:** 99.8% (MaxMind). The one thing IP geolocation reliably does well.
+-   **Region or state:** about 80% for US addresses (MaxMind); usually lower in countries with less data.
+-   **City:** about 66% of US addresses land within 50 km of the right city (MaxMind), often pointing to a different city in the same metro area.
 -   **Street:** essentially impossible from IP alone. Best the public databases get you is a 5–50 km radius.
 
 The easiest way to feel the difference is to open the [IP Location tool](https://getmylocations.com/ip-location) — it shows the city your IP resolves to without asking for a GPS permission — and then compare against the [My Location tool](https://getmylocations.com/my-location), which uses GPS. You will often see the two readings kilometres apart, and that gap is the IP error in a single screenshot.
@@ -67,41 +67,13 @@ A handful of recurring scenarios throw IP geolocation off, and between them they
 
 ## IP versus GPS — the numbers side-by-side
 
-Property
-
-IP Location
-
-GPS
-
-Typical accuracy
-
-5–50 km
-
-3–5 m
-
-Works offline
-
-No
-
-Yes
-
-Indoor performance
-
-Same as outdoor
-
-Degraded
-
-Permission needed
-
-No (visible by default)
-
-Yes
-
-Defeated by VPN
-
-Yes
-
-No
+| Property | IP Location | GPS |
+| --- | --- | --- |
+| Typical accuracy | 5–50 km | 3–5 m |
+| Works offline | No | Yes |
+| Indoor performance | Same as outdoor | Degraded |
+| Permission needed | No (visible by default) | Yes |
+| Defeated by VPN | Yes | No |
 
 ## What IP geolocation is actually useful for
 
@@ -178,7 +150,7 @@ For those jobs, GPS or another sensor-based reading is the only safe choice. Our
 
 How accurate is IP geolocation, really?+
 
-Country level: 95–99% accurate. Region or state: 80–90% in developed markets, lower elsewhere. City: only 50–75%, and often points to a different city in the same metropolitan area. Street level from an IP alone is essentially impossible — the best you can squeeze out of a public database is a 5 to 50 km radius around your real position.
+MaxMind, one of the largest IP database providers, estimates 99.8% accuracy at the country level; for US addresses, about 80% at the state level and 66% for the city, where correct means within 50 km. Accuracy varies widely by country and is usually worse on mobile networks. Street level from an IP alone is essentially impossible.
 
 How can I check my own IP location?+
 

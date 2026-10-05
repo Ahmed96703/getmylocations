@@ -30,33 +30,14 @@ If you only need _your own_ current address rather than someone else's, the [My 
 
 A geocoder always returns a coordinate, even when it only recognised the town. The _Matched to_ line in the tool tells you which kind of thing was found, using the match type and rank that OpenStreetMap’s geocoder returns with every result:
 
-Matched to
-
-Where the coordinate points
-
-Building or point of interest
-
-The building, entrance, or object itself; usually within a few meters
-
-Street
-
-Somewhere along the street, often tens to hundreds of meters from a particular house
-
-Named feature (park, lake, peak)
-
-The middle of the feature, which can be large
-
-Neighbourhood or locality
-
-Roughly a few hundred meters to a kilometer off
-
-Town or city
-
-The town or city center, often several kilometers off
-
-Postcode, region, or country
-
-The middle of that whole area; only useful as a rough location
+| Matched to | Where the coordinate points |
+| --- | --- |
+| Building or point of interest | The building, entrance, or object itself; usually within a few meters |
+| Street | Somewhere along the street, often tens to hundreds of meters from a particular house |
+| Named feature (park, lake, peak) | The middle of the feature, which can be large |
+| Neighbourhood or locality | Roughly a few hundred meters to a kilometer off |
+| Town or city | The town or city center, often several kilometers off |
+| Postcode, region, or country | The middle of that whole area; only useful as a rough location |
 
 If you searched for a full street address and the match is only “Street” or “Town or city”, the house is not in the map data yet; don’t hand that coordinate to a courier as if it were exact.
 
@@ -64,53 +45,15 @@ If you searched for a full street address and the match is only “Street” or 
 
 Real lookups run on 5 October 2026. OpenStreetMap is edited constantly, so results can change over time; the match type and distance tell you how much to trust whatever comes back.
 
-You type
-
-Tool returns
-
-Matched to
-
-Eiffel Tower
-
-48.858260, 2.294501 · Eiffel Tower, 5 Avenue Anatole France, Paris
-
-Building or point of interest (also matched a mountain peak in Alberta, Canada)
-
-1600 Pennsylvania Ave NW, Washington, DC
-
-38.897639, -77.036552 · White House, 1600 Pennsylvania Avenue NW
-
-Building or point of interest
-
-Badshahi Mosque, Lahore
-
-31.588126, 74.309353 · Badshahi Mosque, Fort Road, Walled City of Lahore
-
-Building or point of interest
-
-Springfield
-
-5 matches: Illinois, Massachusetts, Missouri, Ohio, Oregon
-
-Town or city
-
-48.85842, 2.2945 (reverse)
-
-Avenue Gustave Eiffel, Paris, 2 m away
-
-Street (not the tower itself)
-
-\-33.856785, 151.21529 (reverse)
-
-2 Macquarie Street, Sydney, 36 m away (a public toilet near the Opera House)
-
-Building or point of interest
-
-27, 65 (reverse)
-
-Gichak Tehsil, Panjgur District, Balochistan, Pakistan, 30 km away
-
-Town or city
+| You type | Tool returns | Matched to |
+| --- | --- | --- |
+| Eiffel Tower | 48.858260, 2.294501 · Eiffel Tower, 5 Avenue Anatole France, Paris | Building or point of interest (also matched a mountain peak in Alberta, Canada) |
+| 1600 Pennsylvania Ave NW, Washington, DC | 38.897639, -77.036552 · White House, 1600 Pennsylvania Avenue NW | Building or point of interest |
+| Badshahi Mosque, Lahore | 31.588126, 74.309353 · Badshahi Mosque, Fort Road, Walled City of Lahore | Building or point of interest |
+| Springfield | 5 matches: Illinois, Massachusetts, Missouri, Ohio, Oregon | Town or city |
+| 48.85842, 2.2945 (reverse) | Avenue Gustave Eiffel, Paris, 2 m away | Street (not the tower itself) |
+| \-33.856785, 151.21529 (reverse) | 2 Macquarie Street, Sydney, 36 m away (a public toilet near the Opera House) | Building or point of interest |
+| 27, 65 (reverse) | Gichak Tehsil, Panjgur District, Balochistan, Pakistan, 30 km away | Town or city |
 
 ## When there’s more than one match
 

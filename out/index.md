@@ -187,7 +187,7 @@ Guides on GPS, geolocation, and finding your way online.
     
     ### How to Turn On Location on a Laptop (Windows 10, 11 & Mac)
     
-    Turn on location on any laptop — Windows 10, Windows 11, or Mac. Enable Location Services, allow your browser, and fix the greyed-out toggle on a work laptop.
+    Turn on location on any laptop: Windows 10, Windows 11 or Mac. Fix the browser missing from the Windows app list and greyed-out toggles.
     
     Read →](https://getmylocations.com/blog/enable-location-on-windows-and-mac)
 -   [Jun 3, 2026·9 min read

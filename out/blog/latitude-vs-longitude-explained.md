@@ -82,53 +82,15 @@ All three encode the same point in different notations. Need to convert between 
 
 Each extra decimal in DD format divides your uncertainty by 10:
 
-Decimals
-
-Precision
-
-Use case
-
-0
-
-~111 km
-
-Country
-
-1
-
-~11 km
-
-Large city
-
-2
-
-~1.1 km
-
-Neighbourhood
-
-3
-
-~110 m
-
-Street
-
-4
-
-~11 m
-
-Single building
-
-5
-
-~1.1 m
-
-Doorway / parked car
-
-6
-
-~0.11 m
-
-Survey grade
+| Decimals | Precision | Use case |
+| --- | --- | --- |
+| 0 | ~111 km | Country |
+| 1 | ~11 km | Large city |
+| 2 | ~1.1 km | Neighbourhood |
+| 3 | ~110 m | Street |
+| 4 | ~11 m | Single building |
+| 5 | ~1.1 m | Doorway / parked car |
+| 6 | ~0.11 m | Survey grade |
 
 For most everyday sharing, four decimals is plenty. Posting your home address publicly? Two or three decimals coarsens you to the neighbourhood without giving away the doorway.
 

@@ -54,6 +54,10 @@ export default function EnableLocationMobile() {
           fetchPriority="high"
         />
       </figure>
+      <aside className="mb-6 rounded-xl border border-accent/40 bg-accent/5 p-4" aria-label="Quick answer">
+        <p className="text-[11px] uppercase tracking-wider text-accent font-semibold">Quick answer</p>
+        <p className="mt-1 text-fg leading-relaxed">On iPhone, open Settings &rarr; Privacy &amp; Security &rarr; Location Services, turn it on, then set the app you need to <em>While Using</em>. On Android, open Settings &rarr; Location and turn on <em>Use location</em>, then allow the app when it asks. For a website, also allow Location in the browser&rsquo;s site settings: the <em>AA</em> menu in Safari, or the icon left of the address in Chrome.</p>
+      </aside>
       <p className="text-lg text-fg-muted leading-relaxed">
         A phone with location turned off is a phone that can&rsquo;t do
         half of what people use a phone for. Maps stops navigating.

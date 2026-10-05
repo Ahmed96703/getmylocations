@@ -1,6 +1,6 @@
 ---
 title: "How to Find Your GPS Coordinates on Any Device (2026)"
-description: "The fastest, most accurate ways to get your exact latitude and longitude — on iPhone, Android, Mac, Windows, and any browser. With privacy tips and free tools."
+description: "The fastest ways to get your exact latitude and longitude on iPhone, Android, Mac, Windows, or any browser, with accuracy and privacy tips."
 url: https://getmylocations.com/blog/how-to-find-your-gps-coordinates
 ---
 
@@ -17,6 +17,10 @@ May 13, 2026·7 min read
 -   guide
 
 * * *
+
+Quick answer
+
+The quickest way on any device is to open a browser location tool such as our [My Location](https://getmylocations.com/my-location) page and allow location; your latitude and longitude appear in seconds. On an iPhone the built-in Compass app shows them at the bottom of the screen. On Android, open Google Maps and press and hold the blue dot. On a Mac or a Windows PC, use the browser method.
 
 You’re standing in front of a plot of land and the surveyor you hired wants the coordinates so he can pull the right cadastral record. Or you’re at a campsite that doesn’t have an address and you want to save the exact spot for next year. Or a friend is lost in a city you both don’t know and the only useful thing to send is two numbers.
 
@@ -70,9 +74,10 @@ A Mac without GPS hardware falls back to Wi-Fi triangulation — usually accurat
 
 Windows uses its Location Service (a blend of Wi-Fi, IP, and any built-in GPS hardware your machine actually has — most desktops don’t).
 
-1.  Open **Settings → Privacy & security → Location** and enable it.
-2.  Open the pre-installed Maps app and click the location-arrow icon — coordinates appear at the bottom.
-3.  Or, more simply, open [GetMyLocations](https://getmylocations.com/) in Edge or Chrome.
+1.  Open **Settings → Privacy & security → Location** and turn location on, including the setting for desktop apps further down the page, which covers Chrome and Firefox.
+2.  Open [GetMyLocations](https://getmylocations.com/) in Edge or Chrome and allow location; your coordinates appear in a few seconds.
+
+Older guides suggest the built-in Windows Maps app; it no longer works. Microsoft removed it from the Store in July 2025, pushed a final update that disabled it, and stopped preinstalling it from Windows 11 version 24H2.
 
 ## How accurate is the number you just read?
 

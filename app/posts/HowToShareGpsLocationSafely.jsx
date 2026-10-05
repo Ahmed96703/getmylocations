@@ -63,6 +63,10 @@ export default function HowToShareGpsLocationSafely() {
           fetchPriority="high"
         />
       </figure>
+      <aside className="mb-6 rounded-xl border border-accent/40 bg-accent/5 p-4" aria-label="Quick answer">
+        <p className="text-[11px] uppercase tracking-wider text-accent font-semibold">Quick answer</p>
+        <p className="mt-1 text-fg leading-relaxed">Share with one person, for a limited time, and stop when you no longer need it. WhatsApp live location lasts 15 minutes, 1 hour, or 8 hours; Google Maps and Apple&rsquo;s Find My let you pick a duration too, so avoid &ldquo;until I turn it off.&rdquo; For a one-off meeting point, send a static pin or raw coordinates instead of a live location, and check your active shares now and then for any you have forgotten.</p>
+      </aside>
       <p className="text-lg text-fg-muted leading-relaxed">
         Two years ago I shared my live location with a friend on Google
         Maps so she could find a caf&eacute; we&rsquo;d agreed on. We met,

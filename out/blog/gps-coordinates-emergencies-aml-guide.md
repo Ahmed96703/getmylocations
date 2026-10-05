@@ -1,6 +1,6 @@
 ---
 title: "GPS Coordinates in an Emergency — Send Your Location to 911"
-description: "How to send GPS coordinates to a 911 or 112 dispatcher: what AML does automatically, the script to say on the call, and how to read them off any phone."
+description: "How to give GPS coordinates to a 911 or 112 dispatcher: what AML sends automatically, what to say on the call, and how to read them off any phone."
 url: https://getmylocations.com/blog/gps-coordinates-emergencies-aml-guide
 ---
 
@@ -93,71 +93,18 @@ Two things to avoid. Don’t describe the surroundings before giving the coordin
 
 The number you dial matters as much as the coordinate you give. Most modern smartphones accept any of the major international codes and route them correctly, but knowing the local number for where you actually are is faster:
 
-Region
-
-Number
-
-AML
-
-European Union (all member states)
-
-112
-
-Yes
-
-United Kingdom
-
-999 (also 112)
-
-Yes
-
-United States & Canada
-
-911
-
-Partial (NG911 rollout)
-
-Australia
-
-000 (112 from mobiles)
-
-Yes
-
-New Zealand
-
-111
-
-Yes
-
-India
-
-112
-
-Rolling out
-
-Pakistan
-
-15 (police), 1122 (rescue)
-
-Limited
-
-Japan
-
-110 (police), 119 (fire / ambulance)
-
-Partial
-
-South Africa
-
-112 (mobile), 10111 (police)
-
-Limited
-
-Brazil
-
-190 (police), 192 (medical)
-
-No
+| Region | Number | AML |
+| --- | --- | --- |
+| European Union (all member states) | 112 | Yes |
+| United Kingdom | 999 (also 112) | Yes |
+| United States & Canada | 911 | Partial (NG911 rollout) |
+| Australia | 000 (112 from mobiles) | Yes |
+| New Zealand | 111 | Yes |
+| India | 112 | Rolling out |
+| Pakistan | 15 (police), 1122 (rescue) | Limited |
+| Japan | 110 (police), 119 (fire / ambulance) | Partial |
+| South Africa | 112 (mobile), 10111 (police) | Limited |
+| Brazil | 190 (police), 192 (medical) | No |
 
 From a mobile, 112 will be routed correctly across most of the world even when it is not the official local number — it is a GSM standard. 911 has the same fallback behaviour in much of the Americas. When in doubt, dial 112 from a mobile.
 
