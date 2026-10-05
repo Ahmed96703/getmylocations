@@ -4,23 +4,23 @@ import BlogImage from '../components/BlogImage.jsx';
 const faqs = [
   {
     q: 'What is the safest way to share my live location with one person?',
-    a: 'Signal is the strongest mainstream choice — end-to-end encrypted, no metadata retention, with both static-pin and live-location sharing. WhatsApp is a close second and far more likely to be installed by the person you are sharing with. iMessage works between Apple users with similar guarantees. Avoid Google Maps live sharing for sensitive cases — the coordinate stream is not end-to-end encrypted.',
+    a: 'For a live location, WhatsApp is end-to-end encrypted and makes you pick 15 minutes, 1 hour or 8 hours, so it cannot be left on indefinitely. Between iPhones, Apple says it cannot access a location you share in Find My or Messages when both people are on iOS 17 or later. Google Maps and Google Messages location sharing is processed by Google. Signal has no live location; it can send a one-time pin, end-to-end encrypted, which is often all you need.',
   },
   {
     q: 'How do I stop sharing my live location after I have already started?',
-    a: 'On WhatsApp, open the chat, tap your active live-location card, and choose "Stop sharing." On iMessage, open the contact card and tap "Stop Sharing My Location" (or remove them from Find My). In Google Maps, tap your profile → Location sharing → tap the person → Stop. In Signal, the share auto-expires; tap the share message to end it sooner. Always open the share-management screen monthly to catch ones you forgot.',
+    a: 'On WhatsApp, open the chat, tap your active live-location card, and choose "Stop sharing." On iMessage, open the contact card and tap "Stop Sharing My Location" (or remove them from Find My). In Google Maps, tap your profile → Location sharing → tap the person → Stop. A Signal location is a one-time pin, so there is nothing to stop; delete the message if you no longer want it in the chat. On an iPhone, Settings → Privacy & Security → Safety Check shows everyone you share with in one place.',
   },
   {
     q: 'Is WhatsApp live location end-to-end encrypted?',
-    a: 'Yes — the coordinate stream itself is encrypted so Meta cannot read it. What is not encrypted is the metadata: who is sharing with whom, when, and for how long. For day-to-day sharing that is usually fine; for sensitive cases (journalists, activists, abuse-recovery), Signal is a stricter choice that retains less metadata.',
+    a: 'Yes — the coordinate stream itself is encrypted so Meta cannot read it. What is not encrypted is the metadata: who is sharing with whom, when, and for how long. For day-to-day sharing that is usually fine. If metadata matters, send a one-time pin over Signal instead, which is designed to keep as little metadata as possible.',
   },
   {
     q: 'Can someone track me with a location link I clicked?',
-    a: 'A genuine location share works the other way — you receive someone’s coordinates, not give yours. But fake "here is where I am" links sent by attackers can be tracking pixels that record your IP and approximate location the moment you open them. Treat unexpected location messages from unknown numbers exactly like unexpected attachments: do not open. Real shares from people you know usually appear inline in the messaging app, not as bare URLs.',
+    a: 'A genuine location share works the other way — you receive someone’s coordinates, not give yours. But a fake "here is where I am" link can lead to a page that logs your IP address, which usually reveals your city and network, the moment you open it. It only gets your precise position if you tap Allow on a location prompt, so never allow location on a page someone sent you unexpectedly. Treat unexpected location messages from unknown numbers exactly like unexpected attachments: do not open. Real shares from people you know usually appear inline in the messaging app, not as bare URLs.',
   },
   {
     q: 'What happens if I share my location "until I turn it off"?',
-    a: 'It stays active until you remember to revoke it — which, in practice, often means months. Find My, Google Maps, and iMessage all offer this option and all of them are how people accidentally share their live location for far longer than they intended. The single rule worth following: always pick a duration. One hour, end-of-day, eight hours. Never indefinite.',
+    a: 'It stays active until you remember to revoke it — which, in practice, often means months. Find My, Messages, Google Maps and Google Messages all offer this option and all of them are how people accidentally share their live location for far longer than they intended. The single rule worth following: always pick a duration. One hour, end-of-day, eight hours. Never indefinite.',
   },
   {
     q: 'Should I share live location or a static pin?',
@@ -38,13 +38,14 @@ const faqSchema = {
   })),
 };
 
+// Each row follows the vendor's own documentation, checked 2026-10-05.
 const comparison = [
-  { app: 'WhatsApp', e2e: 'Yes', durations: '15 min · 1 hr · 8 hr', cross: 'iOS / Android', best: 'Cross-platform default' },
-  { app: 'iMessage', e2e: 'Yes (Apple-to-Apple)', durations: '1 hr · end of day · indefinite', cross: 'Apple only', best: 'Apple-to-Apple family' },
-  { app: 'Find My', e2e: 'Yes (Apple-to-Apple)', durations: '1 hr · end of day · indefinite', cross: 'Apple only', best: 'Long-term family setups' },
-  { app: 'Google Maps', e2e: 'No', durations: '1 hr → indefinite', cross: 'iOS / Android', best: 'Casual + non-sensitive' },
-  { app: 'Signal', e2e: 'Yes (strongest)', durations: 'Static + live', cross: 'iOS / Android / desktop', best: 'Sensitive / journalists' },
-  { app: 'Raw coordinates', e2e: 'N/A (no live stream)', durations: 'Static only', cross: 'Universal', best: 'Cross-ecosystem, long-term' },
+  { app: 'WhatsApp', live: 'Yes', read: 'End-to-end encrypted', durations: '15 min · 1 hr · 8 hr', cross: 'iOS / Android', best: 'Cross-platform default' },
+  { app: 'Messages / Find My (Apple)', live: 'Yes', read: 'Not Apple, if both on iOS 17+; Apple keeps it up to 24 h', durations: '1 hr · end of day · indefinitely', cross: 'Apple only', best: 'iPhone-to-iPhone, family' },
+  { app: 'Google Maps', live: 'Yes', read: 'Processed by Google', durations: 'Chosen time · until you turn it off', cross: 'iOS / Android', best: 'Casual, cross-platform' },
+  { app: 'Google Messages', live: 'Yes', read: 'Processed by Google (via Maps)', durations: '1 hr · today · until off · custom ≤ 24 h', cross: 'Android', best: 'Android chats' },
+  { app: 'Signal', live: 'No — one-time pin', read: 'End-to-end encrypted', durations: 'Static only', cross: 'iOS / Android', best: 'Sending a meeting point privately' },
+  { app: 'Raw coordinates', live: 'No', read: 'Whoever you send them to', durations: 'Static only', cross: 'Universal', best: 'Cross-ecosystem, emergencies' },
 ];
 
 export default function HowToShareGpsLocationSafely() {
@@ -65,22 +66,20 @@ export default function HowToShareGpsLocationSafely() {
       </figure>
       <aside className="mb-6 rounded-xl border border-accent/40 bg-accent/5 p-4" aria-label="Quick answer">
         <p className="text-[11px] uppercase tracking-wider text-accent font-semibold">Quick answer</p>
-        <p className="mt-1 text-fg leading-relaxed">Share with one person, for a limited time, and stop when you no longer need it. WhatsApp live location lasts 15 minutes, 1 hour, or 8 hours; Google Maps and Apple&rsquo;s Find My let you pick a duration too, so avoid &ldquo;until I turn it off.&rdquo; For a one-off meeting point, send a static pin or raw coordinates instead of a live location, and check your active shares now and then for any you have forgotten.</p>
+        <p className="mt-1 text-fg leading-relaxed">Share with one person, for a limited time, and stop when you no longer need it. WhatsApp live location lasts 15 minutes, 1 hour, or 8 hours; Google Maps and Apple&rsquo;s Find My let you pick a duration too, so avoid &ldquo;until I turn it off.&rdquo; For a one-off meeting point, send a static pin or raw coordinates instead of a live location. And check who can already see you: on an iPhone, Settings &rarr; Privacy &amp; Security &rarr; Safety Check lists every share in one place.</p>
       </aside>
       <p className="text-lg text-fg-muted leading-relaxed">
-        Two years ago I shared my live location with a friend on Google
-        Maps so she could find a caf&eacute; we&rsquo;d agreed on. We met,
-        ate, went home. Three months later I happened to open the
-        location-sharing screen for something else and her name was still
-        on the list. I&rsquo;d set it to &ldquo;until I turn it off&rdquo;
-        and forgotten. She&rsquo;d been able to see where I was, in real
-        time, for ninety-odd days. She hadn&rsquo;t looked, because she
-        isn&rsquo;t weird. But she could have.
+        Here is the most common way location sharing goes wrong. You
+        share your live location so a friend can find the caf&eacute; you
+        agreed on, tap &ldquo;until I turn it off&rdquo; because it is the
+        quickest option, meet, and go home. Months later their name is
+        still on your sharing list, and for all that time they could have
+        seen where you were, in real time. Nobody did anything wrong; the
+        share just never ended.
       </p>
 
       <p className="mt-4 text-fg-muted leading-relaxed">
-        The lesson, which I now live by: pick a duration every single
-        time you share. Never &ldquo;forever.&rdquo; That one rule prevents
+        The fix is one rule: pick a duration every single time you share. Never &ldquo;forever.&rdquo; That one rule prevents
         the most common location-sharing privacy mistake. The rest of
         this guide is the practical stuff &mdash; which app is right for
         which situation, what they actually leak, and a checklist for the
@@ -112,9 +111,9 @@ export default function HowToShareGpsLocationSafely() {
         Contents are end-to-end encrypted, so Meta can&rsquo;t read the
         coordinates. Two caveats: (a) the <em>metadata</em> &mdash; who
         shared with whom, when, for how long &mdash; is still visible to
-        Meta and may be retained, and (b) both iOS and Android record the
-        share in the share-sheet history, which apps with broad
-        permissions can sometimes see. For sharing inside a group chat
+        Meta and may be retained, and (b) everyone in the chat sees the
+        live location, so sharing into a group shares with all of its
+        members. For sharing inside a group chat
         with multiple people, WhatsApp is usually the safest cross-platform
         option. Just remember the timer keeps running &mdash; don&rsquo;t
         share to a group of 30 if only one person actually needs it.
@@ -125,29 +124,34 @@ export default function HowToShareGpsLocationSafely() {
         iPhones have two options that look similar but behave differently.
         <strong> Send My Current Location</strong> drops a static pin into
         the chat &mdash; one-shot, won&rsquo;t update.
-        <strong> Share My Location</strong> creates a live-tracking link
-        that updates in the recipient&rsquo;s Maps app for the duration
-        you pick: one hour, until end of day, or indefinitely (this is the
-        one I now refuse to use).
+        <strong> Share My Location</strong> shares your live position for
+        the duration you pick: one hour, until end of day, or
+        indefinitely (the option to avoid). It appears in the conversation
+        and in the recipient&rsquo;s Find My app.
       </p>
       <p className="mt-3 text-fg-muted leading-relaxed">
         Find My is the more durable system. Adding someone as a Find My
-        friend creates an indefinite share that lives outside any chat,
-        survives device wipes, and works between Apple accounts even when
-        no message has ever been exchanged. Most family location-sharing
+        friend creates a share that lives outside any chat and works
+        between Apple accounts even when no message has ever been
+        exchanged. Most family location-sharing
         setups live here. Audit it monthly &mdash; same logic, same trap.
       </p>
       <p className="mt-3 text-fg-muted leading-relaxed">
-        Both are end-to-end encrypted between Apple devices, so Apple
-        can&rsquo;t read the underlying coordinates. The recipient&rsquo;s
-        phone still caches a copy, which you have no control over if their
-        device is compromised.
+        Apple&rsquo;s Find My privacy notice says that if you and the
+        person you share with are both on iOS 17 or later, your location
+        is not accessible to Apple; with someone on an older version, it
+        may be, if they request it. Apple keeps a shared location for up
+        to 24 hours to provide the service, then deletes it. The
+        recipient&rsquo;s phone still shows it to whoever is holding that
+        phone.
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-12">Google Maps live sharing</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
-        Google Maps offers a 1-hour-to-indefinite live share that uses a
-        Google account as the destination instead of a phone number. It
+        Google Maps lets you choose how long to share, or pick
+        <em> Until you turn this off</em>, and sends the share to a Google
+        account instead of a phone number. If you share by link instead,
+        Google says the link works for up to 24 hours. It
         works across Android and iOS as long as both sides have the Maps
         app. Maps also supports sending a static pin via any messaging
         app &mdash; useful for pointing a friend at a parking spot or a
@@ -157,32 +161,47 @@ export default function HowToShareGpsLocationSafely() {
         that opens straight to that coordinate.
       </p>
       <p className="mt-3 text-fg-muted leading-relaxed">
-        Important: Google Maps live sharing is <em>not</em> end-to-end
-        encrypted &mdash; the coordinate streams through Google&rsquo;s
-        servers, where Google can technically read it. For sensitive cases
-        (journalists, activists, harassment) prefer iMessage or Signal.
+        Two things to know. Google says people you share with can see not
+        only your recent location but your name and photo, your phone&rsquo;s
+        battery level and whether it is charging, and arrival and departure
+        times if they set a notification. And Google does not describe Maps
+        sharing as end-to-end encrypted: it processes your location to
+        provide the feature, under its privacy policy. For sensitive cases,
+        WhatsApp or an iPhone-to-iPhone share on iOS 17 or later keeps the
+        location away from the platform.
       </p>
 
-      <h2 className="font-display text-2xl font-bold mt-12">Signal &mdash; the option of last resort that still works smoothly</h2>
+      <h2 className="font-display text-2xl font-bold mt-12">Google Messages &mdash; live location inside a text chat</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
-        Signal supports both static-pin and live-location sharing with the
-        strongest cryptographic guarantees available in a mainstream
-        messaging app: end-to-end encryption, no metadata retention beyond
-        what&rsquo;s strictly necessary, forward secrecy if keys ever
-        leak. For one-on-one sharing where you genuinely care who can see
-        the coordinates &mdash; medical situations, abuse-recovery cases,
-        sources protecting reporters &mdash; this is the right tool.
+        Google Messages on Android can now share your real-time location
+        from inside a conversation, for 1 hour, for today only, until you
+        turn it off, or for a custom time of up to 24 hours. Google is
+        explicit about the catch: your messages in that chat may be
+        end-to-end encrypted, but the location sharing is powered by
+        Google Maps (Find Hub) and processed by Google, so it follows the
+        same rules as Maps sharing above.
+      </p>
+
+      <h2 className="font-display text-2xl font-bold mt-12">Signal &mdash; a private pin, not a live location</h2>
+      <p className="mt-3 text-fg-muted leading-relaxed">
+        Signal can send your current location as a one-time pin, end-to-end
+        encrypted like every Signal message, from a service built to keep
+        as little metadata as possible. It does <em>not</em> offer live
+        location sharing, so there is no timer to set and nothing to stop
+        later. For telling one person where to meet you, when you care who
+        can see it, that is often exactly what you want.
       </p>
       <p className="mt-3 text-fg-muted leading-relaxed">
         The trade-off is that fewer of your contacts have it installed,
-        which sometimes matters more than the security model does.
+        and if you need someone to follow you on a walk home, you will need
+        one of the live options above.
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-12">Plus Codes &mdash; addresses where addresses don&rsquo;t exist</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
-        Plus Codes (Google&rsquo;s open-source format, formerly called Open
-        Location Codes) are short alphanumeric strings that encode a
-        coordinate. The Eiffel Tower is
+        Plus Codes (the everyday name for Open Location Code, an
+        open-source format published by Google) are short alphanumeric
+        strings that encode a coordinate. The Eiffel Tower is
         {' '}<code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">8FW4V75V+8Q</code>.
         They work where there are no street addresses &mdash; rural areas,
         refugee camps, parts of Karachi where the postal system never
@@ -214,39 +233,57 @@ export default function HowToShareGpsLocationSafely() {
         You can grab your own current coordinates &mdash; in
         copy-paste-ready DD format &mdash; from the{' '}
         <Link href="/my-location" className="text-accent hover:underline">My Location tool</Link>{' '}
-        or the{' '}
-        <Link href="/my-location" className="text-accent hover:underline">GPS Coordinates page</Link>{' '}
         in two seconds.
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-12">A safety checklist for the moment before you hit Send</h2>
       <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside">
-        <li><strong>Pick a duration, never &ldquo;until I cancel.&rdquo;</strong> Set 1 hour or end-of-day. The story I opened this article with is what happens otherwise.</li>
+        <li><strong>Pick a duration, never &ldquo;until I cancel.&rdquo;</strong> Set 1 hour or end-of-day. The forgotten share at the top of this article is what happens otherwise.</li>
         <li><strong>One person, not a group.</strong> If only one person needs to find you, only one person should see you.</li>
         <li><strong>Prefer a static pin when you can.</strong> If you just want to tell someone where you parked, a static pin reveals nothing about your current movement.</li>
         <li><strong>Audit your active shares monthly.</strong> Both iOS Find My and Google Maps have a &ldquo;people who can see your location&rdquo; screen. Open it on the first of every month.</li>
         <li><strong>Don&rsquo;t post live location publicly.</strong> Posting &ldquo;here&rsquo;s where I am&rdquo; on social media tells everyone who follows you &mdash; including bots and stalkers &mdash; that your home is currently empty.</li>
-        <li><strong>Be wary of unsolicited location links.</strong> An attacker can send a fake &ldquo;hi, here&rsquo;s where I am&rdquo; link that&rsquo;s actually a tracking pixel; clicking it leaks <em>your</em> location.</li>
+        <li><strong>Be wary of unsolicited location links.</strong> A fake &ldquo;hi, here&rsquo;s where I am&rdquo; link can log your IP address, which usually reveals your city, the moment you open it. Never tap Allow on a location prompt from a page someone sent you unexpectedly.</li>
       </ul>
+
+      <h2 className="font-display text-2xl font-bold mt-12">Check who can see your location right now</h2>
+      <p className="mt-3 text-fg-muted leading-relaxed">
+        Before worrying about the next share, find the ones already
+        running. Each platform has one screen for it:
+      </p>
+      <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside">
+        <li><strong>iPhone:</strong> Settings &rarr; Privacy &amp; Security &rarr; <strong>Safety Check</strong> &rarr; Manage Sharing &amp; Access. It lists the people you share your location with in Find My and lets you stop each one, and it also reviews which apps can use your location.</li>
+        <li><strong>Google Maps:</strong> tap your profile picture &rarr; <strong>Location sharing</strong>. Everyone who can currently see you is listed there.</li>
+        <li><strong>WhatsApp:</strong> Settings &rarr; Privacy &rarr; <strong>Location</strong> shows every chat where a live location is still running.</li>
+      </ul>
+      <p className="mt-3 text-fg-muted leading-relaxed">
+        If you are worried that someone is tracking you against your will,
+        Safety Check&rsquo;s <em>Emergency Reset</em> on iPhone stops all
+        sharing at once. Bear in mind that the other person may notice the
+        share has stopped; if you are in danger, contact local support
+        services first.
+      </p>
 
       <h2 className="font-display text-2xl font-bold mt-12">For emergencies, raw coordinates still win</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
-        911 (US), 112 (Europe), 999 (UK), 15 (Pakistan), and most other
-        emergency dispatchers can take a raw latitude/longitude over the
-        phone. Modern smartphones also send GPS automatically via Advanced
-        Mobile Location when you dial &mdash; but having a backup, the
-        coordinates you&rsquo;ve read off your own screen, is invaluable
-        when AML hasn&rsquo;t propagated or the call is from a landline.
+        911 (US), 112 (Europe), 999 (UK), 1122 (Rescue) or 15 (police) in
+        Pakistan, and most other emergency services can take a raw
+        latitude and longitude over the phone. In countries that support
+        Advanced Mobile Location (most of Europe and the UK among them),
+        your phone also sends its position automatically when you dial
+        &mdash; but having a backup, the coordinates you&rsquo;ve read off
+        your own screen, is invaluable where AML isn&rsquo;t available or
+        the call is from a landline.
         Full walk-through:
         {' '}<Link href="/blog/gps-coordinates-emergencies-aml-guide" className="text-accent hover:underline">GPS coordinates in emergencies</Link>.
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-12">The apps compared, in one table</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
-        Six common ways to share a location, ordered roughly from
-        &ldquo;use this by default&rdquo; to &ldquo;use this when you
-        need maximum control.&rdquo; End-to-end encryption protects the
-        coordinate itself from the platform; it doesn&rsquo;t protect
+        Six common ways to share a location. &ldquo;Who can read
+        it&rdquo; follows each company&rsquo;s own documentation, checked
+        October 2026. End-to-end encryption protects the coordinate itself
+        from the platform; it doesn&rsquo;t protect
         you from a careless recipient or a long-running share you forgot
         about.
       </p>
@@ -255,7 +292,8 @@ export default function HowToShareGpsLocationSafely() {
           <thead>
             <tr className="bg-tint/5 text-left text-fg-muted">
               <th className="px-3 py-2 font-semibold">App</th>
-              <th className="px-3 py-2 font-semibold">End-to-end</th>
+              <th className="px-3 py-2 font-semibold">Live?</th>
+              <th className="px-3 py-2 font-semibold">Who can read it</th>
               <th className="px-3 py-2 font-semibold">Durations</th>
               <th className="px-3 py-2 font-semibold">Platforms</th>
               <th className="px-3 py-2 font-semibold">Best for</th>
@@ -265,7 +303,8 @@ export default function HowToShareGpsLocationSafely() {
             {comparison.map((row) => (
               <tr key={row.app} className="border-t border-line-subtle">
                 <td className="px-3 py-2 text-fg font-semibold">{row.app}</td>
-                <td className="px-3 py-2 text-fg-muted">{row.e2e}</td>
+                <td className="px-3 py-2 text-fg-muted">{row.live}</td>
+                <td className="px-3 py-2 text-fg-muted">{row.read}</td>
                 <td className="px-3 py-2 text-fg-muted">{row.durations}</td>
                 <td className="px-3 py-2 text-fg-muted">{row.cross}</td>
                 <td className="px-3 py-2 text-fg-muted">{row.best}</td>
@@ -285,8 +324,8 @@ export default function HowToShareGpsLocationSafely() {
         <li>
           <strong>WhatsApp.</strong> Open the chat you shared into, tap
           the live-location card, then <em>Stop sharing</em>. Or open
-          Settings → Privacy → Live location to see every chat where the
-          timer is still running and stop them in bulk.
+          Settings → Privacy → Location to see every chat where the
+          timer is still running.
         </li>
         <li>
           <strong>iMessage.</strong> Open the conversation, tap the
@@ -302,9 +341,18 @@ export default function HowToShareGpsLocationSafely() {
           immediately on their end.
         </li>
         <li>
-          <strong>Signal.</strong> Tap your most recent location share
-          message, then <em>End share</em>. Signal shares also expire
-          automatically at the duration you set.
+          <strong>Google Messages.</strong> Open the conversation, tap the
+          message with your location, then next to your name tap{' '}
+          <em>Stop</em> &rarr; <em>Stop sharing</em>.
+        </li>
+        <li>
+          <strong>Signal.</strong> Nothing to stop: a Signal location is a
+          one-time pin. Delete the message if you no longer want it in the
+          chat.
+        </li>
+        <li>
+          <strong>Everything on an iPhone at once.</strong> Settings &rarr;
+          Privacy &amp; Security &rarr; Safety Check.
         </li>
         <li>
           <strong>Find My family group.</strong> Settings → your name →
@@ -328,22 +376,20 @@ export default function HowToShareGpsLocationSafely() {
       <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside">
         <li>
           <strong>WhatsApp:</strong> a map card inside the chat with a
-          live pin that updates as you move and a countdown showing time
-          remaining. Tapping it opens a full-screen view in Maps.
+          live pin that updates as you move until the timer ends.
         </li>
         <li>
-          <strong>iMessage:</strong> a card that opens directly in
-          Apple Maps with a live pin. The recipient can choose to share
-          back, giving you their location too.
+          <strong>Messages (iPhone):</strong> a live map in the
+          conversation, and your name under People in their Find My app.
+          They can choose to share back.
         </li>
         <li>
-          <strong>Google Maps:</strong> a notification in the recipient&rsquo;s
-          Maps app and an entry under the &ldquo;Shared with you&rdquo;
-          tab. No expiry banner unless you set one.
+          <strong>Google Maps:</strong> your position in their Maps app,
+          plus your name, photo and battery level, as listed above.
         </li>
         <li>
-          <strong>Signal:</strong> a static or live map inside the chat,
-          identical to other Signal media &mdash; no separate app launch.
+          <strong>Signal:</strong> a single map pin in the chat. It does
+          not move.
         </li>
         <li>
           <strong>Raw coordinates:</strong> a hyperlink (eg.{' '}
@@ -381,7 +427,7 @@ export default function HowToShareGpsLocationSafely() {
         <Link href="/my-location" className="text-accent hover:underline font-semibold">My Location tool</Link>,
         click Allow, and your current latitude and longitude appear at the
         top of the dashboard. One click copies them in the format every
-        app accepts. From there it pastes into iMessage, WhatsApp, Maps,
+        app accepts. From there it pastes into Messages, WhatsApp, Maps,
         Signal, or any of the others above. If you want a continuously
         updating reading instead of a snapshot, the{' '}
         <Link href="/live-location" className="text-accent hover:underline">Live Location tracker</Link>{' '}

@@ -101,11 +101,11 @@ Turning location on in each operating system and browser, what a website can and
     Read article →](https://getmylocations.com/blog/enable-location-on-iphone-and-android)
 -   [
     
-    Updated October 5, 2026·10 min read
+    Updated October 5, 2026·12 min read
     
-    ### Share Your Location Safely — WhatsApp, Maps & Signal
+    ### Share Your Location Safely: WhatsApp, iPhone, Google Maps
     
-    Compare WhatsApp, iMessage, Google Maps and Signal for sharing your location. What each leaks, which duration to pick, and how to stop a share.
+    Share your live location without oversharing: who can see it, how long it lasts, and how to stop it on WhatsApp, iPhone, Google Maps and Messages.
     
     Read article →](https://getmylocations.com/blog/how-to-share-gps-location-safely)
 -   [
