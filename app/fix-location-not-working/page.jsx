@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import AuthorBio from '../components/AuthorBio.jsx';
 import AdSense from '../components/AdSense.jsx';
+import { AUTHOR } from '../components/author.js';
 
 export const metadata = {
   title: 'Location Not Working? 7 Fixes for Any Browser or Phone',
@@ -65,11 +66,7 @@ const articleSchema = {
     'Step-by-step fixes for Chrome, Safari, Firefox, Edge, iOS and Android — re-enable permissions, fix wrong-city errors, and stop GPS drift.',
   datePublished: '2026-05-15',
   dateModified: '2026-09-30',
-  author: {
-    '@type': 'Person',
-    name: 'Ahmed Anwar',
-    url: 'https://getmylocations.com/about',
-  },
+  author: AUTHOR,
   publisher: {
     '@type': 'Organization',
     name: 'GetMyLocations',

@@ -18,6 +18,7 @@ import LatLonHistory from '../../posts/LatLonHistory.jsx';
 import EnableLocationDesktop from '../../posts/EnableLocationDesktop.jsx';
 import EnableLocationMobile from '../../posts/EnableLocationMobile.jsx';
 import AdSense from '../../components/AdSense.jsx';
+import { AUTHOR } from '../../components/author.js';
 
 const POST_COMPONENTS = {
   'browser-geolocation-api-explained': BrowserGeolocationApi,
@@ -84,7 +85,7 @@ export default function BlogPost({ params }) {
     description: post.excerpt,
     datePublished: post.date,
     dateModified: post.modifiedDate || post.date,
-    author: { '@type': 'Person', name: 'Ahmed Anwar', url: 'https://getmylocations.com/about' },
+    author: AUTHOR,
     publisher: {
       '@type': 'Organization',
       name: 'GetMyLocations',

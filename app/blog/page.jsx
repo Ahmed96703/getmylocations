@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { breadcrumbSchema } from '../components/breadcrumbSchema.js';
 import { POSTS } from '../posts/manifest.js';
+import { AUTHOR } from '../components/author.js';
 
 export const metadata = {
   title: 'Blog — Notes on GPS, geolocation, and online privacy',
@@ -40,11 +41,7 @@ export default function Blog() {
       description: p.excerpt,
       datePublished: p.date,
       dateModified: p.modifiedDate || p.date,
-      author: {
-        '@type': 'Person',
-        name: 'Ahmed Anwar',
-        url: 'https://getmylocations.com/about',
-      },
+      author: AUTHOR,
       url: `https://getmylocations.com/blog/${p.slug}`,
     })),
   };

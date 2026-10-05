@@ -3,6 +3,7 @@ import Tool from './Tool.jsx';
 import AuthorBio from '../components/AuthorBio.jsx';
 import AdSense from '../components/AdSense.jsx';
 import { measure } from './dist.js';
+import { AUTHOR } from '../components/author.js';
 
 export const metadata = {
   title: 'GPS Distance Calculator — Between Two Coordinates (Free)',
@@ -45,7 +46,7 @@ const webAppSchema = {
   isAccessibleForFree: true,
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
   publisher: { '@type': 'Organization', name: 'GetMyLocations' },
-  author: { '@type': 'Person', name: 'Ahmed Anwar', url: 'https://getmylocations.com/about' },
+  author: AUTHOR,
 };
 
 const breadcrumbSchema = {

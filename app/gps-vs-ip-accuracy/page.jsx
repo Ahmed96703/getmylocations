@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { breadcrumbSchema } from '../components/breadcrumbSchema.js';
 import AdSense from '../components/AdSense.jsx';
+import { AUTHOR } from '../components/author.js';
 
 
 export const metadata = {
@@ -30,11 +31,7 @@ const articleSchema = {
     'GPS vs IP geolocation compared. Accuracy tables, when each method fails, how VPNs affect location, and which one to use for which task.',
   datePublished: '2026-05-15',
   dateModified: '2026-09-30',
-  author: {
-    '@type': 'Person',
-    name: 'Ahmed Anwar',
-    url: 'https://getmylocations.com/about',
-  },
+  author: AUTHOR,
   publisher: {
     '@type': 'Organization',
     name: 'GetMyLocations',

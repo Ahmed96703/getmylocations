@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import AuthorBio from '../components/AuthorBio.jsx';
 import AdSense from '../components/AdSense.jsx';
+import { AUTHOR } from '../components/author.js';
 
 export const metadata = {
   title: 'Reverse Geocoding — How Coordinates Become an Address',
@@ -39,11 +40,7 @@ const articleSchema = {
     'A complete explainer on reverse geocoding: how a GPS coordinate is translated into a human-readable street address, the algorithm, accuracy limits, and how to call the free APIs yourself.',
   datePublished: '2026-05-15',
   dateModified: '2026-09-30',
-  author: {
-    '@type': 'Person',
-    name: 'Ahmed Anwar',
-    url: 'https://getmylocations.com/about',
-  },
+  author: AUTHOR,
   publisher: {
     '@type': 'Organization',
     name: 'GetMyLocations',

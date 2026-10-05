@@ -2,6 +2,7 @@ import Link from 'next/link';
 import HomeClient from './HomeClient.jsx';
 import { HOME_FAQS } from './home-faqs.js';
 import AdSense from './components/AdSense.jsx';
+import { AUTHOR } from './components/author.js';
 
 // MIGRATION NOTE:
 // The homepage uses Browser APIs (Geolocation, Leaflet maps) that only run client-side,
@@ -44,7 +45,7 @@ const webAppSchema = {
   isAccessibleForFree: true,
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
   publisher: { '@type': 'Organization', name: 'GetMyLocations' },
-  author: { '@type': 'Person', name: 'Ahmed Anwar', url: 'https://getmylocations.com/about' },
+  author: AUTHOR,
 };
 
 const faqSchema = {
