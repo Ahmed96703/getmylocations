@@ -1,5 +1,6 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import TurndownService from 'turndown';
+import { tables } from 'turndown-plugin-gfm';
 
 // Write a Markdown copy of every sitemap page next to its HTML in out/, and
 // advertise it with <link rel="alternate" type="text/markdown">.
@@ -23,6 +24,9 @@ const turndown = new TurndownService({
   bulletListMarker: '-',
   codeBlockStyle: 'fenced',
 });
+// Keep tables as Markdown tables; without this they flatten into one cell
+// per line, losing the rows that make comparison tables readable.
+turndown.use(tables);
 // Interactive tool widgets and decoration carry no readable content.
 turndown.remove([
   'script', 'style', 'noscript', 'svg', 'canvas', 'iframe',
