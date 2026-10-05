@@ -24,15 +24,15 @@ function FitBounds({ path }) {
 
 // `path` is the geodesic from A to B with longitudes unwrapped (they may run
 // past ±180), so a route across the Pacific is drawn as one short curve.
-export default function MapPair({ path, midpoint }) {
+export default function MapPair({ path, midpoint, dashed = false }) {
   if (!path?.length) return null;
   const a = path[0];
   const b = path[path.length - 1];
   // Put the midpoint marker on the same unwrapped longitude as the path.
   const ref = path[Math.floor(path.length / 2)][1];
-  let midLon = midpoint[1];
-  while (midLon - ref > 180) midLon -= 360;
-  while (midLon - ref < -180) midLon += 360;
+  let midLon = midpoint ? midpoint[1] : 0;
+  while (midpoint && midLon - ref > 180) midLon -= 360;
+  while (midpoint && midLon - ref < -180) midLon += 360;
   return (
     <MapContainer center={a} zoom={3} worldCopyJump={false} className="w-full h-full">
       <TileLayer
@@ -41,12 +41,14 @@ export default function MapPair({ path, midpoint }) {
         maxZoom={TILES.dark.maxZoom}
         className={TILES.dark.className}
       />
-      <Polyline positions={path} pathOptions={{ color: '#0ea5e9', weight: 3, opacity: 0.9 }} />
+      <Polyline positions={path} pathOptions={{ color: '#0ea5e9', weight: 3, opacity: 0.9, dashArray: dashed ? '8 8' : undefined }} />
       <Marker position={a}><Tooltip>A</Tooltip></Marker>
       <Marker position={b}><Tooltip>B</Tooltip></Marker>
-      <CircleMarker center={[midpoint[0], midLon]} radius={5} pathOptions={{ color: '#f59e0b', fillOpacity: 1 }}>
-        <Tooltip>Midpoint</Tooltip>
-      </CircleMarker>
+      {midpoint && (
+        <CircleMarker center={[midpoint[0], midLon]} radius={5} pathOptions={{ color: '#f59e0b', fillOpacity: 1 }}>
+          <Tooltip>Midpoint</Tooltip>
+        </CircleMarker>
+      )}
       <FitBounds path={path} />
     </MapContainer>
   );

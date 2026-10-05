@@ -6,7 +6,7 @@ import AdSense from '../components/AdSense.jsx';
 
 export const metadata = {
   title: 'Get Directions — Free Driving Directions Route Planner',
-  description: 'Get directions between any two addresses with free driving, walking, biking, or transit routes. Plan from and to directions powered by Google Maps.',
+  description: 'Get driving, walking, cycling or transit directions between any two places or coordinates, preview both on a map, and open the route in Google Maps.',
   keywords: ['driving directions', 'route planner', 'directions', 'walking directions', 'transit directions'],
   alternates: { canonical: '/driving-directions' },
   openGraph: {
@@ -31,7 +31,7 @@ const webAppSchema = {
   '@type': 'WebApplication',
   name: 'Driving Directions',
   description:
-    'Plan a driving, walking, biking, or public-transit route between any two addresses or GPS coordinates. Free, powered by Google Maps.',
+    'Plan a driving, walking, bicycling, or public-transit route between any two places or GPS coordinates (any format). Shows both places and the straight-line distance, and opens the full route with travel time and turn-by-turn steps in Google Maps.',
   url: 'https://getmylocations.com/driving-directions',
   applicationCategory: 'UtilitiesApplication',
   operatingSystem: 'Web',
@@ -44,24 +44,28 @@ const webAppSchema = {
 
 const faqs = [
   {
-    q: 'Why is the ETA different from what my car satnav says?',
-    a: 'Built-in car navigation usually runs on map data that is months or years old and often has no live traffic feed at all. The routing here uses current traffic conditions aggregated from phones on the road right now. On a clear road the two will agree closely; in rush hour the live-traffic estimate is almost always the more realistic one.',
+    q: 'Where do I see the travel time and turn-by-turn steps?',
+    a: 'In Google Maps. Tap "Open route in Google Maps" and the route opens with its distance, travel time with current traffic, alternative routes, and step-by-step directions, on the website or in the Google Maps app on your phone. This page finds both places, shows them on a map with the straight-line distance between them, and hands Google exactly the start, destination, and travel mode you chose.',
+  },
+  {
+    q: 'Why is the ETA in Google Maps different from my car satnav?',
+    a: 'Built-in car navigation often runs on map data that is months or years old and may have no live traffic feed at all. Google Maps estimates travel time from current and typical traffic on each road. On a clear road the two usually agree closely; in rush hour the live-traffic estimate is usually the more realistic one.',
   },
   {
     q: 'Can I add multiple stops to a route?',
-    a: 'Not in this embed — it handles one origin and one destination. For a multi-stop route, plan the first leg here and then use the "Open in Google Maps" button, which hands the route to the full app where you can add waypoints.',
+    a: 'Plan the first leg here, then open the route in Google Maps, where you can add stops. Google Maps supports multiple stops for driving, walking, and cycling routes.',
   },
   {
     q: 'Can I get directions from my current location?',
-    a: 'Yes. Tap "Use my location" under the origin field and allow the location prompt; it fills in your GPS coordinates and reloads the route. You can also paste coordinates into the field yourself. To get a precise coordinate pair first, use the My Location tool and copy the "lat, lon" string it produces.',
+    a: 'Yes. Tap "Use my location" under the starting point and allow the location prompt; it fills in your GPS coordinates. You can also paste coordinates in any format, such as decimal degrees or degrees-minutes-seconds.',
   },
   {
-    q: 'Does the route avoid tolls or motorways?',
-    a: 'The embed uses default routing preferences, which do not exclude tolls or motorways. Those options live in the full Google Maps app — open the route there and set them under the route options menu.',
+    q: 'Can the route avoid tolls or motorways?',
+    a: 'Yes, in Google Maps. Open the route there and use the route options menu to avoid tolls, motorways, or ferries. This page passes only the start, destination, and travel mode.',
   },
   {
-    q: 'Why does it say no route found?',
-    a: 'Usually one of three things: the two points are separated by water with no ferry in the road graph, one of the addresses did not geocode to a real place, or the selected travel mode has no coverage there (transit is the common culprit). Try switching to driving mode first to confirm the two endpoints are reachable at all.',
+    q: 'Why can\'t it find one of my places?',
+    a: 'The preview looks places up in OpenStreetMap, which may not know a new building or a business name. Add the city and country, or paste coordinates from the Address Finder or Google Maps. If Google Maps then says no route was found, the places may be separated by water with no ferry, or the travel mode (often transit) has no coverage there; try driving first.',
   },
 ];
 
@@ -98,11 +102,24 @@ export default function DrivingDirectionsPage() {
             Get directions — free <span className="text-accent">driving directions</span> route planner
           </h1>
           <p className="text-lg text-fg-muted mt-4 max-w-3xl">
-            Plan a <strong className="text-fg">driving, walking, bicycling, or public-transit</strong> route between any two addresses or GPS coordinates.
+            Plan a <strong className="text-fg">driving, walking, bicycling, or public-transit</strong> route between any two places or GPS coordinates. The page shows both places and the straight-line distance between them, then opens the full route, with travel time and turn-by-turn directions, in Google Maps.
           </p>
         </section>
 
         <Tool />
+
+        <section className="mt-10">
+          <h2 className="font-display text-2xl font-bold">How to get directions between two places</h2>
+          <ol className="mt-3 space-y-1.5 text-fg-muted list-decimal list-inside leading-relaxed">
+            <li>Type the starting point and the destination: an address, a landmark, or coordinates in any format. Or tap <em>Use my location</em> for the start.</li>
+            <li>Choose driving, walking, bicycling, or public transit.</li>
+            <li>Tap <em>Get directions</em>. Both places appear on the map with the straight-line distance between them, so you can check they are the places you meant.</li>
+            <li>Tap <em>Open route in Google Maps</em> for the road route, its distance and travel time with current traffic, and turn-by-turn directions, on the web or in the app.</li>
+          </ol>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            Place names are looked up with OpenStreetMap&rsquo;s free geocoder for the preview, which allows one request per second, so the two lookups take a moment. Google Maps receives your original text (or your coordinates) and finds the places itself.
+          </p>
+        </section>
 
         <section className="mt-10">
           <h2 className="font-display text-2xl font-bold">Why the suggested route is not always the shortest</h2>
@@ -155,20 +172,18 @@ export default function DrivingDirectionsPage() {
             Even Google Maps and Waze, both owned by Google since it bought
             Waze in 2013, regularly disagree because each app weighs traffic
             reports and route preferences differently.
-            A 5 to 15% difference between them is normal. For a long trip, that
-            is half an hour of disagreement.
+            On a long trip those differences can add up to many minutes, so treat
+            any single ETA as an estimate rather than a promise.
           </p>
         </section>
 
         <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">When the embed gives up</h2>
+          <h2 className="font-display text-2xl font-bold">What the full Google Maps app adds</h2>
           <p className="mt-3 text-fg-muted leading-relaxed">
-            The Google Maps embed used here is a lightweight version of the full
-            Maps app. It handles one origin and one destination cleanly, and it
-            shows traffic-adjusted ETAs. What it does not do is multi-stop routes,
-            offline downloads, or step-by-step navigation. For any of those, the
-            <em> Open in Google Maps</em> button hands the same route off to the
-            full app on your device. Before you leave, you might also want to
+            This page sets up a single route from one place to another. Opening it in Google Maps
+            adds everything a real trip needs: alternative routes, live traffic and travel time,
+            extra stops, avoiding tolls, motorways, or ferries, choosing a departure or arrival time
+            for transit, offline maps, and spoken turn-by-turn navigation on your phone. Before you leave, you might also want to
             preview the destination in{' '}
             <Link href="/street-view" className="text-accent hover:underline">Street View</Link>{' '}
             to check the entrance, or explore the area around it on the{' '}
@@ -190,11 +205,11 @@ export default function DrivingDirectionsPage() {
         <section className="mt-10">
           <h2 className="font-display text-2xl font-bold">Entering an origin or destination that has no address</h2>
           <p className="mt-3 text-fg-muted leading-relaxed">
-            Both fields accept a decimal-degree coordinate pair as well as a street address. That matters
+            Both fields accept coordinates as well as a street address, in decimal degrees, degrees-minutes-seconds, UTM, or as a Google Maps link. That matters
             more often than it sounds: campsites, trailheads, building site entrances, rural properties on
             unnamed lanes, and anywhere a friend has sent you a pin rather than a postcode. Paste{' '}
             <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">29.749907, -95.358421</code>{' '}
-            into either field and the router treats it as an exact point on the road graph.
+            into either field and Google Maps routes to that exact point.
           </p>
           <p className="mt-3 text-fg-muted leading-relaxed">
             One caveat worth knowing: routing snaps your coordinate to the nearest routable road. If the
@@ -209,16 +224,17 @@ export default function DrivingDirectionsPage() {
         <section className="mt-10">
           <h2 className="font-display text-2xl font-bold">Route distance is not straight-line distance</h2>
           <p className="mt-3 text-fg-muted leading-relaxed">
-            The distance this planner reports is the length of the actual driven path &mdash; every bend,
-            every detour around a river, every one-way system. That is almost always longer than the
-            straight-line distance between the same two points, sometimes dramatically so in mountainous
+            The distance Google Maps shows for a route is the length of the actual path &mdash; every bend,
+            every detour around a river, every one-way system. The distance shown on this page is the
+            straight line between the two places, calculated in your browser on the WGS 84 ellipsoid.
+            The road distance is almost always longer, sometimes dramatically so in mountainous
             or coastal terrain where the road has to go the long way round.
           </p>
           <p className="mt-3 text-fg-muted leading-relaxed">
             If what you actually want is the great-circle distance &mdash; the &ldquo;as the crow flies&rdquo;
             figure used for flight planning, radio range, geofencing, and delivery-zone rules &mdash; the{' '}
             <Link href="/distance-calculator" className="text-accent hover:underline">distance calculator</Link>{' '}
-            computes it directly from two coordinate pairs using the Haversine formula. Comparing the two
+            computes it directly from two coordinate pairs, with bearings and the midpoint. Comparing the two
             numbers is a quick sanity check on how indirect a journey really is. Some detour is normal: a
             2012 nationwide US study by Boscoe, Henry and Zdeb measured an average road-to-straight-line
             ratio of about 1.4. A ratio of 2 or more usually means a river, mountain range, or coastline
