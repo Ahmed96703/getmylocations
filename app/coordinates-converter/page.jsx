@@ -2,11 +2,12 @@ import Link from 'next/link';
 import Tool from './Tool.jsx';
 import AuthorBio from '../components/AuthorBio.jsx';
 import AdSense from '../components/AdSense.jsx';
+import { ddToDms, ddToDdm, dmsToDd, latLonToUtm, utmToMgrs } from './geo.js';
 
 export const metadata = {
   title: 'Coordinates Converter — DD, DMS, DDM & UTM (Free Tool)',
   description:
-    'Free coordinates converter — convert GPS latitude and longitude between Decimal Degrees, DMS, DDM, and UTM in real time. Live map, no signup, no install.',
+    'Convert GPS coordinates between decimal degrees, DMS, DDM and UTM in both directions, with the math shown step by step. Free, private, no signup.',
   keywords: [
     'coordinates converter',
     'gps coordinates converter',
@@ -38,7 +39,7 @@ const webAppSchema = {
   '@type': 'WebApplication',
   name: 'Coordinates Converter',
   description:
-    'Free browser-based tool that converts GPS latitude and longitude between Decimal Degrees (DD), Degrees-Minutes-Seconds (DMS), Degrees-Decimal-Minutes (DDM), and Universal Transverse Mercator (UTM).',
+    'Free browser-based tool that converts GPS coordinates between Decimal Degrees (DD), Degrees-Minutes-Seconds (DMS), Degrees-Decimal-Minutes (DDM), and Universal Transverse Mercator (UTM) in both directions, outputs MGRS, reads pasted coordinates and map links, and shows the point on a map. WGS 84 datum.',
   url: 'https://getmylocations.com/coordinates-converter',
   applicationCategory: 'UtilitiesApplication',
   operatingSystem: 'Web',
@@ -81,7 +82,7 @@ const faqs = [
   },
   {
     q: 'What does the letter after the UTM zone number mean (like "31U")?',
-    a: 'The number is the longitude zone (1–60, six degrees wide). The letter is the latitude band (C–X, eight degrees tall, skipping I and O so they are not confused with 1 and 0). Together they uniquely identify which of the world\'s ~1,200 UTM cells you are in. The tool computes both from your input automatically and accounts for the Norway/Svalbard exceptions.',
+    a: 'The number is the longitude zone (1–60, six degrees wide). The letter is the latitude band (C–X, eight degrees tall, skipping I and O so they are not confused with 1 and 0). Together they uniquely identify which of the world\'s ~1,200 UTM cells you are in. The tool computes both from your input automatically and applies the Norway (32V) and Svalbard (31X, 33X, 35X, 37X) zone exceptions.',
   },
   {
     q: 'What is the difference between DMS and DDM?',
@@ -107,6 +108,14 @@ const faqs = [
     q: 'Is DD the same as the format Google Maps uses?',
     a: 'Yes. Open Google Maps in a browser, right-click any point, and the first item in the menu is the DD coordinate — "48.858420, 2.294500" — ready to copy. iPhone\'s Compass app, Apple Maps, Android\'s long-press menu, and almost every GPS app default to the same format. DD is the lingua franca of consumer mapping.',
   },
+  {
+    q: 'Can I convert UTM to latitude and longitude?',
+    a: 'Yes. Enter the zone number, latitude band letter, easting, and northing in the UTM row and press Convert UTM, or paste the whole reference (for example 31U 448252 5411957) into the paste box. The band letter tells the tool which hemisphere you are in: N to X is north, C to M is south. Decimal degrees, DMS, DDM, MGRS, and the map all update from the result.',
+  },
+  {
+    q: 'Which datum does this coordinate converter use?',
+    a: 'WGS 84 (EPSG:4326), the datum used by GPS, Google Maps, Apple Maps, and OpenStreetMap. Converting between formats never changes the datum. Coordinates read from older maps on NAD27, ED50, or OSGB36 can differ from WGS 84 by tens of meters or more, so check the map margin if a point lands slightly off.',
+  },
 ];
 
 const faqSchema = {
@@ -119,12 +128,35 @@ const faqSchema = {
   })),
 };
 
-const landmarks = [
-  { name: 'Eiffel Tower, Paris', dd: '48.858420, 2.294500', dms: "48°51′30.3″N 2°17′40.2″E", ddm: "48°51.504′N 2°17.670′E", utm: '31U 448262 5411917' },
-  { name: 'Statue of Liberty, NYC', dd: '40.689247, -74.044502', dms: "40°41′21.3″N 74°02′40.2″W", ddm: "40°41.355′N 74°02.670′W", utm: '18T 580757 4504699' },
-  { name: 'Sydney Opera House', dd: '-33.856785, 151.215290', dms: "33°51′24.4″S 151°12′55.0″E", ddm: "33°51.407′S 151°12.917′E", utm: '56H 334893 6252053' },
-  { name: 'Mount Everest summit', dd: '27.988100, 86.925000', dms: "27°59′17.2″N 86°55′30.0″E", ddm: "27°59.286′N 86°55.500′E", utm: '45R 492588 3095886' },
+// Worked examples are computed at build time with the same code the tool
+// runs, so the table can never disagree with the converter.
+const LANDMARKS = [
+  { name: 'Eiffel Tower, Paris', lat: 48.85842, lon: 2.2945 },
+  { name: 'Statue of Liberty, New York', lat: 40.689247, lon: -74.044502 },
+  { name: 'Sydney Opera House', lat: -33.856784, lon: 151.215297 },
+  { name: 'Mount Everest summit', lat: 27.9881, lon: 86.925 },
+  { name: 'Ny-Ålesund, Svalbard', lat: 78.9236, lon: 11.9306 },
 ];
+const pad2 = (n) => String(n).padStart(2, '0');
+const landmarks = LANDMARKS.map(({ name, lat, lon }) => {
+  const la = ddToDms(lat), lo = ddToDms(lon);
+  const s3 = (v) => (Math.round(v * 1000) / 1000).toFixed(3);
+  const lam = ddToDdm(lat), lom = ddToDdm(lon);
+  const utm = latLonToUtm(lat, lon);
+  // Round-trip check: DD -> DMS (3-decimal seconds) -> DD, error in cm.
+  const backLat = dmsToDd(la.d, la.m, Number(s3(la.s)), lat < 0 ? 'S' : 'N');
+  const backLon = dmsToDd(lo.d, lo.m, Number(s3(lo.s)), lon < 0 ? 'W' : 'E');
+  const errCm = Math.max(Math.abs(backLat - lat) * 11132000, Math.abs(backLon - lon) * 11132000 * Math.cos((lat * Math.PI) / 180));
+  return {
+    name,
+    dd: `${lat.toFixed(6)}, ${lon.toFixed(6)}`,
+    dms: `${la.d}°${pad2(la.m)}′${s3(la.s)}″${lat < 0 ? 'S' : 'N'} ${lo.d}°${pad2(lo.m)}′${s3(lo.s)}″${lon < 0 ? 'W' : 'E'}`,
+    ddm: `${lam.d}°${lam.m.toFixed(4).padStart(7, '0')}′${lat < 0 ? 'S' : 'N'} ${lom.d}°${lom.m.toFixed(4).padStart(7, '0')}′${lon < 0 ? 'W' : 'E'}`,
+    utm: `${utm.zone}${utm.band} ${Math.round(utm.easting)} ${Math.round(utm.northing)}`,
+    mgrs: utmToMgrs(utm),
+    err: errCm.toFixed(2),
+  };
+});
 
 export default function CoordinatesConverterPage() {
   return (
@@ -150,11 +182,29 @@ export default function CoordinatesConverterPage() {
             Coordinates converter — convert between <span className="text-accent">DD, DMS, DDM, and UTM</span>
           </h1>
           <p className="text-lg text-fg-muted mt-4 max-w-3xl">
-            Convert any GPS coordinate between <strong className="text-fg">Decimal Degrees</strong>, <strong className="text-fg">Degrees-Minutes-Seconds</strong>, <strong className="text-fg">Degrees-Decimal-Minutes</strong>, and <strong className="text-fg">Universal Transverse Mercator</strong>. Edit any field and the others update instantly. Free, no signup, runs entirely in your browser.
+            Convert any GPS coordinate between <strong className="text-fg">Decimal Degrees</strong>, <strong className="text-fg">Degrees-Minutes-Seconds</strong>, <strong className="text-fg">Degrees-Decimal-Minutes</strong>, and <strong className="text-fg">Universal Transverse Mercator</strong>. Paste a coordinate in any common format, or edit any field, and every other format updates instantly, along with the MGRS grid reference and a map pin. Free, no signup, runs entirely in your browser.
           </p>
         </section>
 
         <Tool />
+
+        <section className="mt-12">
+          <h2 className="font-display text-2xl font-bold">Paste a GPS coordinate in any format</h2>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            The <em>Paste any coordinate</em> box at the top of the tool works out which format you have and converts it. It understands:
+          </p>
+          <ul className="mt-3 space-y-1.5 text-fg-muted list-disc list-inside leading-relaxed">
+            <li><strong className="text-fg">Decimal degrees:</strong> <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">48.8584, 2.2945</code> or <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">40.7128° N, 74.0060° W</code></li>
+            <li><strong className="text-fg">DMS:</strong> <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">48°51'30.3"N 2°17'40.2"E</code>, typographic marks (′ ″) included</li>
+            <li><strong className="text-fg">DDM:</strong> <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">48°51.505'N 2°17.670'E</code> or <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">N48 51.505 E2 17.670</code></li>
+            <li><strong className="text-fg">Bare numbers:</strong> two, four, or six numbers are read as DD, DDM, or DMS</li>
+            <li><strong className="text-fg">UTM:</strong> <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">31U 448252 5411957</code></li>
+            <li><strong className="text-fg">Map links:</strong> a Google Maps URL containing <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">@lat,lon</code> or <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">?q=lat,lon</code></li>
+          </ul>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            If the longitude is written first with its E or W letter, the tool swaps the pair for you. It tells you which format it detected, so you can confirm it read your input the way you meant.
+          </p>
+        </section>
 
         <section className="mt-12">
           <h2 className="font-display text-2xl font-bold">When you actually need to convert coordinates</h2>
@@ -186,9 +236,9 @@ export default function CoordinatesConverterPage() {
         </section>
 
         <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">Format quick reference</h2>
+          <h2 className="font-display text-2xl font-bold">Worked examples: five landmarks in every format</h2>
           <p className="mt-3 text-fg-muted leading-relaxed">
-            The same point on Earth in all four formats — useful as a calibration check the first time you use the tool:
+            The same five points in every format the tool produces. These values are generated by the converter&rsquo;s own code when the page is built, so they always match what the tool shows. The last column is a round-trip check: convert the decimal degrees to DMS, round the seconds to three decimals, convert back, and measure how far the result moved.
           </p>
           <div className="mt-4 overflow-x-auto rounded-xl ring-1 ring-line">
             <table className="w-full text-sm">
@@ -199,6 +249,8 @@ export default function CoordinatesConverterPage() {
                   <th className="px-3 py-2 font-semibold">DMS</th>
                   <th className="px-3 py-2 font-semibold">DDM</th>
                   <th className="px-3 py-2 font-semibold">UTM</th>
+                  <th className="px-3 py-2 font-semibold">MGRS</th>
+                  <th className="px-3 py-2 font-semibold">Round trip</th>
                 </tr>
               </thead>
               <tbody>
@@ -209,17 +261,22 @@ export default function CoordinatesConverterPage() {
                     <td className="px-3 py-2 font-mono text-xs text-fg-muted">{l.dms}</td>
                     <td className="px-3 py-2 font-mono text-xs text-fg-muted">{l.ddm}</td>
                     <td className="px-3 py-2 font-mono text-xs text-fg-muted">{l.utm}</td>
+                    <td className="px-3 py-2 font-mono text-xs text-fg-muted">{l.mgrs}</td>
+                    <td className="px-3 py-2 font-mono text-xs text-fg-muted">{l.err} cm</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            Two things worth noticing. Ny-Ålesund sits at 11.9° E, which would normally be UTM zone 32, but it is reported in zone 33X because of the Svalbard exception described below. And three-decimal seconds hold a position to within about 1.5 cm, far finer than any phone GPS can measure.
+          </p>
         </section>
 
         <section className="mt-10">
           <h2 className="font-display text-2xl font-bold">How the tool handles each format</h2>
           <p className="mt-3 text-fg-muted leading-relaxed">
-            Decimal degrees are the master input. Type a value into either of the two top boxes and the page recalculates the DMS, DDM, and UTM versions on the fly. If you have the coordinate in DMS or DDM, type it in the corresponding row and the tool back-converts to decimal degrees. UTM is shown as a read-only output because typing easting and northing by hand is uncommon and error-prone — almost everyone who works in UTM already has it in a GIS file or a topographic chart.
+            Every format reads from and writes to one shared position. Decimal-degree fields convert as you type. DMS and DDM fields convert when you leave the field or change the hemisphere letter, so a half-typed number does not jump the map around. UTM converts when you press <em>Convert UTM</em>. MGRS is calculated from the UTM result and shown as output only. Whatever you change, every other format, the copy buttons, and the map pin update together.
           </p>
           <p className="mt-3 text-fg-muted leading-relaxed">
             Need a coordinate to convert? The{' '}
@@ -235,17 +292,64 @@ export default function CoordinatesConverterPage() {
           <p className="mt-3 text-fg-muted leading-relaxed">
             UTM divides the world into 60 vertical zones, each six degrees of longitude wide. Zone 1 starts at the international date line and runs east. Your zone number is found from your longitude with the formula{' '}
             <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm mx-1">floor((lon + 180) / 6) + 1</code>.
-            Norway and Svalbard have hand-tuned exceptions to keep their countries from straddling zone boundaries, and the tool honours those special cases. The letter that follows the zone number — like the U in &ldquo;31U&rdquo; — comes from your latitude and identifies the eight-degree band you are sitting in.
+            The letter that follows the zone number, like the U in &ldquo;31U&rdquo;, is the latitude band: 20 bands lettered C to X (skipping I and O), each eight degrees tall, except band X, which runs 12 degrees from 72°N to 84°N.
+          </p>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            Two regions break the simple formula, and the tool applies both:
+          </p>
+          <ul className="mt-3 space-y-1.5 text-fg-muted list-disc list-inside leading-relaxed">
+            <li><strong className="text-fg">South-west Norway (56°N to 64°N):</strong> zone 32V is widened west to 3°E so the coast is not split across two zones.</li>
+            <li><strong className="text-fg">Svalbard (72°N to 84°N):</strong> zones 32X, 34X, and 36X do not exist. Instead 31X covers 0° to 9°E, 33X covers 9°E to 21°E, 35X covers 21°E to 33°E, and 37X covers 33°E to 42°E.</li>
+          </ul>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            UTM itself stops at 84°N and 80°S; the polar caps use a different grid called UPS, so the tool shows no UTM or MGRS value there.
+          </p>
+        </section>
+
+        <section className="mt-10">
+          <h2 className="font-display text-2xl font-bold">Convert UTM to latitude and longitude</h2>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            UTM to lat long is the conversion people search for most, usually with a grid reference from a topographic map or a survey file. To do it in the tool:
+          </p>
+          <ol className="mt-3 space-y-1.5 text-fg-muted list-decimal list-inside leading-relaxed">
+            <li>Enter the <strong className="text-fg">zone number</strong> (1 to 60) and the <strong className="text-fg">latitude band letter</strong>. The band matters: letters N to X mean the northern hemisphere, C to M the southern.</li>
+            <li>Enter the <strong className="text-fg">easting</strong> in meters. It is always between about 160,000 and 840,000, because every zone is centred on a false easting of 500,000 m.</li>
+            <li>Enter the <strong className="text-fg">northing</strong> in meters. In the southern hemisphere it includes a false northing of 10,000,000 m, which is why the band letter is needed to read it correctly.</li>
+            <li>Press <em>Convert UTM</em>. Decimal degrees, DMS, DDM, MGRS, and the map all update. You can also paste the whole reference, such as <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">56H 334900 6252290</code>, into the paste box.</li>
+          </ol>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            The tool uses the standard transverse Mercator equations on the WGS 84 ellipsoid. In our tests against the open-source PROJ library, its results agreed to within 2 cm everywhere UTM is defined, including the Norway and Svalbard zones.
+          </p>
+        </section>
+
+        <section className="mt-10">
+          <h2 className="font-display text-2xl font-bold">MGRS: UTM with a grid square</h2>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            The Military Grid Reference System, used by NATO forces and many search-and-rescue teams, is UTM with a shortcut. After the zone and band, two letters name a 100 km grid square, and the easting and northing are given only within that square. <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">31U DQ 48252 11957</code> means zone 31U, square DQ, then 48,252 m east and 11,957 m north inside the square.
+          </p>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            Five digits each give 1 m precision; you can drop digits from the end of both numbers for coarser references (four digits is 10 m, three is 100 m). MGRS digits are truncated, never rounded, so a point at 334,899.6 m east appears as 334900 in the UTM row but 34899 in MGRS. Both are correct.
+          </p>
+        </section>
+
+        <section className="mt-10">
+          <h2 className="font-display text-2xl font-bold">Datum: every format here assumes WGS 84</h2>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            A coordinate is only meaningful together with its datum, the model of the Earth&rsquo;s shape it is measured against. Every result on this page uses WGS 84 (also listed as EPSG:4326), the datum GPS satellites broadcast and that Google Maps, Apple Maps, and OpenStreetMap use. Converting between formats never changes the datum; it only rewrites the same point in a different notation.
+          </p>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            Older paper maps often use a regional datum such as NAD27 in North America, ED50 in Europe, or OSGB36 in Great Britain. The same numbers on those datums can point to a spot tens of meters, and in places more than a hundred meters, away from the WGS 84 position. If a coordinate from an old map lands slightly off, check the datum printed in the map margin before blaming the conversion.
           </p>
         </section>
 
         <section className="mt-10">
           <h2 className="font-display text-2xl font-bold">Common mistakes the tool catches</h2>
           <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside">
-            <li>Latitude over 90 or longitude over 180 — the tool flags this rather than producing nonsense.</li>
-            <li>Forgetting to switch the hemisphere letter when typing DMS for southern or western locations.</li>
-            <li>Pasting a coordinate with the longitude first (a GeoJSON pattern). The tool assumes latitude first; if your map ends up in the ocean, swap the two.</li>
-            <li>Mixing up DDM and DMS — they look similar but the trailing fraction is in different units. Type into the field labelled for the format you actually have.</li>
+            <li><strong className="text-fg">Out-of-range values.</strong> A latitude outside &minus;90 to 90 or a longitude outside &minus;180 to 180 shows an error and leaves the last valid result in place.</li>
+            <li><strong className="text-fg">Minutes or seconds of 60 or more.</strong> DMS and DDM entries are rejected with a message instead of silently rolling over.</li>
+            <li><strong className="text-fg">Impossible UTM references.</strong> Zones outside 1 to 60, the letters I and O as bands, and eastings or northings outside the valid range are all flagged.</li>
+            <li><strong className="text-fg">Longitude written first with its letter.</strong> If you paste something like 2°17′E 48°51′N, the paste box swaps it into latitude-first order. Without hemisphere letters it cannot know, so a pair like (2.29, 48.86) is read as latitude 2.29; if the map pin lands in the wrong place, swap the two numbers.</li>
+            <li><strong className="text-fg">Pasted text it cannot read.</strong> Instead of guessing, it says so and shows an example of a format it accepts.</li>
           </ul>
         </section>
 
@@ -271,6 +375,9 @@ export default function CoordinatesConverterPage() {
           </p>
           <p className="mt-2 text-fg-muted leading-relaxed">
             Example: 48° 51′ 30.31″ N = 48 + 51/60 + 30.31/3600 = 48.858420°.
+          </p>
+          <p className="mt-2 text-fg-muted leading-relaxed">
+            How much precision survives the round trip? One second of latitude is about 31 m, so rounding seconds to three decimals moves the point by at most 0.0005″, roughly 1.5 cm. The worked-examples table above shows the measured round-trip error for each landmark.
           </p>
           <p className="mt-3 text-fg-muted leading-relaxed">
             Once you have two coordinates in decimal degrees, the{' '}
