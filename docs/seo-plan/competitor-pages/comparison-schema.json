@@ -1,0 +1,64 @@
+{
+  "_note": "Templates for the three comparison posts. Reuse AUTHOR from app/components/author.js. No Product/AggregateRating: the site has no genuine ratings, and self-serving review markup is not eligible.",
+  "what3words-vs-plus-codes-vs-coordinates": [
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "what3words vs Plus Codes vs GPS Coordinates: Which to Use",
+      "url": "https://getmylocations.com/blog/what3words-vs-plus-codes-vs-coordinates",
+      "datePublished": "YYYY-MM-DD",
+      "dateModified": "YYYY-MM-DD",
+      "author": { "@id": "https://getmylocations.com/about#ahmed-anwar" },
+      "publisher": { "@type": "Organization", "name": "GetMyLocations" },
+      "about": [
+        { "@type": "Thing", "name": "what3words", "sameAs": "https://en.wikipedia.org/wiki/What3words" },
+        { "@type": "Thing", "name": "Open Location Code", "sameAs": "https://en.wikipedia.org/wiki/Open_Location_Code" },
+        { "@type": "Thing", "name": "Geographic coordinate system", "sameAs": "https://en.wikipedia.org/wiki/Geographic_coordinate_system" }
+      ]
+    }
+  ],
+  "coordinate-converters-tested": [
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Free Coordinate Converters Tested on 6 Tricky Inputs (2026)",
+      "url": "https://getmylocations.com/blog/coordinate-converters-tested",
+      "datePublished": "YYYY-MM-DD",
+      "dateModified": "YYYY-MM-DD",
+      "author": { "@id": "https://getmylocations.com/about#ahmed-anwar" },
+      "publisher": { "@type": "Organization", "name": "GetMyLocations" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Free coordinate converters tested",
+      "itemListOrder": "https://schema.org/ItemListUnordered",
+      "numberOfItems": 7,
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "GPXAnalyzer Coordinate Converter", "url": "https://gpxanalyzer.com/tools/coordinate-converter.html" },
+        { "@type": "ListItem", "position": 2, "name": "Simple Map Lab GPS Coordinate Converter", "url": "https://www.simplemaplab.com/tools/gps-coordinate-converter" },
+        { "@type": "ListItem", "position": 3, "name": "Mapscaping UTM Converter", "url": "https://mapscaping.com/utm-coordinates-converter/" },
+        { "@type": "ListItem", "position": 4, "name": "ToolV Coordinate Converter", "url": "https://toolv.com/en/app/coordinate-converter" },
+        { "@type": "ListItem", "position": 5, "name": "CoordConv", "url": "https://coordconv.com/" },
+        { "@type": "ListItem", "position": 6, "name": "Geoqux Coordinate Converter", "url": "https://geoqux.com/coordinate-converter" },
+        { "@type": "ListItem", "position": 7, "name": "GetMyLocations Coordinates Converter", "url": "https://getmylocations.com/coordinates-converter" }
+      ]
+    }
+  ],
+  "haversine-vs-vincenty": [
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Haversine vs Vincenty: How Much Error Does a Sphere Add?",
+      "url": "https://getmylocations.com/blog/haversine-vs-vincenty",
+      "datePublished": "YYYY-MM-DD",
+      "dateModified": "YYYY-MM-DD",
+      "author": { "@id": "https://getmylocations.com/about#ahmed-anwar" },
+      "publisher": { "@type": "Organization", "name": "GetMyLocations" },
+      "about": [
+        { "@type": "Thing", "name": "Haversine formula", "sameAs": "https://en.wikipedia.org/wiki/Haversine_formula" },
+        { "@type": "Thing", "name": "Vincenty's formulae", "sameAs": "https://en.wikipedia.org/wiki/Vincenty%27s_formulae" }
+      ]
+    }
+  ]
+}

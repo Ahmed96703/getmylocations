@@ -2,6 +2,7 @@
 export const POSTS = [
   {
     slug: 'enable-location-on-windows-and-mac',
+    topic: 'permissions', // groups the post on the blog index
     title: 'How to Turn On Location on a Laptop (Windows 10, 11 & Mac)',
     excerpt:
       'Turn on location on any laptop: Windows 10, Windows 11 or Mac. Fix the browser missing from the Windows app list and greyed-out toggles.',
@@ -12,6 +13,7 @@ export const POSTS = [
   },
   {
     slug: 'enable-location-on-iphone-and-android',
+    topic: 'permissions',
     title: 'How to Turn On Location Services on iPhone & Android',
     excerpt:
       "Enable Location Services on iPhone and Android, fix per-app and per-site permissions, turn on Precise Location, and beat the battery-saver gotcha.",
@@ -23,6 +25,7 @@ export const POSTS = [
   },
   {
     slug: 'history-of-latitude-and-longitude',
+    topic: 'gps',
     title: 'History of Latitude and Longitude — Sextants to Satellites',
     excerpt:
       'How a Greek scholar, a Yorkshire clockmaker, and a global voting conference in 1884 produced the two numbers your phone shows you today.',
@@ -34,6 +37,7 @@ export const POSTS = [
   },
   {
     slug: 'why-maps-show-wrong-street',
+    topic: 'maps',
     title: 'Why your maps app sometimes puts you on the wrong street',
     excerpt:
       'Five reasons the pin lands at the wrong door — interpolated house numbers, mislabelled buildings, and new streets the database has not caught up with.',
@@ -45,6 +49,7 @@ export const POSTS = [
   },
   {
     slug: 'what-your-ip-reveals',
+    topic: 'ip',
     title: 'What does my IP address really tell apps about me?',
     excerpt:
       'A plain-language look at what an IP lookup actually returns, what it does not, and why mobile data and VPNs make the city wrong so often.',
@@ -56,6 +61,7 @@ export const POSTS = [
   },
   {
     slug: 'gps-coordinates-emergencies-aml-guide',
+    topic: 'gps',
     title: 'GPS Coordinates in an Emergency — Send Your Location to 911',
     excerpt: 'How to give GPS coordinates to a 911 or 112 dispatcher: what AML sends automatically, what to say on the call, and how to read them off any phone.',
     date: '2026-05-20',
@@ -66,6 +72,7 @@ export const POSTS = [
   },
   {
     slug: 'browser-geolocation-api-explained',
+    topic: 'permissions',
     title: 'Browser Geolocation API — What Websites Can and Can\'t See',
     excerpt: 'A walkthrough of navigator.geolocation: how it works, what the OS fuses into a coordinate, the permission model, and the privacy implications.',
     date: '2026-05-19',
@@ -75,6 +82,7 @@ export const POSTS = [
   },
   {
     slug: 'how-to-share-gps-location-safely',
+    topic: 'permissions',
     title: 'Share Your Location Safely — WhatsApp, Maps & Signal',
     excerpt: 'Compare WhatsApp, iMessage, Google Maps and Signal for sharing your location. What each leaks, which duration to pick, and how to stop a share.',
     date: '2026-05-18',
@@ -85,6 +93,7 @@ export const POSTS = [
   },
   {
     slug: 'how-to-find-your-gps-coordinates',
+    topic: 'gps',
     title: 'How to Find Your GPS Coordinates on Any Device (2026)',
     excerpt: 'The fastest ways to get your exact latitude and longitude on iPhone, Android, Mac, Windows, or any browser, with accuracy and privacy tips.',
     date: '2026-05-13',
@@ -94,6 +103,7 @@ export const POSTS = [
   },
   {
     slug: 'what-is-ip-location-and-how-accurate',
+    topic: 'ip',
     title: 'What Is IP Location, and How Accurate Is It Really?',
     excerpt: 'IP location gets the country right 99.8% of the time but often misses the city. The real accuracy figures, and why mobile networks and VPNs break it.',
     date: '2026-05-12',
@@ -104,6 +114,7 @@ export const POSTS = [
   },
   {
     slug: 'latitude-vs-longitude-explained',
+    topic: 'gps',
     title: 'Latitude vs Longitude — Which Is Which, and How to Remember',
     excerpt: 'Which is which, the order in coordinates, signs, decimal precision, the three formats you will meet, and the antimeridian bug that breaks naive code.',
     date: '2026-05-11',
@@ -114,6 +125,7 @@ export const POSTS = [
   },
   {
     slug: 'how-gps-works',
+    topic: 'gps',
     title: 'How GPS Works: From Satellites to Your Phone',
     excerpt: 'A clear, no-buzzword walkthrough of how satellites 20,000 km overhead let your phone know exactly where you are — and what can go wrong.',
     date: '2026-05-10',
@@ -124,6 +136,7 @@ export const POSTS = [
   },
   {
     slug: '10-uses-for-gps-coordinates',
+    topic: 'gps',
     title: '10 Surprising Uses for GPS Coordinates in Everyday Life',
     excerpt: 'From geocaching to verifying VPNs to precision farming — ten practical things you can do once you know how to read your own latitude and longitude.',
     date: '2026-05-09',
