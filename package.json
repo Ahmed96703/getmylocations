@@ -4,6 +4,7 @@
   "version": "2.0.0",
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/sitemap-dates.mjs",
     "build": "next build",
     "postbuild": "node scripts/markdown.mjs",
     "start": "npx serve@latest out",
