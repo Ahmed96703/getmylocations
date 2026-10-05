@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
+import CopyButton from '../components/CopyButton.jsx';
 import {
   validateLatLon, ddToDms, ddToDdm, dmsToDd, ddmToDd,
   latLonToUtm, utmToLatLon, utmToMgrs, parseCoordinate,
@@ -126,7 +127,6 @@ export default function Tool() {
     navigator.geolocation.getCurrentPosition((p) => apply(p.coords.latitude, p.coords.longitude, 'gps'));
   };
 
-  const copy = (text) => navigator.clipboard.writeText(text);
   const errFor = (source) =>
     error && error.source === source ? (
       <p role="alert" className="text-xs text-rose-500 mt-2">{error.msg}</p>
@@ -140,7 +140,7 @@ export default function Tool() {
   const CopyRow = ({ text }) => (
     <div className="bg-accent/10 border border-accent/40 rounded-md p-2 mt-2 flex justify-between items-center gap-2">
       <span className="font-mono text-sm text-fg break-all">{text}</span>
-      <button type="button" onClick={() => copy(text)} className="text-xs text-accent hover:underline shrink-0">Copy</button>
+      <CopyButton text={text} className="text-xs text-accent hover:underline shrink-0" />
     </div>
   );
 

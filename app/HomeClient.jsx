@@ -101,8 +101,8 @@ export default function HomeClient() {
         {error && permission !== 'denied' && (
           <div role="alert" className="mb-6 rounded-2xl glass border-rose-400/30 px-5 py-4 flex items-start justify-between gap-4">
             <div>
-              <div className="font-semibold text-rose-200">Couldn&rsquo;t access location</div>
-              <div className="text-sm text-rose-200/80 mt-0.5">{error}</div>
+              <div className="font-semibold text-rose-500">Couldn&rsquo;t access location</div>
+              <div className="text-sm text-fg-muted mt-0.5">{error}</div>
             </div>
             <button onClick={retry} className="btn-ghost">Retry</button>
           </div>

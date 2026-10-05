@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
+import CopyButton from '../components/CopyButton.jsx';
 import { searchAddress, reverseLookup, precisionOf, metersBetween, formatMeters } from './geocode.js';
 import { parseCoordinate, ddToDms } from '../coordinates-converter/geo.js';
 
@@ -22,7 +23,7 @@ function Status({ s }) {
   if (!s) return null;
   if (s.type === 'loading') {
     return (
-      <div className="bg-accent/10 border border-accent/40 text-accent rounded-lg p-3 text-sm mt-3 flex items-center gap-2">
+      <div role="status" className="bg-accent/10 border border-accent/40 text-accent rounded-lg p-3 text-sm mt-3 flex items-center gap-2">
         <span className="w-4 h-4 rounded-full border-2 border-accent border-t-transparent animate-spin" />
         {s.msg}
       </div>
@@ -53,7 +54,7 @@ function Coords({ lat, lon }) {
             <dt className="text-[10px] uppercase tracking-wider text-fg-subtle">{k}</dt>
             <dd className="font-mono text-sm">{v}</dd>
           </div>
-          <button type="button" onClick={() => navigator.clipboard.writeText(v)} className="text-xs text-accent hover:underline shrink-0">Copy</button>
+          <CopyButton text={v} className="text-xs text-accent hover:underline shrink-0" />
         </div>
       ))}
     </>

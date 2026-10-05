@@ -135,14 +135,14 @@ export default function Tool() {
       </div>
 
       {note?.type === 'loading' && (
-        <div className="bg-accent/10 border border-accent/40 text-accent rounded-lg p-3 text-sm mt-3 flex items-center gap-2">
+        <div role="status" className="bg-accent/10 border border-accent/40 text-accent rounded-lg p-3 text-sm mt-3 flex items-center gap-2">
           <span className="w-4 h-4 rounded-full border-2 border-accent border-t-transparent animate-spin" />
           {note.msg}
         </div>
       )}
       {note?.type === 'info' && <div role="status" className="bg-accent/10 border border-accent/40 text-fg rounded-lg p-3 text-sm mt-3">{note.msg}</div>}
       {note?.type === 'err' && <div role="alert" className="bg-rose-500/10 border border-rose-400/30 text-rose-500 rounded-lg p-3 text-sm mt-3">{note.msg}</div>}
-      {note?.type === 'ok' && <div className="bg-emerald-500/10 border border-emerald-400/30 text-emerald-600 rounded-lg p-3 text-sm mt-3">{note.msg}</div>}
+      {note?.type === 'ok' && <div role="status" className="bg-emerald-500/10 border border-emerald-400/30 text-emerald-600 rounded-lg p-3 text-sm mt-3">{note.msg}</div>}
 
       {data && note?.type === 'ok' && (
         <>

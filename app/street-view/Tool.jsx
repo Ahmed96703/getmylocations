@@ -102,7 +102,7 @@ export default function Tool() {
       </div>
 
       {status?.type === 'loading' && (
-        <div className="bg-accent/10 border border-accent/40 text-accent rounded-lg p-3 text-sm mt-3 flex items-center gap-2">
+        <div role="status" className="bg-accent/10 border border-accent/40 text-accent rounded-lg p-3 text-sm mt-3 flex items-center gap-2">
           <span className="w-4 h-4 rounded-full border-2 border-accent border-t-transparent animate-spin" />
           {status.msg}
         </div>

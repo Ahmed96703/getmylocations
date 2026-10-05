@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
+import CopyButton from '../components/CopyButton.jsx';
 
 const MapView = dynamic(() => import('../components/MapView.jsx'), {
   ssr: false,
@@ -172,11 +173,6 @@ export default function LiveTool() {
     };
   }, [wakeSupported, keepAwake, watching]);
 
-  const copy = () => {
-    if (!pos) return;
-    navigator.clipboard.writeText(`${pos[0].toFixed(6)}, ${pos[1].toFixed(6)}`);
-  };
-
   return (
     <section className="glass rounded-2xl p-6">
       <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
@@ -210,16 +206,16 @@ export default function LiveTool() {
       </div>
 
       {status.type === 'loading' && (
-        <div className="bg-accent/10 border border-accent/40 text-accent rounded-lg p-3 text-sm flex items-center gap-2">
+        <div role="status" className="bg-accent/10 border border-accent/40 text-accent rounded-lg p-3 text-sm flex items-center gap-2">
           <span className="w-4 h-4 rounded-full border-2 border-accent border-t-transparent animate-spin" />
           {status.msg}
         </div>
       )}
       {status.type === 'err' && (
-        <div className="bg-rose-500/10 border border-rose-400/30 text-rose-200 rounded-lg p-3 text-sm">{status.msg}</div>
+        <div role="alert" className="bg-rose-500/10 border border-rose-400/30 text-rose-500 rounded-lg p-3 text-sm">{status.msg}</div>
       )}
       {status.type === 'ok' && pos && (
-        <div className="bg-emerald-500/10 border border-emerald-400/30 text-emerald-200 rounded-lg p-3 text-sm">{status.msg}</div>
+        <div className="bg-emerald-500/10 border border-emerald-400/30 text-emerald-600 rounded-lg p-3 text-sm">{status.msg}</div>
       )}
 
       {pos && (
@@ -277,7 +273,7 @@ export default function LiveTool() {
           )}
 
           <div className="flex flex-wrap gap-2 mt-4">
-            <button onClick={copy} className="btn-ghost">📋 Copy coordinates</button>
+            <CopyButton text={`${pos[0].toFixed(6)}, ${pos[1].toFixed(6)}`} label="📋 Copy coordinates" className="btn-ghost" />
             <a
               href={`https://www.google.com/maps?q=${pos[0]},${pos[1]}`}
               target="_blank"

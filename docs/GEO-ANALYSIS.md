@@ -1,18 +1,25 @@
 # GEO Analysis — getmylocations.com
 
+> **Re-check, 2026-10-05 (later the same day):** fixes verified on the live
+> site — tables kept in `.md` copies, one author entity with `sameAs` on all
+> 39 author blocks, `Claude-User` robots group added and obsolete Anthropic
+> groups removed, quick answers on four how-to posts, and unsourced IP-accuracy
+> figures replaced with MaxMind's. Remaining gaps are off-site (mentions,
+> LinkedIn profile, recrawl).
+
 *Date: 2026-10-05. Scope: whole site (32 indexable pages). Scores are this
 audit's own heuristic, not Google signals. Google's AI optimization guide says
 optimizing for AI search "is still SEO"; findings below are framed that way.*
 
-## 1. GEO Readiness Score: **75 / 100**
+## 1. GEO Readiness Score: **78 / 100** (was 75 earlier on 2026-10-05)
 
 | Criterion | Weight | Score | Basis |
 |---|---|---|---|
-| Citability | 25 | 20 | Specific, sourced numbers throughout (MaxMind accuracy, GeographicLib-checked distances, generated reference tables); tools answer the query on first screen |
+| Citability | 25 | 21 | Specific, sourced numbers throughout (MaxMind accuracy, GeographicLib-checked distances, generated reference tables); tools answer the query on first screen; quick-answer boxes now open four how-to posts |
 | Structural readability | 20 | 18 | Clean H1→H2→H3 on every page, question-style headings, tables, numbered steps, FAQs |
 | Multi-modal | 15 | 11 | Interactive tools and maps on 9 pages, images on blog posts; no video |
-| Authority & brand | 20 | 7 | Byline, dates, cited sources and a public corrections log are strong; **almost no third-party mentions** pull this down |
-| Technical accessibility | 20 | 19 | Full server-side HTML, all AI search crawlers allowed, Markdown alternates; −1 because tables are flattened in the Markdown copies |
+| Authority & brand | 20 | 8 | Byline, dates, cited sources and a public corrections log are strong, and the author is now one linked entity; **almost no third-party mentions** pull this down |
+| Technical accessibility | 20 | 20 | Full server-side HTML, all AI search crawlers allowed, Markdown alternates with tables intact; agent-readiness check passes 3/3 P0 and 5/5 P1 |
 
 ## 2. Platform readiness (qualitative — not measured)
 
