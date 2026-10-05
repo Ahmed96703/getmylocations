@@ -1,6 +1,6 @@
 ---
 title: "My Live Location Now — Track Your Real-Time Position Free"
-description: "Watch your GPS position, speed and accuracy update live as you move. Runs in your browser with no signup, and we never store a coordinate. Start now."
+description: "Watch your GPS position, speed and path update live, then save the route as a GPX file. Runs in your browser with no signup or stored data. Start now."
 url: https://getmylocations.com/live-location
 ---
 
@@ -8,7 +8,7 @@ Free Tool · Continuous GPS stream in your browser
 
 # My live location now — watch your real-time position update.
 
-Tap one button and the page subscribes to your device’s GPS stream. Coordinates, accuracy, speed, heading, and the map pin all refresh automatically as you move, and the map draws the path you have walked — not a single snapshot, but a running fix. Your coordinates never reach a server we run, and the stream stops the moment you tap _Stop_.
+Tap one button and the page subscribes to your device’s GPS stream. Coordinates, accuracy, speed, heading, and the map pin all refresh automatically as you move, and the map draws the path you have walked — not a single snapshot, but a running fix. When you are done, save the route as a GPX file. Your coordinates never reach a server we run, and the stream stops the moment you tap _Stop_.
 
 ## Live location tracker
 
@@ -34,6 +34,8 @@ Every update the browser delivers carries more than a coordinate. Here is what e
 | Heading | degrees from true north | Your direction of travel, with a compass point. Always blank while you are standing still. |
 | Altitude | meters | Height reported by the device. Often blank on laptops and on Wi-Fi-only fixes. |
 | Distance | m or km | Length of the path drawn on the map since you tapped Start. |
+| Time elapsed | minutes:seconds | Time since you tapped Start. It stops counting when you tap Stop. |
+| Average speed | km/h | Distance divided by time elapsed, so stops at traffic lights pull it down. Shown after the first ten seconds. |
 | Updates | count, time | How many readings have arrived, and when the latest one did. |
 
 For how the browser decides which of these values to fill in, see our guide to[how the browser Geolocation API works](https://getmylocations.com/blog/browser-geolocation-api-explained).
@@ -48,7 +50,13 @@ Two practical knobs decide how lively the “live” reading actually feels. The
 
 While tracking is on, the map draws a line along the route you have taken and the Distance tile adds up its length. GPS jitter would normally turn a person standing still into a growing scribble, so the tracker is strict about which readings join the path: a new point is only added once you have moved at least 10 meters from the last one, and only from a reading accurate to 50 meters or better. Standing still therefore adds nothing, and a sudden indoor Wi-Fi guess hundreds of meters off is left out.
 
-The trade-off is that very small movements, like pacing around a room, will not register. The path and distance reset each time you tap _Start live tracking_, and nothing is saved once you close the tab.
+The trade-off is that very small movements, like pacing around a room, will not register. The path and distance reset each time you tap _Start live tracking_, and nothing is kept once you close the tab unless you download it first.
+
+### Save your route as a GPX file
+
+Once the path has two points, a _Download route (GPX)_ button appears under the readings. GPX is the standard file format for GPS tracks (version 1.1, published by Topografix), so Strava, Komoot, Garmin Connect, Google Earth and most hiking apps can open it. Each point in the file carries its latitude and longitude, the time it was recorded, and the altitude when the device reported one. The file holds exactly the points drawn on the map, after the 10-meter and 50-meter filters above.
+
+The file is assembled by JavaScript in your browser and saved straight to your device; it is not uploaded anywhere first. You can download it while still tracking or after tapping _Stop_. To measure the straight-line gap between where you started and where you ended, paste both coordinates into the [distance calculator](https://getmylocations.com/distance-calculator).
 
 ## Enabling live updates on each device
 
@@ -105,11 +113,11 @@ This page only ever shows your own position to you. It cannot create a link for 
 2.  **Apple Find My or Messages:** in a conversation, tap the contact’s name → _Share My Location_, then choose one hour, until the end of the day, or indefinitely.
 3.  **WhatsApp:** in a chat, tap the attachment button → _Location_ → _Share live location_, then choose 15 minutes, 1 hour, or 8 hours.
 
-All three let you stop sharing early. Before you share, read[how to share your GPS location safely](https://getmylocations.com/blog/how-to-share-gps-location-safely).
+All three let you stop sharing early. To show someone a route after the fact instead, download it as a GPX file above and send the file. Before you share, read[how to share your GPS location safely](https://getmylocations.com/blog/how-to-share-gps-location-safely).
 
 ## Privacy: the stream stays with you
 
-Live tracking sounds invasive, but the data path is no different from a single-shot reading — there are just more readings. Every coordinate is delivered to JavaScript inside your own tab; none of them are posted to a server we control, written to any database, or correlated with anything else about your session. The page makes one throttled network call per ten seconds (at most) to translate the latest coordinate into a readable place name, and that request contains nothing but two numbers.
+Live tracking sounds invasive, but the data path is no different from a single-shot reading — there are just more readings. Every coordinate is delivered to JavaScript inside your own tab; none of them are posted to a server we control, written to any database, or correlated with anything else about your session. The page makes one throttled network call per ten seconds (at most) to translate the latest coordinate into a readable place name, and that request contains nothing but two numbers. A downloaded GPX file stays on your device unless you choose to send it to someone.
 
 If you want to dig further into what a browser is — and is not — allowed to do with your GPS, our [guide to the W3C Geolocation API](https://getmylocations.com/blog/browser-geolocation-api-explained) walks through the permission model and the difference between `getCurrentPosition` and `watchPosition` in plain English.
 
@@ -122,6 +130,14 @@ A live location is a position that keeps updating, not a single one-shot reading
 How do I share my live location with someone?+
 
 This page shows your own live position; it does not generate a shareable link other people can open. For sharing, use the dedicated feature in Google Maps ("Share location" → choose a contact and a duration) or Apple Maps ("Share My Location"). Both encrypt and time-limit the link, which is the right way to share a moving position with someone you trust.
+
+Can I save the route I walked?+
+
+Yes. Once the map shows a path, tap "Download route (GPX)". The file contains every point on the drawn path with its time and, where the device reports it, its altitude, in the standard GPX 1.1 format that Strava, Komoot, Garmin Connect and Google Earth open. It is built in your browser and saved to your device; we never receive a copy. Download before closing the tab, because the path is not kept anywhere else.
+
+How is average speed worked out?+
+
+It is the Distance tile divided by the Time elapsed tile. Because elapsed time keeps running while you stand still, stops pull the average down, the same way a fitness app reports "average moving plus stopped". The Speed tile next to it is different: that is the instantaneous speed the device reports with each reading.
 
 Why does my live location keep jumping around?+
 

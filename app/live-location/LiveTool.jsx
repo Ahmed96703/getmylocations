@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import CopyButton from '../components/CopyButton.jsx';
+import { downloadGpx } from './gpx.js';
 
 const MapView = dynamic(() => import('../components/MapView.jsx'), {
   ssr: false,
@@ -30,6 +31,14 @@ function formatDistance(m) {
   return m < 1000 ? `${Math.round(m)} m` : `${(m / 1000).toFixed(2)} km`;
 }
 
+function formatElapsed(ms) {
+  const t = Math.max(0, Math.floor(ms / 1000));
+  const h = Math.floor(t / 3600);
+  const m = Math.floor((t % 3600) / 60);
+  const sec = String(t % 60).padStart(2, '0');
+  return h ? `${h}:${String(m).padStart(2, '0')}:${sec}` : `${m}:${sec}`;
+}
+
 export default function LiveTool() {
   const [pos, setPos] = useState(null);
   const [meta, setMeta] = useState({});
@@ -46,6 +55,11 @@ export default function LiveTool() {
   const [wakeSupported, setWakeSupported] = useState(false);
   const wakeLockRef = useRef(null);
   const lastTrailPointRef = useRef(null);
+  // The same trail points with time and altitude, kept for the GPX download.
+  const trackRef = useRef([]);
+  const [startedAt, setStartedAt] = useState(null);
+  const [stoppedAt, setStoppedAt] = useState(null);
+  const [now, setNow] = useState(() => Date.now());
   // Throttle reverse-geocoding: at most once per 10 s, and only after moving
   // 100 m. The page promises users this cap, and it keeps us well inside
   // Nominatim's 1 req/sec policy.
@@ -83,6 +97,9 @@ export default function LiveTool() {
     setTrail([]);
     setDistance(0);
     lastTrailPointRef.current = null;
+    trackRef.current = [];
+    setStartedAt(Date.now());
+    setStoppedAt(null);
     const id = navigator.geolocation.watchPosition(
       (p) => {
         const lat = p.coords.latitude;
@@ -93,6 +110,7 @@ export default function LiveTool() {
           const step = last ? metersBetween(last, [lat, lon]) : 0;
           if (!last || step >= TRAIL_MIN_STEP_M) {
             lastTrailPointRef.current = [lat, lon];
+            trackRef.current.push({ lat, lon, ele: p.coords.altitude, time: p.timestamp || Date.now() });
             setTrail((t) => [...t, [lat, lon]]);
             setDistance((d) => d + step);
           }
@@ -129,8 +147,19 @@ export default function LiveTool() {
       watchIdRef.current = null;
     }
     setWatching(false);
+    setStoppedAt(Date.now());
     setStatus({ type: 'idle', msg: '' });
   };
+
+  // Tick the elapsed-time tile once a second while tracking.
+  useEffect(() => {
+    if (!watching) return undefined;
+    const id = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(id);
+  }, [watching]);
+
+  const elapsedMs = startedAt ? (stoppedAt ?? now) - startedAt : 0;
+  const avgKmh = elapsedMs >= 10000 ? (distance / (elapsedMs / 1000)) * 3.6 : null;
 
   useEffect(
     () => () => {
@@ -179,7 +208,7 @@ export default function LiveTool() {
         <div className="flex items-center gap-2">
           <h2 className="text-lg font-bold">Live location tracker</h2>
           {watching && (
-            <span className="inline-flex items-center gap-1.5 text-[11px] uppercase tracking-wider font-semibold text-emerald-300">
+            <span className="inline-flex items-center gap-1.5 text-[11px] uppercase tracking-wider font-semibold text-emerald-600">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               Live
             </span>
@@ -257,6 +286,14 @@ export default function LiveTool() {
               <dd className="font-mono mt-1">{formatDistance(distance)}</dd>
             </div>
             <div className="bg-tint/5 border border-line rounded-lg p-3">
+              <dt className="text-[10px] uppercase tracking-wider text-fg-subtle font-semibold">Time elapsed</dt>
+              <dd className="font-mono mt-1">{formatElapsed(elapsedMs)}</dd>
+            </div>
+            <div className="bg-tint/5 border border-line rounded-lg p-3">
+              <dt className="text-[10px] uppercase tracking-wider text-fg-subtle font-semibold">Average speed</dt>
+              <dd className="font-mono mt-1">{avgKmh != null ? `${avgKmh.toFixed(1)} km/h` : '—'}</dd>
+            </div>
+            <div className="bg-tint/5 border border-line rounded-lg p-3">
               <dt className="text-[10px] uppercase tracking-wider text-fg-subtle font-semibold">Updates</dt>
               <dd className="font-mono mt-1">
                 {updates}
@@ -274,6 +311,11 @@ export default function LiveTool() {
 
           <div className="flex flex-wrap gap-2 mt-4">
             <CopyButton text={`${pos[0].toFixed(6)}, ${pos[1].toFixed(6)}`} label="📋 Copy coordinates" className="btn-ghost" />
+            {trail.length >= 2 && (
+              <button type="button" onClick={() => downloadGpx(trackRef.current)} className="btn-ghost">
+                ⬇ Download route (GPX)
+              </button>
+            )}
             <a
               href={`https://www.google.com/maps?q=${pos[0]},${pos[1]}`}
               target="_blank"

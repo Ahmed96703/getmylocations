@@ -11,7 +11,7 @@ Audience: anyone who needs to find their current GPS coordinates, IP location, l
 ## Tools
 
 - [Find My Location — Home](https://getmylocations.com/): The main tool. Shows your live latitude, longitude, accuracy, city, and country with a one-click "Share My Location" feature and a "Locate Me" recenter button.
-- [Live Location Tracker](https://getmylocations.com/live-location): Real-time GPS tracking with a moving map, speed, and altitude readout.
+- [Live Location Tracker](https://getmylocations.com/live-location): Real-time GPS tracking with a moving map, speed, altitude, elapsed time and average speed; the walked path downloads as a GPX file built in the browser.
 - [My Location](https://getmylocations.com/my-location): Quick one-tap current location with coordinates and city name.
 - [Coordinates Converter](https://getmylocations.com/coordinates-converter): Convert between decimal degrees, DMS, UTM, and MGRS coordinate formats.
 - [IP Location Lookup](https://getmylocations.com/ip-location): Find the approximate location of any IP address using free geolocation APIs.

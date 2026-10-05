@@ -7,7 +7,7 @@ import { AUTHOR } from '../components/author.js';
 export const metadata = {
   title: 'My Live Location Now — Track Your Real-Time Position Free',
   description:
-    'Watch your GPS position, speed and accuracy update live as you move. Runs in your browser with no signup, and we never store a coordinate. Start now.',
+    'Watch your GPS position, speed and path update live, then save the route as a GPX file. Runs in your browser with no signup or stored data. Start now.',
   keywords: [
     'my live location now',
     'my location live',
@@ -37,7 +37,7 @@ const webAppSchema = {
   '@type': 'WebApplication',
   name: 'My Live Location Now',
   description:
-    'Browser-based live location tracker. Uses the W3C watchPosition API to stream your GPS coordinates continuously, show accuracy, speed, heading and altitude, and draw the path you have travelled on an interactive map.',
+    'Browser-based live location tracker. Uses the W3C watchPosition API to stream your GPS coordinates continuously, show accuracy, speed, heading and altitude, draw the path you have travelled on an interactive map, and download that path as a GPX 1.1 file built in the browser.',
   url: 'https://getmylocations.com/live-location',
   applicationCategory: 'UtilitiesApplication',
   operatingSystem: 'Web',
@@ -64,6 +64,14 @@ const faqs = [
   {
     q: 'How do I share my live location with someone?',
     a: 'This page shows your own live position; it does not generate a shareable link other people can open. For sharing, use the dedicated feature in Google Maps ("Share location" → choose a contact and a duration) or Apple Maps ("Share My Location"). Both encrypt and time-limit the link, which is the right way to share a moving position with someone you trust.',
+  },
+  {
+    q: 'Can I save the route I walked?',
+    a: 'Yes. Once the map shows a path, tap "Download route (GPX)". The file contains every point on the drawn path with its time and, where the device reports it, its altitude, in the standard GPX 1.1 format that Strava, Komoot, Garmin Connect and Google Earth open. It is built in your browser and saved to your device; we never receive a copy. Download before closing the tab, because the path is not kept anywhere else.',
+  },
+  {
+    q: 'How is average speed worked out?',
+    a: 'It is the Distance tile divided by the Time elapsed tile. Because elapsed time keeps running while you stand still, stops pull the average down, the same way a fitness app reports "average moving plus stopped". The Speed tile next to it is different: that is the instantaneous speed the device reports with each reading.',
   },
   {
     q: 'Why does my live location keep jumping around?',
@@ -127,7 +135,7 @@ export default function LiveLocationPage() {
             My <span className="text-accent">live location</span> now — watch your real-time position update.
           </h1>
           <p className="text-lg text-fg-muted mt-4 max-w-3xl">
-            Tap one button and the page subscribes to your device&rsquo;s GPS stream. Coordinates, accuracy, speed, heading, and the map pin all refresh automatically as you move, and the map draws the path you have walked — not a single snapshot, but a running fix. Your coordinates never reach a server we run, and the stream stops the moment you tap <em>Stop</em>.
+            Tap one button and the page subscribes to your device&rsquo;s GPS stream. Coordinates, accuracy, speed, heading, and the map pin all refresh automatically as you move, and the map draws the path you have walked — not a single snapshot, but a running fix. When you are done, save the route as a GPX file. Your coordinates never reach a server we run, and the stream stops the moment you tap <em>Stop</em>.
           </p>
         </section>
 
@@ -167,6 +175,8 @@ export default function LiveLocationPage() {
                 <tr className="border-b border-line-subtle"><td className="py-2 pr-4">Heading</td><td className="py-2 pr-4">degrees from true north</td><td className="py-2">Your direction of travel, with a compass point. Always blank while you are standing still.</td></tr>
                 <tr className="border-b border-line-subtle"><td className="py-2 pr-4">Altitude</td><td className="py-2 pr-4">meters</td><td className="py-2">Height reported by the device. Often blank on laptops and on Wi-Fi-only fixes.</td></tr>
                 <tr className="border-b border-line-subtle"><td className="py-2 pr-4">Distance</td><td className="py-2 pr-4">m or km</td><td className="py-2">Length of the path drawn on the map since you tapped Start.</td></tr>
+                <tr className="border-b border-line-subtle"><td className="py-2 pr-4">Time elapsed</td><td className="py-2 pr-4">minutes:seconds</td><td className="py-2">Time since you tapped Start. It stops counting when you tap Stop.</td></tr>
+                <tr className="border-b border-line-subtle"><td className="py-2 pr-4">Average speed</td><td className="py-2 pr-4">km/h</td><td className="py-2">Distance divided by time elapsed, so stops at traffic lights pull it down. Shown after the first ten seconds.</td></tr>
                 <tr><td className="py-2 pr-4">Updates</td><td className="py-2 pr-4">count, time</td><td className="py-2">How many readings have arrived, and when the latest one did.</td></tr>
               </tbody>
             </table>
@@ -193,7 +203,15 @@ export default function LiveLocationPage() {
             While tracking is on, the map draws a line along the route you have taken and the Distance tile adds up its length. GPS jitter would normally turn a person standing still into a growing scribble, so the tracker is strict about which readings join the path: a new point is only added once you have moved at least 10 meters from the last one, and only from a reading accurate to 50 meters or better. Standing still therefore adds nothing, and a sudden indoor Wi-Fi guess hundreds of meters off is left out.
           </p>
           <p className="mt-3 text-fg-muted leading-relaxed">
-            The trade-off is that very small movements, like pacing around a room, will not register. The path and distance reset each time you tap <em>Start live tracking</em>, and nothing is saved once you close the tab.
+            The trade-off is that very small movements, like pacing around a room, will not register. The path and distance reset each time you tap <em>Start live tracking</em>, and nothing is kept once you close the tab unless you download it first.
+          </p>
+          <h3 className="font-display text-lg font-bold mt-5">Save your route as a GPX file</h3>
+          <p className="mt-2 text-fg-muted leading-relaxed">
+            Once the path has two points, a <em>Download route (GPX)</em> button appears under the readings. GPX is the standard file format for GPS tracks (version 1.1, published by Topografix), so Strava, Komoot, Garmin Connect, Google Earth and most hiking apps can open it. Each point in the file carries its latitude and longitude, the time it was recorded, and the altitude when the device reported one. The file holds exactly the points drawn on the map, after the 10-meter and 50-meter filters above.
+          </p>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            The file is assembled by JavaScript in your browser and saved straight to your device; it is not uploaded anywhere first. You can download it while still tracking or after tapping <em>Stop</em>. To measure the straight-line gap between where you started and where you ended, paste both coordinates into the{' '}
+            <Link href="/distance-calculator" className="text-accent hover:underline">distance calculator</Link>.
           </p>
         </section>
 
@@ -279,7 +297,7 @@ export default function LiveLocationPage() {
             <li><strong className="text-fg">WhatsApp:</strong> in a chat, tap the attachment button → <em>Location</em> → <em>Share live location</em>, then choose 15 minutes, 1 hour, or 8 hours.</li>
           </ol>
           <p className="mt-3 text-fg-muted leading-relaxed">
-            All three let you stop sharing early. Before you share, read 
+            All three let you stop sharing early. To show someone a route after the fact instead, download it as a GPX file above and send the file. Before you share, read 
             <Link href="/blog/how-to-share-gps-location-safely" className="text-accent hover:underline">how to share your GPS location safely</Link>.
           </p>
         </section>
@@ -287,7 +305,7 @@ export default function LiveLocationPage() {
         <section className="mt-10">
           <h2 className="font-display text-2xl font-bold">Privacy: the stream stays with you</h2>
           <p className="mt-3 text-fg-muted leading-relaxed">
-            Live tracking sounds invasive, but the data path is no different from a single-shot reading — there are just more readings. Every coordinate is delivered to JavaScript inside your own tab; none of them are posted to a server we control, written to any database, or correlated with anything else about your session. The page makes one throttled network call per ten seconds (at most) to translate the latest coordinate into a readable place name, and that request contains nothing but two numbers.
+            Live tracking sounds invasive, but the data path is no different from a single-shot reading — there are just more readings. Every coordinate is delivered to JavaScript inside your own tab; none of them are posted to a server we control, written to any database, or correlated with anything else about your session. The page makes one throttled network call per ten seconds (at most) to translate the latest coordinate into a readable place name, and that request contains nothing but two numbers. A downloaded GPX file stays on your device unless you choose to send it to someone.
           </p>
           <p className="mt-3 text-fg-muted leading-relaxed">
             If you want to dig further into what a browser is — and is not — allowed to do with your GPS, our{' '}
