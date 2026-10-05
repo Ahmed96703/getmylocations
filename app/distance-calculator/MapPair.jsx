@@ -1,6 +1,6 @@
 'use client';
 
-import { MapContainer, TileLayer, Marker, Polyline, useMap } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Polyline, CircleMarker, Tooltip, useMap } from 'react-leaflet';
 import { useEffect } from 'react';
 import 'leaflet/dist/leaflet.css';
 import { TILES } from '../components/tileLayers.js';
@@ -14,29 +14,40 @@ L.Icon.Default.mergeOptions({
   shadowUrl: '/leaflet/marker-shadow.png',
 });
 
-function FitBounds({ a, b }) {
+function FitBounds({ path }) {
   const map = useMap();
   useEffect(() => {
-    if (!a || !b) return;
-    map.fitBounds([a, b], { padding: [40, 40] });
-  }, [a, b, map]);
+    if (path?.length) map.fitBounds(path, { padding: [40, 40] });
+  }, [path, map]);
   return null;
 }
 
-export default function MapPair({ a, b }) {
-  if (!a || !b) return null;
+// `path` is the geodesic from A to B with longitudes unwrapped (they may run
+// past ±180), so a route across the Pacific is drawn as one short curve.
+export default function MapPair({ path, midpoint }) {
+  if (!path?.length) return null;
+  const a = path[0];
+  const b = path[path.length - 1];
+  // Put the midpoint marker on the same unwrapped longitude as the path.
+  const ref = path[Math.floor(path.length / 2)][1];
+  let midLon = midpoint[1];
+  while (midLon - ref > 180) midLon -= 360;
+  while (midLon - ref < -180) midLon += 360;
   return (
-    <MapContainer center={a} zoom={3} className="w-full h-full">
+    <MapContainer center={a} zoom={3} worldCopyJump={false} className="w-full h-full">
       <TileLayer
         attribution={TILES.dark.attribution}
         url={TILES.dark.url}
         maxZoom={TILES.dark.maxZoom}
         className={TILES.dark.className}
       />
-      <Marker position={a} />
-      <Marker position={b} />
-      <Polyline positions={[a, b]} color="#0ea5e9" weight={3} opacity={0.85} />
-      <FitBounds a={a} b={b} />
+      <Polyline positions={path} pathOptions={{ color: '#0ea5e9', weight: 3, opacity: 0.9 }} />
+      <Marker position={a}><Tooltip>A</Tooltip></Marker>
+      <Marker position={b}><Tooltip>B</Tooltip></Marker>
+      <CircleMarker center={[midpoint[0], midLon]} radius={5} pathOptions={{ color: '#f59e0b', fillOpacity: 1 }}>
+        <Tooltip>Midpoint</Tooltip>
+      </CircleMarker>
+      <FitBounds path={path} />
     </MapContainer>
   );
 }
