@@ -190,11 +190,11 @@ Guides on GPS, geolocation, and finding your way online.
     Turn on location on any laptop: Windows 10, Windows 11 or Mac. Fix the browser missing from the Windows app list and greyed-out toggles.
     
     Read →](https://getmylocations.com/blog/enable-location-on-windows-and-mac)
--   [Jun 3, 2026·9 min read
+-   [Jun 3, 2026·10 min read
     
     ### How to Turn On Location Services on iPhone & Android
     
-    Enable Location Services on iPhone and Android, fix per-app and per-site permissions, turn on Precise Location, and beat the battery-saver gotcha.
+    Turn on Location Services on iPhone and Android, allow Safari or Chrome to use it, fix website permissions and Precise Location. Updated for 2026.
     
     Read →](https://getmylocations.com/blog/enable-location-on-iphone-and-android)
 -   [Jun 1, 2026·7 min read

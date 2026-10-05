@@ -10,7 +10,7 @@ A
 
 Ahmed Anwar
 
-June 3, 2026·9 min read
+June 3, 2026·Updated October 5, 2026·9 min read
 
 -   troubleshooting
 -   desktop

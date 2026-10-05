@@ -10,7 +10,7 @@ A
 
 Ahmed Anwar
 
-May 13, 2026·7 min read
+May 13, 2026·Updated October 5, 2026·7 min read
 
 -   gps
 -   coordinates

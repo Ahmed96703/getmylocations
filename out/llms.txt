@@ -30,7 +30,7 @@ Audience: anyone who needs to find their current GPS coordinates, IP location, l
 ## Blog
 
 - [How to Turn On Location on a Laptop (Windows 10, 11 & Mac)](https://getmylocations.com/blog/enable-location-on-windows-and-mac): Enable Location Services on Windows and Mac, allow your browser, and fix the greyed-out toggle.
-- [How to Turn On Location Services on iPhone & Android](https://getmylocations.com/blog/enable-location-on-iphone-and-android): Enable Location Services, fix per-app permissions, turn on Precise Location, and beat the battery-saver gotcha.
+- [How to Turn On Location Services on iPhone & Android](https://getmylocations.com/blog/enable-location-on-iphone-and-android): Turn on Location Services, allow Safari Websites or Chrome to use location, fix per-site and per-app permissions, and Precise Location.
 - [History of Latitude and Longitude](https://getmylocations.com/blog/history-of-latitude-and-longitude): From Greek astronomers to GPS satellites — how the coordinate system we use today was invented.
 - [Why Maps Show the Wrong Street](https://getmylocations.com/blog/why-maps-show-wrong-street): Five reasons the pin lands at the wrong door — interpolated house numbers, mislabelled buildings, and database lag.
 - [What Your IP Address Reveals](https://getmylocations.com/blog/what-your-ip-reveals): What an IP lookup actually returns, what it does not, and why mobile data and VPNs make the city wrong.

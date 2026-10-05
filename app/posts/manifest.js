@@ -16,10 +16,10 @@ export const POSTS = [
     topic: 'permissions',
     title: 'How to Turn On Location Services on iPhone & Android',
     excerpt:
-      "Enable Location Services on iPhone and Android, fix per-app and per-site permissions, turn on Precise Location, and beat the battery-saver gotcha.",
+      'Turn on Location Services on iPhone and Android, allow Safari or Chrome to use it, fix website permissions and Precise Location. Updated for 2026.',
     date: '2026-06-03',
     modifiedDate: '2026-10-05',
-    readingTime: 9,
+    readingTime: 10,
     heroImage: 'enable-location-on-iphone-and-android-hero.jpg',
     tags: ['troubleshooting', 'mobile', 'privacy'],
   },

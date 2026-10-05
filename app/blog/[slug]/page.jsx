@@ -74,9 +74,12 @@ export default function BlogPost({ params }) {
   const Body = POST_COMPONENTS[params.slug];
   if (!post || !Body) notFound();
 
-  const dateStr = new Date(post.date).toLocaleDateString('en-US', {
-    year: 'numeric', month: 'long', day: 'numeric',
+  const fmtDate = (d) => new Date(`${d}T00:00:00Z`).toLocaleDateString('en-US', {
+    year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC',
   });
+  const dateStr = fmtDate(post.date);
+  // Show the revision date when a post has been updated since publishing.
+  const updated = post.modifiedDate && post.modifiedDate !== post.date ? post.modifiedDate : null;
 
   const articleSchema = {
     '@context': 'https://schema.org',
@@ -130,6 +133,12 @@ export default function BlogPost({ params }) {
               <div className="font-semibold text-fg">Ahmed Anwar</div>
               <div className="text-xs text-fg-subtle">
                 <time dateTime={post.date}>{dateStr}</time>
+                {updated && (
+                  <>
+                    <span className="mx-1.5" aria-hidden="true">·</span>
+                    <span>Updated <time dateTime={updated}>{fmtDate(updated)}</time></span>
+                  </>
+                )}
                 <span className="mx-1.5" aria-hidden="true">·</span>
                 <span>{post.readingTime} min read</span>
               </div>

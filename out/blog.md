@@ -92,11 +92,11 @@ Turning location on in each operating system and browser, what a website can and
     Read article →](https://getmylocations.com/blog/enable-location-on-windows-and-mac)
 -   [
     
-    Updated October 5, 2026·9 min read
+    Updated October 5, 2026·10 min read
     
     ### How to Turn On Location Services on iPhone & Android
     
-    Enable Location Services on iPhone and Android, fix per-app and per-site permissions, turn on Precise Location, and beat the battery-saver gotcha.
+    Turn on Location Services on iPhone and Android, allow Safari or Chrome to use it, fix website permissions and Precise Location. Updated for 2026.
     
     Read article →](https://getmylocations.com/blog/enable-location-on-iphone-and-android)
 -   [
