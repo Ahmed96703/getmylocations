@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { breadcrumbSchema } from '../components/breadcrumbSchema.js';
+import AdSense from '../components/AdSense.jsx';
 
 
 export const metadata = {
@@ -57,6 +58,7 @@ export default function GpsVsIpAccuracy() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs) }} />
+      <AdSense />
       <main role="main" className="max-w-3xl mx-auto px-5 py-12 prose-invert">
         <nav aria-label="Breadcrumb" className="text-xs text-fg-subtle mb-3">
           <ol className="flex items-center gap-1.5">

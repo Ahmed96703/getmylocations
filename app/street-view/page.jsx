@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { breadcrumbSchema } from '../components/breadcrumbSchema.js';
 import Tool from './Tool.jsx';
 import AuthorBio from '../components/AuthorBio.jsx';
+import AdSense from '../components/AdSense.jsx';
 
 export const metadata = {
   title: 'Street View — See Any Address in Google Street View',
@@ -81,6 +82,7 @@ export default function StreetViewPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <AdSense />
       <main role="main" className="max-w-5xl mx-auto px-5 py-10">
         <nav aria-label="Breadcrumb" className="text-xs text-fg-subtle mb-3">
           <ol className="flex items-center gap-1.5">

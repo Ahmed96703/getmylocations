@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Tool from './Tool.jsx';
 import AuthorBio from '../components/AuthorBio.jsx';
+import AdSense from '../components/AdSense.jsx';
 
 export const metadata = {
   title: 'What Is My Location? Free GPS Coordinates & Address',
@@ -114,6 +115,8 @@ export default function MyLocationPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+
+      <AdSense />
 
       <main role="main" className="max-w-3xl mx-auto px-5 py-12 prose-invert">
         <nav aria-label="Breadcrumb" className="text-xs text-fg-subtle mb-4 not-prose">

@@ -17,6 +17,7 @@ import WhyMapsShowWrongStreet from '../../posts/WhyMapsShowWrongStreet.jsx';
 import LatLonHistory from '../../posts/LatLonHistory.jsx';
 import EnableLocationDesktop from '../../posts/EnableLocationDesktop.jsx';
 import EnableLocationMobile from '../../posts/EnableLocationMobile.jsx';
+import AdSense from '../../components/AdSense.jsx';
 
 const POST_COMPONENTS = {
   'browser-geolocation-api-explained': BrowserGeolocationApi,
@@ -109,6 +110,8 @@ export default function BlogPost({ params }) {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs) }} />
+
+      <AdSense />
 
       <main role="main" className="max-w-3xl mx-auto px-5 py-12">
         <nav aria-label="Breadcrumb" className="text-xs text-fg-subtle mb-4">

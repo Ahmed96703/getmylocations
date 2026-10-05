@@ -32,6 +32,14 @@
   Cache-Control: public, max-age=3600, s-maxage=86400
   X-Robots-Tag: noindex
 
+# Next.js static export writes a React Server Components payload next to
+# every page (/about.txt, /blog/<slug>.txt, ...). The client router fetches
+# them on navigation, so they must stay reachable, but they are data dumps,
+# not pages: keep them out of the index. Also covers robots.txt, ads.txt,
+# llms.txt and the IndexNow key file; noindex does not stop them being read.
+/*.txt
+  X-Robots-Tag: noindex
+
 # Markdown copies of pages for AI agents (written by scripts/markdown.mjs).
 # Not indexed: the HTML page is the canonical version.
 /*.md

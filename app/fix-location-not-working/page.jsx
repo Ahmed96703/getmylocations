@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import AuthorBio from '../components/AuthorBio.jsx';
+import AdSense from '../components/AdSense.jsx';
 
 export const metadata = {
   title: 'Location Not Working? 7 Fixes for Any Browser or Phone',
@@ -112,6 +113,8 @@ export default function FixLocationNotWorking() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+
+      <AdSense />
 
       <main role="main" className="max-w-3xl mx-auto px-5 py-12 prose-invert">
         <nav aria-label="Breadcrumb" className="text-xs text-fg-subtle mb-4 not-prose">
