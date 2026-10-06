@@ -8,7 +8,7 @@ url: https://getmylocations.com/blog
 
 Plain-English guides to how GPS, coordinates and IP location work, and what to do when the location your phone or browser shows is wrong. Each guide sits next to the free tool that lets you see the idea in action.
 
-Updated October 5, 2026 · Written by [Ahmed Anwar](https://getmylocations.com/about)
+Updated October 6, 2026 · Written by [Ahmed Anwar](https://getmylocations.com/about)
 
 ## Fix a location problem fast
 
@@ -83,6 +83,15 @@ Turning location on in each operating system and browser, what a website can and
 
 -   [
     
+    Updated October 6, 2026·10 min read
+    
+    ### Browser Geolocation API: What Websites Can and Can't See
+    
+    How navigator.geolocation works: getCurrentPosition, watchPosition, options, accuracy, error codes and permissions, with code you can copy.
+    
+    Read article →](https://getmylocations.com/blog/browser-geolocation-api-explained)
+-   [
+    
     Updated October 5, 2026·9 min read
     
     ### How to Turn On Location on a Laptop (Windows 10, 11 & Mac)
@@ -108,15 +117,6 @@ Turning location on in each operating system and browser, what a website can and
     Share your live location without oversharing: who can see it, how long it lasts, and how to stop it on WhatsApp, iPhone, Google Maps and Messages.
     
     Read article →](https://getmylocations.com/blog/how-to-share-gps-location-safely)
--   [
-    
-    May 19, 2026·9 min read
-    
-    ### Browser Geolocation API — What Websites Can and Can't See
-    
-    A walkthrough of navigator.geolocation: how it works, what the OS fuses into a coordinate, the permission model, and the privacy implications.
-    
-    Read article →](https://getmylocations.com/blog/browser-geolocation-api-explained)
 
 ## IP address and location
 

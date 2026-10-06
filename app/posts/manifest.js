@@ -73,11 +73,11 @@ export const POSTS = [
   {
     slug: 'browser-geolocation-api-explained',
     topic: 'permissions',
-    title: 'Browser Geolocation API — What Websites Can and Can\'t See',
-    excerpt: 'A walkthrough of navigator.geolocation: how it works, what the OS fuses into a coordinate, the permission model, and the privacy implications.',
+    title: 'Browser Geolocation API: What Websites Can and Can\'t See',
+    excerpt: 'How navigator.geolocation works: getCurrentPosition, watchPosition, options, accuracy, error codes and permissions, with code you can copy.',
     date: '2026-05-19',
-    modifiedDate: '2026-05-19',
-    readingTime: 9,
+    modifiedDate: '2026-10-06',
+    readingTime: 10,
     tags: ['geolocation', 'api', 'privacy'],
   },
   {
