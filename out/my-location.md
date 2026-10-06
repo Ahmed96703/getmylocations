@@ -1,14 +1,14 @@
 ---
-title: "What Is My Location? Free GPS Coordinates & Address"
-description: "Find your exact location in two seconds — GPS coordinates, accuracy radius and street address, straight from your browser. Free, no signup."
+title: "What Is My Location? My Coordinates & Current Address"
+description: "See your coordinates and current street address in two seconds, with the accuracy radius and a map pin. Free, in your browser, no signup."
 url: https://getmylocations.com/my-location
 ---
 
 Free Tool · Complete Guide
 
-# What is my location? Your GPS coordinates and address, in two seconds
+# What is my location? My coordinates and current address, in two seconds
 
-Tap the button below and the page reads your exact position straight from your browser — latitude, longitude, accuracy radius, street address, and a live map pin, without signing up or installing anything. Below the tool, the guide covers what the two numbers mean, how to read DD/DMS/UTM notation, how your device works out where you are, and what to do when the reading looks wrong.
+Tap the button below and the page shows your coordinates (latitude and longitude, ready to copy), the accuracy radius, the nearest street address to where you are, and a map pin — straight from your browser, without signing up or installing anything. Below the tool, the guide covers what the two numbers mean, how to read DD/DMS/UTM notation, how your device works out where you are, and what to do when the reading looks wrong.
 
 ## Find my current location
 

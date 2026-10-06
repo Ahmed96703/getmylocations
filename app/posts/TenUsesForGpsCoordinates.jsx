@@ -110,6 +110,9 @@ export default function TenUsesForGpsCoordinates() {
         swap a trinket. The game is the reason the consumer GPS market
         exists at all; it&rsquo;s where Garmin and Magellan first found
         non-professional customers in the early 2000s.
+        On the final approach, a{' '}
+        <Link href="/live-location" className="text-accent hover:underline">live location tracker</Link>{' '}
+        that redraws your position as you walk is more useful than a single reading.
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-12">8. Sanity-checking your VPN</h2>

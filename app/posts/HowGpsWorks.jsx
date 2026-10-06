@@ -318,7 +318,7 @@ export default function HowGpsWorks() {
         sheltered spot to open sky and watch the number drop. That&rsquo;s
         the constellation locking on satellites in real time, in front
         of you. To watch the fix update continuously as you walk, try the{' '}
-        <Link href="/live-location" className="text-accent hover:underline">live tracker</Link>.
+        <Link href="/live-location" className="text-accent hover:underline">live location tracker</Link>.
         The coordinate the tool gives you is in decimal degrees — if you need DMS or UTM for a chart or a survey report, the{' '}
         <Link href="/coordinates-converter" className="text-accent hover:underline">Coordinates Converter</Link>{' '}
         handles the translation.

@@ -1,6 +1,6 @@
 ---
 title: "How to Turn On Location on a Laptop (Windows 10, 11 & Mac)"
-description: "Turn on location on any laptop: Windows 10, Windows 11 or Mac. Fix the browser missing from the Windows app list and greyed-out toggles."
+description: "Windows 11: Settings → Privacy & security → Location → On (Windows 10: Privacy → Location). Mac: Privacy & Security → Location Services."
 url: https://getmylocations.com/blog/enable-location-on-windows-and-mac
 ---
 

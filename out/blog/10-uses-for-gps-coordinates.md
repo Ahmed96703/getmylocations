@@ -50,7 +50,7 @@ Some delivery apps share the courier’s drop-off coordinates as part of the con
 
 ## 7\. Geocaching
 
-Over three million caches are hidden around the world, each pinpointed by a precise GPS coordinate. Players use the coordinate alone — no other directions, no street address — to find a small container, log their visit, sometimes swap a trinket. The game is the reason the consumer GPS market exists at all; it’s where Garmin and Magellan first found non-professional customers in the early 2000s.
+Over three million caches are hidden around the world, each pinpointed by a precise GPS coordinate. Players use the coordinate alone — no other directions, no street address — to find a small container, log their visit, sometimes swap a trinket. The game is the reason the consumer GPS market exists at all; it’s where Garmin and Magellan first found non-professional customers in the early 2000s. On the final approach, a [live location tracker](https://getmylocations.com/live-location) that redraws your position as you walk is more useful than a single reading.
 
 ## 8\. Sanity-checking your VPN
 

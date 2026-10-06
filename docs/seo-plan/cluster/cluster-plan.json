@@ -1,0 +1,541 @@
+{
+  "pillar": {
+    "title": "GetMyLocations home (site hub)",
+    "keyword": "my location",
+    "volume": null,
+    "template": "tool",
+    "wordCount": 1600,
+    "url": "/"
+  },
+  "clusters": [
+    {
+      "name": "Coordinate formats",
+      "color": "#4E79A7",
+      "hub": "/coordinates-converter",
+      "serves_tool_queries": [
+        "coordinate converter",
+        "dms to decimal degrees",
+        "utm to lat long",
+        "plus code converter (after the Plus Code feature)"
+      ],
+      "posts": [
+        {
+          "title": "Coordinates Converter (hub)",
+          "keyword": "coordinate converter",
+          "volume": null,
+          "template": "tool",
+          "wordCount": 2500,
+          "url": "/coordinates-converter",
+          "status": "written",
+          "note": "Also the target for 'dms to decimal degrees' and 'utm to lat long': those results are tools, not articles."
+        },
+        {
+          "title": "Latitude vs Longitude",
+          "keyword": "latitude vs longitude",
+          "volume": null,
+          "template": "explainer",
+          "wordCount": 1900,
+          "url": "/blog/latitude-vs-longitude-explained",
+          "status": "written",
+          "note": ""
+        },
+        {
+          "title": "How to Read GPS Coordinates (DD, DMS, DDM)",
+          "keyword": "how to read gps coordinates",
+          "volume": null,
+          "template": "how-to",
+          "wordCount": 1500,
+          "url": "/blog/how-to-read-gps-coordinates",
+          "status": "planned",
+          "note": "Include a section on entering coordinates in Google and Apple Maps: Google's own help takes 3 of 7 results for that query, so a standalone post is unlikely to win."
+        },
+        {
+          "title": "How Many Decimal Places Do GPS Coordinates Need?",
+          "keyword": "how many decimal places gps coordinates",
+          "volume": null,
+          "template": "explainer",
+          "wordCount": 1300,
+          "url": "/blog/gps-coordinate-decimal-places",
+          "status": "planned",
+          "note": "Generate the precision table from the converter's own code."
+        },
+        {
+          "title": "What Is MGRS and How to Read a Grid Reference",
+          "keyword": "what is mgrs",
+          "volume": null,
+          "template": "explainer",
+          "wordCount": 1500,
+          "url": "/blog/what-is-mgrs",
+          "status": "planned",
+          "note": ""
+        },
+        {
+          "title": "UTM Zones Explained, with the Norway and Svalbard Exceptions",
+          "keyword": "utm zones explained",
+          "volume": null,
+          "template": "explainer",
+          "wordCount": 1600,
+          "url": "/blog/utm-zones-explained",
+          "status": "planned",
+          "note": ""
+        },
+        {
+          "title": "what3words vs Plus Codes vs GPS Coordinates",
+          "keyword": "what3words vs plus codes",
+          "volume": null,
+          "template": "comparison",
+          "wordCount": 1800,
+          "url": "/blog/what3words-vs-plus-codes-vs-coordinates",
+          "status": "planned",
+          "note": "Write after Plus Codes ship in the converter (docs/seo-plan/competitor-pages)."
+        }
+      ]
+    },
+    {
+      "name": "Distance",
+      "color": "#F28E2B",
+      "hub": "/distance-calculator",
+      "serves_tool_queries": [
+        "distance between two coordinates (mixed intent: half the results are school-maths distance formulas)"
+      ],
+      "posts": [
+        {
+          "title": "Distance Calculator (hub)",
+          "keyword": "distance between coordinates",
+          "volume": null,
+          "template": "tool",
+          "wordCount": 2600,
+          "url": "/distance-calculator",
+          "status": "written",
+          "note": ""
+        },
+        {
+          "title": "Haversine vs Vincenty: How Much Error Does a Sphere Add?",
+          "keyword": "haversine vs vincenty",
+          "volume": null,
+          "template": "comparison",
+          "wordCount": 1500,
+          "url": "/blog/haversine-vs-vincenty",
+          "status": "planned",
+          "note": "Data already generated from dist.js (docs/seo-plan/competitor-pages)."
+        },
+        {
+          "title": "Great-Circle vs Rhumb-Line Distance",
+          "keyword": "great circle vs rhumb line",
+          "volume": null,
+          "template": "explainer",
+          "wordCount": 1400,
+          "url": "/blog/great-circle-vs-rhumb-line",
+          "status": "planned",
+          "note": ""
+        },
+        {
+          "title": "How Far Did I Walk? Measuring a Route from GPS",
+          "keyword": "how far did i walk",
+          "volume": null,
+          "template": "how-to",
+          "wordCount": 1400,
+          "url": "/blog/how-far-did-i-walk",
+          "status": "planned",
+          "note": "Results are route planners; our angle is recording the real walk on /live-location and exporting GPX."
+        }
+      ]
+    },
+    {
+      "name": "GPS accuracy",
+      "color": "#59A14F",
+      "hub": "/gps-vs-ip-accuracy",
+      "serves_tool_queries": [],
+      "posts": [
+        {
+          "title": "GPS vs IP Accuracy (hub)",
+          "keyword": "gps vs ip accuracy",
+          "volume": null,
+          "template": "comparison",
+          "wordCount": 2000,
+          "url": "/gps-vs-ip-accuracy",
+          "status": "written",
+          "note": ""
+        },
+        {
+          "title": "How GPS Works",
+          "keyword": "how gps works",
+          "volume": null,
+          "template": "explainer",
+          "wordCount": 1800,
+          "url": "/blog/how-gps-works",
+          "status": "written",
+          "note": ""
+        },
+        {
+          "title": "How Accurate Is Phone GPS?",
+          "keyword": "how accurate is phone gps",
+          "volume": null,
+          "template": "explainer",
+          "wordCount": 1500,
+          "url": "/blog/how-accurate-is-phone-gps",
+          "status": "planned",
+          "note": "Check Search Console first: /gps-vs-ip-accuracy may already get impressions for this query. If so, expand that page instead of adding a post."
+        },
+        {
+          "title": "Why GPS Is Inaccurate in Cities",
+          "keyword": "why is gps inaccurate in cities",
+          "volume": null,
+          "template": "explainer",
+          "wordCount": 1300,
+          "url": "/blog/why-gps-is-inaccurate-in-cities",
+          "status": "planned",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "name": "IP location and privacy",
+      "color": "#E15759",
+      "hub": "/ip-location",
+      "serves_tool_queries": [],
+      "posts": [
+        {
+          "title": "IP Location (hub)",
+          "keyword": "ip location",
+          "volume": null,
+          "template": "tool",
+          "wordCount": 2900,
+          "url": "/ip-location",
+          "status": "written",
+          "note": ""
+        },
+        {
+          "title": "What Is IP Location, and How Accurate Is It?",
+          "keyword": "ip location accuracy",
+          "volume": null,
+          "template": "explainer",
+          "wordCount": 2400,
+          "url": "/blog/what-is-ip-location-and-how-accurate",
+          "status": "written",
+          "note": ""
+        },
+        {
+          "title": "What Does My IP Address Reveal?",
+          "keyword": "what does my ip reveal",
+          "volume": null,
+          "template": "explainer",
+          "wordCount": 1700,
+          "url": "/blog/what-your-ip-reveals",
+          "status": "written",
+          "note": ""
+        },
+        {
+          "title": "Does a VPN Hide Your Location from Websites?",
+          "keyword": "does a vpn hide your location",
+          "volume": null,
+          "template": "explainer",
+          "wordCount": 1400,
+          "url": "/blog/does-a-vpn-hide-your-location",
+          "status": "planned",
+          "note": "Results are VPN vendors selling VPNs; a neutral, tested answer (IP vs GPS vs Wi-Fi) is the gap."
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "from": "pillar",
+      "to": "cluster-0-post-0",
+      "type": "mandatory"
+    },
+    {
+      "from": "cluster-0-post-0",
+      "to": "pillar",
+      "type": "mandatory"
+    },
+    {
+      "from": "cluster-0-post-0",
+      "to": "cluster-0-post-1",
+      "type": "mandatory"
+    },
+    {
+      "from": "cluster-0-post-1",
+      "to": "cluster-0-post-0",
+      "type": "mandatory"
+    },
+    {
+      "from": "cluster-0-post-1",
+      "to": "cluster-0-post-2",
+      "type": "recommended"
+    },
+    {
+      "from": "cluster-0-post-0",
+      "to": "cluster-0-post-2",
+      "type": "mandatory"
+    },
+    {
+      "from": "cluster-0-post-2",
+      "to": "cluster-0-post-0",
+      "type": "mandatory"
+    },
+    {
+      "from": "cluster-0-post-2",
+      "to": "cluster-0-post-3",
+      "type": "recommended"
+    },
+    {
+      "from": "cluster-0-post-0",
+      "to": "cluster-0-post-3",
+      "type": "mandatory"
+    },
+    {
+      "from": "cluster-0-post-3",
+      "to": "cluster-0-post-0",
+      "type": "mandatory"
+    },
+    {
+      "from": "cluster-0-post-3",
+      "to": "cluster-0-post-4",
+      "type": "recommended"
+    },
+    {
+      "from": "cluster-0-post-0",
+      "to": "cluster-0-post-4",
+      "type": "mandatory"
+    },
+    {
+      "from": "cluster-0-post-4",
+      "to": "cluster-0-post-0",
+      "type": "mandatory"
+    },
+    {
+      "from": "cluster-0-post-4",
+      "to": "cluster-0-post-5",
+      "type": "recommended"
+    },
+    {
+      "from": "cluster-0-post-0",
+      "to": "cluster-0-post-5",
+      "type": "mandatory"
+    },
+    {
+      "from": "cluster-0-post-5",
+      "to": "cluster-0-post-0",
+      "type": "mandatory"
+    },
+    {
+      "from": "cluster-0-post-5",
+      "to": "cluster-0-post-6",
+      "type": "recommended"
+    },
+    {
+      "from": "cluster-0-post-0",
+      "to": "cluster-0-post-6",
+      "type": "mandatory"
+    },
+    {
+      "from": "cluster-0-post-6",
+      "to": "cluster-0-post-0",
+      "type": "mandatory"
+    },
+    {
+      "from": "cluster-0-post-6",
+      "to": "cluster-0-post-1",
+      "type": "recommended"
+    },
+    {
+      "from": "pillar",
+      "to": "cluster-1-post-0",
+      "type": "mandatory"
+    },
+    {
+      "from": "cluster-1-post-0",
+      "to": "pillar",
+      "type": "mandatory"
+    },
+    {
+      "from": "cluster-1-post-0",
+      "to": "cluster-1-post-1",
+      "type": "mandatory"
+    },
+    {
+      "from": "cluster-1-post-1",
+      "to": "cluster-1-post-0",
+      "type": "mandatory"
+    },
+    {
+      "from": "cluster-1-post-1",
+      "to": "cluster-1-post-2",
+      "type": "recommended"
+    },
+    {
+      "from": "cluster-1-post-0",
+      "to": "cluster-1-post-2",
+      "type": "mandatory"
+    },
+    {
+      "from": "cluster-1-post-2",
+      "to": "cluster-1-post-0",
+      "type": "mandatory"
+    },
+    {
+      "from": "cluster-1-post-2",
+      "to": "cluster-1-post-3",
+      "type": "recommended"
+    },
+    {
+      "from": "cluster-1-post-0",
+      "to": "cluster-1-post-3",
+      "type": "mandatory"
+    },
+    {
+      "from": "cluster-1-post-3",
+      "to": "cluster-1-post-0",
+      "type": "mandatory"
+    },
+    {
+      "from": "cluster-1-post-3",
+      "to": "cluster-1-post-1",
+      "type": "recommended"
+    },
+    {
+      "from": "pillar",
+      "to": "cluster-2-post-0",
+      "type": "mandatory"
+    },
+    {
+      "from": "cluster-2-post-0",
+      "to": "pillar",
+      "type": "mandatory"
+    },
+    {
+      "from": "cluster-2-post-0",
+      "to": "cluster-2-post-1",
+      "type": "mandatory"
+    },
+    {
+      "from": "cluster-2-post-1",
+      "to": "cluster-2-post-0",
+      "type": "mandatory"
+    },
+    {
+      "from": "cluster-2-post-1",
+      "to": "cluster-2-post-2",
+      "type": "recommended"
+    },
+    {
+      "from": "cluster-2-post-0",
+      "to": "cluster-2-post-2",
+      "type": "mandatory"
+    },
+    {
+      "from": "cluster-2-post-2",
+      "to": "cluster-2-post-0",
+      "type": "mandatory"
+    },
+    {
+      "from": "cluster-2-post-2",
+      "to": "cluster-2-post-3",
+      "type": "recommended"
+    },
+    {
+      "from": "cluster-2-post-0",
+      "to": "cluster-2-post-3",
+      "type": "mandatory"
+    },
+    {
+      "from": "cluster-2-post-3",
+      "to": "cluster-2-post-0",
+      "type": "mandatory"
+    },
+    {
+      "from": "cluster-2-post-3",
+      "to": "cluster-2-post-1",
+      "type": "recommended"
+    },
+    {
+      "from": "pillar",
+      "to": "cluster-3-post-0",
+      "type": "mandatory"
+    },
+    {
+      "from": "cluster-3-post-0",
+      "to": "pillar",
+      "type": "mandatory"
+    },
+    {
+      "from": "cluster-3-post-0",
+      "to": "cluster-3-post-1",
+      "type": "mandatory"
+    },
+    {
+      "from": "cluster-3-post-1",
+      "to": "cluster-3-post-0",
+      "type": "mandatory"
+    },
+    {
+      "from": "cluster-3-post-1",
+      "to": "cluster-3-post-2",
+      "type": "recommended"
+    },
+    {
+      "from": "cluster-3-post-0",
+      "to": "cluster-3-post-2",
+      "type": "mandatory"
+    },
+    {
+      "from": "cluster-3-post-2",
+      "to": "cluster-3-post-0",
+      "type": "mandatory"
+    },
+    {
+      "from": "cluster-3-post-2",
+      "to": "cluster-3-post-3",
+      "type": "recommended"
+    },
+    {
+      "from": "cluster-3-post-0",
+      "to": "cluster-3-post-3",
+      "type": "mandatory"
+    },
+    {
+      "from": "cluster-3-post-3",
+      "to": "cluster-3-post-0",
+      "type": "mandatory"
+    },
+    {
+      "from": "cluster-3-post-3",
+      "to": "cluster-3-post-1",
+      "type": "recommended"
+    },
+    {
+      "from": "cluster-0-post-3",
+      "to": "cluster-1-post-1",
+      "type": "optional"
+    },
+    {
+      "from": "cluster-1-post-3",
+      "to": "cluster-2-post-2",
+      "type": "optional"
+    },
+    {
+      "from": "cluster-2-post-2",
+      "to": "cluster-3-post-1",
+      "type": "optional"
+    },
+    {
+      "from": "cluster-3-post-3",
+      "to": "cluster-2-post-1",
+      "type": "optional"
+    }
+  ],
+  "meta": {
+    "totalPosts": 20,
+    "totalClusters": 4,
+    "totalLinks": 57,
+    "estimatedWords": 16200,
+    "newPosts": 11,
+    "method": "Top results from the WebSearch tool for 20 keywords, compared pairwise (190 pairs). No pair shared more than 1 URL, so every keyword gets its own page; clusters follow intent and the site's existing tool hubs. WebSearch is not Google's index and keyword volumes were not available.",
+    "checked": "2026-10-06",
+    "excluded": {
+      "geohash to lat long": "results are developer libraries (npm, PyPI, GitHub); serve with a converter feature, no post",
+      "what is my elevation": "tool intent; served by the planned /elevation tool, not a post"
+    }
+  }
+}

@@ -188,11 +188,11 @@ export default function HowToFindGpsCoordinates() {
         Open the{' '}
         <Link href="/my-location" className="text-accent hover:underline font-semibold">My Location</Link>{' '}
         tool and allow the location prompt. The latitude, longitude, accuracy
-        radius, city, and country will be on screen in under two seconds.
+        radius and nearest street address will be on screen in a couple of seconds.
         If you need the coordinate in DMS or UTM instead of decimal degrees, paste it into the{' '}
         <Link href="/coordinates-converter" className="text-accent hover:underline">Coordinates Converter</Link>.
         To watch the fix update continuously as you walk, switch to the{' '}
-        <Link href="/live-location" className="text-accent hover:underline">live tracker</Link>.
+        <Link href="/live-location" className="text-accent hover:underline">live location tracker</Link>.
       </p>
       <p className="mt-3 text-fg-muted leading-relaxed">
         For the theory behind how your phone actually computes this number, read{' '}

@@ -5,9 +5,9 @@ import AdSense from '../components/AdSense.jsx';
 import { AUTHOR } from '../components/author.js';
 
 export const metadata = {
-  title: 'What Is My Location? Free GPS Coordinates & Address',
+  title: 'What Is My Location? My Coordinates & Current Address',
   description:
-    'Find your exact location in two seconds — GPS coordinates, accuracy radius and street address, straight from your browser. Free, no signup.',
+    'See your coordinates and current street address in two seconds, with the accuracy radius and a map pin. Free, in your browser, no signup.',
   keywords: [
     'my location',
     'what is my location',
@@ -15,10 +15,12 @@ export const metadata = {
     'where am i',
     'gps coordinates of my location',
     'find my coordinates',
+    'my coordinates',
+    'my current address',
   ],
   alternates: { canonical: '/my-location' },
   openGraph: {
-    title: 'What Is My Location? Find My GPS Coordinates & Address',
+    title: 'What Is My Location? My Coordinates & Current Address',
     description:
       'Your exact GPS coordinates, accuracy radius, and street address — free, in the browser, no signup.',
     url: 'https://getmylocations.com/my-location',
@@ -27,7 +29,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'What Is My Location? Find My GPS Coordinates & Address',
+    title: 'What Is My Location? My Coordinates & Current Address',
     description: 'Coordinates, accuracy, and address in two seconds. Free, browser-based, no signup.',
     images: ['/og-image.png'],
   },
@@ -131,12 +133,12 @@ export default function MyLocationPage() {
         <article>
           <p className="text-xs uppercase tracking-[0.18em] text-accent font-semibold">Free Tool · Complete Guide</p>
           <h1 className="font-display text-4xl font-extrabold tracking-tight mt-2 leading-[1.1]">
-            What is my location? Your GPS coordinates and address, in two seconds
+            What is my location? My coordinates and current address, in two seconds
           </h1>
           <p className="mt-4 text-lg text-fg-muted leading-relaxed">
-            Tap the button below and the page reads your exact position straight from your browser —
-            latitude, longitude, accuracy radius, street address, and a live map pin, without signing up
-            or installing anything. Below the tool, the guide covers what the two numbers mean, how to
+            Tap the button below and the page shows your coordinates (latitude and longitude, ready to
+            copy), the accuracy radius, the nearest street address to where you are, and a map pin &mdash;
+            straight from your browser, without signing up or installing anything. Below the tool, the guide covers what the two numbers mean, how to
             read DD/DMS/UTM notation, how your device works out where you are, and what to do when the
             reading looks wrong.
           </p>

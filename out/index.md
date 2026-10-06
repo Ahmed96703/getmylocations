@@ -8,7 +8,7 @@ Free · No signup · Runs in your browser
 
 # GetMyLocations — find your location, coordinates, and address instantly.
 
-An all-in-one location toolkit, free in your browser. The [My Location](https://getmylocations.com/my-location) finder reads your GPS coordinates, resolves the city and country, and drops a live map pin in two seconds. No account, no app install, and your coordinates are never sent to a server we run. Eight more focused tools live one click away, including a [coordinates converter](https://getmylocations.com/coordinates-converter), an [IP location lookup](https://getmylocations.com/ip-location), a [distance calculator](https://getmylocations.com/distance-calculator), an [address finder](https://getmylocations.com/address-finder), and a [live tracker](https://getmylocations.com/live-location) that updates as you move.
+An all-in-one location toolkit, free in your browser. The [My Location](https://getmylocations.com/my-location) finder reads your GPS coordinates, resolves the city and country, and drops a live map pin in two seconds. No account, no app install, and your coordinates are never sent to a server we run. Eight more focused tools live one click away, including a [coordinates converter](https://getmylocations.com/coordinates-converter), an [IP location lookup](https://getmylocations.com/ip-location), a [distance calculator](https://getmylocations.com/distance-calculator), an [address finder](https://getmylocations.com/address-finder), and a [live location tracker](https://getmylocations.com/live-location) that updates as you move.
 
 Last reviewed October 1, 2026. Articles and tools are reviewed by [Ahmed Anwar](https://getmylocations.com/about) before publication; report any inaccurate detail via the [Contact page](https://getmylocations.com/contact).
 
@@ -187,7 +187,7 @@ Guides on GPS, geolocation, and finding your way online.
     
     ### How to Turn On Location on a Laptop (Windows 10, 11 & Mac)
     
-    Turn on location on any laptop: Windows 10, Windows 11 or Mac. Fix the browser missing from the Windows app list and greyed-out toggles.
+    Windows 11: Settings → Privacy & security → Location → On (Windows 10: Privacy → Location). Mac: Privacy & Security → Location Services.
     
     Read →](https://getmylocations.com/blog/enable-location-on-windows-and-mac)
 -   [Jun 3, 2026·10 min read

@@ -108,7 +108,7 @@ export default function HomePage() {
             an{' '}
             <Link href="/address-finder" className="text-accent hover:underline">address finder</Link>,
             and a{' '}
-            <Link href="/live-location" className="text-accent hover:underline">live tracker</Link>{' '}
+            <Link href="/live-location" className="text-accent hover:underline">live location tracker</Link>{' '}
             that updates as you move.
           </p>
           <p className="mt-3 text-sm text-fg-subtle">

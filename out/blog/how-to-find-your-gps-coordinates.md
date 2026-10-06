@@ -112,7 +112,7 @@ For one-off sharing with someone you know, fine. Avoid publishing precise coordi
 
 ## Try it
 
-Open the [My Location](https://getmylocations.com/my-location) tool and allow the location prompt. The latitude, longitude, accuracy radius, city, and country will be on screen in under two seconds. If you need the coordinate in DMS or UTM instead of decimal degrees, paste it into the [Coordinates Converter](https://getmylocations.com/coordinates-converter). To watch the fix update continuously as you walk, switch to the [live tracker](https://getmylocations.com/live-location).
+Open the [My Location](https://getmylocations.com/my-location) tool and allow the location prompt. The latitude, longitude, accuracy radius and nearest street address will be on screen in a couple of seconds. If you need the coordinate in DMS or UTM instead of decimal degrees, paste it into the [Coordinates Converter](https://getmylocations.com/coordinates-converter). To watch the fix update continuously as you walk, switch to the [live location tracker](https://getmylocations.com/live-location).
 
 For the theory behind how your phone actually computes this number, read [How GPS works](https://getmylocations.com/blog/how-gps-works). For a primer on reading and interpreting the two numbers, see [Latitude vs longitude explained](https://getmylocations.com/blog/latitude-vs-longitude-explained). And if you plan to share your coordinates with someone, the [safe sharing guide](https://getmylocations.com/blog/how-to-share-gps-location-safely) covers what to strip before posting publicly.
 

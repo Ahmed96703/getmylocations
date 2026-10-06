@@ -5,7 +5,7 @@ export const POSTS = [
     topic: 'permissions', // groups the post on the blog index
     title: 'How to Turn On Location on a Laptop (Windows 10, 11 & Mac)',
     excerpt:
-      'Turn on location on any laptop: Windows 10, Windows 11 or Mac. Fix the browser missing from the Windows app list and greyed-out toggles.',
+      'Windows 11: Settings → Privacy & security → Location → On (Windows 10: Privacy → Location). Mac: Privacy & Security → Location Services.',
     date: '2026-06-03',
     modifiedDate: '2026-10-05',
     readingTime: 9,
