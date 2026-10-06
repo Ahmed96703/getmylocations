@@ -228,7 +228,7 @@ export default function DistanceCalculatorPage() {
             </table>
           </div>
           <p className="mt-3 text-sm text-fg-subtle">
-            Distances are rounded to the nearest whole unit. Checked against the GeographicLib reference library in October 2026.
+            Distances are rounded to the nearest whole unit. Checked against the <a href="https://geographiclib.sourceforge.io/" target="_blank" rel="noopener" className="text-accent hover:underline">GeographicLib</a> reference library in October 2026.
           </p>
         </section>
 

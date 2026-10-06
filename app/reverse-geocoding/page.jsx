@@ -220,8 +220,7 @@ export default function ReverseGeocoding() {
         <p className="mt-2 text-fg-muted leading-relaxed">
           The fastest way: paste your coordinates into the{' '}
           <Link href="/address-finder" className="text-accent hover:underline">Address Finder</Link>, drop a manual pin,
-          and the reverse-geocoded result appears next to it. The pipeline uses OpenStreetMap
-          Nominatim with a free fallback. For your own live coordinates, the{' '}
+          and the reverse-geocoded result appears next to it. The pipeline uses <a href="https://nominatim.org/" target="_blank" rel="noopener" className="text-accent hover:underline">OpenStreetMap Nominatim</a> with a free fallback. For your own live coordinates, the{' '}
           <Link href="/my-location" className="text-accent hover:underline">My Current Location tool</Link>{' '}
           reads your GPS first and then reverse-geocodes in the same flow.
         </p>
@@ -245,7 +244,7 @@ export default function ReverseGeocoding() {
             Free, no API key. Rate-limited to ~1 request per second &mdash; respect their fair-use policy.
           </li>
           <li>
-            <strong>BigDataCloud</strong>: free reverse-geocoding tier with no API key needed for
+            <strong><a href="https://www.bigdatacloud.com/" target="_blank" rel="noopener" className="text-accent hover:underline">BigDataCloud</a></strong>: free reverse-geocoding tier with no API key needed for
             client-side calls, decent global coverage. We use it as the default in GetMyLocations.
           </li>
         </ul>

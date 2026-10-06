@@ -254,7 +254,7 @@ export default function AddressFinderPage() {
         <section className="mt-10">
           <h2 className="font-display text-2xl font-bold">Rate limits and fair use</h2>
           <p className="mt-3 text-fg-muted leading-relaxed">
-            OpenStreetMap runs the Nominatim service for free, and its usage policy allows at most one request per second. The tool enforces that itself: if you click again within a second, it waits briefly and tells you why. That is plenty for looking up addresses by hand. If you need to geocode thousands of addresses, self-host Nominatim (the data is free to download) or use a commercial geocoder instead; bulk use of the free service gets blocked. Results and map data are &copy; OpenStreetMap contributors.
+            OpenStreetMap runs the Nominatim service for free, and its <a href="https://operations.osmfoundation.org/policies/nominatim/" target="_blank" rel="noopener" className="text-accent hover:underline">usage policy</a> allows at most one request per second. The tool enforces that itself: if you click again within a second, it waits briefly and tells you why. That is plenty for looking up addresses by hand. If you need to geocode thousands of addresses, self-host Nominatim (the data is free to download) or use a commercial geocoder instead; bulk use of the free service gets blocked. Results and map data are &copy; OpenStreetMap contributors.
           </p>
         </section>
 

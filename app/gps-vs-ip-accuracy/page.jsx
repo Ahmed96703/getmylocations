@@ -144,7 +144,7 @@ export default function GpsVsIpAccuracy() {
           Every reading also comes with an
           {' '}<code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">accuracy</code>{' '}
           field in meters. Treat it as the radius of a circle the device thinks it&apos;s probably
-          inside &mdash; the W3C Geolocation API specification defines it at a 95% confidence
+          inside &mdash; the <a href="https://www.w3.org/TR/geolocation/" target="_blank" rel="noopener" className="text-accent hover:underline">W3C Geolocation API specification</a> defines it at a 95% confidence
           level. An accuracy of 8 means the OS is fairly confident you&apos;re within an 8-meter
           radius; an accuracy of 5000 (yes, common indoors) means it&apos;s essentially guessing.
         </p>

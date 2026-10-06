@@ -87,7 +87,7 @@ The first time you use any distance calculator, it pays to verify it against pai
 | San Francisco (37.7749, -122.4194) | Los Angeles (34.0522, -118.2437) | 559 | 347 | 302 | 559 | +0.1 km |
 | Cape Town (-33.9249, 18.4241) | Cairo (30.0444, 31.2357) | 7,207 | 4,479 | 3,892 | 7,239 | +31.8 km |
 
-Distances are rounded to the nearest whole unit. Checked against the GeographicLib reference library in October 2026.
+Distances are rounded to the nearest whole unit. Checked against the [GeographicLib](https://geographiclib.sourceforge.io/) reference library in October 2026.
 
 ## How accurate is great-circle distance, really?
 

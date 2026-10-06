@@ -47,7 +47,7 @@ Three practical ways to do it, in order of how much work they take:
 
 ### 1\. Use the Address Finder tool
 
-The fastest way: paste your coordinates into the [Address Finder](https://getmylocations.com/address-finder), drop a manual pin, and the reverse-geocoded result appears next to it. The pipeline uses OpenStreetMap Nominatim with a free fallback. For your own live coordinates, the [My Current Location tool](https://getmylocations.com/my-location) reads your GPS first and then reverse-geocodes in the same flow.
+The fastest way: paste your coordinates into the [Address Finder](https://getmylocations.com/address-finder), drop a manual pin, and the reverse-geocoded result appears next to it. The pipeline uses [OpenStreetMap Nominatim](https://nominatim.org/) with a free fallback. For your own live coordinates, the [My Current Location tool](https://getmylocations.com/my-location) reads your GPS first and then reverse-geocodes in the same flow.
 
 ### 2\. Use Google Maps directly
 
@@ -58,7 +58,7 @@ Type the coordinates straight into the Google Maps search box, separated by a co
 For programmatic work, two free options:
 
 -   **OpenStreetMap Nominatim**: `https://nominatim.openstreetmap.org/reverse?lat=48.8584&lon=2.2945&format=json`. Free, no API key. Rate-limited to ~1 request per second — respect their fair-use policy.
--   **BigDataCloud**: free reverse-geocoding tier with no API key needed for client-side calls, decent global coverage. We use it as the default in GetMyLocations.
+-   **[BigDataCloud](https://www.bigdatacloud.com/)**: free reverse-geocoding tier with no API key needed for client-side calls, decent global coverage. We use it as the default in GetMyLocations.
 
 * * *
 

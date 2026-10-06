@@ -38,11 +38,11 @@ Crucially, your **private** IP (something like `192.168.1.5`) is completely sepa
 
 These ranges are never public, and the tool recognises them without sending them anywhere:
 
--   `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`: private networks (RFC 1918)
--   `100.64.0.0/10`: carrier-grade NAT inside ISP and mobile networks (RFC 6598)
+-   `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`: private networks ([RFC 1918](https://www.rfc-editor.org/rfc/rfc1918))
+-   `100.64.0.0/10`: carrier-grade NAT inside ISP and mobile networks ([RFC 6598](https://www.rfc-editor.org/rfc/rfc6598))
 -   `127.0.0.0/8` and `::1`: loopback, meaning “this device”
 -   `169.254.0.0/16` and `fe80::/10`: link-local, self-assigned when no router answers
--   `fc00::/7`: IPv6 unique local addresses, the IPv6 equivalent of private ranges (RFC 4193)
+-   `fc00::/7`: IPv6 unique local addresses, the IPv6 equivalent of private ranges ([RFC 4193](https://www.rfc-editor.org/rfc/rfc4193))
 
 * * *
 
@@ -54,7 +54,7 @@ Easiest by far. Tap _Lookup my IP_ in the tool at the top of this page and your 
 
 ### 2\. Ask your router
 
-Open your router's admin page (usually `192.168.1.1` or `192.168.0.1`) in a browser. The WAN or Internet section shows the IP your ISP has assigned. This is the ground-truth source — if it disagrees with a website's reading, you're probably behind a VPN or proxy.
+Open your router's admin page (usually `192.168.1.1` or `192.168.0.1`) in a browser. The WAN or Internet section shows the IP your ISP has assigned. This is the ground-truth source — if it disagrees with a website's reading, you're probably behind a VPN or proxy. For what that public address does and does not give away about you, see [what your IP address reveals](https://getmylocations.com/blog/what-your-ip-reveals).
 
 ### 3\. Command line
 
@@ -78,7 +78,7 @@ The lookup itself is cheap to run, but the answer is inherently fuzzy, as the ne
 
 ## How accurate is IP geolocation?
 
-MaxMind, one of the largest IP database providers, publishes its own estimates: **99.8% accuracy at the country level**, and for US addresses about **80% at the state or region level** and **66% for the city**, where “correct” means within 50 km. So even by a major provider’s own measure, one US city guess in three is more than 50 km out.
+[MaxMind](https://support.maxmind.com/hc/en-us/articles/4407630607131-Geolocation-Accuracy), one of the largest IP database providers, publishes its own estimates: **99.8% accuracy at the country level**, and for US addresses about **80% at the state or region level** and **66% for the city**, where “correct” means within 50 km. So even by a major provider’s own measure, one US city guess in three is more than 50 km out.
 
 | Level | Typical accuracy |
 | --- | --- |
@@ -137,7 +137,7 @@ IPv4 addresses (32 bits, 4.3 billion possible values) ran out years ago. New dep
 
 -   **IPv6 is often more honest.** Many CGNAT setups only proxy IPv4. If you visit an IPv6-capable site over IPv6, the address you see is more likely your device's actual prefix, not a carrier pool.
 -   **Dual-stack confusion.** Most modern devices have both. The IP that gets used depends on which the destination site supports and which the local DNS resolves first. Geolocation may disagree between the two stacks.
--   **Privacy extensions.** IPv6 supports temporary addresses (RFC 4941) that rotate every few hours to avoid tracking. Older IPv6 hosts derived the last 64 bits from the network card's MAC, which was a privacy disaster — modern systems avoid this by default.
+-   **Privacy extensions.** IPv6 supports temporary addresses ([RFC 4941](https://www.rfc-editor.org/rfc/rfc4941)) that rotate every few hours to avoid tracking. Older IPv6 hosts derived the last 64 bits from the network card's MAC, which was a privacy disaster — modern systems avoid this by default.
 
 * * *
 

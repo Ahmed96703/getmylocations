@@ -157,7 +157,7 @@ export default function LiveLocationPage() {
         <section className="mt-10">
           <h2 className="font-display text-2xl font-bold">What each live GPS location reading means</h2>
           <p className="mt-3 text-fg-muted leading-relaxed">
-            Every update the browser delivers carries more than a coordinate. Here is what each tile in the tracker shows, and when it is allowed to be blank under the W3C Geolocation API specification.
+            Every update the browser delivers carries more than a coordinate. Here is what each tile in the tracker shows, and when it is allowed to be blank under the <a href="https://www.w3.org/TR/geolocation/" target="_blank" rel="noopener" className="text-accent hover:underline">W3C Geolocation API specification</a>.
           </p>
           <div className="mt-4 overflow-x-auto">
             <table className="w-full text-sm text-left">
@@ -207,7 +207,7 @@ export default function LiveLocationPage() {
           </p>
           <h3 className="font-display text-lg font-bold mt-5">Save your route as a GPX file</h3>
           <p className="mt-2 text-fg-muted leading-relaxed">
-            Once the path has two points, a <em>Download route (GPX)</em> button appears under the readings. GPX is the standard file format for GPS tracks (version 1.1, published by Topografix), so Strava, Komoot, Garmin Connect, Google Earth and most hiking apps can open it. Each point in the file carries its latitude and longitude, the time it was recorded, and the altitude when the device reported one. The file holds exactly the points drawn on the map, after the 10-meter and 50-meter filters above.
+            Once the path has two points, a <em>Download route (GPX)</em> button appears under the readings. GPX is the standard file format for GPS tracks (<a href="https://www.topografix.com/GPX/1/1/" target="_blank" rel="noopener" className="text-accent hover:underline">version 1.1, published by Topografix</a>), so Strava, Komoot, Garmin Connect, Google Earth and most hiking apps can open it. Each point in the file carries its latitude and longitude, the time it was recorded, and the altitude when the device reported one. The file holds exactly the points drawn on the map, after the 10-meter and 50-meter filters above.
           </p>
           <p className="mt-3 text-fg-muted leading-relaxed">
             The file is assembled by JavaScript in your browser and saved straight to your device; it is not uploaded anywhere first. You can download it while still tracking or after tapping <em>Stop</em>. To measure the straight-line gap between where you started and where you ended, paste both coordinates into the{' '}
@@ -260,7 +260,7 @@ export default function LiveLocationPage() {
         <section className="mt-10">
           <h2 className="font-display text-2xl font-bold">Keep the screen awake while tracking</h2>
           <p className="mt-3 text-fg-muted leading-relaxed">
-            Phones pause location updates to a web page once the screen turns off, so a walk with the phone in your pocket can leave long gaps in the path. Tick <em>Keep screen on</em> next to the start button and the page asks the browser for a screen wake lock (the Screen Wake Lock API), which stops the display from sleeping while tracking is running.
+            Phones pause location updates to a web page once the screen turns off, so a walk with the phone in your pocket can leave long gaps in the path. Tick <em>Keep screen on</em> next to the start button and the page asks the browser for a screen wake lock (the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Screen_Wake_Lock_API" target="_blank" rel="noopener" className="text-accent hover:underline">Screen Wake Lock API</a>), which stops the display from sleeping while tracking is running.
           </p>
           <p className="mt-3 text-fg-muted leading-relaxed">
             The lock is released the moment you stop tracking or untick the box. If you switch to another app the browser drops it automatically, and the page asks for it again when you come back. If your browser does not support wake locks, the option is simply not shown. Battery-saver modes can also refuse the request; tracking still works, but the screen may sleep.

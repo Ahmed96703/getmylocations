@@ -20,7 +20,7 @@ May 12, 2026·Updated October 5, 2026·10 min read
 
 ![Minimalist globe outline with continents in soft slate and teal, suggesting global IP geolocation coverage](https://getmylocations.com/blog-images/what-is-ip-location-and-how-accurate-hero.jpg)
 
-IP location is the city, region, and country a database associates with your internet address, and it is far less precise than most people assume. MaxMind, one of the largest providers, puts its own country-level accuracy at 99.8%, but for US addresses only about 66% of city guesses land within 50 km of the right place, and mobile networks are usually worse. This gap — very accurate at the country level, fairly bad at the city level — explains almost every “why does the website think I’m in a different city?” story you’ve ever heard.
+IP location is the city, region, and country a database associates with your internet address, and it is far less precise than most people assume. [MaxMind](https://support.maxmind.com/hc/en-us/articles/4407630607131-Geolocation-Accuracy), one of the largest providers, puts its own country-level accuracy at 99.8%, but for US addresses only about 66% of city guesses land within 50 km of the right place, and mobile networks are usually worse. This gap — very accurate at the country level, fairly bad at the city level — explains almost every “why does the website think I’m in a different city?” story you’ve ever heard.
 
 The country is almost always right; a street address is never available. Most “wrong city” complaints fall into the gap between the two. Figures are MaxMind’s own estimates; other providers publish different ones.
 
@@ -59,7 +59,7 @@ The easiest way to feel the difference is to open the [IP Location tool](https:/
 
 A handful of recurring scenarios throw IP geolocation off, and between them they cover most of the failures:
 
--   **VPNs.** Your visible IP belongs to the provider’s server. Use a Tokyo VPN and IP databases swear you’re in Tokyo.
+-   **VPNs.** Your visible IP belongs to the provider’s server. Use a Tokyo VPN and IP databases swear you’re in Tokyo. (What the IP itself still gives away is covered in [what your IP address reveals](https://getmylocations.com/blog/what-your-ip-reveals).)
 -   **Carrier-grade NAT on mobile.** Cellular networks pool thousands of subscribers behind a single IP, often anchored to a city far from yours.
 -   **Corporate or school networks.** Traffic might exit via a single data centre hundreds of kilometres away.
 -   **Tor or proxy chains.** Apparent IP could be anywhere.

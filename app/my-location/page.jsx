@@ -440,7 +440,7 @@ export default function MyLocationPage() {
             for the full breakdown of third parties involved.
           </p>
           <p className="mt-3 text-fg-muted leading-relaxed">
-            If you want a deeper read on how the W3C Geolocation API decides what to share with a webpage,
+            If you want a deeper read on how the <a href="https://www.w3.org/TR/geolocation/" target="_blank" rel="noopener" className="text-accent hover:underline">W3C Geolocation API</a> decides what to share with a webpage,
             our{' '}
             <Link href="/blog/browser-geolocation-api-explained" className="text-accent hover:underline">browser geolocation guide</Link>{' '}
             walks through it line by line.

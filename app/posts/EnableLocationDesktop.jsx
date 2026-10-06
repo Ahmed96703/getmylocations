@@ -92,8 +92,8 @@ export default function EnableLocationDesktop() {
       <h3 className="font-display text-lg font-bold mt-8">Why your browser isn&rsquo;t in the app list</h3>
       <p className="mt-3 text-fg-muted leading-relaxed">
         The list of individual apps on the Location page only contains apps from the Microsoft Store.
-        Chrome and Firefox are what Windows calls <em>desktop apps</em>, and Microsoft&rsquo;s own
-        documentation says that desktop apps &ldquo;do not support per-app control over precise location
+        Chrome and Firefox are what Windows calls <em>desktop apps</em>, and <a href="https://support.microsoft.com/en-us/windows/windows-location-service-and-privacy-3a8eee0a-5b0b-dc07-eede-2a5ca1c49088" target="_blank" rel="noopener" className="text-accent hover:underline">Microsoft&rsquo;s own
+        documentation</a> says that desktop apps &ldquo;do not support per-app control over precise location
         access.&rdquo; So you won&rsquo;t find a toggle for your browser no matter how far you scroll. Instead,
         one desktop-apps setting further down the page allows or blocks all of them together. Leaving it off
         while turning Location services on is a very common cause of &ldquo;I turned it on but it still

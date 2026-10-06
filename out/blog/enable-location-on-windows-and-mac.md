@@ -45,7 +45,7 @@ Microsoft moved a lot of settings around in Windows 11, and Location is one of t
 
 ### Why your browser isn’t in the app list
 
-The list of individual apps on the Location page only contains apps from the Microsoft Store. Chrome and Firefox are what Windows calls _desktop apps_, and Microsoft’s own documentation says that desktop apps “do not support per-app control over precise location access.” So you won’t find a toggle for your browser no matter how far you scroll. Instead, one desktop-apps setting further down the page allows or blocks all of them together. Leaving it off while turning Location services on is a very common cause of “I turned it on but it still doesn’t work.”
+The list of individual apps on the Location page only contains apps from the Microsoft Store. Chrome and Firefox are what Windows calls _desktop apps_, and [Microsoft’s own documentation](https://support.microsoft.com/en-us/windows/windows-location-service-and-privacy-3a8eee0a-5b0b-dc07-eede-2a5ca1c49088) says that desktop apps “do not support per-app control over precise location access.” So you won’t find a toggle for your browser no matter how far you scroll. Instead, one desktop-apps setting further down the page allows or blocks all of them together. Leaving it off while turning Location services on is a very common cause of “I turned it on but it still doesn’t work.”
 
 ## Windows 10 — the same idea, slightly different menus
 

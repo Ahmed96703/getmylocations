@@ -149,7 +149,7 @@ You almost certainly already use coordinates without thinking about them. A few 
 
 When you grant the Geolocation API permission, the website receives only the resulting latitude/longitude/accuracy — not which satellites your phone heard or which Wi-Fi access points helped. The tool above processes those numbers entirely in your browser. The only outgoing call the page makes is the reverse-geocoding lookup to OpenStreetMap Nominatim, and that request contains just the two numbers and no identifier — no name, no account, no fingerprint. We don't store your coordinates — see our [Privacy Policy](https://getmylocations.com/privacy-policy) for the full breakdown of third parties involved.
 
-If you want a deeper read on how the W3C Geolocation API decides what to share with a webpage, our [browser geolocation guide](https://getmylocations.com/blog/browser-geolocation-api-explained) walks through it line by line.
+If you want a deeper read on how the [W3C Geolocation API](https://www.w3.org/TR/geolocation/) decides what to share with a webpage, our [browser geolocation guide](https://getmylocations.com/blog/browser-geolocation-api-explained) walks through it line by line.
 
 * * *
 

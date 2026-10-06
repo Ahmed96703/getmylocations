@@ -164,7 +164,7 @@ export default function BrowserGeolocationApi() {
         </table>
       </div>
       <p className="mt-3 text-fg-muted leading-relaxed">
-        Defaults as given by MDN and the W3C Geolocation specification. The
+        Defaults as given by <a href="https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/getCurrentPosition" target="_blank" rel="noopener" className="text-accent hover:underline">MDN</a> and the <a href="https://www.w3.org/TR/geolocation/" target="_blank" rel="noopener" className="text-accent hover:underline">W3C Geolocation specification</a>. The
         spec stores the &ldquo;no limit&rdquo; timeout as the largest
         unsigned 32-bit number, about 49.7 days, which in practice means
         waiting forever.
@@ -269,8 +269,8 @@ export default function BrowserGeolocationApi() {
         (on iPhone: Settings &rarr; Privacy &amp; Security &rarr; Location
         Services &rarr; Safari Websites; on Android: Settings &rarr; Apps
         &rarr; Chrome &rarr; Permissions &rarr; Location) and try again.
-        The accuracy radius grows from meters to kilometres; Android
-        documents approximate location as an area of about 3 square
+        The accuracy radius grows from meters to kilometres; <a href="https://developer.android.com/develop/sensors-and-location/location/permissions" target="_blank" rel="noopener" className="text-accent hover:underline">Android
+        documents</a> approximate location as an area of about 3 square
         kilometres. To see{' '}
         <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">watchPosition</code>{' '}
         in action, try the{' '}

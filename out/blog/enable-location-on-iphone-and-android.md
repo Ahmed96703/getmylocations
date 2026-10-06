@@ -32,7 +32,7 @@ The three layers, same as on a laptop:
 2.  The **per-app permission** — Maps, Weather, your browser, each one separately allowed. For websites, the browser counts as the app: if Safari or Chrome is not allowed, no site can get your location.
 3.  The **per-site permission** when a website (not an app) asks — controlled by the browser.
 
-On a phone there’s a fourth wrinkle that desktops don’t have: **Precise Location**. iOS and Android both let users grant a coarsened location instead of the real one (Android documents it as an area of about 3 square kilometres). Most apps ask for precise; if you tapped the wrong option once, an app may be running on the fuzzy version without you realising it.
+On a phone there’s a fourth wrinkle that desktops don’t have: **Precise Location**. iOS and Android both let users grant a coarsened location instead of the real one ([Android documents it](https://developer.android.com/develop/sensors-and-location/location/permissions) as an area of about 3 square kilometres). Most apps ask for precise; if you tapped the wrong option once, an app may be running on the fuzzy version without you realising it.
 
 ## iPhone — Location Services and per-app permissions
 
@@ -59,7 +59,7 @@ While you’re on the app’s settings screen, look for the **Precise Location**
 This is the switch most guides skip, and the most common reason a website on an iPhone cannot find you. iOS treats your browser as an app, so the browser needs its own permission before any website can ask:
 
 -   **Safari:** Settings → Privacy & Security → Location Services → **Safari Websites** → **While Using the App** (or _Ask Next Time_), with **Precise Location** on.
--   **Chrome:** Settings → **Chrome** → **Location** → **While Using the App**. Google’s help notes this is where Chrome’s location access is set on iPhone and iPad; Chrome then asks each site with an _Allow_ prompt.
+-   **Chrome:** Settings → **Chrome** → **Location** → **While Using the App**. [Google’s help](https://support.google.com/chrome/answer/142065) notes this is where Chrome’s location access is set on iPhone and iPad; Chrome then asks each site with an _Allow_ prompt.
 
 If the browser is set to _Never_, every site fails silently or reports that permission was denied, however the site’s own setting looks.
 
@@ -127,7 +127,7 @@ Two settings on iOS are worth knowing about even with everything switched on:
 
 ## Test the fix
 
-Quickest way to confirm everything is working: open the [My Location tool](https://getmylocations.com/my-location) on your phone, tap the location button, and tap Allow on the permission prompt if it appears. Within a couple of seconds you’ll see your six-decimal latitude and longitude plus an accuracy radius. GPS.gov says GPS-enabled smartphones are typically accurate to within 4.9 meters (16 ft) under open sky, and the radius the browser reports is usually somewhat larger. Indoors expect tens of meters, because the GPS chip can’t see the satellites clearly through a roof.
+Quickest way to confirm everything is working: open the [My Location tool](https://getmylocations.com/my-location) on your phone, tap the location button, and tap Allow on the permission prompt if it appears. Within a couple of seconds you’ll see your six-decimal latitude and longitude plus an accuracy radius. [GPS.gov](https://www.gps.gov/gps-accuracy) says GPS-enabled smartphones are typically accurate to within 4.9 meters (16 ft) under open sky, and the radius the browser reports is usually somewhat larger. Indoors expect tens of meters, because the GPS chip can’t see the satellites clearly through a roof.
 
 If the accuracy radius is huge (hundreds of meters or kilometres), GPS is probably off or unavailable and your phone fell back to Wi-Fi positioning or IP geolocation. Stepping outside fixes that almost instantly — the satellites need line-of-sight.
 

@@ -57,7 +57,7 @@ export default function WhatIsIpLocation() {
       <p className="text-lg text-fg-muted leading-relaxed">
         IP location is the city, region, and country a database
         associates with your internet address, and it is far less precise
-        than most people assume. MaxMind, one of the largest providers,
+        than most people assume. <a href="https://support.maxmind.com/hc/en-us/articles/4407630607131-Geolocation-Accuracy" target="_blank" rel="noopener" className="text-accent hover:underline">MaxMind</a>, one of the largest providers,
         puts its own country-level accuracy at 99.8%, but for US addresses
         only about 66% of city guesses land within 50 km of the right
         place, and mobile networks are usually worse. This gap &mdash; very accurate at
@@ -159,7 +159,7 @@ export default function WhatIsIpLocation() {
         between them they cover most of the failures:
       </p>
       <ul className="mt-3 space-y-1.5 text-fg-muted list-disc list-inside">
-        <li><strong>VPNs.</strong> Your visible IP belongs to the provider&rsquo;s server. Use a Tokyo VPN and IP databases swear you&rsquo;re in Tokyo.</li>
+        <li><strong>VPNs.</strong> Your visible IP belongs to the provider&rsquo;s server. Use a Tokyo VPN and IP databases swear you&rsquo;re in Tokyo. (What the IP itself still gives away is covered in{' '}<Link href="/blog/what-your-ip-reveals" className="text-accent hover:underline">what your IP address reveals</Link>.)</li>
         <li><strong>Carrier-grade NAT on mobile.</strong> Cellular networks pool thousands of subscribers behind a single IP, often anchored to a city far from yours.</li>
         <li><strong>Corporate or school networks.</strong> Traffic might exit via a single data centre hundreds of kilometres away.</li>
         <li><strong>Tor or proxy chains.</strong> Apparent IP could be anywhere.</li>

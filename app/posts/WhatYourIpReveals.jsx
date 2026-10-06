@@ -33,8 +33,7 @@ export default function WhatYourIpReveals() {
         {' '}<code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent">203.0.113.42</code>.
         On a mobile or newer setup it might be IPv6, something like
         {' '}<code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent">2001:db8::1</code>.
-        (Both of those are reserved for documentation by RFC 5737 and
-        RFC 3849, so they will never point at a real person.) Either way,
+        (Both of those are reserved for documentation by <a href="https://www.rfc-editor.org/rfc/rfc5737" target="_blank" rel="noopener" className="text-accent hover:underline">RFC 5737</a> and <a href="https://www.rfc-editor.org/rfc/rfc3849" target="_blank" rel="noopener" className="text-accent hover:underline">RFC 3849</a>, so they will never point at a real person.) Either way,
         the moment your browser opens a connection, the server on the other
         end logs the IP because the reply has to go somewhere.
       </p>
@@ -46,8 +45,7 @@ export default function WhatYourIpReveals() {
         share a single IP at once because the carrier is using a scheme
         called CGNAT to stretch the limited IPv4 pool. That pool is only
         32 bits &mdash; about 4.3 billion addresses for the whole planet
-        &mdash; and IANA handed out the last free blocks in February 2011.
-        RFC 6598 even reserves a range,{' '}
+        &mdash; and <a href="https://www.iana.org/assignments/iana-ipv4-special-registry/" target="_blank" rel="noopener" className="text-accent hover:underline">IANA</a> handed out the last free blocks in February 2011. <a href="https://www.rfc-editor.org/rfc/rfc6598" target="_blank" rel="noopener" className="text-accent hover:underline">RFC 6598</a> even reserves a range,{' '}
         <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent">100.64.0.0/10</code>,
         specifically for carriers to put subscribers behind. Two people in
         different cities on the same carrier can show the same address.

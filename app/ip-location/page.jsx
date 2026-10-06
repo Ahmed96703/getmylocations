@@ -190,11 +190,11 @@ export default function IpLocationLookup() {
           These ranges are never public, and the tool recognises them without sending them anywhere:
         </p>
         <ul className="mt-3 space-y-1.5 text-fg-muted list-disc list-inside">
-          <li><code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">10.0.0.0/8</code>, <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">172.16.0.0/12</code>, <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">192.168.0.0/16</code>: private networks (RFC 1918)</li>
-          <li><code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">100.64.0.0/10</code>: carrier-grade NAT inside ISP and mobile networks (RFC 6598)</li>
+          <li><code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">10.0.0.0/8</code>, <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">172.16.0.0/12</code>, <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">192.168.0.0/16</code>: private networks (<a href="https://www.rfc-editor.org/rfc/rfc1918" target="_blank" rel="noopener" className="text-accent hover:underline">RFC 1918</a>)</li>
+          <li><code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">100.64.0.0/10</code>: carrier-grade NAT inside ISP and mobile networks (<a href="https://www.rfc-editor.org/rfc/rfc6598" target="_blank" rel="noopener" className="text-accent hover:underline">RFC 6598</a>)</li>
           <li><code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">127.0.0.0/8</code> and <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">::1</code>: loopback, meaning &ldquo;this device&rdquo;</li>
           <li><code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">169.254.0.0/16</code> and <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">fe80::/10</code>: link-local, self-assigned when no router answers</li>
-          <li><code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">fc00::/7</code>: IPv6 unique local addresses, the IPv6 equivalent of private ranges (RFC 4193)</li>
+          <li><code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">fc00::/7</code>: IPv6 unique local addresses, the IPv6 equivalent of private ranges (<a href="https://www.rfc-editor.org/rfc/rfc4193" target="_blank" rel="noopener" className="text-accent hover:underline">RFC 4193</a>)</li>
         </ul>
 
         <hr className="my-10 border-line" />
@@ -213,7 +213,8 @@ export default function IpLocationLookup() {
           or <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">192.168.0.1</code>) in
           a browser. The WAN or Internet section shows the IP your ISP has assigned. This is the
           ground-truth source &mdash; if it disagrees with a website&apos;s reading, you&apos;re probably
-          behind a VPN or proxy.
+          behind a VPN or proxy. For what that public address does and does not give away about you,
+          see{' '}<Link href="/blog/what-your-ip-reveals" className="text-accent hover:underline">what your IP address reveals</Link>.
         </p>
 
         <h3 className="font-display text-lg font-semibold mt-6 text-fg">3. Command line</h3>
@@ -271,7 +272,7 @@ export default function IpLocationLookup() {
 
         <h2 className="font-display text-2xl font-bold">How accurate is IP geolocation?</h2>
         <p className="mt-3 text-fg-muted leading-relaxed">
-          MaxMind, one of the largest IP database providers, publishes its own estimates: <strong className="text-fg">99.8% accuracy at the country level</strong>, and for US addresses about <strong className="text-fg">80% at the state or region level</strong> and <strong className="text-fg">66% for the city</strong>, where &ldquo;correct&rdquo; means within 50 km. So even by a major provider&rsquo;s own measure, one US city guess in three is more than 50 km out.
+          <a href="https://support.maxmind.com/hc/en-us/articles/4407630607131-Geolocation-Accuracy" target="_blank" rel="noopener" className="text-accent hover:underline">MaxMind</a>, one of the largest IP database providers, publishes its own estimates: <strong className="text-fg">99.8% accuracy at the country level</strong>, and for US addresses about <strong className="text-fg">80% at the state or region level</strong> and <strong className="text-fg">66% for the city</strong>, where &ldquo;correct&rdquo; means within 50 km. So even by a major provider&rsquo;s own measure, one US city guess in three is more than 50 km out.
         </p>
         <div className="not-prose mt-4 overflow-x-auto rounded-xl ring-1 ring-line">
           <table className="w-full text-sm text-left">
@@ -375,7 +376,7 @@ export default function IpLocationLookup() {
             first. Geolocation may disagree between the two stacks.
           </li>
           <li>
-            <strong>Privacy extensions.</strong> IPv6 supports temporary addresses (RFC 4941)
+            <strong>Privacy extensions.</strong> IPv6 supports temporary addresses (<a href="https://www.rfc-editor.org/rfc/rfc4941" target="_blank" rel="noopener" className="text-accent hover:underline">RFC 4941</a>)
             that rotate every few hours to avoid tracking. Older IPv6 hosts derived the last 64
             bits from the network card&apos;s MAC, which was a privacy disaster &mdash; modern systems
             avoid this by default.

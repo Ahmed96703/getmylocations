@@ -40,7 +40,7 @@ export default function WhyMapsShowWrongStreet() {
         belongs to it (say 1&ndash;199 on the north side, 2&ndash;200 on the
         south), and works out where number 47 should sit by sliding along
         the line. The technique is called <em>address interpolation</em>.
-        It went mainstream with the US Census Bureau&rsquo;s DIME street
+        It went mainstream with the US Census Bureau&rsquo;s <a href="https://www.census.gov/about/history/bureau-history/census-innovations/technology/dual-independent-map-encoding.html" target="_blank" rel="noopener" className="text-accent hover:underline">DIME</a> street
         files for the 1970 census, and their successor, TIGER, built for
         the 1990 census, still sits underneath many US geocoders today.
       </p>
@@ -104,7 +104,7 @@ export default function WhyMapsShowWrongStreet() {
         the receiver can&rsquo;t always tell the difference between a
         direct signal and a reflected one that took a longer path. The
         effect is called <em>multipath</em>, and it can throw your reading
-        off by 20 or 30 meters. For comparison, GPS.gov puts a typical
+        off by 20 or 30 meters. For comparison, <a href="https://www.gps.gov/gps-accuracy" target="_blank" rel="noopener" className="text-accent hover:underline">GPS.gov</a> puts a typical
         smartphone under open sky at about 4.9 meters. Walk down a street in the financial
         district of any big city and the blue dot will jump back and forth
         across the road like it&rsquo;s having a small breakdown.

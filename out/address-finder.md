@@ -79,7 +79,7 @@ When a lookup fails, adding context usually fixes it. “Main Street” on its o
 
 ## Rate limits and fair use
 
-OpenStreetMap runs the Nominatim service for free, and its usage policy allows at most one request per second. The tool enforces that itself: if you click again within a second, it waits briefly and tells you why. That is plenty for looking up addresses by hand. If you need to geocode thousands of addresses, self-host Nominatim (the data is free to download) or use a commercial geocoder instead; bulk use of the free service gets blocked. Results and map data are © OpenStreetMap contributors.
+OpenStreetMap runs the Nominatim service for free, and its [usage policy](https://operations.osmfoundation.org/policies/nominatim/) allows at most one request per second. The tool enforces that itself: if you click again within a second, it waits briefly and tells you why. That is plenty for looking up addresses by hand. If you need to geocode thousands of addresses, self-host Nominatim (the data is free to download) or use a commercial geocoder instead; bulk use of the free service gets blocked. Results and map data are © OpenStreetMap contributors.
 
 ## Frequently asked questions
 

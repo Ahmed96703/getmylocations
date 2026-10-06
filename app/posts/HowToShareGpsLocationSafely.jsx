@@ -137,7 +137,7 @@ export default function HowToShareGpsLocationSafely() {
         setups live here. Audit it monthly &mdash; same logic, same trap.
       </p>
       <p className="mt-3 text-fg-muted leading-relaxed">
-        Apple&rsquo;s Find My privacy notice says that if you and the
+        <a href="https://www.apple.com/legal/privacy/data/en/find-my/" target="_blank" rel="noopener" className="text-accent hover:underline">Apple&rsquo;s Find My privacy notice</a> says that if you and the
         person you share with are both on iOS 17 or later, your location
         is not accessible to Apple; with someone on an older version, it
         may be, if they request it. Apple keeps a shared location for up
@@ -161,7 +161,7 @@ export default function HowToShareGpsLocationSafely() {
         that opens straight to that coordinate.
       </p>
       <p className="mt-3 text-fg-muted leading-relaxed">
-        Two things to know. Google says people you share with can see not
+        Two things to know. <a href="https://support.google.com/maps/answer/15437054" target="_blank" rel="noopener" className="text-accent hover:underline">Google says</a> people you share with can see not
         only your recent location but your name and photo, your phone&rsquo;s
         battery level and whether it is charging, and arrival and departure
         times if they set a notification. And Google does not describe Maps
@@ -175,8 +175,8 @@ export default function HowToShareGpsLocationSafely() {
       <p className="mt-3 text-fg-muted leading-relaxed">
         Google Messages on Android can now share your real-time location
         from inside a conversation, for 1 hour, for today only, until you
-        turn it off, or for a custom time of up to 24 hours. Google is
-        explicit about the catch: your messages in that chat may be
+        turn it off, or for a custom time of up to 24 hours. <a href="https://support.google.com/messages/answer/16929688" target="_blank" rel="noopener" className="text-accent hover:underline">Google is
+        explicit</a> about the catch: your messages in that chat may be
         end-to-end encrypted, but the location sharing is powered by
         Google Maps (Find Hub) and processed by Google, so it follows the
         same rules as Maps sharing above.
@@ -199,7 +199,7 @@ export default function HowToShareGpsLocationSafely() {
 
       <h2 className="font-display text-2xl font-bold mt-12">Plus Codes &mdash; addresses where addresses don&rsquo;t exist</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
-        Plus Codes (the everyday name for Open Location Code, an
+        Plus Codes (the everyday name for <a href="https://github.com/google/open-location-code" target="_blank" rel="noopener" className="text-accent hover:underline">Open Location Code</a>, an
         open-source format published by Google) are short alphanumeric
         strings that encode a coordinate. The Eiffel Tower is
         {' '}<code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">8FW4V75V+8Q</code>.

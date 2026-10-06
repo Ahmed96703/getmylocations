@@ -43,7 +43,7 @@ Since the late 2010s, both iOS (under the name Hybridized Emergency Location, HE
 
 It works without the caller doing anything. It works whether or not the user has granted location permission to any app — emergency calls bypass the normal permission model that [browser geolocation](https://getmylocations.com/blog/browser-geolocation-api-explained) and regular apps obey. It works in airplane mode if the cellular for the emergency call itself comes back up.
 
-Coverage is uneven. AML is mandatory in most EU member states, the UK, Australia, and New Zealand, and is rolled out in many US states under the Next Generation 911 programme. Pakistan’s 15 service and India’s 112 are adopting it incrementally. The official EENA list tracks who has switched on the receiving infrastructure.
+Coverage is uneven. AML is mandatory in most EU member states, the UK, Australia, and New Zealand, and is rolled out in many US states under the Next Generation 911 programme. Pakistan’s 15 service and India’s 112 are adopting it incrementally. The official [EENA list](https://eena.org/aml) tracks who has switched on the receiving infrastructure.
 
 ## When AML isn’t there to save you
 

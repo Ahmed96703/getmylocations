@@ -49,17 +49,17 @@ iPhones have two options that look similar but behave differently. **Send My Cur
 
 Find My is the more durable system. Adding someone as a Find My friend creates a share that lives outside any chat and works between Apple accounts even when no message has ever been exchanged. Most family location-sharing setups live here. Audit it monthly — same logic, same trap.
 
-Apple’s Find My privacy notice says that if you and the person you share with are both on iOS 17 or later, your location is not accessible to Apple; with someone on an older version, it may be, if they request it. Apple keeps a shared location for up to 24 hours to provide the service, then deletes it. The recipient’s phone still shows it to whoever is holding that phone.
+[Apple’s Find My privacy notice](https://www.apple.com/legal/privacy/data/en/find-my/) says that if you and the person you share with are both on iOS 17 or later, your location is not accessible to Apple; with someone on an older version, it may be, if they request it. Apple keeps a shared location for up to 24 hours to provide the service, then deletes it. The recipient’s phone still shows it to whoever is holding that phone.
 
 ## Google Maps live sharing
 
 Google Maps lets you choose how long to share, or pick _Until you turn this off_, and sends the share to a Google account instead of a phone number. If you share by link instead, Google says the link works for up to 24 hours. It works across Android and iOS as long as both sides have the Maps app. Maps also supports sending a static pin via any messaging app — useful for pointing a friend at a parking spot or a trailhead without exposing your live location. The pin is just a URL like `maps.google.com/?q=48.858420,2.294500` that opens straight to that coordinate.
 
-Two things to know. Google says people you share with can see not only your recent location but your name and photo, your phone’s battery level and whether it is charging, and arrival and departure times if they set a notification. And Google does not describe Maps sharing as end-to-end encrypted: it processes your location to provide the feature, under its privacy policy. For sensitive cases, WhatsApp or an iPhone-to-iPhone share on iOS 17 or later keeps the location away from the platform.
+Two things to know. [Google says](https://support.google.com/maps/answer/15437054) people you share with can see not only your recent location but your name and photo, your phone’s battery level and whether it is charging, and arrival and departure times if they set a notification. And Google does not describe Maps sharing as end-to-end encrypted: it processes your location to provide the feature, under its privacy policy. For sensitive cases, WhatsApp or an iPhone-to-iPhone share on iOS 17 or later keeps the location away from the platform.
 
 ## Google Messages — live location inside a text chat
 
-Google Messages on Android can now share your real-time location from inside a conversation, for 1 hour, for today only, until you turn it off, or for a custom time of up to 24 hours. Google is explicit about the catch: your messages in that chat may be end-to-end encrypted, but the location sharing is powered by Google Maps (Find Hub) and processed by Google, so it follows the same rules as Maps sharing above.
+Google Messages on Android can now share your real-time location from inside a conversation, for 1 hour, for today only, until you turn it off, or for a custom time of up to 24 hours. [Google is explicit](https://support.google.com/messages/answer/16929688) about the catch: your messages in that chat may be end-to-end encrypted, but the location sharing is powered by Google Maps (Find Hub) and processed by Google, so it follows the same rules as Maps sharing above.
 
 ## Signal — a private pin, not a live location
 
@@ -69,7 +69,7 @@ The trade-off is that fewer of your contacts have it installed, and if you need 
 
 ## Plus Codes — addresses where addresses don’t exist
 
-Plus Codes (the everyday name for Open Location Code, an open-source format published by Google) are short alphanumeric strings that encode a coordinate. The Eiffel Tower is `8FW4V75V+8Q`. They work where there are no street addresses — rural areas, refugee camps, parts of Karachi where the postal system never properly covered — and they’re short enough to read aloud or write on the side of a parcel.
+Plus Codes (the everyday name for [Open Location Code](https://github.com/google/open-location-code), an open-source format published by Google) are short alphanumeric strings that encode a coordinate. The Eiffel Tower is `8FW4V75V+8Q`. They work where there are no street addresses — rural areas, refugee camps, parts of Karachi where the postal system never properly covered — and they’re short enough to read aloud or write on the side of a parcel.
 
 From a privacy standpoint a Plus Code is just a static encoding of a coordinate. It has no metadata and isn’t tracked. Once you share one, the recipient can paste it into any Maps app to see the spot. They can’t use it to track you — it’s a permanent label on a place, not a beacon on you.
 

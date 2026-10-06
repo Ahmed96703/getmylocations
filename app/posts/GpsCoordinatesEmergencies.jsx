@@ -149,7 +149,7 @@ export default function GpsCoordinatesEmergencies() {
           UK, Australia, and New Zealand, and is rolled out in many US
           states under the Next Generation 911 programme. Pakistan&rsquo;s 15
           service and India&rsquo;s 112 are adopting it incrementally. The
-          official EENA list tracks who has switched on the receiving
+          official <a href="https://eena.org/aml" target="_blank" rel="noopener" className="text-accent hover:underline">EENA list</a> tracks who has switched on the receiving
           infrastructure.
         </p>
 

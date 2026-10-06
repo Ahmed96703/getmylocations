@@ -34,7 +34,7 @@ When a web page calls the browser's Geolocation API, what comes back is whatever
 -   **On a desktop with no GPS chip:** ~25 m to ~5 km. Wi-Fi if available, otherwise IP-only.
 -   **Permission denied:** the API throws an error. The page falls back to IP geolocation, which is wildly less accurate.
 
-Every reading also comes with an `accuracy` field in meters. Treat it as the radius of a circle the device thinks it's probably inside — the W3C Geolocation API specification defines it at a 95% confidence level. An accuracy of 8 means the OS is fairly confident you're within an 8-meter radius; an accuracy of 5000 (yes, common indoors) means it's essentially guessing.
+Every reading also comes with an `accuracy` field in meters. Treat it as the radius of a circle the device thinks it's probably inside — the [W3C Geolocation API specification](https://www.w3.org/TR/geolocation/) defines it at a 95% confidence level. An accuracy of 8 means the OS is fairly confident you're within an 8-meter radius; an accuracy of 5000 (yes, common indoors) means it's essentially guessing.
 
 * * *
 

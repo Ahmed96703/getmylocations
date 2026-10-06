@@ -24,7 +24,7 @@ The tool asks for the strictest settings the API allows: `enableHighAccuracy: tr
 
 ## What each live GPS location reading means
 
-Every update the browser delivers carries more than a coordinate. Here is what each tile in the tracker shows, and when it is allowed to be blank under the W3C Geolocation API specification.
+Every update the browser delivers carries more than a coordinate. Here is what each tile in the tracker shows, and when it is allowed to be blank under the [W3C Geolocation API specification](https://www.w3.org/TR/geolocation/).
 
 | Reading | Unit | What it tells you |
 | --- | --- | --- |
@@ -54,7 +54,7 @@ The trade-off is that very small movements, like pacing around a room, will not 
 
 ### Save your route as a GPX file
 
-Once the path has two points, a _Download route (GPX)_ button appears under the readings. GPX is the standard file format for GPS tracks (version 1.1, published by Topografix), so Strava, Komoot, Garmin Connect, Google Earth and most hiking apps can open it. Each point in the file carries its latitude and longitude, the time it was recorded, and the altitude when the device reported one. The file holds exactly the points drawn on the map, after the 10-meter and 50-meter filters above.
+Once the path has two points, a _Download route (GPX)_ button appears under the readings. GPX is the standard file format for GPS tracks ([version 1.1, published by Topografix](https://www.topografix.com/GPX/1/1/)), so Strava, Komoot, Garmin Connect, Google Earth and most hiking apps can open it. Each point in the file carries its latitude and longitude, the time it was recorded, and the altitude when the device reported one. The file holds exactly the points drawn on the map, after the 10-meter and 50-meter filters above.
 
 The file is assembled by JavaScript in your browser and saved straight to your device; it is not uploaded anywhere first. You can download it while still tracking or after tapping _Stop_. To measure the straight-line gap between where you started and where you ended, paste both coordinates into the [distance calculator](https://getmylocations.com/distance-calculator).
 
@@ -88,7 +88,7 @@ There is also a sneakier tradeoff: _jitter_. A static one-shot reading hides the
 
 ## Keep the screen awake while tracking
 
-Phones pause location updates to a web page once the screen turns off, so a walk with the phone in your pocket can leave long gaps in the path. Tick _Keep screen on_ next to the start button and the page asks the browser for a screen wake lock (the Screen Wake Lock API), which stops the display from sleeping while tracking is running.
+Phones pause location updates to a web page once the screen turns off, so a walk with the phone in your pocket can leave long gaps in the path. Tick _Keep screen on_ next to the start button and the page asks the browser for a screen wake lock (the [Screen Wake Lock API](https://developer.mozilla.org/en-US/docs/Web/API/Screen_Wake_Lock_API)), which stops the display from sleeping while tracking is running.
 
 The lock is released the moment you stop tracking or untick the box. If you switch to another app the browser drops it automatically, and the page asks for it again when you come back. If your browser does not support wake locks, the option is simply not shown. Battery-saver modes can also refuse the request; tracking still works, but the screen may sleep.
 

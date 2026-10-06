@@ -83,7 +83,7 @@ export default function EnableLocationMobile() {
       <p className="mt-3 text-fg-muted leading-relaxed">
         On a phone there&rsquo;s a fourth wrinkle that desktops
         don&rsquo;t have: <strong>Precise Location</strong>. iOS and
-        Android both let users grant a coarsened location instead of the real one (Android documents it as an area of about 3&nbsp;square kilometres). Most apps
+        Android both let users grant a coarsened location instead of the real one (<a href="https://developer.android.com/develop/sensors-and-location/location/permissions" target="_blank" rel="noopener" className="text-accent hover:underline">Android documents it</a> as an area of about 3&nbsp;square kilometres). Most apps
         ask for precise; if you tapped the wrong option once, an app may
         be running on the fuzzy version without you realising it.
       </p>
@@ -135,7 +135,7 @@ export default function EnableLocationMobile() {
       </p>
       <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside">
         <li><strong>Safari:</strong> Settings &rarr; Privacy &amp; Security &rarr; Location Services &rarr; <strong>Safari Websites</strong> &rarr; <strong>While Using the App</strong> (or <em>Ask Next Time</em>), with <strong>Precise Location</strong> on.</li>
-        <li><strong>Chrome:</strong> Settings &rarr; <strong>Chrome</strong> &rarr; <strong>Location</strong> &rarr; <strong>While Using the App</strong>. Google&rsquo;s help notes this is where Chrome&rsquo;s location access is set on iPhone and iPad; Chrome then asks each site with an <em>Allow</em> prompt.</li>
+        <li><strong>Chrome:</strong> Settings &rarr; <strong>Chrome</strong> &rarr; <strong>Location</strong> &rarr; <strong>While Using the App</strong>. <a href="https://support.google.com/chrome/answer/142065" target="_blank" rel="noopener" className="text-accent hover:underline">Google&rsquo;s help</a> notes this is where Chrome&rsquo;s location access is set on iPhone and iPad; Chrome then asks each site with an <em>Allow</em> prompt.</li>
       </ul>
       <p className="mt-3 text-fg-muted leading-relaxed">
         If the browser is set to <em>Never</em>, every site fails silently
@@ -304,7 +304,7 @@ export default function EnableLocationMobile() {
         on your phone, tap the location button, and tap Allow on the
         permission prompt if it appears. Within a couple of seconds
         you&rsquo;ll see your six-decimal latitude and longitude plus
-        an accuracy radius. GPS.gov says GPS-enabled smartphones are
+        an accuracy radius. <a href="https://www.gps.gov/gps-accuracy" target="_blank" rel="noopener" className="text-accent hover:underline">GPS.gov</a> says GPS-enabled smartphones are
         typically accurate to within 4.9&nbsp;meters (16&nbsp;ft) under
         open sky, and the radius the browser reports is usually somewhat
         larger. Indoors expect tens of meters, because the GPS chip
