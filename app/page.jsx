@@ -91,7 +91,7 @@ export default function HomePage() {
             Free · No signup · Runs in your browser
           </p>
           <h1 className="font-display text-4xl sm:text-5xl font-extrabold tracking-tight">
-            <span className="text-accent">GetMyLocations</span> — find your location, coordinates, and address instantly.
+            My location now — <span className="text-accent">your coordinates and address</span>, instantly.
           </h1>
           <p className="text-fg-muted mt-3 max-w-3xl leading-relaxed">
             An all-in-one location toolkit, free in your browser. The{' '}

@@ -44,7 +44,7 @@ A handful of companies dominate IP geolocation — MaxMind, IPinfo, IP2Location,
 5.  **Device-reported locations** — apps and services that see both an IP address and a GPS or Wi-Fi position can tag that IP with a real place.
 6.  **User corrections** — when someone reports “my location is wrong,” the database updates.
 
-Updates propagate unevenly. A new IP block allocated to a Pakistani ISP last week may be correct in BigDataCloud’s daily refresh but show up as “unknown” in a six-month-old free dataset. This is why ad networks and fraud teams pay for premium feeds. The IP Location tool on this site uses ipapi.co’s free lookup service, so its answers are only as current as that provider’s data.
+Updates propagate unevenly. A new IP block allocated to a Pakistani ISP last week may be correct in BigDataCloud’s daily refresh but show up as “unknown” in a six-month-old free dataset. This is why ad networks and fraud teams pay for premium feeds. The IP Location tool on this site uses freeipapi.com’s free lookup service, so its answers are only as current as that provider’s data.
 
 ## The accuracy numbers, in order of how often they’re right
 

@@ -6,9 +6,44 @@ import { classifyIp, asDomain, kmBetween } from './ip.js';
 
 const MapMarker = dynamic(() => import('./MapMarker.jsx'), { ssr: false });
 
-// Public lookups go to ipapi.co; domain names are resolved with Cloudflare's
+// Public lookups go to freeipapi.com (free tier: no key, commercial use
+// allowed, 60 requests a minute); domain names are resolved with Cloudflare's
 // public DNS-over-HTTPS resolver. Both are listed in the privacy policy.
-const LOOKUP = (ip) => (ip ? `https://ipapi.co/${encodeURIComponent(ip)}/json/` : 'https://ipapi.co/json/');
+// ipapi.co, used before October 2026, began rejecting browser requests.
+const LOOKUP = (ip) => (ip ? `https://freeipapi.com/api/json/${encodeURIComponent(ip)}` : 'https://freeipapi.com/api/json');
+
+// Map a freeipapi.com answer onto the fields the page displays.
+function normalize(d) {
+  // timeZones lists every zone in the country, so a zone is only shown when
+  // the country has exactly one; otherwise it would be a guess.
+  const tz = Array.isArray(d.timeZones) && d.timeZones.length === 1 ? d.timeZones[0] : null;
+  let utcOffset = null;
+  if (tz) {
+    try {
+      utcOffset = new Intl.DateTimeFormat('en-US', { timeZone: tz, timeZoneName: 'shortOffset' })
+        .formatToParts(new Date()).find((p) => p.type === 'timeZoneName')?.value || null;
+    } catch { utcOffset = null; }
+  }
+  const cur = Array.isArray(d.currencies) && d.currencies[0];
+  return {
+    ip: d.ipAddress,
+    version: d.ipVersion ? `IPv${d.ipVersion}` : null,
+    city: d.cityName || null,
+    region: d.regionName || null,
+    country_name: d.countryName || null,
+    country_code: d.countryCode || null,
+    postal: d.zipCode || null,
+    org: d.asnOrganization || null,
+    asn: d.asn ? `AS${d.asn}` : null,
+    timezone: tz,
+    utc_offset: utcOffset,
+    currency: cur || null,
+    currency_name: null,
+    is_proxy: d.isProxy === true,
+    latitude: typeof d.latitude === 'number' && (d.latitude !== 0 || d.longitude !== 0) ? d.latitude : null,
+    longitude: typeof d.longitude === 'number' && (d.latitude !== 0 || d.longitude !== 0) ? d.longitude : null,
+  };
+}
 const DOH = (name, type) => `https://cloudflare-dns.com/dns-query?name=${encodeURIComponent(name)}&type=${type}`;
 
 async function resolveDomain(name) {
@@ -26,9 +61,8 @@ function friendlyError(d, status) {
   if (status === 429 || d?.reason === 'RateLimited') {
     return 'The free lookup service is limiting requests from your network right now. Wait a minute and try again.';
   }
-  if (d?.reason === 'Reserved IP Address') return 'That address is reserved and has no public location.';
-  if (d?.reason === 'Invalid IP Address') return 'The lookup service did not recognise that IP address.';
-  return d?.reason || d?.message || 'The lookup service returned an error.';
+  if (status === 400 || status === 404) return 'The lookup service did not recognise that IP address.';
+  return d?.message || d?.error || 'The lookup service returned an error.';
 }
 
 export default function Tool() {
@@ -80,11 +114,17 @@ export default function Tool() {
     setNote({ type: 'loading', msg: ip ? `Looking up ${ip}…` : 'Looking up your public IP…' });
     try {
       const r = await fetch(LOOKUP(ip), { headers: { Accept: 'application/json' } });
-      const d = await r.json().catch(() => null);
-      if (!r.ok || !d || d.error) {
+      let d = await r.json().catch(() => null);
+      if (!r.ok || !d || d.error || !d.ipAddress) {
         setNote({ type: 'err', msg: friendlyError(d, r.status) });
         return;
       }
+      const norm = normalize(d);
+      if (!norm.country_name) {
+        setNote({ type: 'err', msg: 'The lookup service has no location on record for that address.' });
+        return;
+      }
+      d = norm;
       setData(d);
       setIsOwn(!ip);
       setNote({
@@ -112,7 +152,7 @@ export default function Tool() {
   };
 
   const currency = data?.currency
-    ? `${data.currency_name ? `${data.currency_name} ` : ''}(${data.currency})`
+    ? (data.currency_name ? `${data.currency_name} (${data.currency})` : data.currency)
     : '—';
 
   return (
@@ -156,6 +196,7 @@ export default function Tool() {
               ['Postal code', data.postal || '—'],
               ['ISP / Org', data.org || '—'],
               ['ASN', data.asn || '—'],
+              ['Proxy / VPN', data.is_proxy ? 'Listed as a proxy or VPN' : 'Not on the provider’s proxy list'],
               ['Timezone', data.timezone || '—'],
               ['UTC offset', data.utc_offset || '—'],
               ['Currency', currency],
@@ -168,7 +209,7 @@ export default function Tool() {
             ))}
           </dl>
           <p className="text-xs text-fg-subtle mt-2">
-            Location data from ipapi.co. It is a database estimate for the network, not a measurement of the device.
+            Location data from freeipapi.com. It is a database estimate for the network, not a measurement of the device.
           </p>
 
           {isOwn && data.latitude != null && (

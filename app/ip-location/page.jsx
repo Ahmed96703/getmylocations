@@ -89,7 +89,7 @@ const faqs = [
   },
   {
     q: 'Which database does this IP lookup use?',
-    a: 'Public addresses are looked up with ipapi.co. Domain names are first resolved to an IP address using Cloudflare\'s public DNS (1.1.1.1). Different providers often disagree at city level because each builds its database from different signals, so another site may show a different city for the same IP.',
+    a: 'Public addresses are looked up with freeipapi.com. Domain names are first resolved to an IP address using Cloudflare\'s public DNS (1.1.1.1). Different providers often disagree at city level because each builds its database from different signals, so another site may show a different city for the same IP.',
   },
 ];
 
@@ -233,7 +233,7 @@ export default function IpLocationLookup() {
           When a website turns your IP into &ldquo;Lahore, Pakistan&rdquo; or &ldquo;Mumbai, India&rdquo;, it isn&apos;t
           reading anything from your computer. It&apos;s looking up the IP in a database. The
           database itself is built by companies like MaxMind, IPinfo, IP2Location, and
-          BigDataCloud from several signals. The tool on this page uses ipapi.co&rsquo;s database:
+          BigDataCloud from several signals. The tool on this page uses freeipapi.com, and providers like it build their data from:
         </p>
         <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside">
           <li>
@@ -456,7 +456,7 @@ export default function IpLocationLookup() {
           Every website you visit can see your IP &mdash; that&apos;s required for the connection
           to work. What they do with it varies. GetMyLocations doesn&apos;t log your IP for
           analytics, but our hosting provider (Cloudflare) keeps short-lived request logs for
-          abuse prevention. Using this tool sends the IP being looked up to ipapi.co, and a typed
+          abuse prevention. Using this tool sends the IP being looked up to freeipapi.com, and a typed
           domain name to Cloudflare&rsquo;s DNS resolver. Private and reserved addresses are recognised
           in your browser and never sent. Advertising services may process your IP for their own purposes. The full breakdown is in our
           {' '}<Link href="/privacy-policy" className="text-accent hover:underline">Privacy Policy</Link>.

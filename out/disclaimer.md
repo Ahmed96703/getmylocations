@@ -24,7 +24,7 @@ Articles, FAQs, and explanatory text on the Service are for general education. T
 
 ## Third-party content
 
-The map tiles, reverse-geocoded place names, IP lookups, and advertisements come from third parties (OpenStreetMap, CARTO, BigDataCloud, ipapi.co, Google AdSense). The Service does not control the accuracy or content of what these providers return. The [Privacy Policy](https://getmylocations.com/privacy-policy) lists each provider with a link to its own terms.
+The map tiles, reverse-geocoded place names, IP lookups, and advertisements come from third parties (OpenStreetMap, Esri, BigDataCloud, freeipapi.com, Google AdSense). The Service does not control the accuracy or content of what these providers return. The [Privacy Policy](https://getmylocations.com/privacy-policy) lists each provider with a link to its own terms.
 
 ## Advertising
 

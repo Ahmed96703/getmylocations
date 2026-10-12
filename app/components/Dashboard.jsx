@@ -1,6 +1,10 @@
 'use client';
 
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
+import CopyButton from './CopyButton.jsx';
+import IpFallback from './IpFallback.jsx';
+import { precisionOf, metersBetween, formatMeters } from '../address-finder/geocode.js';
 
 const fmt = (n, d = 6) => (n == null ? '—' : Number(n).toFixed(d));
 
@@ -13,7 +17,32 @@ function Stat({ label, value }) {
   );
 }
 
-export default function Dashboard({ pos, meta, place, placeLoading, mode, onCopy, copied }) {
+function StreetAddress({ address, accuracy }) {
+  if (!address) {
+    return <div className="mt-4 h-12 rounded-xl bg-tint/5 animate-pulse" aria-label="Looking up the nearest address" />;
+  }
+  if (address.error) {
+    return <p className="mt-4 text-xs text-fg-subtle">No street address was found for this point; the coordinates below are still exact.</p>;
+  }
+  const r = address.result;
+  const a = r.address || {};
+  const street = [a.house_number, a.road || a.pedestrian || a.footway].filter(Boolean).join(' ');
+  const gap = metersBetween(address.query[0], address.query[1], +r.lat, +r.lon);
+  const rough = gap > 100 || accuracy > 100;
+  return (
+    <div className="mt-4 rounded-xl bg-tint/5 border border-line px-4 py-3">
+      <div className="text-[10px] uppercase tracking-[0.14em] text-fg-subtle font-semibold">Nearest address</div>
+      {street && <div className="mt-0.5 font-semibold text-fg">{street}</div>}
+      <div className="mt-0.5 text-xs text-fg-muted">{r.display_name}</div>
+      <div className="mt-1 text-[11px] text-fg-subtle">
+        {precisionOf(r).label} · {formatMeters(gap)} from your coordinates{rough ? ' · treat it as the general area' : ''}
+      </div>
+      <CopyButton text={r.display_name} label="Copy address" className="text-xs text-accent hover:underline mt-1" />
+    </div>
+  );
+}
+
+export default function Dashboard({ pos, meta, place, placeLoading, mode, onCopy, copied, address, showIpFallback }) {
   const flag = place?.countryCode
     ? String.fromCodePoint(...[...place.countryCode].map((c) => 0x1f1e6 - 65 + c.charCodeAt(0)))
     : '';
@@ -60,6 +89,17 @@ export default function Dashboard({ pos, meta, place, placeLoading, mode, onCopy
           </div>
         </motion.div>
       </AnimatePresence>
+
+      {pos && <StreetAddress address={address} accuracy={meta?.accuracy} />}
+      {!pos && showIpFallback && <IpFallback />}
+
+      {pos && meta?.accuracy > 1000 && (
+        <p className="mt-3 text-xs text-fg-muted rounded-xl border border-line bg-tint/5 px-3 py-2">
+          This reading is only good to about {formatMeters(meta.accuracy)}, which usually means it came from
+          Wi-Fi or your network rather than GPS. Most laptops have no GPS chip; a phone outdoors does far better.{' '}
+          <Link href="/gps-vs-ip-accuracy" className="text-accent hover:underline">Why the accuracy varies</Link>.
+        </p>
+      )}
 
       <div className="mt-5 grid grid-cols-2 gap-2.5">
         <Stat label="Latitude" value={fmt(pos?.[0])} />

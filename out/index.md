@@ -6,7 +6,7 @@ url: https://getmylocations.com/
 
 Free · No signup · Runs in your browser
 
-# GetMyLocations — find your location, coordinates, and address instantly.
+# My location now — your coordinates and address, instantly.
 
 An all-in-one location toolkit, free in your browser. The [My Location](https://getmylocations.com/my-location) finder reads your GPS coordinates, resolves the city and country, and drops a live map pin in two seconds. No account, no app install, and your coordinates are never sent to a server we run. Eight more focused tools live one click away, including a [coordinates converter](https://getmylocations.com/coordinates-converter), an [IP location lookup](https://getmylocations.com/ip-location), a [distance calculator](https://getmylocations.com/distance-calculator), an [address finder](https://getmylocations.com/address-finder), and a [live location tracker](https://getmylocations.com/live-location) that updates as you move.
 
@@ -100,7 +100,7 @@ All nine single-job tools on this site. Each one is free, runs in your browser, 
 
 -   Coordinates in two seconds
 -   Move and watch it update
--   City and country resolution
+-   Street address, city and country
 -   No server of ours sees it
 
 Locating you…
@@ -145,7 +145,7 @@ Approve the one-time browser location prompt.
 
 See it live
 
-Coordinates and your city/country resolve in real time.
+Coordinates, the nearest street address and your city resolve in seconds.
 
 3
 

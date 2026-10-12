@@ -34,7 +34,7 @@ The coordinates the Service displays are whatever the browser’s Geolocation AP
 
 ## 5\. Third-party services
 
-The Service integrates several third parties (OpenStreetMap, BigDataCloud, Cloudflare, Google AdSense, ipapi.co). When you use a tool that calls one of these services you are also accepting that service’s own terms. The Privacy Policy lists each provider and links to its policy.
+The Service integrates several third parties (OpenStreetMap, BigDataCloud, Cloudflare, Google AdSense, freeipapi.com). When you use a tool that calls one of these services you are also accepting that service’s own terms. The Privacy Policy lists each provider and links to its policy.
 
 ## 6\. Advertising
 

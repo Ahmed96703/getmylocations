@@ -10,6 +10,7 @@ import PermissionBlocked from './components/PermissionBlocked.jsx';
 import TechnicalDetails from './components/TechnicalDetails.jsx';
 import { useGeolocation } from './hooks/useGeolocation.js';
 import { useReverseGeocode } from './hooks/useReverseGeocode.js';
+import { useStreetAddress } from './hooks/useStreetAddress.js';
 import { POSTS } from './posts/manifest.js';
 import { HOME_FAQS as FAQS } from './home-faqs.js';
 
@@ -22,8 +23,8 @@ const MapView = dynamic(() => import('./components/MapView.jsx'), {
 const FEATURES = [
   { t: 'Coordinates in two seconds', d: 'One click reads your position from the browser and shows it with the accuracy the device reports.' },
   { t: 'Move and watch it update', d: 'Live mode keeps tracking as you walk or drive, so you can see how the fix improves outdoors.' },
-  { t: 'City and country resolution', d: 'The coordinate is reverse-geocoded by BigDataCloud, with OpenStreetMap as the fallback, so you see a readable place name alongside the numbers.' },
-  { t: 'No server of ours sees it', d: 'The coordinate stays in your tab. Only the city lookup goes to a third party — see the Privacy Policy for what that means in practice.' },
+  { t: 'Street address, city and country', d: 'The coordinate is turned into the nearest street address by OpenStreetMap Nominatim, and into a city and country by BigDataCloud, so you see readable places alongside the numbers.' },
+  { t: 'No server of ours sees it', d: 'The coordinate stays in your tab. Only the address and city lookups go to third parties — see the Privacy Policy for what that means in practice.' },
 ];
 
 
@@ -38,6 +39,25 @@ export default function HomeClient() {
   const pos = mode === 'manual' ? manualPos : autoPos;
   const meta = mode === 'manual' ? { accuracy: null, ts: Date.now() } : autoMeta;
   const { data: place, loading: placeLoading } = useReverseGeocode(pos);
+  const address = useStreetAddress(pos);
+  // If the city lookup fails, fall back to the city in the street-address result.
+  const addr = address?.result?.address;
+  const placeShown = place || (addr && addr.country ? {
+    city: addr.city || addr.town || addr.village || addr.municipality || addr.county || '—',
+    region: addr.state || addr.region || '',
+    country: addr.country,
+    countryCode: (addr.country_code || '').toUpperCase(),
+  } : null);
+
+  // Offer the IP-based estimate when there is no fix: location refused, an
+  // error, or no answer after a few seconds (the prompt may be ignored).
+  const [slow, setSlow] = useState(false);
+  useEffect(() => {
+    if (pos) return undefined;
+    const t = setTimeout(() => setSlow(true), 4000);
+    return () => clearTimeout(t);
+  }, [pos]);
+  const showIpFallback = mode === 'auto' && !pos && (permission === 'denied' || !!error || slow);
 
   useEffect(() => {
     if (mode === 'manual' && !manualPos && autoPos) setManualPos(autoPos);
@@ -53,7 +73,9 @@ export default function HomeClient() {
   const onShare = async () => {
     if (!pos) return;
     const [lat, lon] = pos;
-    const placeStr = place ? ` (${place.city}${place.country ? ', ' + place.country : ''})` : '';
+    const placeStr = address?.result
+      ? ` (near ${address.result.display_name})`
+      : place ? ` (${place.city}${place.country ? ', ' + place.country : ''})` : '';
     const text = `My current location: ${lat.toFixed(6)}, ${lon.toFixed(6)}${placeStr}\nhttps://getmylocations.com/`;
 
     if (navigator.share) {
@@ -157,11 +179,13 @@ export default function HomeClient() {
           <Dashboard
             pos={pos}
             meta={meta}
-            place={place}
-            placeLoading={placeLoading}
+            place={placeShown}
+            placeLoading={placeLoading && !placeShown}
             mode={mode}
             onCopy={onCopy}
             copied={copied}
+            address={address}
+            showIpFallback={showIpFallback}
           />
         </div>
       </div>
@@ -171,7 +195,7 @@ export default function HomeClient() {
         <div className="grid sm:grid-cols-3 gap-3 mt-4">
           {[
             { t: 'Allow access', d: 'Approve the one-time browser location prompt.' },
-            { t: 'See it live', d: 'Coordinates and your city/country resolve in real time.' },
+            { t: 'See it live', d: 'Coordinates, the nearest street address and your city resolve in seconds.' },
             { t: 'Explore more', d: 'Visit the Tools menu for a coordinates converter, distance calculator, IP lookup, and more.' },
           ].map((s, i) => (
             <div key={s.t} className="glass rounded-2xl p-5">

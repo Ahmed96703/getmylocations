@@ -76,7 +76,7 @@ export default function Disclaimer() {
       <h2 className="font-display text-2xl font-bold mt-10">Third-party content</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
         The map tiles, reverse-geocoded place names, IP lookups, and advertisements
-        come from third parties (OpenStreetMap, CARTO, BigDataCloud, ipapi.co, Google
+        come from third parties (OpenStreetMap, Esri, BigDataCloud, freeipapi.com, Google
         AdSense). The Service does not control the accuracy or content of what these
         providers return. The{' '}
         <Link href="/privacy-policy" className="text-accent hover:underline">Privacy Policy</Link>{' '}

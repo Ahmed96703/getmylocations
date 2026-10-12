@@ -38,7 +38,7 @@ export default function Privacy() {
         </nav>
 
       <h1 className="font-display text-4xl font-extrabold tracking-tight">Privacy Policy</h1>
-      <p className="text-sm text-fg-subtle mt-2">Last updated: October 5, 2026</p>
+      <p className="text-sm text-fg-subtle mt-2">Last updated: October 12, 2026</p>
 
       <p className="mt-6 text-fg-muted leading-relaxed">
         This page explains what information GetMyLocations receives when you use the
@@ -71,17 +71,17 @@ export default function Privacy() {
 
       <h2 className="font-display text-2xl font-bold mt-10">2. Reverse geocoding — what the third party sees</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
-        A coordinate on its own is just numbers. To show a readable city and country,
-        the page sends the coordinate to a reverse-geocoding service. We use:
+        A coordinate on its own is just numbers. To show a readable street address, city
+        and country, the page sends the coordinate to a reverse-geocoding service. We use:
       </p>
       <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside">
         <li>
-          <strong>BigDataCloud</strong> — the first choice for the homepage tool.
+          <strong>BigDataCloud</strong> — the first choice for the city and country on the homepage tool.
           Their privacy policy is published at{' '}
           <span className="text-fg-muted font-mono text-sm">bigdatacloud.com/privacy-and-cookie-policy</span>.
         </li>
         <li>
-          <strong>OpenStreetMap Nominatim</strong> — used by the Address Finder, by the
+          <strong>OpenStreetMap Nominatim</strong> — used for the nearest street address on the homepage and My Location, by the Address Finder, by the
           Street View tool to turn a typed address into coordinates, and as a fallback elsewhere. Their privacy policy is published at{' '}
           <span className="text-fg-muted font-mono text-sm">wiki.osmfoundation.org/wiki/Privacy_Policy</span>.
         </li>
@@ -113,17 +113,23 @@ export default function Privacy() {
 
       <h2 className="font-display text-2xl font-bold mt-10">4. IP lookups (IP Location tool)</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
-        The IP Location tool calls the public ipapi.co endpoint
+        The IP Location tool calls the public freeipapi.com endpoint
         (privacy policy at{' '}
-        <span className="text-fg-muted font-mono text-sm">ipapi.co/privacy</span>).
+        <span className="text-fg-muted font-mono text-sm">freeipapi.com/privacy</span>).
         The IP you look up — your own when you click <em>Lookup my IP</em>,
-        or any IP you paste — is sent to ipapi.co, which returns the geolocation data.
+        or any IP you paste — is sent to freeipapi.com, which returns the geolocation data.
         Their policy covers what they keep.
+      </p>
+      <p className="mt-3 text-fg-muted leading-relaxed">
+        On the homepage, if no exact location is available (you declined the prompt, it failed, or
+        you have not answered yet), you can click <em>Show my approximate area</em>. Only then is
+        your IP address sent to BigDataCloud (listed above) to estimate your city. Nothing is looked
+        up unless you click.
       </p>
       <p className="mt-3 text-fg-muted leading-relaxed">
         If you type a domain name (such as example.com) into the IP Location tool, your browser
         first asks Cloudflare&rsquo;s public DNS resolver (cloudflare-dns.com, the 1.1.1.1 service) for
-        the domain&rsquo;s IP address, then looks that IP up at ipapi.co. Cloudflare receives the domain
+        the domain&rsquo;s IP address, then looks that IP up at freeipapi.com. Cloudflare receives the domain
         name and your IP address as part of that DNS request; see{' '}
         <span className="text-fg-muted font-mono text-sm">1.1.1.1/privacy</span>. Private and reserved
         addresses (such as 192.168.x.x) are recognised in your browser and are not sent to either service.

@@ -132,7 +132,7 @@ export default function WhatIsIpLocation() {
         daily refresh but show up as &ldquo;unknown&rdquo; in a
         six-month-old free dataset. This is why ad networks and fraud
         teams pay for premium feeds. The IP Location tool on this site
-        uses ipapi.co&rsquo;s free lookup service, so its answers are only
+        uses freeipapi.com&rsquo;s free lookup service, so its answers are only
         as current as that provider&rsquo;s data.
       </p>
 

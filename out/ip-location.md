@@ -64,7 +64,7 @@ On macOS or Linux, run `curl ifconfig.me` or `curl ipinfo.io/ip`. On Windows, us
 
 ## How IP geolocation actually works
 
-When a website turns your IP into “Lahore, Pakistan” or “Mumbai, India”, it isn't reading anything from your computer. It's looking up the IP in a database. The database itself is built by companies like MaxMind, IPinfo, IP2Location, and BigDataCloud from several signals. The tool on this page uses ipapi.co’s database:
+When a website turns your IP into “Lahore, Pakistan” or “Mumbai, India”, it isn't reading anything from your computer. It's looking up the IP in a database. The database itself is built by companies like MaxMind, IPinfo, IP2Location, and BigDataCloud from several signals. The tool on this page uses freeipapi.com, and providers like it build their data from:
 
 -   **ARIN/RIPE/APNIC registration records.** When an ISP buys a block of IP addresses, they register it with the regional internet registry along with the country it operates in. This gives a country-level fix essentially for free.
 -   **BGP routing data.** The way IP traffic is announced across the internet backbone reveals which network operator handles which block, and roughly where their peering points are.
@@ -174,7 +174,7 @@ The fix, if you need accurate location, is to grant GPS-level browser geolocatio
 
 ## Privacy considerations
 
-Every website you visit can see your IP — that's required for the connection to work. What they do with it varies. GetMyLocations doesn't log your IP for analytics, but our hosting provider (Cloudflare) keeps short-lived request logs for abuse prevention. Using this tool sends the IP being looked up to ipapi.co, and a typed domain name to Cloudflare’s DNS resolver. Private and reserved addresses are recognised in your browser and never sent. Advertising services may process your IP for their own purposes. The full breakdown is in our [Privacy Policy](https://getmylocations.com/privacy-policy).
+Every website you visit can see your IP — that's required for the connection to work. What they do with it varies. GetMyLocations doesn't log your IP for analytics, but our hosting provider (Cloudflare) keeps short-lived request logs for abuse prevention. Using this tool sends the IP being looked up to freeipapi.com, and a typed domain name to Cloudflare’s DNS resolver. Private and reserved addresses are recognised in your browser and never sent. Advertising services may process your IP for their own purposes. The full breakdown is in our [Privacy Policy](https://getmylocations.com/privacy-policy).
 
 If you want to limit what an IP lookup reveals, the standard tools are a reputable consumer VPN (Mullvad, IVPN, ProtonVPN), the Tor browser for stronger anonymity, or simply visiting from a different network. None of these are bulletproof — they all leak in different ways — but they substantially raise the cost of tracking.
 
@@ -212,7 +212,7 @@ Addresses such as 192.168.x.x, 10.x.x.x, and 172.16.x.x to 172.31.x.x are privat
 
 Which database does this IP lookup use?+
 
-Public addresses are looked up with ipapi.co. Domain names are first resolved to an IP address using Cloudflare's public DNS (1.1.1.1). Different providers often disagree at city level because each builds its database from different signals, so another site may show a different city for the same IP.
+Public addresses are looked up with freeipapi.com. Domain names are first resolved to an IP address using Cloudflare's public DNS (1.1.1.1). Different providers often disagree at city level because each builds its database from different signals, so another site may show a different city for the same IP.
 
 ## Related tools and guides
 

@@ -89,7 +89,7 @@ export default function Terms() {
       <h2 className="font-display text-2xl font-bold mt-10">5. Third-party services</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
         The Service integrates several third parties (OpenStreetMap, BigDataCloud,
-        Cloudflare, Google AdSense, ipapi.co). When you use a tool that calls one of
+        Cloudflare, Google AdSense, freeipapi.com). When you use a tool that calls one of
         these services you are also accepting that service&rsquo;s own terms. The Privacy
         Policy lists each provider and links to its policy.
       </p>
