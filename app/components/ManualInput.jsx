@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
 
 const validLat = (n) => Number.isFinite(n) && n >= -90 && n <= 90;
 const validLon = (n) => Number.isFinite(n) && n >= -180 && n <= 180;
@@ -26,13 +25,9 @@ export default function ManualInput({ pos, onApply }) {
   };
 
   return (
-    <motion.form
-      initial={{ opacity: 0, height: 0 }}
-      animate={{ opacity: 1, height: 'auto' }}
-      exit={{ opacity: 0, height: 0 }}
-      transition={{ duration: 0.35, ease: 'easeOut' }}
+    <form
       onSubmit={submit}
-      className="glass rounded-2xl p-4 mt-4 overflow-hidden"
+      className="fade-in glass rounded-2xl p-4 mt-4 overflow-hidden"
       aria-label="Manual coordinate input"
     >
       <div className="text-xs uppercase tracking-[0.16em] text-accent font-semibold mb-3">Manual coordinates</div>
@@ -60,8 +55,8 @@ export default function ManualInput({ pos, onApply }) {
           />
         </label>
       </div>
-      {err && <div role="alert" className="mt-2 text-xs text-rose-300">{err}</div>}
+      {err && <div role="alert" className="mt-2 text-xs text-rose-500">{err}</div>}
       <button type="submit" className="btn-primary w-full mt-3">Fly to location</button>
-    </motion.form>
+    </form>
   );
 }

@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { breadcrumbSchema } from '../components/breadcrumbSchema.js';
 
 export const metadata = {
-  title: 'Privacy Policy',
+  title: 'Privacy Policy — GetMyLocations',
   description:
     'How GetMyLocations handles your location data, what the third-party reverse-geocoding services receive, and what cookies Google AdSense sets.',
   alternates: { canonical: '/privacy-policy' },

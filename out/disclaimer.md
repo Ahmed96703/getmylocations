@@ -1,5 +1,5 @@
 ---
-title: "Disclaimer"
+title: "Disclaimer — GetMyLocations"
 description: "Important limits on the accuracy of the location, IP, and coordinate data shown on GetMyLocations."
 url: https://getmylocations.com/disclaimer
 ---

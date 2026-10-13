@@ -1,5 +1,5 @@
 ---
-title: "Privacy Policy"
+title: "Privacy Policy — GetMyLocations"
 description: "How GetMyLocations handles your location data, what the third-party reverse-geocoding services receive, and what cookies Google AdSense sets."
 url: https://getmylocations.com/privacy-policy
 ---

@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
 import CopyButton from './CopyButton.jsx';
 import IpFallback from './IpFallback.jsx';
 import { precisionOf, metersBetween, formatMeters } from '../address-finder/geocode.js';
@@ -63,14 +62,9 @@ export default function Dashboard({ pos, meta, place, placeLoading, mode, onCopy
         </span>
       </div>
 
-      <AnimatePresence mode="wait">
-        <motion.div
+        <div
           key={(place?.city || '') + (place?.country || '') + 'p'}
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -8 }}
-          transition={{ duration: 0.35 }}
-          className="mt-4"
+          className="fade-in mt-4"
         >
           <div className="text-xs text-fg-subtle">Current location</div>
           <div className="font-display text-2xl sm:text-3xl font-bold mt-1 leading-tight">
@@ -87,8 +81,7 @@ export default function Dashboard({ pos, meta, place, placeLoading, mode, onCopy
             {flag && <span aria-hidden="true">{flag}</span>}
             <span>{place?.country || '—'}</span>
           </div>
-        </motion.div>
-      </AnimatePresence>
+        </div>
 
       {pos && <StreetAddress address={address} accuracy={meta?.accuracy} />}
       {!pos && showIpFallback && <IpFallback />}

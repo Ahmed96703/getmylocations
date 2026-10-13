@@ -1,5 +1,5 @@
 ---
-title: "About — GetMyLocations"
+title: "About GetMyLocations — Who Builds It and How It Is Checked"
 description: "Free, privacy-first location tools. Built by Ahmed Anwar — geolocation, GPS, and IP networking guides written from primary sources."
 url: https://getmylocations.com/about
 ---

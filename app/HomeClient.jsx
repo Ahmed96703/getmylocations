@@ -3,7 +3,6 @@
 import { Suspense, useEffect, useState } from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
-import { motion, AnimatePresence } from 'framer-motion';
 import Dashboard from './components/Dashboard.jsx';
 import ManualInput from './components/ManualInput.jsx';
 import PermissionBlocked from './components/PermissionBlocked.jsx';
@@ -168,12 +167,9 @@ export default function HomeClient() {
                 Explore more tools
               </a>
             </div>
-
-            <AnimatePresence>
               {mode === 'manual' && (
                 <ManualInput key="manual" pos={pos} onApply={(p) => setManualPos(p)} />
               )}
-            </AnimatePresence>
           </div>
 
           <Dashboard

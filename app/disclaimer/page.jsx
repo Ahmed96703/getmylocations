@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { breadcrumbSchema } from '../components/breadcrumbSchema.js';
 
 export const metadata = {
-  title: 'Disclaimer',
+  title: 'Disclaimer — GetMyLocations',
   description:
     'Important limits on the accuracy of the location, IP, and coordinate data shown on GetMyLocations.',
   alternates: { canonical: '/disclaimer' },

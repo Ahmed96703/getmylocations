@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { breadcrumbSchema } from '../components/breadcrumbSchema.js';
 
 export const metadata = {
-  title: 'Terms of Service',
+  title: 'Terms of Service — GetMyLocations',
   description:
     'The terms that govern your use of the GetMyLocations website and tools.',
   alternates: { canonical: '/terms' },

@@ -1,5 +1,5 @@
 ---
-title: "Contact — GetMyLocations"
+title: "Contact GetMyLocations — Questions, Bugs and Corrections"
 description: "Get in touch with GetMyLocations for questions, feedback, corrections, or partnership ideas. We reply within 24 hours."
 url: https://getmylocations.com/contact
 ---

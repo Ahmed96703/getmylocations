@@ -42,7 +42,7 @@ export default function SiteHeader() {
   return (
     <header role="banner" className="sticky top-0 z-30 px-3 sm:px-4 pt-3">
       <div className="max-w-7xl mx-auto glass-strong rounded-[1.5rem] border border-line-subtle shadow-2xl px-4 py-3.5 flex items-center justify-between gap-4">
-        <Link href="/" aria-label="GetMyLocations home" className="flex items-center gap-3 group">
+        <Link href="/" className="flex items-center gap-3 group">
           <Logo size={36} />
           <div>
             <div className="font-display text-lg font-bold leading-none text-fg group-hover:text-accent transition">GetMyLocations</div>
