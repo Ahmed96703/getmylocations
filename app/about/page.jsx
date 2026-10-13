@@ -115,7 +115,7 @@ export default function About() {
         articles explain what I learned while building.
       </p>
 
-      <h2 className="font-display text-2xl font-bold mt-10">How the writing is done</h2>
+      <h2 id="editorial-policy" className="font-display text-2xl font-bold mt-10">How the writing is done</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
         Honest disclosure: the long-form articles and guides on this site are
         researched and drafted with the help of an AI writing assistant, then

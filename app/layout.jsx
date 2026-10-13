@@ -155,8 +155,9 @@ export default function RootLayout({ children }) {
         )}
       </head>
       <body>
+        <a href="#content" className="skip-link">Skip to content</a>
         <SiteHeader />
-        {children}
+        <div id="content" tabIndex={-1}>{children}</div>
         <Footer />
       </body>
     </html>

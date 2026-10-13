@@ -4,6 +4,8 @@ const YEAR = new Date().getFullYear();
 
 const SITE_LINKS = [
   { href: '/about', label: 'About' },
+  { href: '/about#editorial-policy', label: 'How we check facts' },
+  { href: '/about#corrections', label: 'Corrections' },
   { href: '/blog', label: 'Blog' },
   { href: '/contact', label: 'Contact' },
   { href: '/privacy-policy', label: 'Privacy Policy' },

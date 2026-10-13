@@ -398,3 +398,13 @@ main.max-w-5xl > * {
 @keyframes fade-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 .fade-in { animation: fade-in 0.3s ease-out; }
 @media (prefers-reduced-motion: reduce) { .fade-in { animation: none; } }
+
+/* Keyboard users can jump past the header; hidden until focused. */
+.skip-link {
+  position: absolute; left: 0.75rem; top: -3rem; z-index: 100;
+  padding: 0.5rem 0.9rem; border-radius: 0.6rem;
+  background: rgb(var(--accent)); color: rgb(var(--accent-fg)); font-weight: 600;
+  transition: top 0.15s ease;
+}
+.skip-link:focus { top: 0.75rem; }
+#content:focus { outline: none; }

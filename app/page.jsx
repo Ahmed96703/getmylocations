@@ -46,6 +46,7 @@ const webAppSchema = {
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
   publisher: { '@type': 'Organization', name: 'GetMyLocations' },
   author: AUTHOR,
+  dateModified: '2026-10-14',
 };
 
 const faqSchema = {
@@ -112,7 +113,7 @@ export default function HomePage() {
             that updates as you move.
           </p>
           <p className="mt-3 text-sm text-fg-subtle">
-            Last reviewed October 1, 2026. Articles and tools are reviewed by{' '}
+            Last updated <time dateTime="2026-10-14">October 14, 2026</time>. Articles and tools are reviewed by{' '}
             <Link href="/about" className="text-accent hover:underline">Ahmed Anwar</Link>{' '}
             before publication; report any inaccurate detail via the{' '}
             <Link href="/contact" className="text-accent hover:underline">Contact page</Link>.

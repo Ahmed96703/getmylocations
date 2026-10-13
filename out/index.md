@@ -10,7 +10,7 @@ Free · No signup · Runs in your browser
 
 An all-in-one location toolkit, free in your browser. The [My Location](https://getmylocations.com/my-location) finder reads your GPS coordinates, resolves the city and country, and drops a live map pin in two seconds. No account, no app install, and your coordinates are never sent to a server we run. Eight more focused tools live one click away, including a [coordinates converter](https://getmylocations.com/coordinates-converter), an [IP location lookup](https://getmylocations.com/ip-location), a [distance calculator](https://getmylocations.com/distance-calculator), an [address finder](https://getmylocations.com/address-finder), and a [live location tracker](https://getmylocations.com/live-location) that updates as you move.
 
-Last reviewed October 1, 2026. Articles and tools are reviewed by [Ahmed Anwar](https://getmylocations.com/about) before publication; report any inaccurate detail via the [Contact page](https://getmylocations.com/contact).
+Last updated October 14, 2026. Articles and tools are reviewed by [Ahmed Anwar](https://getmylocations.com/about) before publication; report any inaccurate detail via the [Contact page](https://getmylocations.com/contact).
 
 One fast tool
 
