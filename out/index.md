@@ -183,6 +183,13 @@ Guides on GPS, geolocation, and finding your way online.
 
 [View all posts →](https://getmylocations.com/blog)
 
+-   [Oct 14, 2026·7 min read
+    
+    ### Haversine vs Vincenty: How Much Error Does a Sphere Add?
+    
+    Haversine is off by up to 0.56%. We measured 200,000 routes against Vincenty and GeographicLib, with errors by direction and latitude.
+    
+    Read →](https://getmylocations.com/blog/haversine-vs-vincenty)
 -   [Jun 3, 2026·9 min read
     
     ### How to Turn On Location on a Laptop (Windows 10, 11 & Mac)
@@ -197,13 +204,6 @@ Guides on GPS, geolocation, and finding your way online.
     Turn on Location Services on iPhone and Android, allow Safari or Chrome to use it, fix website permissions and Precise Location. Updated for 2026.
     
     Read →](https://getmylocations.com/blog/enable-location-on-iphone-and-android)
--   [Jun 1, 2026·7 min read
-    
-    ### History of Latitude and Longitude — Sextants to Satellites
-    
-    How a Greek scholar, a Yorkshire clockmaker, and a global voting conference in 1884 produced the two numbers your phone shows you today.
-    
-    Read →](https://getmylocations.com/blog/history-of-latitude-and-longitude)
 
 ## Frequently asked questions
 

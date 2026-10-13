@@ -17,6 +17,7 @@ import WhyMapsShowWrongStreet from '../../posts/WhyMapsShowWrongStreet.jsx';
 import LatLonHistory from '../../posts/LatLonHistory.jsx';
 import EnableLocationDesktop from '../../posts/EnableLocationDesktop.jsx';
 import EnableLocationMobile from '../../posts/EnableLocationMobile.jsx';
+import HaversineVsVincenty from '../../posts/HaversineVsVincenty.jsx';
 import AdSense from '../../components/AdSense.jsx';
 import { AUTHOR } from '../../components/author.js';
 
@@ -34,6 +35,7 @@ const POST_COMPONENTS = {
   'history-of-latitude-and-longitude': LatLonHistory,
   'enable-location-on-windows-and-mac': EnableLocationDesktop,
   'enable-location-on-iphone-and-android': EnableLocationMobile,
+  'haversine-vs-vincenty': HaversineVsVincenty,
 };
 
 export async function generateStaticParams() {

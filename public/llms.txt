@@ -15,7 +15,7 @@ Audience: anyone who needs to find their current GPS coordinates, IP location, l
 - [My Location](https://getmylocations.com/my-location): One-tap current location: coordinates to copy, accuracy radius, and the nearest street address with how precise the match is.
 - [Coordinates Converter](https://getmylocations.com/coordinates-converter): Convert between decimal degrees, DMS, UTM, and MGRS coordinate formats.
 - [IP Location Lookup](https://getmylocations.com/ip-location): Find the approximate location of any IP address using free geolocation APIs.
-- [Distance Calculator](https://getmylocations.com/distance-calculator): Measure the straight-line (haversine) distance between two points on Earth.
+- [Distance Calculator](https://getmylocations.com/distance-calculator): Geodesic distance, bearings and midpoint on the WGS 84 ellipsoid (Vincenty), with the spherical haversine result alongside.
 - [Address Finder](https://getmylocations.com/address-finder): Reverse-geocode GPS coordinates into a street address.
 - [Street View](https://getmylocations.com/street-view): Explore any location with embedded street-level imagery.
 - [Driving Directions](https://getmylocations.com/driving-directions): Get turn-by-turn driving directions between two addresses or coordinates.
@@ -29,6 +29,7 @@ Audience: anyone who needs to find their current GPS coordinates, IP location, l
 
 ## Blog
 
+- [Haversine vs Vincenty](https://getmylocations.com/blog/haversine-vs-vincenty): Measured error of the spherical haversine formula versus Vincenty on WGS 84: route tables, error by direction and latitude, a 200,000-route worst case, and the antipodal failure case.
 - [How to Turn On Location on a Laptop (Windows 10, 11 & Mac)](https://getmylocations.com/blog/enable-location-on-windows-and-mac): Enable Location Services on Windows and Mac, allow your browser, and fix the greyed-out toggle.
 - [How to Turn On Location Services on iPhone & Android](https://getmylocations.com/blog/enable-location-on-iphone-and-android): Turn on Location Services, allow Safari Websites or Chrome to use location, fix per-site and per-app permissions, and Precise Location.
 - [History of Latitude and Longitude](https://getmylocations.com/blog/history-of-latitude-and-longitude): From Greek astronomers to GPS satellites — how the coordinate system we use today was invented.

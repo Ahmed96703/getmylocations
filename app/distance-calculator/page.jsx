@@ -229,6 +229,8 @@ export default function DistanceCalculatorPage() {
           </div>
           <p className="mt-3 text-sm text-fg-subtle">
             Distances are rounded to the nearest whole unit. Checked against the <a href="https://geographiclib.sourceforge.io/" target="_blank" rel="noopener" className="text-accent hover:underline">GeographicLib</a> reference library in October 2026.
+            How the two methods differ by direction and latitude, and where Vincenty fails, is measured in{' '}
+            <Link href="/blog/haversine-vs-vincenty" className="text-accent hover:underline">haversine vs Vincenty</Link>.
           </p>
         </section>
 

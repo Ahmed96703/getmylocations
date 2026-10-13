@@ -8,7 +8,7 @@ url: https://getmylocations.com/blog
 
 Plain-English guides to how GPS, coordinates and IP location work, and what to do when the location your phone or browser shows is wrong. Each guide sits next to the free tool that lets you see the idea in action.
 
-Updated October 6, 2026 · Written by [Ahmed Anwar](https://getmylocations.com/about)
+Updated October 14, 2026 · Written by [Ahmed Anwar](https://getmylocations.com/about)
 
 ## Fix a location problem fast
 
@@ -145,6 +145,15 @@ What an IP address reveals, how accurate IP location really is, and why it so of
 
 Why a map pin lands on the wrong door, and the tools for moving between places and addresses: [Address Finder](https://getmylocations.com/address-finder), [reverse geocoding](https://getmylocations.com/reverse-geocoding), [Distance Calculator](https://getmylocations.com/distance-calculator), [Street View](https://getmylocations.com/street-view), [Driving Directions](https://getmylocations.com/driving-directions) and the [interactive map](https://getmylocations.com/maps).
 
+-   [
+    
+    October 14, 2026·7 min read
+    
+    ### Haversine vs Vincenty: How Much Error Does a Sphere Add?
+    
+    Haversine is off by up to 0.56%. We measured 200,000 routes against Vincenty and GeographicLib, with errors by direction and latitude.
+    
+    Read article →](https://getmylocations.com/blog/haversine-vs-vincenty)
 -   [
     
     Updated October 1, 2026·8 min read

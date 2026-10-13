@@ -1,6 +1,16 @@
 // Blog post manifest — single source of truth for routing, blog index, and sitemap generation.
 export const POSTS = [
   {
+    slug: 'haversine-vs-vincenty',
+    topic: 'maps',
+    title: 'Haversine vs Vincenty: How Much Error Does a Sphere Add?',
+    excerpt: 'Haversine is off by up to 0.56%. We measured 200,000 routes against Vincenty and GeographicLib, with errors by direction and latitude.',
+    date: '2026-10-14',
+    modifiedDate: '2026-10-14',
+    readingTime: 7,
+    tags: ['distance', 'geodesy', 'developers'],
+  },
+  {
     slug: 'enable-location-on-windows-and-mac',
     topic: 'permissions', // groups the post on the blog index
     title: 'How to Turn On Location on a Laptop (Windows 10, 11 & Mac)',
