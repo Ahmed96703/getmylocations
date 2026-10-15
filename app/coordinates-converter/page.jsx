@@ -4,12 +4,13 @@ import AuthorBio from '../components/AuthorBio.jsx';
 import AdSense from '../components/AdSense.jsx';
 import { ddToDms, ddToDdm, dmsToDd, latLonToUtm, utmToMgrs } from './geo.js';
 import { encode as plusCode, decode as decodePlusCode } from './pluscode.js';
+import { encode as geohash, cellDegrees } from './geohash.js';
 import { AUTHOR } from '../components/author.js';
 
 export const metadata = {
-  title: 'Coordinates Converter — DD, DMS, UTM & Plus Codes (Free)',
+  title: 'Coordinates Converter — DD, DMS, UTM, Plus Code & Geohash',
   description:
-    'Convert GPS coordinates between decimal degrees, DMS, DDM, UTM, MGRS and Plus Codes in both directions, with the math shown. Free, no signup.',
+    'Convert GPS coordinates between decimal degrees, DMS, DDM, UTM, MGRS, Plus Codes and geohash in both directions, with the math shown. Free.',
   keywords: [
     'coordinates converter',
     'gps coordinates converter',
@@ -18,14 +19,16 @@ export const metadata = {
     'utm converter',
     'plus code converter',
     'plus code to coordinates',
+    'geohash converter',
+    'geohash decode',
     'lat long converter',
     'convert coordinates',
   ],
   alternates: { canonical: '/coordinates-converter' },
   openGraph: {
-    title: 'Coordinates Converter — DD, DMS, DDM, UTM & Plus Codes',
+    title: 'Coordinates Converter — DD, DMS, UTM, Plus Codes & Geohash',
     description:
-      'Convert GPS latitude and longitude between Decimal Degrees, DMS, DDM, UTM, MGRS, and Plus Codes in real time.',
+      'Convert GPS latitude and longitude between Decimal Degrees, DMS, DDM, UTM, MGRS, Plus Codes, and geohash in real time.',
     url: 'https://getmylocations.com/coordinates-converter',
     type: 'website',
     images: ['/og-image.png'],
@@ -43,7 +46,7 @@ const webAppSchema = {
   '@type': 'WebApplication',
   name: 'Coordinates Converter',
   description:
-    'Free browser-based tool that converts GPS coordinates between Decimal Degrees (DD), Degrees-Minutes-Seconds (DMS), Degrees-Decimal-Minutes (DDM), Universal Transverse Mercator (UTM), and Plus Codes (Open Location Code) in both directions, outputs MGRS, recovers short Plus Codes from a town name, reads pasted coordinates and map links, and shows the point on a map. WGS 84 datum.',
+    'Free browser-based tool that converts GPS coordinates between Decimal Degrees (DD), Degrees-Minutes-Seconds (DMS), Degrees-Decimal-Minutes (DDM), Universal Transverse Mercator (UTM), Plus Codes (Open Location Code), and geohash in both directions, outputs MGRS, recovers short Plus Codes from a town name, reads pasted coordinates and map links, and shows the point on a map. WGS 84 datum.',
   url: 'https://getmylocations.com/coordinates-converter',
   applicationCategory: 'UtilitiesApplication',
   operatingSystem: 'Web',
@@ -72,6 +75,10 @@ const ddExamples = [
 ];
 
 const faqs = [
+  {
+    q: 'How do I decode a geohash to latitude and longitude?',
+    a: 'Type the geohash into the Geohash row of the tool (any length from 1 to 12 characters) or paste it into the box at the top, and press convert. The tool places the point at the centre of the geohash cell, so u09tunquc becomes 48.858411, 2.294490, and every other format updates. To go the other way, enter a coordinate in any format and pick how many characters you want; nine characters is a cell about 5 m across.',
+  },
   {
     q: 'How do I convert a Plus Code to latitude and longitude?',
     a: 'Paste the code, for example 8FW4V75V+9R, into the tool and press Convert; decimal degrees, DMS, UTM and the map update to the centre of the code\'s cell (48.858438, 2.294563 for that code). A short code such as V75V+9R needs a nearby town after it, like "V75V+9R Paris", because its first four characters were dropped. Going the other way, the tool shows the 10- and 11-digit Plus Code for whatever position is entered.',
@@ -165,6 +172,7 @@ const landmarks = LANDMARKS.map(({ name, lat, lon }) => {
     err: errCm.toFixed(2),
     olc10: plusCode(lat, lon, 10),
     olc11: plusCode(lat, lon, 11),
+    gh: geohash(lat, lon, 9),
   };
 });
 
@@ -175,6 +183,13 @@ const cellSize = (code) => {
 };
 const cell10 = cellSize(plusCode(0.001, 0.001, 10));
 const cell11 = cellSize(plusCode(0.001, 0.001, 11));
+
+// Geohash cell sizes by length, from the encoder's own bit split.
+const fmtLen = (m) => (m >= 1000 ? `${(m / 1000).toLocaleString('en-US', { maximumFractionDigits: m >= 10000 ? 0 : 1 })} km` : m >= 1 ? `${m.toFixed(m >= 100 ? 0 : 1)} m` : `${(m * 100).toFixed(1)} cm`);
+const geohashSizes = [1, 3, 5, 6, 7, 8, 9, 10, 12].map((n) => {
+  const c = cellDegrees(n);
+  return { n, h: fmtLen(c.lat * 111320), w: fmtLen(c.lon * 111320) };
+});
 
 export default function CoordinatesConverterPage() {
   return (
@@ -197,10 +212,10 @@ export default function CoordinatesConverterPage() {
         <section className="mb-8">
           <p className="text-[11px] uppercase tracking-[0.18em] text-accent font-semibold mb-2">Free Tool · Real-time Conversion</p>
           <h1 className="font-display text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.05]">
-            Coordinates converter — convert between <span className="text-accent">DD, DMS, DDM, UTM, and Plus Codes</span>
+            Coordinates converter — convert between <span className="text-accent">DD, DMS, UTM, Plus Codes, and geohash</span>
           </h1>
           <p className="text-lg text-fg-muted mt-4 max-w-3xl">
-            Convert any GPS coordinate between <strong className="text-fg">Decimal Degrees</strong>, <strong className="text-fg">Degrees-Minutes-Seconds</strong>, <strong className="text-fg">Degrees-Decimal-Minutes</strong>, and <strong className="text-fg">Universal Transverse Mercator</strong>, and <strong className="text-fg">Plus Codes</strong>. Paste a coordinate in any common format, or edit any field, and every other format updates instantly, along with the MGRS grid reference and a map pin. Free, no signup, runs entirely in your browser.
+            Convert any GPS coordinate between <strong className="text-fg">Decimal Degrees</strong>, <strong className="text-fg">Degrees-Minutes-Seconds</strong>, <strong className="text-fg">Degrees-Decimal-Minutes</strong>, and <strong className="text-fg">Universal Transverse Mercator</strong>, <strong className="text-fg">Plus Codes</strong>, and <strong className="text-fg">geohash</strong>. Paste a coordinate in any common format, or edit any field, and every other format updates instantly, along with the MGRS grid reference and a map pin. Free, no signup, runs entirely in your browser.
           </p>
         </section>
 
@@ -218,6 +233,7 @@ export default function CoordinatesConverterPage() {
             <li><strong className="text-fg">Bare numbers:</strong> two, four, or six numbers are read as DD, DDM, or DMS</li>
             <li><strong className="text-fg">UTM:</strong> <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">31U 448252 5411957</code></li>
             <li><strong className="text-fg">Plus Codes:</strong> <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">8FW4V75V+9R</code>, or a short code with a town, such as <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">V75V+9R Paris</code></li>
+            <li><strong className="text-fg">Geohash:</strong> <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">u09tunquc</code> (five characters or more) or a <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">geohash.org/u09tunquc</code> link</li>
             <li><strong className="text-fg">Map links:</strong> a Google Maps URL containing <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">@lat,lon</code> or <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">?q=lat,lon</code></li>
           </ul>
           <p className="mt-3 text-fg-muted leading-relaxed">
@@ -394,6 +410,47 @@ export default function CoordinatesConverterPage() {
           <p className="mt-3 text-fg-muted leading-relaxed">
             To convert a Plus Code, type it into row ⑥ of the tool or paste it into the box at the top. A full code needs nothing else. A short code can carry a town after it; the town is looked up on OpenStreetMap&rsquo;s Nominatim service when you press convert, and only the town name is sent. Typed into row ⑥ without a town, a short code is placed near the converter&rsquo;s current position. The encoder and decoder follow Google&rsquo;s{' '}
             <a href="https://github.com/google/open-location-code" className="text-accent hover:underline" rel="noopener" target="_blank">open-source specification</a>; we checked them against Google&rsquo;s reference JavaScript library on 20,000 random points, and every code, decoded cell, and recovered short code matched.
+          </p>
+        </section>
+
+        <section className="mt-10">
+          <h2 className="font-display text-2xl font-bold">Geohash: coordinates as a sortable string</h2>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            A geohash turns a latitude and longitude into a short string such as <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">u09tunquc</code>. Gustavo Niemeyer released it into the public domain in 2008, and it is now built into databases and search engines (Elasticsearch, Redis, MongoDB, and PostGIS among them), because places that are close together usually share the start of their geohash. That makes &ldquo;find everything near here&rdquo; a simple prefix search.
+          </p>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            The encoding halves the map again and again. The first bit says whether the point is in the east or west half of the world, the second whether it is in the north or south half, and so on, alternating longitude and latitude. Every five bits become one character from a 32-character alphabet (<code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">0123456789bcdefghjkmnpqrstuvwxyz</code>, without a, i, l, and o). So each extra character makes the cell 32 times smaller, alternately four by eight or eight by four.
+          </p>
+          <div className="mt-4 overflow-x-auto rounded-xl ring-1 ring-line">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="bg-tint/5 text-left text-fg-muted">
+                  <th className="px-3 py-2 font-semibold">Characters</th>
+                  <th className="px-3 py-2 font-semibold">Cell height (north–south)</th>
+                  <th className="px-3 py-2 font-semibold">Cell width at the equator</th>
+                </tr>
+              </thead>
+              <tbody>
+                {geohashSizes.map((g) => (
+                  <tr key={g.n} className="border-t border-line-subtle">
+                    <td className="px-3 py-2 font-mono text-xs text-fg">{g.n}</td>
+                    <td className="px-3 py-2 font-mono text-xs text-fg-muted">{g.h}</td>
+                    <td className="px-3 py-2 font-mono text-xs text-fg-muted">{g.w}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            Cells get narrower east–west toward the poles, so the widths above are the largest they get. Nine characters (about 5 m) suit most uses; the tool shows the size of the cell at the current latitude next to the length selector. The same five landmarks as nine-character geohashes:
+          </p>
+          <ul className="mt-3 space-y-1.5 text-fg-muted list-disc list-inside leading-relaxed">
+            {landmarks.map((l) => (
+              <li key={l.name}>{l.name}: <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">{l.gh}</code></li>
+            ))}
+          </ul>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            One catch: the shared-prefix rule only works one way. Two points with a long common prefix are always close, but two close points can have completely different geohashes when a cell boundary runs between them; either side of the Greenwich meridian is the extreme case, where the first character already differs. Proximity searches therefore check the neighbouring cells as well. As with Plus Codes, a geohash names a cell, and the converter puts the pin at its centre. We checked the encoder and decoder against the widely used ngeohash library on 20,000 random points, with every hash and cell edge matching.
           </p>
         </section>
 

@@ -8,6 +8,7 @@ import {
   latLonToUtm, utmToLatLon, utmToMgrs, parseCoordinate,
 } from './geo.js';
 import { encode as plusCode, isValid as isPlusCode } from './pluscode.js';
+import { encode as geohash, decode as decodeGeohash, isValid as isGeohash, cellDegrees } from './geohash.js';
 
 const MapView = dynamic(() => import('../components/MapView.jsx'), {
   ssr: false,
@@ -50,6 +51,9 @@ export default function Tool() {
   const [olc, setOlc] = useState('');
   const [olcNote, setOlcNote] = useState('');
   const [busy, setBusy] = useState(false);
+  const [gh, setGh] = useState('');
+  const [ghNote, setGhNote] = useState('');
+  const [ghLen, setGhLen] = useState(9);
 
   const utm = latLonToUtm(pos.lat, pos.lon);
   const mgrs = utm ? utmToMgrs(utm) : null;
@@ -146,12 +150,30 @@ export default function Tool() {
       setError({ source, msg: r.error });
       return;
     }
-    if (apply(r.lat, r.lon, source)) setNote(`Read as ${r.format}.${note}`);
+    if (!apply(r.lat, r.lon, source)) return;
+    if (r.format === 'Geohash') setGhLen(r.length);
+    setNote(`Read as ${r.format}.${note}`);
   }
 
   const onPaste = (e) => {
     e.preventDefault();
     readCoordinate(paste, 'paste', setPasteNote);
+  };
+  const onGh = (e) => {
+    e.preventDefault();
+    const text = gh.trim();
+    if (!isGeohash(text)) {
+      setGhNote('');
+      setError({ source: 'gh', msg: 'A geohash uses only 0-9 and the letters b-z without a, i, l, or o, and is 1 to 12 characters long.' });
+      return;
+    }
+    // Typed here it is known to be a geohash, so any length is accepted (the
+    // paste box needs five or more characters to tell one apart).
+    const d = decodeGeohash(text);
+    if (apply(d.lat, d.lon, 'gh')) {
+      setGhLen(text.length);
+      setGhNote(`Placed at the centre of the ${text.length}-character cell.`);
+    }
   };
   const onOlc = (e) => {
     e.preventDefault();
@@ -176,6 +198,11 @@ export default function Tool() {
   const ddText = `${pos.lat.toFixed(6)}, ${pos.lon.toFixed(6)}`;
   const dmsText = `${f.dms.latD}°${f.dms.latM}'${f.dms.latS}"${f.dms.latH} ${f.dms.lonD}°${f.dms.lonM}'${f.dms.lonS}"${f.dms.lonH}`;
   const ddmText = `${f.ddm.latD}°${f.ddm.latM}'${f.ddm.latH} ${f.ddm.lonD}°${f.ddm.lonM}'${f.ddm.lonH}`;
+  const ghText = geohash(pos.lat, pos.lon, ghLen);
+  // Cell size in meters at this latitude (east-west shrinks with cos(lat)).
+  const ghCell = cellDegrees(ghLen);
+  const ghH = ghCell.lat * 111320, ghW = ghCell.lon * 111320 * Math.cos((pos.lat * Math.PI) / 180);
+  const sizeText = (m) => (m >= 1000 ? `${(m / 1000).toFixed(m >= 10000 ? 0 : 1)} km` : m >= 1 ? `${m.toFixed(1)} m` : `${Math.round(m * 100)} cm`);
   const olc10 = plusCode(pos.lat, pos.lon, 10);
   const olc11 = plusCode(pos.lat, pos.lon, 11);
   const utmText = utm ? `${utm.zone}${utm.band} ${Math.round(utm.easting)} ${Math.round(utm.northing)}` : '';
@@ -304,6 +331,31 @@ export default function Tool() {
         <p className="text-xs text-fg-subtle mt-2">
           The 10-digit code is a cell about 14 × 14 m at the equator; the 11-digit code narrows it to about 3 m.
         </p>
+      </form>
+
+      {/* Geohash (input and output) */}
+      <form onSubmit={onGh} className="bg-tint/5 border border-line rounded-lg p-4 mb-3">
+        <label htmlFor="gh" className="block text-[11px] uppercase tracking-wider text-accent font-semibold mb-2">⑦ Geohash</label>
+        <div className="flex gap-2">
+          <input
+            id="gh"
+            className="field font-mono flex-1 lowercase"
+            value={gh}
+            onChange={(e) => setGh(e.target.value)}
+            placeholder="u09tunquc"
+          />
+          <button type="submit" className="btn-ghost">Convert geohash</button>
+        </div>
+        {ghNote && !error && <p className="text-xs text-fg-subtle mt-2">{ghNote}</p>}
+        {errFor('gh')}
+        <CopyRow text={ghText} />
+        <div className="flex flex-wrap items-center gap-2 mt-2 text-xs text-fg-subtle">
+          <label htmlFor="gh-len">Characters</label>
+          <select id="gh-len" className="field py-1" value={ghLen} onChange={(e) => setGhLen(Number(e.target.value))}>
+            {Array.from({ length: 12 }, (_, i) => i + 1).map((n) => <option key={n} value={n}>{n}</option>)}
+          </select>
+          <span>cell about {sizeText(ghH)} × {sizeText(ghW)} here (north–south × east–west)</span>
+        </div>
       </form>
 
       <div className="h-[260px] rounded-2xl overflow-hidden ring-1 ring-line">

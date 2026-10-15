@@ -4,6 +4,7 @@
 // series (Snyder, "Map Projections — A Working Manual", USGS PP 1395).
 
 import { isValid, isFull, decode, recoverNearest } from './pluscode.js';
+import { isValid as isGeohash, decode as decodeGeohash } from './geohash.js';
 
 const A = 6378137; // WGS 84 semi-major axis (m)
 const E2 = 0.00669438; // WGS 84 first eccentricity squared
@@ -160,7 +161,8 @@ function parsePart(str) {
 }
 
 // Accepts DD, DMS, DDM (with or without symbols and hemisphere letters),
-// UTM like "31U 448252 5411957", full Plus Codes like "8FW4V75V+9R", and
+// UTM like "31U 448252 5411957", full Plus Codes like "8FW4V75V+9R",
+// geohashes like "u09tunquc" (or a geohash.org link), and
 // Google Maps links (@lat,lon or q=lat,lon). A short Plus Code ("V75V+9R
 // Paris") needs a reference point: pass `ref` ({ lat, lon }) to recover it;
 // without one the result carries `shortPlusCode` and `locality` so the
@@ -168,6 +170,15 @@ function parsePart(str) {
 export function parseCoordinate(input, ref) {
   const raw = String(input || '').trim();
   if (!raw) return { error: 'Paste a coordinate first.' };
+
+  // A geohash is one word of base-32 characters. Requiring five or more (a
+  // cell about 5 km wide) and at least one letter keeps bare numbers and
+  // fragments like "N48" from being read as one.
+  const gh = raw.match(/^(?:(?:https?:\/\/)?geohash\.org\/)?([0-9a-z]{5,12})\/?$/i);
+  if (gh && isGeohash(gh[1]) && /[a-z]/i.test(gh[1])) {
+    const d = decodeGeohash(gh[1]);
+    return { lat: d.lat, lon: d.lon, format: 'Geohash', length: d.length };
+  }
 
   const pc = raw.match(/(?:^|\s)([23456789CFGHJMPQRVWX0]{2,8}\+[23456789CFGHJMPQRVWX]*)(?=[\s,]|$)/i);
   if (pc && isValid(pc[1])) {

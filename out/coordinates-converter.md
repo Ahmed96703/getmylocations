@@ -1,14 +1,14 @@
 ---
-title: "Coordinates Converter — DD, DMS, UTM & Plus Codes (Free)"
-description: "Convert GPS coordinates between decimal degrees, DMS, DDM, UTM, MGRS and Plus Codes in both directions, with the math shown. Free, no signup."
+title: "Coordinates Converter — DD, DMS, UTM, Plus Code & Geohash"
+description: "Convert GPS coordinates between decimal degrees, DMS, DDM, UTM, MGRS, Plus Codes and geohash in both directions, with the math shown. Free."
 url: https://getmylocations.com/coordinates-converter
 ---
 
 Free Tool · Real-time Conversion
 
-# Coordinates converter — convert between DD, DMS, DDM, UTM, and Plus Codes
+# Coordinates converter — convert between DD, DMS, UTM, Plus Codes, and geohash
 
-Convert any GPS coordinate between **Decimal Degrees**, **Degrees-Minutes-Seconds**, **Degrees-Decimal-Minutes**, and **Universal Transverse Mercator**, and **Plus Codes**. Paste a coordinate in any common format, or edit any field, and every other format updates instantly, along with the MGRS grid reference and a map pin. Free, no signup, runs entirely in your browser.
+Convert any GPS coordinate between **Decimal Degrees**, **Degrees-Minutes-Seconds**, **Degrees-Decimal-Minutes**, and **Universal Transverse Mercator**, **Plus Codes**, and **geohash**. Paste a coordinate in any common format, or edit any field, and every other format updates instantly, along with the MGRS grid reference and a map pin. Free, no signup, runs entirely in your browser.
 
 ## Convert coordinates
 
@@ -40,6 +40,7 @@ The _Paste any coordinate_ box at the top of the tool works out which format you
 -   **Bare numbers:** two, four, or six numbers are read as DD, DDM, or DMS
 -   **UTM:** `31U 448252 5411957`
 -   **Plus Codes:** `8FW4V75V+9R`, or a short code with a town, such as `V75V+9R Paris`
+-   **Geohash:** `u09tunquc` (five characters or more) or a `geohash.org/u09tunquc` link
 -   **Map links:** a Google Maps URL containing `@lat,lon` or `?q=lat,lon`
 
 If the longitude is written first with its E or W letter, the tool swaps the pair for you. It tells you which format it detected, so you can confirm it read your input the way you meant.
@@ -125,6 +126,34 @@ East–west cells shrink toward the poles, as longitude lines converge, so the s
 
 To convert a Plus Code, type it into row ⑥ of the tool or paste it into the box at the top. A full code needs nothing else. A short code can carry a town after it; the town is looked up on OpenStreetMap’s Nominatim service when you press convert, and only the town name is sent. Typed into row ⑥ without a town, a short code is placed near the converter’s current position. The encoder and decoder follow Google’s [open-source specification](https://github.com/google/open-location-code); we checked them against Google’s reference JavaScript library on 20,000 random points, and every code, decoded cell, and recovered short code matched.
 
+## Geohash: coordinates as a sortable string
+
+A geohash turns a latitude and longitude into a short string such as `u09tunquc`. Gustavo Niemeyer released it into the public domain in 2008, and it is now built into databases and search engines (Elasticsearch, Redis, MongoDB, and PostGIS among them), because places that are close together usually share the start of their geohash. That makes “find everything near here” a simple prefix search.
+
+The encoding halves the map again and again. The first bit says whether the point is in the east or west half of the world, the second whether it is in the north or south half, and so on, alternating longitude and latitude. Every five bits become one character from a 32-character alphabet (`0123456789bcdefghjkmnpqrstuvwxyz`, without a, i, l, and o). So each extra character makes the cell 32 times smaller, alternately four by eight or eight by four.
+
+| Characters | Cell height (north–south) | Cell width at the equator |
+| --- | --- | --- |
+| 1 | 5,009 km | 5,009 km |
+| 3 | 157 km | 157 km |
+| 5 | 4.9 km | 4.9 km |
+| 6 | 611 m | 1.2 km |
+| 7 | 153 m | 153 m |
+| 8 | 19.1 m | 38.2 m |
+| 9 | 4.8 m | 4.8 m |
+| 10 | 59.7 cm | 1.2 m |
+| 12 | 1.9 cm | 3.7 cm |
+
+Cells get narrower east–west toward the poles, so the widths above are the largest they get. Nine characters (about 5 m) suit most uses; the tool shows the size of the cell at the current latitude next to the length selector. The same five landmarks as nine-character geohashes:
+
+-   Eiffel Tower, Paris: `u09tunquc`
+-   Statue of Liberty, New York: `dr5r7p62n`
+-   Sydney Opera House: `r3gx2ux9g`
+-   Mount Everest summit: `tuvz4p0f7`
+-   Ny-Ålesund, Svalbard: `uq02zrxe7`
+
+One catch: the shared-prefix rule only works one way. Two points with a long common prefix are always close, but two close points can have completely different geohashes when a cell boundary runs between them; either side of the Greenwich meridian is the extreme case, where the first character already differs. Proximity searches therefore check the neighbouring cells as well. As with Plus Codes, a geohash names a cell, and the converter puts the pin at its centre. We checked the encoder and decoder against the widely used ngeohash library on 20,000 random points, with every hash and cell edge matching.
+
 ## Datum: every format here assumes WGS 84
 
 A coordinate is only meaningful together with its datum, the model of the Earth’s shape it is measured against. Every result on this page uses WGS 84 (also listed as EPSG:4326), the datum GPS satellites broadcast and that Google Maps, Apple Maps, and OpenStreetMap use. Converting between formats never changes the datum; it only rewrites the same point in a different notation.
@@ -201,6 +230,10 @@ DD uses signs: positive for North/East, negative for South/West. DMS uses hemisp
 Two landmarks worth memorising as sanity checks: Sydney is -33.8568, 151.2153 (south, east — first number negative, second positive); the Statue of Liberty is 40.6892, -74.0445 (north, west — first positive, second negative). If your map ends up in the wrong ocean, one of those signs is off.
 
 ## Frequently asked questions
+
+How do I decode a geohash to latitude and longitude?+
+
+Type the geohash into the Geohash row of the tool (any length from 1 to 12 characters) or paste it into the box at the top, and press convert. The tool places the point at the centre of the geohash cell, so u09tunquc becomes 48.858411, 2.294490, and every other format updates. To go the other way, enter a coordinate in any format and pick how many characters you want; nine characters is a cell about 5 m across.
 
 How do I convert a Plus Code to latitude and longitude?+
 
