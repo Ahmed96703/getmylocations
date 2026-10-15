@@ -136,10 +136,10 @@ export const POSTS = [
   {
     slug: 'how-gps-works',
     topic: 'gps',
-    title: 'How GPS Works: From Satellites to Your Phone',
-    excerpt: 'A clear, no-buzzword walkthrough of how satellites 20,000 km overhead let your phone know exactly where you are — and what can go wrong.',
+    title: 'How GPS Works: Satellites, Clocks and Your Phone, Explained',
+    excerpt: 'How 31 satellites and atomic clocks tell your phone where it is: trilateration, relativity, A-GPS, accuracy limits, jamming and RTK, with sources.',
     date: '2026-05-10',
-    modifiedDate: '2026-05-10',
+    modifiedDate: '2026-10-15',
     readingTime: 9,
     heroImage: 'how-gps-works-hero.jpg',
     tags: ['gps', 'satellites', 'technology'],

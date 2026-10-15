@@ -33,6 +33,15 @@ How satellites put a dot on your screen, how to read and share the numbers, and 
     Read article →](https://getmylocations.com/blog/how-to-find-your-gps-coordinates)
 -   [
     
+    Updated October 15, 2026·9 min read
+    
+    ### How GPS Works: Satellites, Clocks and Your Phone, Explained
+    
+    How 31 satellites and atomic clocks tell your phone where it is: trilateration, relativity, A-GPS, accuracy limits, jamming and RTK, with sources.
+    
+    Read article →](https://getmylocations.com/blog/how-gps-works)
+-   [
+    
     June 1, 2026·7 min read
     
     ### History of Latitude and Longitude — Sextants to Satellites
@@ -58,15 +67,6 @@ How satellites put a dot on your screen, how to read and share the numbers, and 
     Which is which, the order in coordinates, signs, decimal precision, the three formats you will meet, and the antimeridian bug that breaks naive code.
     
     Read article →](https://getmylocations.com/blog/latitude-vs-longitude-explained)
--   [
-    
-    May 10, 2026·9 min read
-    
-    ### How GPS Works: From Satellites to Your Phone
-    
-    A clear, no-buzzword walkthrough of how satellites 20,000 km overhead let your phone know exactly where you are — and what can go wrong.
-    
-    Read article →](https://getmylocations.com/blog/how-gps-works)
 -   [
     
     May 9, 2026·6 min read
