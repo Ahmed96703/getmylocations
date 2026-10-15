@@ -144,7 +144,7 @@ export default function LiveLocationPage() {
         <section className="mt-12">
           <h2 className="font-display text-2xl font-bold">Live vs. one-shot — the difference matters</h2>
           <p className="mt-3 text-fg-muted leading-relaxed">
-            Most location tools return a single fix and then go quiet. You tap, you see a coordinate, the page is done. That is fine if you are standing still and want to copy your position into a form. It is useless the moment you start moving — the pin stays where you were five seconds ago.
+            Most location tools return a single fix and then go quiet. You tap, you see a coordinate, the page is done. That is fine if you are standing still and want to copy your position into a form (the iPhone Compass app or Google Maps can do that too; see <Link href="/blog/how-to-find-your-gps-coordinates" className="text-accent hover:underline">how to find GPS coordinates on any device</Link>). It is useless the moment you start moving — the pin stays where you were five seconds ago.
           </p>
           <p className="mt-3 text-fg-muted leading-relaxed">
             Live tracking is the opposite. The page asks the browser to <em>keep handing back new readings</em> as the GPS receiver computes them. The browser provides this through a standard call called <code className="font-mono text-sm bg-tint/10 px-1.5 py-0.5 rounded">watchPosition</code>: you supply a callback once, and it fires every time the operating system has a fresh fix to report. That is exactly what the tool above does, and it is why the &ldquo;Updates&rdquo; counter rises on its own while the &ldquo;Live&rdquo; badge is showing.

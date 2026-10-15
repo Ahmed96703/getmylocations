@@ -194,39 +194,18 @@ export default function MyLocationPage() {
 
           <hr className="my-10 border-line" />
 
-          <h2 className="font-display text-2xl font-bold">How to find your location on any device</h2>
+          <h2 className="font-display text-2xl font-bold">If the tool cannot read your location</h2>
           <p className="mt-3 text-fg-muted leading-relaxed">
-            The tool above does the same thing on every platform, but the permission flow differs. The goal
-            in each case is to make sure the browser gets a fresh, precise reading rather than a stale or
-            fuzzy one.
-          </p>
-
-          <h3 className="font-display text-lg font-semibold mt-6 text-fg">iPhone (Safari or Chrome)</h3>
-          <ol className="mt-2 space-y-1.5 text-fg-muted list-decimal list-inside leading-relaxed">
-            <li>Pull down Control Center and check that Location Services is enabled (the arrow icon).</li>
-            <li>If you have used the page before and it remembers an old permission, go to Safari → Settings → Privacy &amp; Security → Location and reset it to <em>Ask</em>.</li>
-            <li>Tap the button, and when iOS asks, choose <em>Allow Once</em> with <em>Precise: On</em>.</li>
-            <li>Wait two or three seconds. The street address shows up under the accuracy radius once the lookup responds.</li>
-          </ol>
-
-          <h3 className="font-display text-lg font-semibold mt-6 text-fg">Android (Chrome)</h3>
-          <ol className="mt-2 space-y-1.5 text-fg-muted list-decimal list-inside leading-relaxed">
-            <li>Pull down the quick-settings panel and confirm Location is on.</li>
-            <li>In Chrome, tap the address bar lock icon → Permissions → Location → Allow if the site is remembered.</li>
-            <li>Tap the button. Android offers a precise/approximate choice — choose <em>Precise</em>.</li>
-            <li>The address line resolves as soon as the OS returns the GPS fix.</li>
-          </ol>
-
-          <h3 className="font-display text-lg font-semibold mt-6 text-fg">Desktop or laptop</h3>
-          <ol className="mt-2 space-y-1.5 text-fg-muted list-decimal list-inside leading-relaxed">
-            <li>Click the button. A permission prompt appears under the address bar.</li>
-            <li>Click <em>Allow</em>. Because most laptops have no GPS chip, the browser uses Wi-Fi positioning instead.</li>
-            <li>Expect the address to resolve to your neighborhood or city center rather than your exact street, with an accuracy radius of 10 to 50 meters.</li>
-          </ol>
-          <p className="mt-4 text-fg-muted leading-relaxed">
-            If the permission prompt never appears, or the reading fails outright, the{' '}
-            <Link href="/fix-location-not-working" className="text-accent hover:underline">location troubleshooting checklist</Link>{' '}
-            walks through the causes in order.
+            The tool needs location switched on in three places: for the device, for your browser, and for this
+            site. If the prompt never appears or the reading fails, follow the steps for{' '}
+            <Link href="/blog/enable-location-on-iphone-and-android" className="text-accent hover:underline">iPhone and Android</Link>{' '}
+            or{' '}
+            <Link href="/blog/enable-location-on-windows-and-mac" className="text-accent hover:underline">Windows and Mac</Link>,
+            or work through the{' '}
+            <Link href="/fix-location-not-working" className="text-accent hover:underline">location troubleshooting checklist</Link>.
+            To read your coordinates in the apps already on your phone or computer instead (the iPhone Compass
+            app, Google Maps or Apple Maps), see{' '}
+            <Link href="/blog/how-to-find-your-gps-coordinates" className="text-accent hover:underline">how to find GPS coordinates on any device</Link>.
           </p>
 
           <hr className="my-10 border-line" />

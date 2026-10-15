@@ -34,31 +34,9 @@ That second step is called **reverse geocoding**. The page calls a free OpenStre
 
 * * *
 
-## How to find your location on any device
+## If the tool cannot read your location
 
-The tool above does the same thing on every platform, but the permission flow differs. The goal in each case is to make sure the browser gets a fresh, precise reading rather than a stale or fuzzy one.
-
-### iPhone (Safari or Chrome)
-
-1.  Pull down Control Center and check that Location Services is enabled (the arrow icon).
-2.  If you have used the page before and it remembers an old permission, go to Safari → Settings → Privacy & Security → Location and reset it to _Ask_.
-3.  Tap the button, and when iOS asks, choose _Allow Once_ with _Precise: On_.
-4.  Wait two or three seconds. The street address shows up under the accuracy radius once the lookup responds.
-
-### Android (Chrome)
-
-1.  Pull down the quick-settings panel and confirm Location is on.
-2.  In Chrome, tap the address bar lock icon → Permissions → Location → Allow if the site is remembered.
-3.  Tap the button. Android offers a precise/approximate choice — choose _Precise_.
-4.  The address line resolves as soon as the OS returns the GPS fix.
-
-### Desktop or laptop
-
-1.  Click the button. A permission prompt appears under the address bar.
-2.  Click _Allow_. Because most laptops have no GPS chip, the browser uses Wi-Fi positioning instead.
-3.  Expect the address to resolve to your neighborhood or city center rather than your exact street, with an accuracy radius of 10 to 50 meters.
-
-If the permission prompt never appears, or the reading fails outright, the [location troubleshooting checklist](https://getmylocations.com/fix-location-not-working) walks through the causes in order.
+The tool needs location switched on in three places: for the device, for your browser, and for this site. If the prompt never appears or the reading fails, follow the steps for [iPhone and Android](https://getmylocations.com/blog/enable-location-on-iphone-and-android) or [Windows and Mac](https://getmylocations.com/blog/enable-location-on-windows-and-mac), or work through the [location troubleshooting checklist](https://getmylocations.com/fix-location-not-working). To read your coordinates in the apps already on your phone or computer instead (the iPhone Compass app, Google Maps or Apple Maps), see [how to find GPS coordinates on any device](https://getmylocations.com/blog/how-to-find-your-gps-coordinates).
 
 * * *
 

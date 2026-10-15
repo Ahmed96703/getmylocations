@@ -104,11 +104,11 @@ export const POSTS = [
   {
     slug: 'how-to-find-your-gps-coordinates',
     topic: 'gps',
-    title: 'How to Find Your GPS Coordinates on Any Device (2026)',
-    excerpt: 'The fastest ways to get your exact latitude and longitude on iPhone, Android, Mac, Windows, or any browser, with accuracy and privacy tips.',
+    title: 'How to Find GPS Coordinates on iPhone, Android, Mac & PC',
+    excerpt: 'Find your latitude and longitude with apps you already have: iPhone Compass, Apple Maps, Google Maps on phone or desktop, and how accurate they are.',
     date: '2026-05-13',
-    modifiedDate: '2026-10-05',
-    readingTime: 7,
+    modifiedDate: '2026-10-15',
+    readingTime: 6,
     tags: ['gps', 'coordinates', 'guide'],
   },
   {

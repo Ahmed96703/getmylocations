@@ -16,7 +16,7 @@ Tap _Start live tracking_ to begin. Your position refreshes automatically as you
 
 ## Live vs. one-shot — the difference matters
 
-Most location tools return a single fix and then go quiet. You tap, you see a coordinate, the page is done. That is fine if you are standing still and want to copy your position into a form. It is useless the moment you start moving — the pin stays where you were five seconds ago.
+Most location tools return a single fix and then go quiet. You tap, you see a coordinate, the page is done. That is fine if you are standing still and want to copy your position into a form (the iPhone Compass app or Google Maps can do that too; see [how to find GPS coordinates on any device](https://getmylocations.com/blog/how-to-find-your-gps-coordinates)). It is useless the moment you start moving — the pin stays where you were five seconds ago.
 
 Live tracking is the opposite. The page asks the browser to _keep handing back new readings_ as the GPS receiver computes them. The browser provides this through a standard call called `watchPosition`: you supply a callback once, and it fires every time the operating system has a fresh fix to report. That is exactly what the tool above does, and it is why the “Updates” counter rises on its own while the “Live” badge is showing.
 

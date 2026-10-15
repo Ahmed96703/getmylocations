@@ -110,7 +110,8 @@ export default function HomePage() {
             <Link href="/address-finder" className="text-accent hover:underline">address finder</Link>,
             and a{' '}
             <Link href="/live-location" className="text-accent hover:underline">live location tracker</Link>{' '}
-            that updates as you move.
+            that updates as you move. To read your coordinates in the apps already on your phone or computer, see{' '}
+            <Link href="/blog/how-to-find-your-gps-coordinates" className="text-accent hover:underline">how to find GPS coordinates on any device</Link>.
           </p>
           <p className="mt-3 text-sm text-fg-subtle">
             Last updated <time dateTime="2026-10-14">October 14, 2026</time>. Articles and tools are reviewed by{' '}
