@@ -31,9 +31,8 @@ export const metadata = {
   authors: [{ name: 'GetMyLocations' }],
   generator: 'Next.js',
   referrer: 'strict-origin-when-cross-origin',
-  alternates: {
-    canonical: '/',
-  },
+  // No site-wide canonical: every page sets its own, and a default here
+  // would make error pages claim the homepage as their canonical.
   robots: {
     index: true,
     follow: true,
