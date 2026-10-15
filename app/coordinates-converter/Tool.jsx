@@ -7,6 +7,7 @@ import {
   validateLatLon, ddToDms, ddToDdm, dmsToDd, ddmToDd,
   latLonToUtm, utmToLatLon, utmToMgrs, parseCoordinate,
 } from './geo.js';
+import { encode as plusCode, isValid as isPlusCode } from './pluscode.js';
 
 const MapView = dynamic(() => import('../components/MapView.jsx'), {
   ssr: false,
@@ -46,6 +47,9 @@ export default function Tool() {
   const [error, setError] = useState(null); // { source, msg }
   const [paste, setPaste] = useState('');
   const [pasteNote, setPasteNote] = useState('');
+  const [olc, setOlc] = useState('');
+  const [olcNote, setOlcNote] = useState('');
+  const [busy, setBusy] = useState(false);
 
   const utm = latLonToUtm(pos.lat, pos.lon);
   const mgrs = utm ? utmToMgrs(utm) : null;
@@ -111,15 +115,52 @@ export default function Tool() {
   };
   const setUtm = (key, value) => setF({ ...f, utm: { ...f.utm, [key]: value } });
 
-  const onPaste = (e) => {
-    e.preventDefault();
-    const r = parseCoordinate(paste);
+  // A short Plus Code ("V75V+9R Paris") only makes sense near a reference
+  // point. The town named after it is looked up on OpenStreetMap's Nominatim
+  // (only when the visitor converts); without a town, the converter's current
+  // position is the reference.
+  async function readCoordinate(text, source, setNote) {
+    let r = parseCoordinate(text);
+    let note = '';
+    if (r.shortPlusCode) {
+      if (r.locality) {
+        setBusy(true);
+        try {
+          const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${encodeURIComponent(r.locality)}`, { headers: { Accept: 'application/json' } });
+          const data = await res.json();
+          if (!data?.length) throw new Error('none');
+          r = parseCoordinate(r.shortPlusCode, { lat: Number(data[0].lat), lon: Number(data[0].lon) });
+          note = ` Short code recovered near ${data[0].display_name.split(',').slice(0, 2).join(',')}.`;
+        } catch {
+          r = { error: `Could not find "${r.locality}". Try a larger town nearby, or paste the full code.` };
+        } finally {
+          setBusy(false);
+        }
+      } else if (source === 'olc') {
+        r = parseCoordinate(r.shortPlusCode, pos);
+        note = ' Short code recovered near the current position; add a town after it to place it elsewhere.';
+      }
+    }
     if (r.error) {
-      setPasteNote('');
-      setError({ source: 'paste', msg: r.error });
+      setNote('');
+      setError({ source, msg: r.error });
       return;
     }
-    if (apply(r.lat, r.lon, 'paste')) setPasteNote(`Read as ${r.format}.`);
+    if (apply(r.lat, r.lon, source)) setNote(`Read as ${r.format}.${note}`);
+  }
+
+  const onPaste = (e) => {
+    e.preventDefault();
+    readCoordinate(paste, 'paste', setPasteNote);
+  };
+  const onOlc = (e) => {
+    e.preventDefault();
+    if (!isPlusCode(olc.trim().split(/[\s,]/)[0])) {
+      setOlcNote('');
+      setError({ source: 'olc', msg: 'Enter a Plus Code such as 8FW4V75V+9R, or a short code with a town, such as V75V+9R Paris.' });
+      return;
+    }
+    readCoordinate(olc, 'olc', setOlcNote);
   };
 
   const useMyLocation = () => {
@@ -135,6 +176,8 @@ export default function Tool() {
   const ddText = `${pos.lat.toFixed(6)}, ${pos.lon.toFixed(6)}`;
   const dmsText = `${f.dms.latD}°${f.dms.latM}'${f.dms.latS}"${f.dms.latH} ${f.dms.lonD}°${f.dms.lonM}'${f.dms.lonS}"${f.dms.lonH}`;
   const ddmText = `${f.ddm.latD}°${f.ddm.latM}'${f.ddm.latH} ${f.ddm.lonD}°${f.ddm.lonM}'${f.ddm.lonH}`;
+  const olc10 = plusCode(pos.lat, pos.lon, 10);
+  const olc11 = plusCode(pos.lat, pos.lon, 11);
   const utmText = utm ? `${utm.zone}${utm.band} ${Math.round(utm.easting)} ${Math.round(utm.northing)}` : '';
 
   const CopyRow = ({ text }) => (
@@ -162,9 +205,9 @@ export default function Tool() {
             className="field font-mono flex-1"
             value={paste}
             onChange={(e) => setPaste(e.target.value)}
-            placeholder={`48°51'30.3"N 2°17'40.2"E · 31U 448252 5411957 · a Google Maps link`}
+            placeholder={`48°51'30.3"N 2°17'40.2"E · 31U 448252 5411957 · 8FW4V75V+9R · a Google Maps link`}
           />
-          <button type="submit" className="btn-primary">Convert</button>
+          <button type="submit" className="btn-primary" disabled={busy}>Convert</button>
         </div>
         {pasteNote && !error && <p className="text-xs text-fg-subtle mt-2">{pasteNote}</p>}
         {errFor('paste')}
@@ -240,6 +283,28 @@ export default function Tool() {
         <div className="text-[11px] uppercase tracking-wider text-accent font-semibold mb-1">⑤ MGRS — Military Grid Reference System</div>
         {mgrs ? <CopyRow text={mgrs} /> : <p className="text-xs text-fg-subtle mt-2">MGRS follows UTM, so it is not shown beyond 80°S or 84°N.</p>}
       </div>
+
+      {/* Plus Code (input and output) */}
+      <form onSubmit={onOlc} className="bg-tint/5 border border-line rounded-lg p-4 mb-3">
+        <label htmlFor="olc" className="block text-[11px] uppercase tracking-wider text-accent font-semibold mb-2">⑥ Plus Code — Open Location Code</label>
+        <div className="flex gap-2">
+          <input
+            id="olc"
+            className="field font-mono flex-1 uppercase"
+            value={olc}
+            onChange={(e) => setOlc(e.target.value)}
+            placeholder="8FW4V75V+9R or V75V+9R Paris"
+          />
+          <button type="submit" className="btn-ghost" disabled={busy}>Convert code</button>
+        </div>
+        {olcNote && !error && <p className="text-xs text-fg-subtle mt-2">{olcNote}</p>}
+        {errFor('olc')}
+        <CopyRow text={olc10} />
+        <CopyRow text={olc11} />
+        <p className="text-xs text-fg-subtle mt-2">
+          The 10-digit code is a cell about 14 × 14 m at the equator; the 11-digit code narrows it to about 3 m.
+        </p>
+      </form>
 
       <div className="h-[260px] rounded-2xl overflow-hidden ring-1 ring-line">
         <MapView pos={[pos.lat, pos.lon]} />

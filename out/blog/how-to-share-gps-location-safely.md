@@ -69,7 +69,7 @@ The trade-off is that fewer of your contacts have it installed, and if you need 
 
 ## Plus Codes — addresses where addresses don’t exist
 
-Plus Codes (the everyday name for [Open Location Code](https://github.com/google/open-location-code), an open-source format published by Google) are short alphanumeric strings that encode a coordinate. The Eiffel Tower is `8FW4V75V+8Q`. They work where there are no street addresses — rural areas, refugee camps, parts of Karachi where the postal system never properly covered — and they’re short enough to read aloud or write on the side of a parcel.
+Plus Codes (the everyday name for [Open Location Code](https://github.com/google/open-location-code), an open-source format published by Google) are short alphanumeric strings that encode a coordinate. The Eiffel Tower is `8FW4V75V+9R`. They work where there are no street addresses — rural areas, refugee camps, parts of Karachi where the postal system never properly covered — and they’re short enough to read aloud or write on the side of a parcel.
 
 From a privacy standpoint a Plus Code is just a static encoding of a coordinate. It has no metadata and isn’t tracked. Once you share one, the recipient can paste it into any Maps app to see the spot. They can’t use it to track you — it’s a permanent label on a place, not a beacon on you.
 

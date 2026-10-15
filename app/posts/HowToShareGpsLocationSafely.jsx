@@ -202,7 +202,7 @@ export default function HowToShareGpsLocationSafely() {
         Plus Codes (the everyday name for <a href="https://github.com/google/open-location-code" target="_blank" rel="noopener" className="text-accent hover:underline">Open Location Code</a>, an
         open-source format published by Google) are short alphanumeric
         strings that encode a coordinate. The Eiffel Tower is
-        {' '}<code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">8FW4V75V+8Q</code>.
+        {' '}<code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">8FW4V75V+9R</code>.
         They work where there are no street addresses &mdash; rural areas,
         refugee camps, parts of Karachi where the postal system never
         properly covered &mdash; and they&rsquo;re short enough to read

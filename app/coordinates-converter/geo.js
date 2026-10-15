@@ -3,6 +3,8 @@
 // maps use). UTM/MGRS formulas follow the standard transverse Mercator
 // series (Snyder, "Map Projections — A Working Manual", USGS PP 1395).
 
+import { isValid, isFull, decode, recoverNearest } from './pluscode.js';
+
 const A = 6378137; // WGS 84 semi-major axis (m)
 const E2 = 0.00669438; // WGS 84 first eccentricity squared
 const EP2 = E2 / (1 - E2);
@@ -158,10 +160,33 @@ function parsePart(str) {
 }
 
 // Accepts DD, DMS, DDM (with or without symbols and hemisphere letters),
-// UTM like "31U 448252 5411957", and Google Maps links (@lat,lon or q=lat,lon).
-export function parseCoordinate(input) {
+// UTM like "31U 448252 5411957", full Plus Codes like "8FW4V75V+9R", and
+// Google Maps links (@lat,lon or q=lat,lon). A short Plus Code ("V75V+9R
+// Paris") needs a reference point: pass `ref` ({ lat, lon }) to recover it;
+// without one the result carries `shortPlusCode` and `locality` so the
+// caller can look the place up.
+export function parseCoordinate(input, ref) {
   const raw = String(input || '').trim();
   if (!raw) return { error: 'Paste a coordinate first.' };
+
+  const pc = raw.match(/(?:^|\s)([23456789CFGHJMPQRVWX0]{2,8}\+[23456789CFGHJMPQRVWX]*)(?=[\s,]|$)/i);
+  if (pc && isValid(pc[1])) {
+    const code = pc[1].toUpperCase();
+    if (isFull(code)) {
+      const d = decode(code);
+      return { lat: d.lat, lon: d.lon, format: 'Plus Code' };
+    }
+    const locality = raw.replace(pc[1], '').replace(/^[\s,]+|[\s,]+$/g, '');
+    if (ref) {
+      const d = decode(recoverNearest(code, ref.lat, ref.lon));
+      return { lat: d.lat, lon: d.lon, format: 'Plus Code' };
+    }
+    return {
+      shortPlusCode: code,
+      locality,
+      error: `${code} is a short Plus Code. Add the town or city after it (for example "${code} Paris"), or paste the full code.`,
+    };
+  }
 
   const url = raw.match(/@(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)/)
     || raw.match(/[?&](?:q|ll|query|destination)=(-?\d+(?:\.\d+)?)(?:,|%2C)\s*(-?\d+(?:\.\d+)?)/i);

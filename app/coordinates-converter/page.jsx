@@ -3,33 +3,36 @@ import Tool from './Tool.jsx';
 import AuthorBio from '../components/AuthorBio.jsx';
 import AdSense from '../components/AdSense.jsx';
 import { ddToDms, ddToDdm, dmsToDd, latLonToUtm, utmToMgrs } from './geo.js';
+import { encode as plusCode, decode as decodePlusCode } from './pluscode.js';
 import { AUTHOR } from '../components/author.js';
 
 export const metadata = {
-  title: 'Coordinates Converter — DD, DMS, DDM & UTM (Free Tool)',
+  title: 'Coordinates Converter — DD, DMS, UTM & Plus Codes (Free)',
   description:
-    'Convert GPS coordinates between decimal degrees, DMS, DDM and UTM in both directions, with the math shown step by step. Free, private, no signup.',
+    'Convert GPS coordinates between decimal degrees, DMS, DDM, UTM, MGRS and Plus Codes in both directions, with the math shown. Free, no signup.',
   keywords: [
     'coordinates converter',
     'gps coordinates converter',
     'dd to dms',
     'decimal degrees converter',
     'utm converter',
+    'plus code converter',
+    'plus code to coordinates',
     'lat long converter',
     'convert coordinates',
   ],
   alternates: { canonical: '/coordinates-converter' },
   openGraph: {
-    title: 'Coordinates Converter — Convert DD, DMS, DDM, UTM Free',
+    title: 'Coordinates Converter — DD, DMS, DDM, UTM & Plus Codes',
     description:
-      'Convert GPS latitude and longitude between Decimal Degrees, DMS, DDM, and UTM in real time.',
+      'Convert GPS latitude and longitude between Decimal Degrees, DMS, DDM, UTM, MGRS, and Plus Codes in real time.',
     url: 'https://getmylocations.com/coordinates-converter',
     type: 'website',
     images: ['/og-image.png'],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Coordinates Converter — DD ↔ DMS ↔ DDM ↔ UTM Free',
+    title: 'Coordinates Converter — DD ↔ DMS ↔ UTM ↔ Plus Code',
     description: 'Convert GPS latitude and longitude in real time. Free, no signup, runs in your browser.',
     images: ['/og-image.png'],
   },
@@ -40,7 +43,7 @@ const webAppSchema = {
   '@type': 'WebApplication',
   name: 'Coordinates Converter',
   description:
-    'Free browser-based tool that converts GPS coordinates between Decimal Degrees (DD), Degrees-Minutes-Seconds (DMS), Degrees-Decimal-Minutes (DDM), and Universal Transverse Mercator (UTM) in both directions, outputs MGRS, reads pasted coordinates and map links, and shows the point on a map. WGS 84 datum.',
+    'Free browser-based tool that converts GPS coordinates between Decimal Degrees (DD), Degrees-Minutes-Seconds (DMS), Degrees-Decimal-Minutes (DDM), Universal Transverse Mercator (UTM), and Plus Codes (Open Location Code) in both directions, outputs MGRS, recovers short Plus Codes from a town name, reads pasted coordinates and map links, and shows the point on a map. WGS 84 datum.',
   url: 'https://getmylocations.com/coordinates-converter',
   applicationCategory: 'UtilitiesApplication',
   operatingSystem: 'Web',
@@ -69,6 +72,10 @@ const ddExamples = [
 ];
 
 const faqs = [
+  {
+    q: 'How do I convert a Plus Code to latitude and longitude?',
+    a: 'Paste the code, for example 8FW4V75V+9R, into the tool and press Convert; decimal degrees, DMS, UTM and the map update to the centre of the code\'s cell (48.858438, 2.294563 for that code). A short code such as V75V+9R needs a nearby town after it, like "V75V+9R Paris", because its first four characters were dropped. Going the other way, the tool shows the 10- and 11-digit Plus Code for whatever position is entered.',
+  },
   {
     q: 'How do I convert decimal degrees to DMS?',
     a: 'Take the integer part of the decimal degree as the degrees value. Multiply the fractional part by 60 to get minutes (keep the integer part). Multiply the remaining fraction by 60 again to get seconds. Example: 48.8584° → 48° + (0.8584 × 60)′ = 48° 51.504′ → 48° 51′ (0.504 × 60)″ = 48° 51′ 30.24″. The tool above does this automatically as you type, including the hemisphere letter.',
@@ -156,8 +163,18 @@ const landmarks = LANDMARKS.map(({ name, lat, lon }) => {
     utm: `${utm.zone}${utm.band} ${Math.round(utm.easting)} ${Math.round(utm.northing)}`,
     mgrs: utmToMgrs(utm),
     err: errCm.toFixed(2),
+    olc10: plusCode(lat, lon, 10),
+    olc11: plusCode(lat, lon, 11),
   };
 });
+
+// Plus Code cell sizes at the equator, measured from decoded cells.
+const cellSize = (code) => {
+  const c = decodePlusCode(code);
+  return { h: (c.latHi - c.latLo) * 111320, w: (c.lngHi - c.lngLo) * 111320 };
+};
+const cell10 = cellSize(plusCode(0.001, 0.001, 10));
+const cell11 = cellSize(plusCode(0.001, 0.001, 11));
 
 export default function CoordinatesConverterPage() {
   return (
@@ -180,10 +197,10 @@ export default function CoordinatesConverterPage() {
         <section className="mb-8">
           <p className="text-[11px] uppercase tracking-[0.18em] text-accent font-semibold mb-2">Free Tool · Real-time Conversion</p>
           <h1 className="font-display text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.05]">
-            Coordinates converter — convert between <span className="text-accent">DD, DMS, DDM, and UTM</span>
+            Coordinates converter — convert between <span className="text-accent">DD, DMS, DDM, UTM, and Plus Codes</span>
           </h1>
           <p className="text-lg text-fg-muted mt-4 max-w-3xl">
-            Convert any GPS coordinate between <strong className="text-fg">Decimal Degrees</strong>, <strong className="text-fg">Degrees-Minutes-Seconds</strong>, <strong className="text-fg">Degrees-Decimal-Minutes</strong>, and <strong className="text-fg">Universal Transverse Mercator</strong>. Paste a coordinate in any common format, or edit any field, and every other format updates instantly, along with the MGRS grid reference and a map pin. Free, no signup, runs entirely in your browser.
+            Convert any GPS coordinate between <strong className="text-fg">Decimal Degrees</strong>, <strong className="text-fg">Degrees-Minutes-Seconds</strong>, <strong className="text-fg">Degrees-Decimal-Minutes</strong>, and <strong className="text-fg">Universal Transverse Mercator</strong>, and <strong className="text-fg">Plus Codes</strong>. Paste a coordinate in any common format, or edit any field, and every other format updates instantly, along with the MGRS grid reference and a map pin. Free, no signup, runs entirely in your browser.
           </p>
         </section>
 
@@ -200,6 +217,7 @@ export default function CoordinatesConverterPage() {
             <li><strong className="text-fg">DDM:</strong> <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">48°51.505'N 2°17.670'E</code> or <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">N48 51.505 E2 17.670</code></li>
             <li><strong className="text-fg">Bare numbers:</strong> two, four, or six numbers are read as DD, DDM, or DMS</li>
             <li><strong className="text-fg">UTM:</strong> <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">31U 448252 5411957</code></li>
+            <li><strong className="text-fg">Plus Codes:</strong> <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">8FW4V75V+9R</code>, or a short code with a town, such as <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">V75V+9R Paris</code></li>
             <li><strong className="text-fg">Map links:</strong> a Google Maps URL containing <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">@lat,lon</code> or <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">?q=lat,lon</code></li>
           </ul>
           <p className="mt-3 text-fg-muted leading-relaxed">
@@ -330,6 +348,52 @@ export default function CoordinatesConverterPage() {
           </p>
           <p className="mt-3 text-fg-muted leading-relaxed">
             Five digits each give 1 m precision; you can drop digits from the end of both numbers for coarser references (four digits is 10 m, three is 100 m). MGRS digits are truncated, never rounded, so a point at 334,899.6 m east appears as 334900 in the UTM row but 34899 in MGRS. Both are correct.
+          </p>
+        </section>
+
+        <section className="mt-10">
+          <h2 className="font-display text-2xl font-bold">Plus Codes: an address for places without one</h2>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            A Plus Code (the official name is Open Location Code) is a short code for a location, built from the same latitude and longitude as everything else on this page. Google published it as an open, free system in 2014, and Google Maps shows one for any point you drop a pin on. It is useful where street addresses are missing or unreliable: rural roads, new housing, informal settlements, or a gate in a long fence.
+          </p>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            The code splits the world into a grid and names a cell inside it. Characters are read in pairs, latitude first then longitude, and each pair narrows the cell twenty times in each direction: 20° → 1° → 0.05° → 0.0025° → 0.000125°. The <strong className="text-fg">+</strong> always sits after the eighth character. Only 20 characters are used (<code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">23456789CFGHJMPQRVWX</code>), chosen so that no vowels can spell words and easily confused shapes like 0/O and 1/I never appear.
+          </p>
+          <ul className="mt-3 space-y-1.5 text-fg-muted list-disc list-inside leading-relaxed">
+            <li><strong className="text-fg">10 digits</strong> (e.g. <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">8FW4V75V+9R</code>): a cell about {cell10.h.toFixed(1)} × {cell10.w.toFixed(1)} m at the equator, enough for a building entrance.</li>
+            <li><strong className="text-fg">11 digits</strong> (e.g. <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">8FW4V75V+9R6</code>): the last character splits that cell into a 4 × 5 grid, about {cell11.h.toFixed(1)} × {cell11.w.toFixed(1)} m.</li>
+            <li><strong className="text-fg">Short codes</strong> (e.g. <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">V75V+9R Paris</code>): the first four characters are dropped and replaced by a nearby town. The town must be within about half a degree (roughly 50 km) of the place, which is why Google Maps prints short codes with a locality name.</li>
+          </ul>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            East–west cells shrink toward the poles, as longitude lines converge, so the sizes above are the largest a cell gets. A Plus Code describes an area, not a point; the converter places the pin at the centre of the cell, which is what Google Maps does too.
+          </p>
+          <div className="mt-4 overflow-x-auto rounded-xl ring-1 ring-line">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="bg-tint/5 text-left text-fg-muted">
+                  <th className="px-3 py-2 font-semibold">Landmark</th>
+                  <th className="px-3 py-2 font-semibold">DD</th>
+                  <th className="px-3 py-2 font-semibold">Plus Code (10)</th>
+                  <th className="px-3 py-2 font-semibold">Plus Code (11)</th>
+                  <th className="px-3 py-2 font-semibold">Short form</th>
+                </tr>
+              </thead>
+              <tbody>
+                {landmarks.map((l) => (
+                  <tr key={l.name} className="border-t border-line-subtle">
+                    <td className="px-3 py-2 text-fg-muted">{l.name}</td>
+                    <td className="px-3 py-2 font-mono text-xs text-fg-muted">{l.dd}</td>
+                    <td className="px-3 py-2 font-mono text-xs text-fg">{l.olc10}</td>
+                    <td className="px-3 py-2 font-mono text-xs text-fg-muted">{l.olc11}</td>
+                    <td className="px-3 py-2 font-mono text-xs text-fg-muted">{l.olc10.slice(4)} + town</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            To convert a Plus Code, type it into row ⑥ of the tool or paste it into the box at the top. A full code needs nothing else. A short code can carry a town after it; the town is looked up on OpenStreetMap&rsquo;s Nominatim service when you press convert, and only the town name is sent. Typed into row ⑥ without a town, a short code is placed near the converter&rsquo;s current position. The encoder and decoder follow Google&rsquo;s{' '}
+            <a href="https://github.com/google/open-location-code" className="text-accent hover:underline" rel="noopener" target="_blank">open-source specification</a>; we checked them against Google&rsquo;s reference JavaScript library on 20,000 random points, and every code, decoded cell, and recovered short code matched.
           </p>
         </section>
 

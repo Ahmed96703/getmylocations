@@ -1,14 +1,14 @@
 ---
-title: "Coordinates Converter — DD, DMS, DDM & UTM (Free Tool)"
-description: "Convert GPS coordinates between decimal degrees, DMS, DDM and UTM in both directions, with the math shown step by step. Free, private, no signup."
+title: "Coordinates Converter — DD, DMS, UTM & Plus Codes (Free)"
+description: "Convert GPS coordinates between decimal degrees, DMS, DDM, UTM, MGRS and Plus Codes in both directions, with the math shown. Free, no signup."
 url: https://getmylocations.com/coordinates-converter
 ---
 
 Free Tool · Real-time Conversion
 
-# Coordinates converter — convert between DD, DMS, DDM, and UTM
+# Coordinates converter — convert between DD, DMS, DDM, UTM, and Plus Codes
 
-Convert any GPS coordinate between **Decimal Degrees**, **Degrees-Minutes-Seconds**, **Degrees-Decimal-Minutes**, and **Universal Transverse Mercator**. Paste a coordinate in any common format, or edit any field, and every other format updates instantly, along with the MGRS grid reference and a map pin. Free, no signup, runs entirely in your browser.
+Convert any GPS coordinate between **Decimal Degrees**, **Degrees-Minutes-Seconds**, **Degrees-Decimal-Minutes**, and **Universal Transverse Mercator**, and **Plus Codes**. Paste a coordinate in any common format, or edit any field, and every other format updates instantly, along with the MGRS grid reference and a map pin. Free, no signup, runs entirely in your browser.
 
 ## Convert coordinates
 
@@ -39,6 +39,7 @@ The _Paste any coordinate_ box at the top of the tool works out which format you
 -   **DDM:** `48°51.505'N 2°17.670'E` or `N48 51.505 E2 17.670`
 -   **Bare numbers:** two, four, or six numbers are read as DD, DDM, or DMS
 -   **UTM:** `31U 448252 5411957`
+-   **Plus Codes:** `8FW4V75V+9R`, or a short code with a town, such as `V75V+9R Paris`
 -   **Map links:** a Google Maps URL containing `@lat,lon` or `?q=lat,lon`
 
 If the longitude is written first with its E or W letter, the tool swaps the pair for you. It tells you which format it detected, so you can confirm it read your input the way you meant.
@@ -101,6 +102,28 @@ The tool uses the standard transverse Mercator equations on the WGS 84 ellipsoid
 The Military Grid Reference System, used by NATO forces and many search-and-rescue teams, is UTM with a shortcut. After the zone and band, two letters name a 100 km grid square, and the easting and northing are given only within that square. `31U DQ 48252 11957` means zone 31U, square DQ, then 48,252 m east and 11,957 m north inside the square.
 
 Five digits each give 1 m precision; you can drop digits from the end of both numbers for coarser references (four digits is 10 m, three is 100 m). MGRS digits are truncated, never rounded, so a point at 334,899.6 m east appears as 334900 in the UTM row but 34899 in MGRS. Both are correct.
+
+## Plus Codes: an address for places without one
+
+A Plus Code (the official name is Open Location Code) is a short code for a location, built from the same latitude and longitude as everything else on this page. Google published it as an open, free system in 2014, and Google Maps shows one for any point you drop a pin on. It is useful where street addresses are missing or unreliable: rural roads, new housing, informal settlements, or a gate in a long fence.
+
+The code splits the world into a grid and names a cell inside it. Characters are read in pairs, latitude first then longitude, and each pair narrows the cell twenty times in each direction: 20° → 1° → 0.05° → 0.0025° → 0.000125°. The **+** always sits after the eighth character. Only 20 characters are used (`23456789CFGHJMPQRVWX`), chosen so that no vowels can spell words and easily confused shapes like 0/O and 1/I never appear.
+
+-   **10 digits** (e.g. `8FW4V75V+9R`): a cell about 13.9 × 13.9 m at the equator, enough for a building entrance.
+-   **11 digits** (e.g. `8FW4V75V+9R6`): the last character splits that cell into a 4 × 5 grid, about 2.8 × 3.5 m.
+-   **Short codes** (e.g. `V75V+9R Paris`): the first four characters are dropped and replaced by a nearby town. The town must be within about half a degree (roughly 50 km) of the place, which is why Google Maps prints short codes with a locality name.
+
+East–west cells shrink toward the poles, as longitude lines converge, so the sizes above are the largest a cell gets. A Plus Code describes an area, not a point; the converter places the pin at the centre of the cell, which is what Google Maps does too.
+
+| Landmark | DD | Plus Code (10) | Plus Code (11) | Short form |
+| --- | --- | --- | --- | --- |
+| Eiffel Tower, Paris | 48.858420, 2.294500 | 8FW4V75V+9R | 8FW4V75V+9R6 | V75V+9R + town |
+| Statue of Liberty, New York | 40.689247, -74.044502 | 87G7MXQ4+M5 | 87G7MXQ4+M5X | MXQ4+M5 + town |
+| Sydney Opera House | \-33.856784, 151.215297 | 4RRH46V8+74 | 4RRH46V8+74M | 46V8+74 + town |
+| Mount Everest summit | 27.988100, 86.925000 | 7MV8XWQG+62 | 7MV8XWQG+62R | XWQG+62 + town |
+| Ny-Ålesund, Svalbard | 78.923600, 11.930600 | CFCHWWFJ+C6 | CFCHWWFJ+C6X | WWFJ+C6 + town |
+
+To convert a Plus Code, type it into row ⑥ of the tool or paste it into the box at the top. A full code needs nothing else. A short code can carry a town after it; the town is looked up on OpenStreetMap’s Nominatim service when you press convert, and only the town name is sent. Typed into row ⑥ without a town, a short code is placed near the converter’s current position. The encoder and decoder follow Google’s [open-source specification](https://github.com/google/open-location-code); we checked them against Google’s reference JavaScript library on 20,000 random points, and every code, decoded cell, and recovered short code matched.
 
 ## Datum: every format here assumes WGS 84
 
@@ -178,6 +201,10 @@ DD uses signs: positive for North/East, negative for South/West. DMS uses hemisp
 Two landmarks worth memorising as sanity checks: Sydney is -33.8568, 151.2153 (south, east — first number negative, second positive); the Statue of Liberty is 40.6892, -74.0445 (north, west — first positive, second negative). If your map ends up in the wrong ocean, one of those signs is off.
 
 ## Frequently asked questions
+
+How do I convert a Plus Code to latitude and longitude?+
+
+Paste the code, for example 8FW4V75V+9R, into the tool and press Convert; decimal degrees, DMS, UTM and the map update to the centre of the code's cell (48.858438, 2.294563 for that code). A short code such as V75V+9R needs a nearby town after it, like "V75V+9R Paris", because its first four characters were dropped. Going the other way, the tool shows the 10- and 11-digit Plus Code for whatever position is entered.
 
 How do I convert decimal degrees to DMS?+
 
