@@ -46,6 +46,7 @@ export const metadata = {
   },
   verification: {
     google: 'jlxjqyFGo2NOPZS3SP8PhpN7qPTG2Vx-wWengnckQKU',
+    yandex: '3ce52bf25b66fa21',
   },
   openGraph: {
     type: 'website',
