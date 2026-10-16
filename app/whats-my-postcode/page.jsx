@@ -62,7 +62,7 @@ const faqs = [
   },
   {
     q: 'Does this work outside the UK?',
-    a: 'Yes. Outside Great Britain and Northern Ireland the postcode comes from OpenStreetMap, which records postcodes for most of Europe, such as 10117 in central Berlin or 75007 around the Eiffel Tower. Coverage is good in cities and patchier in the countryside. Ireland\'s Eircodes are not in open data, so the tool links to the official Eircode finder there.',
+    a: 'Yes. In the United States, use our What\'s My ZIP Code tool, which adds your county and districts. Elsewhere outside Great Britain and Northern Ireland the postcode comes from OpenStreetMap, which records postcodes for most of Europe, such as 10117 in central Berlin or 75007 around the Eiffel Tower. Coverage is good in cities and patchier in the countryside. Ireland\'s Eircodes are not in open data, so the tool links to the official Eircode finder there.',
   },
 ];
 
@@ -199,7 +199,7 @@ export default function PostcodePage() {
               { href: '/my-location', t: 'My Location', d: 'Your coordinates and address' },
               { href: '/address-finder', t: 'Address Finder', d: 'Address ↔ coordinates' },
               { href: '/satellite', t: 'Satellite View', d: 'See the address from above' },
-              { href: '/street-view', t: 'Street View', d: 'See the front of the building' },
+              { href: '/whats-my-zip-code', t: "What's My ZIP Code", d: 'For the United States' },
             ].map((t) => (
               <Link key={t.href} href={t.href} className="glass rounded-2xl p-4 hover:ring-accent/40 ring-1 ring-line transition no-underline">
                 <h3 className="font-display text-base font-bold text-fg hover:text-accent transition">{t.t}</h3>

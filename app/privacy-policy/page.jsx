@@ -90,11 +90,20 @@ export default function Privacy() {
           (source code at <span className="text-fg-muted font-mono text-sm">github.com/ideal-postcodes/postcodes.io</span>). It does
           not publish a separate privacy policy; the request carries only the coordinate or postcode and your IP, as above.
         </li>
+        <li>
+          <strong>U.S. Census Bureau geocoder</strong> — used by What&rsquo;s My ZIP Code to find the county, city, districts, and Census ZIP area for a coordinate in the United States. The page loads the answer as a small script from{' '}
+          <span className="text-fg-muted font-mono text-sm">geocoding.geo.census.gov</span>, which receives the coordinate and your IP. The Census Bureau&rsquo;s privacy policy is at{' '}
+          <span className="text-fg-muted font-mono text-sm">census.gov/about/policies/privacy.html</span>.
+        </li>
+        <li>
+          <strong>FCC Area API</strong> — a backup for the county and state on What&rsquo;s My ZIP Code when the Census service does not answer. It receives the coordinate and your IP. The FCC&rsquo;s privacy policy is at{' '}
+          <span className="text-fg-muted font-mono text-sm">fcc.gov/general/privacy-policy</span>.
+        </li>
       </ul>
       <p className="mt-3 text-fg-muted leading-relaxed">
         Each request contains the coordinate and your IP (visible to any web service
         you connect to). It does not contain a username, an email, or any identifier we
-        attach. BigDataCloud and Nominatim have their own retention policies, linked above.
+        attach. Where a service publishes a privacy or retention policy, it is linked above.
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-10">3. Map tiles</h2>

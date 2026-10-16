@@ -78,6 +78,13 @@ All nine single-job tools on this site. Each one is free, runs in your browser, 
     ](https://getmylocations.com/address-finder)
 -   [
     
+    ### What's My ZIP Code
+    
+    Your ZIP code, county, city, and congressional district from your location (US).
+    
+    ](https://getmylocations.com/whats-my-zip-code)
+-   [
+    
     ### What's My Postcode
     
     Your postcode, nearest address, council and ward from your location, in one tap.

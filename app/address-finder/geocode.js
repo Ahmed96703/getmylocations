@@ -43,6 +43,12 @@ export function searchAddress(query, onWait) {
   return throttled(() => getJson(url), onWait);
 }
 
+// Postcode search limited to some countries, e.g. searchPostcode('10118', 'us,pr').
+export function searchPostcode(postcode, countrycodes, onWait) {
+  const url = `${BASE}/search?format=jsonv2&addressdetails=1&limit=1&countrycodes=${countrycodes}&postalcode=${encodeURIComponent(postcode)}`;
+  return throttled(() => getJson(url), onWait);
+}
+
 export function reverseLookup(lat, lon, onWait) {
   const url = `${BASE}/reverse?format=jsonv2&addressdetails=1&accept-language=${encodeURIComponent(lang())}&lat=${lat}&lon=${lon}`;
   return throttled(() => getJson(url), onWait);

@@ -125,9 +125,15 @@ Your GPS coordinates + address, one tap
 
 ](https://getmylocations.com/my-location)[
 
+### What's My ZIP Code
+
+ZIP, county & district (US)
+
+](https://getmylocations.com/whats-my-zip-code)[
+
 ### What's My Postcode
 
-Postcode of any address or spot
+Postcode of any address or spot (UK)
 
 ](https://getmylocations.com/whats-my-postcode)[
 

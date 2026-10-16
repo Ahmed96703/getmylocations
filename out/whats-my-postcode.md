@@ -72,7 +72,7 @@ New streets are named and numbered by the local council first, and Royal Mail th
 
 Does this work outside the UK?
 
-Yes. Outside Great Britain and Northern Ireland the postcode comes from OpenStreetMap, which records postcodes for most of Europe, such as 10117 in central Berlin or 75007 around the Eiffel Tower. Coverage is good in cities and patchier in the countryside. Ireland's Eircodes are not in open data, so the tool links to the official Eircode finder there.
+Yes. In the United States, use our What's My ZIP Code tool, which adds your county and districts. Elsewhere outside Great Britain and Northern Ireland the postcode comes from OpenStreetMap, which records postcodes for most of Europe, such as 10117 in central Berlin or 75007 around the Eiffel Tower. Coverage is good in cities and patchier in the countryside. Ireland's Eircodes are not in open data, so the tool links to the official Eircode finder there.
 
 ## Sources
 
@@ -102,11 +102,11 @@ See the address from above
 
 ](https://getmylocations.com/satellite)[
 
-### Street View
+### What's My ZIP Code
 
-See the front of the building
+For the United States
 
-](https://getmylocations.com/street-view)
+](https://getmylocations.com/whats-my-zip-code)
 
 AA
 

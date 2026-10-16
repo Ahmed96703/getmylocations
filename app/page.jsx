@@ -67,6 +67,7 @@ const HUB_TOOLS = [
   { href: '/ip-location', t: 'IP Location', d: 'Look up the city, country, and ISP of any public IPv4 or IPv6 address.' },
   { href: '/distance-calculator', t: 'Distance Calculator', d: 'Great-circle distance between two coordinates using the Haversine formula.' },
   { href: '/address-finder', t: 'Address Finder', d: 'Address-to-coordinates and coordinates-to-address geocoding both ways.' },
+  { href: '/whats-my-zip-code', t: "What's My ZIP Code", d: 'Your ZIP code, county, city, and congressional district from your location (US).' },
   { href: '/whats-my-postcode', t: "What's My Postcode", d: 'Your postcode, nearest address, council and ward from your location, in one tap.' },
   { href: '/maps', t: 'Interactive Maps', d: 'Explore places with standard, satellite, and dark map styles.' },
   { href: '/satellite', t: 'Satellite View', d: 'See any address from above and find out when the photo was taken.' },

@@ -112,6 +112,7 @@ const siteNavSchema = {
     { '@type': 'WebPage', name: 'IP Location', url: 'https://getmylocations.com/ip-location' },
     { '@type': 'WebPage', name: 'Distance Calculator', url: 'https://getmylocations.com/distance-calculator' },
     { '@type': 'WebPage', name: 'Address Finder', url: 'https://getmylocations.com/address-finder' },
+    { '@type': 'WebPage', name: "What's My ZIP Code", url: 'https://getmylocations.com/whats-my-zip-code' },
     { '@type': 'WebPage', name: "What's My Postcode", url: 'https://getmylocations.com/whats-my-postcode' },
     { '@type': 'WebPage', name: 'Maps', url: 'https://getmylocations.com/maps' },
     { '@type': 'WebPage', name: 'Satellite View', url: 'https://getmylocations.com/satellite' },

@@ -176,7 +176,7 @@ export default function Tool() {
             <p className="mt-4 text-xs text-fg-subtle leading-relaxed">
               {res.kind === 'uk'
                 ? <>Postcode from the Office for National Statistics Postcode Directory (via postcodes.io).{res.distance != null && <> Its centre point is {formatMeters(res.distance)} from {res.from === 'gps' ? 'your position' : 'the selected point'}.</>} The nearest address is from OpenStreetMap and can be a neighbour&rsquo;s.</>
-                : <>Postcode and address from OpenStreetMap, which is edited by volunteers; check anything important against the national postal service.{res.gbMiss && ' No current UK postcode centre lies within 2 km of this point.'}</>}
+                : <>Postcode and address from OpenStreetMap, which is edited by volunteers; check anything important against the national postal service.{res.gbMiss && ' No current UK postcode centre lies within 2 km of this point.'}{res.countryCode === 'us' && <> In the US, <a href="/whats-my-zip-code" className="text-accent hover:underline">What&rsquo;s My ZIP Code</a> adds your county and districts.</>}</>}
               {res.accuracy > 50 && <> Your device placed you within about {Math.round(res.accuracy)} m, so the postcode may belong to a nearby street. Click your building on the map to check.</>}
             </p>
           </div>

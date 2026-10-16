@@ -159,9 +159,15 @@ Address ↔ coordinates
 
 ](https://getmylocations.com/address-finder)[
 
+### What's My ZIP Code
+
+ZIP, county & district (US)
+
+](https://getmylocations.com/whats-my-zip-code)[
+
 ### What's My Postcode
 
-Postcode of where you are
+Postcode of where you are (UK)
 
 ](https://getmylocations.com/whats-my-postcode)[
 
