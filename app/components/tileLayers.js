@@ -28,9 +28,20 @@ export const TILES = {
   satellite: {
     url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
     attribution:
-      'Tiles &copy; Esri &mdash; Source: Esri, Maxar, Earthstar Geographics, USDA, USGS, GeoEye, IGN, IGP, and the GIS User Community',
+      'Tiles &copy; Esri &mdash; Source: Esri, Vantor, Earthstar Geographics, and the GIS User Community',
     maxZoom: 19,
   },
+};
+
+// Transparent overlays drawn on top of the satellite imagery on /satellite.
+const ESRI_REF_ATTR = 'Labels &copy; Esri, HERE, Garmin, &copy; OpenStreetMap contributors';
+export const LABELS = {
+  url: 'https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}',
+  attribution: ESRI_REF_ATTR,
+};
+export const ROADS = {
+  url: 'https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Transportation/MapServer/tile/{z}/{y}/{x}',
+  attribution: ESRI_REF_ATTR,
 };
 
 // The /maps page labels its light style "standard".

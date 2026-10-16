@@ -50,7 +50,7 @@ const faqs = [
   },
   {
     q: 'Why does Street View open somewhere slightly different from my pin?',
-    a: 'Street View panoramas only exist where Google has photographed, mostly along public roads. Google jumps to the panorama nearest your point, which is usually the road in front of a building rather than its exact center. If there is no imagery nearby at all, Google Maps shows its normal map instead. Try a point on the nearest main road, or check the place from above with satellite view on our interactive map.',
+    a: 'Street View panoramas only exist where Google has photographed, mostly along public roads. Google jumps to the panorama nearest your point, which is usually the road in front of a building rather than its exact center. If there is no imagery nearby at all, Google Maps shows its normal map instead. Try a point on the nearest main road, or check the place from above with our satellite view tool.',
   },
   {
     q: 'How do I see older imagery of the same address?',
@@ -58,7 +58,7 @@ const faqs = [
   },
   {
     q: 'Can I use Street View to check a property before renting or buying?',
-    a: 'It is a useful first pass: you can see the street, the parking situation, and the condition of neighbouring buildings. Check the capture date first, though. A panorama from four years ago tells you nothing about construction that started last spring. Pair it with current satellite imagery on the maps tool.',
+    a: 'It is a useful first pass: you can see the street, the parking situation, and the condition of neighbouring buildings. Check the capture date first, though. A panorama from four years ago tells you nothing about construction that started last spring. Pair it with satellite imagery from the satellite view tool, which shows when its photo was taken.',
   },
   {
     q: 'Does this page track where I search?',
@@ -190,8 +190,8 @@ export default function StreetViewPage() {
             <li>
               <strong>Satellite imagery</strong> answers &ldquo;what is the shape and context of this place?&rdquo;
               &mdash; the footprint of a building, whether there is a garden or a pool, how far it sits from
-              a main road, what the surrounding land is. Switch the layer toggle on the{' '}
-              <Link href="/maps" className="text-accent hover:underline">interactive map</Link> to see it.
+              a main road, what the surrounding land is. The{' '}
+              <Link href="/satellite" className="text-accent hover:underline">satellite view tool</Link> shows it, with the date the photo was taken.
             </li>
             <li>
               <strong>A standard map</strong> answers &ldquo;what is this called and how do I get there?&rdquo;
@@ -230,8 +230,8 @@ export default function StreetViewPage() {
           <h2 className="font-display text-2xl font-bold">When there&rsquo;s no Street View here</h2>
           <p className="mt-3 text-fg-muted leading-relaxed">
             If Google Maps opens a normal map instead of a panorama, there is no imagery near your pin. Common reasons: the place is on a private road or estate, deep in a park, or in a country or region with little or no coverage. Try moving the pin to the nearest public road (get its coordinates from the{' '}
-            <Link href="/address-finder" className="text-accent hover:underline">Address Finder</Link>), or look at the place from above in satellite view on the{' '}
-            <Link href="/maps" className="text-accent hover:underline">interactive map</Link>.
+            <Link href="/address-finder" className="text-accent hover:underline">Address Finder</Link>), or look at the place from above in{' '}
+            <Link href="/satellite" className="text-accent hover:underline">satellite view</Link>.
           </p>
         </section>
 

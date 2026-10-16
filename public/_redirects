@@ -14,6 +14,5 @@
 # Coordinate conversion cluster -> /coordinates-converter
 /decimal-degrees-converter  /coordinates-converter  301
 
-# Map cluster -> /maps
-/satellite                  /maps                   301
+# Map cluster -> /maps (/satellite was restored as its own tool in October 2026)
 /us-map                     /maps                   301

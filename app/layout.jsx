@@ -113,6 +113,7 @@ const siteNavSchema = {
     { '@type': 'WebPage', name: 'Distance Calculator', url: 'https://getmylocations.com/distance-calculator' },
     { '@type': 'WebPage', name: 'Address Finder', url: 'https://getmylocations.com/address-finder' },
     { '@type': 'WebPage', name: 'Maps', url: 'https://getmylocations.com/maps' },
+    { '@type': 'WebPage', name: 'Satellite View', url: 'https://getmylocations.com/satellite' },
     { '@type': 'WebPage', name: 'Street View', url: 'https://getmylocations.com/street-view' },
     { '@type': 'WebPage', name: 'Driving Directions', url: 'https://getmylocations.com/driving-directions' },
     { '@type': 'WebPage', name: 'Blog', url: 'https://getmylocations.com/blog' },

@@ -38,7 +38,7 @@ export default function Privacy() {
         </nav>
 
       <h1 className="font-display text-4xl font-extrabold tracking-tight">Privacy Policy</h1>
-      <p className="text-sm text-fg-subtle mt-2">Last updated: October 12, 2026</p>
+      <p className="text-sm text-fg-subtle mt-2">Last updated: October 15, 2026</p>
 
       <p className="mt-6 text-fg-muted leading-relaxed">
         This page explains what information GetMyLocations receives when you use the
@@ -95,9 +95,11 @@ export default function Privacy() {
       <h2 className="font-display text-2xl font-bold mt-10">3. Map tiles</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
         The maps you see are rendered with Leaflet and use tile images from
-        OpenStreetMap, plus Esri (ArcGIS) imagery when you switch the Interactive Map to
-        satellite view. Loading a tile reveals your IP and the tile coordinate
-        to those providers, the same as any embedded map would. Their privacy policies
+        OpenStreetMap, plus Esri (ArcGIS) imagery on the Satellite View tool and when you
+        switch the Interactive Map to satellite view. Loading a tile reveals your IP and
+        the tile coordinate to those providers, the same as any embedded map would. The
+        Satellite View tool also asks Esri for the capture date of the photo at the centre
+        of the map, which sends Esri that point&rsquo;s coordinates. Their privacy policies
         are published at{' '}
         <span className="text-fg-muted font-mono text-sm">wiki.osmfoundation.org/wiki/Privacy_Policy</span>{' '}
         and{' '}

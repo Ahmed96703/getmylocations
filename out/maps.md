@@ -26,21 +26,9 @@ This is the freeform “just give me a map I can poke around” tool. Unlike the
 
 Cartographic tiles come from OpenStreetMap (an open, community-edited map of the world) rendered through CARTO. Satellite tiles come from Esri’s World Imagery service. Place-name search uses the OpenStreetMap Nominatim geocoder. None of these require an account or an API key for the modest traffic this site sends them. Their individual privacy policies are listed on the [Privacy Policy](https://getmylocations.com/privacy-policy) page.
 
-## Where the satellite imagery comes from
+## Looking at a place from above?
 
-Switch the layer toggle to **Satellite** and the tiles are sourced from Esri’s World Imagery service, which stitches together data from a mix of providers — Maxar, DigitalGlobe, GeoEye, USDA Farm Service Agency, and a handful of national mapping agencies. Resolution varies by region: urban areas in North America and Europe are typically available at sub-meter detail; rural areas and parts of Africa, central Asia, and the polar regions are coarser, sometimes 15 meters per pixel or worse. The age of the imagery also varies — some tiles are from the last six months, others are several years old.
-
-### When satellite beats a regular map
-
--   Checking what a property actually looks like before visiting.
--   Verifying that a building exists at an address you’ve been given.
--   Planning a hike where the cartographic map lacks trail detail but the imagery shows tracks.
--   Spotting parking areas, swimming pools, or other features not labelled in the standard map.
--   Confirming geographical context — is this place in a desert, near water, in a forest?
-
-### A privacy note about satellite imagery
-
-Esri’s imagery is the same source used by hundreds of mapping products, including some government tools. It’s already public. If you find your own home and want it obscured in a specific imagery provider’s product, both Google Earth and Apple Maps have public takedown request forms — Esri does not blur individual properties on request, but the imagery shown here is generally a year or two old, not real-time.
+The Satellite style here is fine for a quick look. For inspecting an address, the [Satellite View tool](https://getmylocations.com/satellite) does more: it opens on imagery, overlays place names and roads on the photo, and tells you when the photo under your screen was taken and how sharp it is.
 
 ## Three things you can do here
 

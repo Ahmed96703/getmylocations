@@ -80,9 +80,16 @@ All nine single-job tools on this site. Each one is free, runs in your browser, 
     
     ### Interactive Maps
     
-    Explore places with street, satellite, and terrain map layers.
+    Explore places with standard, satellite, and dark map styles.
     
     ](https://getmylocations.com/maps)
+-   [
+    
+    ### Satellite View
+    
+    See any address from above and find out when the photo was taken.
+    
+    ](https://getmylocations.com/satellite)
 -   [
     
     ### Street View

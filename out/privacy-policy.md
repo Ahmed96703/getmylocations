@@ -6,7 +6,7 @@ url: https://getmylocations.com/privacy-policy
 
 # Privacy Policy
 
-Last updated: October 12, 2026
+Last updated: October 15, 2026
 
 This page explains what information GetMyLocations receives when you use the site, what we do with it, and which third parties are involved. The summary at the top covers the common questions; the sections below give the details for anyone who wants them.
 
@@ -35,7 +35,7 @@ Each request contains the coordinate and your IP (visible to any web service you
 
 ## 3\. Map tiles
 
-The maps you see are rendered with Leaflet and use tile images from OpenStreetMap, plus Esri (ArcGIS) imagery when you switch the Interactive Map to satellite view. Loading a tile reveals your IP and the tile coordinate to those providers, the same as any embedded map would. Their privacy policies are published at wiki.osmfoundation.org/wiki/Privacy\_Policy and esri.com/en-us/privacy.
+The maps you see are rendered with Leaflet and use tile images from OpenStreetMap, plus Esri (ArcGIS) imagery on the Satellite View tool and when you switch the Interactive Map to satellite view. Loading a tile reveals your IP and the tile coordinate to those providers, the same as any embedded map would. The Satellite View tool also asks Esri for the capture date of the photo at the centre of the map, which sends Esri that point’s coordinates. Their privacy policies are published at wiki.osmfoundation.org/wiki/Privacy\_Policy and esri.com/en-us/privacy.
 
 The Driving Directions tool embeds a Google Maps route, and the Street View tool opens Google Street View (or embeds it on the page when enabled). Those embeds and links are served by Google, which receives your IP and the place or route shown, under the Google Privacy Policy at policies.google.com/privacy.
 

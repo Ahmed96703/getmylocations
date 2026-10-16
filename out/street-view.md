@@ -50,7 +50,7 @@ Faces and licence plates are automatically blurred before any panorama is publis
 The three ways of looking at a place answer genuinely different questions, and picking the wrong one wastes time. A quick decision guide:
 
 -   **Street view** answers “what does this look like from the pavement?” — house numbers, shopfronts, whether there is a step at the entrance, what the parking is like, whether the street feels busy. It is the only view that shows a building’s face.
--   **Satellite imagery** answers “what is the shape and context of this place?” — the footprint of a building, whether there is a garden or a pool, how far it sits from a main road, what the surrounding land is. Switch the layer toggle on the [interactive map](https://getmylocations.com/maps) to see it.
+-   **Satellite imagery** answers “what is the shape and context of this place?” — the footprint of a building, whether there is a garden or a pool, how far it sits from a main road, what the surrounding land is. The [satellite view tool](https://getmylocations.com/satellite) shows it, with the date the photo was taken.
 -   **A standard map** answers “what is this called and how do I get there?” — street names, one-way arrows, the road network, nearby amenities. Best for planning rather than inspecting.
 
 In practice most questions need two of the three. Checking out an unfamiliar address before a visit usually means one pass in street view for the frontage, one in satellite for the approach and parking, and then the [Driving Directions](https://getmylocations.com/driving-directions) tool to plan the actual route.
@@ -63,7 +63,7 @@ To get a coordinate pair for where you are standing, use the [My Location tool](
 
 ## When there’s no Street View here
 
-If Google Maps opens a normal map instead of a panorama, there is no imagery near your pin. Common reasons: the place is on a private road or estate, deep in a park, or in a country or region with little or no coverage. Try moving the pin to the nearest public road (get its coordinates from the [Address Finder](https://getmylocations.com/address-finder)), or look at the place from above in satellite view on the [interactive map](https://getmylocations.com/maps).
+If Google Maps opens a normal map instead of a panorama, there is no imagery near your pin. Common reasons: the place is on a private road or estate, deep in a park, or in a country or region with little or no coverage. Try moving the pin to the nearest public road (get its coordinates from the [Address Finder](https://getmylocations.com/address-finder)), or look at the place from above in [satellite view](https://getmylocations.com/satellite).
 
 ## Frequently asked questions
 
@@ -73,7 +73,7 @@ Yes. The panorama comes straight from Google: the imagery, the arrows for moving
 
 Why does Street View open somewhere slightly different from my pin?+
 
-Street View panoramas only exist where Google has photographed, mostly along public roads. Google jumps to the panorama nearest your point, which is usually the road in front of a building rather than its exact center. If there is no imagery nearby at all, Google Maps shows its normal map instead. Try a point on the nearest main road, or check the place from above with satellite view on our interactive map.
+Street View panoramas only exist where Google has photographed, mostly along public roads. Google jumps to the panorama nearest your point, which is usually the road in front of a building rather than its exact center. If there is no imagery nearby at all, Google Maps shows its normal map instead. Try a point on the nearest main road, or check the place from above with our satellite view tool.
 
 How do I see older imagery of the same address?+
 
@@ -81,7 +81,7 @@ Open the panorama in the full Google Maps site on a computer and look for the da
 
 Can I use Street View to check a property before renting or buying?+
 
-It is a useful first pass: you can see the street, the parking situation, and the condition of neighbouring buildings. Check the capture date first, though. A panorama from four years ago tells you nothing about construction that started last spring. Pair it with current satellite imagery on the maps tool.
+It is a useful first pass: you can see the street, the parking situation, and the condition of neighbouring buildings. Check the capture date first, though. A panorama from four years ago tells you nothing about construction that started last spring. Pair it with satellite imagery from the satellite view tool, which shows when its photo was taken.
 
 Does this page track where I search?+
 

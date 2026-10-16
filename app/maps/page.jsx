@@ -8,7 +8,7 @@ import { AUTHOR } from '../components/author.js';
 export const metadata = {
   title: 'Maps — Free Interactive World & Satellite Map with Search',
   description: 'Free interactive map with search, pin-drop coordinates, and a toggle for standard, satellite and dark views. Worldwide, no signup, no API key.',
-  keywords: ['free online map', 'interactive map online', 'satellite map', 'satellite view of my address', 'us map', 'map of the united states', 'map with coordinates', 'world map online'],
+  keywords: ['free online map', 'interactive map online', 'world map online', 'us map', 'map of the united states', 'map with coordinates', 'map with search'],
   alternates: { canonical: '/maps' },
   openGraph: {
     title: 'Maps — Free Interactive World & Satellite Map with Search',
@@ -112,31 +112,12 @@ export default function MapsPage() {
 
 
         <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">Where the satellite imagery comes from</h2>
+          <h2 className="font-display text-2xl font-bold">Looking at a place from above?</h2>
           <p className="mt-3 text-fg-muted leading-relaxed">
-            Switch the layer toggle to <strong>Satellite</strong> and the tiles are sourced from
-            Esri&rsquo;s World Imagery service, which stitches together data from a mix of providers
-            &mdash; Maxar, DigitalGlobe, GeoEye, USDA Farm Service Agency, and a handful of national
-            mapping agencies. Resolution varies by region: urban areas in North America and Europe are
-            typically available at sub-meter detail; rural areas and parts of Africa, central Asia, and
-            the polar regions are coarser, sometimes 15 meters per pixel or worse. The age of the imagery
-            also varies &mdash; some tiles are from the last six months, others are several years old.
-          </p>
-          <h3 className="font-display text-lg font-semibold mt-6 text-fg">When satellite beats a regular map</h3>
-          <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside">
-            <li>Checking what a property actually looks like before visiting.</li>
-            <li>Verifying that a building exists at an address you&rsquo;ve been given.</li>
-            <li>Planning a hike where the cartographic map lacks trail detail but the imagery shows tracks.</li>
-            <li>Spotting parking areas, swimming pools, or other features not labelled in the standard map.</li>
-            <li>Confirming geographical context &mdash; is this place in a desert, near water, in a forest?</li>
-          </ul>
-          <h3 className="font-display text-lg font-semibold mt-6 text-fg">A privacy note about satellite imagery</h3>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            Esri&rsquo;s imagery is the same source used by hundreds of mapping products, including some
-            government tools. It&rsquo;s already public. If you find your own home and want it obscured in
-            a specific imagery provider&rsquo;s product, both Google Earth and Apple Maps have public
-            takedown request forms &mdash; Esri does not blur individual properties on request, but the
-            imagery shown here is generally a year or two old, not real-time.
+            The Satellite style here is fine for a quick look. For inspecting an address, the{' '}
+            <Link href="/satellite" className="text-accent hover:underline">Satellite View tool</Link>{' '}
+            does more: it opens on imagery, overlays place names and roads on the photo, and tells you when the
+            photo under your screen was taken and how sharp it is.
           </p>
         </section>
 

@@ -21,6 +21,7 @@ const TOOLS = [
   { href: '/distance-calculator', label: 'Distance Calculator', desc: 'Between two coordinates' },
   { href: '/address-finder', label: 'Address Finder', desc: 'Address ↔ coordinates' },
   { href: '/maps', label: 'Interactive Maps', desc: 'World map with layers' },
+  { href: '/satellite', label: 'Satellite View', desc: 'Any address from above, dated' },
   { href: '/street-view', label: 'Street View', desc: 'Google Street View' },
   { href: '/driving-directions', label: 'Driving Directions', desc: 'Route planner' },
 ];
