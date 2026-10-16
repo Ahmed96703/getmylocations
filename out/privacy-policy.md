@@ -6,7 +6,7 @@ url: https://getmylocations.com/privacy-policy
 
 # Privacy Policy
 
-Last updated: October 15, 2026
+Last updated: October 16, 2026
 
 This page explains what information GetMyLocations receives when you use the site, what we do with it, and which third parties are involved. The summary at the top covers the common questions; the sections below give the details for anyone who wants them.
 
@@ -29,9 +29,10 @@ Some tools also call `navigator.geolocation.watchPosition`, which subscribes to 
 A coordinate on its own is just numbers. To show a readable street address, city and country, the page sends the coordinate to a reverse-geocoding service. We use:
 
 -   **BigDataCloud** — the first choice for the city and country on the homepage tool. Their privacy policy is published at bigdatacloud.com/privacy-and-cookie-policy.
--   **OpenStreetMap Nominatim** — used for the nearest street address on the homepage and My Location, by the Address Finder, by the Street View tool to turn a typed address into coordinates, and as a fallback elsewhere. Their privacy policy is published at wiki.osmfoundation.org/wiki/Privacy\_Policy.
+-   **OpenStreetMap Nominatim** — used for the nearest street address on the homepage and My Location, by the Address Finder, by the Street View tool to turn a typed address into coordinates, by What’s My Postcode for the nearest address and for postcodes outside the UK, and as a fallback elsewhere. Their privacy policy is published at wiki.osmfoundation.org/wiki/Privacy\_Policy.
+-   **postcodes.io** — used by What’s My Postcode to find the UK postcode nearest a coordinate, or the details of a postcode you type. It is a free, open-source service maintained by Ideal Postcodes on Office for National Statistics data (source code at github.com/ideal-postcodes/postcodes.io). It does not publish a separate privacy policy; the request carries only the coordinate or postcode and your IP, as above.
 
-Each request contains the coordinate and your IP (visible to any web service you connect to). It does not contain a username, an email, or any identifier we attach. Both services have their own retention policies linked above.
+Each request contains the coordinate and your IP (visible to any web service you connect to). It does not contain a username, an email, or any identifier we attach. BigDataCloud and Nominatim have their own retention policies, linked above.
 
 ## 3\. Map tiles
 

@@ -20,6 +20,7 @@ const TOOLS = [
   { href: '/ip-location', label: 'IP Location', desc: 'Look up any IP address' },
   { href: '/distance-calculator', label: 'Distance Calculator', desc: 'Between two coordinates' },
   { href: '/address-finder', label: 'Address Finder', desc: 'Address ↔ coordinates' },
+  { href: '/whats-my-postcode', label: "What's My Postcode", desc: 'Your postcode in one tap' },
   { href: '/maps', label: 'Interactive Maps', desc: 'World map with layers' },
   { href: '/satellite', label: 'Satellite View', desc: 'Any address from above, dated' },
   { href: '/street-view', label: 'Street View', desc: 'Google Street View' },

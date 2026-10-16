@@ -434,6 +434,7 @@ export default function MyLocationPage() {
               { href: '/coordinates-converter', t: 'Coordinates Converter', d: 'DD ↔ DMS ↔ UTM' },
               { href: '/distance-calculator', t: 'Distance Calculator', d: 'Between two coordinates' },
               { href: '/address-finder', t: 'Address Finder', d: 'Address ↔ coordinates' },
+              { href: '/whats-my-postcode', t: "What's My Postcode", d: 'Postcode of where you are' },
               { href: '/ip-location', t: 'IP Location', d: 'Look up any IP address' },
               { href: '/maps', t: 'Interactive Maps', d: 'World map with layers' },
               { href: '/driving-directions', t: 'Driving Directions', d: 'Route planner' },

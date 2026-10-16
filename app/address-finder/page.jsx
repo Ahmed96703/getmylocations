@@ -278,6 +278,7 @@ export default function AddressFinderPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-5">
             {[
               { href: '/my-location', t: 'My Location', d: 'Your GPS coordinates + address, one tap' },
+              { href: '/whats-my-postcode', t: "What's My Postcode", d: 'Postcode of any address or spot' },
               { href: '/reverse-geocoding', t: 'Reverse Geocoding', d: 'The concept, explained' },
               { href: '/coordinates-converter', t: 'Coordinates Converter', d: 'DD ↔ DMS ↔ UTM' },
               { href: '/distance-calculator', t: 'Distance Calculator', d: 'Between two addresses' },

@@ -38,7 +38,7 @@ export default function Privacy() {
         </nav>
 
       <h1 className="font-display text-4xl font-extrabold tracking-tight">Privacy Policy</h1>
-      <p className="text-sm text-fg-subtle mt-2">Last updated: October 15, 2026</p>
+      <p className="text-sm text-fg-subtle mt-2">Last updated: October 16, 2026</p>
 
       <p className="mt-6 text-fg-muted leading-relaxed">
         This page explains what information GetMyLocations receives when you use the
@@ -82,14 +82,19 @@ export default function Privacy() {
         </li>
         <li>
           <strong>OpenStreetMap Nominatim</strong> — used for the nearest street address on the homepage and My Location, by the Address Finder, by the
-          Street View tool to turn a typed address into coordinates, and as a fallback elsewhere. Their privacy policy is published at{' '}
+          Street View tool to turn a typed address into coordinates, by What&rsquo;s My Postcode for the nearest address and for postcodes outside the UK, and as a fallback elsewhere. Their privacy policy is published at{' '}
           <span className="text-fg-muted font-mono text-sm">wiki.osmfoundation.org/wiki/Privacy_Policy</span>.
+        </li>
+        <li>
+          <strong>postcodes.io</strong> — used by What&rsquo;s My Postcode to find the UK postcode nearest a coordinate, or the details of a postcode you type. It is a free, open-source service maintained by Ideal Postcodes on Office for National Statistics data
+          (source code at <span className="text-fg-muted font-mono text-sm">github.com/ideal-postcodes/postcodes.io</span>). It does
+          not publish a separate privacy policy; the request carries only the coordinate or postcode and your IP, as above.
         </li>
       </ul>
       <p className="mt-3 text-fg-muted leading-relaxed">
         Each request contains the coordinate and your IP (visible to any web service
         you connect to). It does not contain a username, an email, or any identifier we
-        attach. Both services have their own retention policies linked above.
+        attach. BigDataCloud and Nominatim have their own retention policies, linked above.
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-10">3. Map tiles</h2>
