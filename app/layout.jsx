@@ -134,9 +134,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" dir="ltr" data-theme="light" className={`${inter.variable} ${sora.variable}`}>
       <head>
-        {/* Impact.com site verification. Impact's tag uses `value`, not
-            `content`, so it is written here rather than in metadata. */}
-        <meta name="impact-site-verification" value="8c540e1b-f601-4248-91f2-520411b7e5b5" />
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
         <script
           type="application/ld+json"
