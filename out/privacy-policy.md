@@ -14,7 +14,7 @@ This page explains what information GetMyLocations receives when you use the sit
 
 -   The GPS coordinate the site reads from your browser stays in your browser.
 -   Only the coordinate itself is sent to a third-party service so we can show a city name. No identifier we control travels with it.
--   We do not run analytics that profile you. We do not have an account system.
+-   We use Google Analytics to count visits and see which pages are used. We do not have an account system.
 -   The host (Cloudflare) keeps short-lived request logs the way any web host does.
 -   Ads are served by Monetag, and by Google AdSense once it is enabled. Both set their own advertising cookies. You can opt out of personalization at any time.
 
@@ -54,7 +54,11 @@ If you type a domain name (such as example.com) into the IP Location tool, your 
 
 The site is hosted on Cloudflare. Like every web host, Cloudflare keeps short request logs (IP address, user agent, URL requested, timestamp) so that abuse and outages can be diagnosed. We do not pull those logs into a separate analytics tool. Cloudflare’s privacy policy is published at cloudflare.com/privacypolicy.
 
-## 6\. Advertising — Monetag and Google AdSense
+## 6\. Analytics — Google Analytics
+
+We use Google Analytics 4 to understand how many people visit, which pages and tools they use, and roughly where they come from (country and city level). Google Analytics sets first-party cookies (such as `_ga`) and receives your IP address, which Google Analytics 4 does not log or store. We see only totals, not individual visitors, and we do not link analytics to your GPS coordinates. You can opt out with Google’s browser add-on at tools.google.com/dlpage/gaoptout.
+
+## 7\. Advertising — Monetag and Google AdSense
 
 Once Google AdSense is enabled on the site, Google and its advertising partners may set cookies (for example `__gads`, `__gpi`, and `NID`) to serve advertisements, prevent fraud, and — where you have consented — personalize them. You can review and change your ad personalization settings at adssettings.google.com or opt out of personalized advertising network-wide at aboutads.info/choices.
 
@@ -62,25 +66,25 @@ For visitors in the European Economic Area, the United Kingdom, and Switzerland,
 
 Ads on the site are currently served by Monetag. Monetag and its advertisers may set cookies and receive your IP address, device and browser details, and the page you are viewing, to choose and measure ads and to prevent fraud. If you allow notifications from this site, Monetag sends them through a service worker; you can turn them off at any time in your browser’s site settings. Monetag’s privacy policy is published at monetag.com/privacy.
 
-## 7\. What we do not do
+## 8\. What we do not do
 
--   We do not run our own analytics that profile you across pages.
+-   We do not use analytics to identify you or to build an advertising profile of you.
 -   We do not sell or rent data to anyone.
 -   We do not have user accounts, so there is no profile to compromise.
 -   We do not store your GPS coordinates on a server we own.
 
-## 8\. Children
+## 9\. Children
 
 The site is a general-audience utility and is not directed at children under 13. If you believe a child has provided personal information through the site, contact us at [ahmed@getmylocations.com](mailto:ahmed@getmylocations.com) and we will respond promptly.
 
-## 9\. Your rights
+## 10\. Your rights
 
 Under GDPR, CCPA, and similar laws, you have rights to access, correct, or delete personal data held about you. Because we do not store personal data on our own servers, requests are best directed to the third-party services listed above. You can revoke browser location permission at any time through your browser’s site settings.
 
-## 10\. Changes to this policy
+## 11\. Changes to this policy
 
 We update this page when the services we use change. The date at the top reflects the most recent revision. Material changes will be noted briefly at the top of the page for a reasonable period.
 
-## 11\. Contact
+## 12\. Contact
 
 Questions about anything on this page can go to [ahmed@getmylocations.com](mailto:ahmed@getmylocations.com). See the [Contact page](https://getmylocations.com/contact) for response-time expectations.

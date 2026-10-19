@@ -76,9 +76,9 @@ export const metadata = {
   manifest: '/manifest.webmanifest',
 };
 
-// Google Analytics 4. Set NEXT_PUBLIC_GA_ID in the build environment to enable;
-// without it the tag is omitted entirely rather than firing against a blank ID.
-const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+// Google Analytics 4. The measurement ID is public (it appears in every page's
+// HTML), so it is set here; NEXT_PUBLIC_GA_ID can still override it.
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID || 'G-61M4GZ7H3N';
 
 export const viewport = {
   width: 'device-width',

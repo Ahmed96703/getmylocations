@@ -51,7 +51,7 @@ export default function Privacy() {
       <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside">
         <li>The GPS coordinate the site reads from your browser stays in your browser.</li>
         <li>Only the coordinate itself is sent to a third-party service so we can show a city name. No identifier we control travels with it.</li>
-        <li>We do not run analytics that profile you. We do not have an account system.</li>
+        <li>We use Google Analytics to count visits and see which pages are used. We do not have an account system.</li>
         <li>The host (Cloudflare) keeps short-lived request logs the way any web host does.</li>
         <li>Ads are served by Monetag, and by Google AdSense once it is enabled. Both set their own advertising cookies. You can opt out of personalization at any time.</li>
       </ul>
@@ -162,7 +162,19 @@ export default function Privacy() {
         <span className="text-fg-muted font-mono text-sm">cloudflare.com/privacypolicy</span>.
       </p>
 
-      <h2 className="font-display text-2xl font-bold mt-10">6. Advertising — Monetag and Google AdSense</h2>
+      <h2 className="font-display text-2xl font-bold mt-10">6. Analytics — Google Analytics</h2>
+      <p className="mt-3 text-fg-muted leading-relaxed">
+        We use Google Analytics 4 to understand how many people visit, which pages and
+        tools they use, and roughly where they come from (country and city level). Google
+        Analytics sets first-party cookies (such as{' '}
+        <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">_ga</code>) and
+        receives your IP address, which Google Analytics 4 does not log or store. We see
+        only totals, not individual visitors, and we do not link analytics to your GPS
+        coordinates. You can opt out with Google&rsquo;s browser add-on at{' '}
+        <span className="text-fg-muted font-mono text-sm">tools.google.com/dlpage/gaoptout</span>.
+      </p>
+
+      <h2 className="font-display text-2xl font-bold mt-10">7. Advertising — Monetag and Google AdSense</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
         Once Google AdSense is enabled on the site, Google and its advertising partners
         may set cookies (for example <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">__gads</code>,{' '}
@@ -190,15 +202,15 @@ export default function Privacy() {
         <span className="text-fg-muted font-mono text-sm">monetag.com/privacy</span>.
       </p>
 
-      <h2 className="font-display text-2xl font-bold mt-10">7. What we do not do</h2>
+      <h2 className="font-display text-2xl font-bold mt-10">8. What we do not do</h2>
       <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside">
-        <li>We do not run our own analytics that profile you across pages.</li>
+        <li>We do not use analytics to identify you or to build an advertising profile of you.</li>
         <li>We do not sell or rent data to anyone.</li>
         <li>We do not have user accounts, so there is no profile to compromise.</li>
         <li>We do not store your GPS coordinates on a server we own.</li>
       </ul>
 
-      <h2 className="font-display text-2xl font-bold mt-10">8. Children</h2>
+      <h2 className="font-display text-2xl font-bold mt-10">9. Children</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
         The site is a general-audience utility and is not directed at children under
         13. If you believe a child has provided personal information through the site,
@@ -206,7 +218,7 @@ export default function Privacy() {
         we will respond promptly.
       </p>
 
-      <h2 className="font-display text-2xl font-bold mt-10">9. Your rights</h2>
+      <h2 className="font-display text-2xl font-bold mt-10">10. Your rights</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
         Under GDPR, CCPA, and similar laws, you have rights to access, correct, or
         delete personal data held about you. Because we do not store personal data on
@@ -215,14 +227,14 @@ export default function Privacy() {
         browser&rsquo;s site settings.
       </p>
 
-      <h2 className="font-display text-2xl font-bold mt-10">10. Changes to this policy</h2>
+      <h2 className="font-display text-2xl font-bold mt-10">11. Changes to this policy</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
         We update this page when the services we use change. The date at the top
         reflects the most recent revision. Material changes will be noted briefly at
         the top of the page for a reasonable period.
       </p>
 
-      <h2 className="font-display text-2xl font-bold mt-10">11. Contact</h2>
+      <h2 className="font-display text-2xl font-bold mt-10">12. Contact</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
         Questions about anything on this page can go to{' '}
         <a className="text-accent hover:underline" href="mailto:ahmed@getmylocations.com">ahmed@getmylocations.com</a>.
