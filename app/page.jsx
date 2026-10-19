@@ -2,6 +2,7 @@ import Link from 'next/link';
 import HomeClient from './HomeClient.jsx';
 import { HOME_FAQS } from './home-faqs.js';
 import AdSense from './components/AdSense.jsx';
+import Monetag from './components/Monetag.jsx';
 import { AUTHOR } from './components/author.js';
 
 // MIGRATION NOTE:
@@ -89,6 +90,7 @@ export default function HomePage() {
 
       {/* Static, server-rendered SEO content (Googlebot sees this in raw HTML) */}
       <AdSense />
+      <Monetag />
       <main id="main" role="main" className="max-w-7xl mx-auto px-5 py-8">
         <section className="mb-7">
           <p className="text-[11px] uppercase tracking-[0.18em] text-accent font-semibold">

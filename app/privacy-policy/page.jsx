@@ -38,7 +38,7 @@ export default function Privacy() {
         </nav>
 
       <h1 className="font-display text-4xl font-extrabold tracking-tight">Privacy Policy</h1>
-      <p className="text-sm text-fg-subtle mt-2">Last updated: October 16, 2026</p>
+      <p className="text-sm text-fg-subtle mt-2">Last updated: October 19, 2026</p>
 
       <p className="mt-6 text-fg-muted leading-relaxed">
         This page explains what information GetMyLocations receives when you use the
@@ -53,7 +53,7 @@ export default function Privacy() {
         <li>Only the coordinate itself is sent to a third-party service so we can show a city name. No identifier we control travels with it.</li>
         <li>We do not run analytics that profile you. We do not have an account system.</li>
         <li>The host (Cloudflare) keeps short-lived request logs the way any web host does.</li>
-        <li>Google AdSense, once enabled, will set its own advertising cookies. You can opt out of personalization at any time.</li>
+        <li>Ads are served by Monetag, and by Google AdSense once it is enabled. Both set their own advertising cookies. You can opt out of personalization at any time.</li>
       </ul>
 
       <h2 className="font-display text-2xl font-bold mt-10">1. What we read from your browser</h2>
@@ -162,7 +162,7 @@ export default function Privacy() {
         <span className="text-fg-muted font-mono text-sm">cloudflare.com/privacypolicy</span>.
       </p>
 
-      <h2 className="font-display text-2xl font-bold mt-10">6. Advertising — Google AdSense</h2>
+      <h2 className="font-display text-2xl font-bold mt-10">6. Advertising — Monetag and Google AdSense</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
         Once Google AdSense is enabled on the site, Google and its advertising partners
         may set cookies (for example <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">__gads</code>,{' '}
@@ -178,6 +178,16 @@ export default function Privacy() {
         For visitors in the European Economic Area, the United Kingdom, and
         Switzerland, the AdSense Consent Management Platform shows a consent dialog
         the first time you visit, in line with GDPR and ePrivacy rules.
+      </p>
+
+      <p className="mt-3 text-fg-muted leading-relaxed">
+        Ads on the site are currently served by Monetag. Monetag and its advertisers may
+        set cookies and receive your IP address, device and browser details, and the page
+        you are viewing, to choose and measure ads and to prevent fraud. If you allow
+        notifications from this site, Monetag sends them through a service worker; you
+        can turn them off at any time in your browser&rsquo;s site settings. Monetag&rsquo;s
+        privacy policy is published at{' '}
+        <span className="text-fg-muted font-mono text-sm">monetag.com/privacy</span>.
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-10">7. What we do not do</h2>

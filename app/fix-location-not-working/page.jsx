@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import AuthorBio from '../components/AuthorBio.jsx';
 import AdSense from '../components/AdSense.jsx';
+import Monetag from '../components/Monetag.jsx';
 import { AUTHOR } from '../components/author.js';
 
 export const metadata = {
@@ -112,6 +113,8 @@ export default function FixLocationNotWorking() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       <AdSense />
+
+      <Monetag />
 
       <main role="main" className="max-w-3xl mx-auto px-5 py-12 prose-invert">
         <nav aria-label="Breadcrumb" className="text-xs text-fg-subtle mb-4 not-prose">

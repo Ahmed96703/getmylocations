@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Tool from './Tool.jsx';
 import AuthorBio from '../components/AuthorBio.jsx';
 import AdSense from '../components/AdSense.jsx';
+import Monetag from '../components/Monetag.jsx';
 import { AUTHOR } from '../components/author.js';
 
 export const metadata = {
@@ -123,6 +124,8 @@ export default function AddressFinderPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       <AdSense />
+
+      <Monetag />
 
       <main role="main" className="max-w-5xl mx-auto px-5 py-10">
         <nav aria-label="Breadcrumb" className="text-xs text-fg-subtle mb-3">

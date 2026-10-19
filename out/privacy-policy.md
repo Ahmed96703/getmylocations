@@ -6,7 +6,7 @@ url: https://getmylocations.com/privacy-policy
 
 # Privacy Policy
 
-Last updated: October 16, 2026
+Last updated: October 19, 2026
 
 This page explains what information GetMyLocations receives when you use the site, what we do with it, and which third parties are involved. The summary at the top covers the common questions; the sections below give the details for anyone who wants them.
 
@@ -16,7 +16,7 @@ This page explains what information GetMyLocations receives when you use the sit
 -   Only the coordinate itself is sent to a third-party service so we can show a city name. No identifier we control travels with it.
 -   We do not run analytics that profile you. We do not have an account system.
 -   The host (Cloudflare) keeps short-lived request logs the way any web host does.
--   Google AdSense, once enabled, will set its own advertising cookies. You can opt out of personalization at any time.
+-   Ads are served by Monetag, and by Google AdSense once it is enabled. Both set their own advertising cookies. You can opt out of personalization at any time.
 
 ## 1\. What we read from your browser
 
@@ -54,11 +54,13 @@ If you type a domain name (such as example.com) into the IP Location tool, your 
 
 The site is hosted on Cloudflare. Like every web host, Cloudflare keeps short request logs (IP address, user agent, URL requested, timestamp) so that abuse and outages can be diagnosed. We do not pull those logs into a separate analytics tool. Cloudflare’s privacy policy is published at cloudflare.com/privacypolicy.
 
-## 6\. Advertising — Google AdSense
+## 6\. Advertising — Monetag and Google AdSense
 
 Once Google AdSense is enabled on the site, Google and its advertising partners may set cookies (for example `__gads`, `__gpi`, and `NID`) to serve advertisements, prevent fraud, and — where you have consented — personalize them. You can review and change your ad personalization settings at adssettings.google.com or opt out of personalized advertising network-wide at aboutads.info/choices.
 
 For visitors in the European Economic Area, the United Kingdom, and Switzerland, the AdSense Consent Management Platform shows a consent dialog the first time you visit, in line with GDPR and ePrivacy rules.
+
+Ads on the site are currently served by Monetag. Monetag and its advertisers may set cookies and receive your IP address, device and browser details, and the page you are viewing, to choose and measure ads and to prevent fraud. If you allow notifications from this site, Monetag sends them through a service worker; you can turn them off at any time in your browser’s site settings. Monetag’s privacy policy is published at monetag.com/privacy.
 
 ## 7\. What we do not do
 

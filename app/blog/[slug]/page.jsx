@@ -19,6 +19,7 @@ import EnableLocationDesktop from '../../posts/EnableLocationDesktop.jsx';
 import EnableLocationMobile from '../../posts/EnableLocationMobile.jsx';
 import HaversineVsVincenty from '../../posts/HaversineVsVincenty.jsx';
 import AdSense from '../../components/AdSense.jsx';
+import Monetag from '../../components/Monetag.jsx';
 import { AUTHOR } from '../../components/author.js';
 
 const POST_COMPONENTS = {
@@ -118,6 +119,8 @@ export default function BlogPost({ params }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs) }} />
 
       <AdSense />
+
+      <Monetag />
 
       <main role="main" className="max-w-3xl mx-auto px-5 py-12">
         <nav aria-label="Breadcrumb" className="text-xs text-fg-subtle mb-4">
