@@ -112,6 +112,7 @@ const siteNavSchema = {
     { '@type': 'WebPage', name: 'Coordinates Converter', url: 'https://getmylocations.com/coordinates-converter' },
     { '@type': 'WebPage', name: 'IP Location', url: 'https://getmylocations.com/ip-location' },
     { '@type': 'WebPage', name: 'Distance Calculator', url: 'https://getmylocations.com/distance-calculator' },
+    { '@type': 'WebPage', name: 'Radius Map', url: 'https://getmylocations.com/radius-map' },
     { '@type': 'WebPage', name: 'Address Finder', url: 'https://getmylocations.com/address-finder' },
     { '@type': 'WebPage', name: "What's My ZIP Code", url: 'https://getmylocations.com/whats-my-zip-code' },
     { '@type': 'WebPage', name: "What's My Postcode", url: 'https://getmylocations.com/whats-my-postcode' },

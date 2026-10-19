@@ -314,6 +314,7 @@ export default function DistanceCalculatorPage() {
               { href: '/address-finder', t: 'Address Finder', d: 'Address ↔ coordinates' },
               { href: '/driving-directions', t: 'Driving Directions', d: 'Road-following route' },
               { href: '/maps', t: 'Interactive Maps', d: 'Pick two points visually' },
+              { href: '/radius-map', t: 'Radius Map', d: 'Draw a circle around a place' },
             ].map((t) => (
               <Link key={t.href} href={t.href} className="glass rounded-2xl p-4 hover:ring-accent/40 ring-1 ring-line transition group no-underline">
                 <h3 className="font-display text-base font-bold text-fg group-hover:text-accent transition">{t.t}</h3>

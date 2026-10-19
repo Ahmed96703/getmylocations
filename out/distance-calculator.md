@@ -181,7 +181,13 @@ Road-following route
 
 Pick two points visually
 
-](https://getmylocations.com/maps)
+](https://getmylocations.com/maps)[
+
+### Radius Map
+
+Draw a circle around a place
+
+](https://getmylocations.com/radius-map)
 
 AA
 
