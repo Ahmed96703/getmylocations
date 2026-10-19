@@ -14,9 +14,11 @@ import { useEffect } from 'react';
 // allow other networks alongside them): empty ZONES, or delete this component
 // and its imports. public/sw.js must then be replaced with a worker that
 // unregisters itself, or visitors who allowed push notifications keep it.
+// Multitag: one tag that serves every enabled Monetag format (push,
+// In-Page Push, Vignette and others). It replaced the separate push and
+// Vignette tags; running both would show duplicate ads.
 const ZONES = [
-  { zone: '12069978', src: 'https://nap5k.com/tag.min.js' }, // In-Page Push banner
-  { zone: '12070093', src: 'https://n6wxm.com/vignette.min.js' }, // Vignette banner
+  { zone: '298408', src: 'https://quge5.com/88/tag.min.js' }, // Multitag
 ];
 
 function addTags() {
@@ -26,6 +28,7 @@ function addTags() {
     s.dataset.zone = zone;
     s.src = src;
     s.async = true;
+    s.dataset.cfasync = 'false'; // keep Cloudflare Rocket Loader off it, as Monetag asks
     document.body.appendChild(s);
   }
 }
