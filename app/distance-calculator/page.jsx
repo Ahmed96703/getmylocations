@@ -17,6 +17,9 @@ export const metadata = {
     'distance between two points',
     'haversine calculator',
     'great circle distance',
+    'distance between two locations',
+    'distance between cities',
+    'how far is it between two places',
   ],
   alternates: { canonical: '/distance-calculator' },
   openGraph: {
@@ -40,7 +43,7 @@ const webAppSchema = {
   '@type': 'WebApplication',
   name: 'GPS Distance Calculator',
   description:
-    'Free browser-based tool that calculates the distance, initial and final bearing, and midpoint between two GPS coordinates on the WGS 84 ellipsoid (Vincenty), shows the spherical haversine result for comparison, accepts DD, DMS, DDM, and UTM input, and draws the great-circle route on a map.',
+    'Free browser-based tool that calculates the distance, initial and final bearing, and midpoint between two GPS coordinates on the WGS 84 ellipsoid (Vincenty), shows the spherical haversine result for comparison, accepts place names and addresses as well as DD, DMS, DDM, and UTM input, and draws the great-circle route on a map.',
   url: 'https://getmylocations.com/distance-calculator',
   applicationCategory: 'UtilitiesApplication',
   operatingSystem: 'Web',
@@ -152,7 +155,7 @@ export default function DistanceCalculatorPage() {
             GPS distance calculator — <span className="text-accent">between two coordinates</span>
           </h1>
           <p className="text-lg text-fg-muted mt-4 max-w-3xl">
-            Enter two points in any common format and get the distance between them in kilometers, miles, nautical miles, and meters, with the initial and final bearing, the midpoint, and the route on a map. Calculated on the WGS 84 ellipsoid, the same Earth model GPS uses, entirely in your browser: no API call, no signup.
+            Type two cities, addresses, or coordinates in any common format and get the distance between them in kilometers, miles, nautical miles, and meters, with the initial and final bearing, the midpoint, and the route on a map. Calculated on the WGS 84 ellipsoid, the same Earth model GPS uses, entirely in your browser: no API call, no signup.
           </p>
         </section>
 
@@ -178,6 +181,19 @@ export default function DistanceCalculatorPage() {
             <Link href="/maps" className="text-accent hover:underline">interactive map</Link>{' '}
             and read off the coordinates.
           </p>
+        </section>
+
+        <section className="mt-10">
+          <h2 className="font-display text-2xl font-bold">Distance between two cities or places</h2>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            You do not need coordinates. Type a city, town, address or landmark into each box, such as <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">Chicago</code> and <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">Denver</code>, and press Enter or <strong className="text-fg">Calculate</strong>. The tool finds each place on OpenStreetMap, shows the name it found under the box, and gives the distance in kilometers and miles.
+          </p>
+          <ul className="mt-3 space-y-1.5 text-fg-muted list-disc list-inside leading-relaxed">
+            <li><strong className="text-fg">Add the state or country</strong> when a name is shared by several places: <em>Perth, Australia</em> or <em>Perth, Scotland</em>; <em>Portland, Oregon</em> or <em>Portland, Maine</em>.</li>
+            <li><strong className="text-fg">A city is measured from its center,</strong> as the map service defines it. For an exact spot, type the full address or paste its coordinates.</li>
+            <li><strong className="text-fg">The result is the straight-line distance,</strong> sometimes called &ldquo;as the crow flies&rdquo;. A trip by road is longer, often much longer; for the road distance and time, use{' '}
+              <Link href="/driving-directions" className="text-accent hover:underline">driving directions</Link>.</li>
+          </ul>
         </section>
 
         <section className="mt-10">

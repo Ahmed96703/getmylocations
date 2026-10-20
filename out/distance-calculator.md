@@ -8,47 +8,47 @@ Free Tool · Pure JavaScript Math
 
 # GPS distance calculator — between two coordinates
 
-Enter two points in any common format and get the distance between them in kilometers, miles, nautical miles, and meters, with the initial and final bearing, the midpoint, and the route on a map. Calculated on the WGS 84 ellipsoid, the same Earth model GPS uses, entirely in your browser: no API call, no signup.
+Type two cities, addresses, or coordinates in any common format and get the distance between them in kilometers, miles, nautical miles, and meters, with the initial and final bearing, the midpoint, and the route on a map. Calculated on the WGS 84 ellipsoid, the same Earth model GPS uses, entirely in your browser: no API call, no signup.
 
 ## Calculate distance
 
-48.858420, 2.294500 · read as Decimal degrees
+London, UK · 51.507351, \-0.127758
 
-40.689200, \-74.044500 · read as Decimal degrees
+Paris, France · 48.856614, 2.352222
 
-5,853.103
+343.916
 
 Kilometers
 
-3,636.949
+213.700
 
 Miles
 
-3,160.423
+185.700
 
 Nautical miles
 
-5,853,102.9
+343,916.4
 
 Meters
 
 Initial bearing (at A)
 
-291.79° (WNW)
+148.05° (SSE)
 
 Final bearing (arriving at B)
 
-233.71° (SW)
+149.95° (SSE)
 
 Midpoint
 
-51.585242, \-39.052782
+50.188748, 1.146554
 
 Sphere (haversine) for comparison
 
-5,837.423 km (−15.680 km)
+343.550 km (−0.367 km)
 
-Distance and bearings are calculated on the WGS 84 ellipsoid (Vincenty’s formulae).
+This is the straight-line (“as the crow flies”) distance. For the distance by road, use [driving directions](https://getmylocations.com/driving-directions). Distance and bearings are calculated on the WGS 84 ellipsoid (Vincenty’s formulae).
 
 ## What this calculator does
 
@@ -61,6 +61,14 @@ The tool above takes two points and returns the shortest distance between them o
 -   the great-circle route on a map
 
 Need the coordinates first? The [My Location tool](https://getmylocations.com/my-location) gives you yours in two seconds. To see the same point in every format, use the [Coordinates Converter](https://getmylocations.com/coordinates-converter). To pick two points visually instead of typing them, drop pins on the [interactive map](https://getmylocations.com/maps) and read off the coordinates.
+
+## Distance between two cities or places
+
+You do not need coordinates. Type a city, town, address or landmark into each box, such as `Chicago` and `Denver`, and press Enter or **Calculate**. The tool finds each place on OpenStreetMap, shows the name it found under the box, and gives the distance in kilometers and miles.
+
+-   **Add the state or country** when a name is shared by several places: _Perth, Australia_ or _Perth, Scotland_; _Portland, Oregon_ or _Portland, Maine_.
+-   **A city is measured from its center,** as the map service defines it. For an exact spot, type the full address or paste its coordinates.
+-   **The result is the straight-line distance,** sometimes called “as the crow flies”. A trip by road is longer, often much longer; for the road distance and time, use [driving directions](https://getmylocations.com/driving-directions).
 
 ## Enter latitude and longitude in any format
 
