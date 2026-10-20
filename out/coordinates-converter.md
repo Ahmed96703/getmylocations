@@ -30,6 +30,22 @@ Convert any GPS coordinate between **Decimal Degrees**, **Degrees-Minutes-Second
 
 All formats use the WGS 84 datum, the same one GPS receivers and web maps use.
 
+## What are DD and DDM coordinates?
+
+**DD (decimal degrees)** writes latitude and longitude as plain decimal numbers, with a minus sign for south and west: the Eiffel Tower is at `48.8584, 2.2945`. It is the format Google Maps, phones and most websites use when you copy a location.
+
+**DDM (degrees and decimal minutes)** keeps the whole degrees and turns the rest into minutes, where one degree is 60 minutes: the same point is `48° 51.504′ N, 2° 17.670′ E`. Marine GPS units, chart plotters and geocaching sites usually show DDM.
+
+### Convert decimal degrees to DDM
+
+1.  Keep the whole number as degrees: 48.8584 → **48°**.
+2.  Multiply the decimal part by 60 for minutes: 0.8584 × 60 = **51.504′**.
+3.  Add N or S for latitude (E or W for longitude) from the sign: positive is N or E, negative is S or W.
+
+### Convert DDM to decimal degrees
+
+Divide the minutes by 60 and add them to the degrees: 48° 51.504′ → 48 + 51.504 ÷ 60 = **48.8584**. Make the result negative for S or W. To do either conversion instantly, type into the DD or DDM row of the tool above.
+
 ## Paste a GPS coordinate in any format
 
 The _Paste any coordinate_ box at the top of the tool works out which format you have and converts it. It understands:

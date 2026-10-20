@@ -24,6 +24,11 @@ export const metadata = {
     'geohash decode',
     'lat long converter',
     'convert coordinates',
+    'dd to ddm',
+    'ddm to dd',
+    'decimal degrees to lat long',
+    'dd coordinates',
+    'degrees decimal minutes',
   ],
   alternates: { canonical: '/coordinates-converter' },
   openGraph: {
@@ -223,6 +228,26 @@ export default function CoordinatesConverterPage() {
         </section>
 
         <Tool />
+
+        <section className="mt-12">
+          <h2 className="font-display text-2xl font-bold">What are DD and DDM coordinates?</h2>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            <strong className="text-fg">DD (decimal degrees)</strong> writes latitude and longitude as plain decimal numbers, with a minus sign for south and west: the Eiffel Tower is at <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">48.8584, 2.2945</code>. It is the format Google Maps, phones and most websites use when you copy a location.
+          </p>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            <strong className="text-fg">DDM (degrees and decimal minutes)</strong> keeps the whole degrees and turns the rest into minutes, where one degree is 60 minutes: the same point is <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">48° 51.504′ N, 2° 17.670′ E</code>. Marine GPS units, chart plotters and geocaching sites usually show DDM.
+          </p>
+          <h3 className="font-display text-lg font-semibold mt-6 text-fg">Convert decimal degrees to DDM</h3>
+          <ol className="mt-2 space-y-1.5 text-fg-muted list-decimal list-inside leading-relaxed">
+            <li>Keep the whole number as degrees: 48.8584 → <strong className="text-fg">48°</strong>.</li>
+            <li>Multiply the decimal part by 60 for minutes: 0.8584 × 60 = <strong className="text-fg">51.504′</strong>.</li>
+            <li>Add N or S for latitude (E or W for longitude) from the sign: positive is N or E, negative is S or W.</li>
+          </ol>
+          <h3 className="font-display text-lg font-semibold mt-6 text-fg">Convert DDM to decimal degrees</h3>
+          <p className="mt-2 text-fg-muted leading-relaxed">
+            Divide the minutes by 60 and add them to the degrees: 48° 51.504′ → 48 + 51.504 ÷ 60 = <strong className="text-fg">48.8584</strong>. Make the result negative for S or W. To do either conversion instantly, type into the DD or DDM row of the tool above.
+          </p>
+        </section>
 
         <section className="mt-12">
           <h2 className="font-display text-2xl font-bold">Paste a GPS coordinate in any format</h2>
