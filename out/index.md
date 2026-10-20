@@ -78,6 +78,13 @@ All nine single-job tools on this site. Each one is free, runs in your browser, 
     ](https://getmylocations.com/radius-map)
 -   [
     
+    ### Live Fire Map
+    
+    Satellite-detected bushfires and wildfires near you in the last 24 hours.
+    
+    ](https://getmylocations.com/fire-map)
+-   [
+    
     ### Address Finder
     
     Address-to-coordinates and coordinates-to-address geocoding both ways.

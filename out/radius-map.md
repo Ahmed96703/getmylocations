@@ -133,11 +133,11 @@ Your coordinates and address
 
 ](https://getmylocations.com/my-location)[
 
-### What's My ZIP Code
+### Live Fire Map
 
-ZIP, county & district (US)
+Fires within a distance of you
 
-](https://getmylocations.com/whats-my-zip-code)
+](https://getmylocations.com/fire-map)
 
 AA
 

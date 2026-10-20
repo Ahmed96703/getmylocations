@@ -208,7 +208,7 @@ export default function RadiusMapPage() {
               { href: '/distance-calculator', t: 'Distance Calculator', d: 'Exact distance between two points' },
               { href: '/driving-directions', t: 'Driving Directions', d: 'Distance along the roads' },
               { href: '/my-location', t: 'My Location', d: 'Your coordinates and address' },
-              { href: '/whats-my-zip-code', t: "What's My ZIP Code", d: 'ZIP, county & district (US)' },
+              { href: '/fire-map', t: 'Live Fire Map', d: 'Fires within a distance of you' },
             ].map((t) => (
               <Link key={t.href} href={t.href} className="glass rounded-2xl p-4 hover:ring-accent/40 ring-1 ring-line transition no-underline">
                 <h3 className="font-display text-base font-bold text-fg hover:text-accent transition">{t.t}</h3>
