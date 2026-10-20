@@ -40,6 +40,7 @@ const webAppSchema = {
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
   publisher: { '@type': 'Organization', name: 'GetMyLocations' },
   author: AUTHOR,
+  dateModified: '2026-10-20',
 };
 
 // Capture dates read from Esri's imagery metadata on 15 October 2026. The
@@ -101,7 +102,11 @@ export default function SatellitePage() {
             Satellite view of any address, <span className="text-accent">with the date the photo was taken</span>
           </h1>
           <p className="text-lg text-fg-muted mt-4 max-w-3xl">
-            Search an address, a place, or coordinates in any format and see it from above in high-resolution satellite imagery. Under the map, the tool shows when that photo was captured, how sharp it is, and who took it, so you know whether you are looking at last spring or five years ago. Free, no signup, no API key.
+            See any address from above in high-resolution satellite imagery and find out exactly when the photo was taken: under the map, the tool shows the capture date, how sharp the image is, and who took it, so you know whether you are looking at last spring or five years ago. Search an address, a place, or coordinates in any format. Free, no signup, no API key.
+          </p>
+          <p className="mt-3 text-sm text-fg-subtle">
+            Last updated <time dateTime="2026-10-20">October 20, 2026</time> by{' '}
+            <Link href="/about" className="text-accent hover:underline">Ahmed Anwar</Link>.
           </p>
         </section>
 
@@ -121,7 +126,10 @@ export default function SatellitePage() {
         <section className="mt-10">
           <h2 className="font-display text-2xl font-bold">How old is the satellite image?</h2>
           <p className="mt-3 text-fg-muted leading-relaxed">
-            This is the question most satellite maps leave unanswered. The imagery here comes from Esri&rsquo;s World Imagery mosaic, and Esri publishes metadata for every photo in it: the capture date, the resolution, the positional accuracy, and the provider. The tool reads that metadata for the point at the centre of your screen, at your current zoom, because a single view can mix several photos taken on different days.
+            Satellite images of major cities on this map are usually less than two years old: the Eiffel Tower, the Statue of Liberty and the Pyramids of Giza were all photographed in 2025. Rural areas can be several years older. The tool shows the exact capture date for any point you look at.
+          </p>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            Most satellite maps never tell you this. The imagery here comes from Esri&rsquo;s World Imagery mosaic, and Esri publishes metadata for every photo in it: the capture date, the resolution, the positional accuracy, and the provider. The tool reads that metadata for the point at the centre of your screen, at your current zoom, because a single view can mix several photos taken on different days.
           </p>
           <p className="mt-3 text-fg-muted leading-relaxed">
             What we saw when we checked five places on 15 October 2026:

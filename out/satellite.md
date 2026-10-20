@@ -8,7 +8,9 @@ Free Tool · Satellite Imagery
 
 # Satellite view of any address, with the date the photo was taken
 
-Search an address, a place, or coordinates in any format and see it from above in high-resolution satellite imagery. Under the map, the tool shows when that photo was captured, how sharp it is, and who took it, so you know whether you are looking at last spring or five years ago. Free, no signup, no API key.
+See any address from above in high-resolution satellite imagery and find out exactly when the photo was taken: under the map, the tool shows the capture date, how sharp the image is, and who took it, so you know whether you are looking at last spring or five years ago. Search an address, a place, or coordinates in any format. Free, no signup, no API key.
+
+Last updated October 20, 2026 by [Ahmed Anwar](https://getmylocations.com/about).
 
 Show:Try:
 
@@ -34,7 +36,9 @@ Statue of Liberty
 
 ## How old is the satellite image?
 
-This is the question most satellite maps leave unanswered. The imagery here comes from Esri’s World Imagery mosaic, and Esri publishes metadata for every photo in it: the capture date, the resolution, the positional accuracy, and the provider. The tool reads that metadata for the point at the centre of your screen, at your current zoom, because a single view can mix several photos taken on different days.
+Satellite images of major cities on this map are usually less than two years old: the Eiffel Tower, the Statue of Liberty and the Pyramids of Giza were all photographed in 2025. Rural areas can be several years older. The tool shows the exact capture date for any point you look at.
+
+Most satellite maps never tell you this. The imagery here comes from Esri’s World Imagery mosaic, and Esri publishes metadata for every photo in it: the capture date, the resolution, the positional accuracy, and the provider. The tool reads that metadata for the point at the centre of your screen, at your current zoom, because a single view can mix several photos taken on different days.
 
 What we saw when we checked five places on 15 October 2026:
 
