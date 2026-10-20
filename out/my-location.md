@@ -34,6 +34,20 @@ That second step is called **reverse geocoding**. The page calls a free OpenStre
 
 * * *
 
+## Which city, state and country am I in?
+
+Press the button at the top of this page and allow location. The “City, state, country” box then names the city or town you are in, the state, province or region around it, and the country, worked out from your device's own GPS or Wi-Fi reading. The full street address appears just below it.
+
+### Why the name can differ from what you expect
+
+-   **Suburbs and postal towns.** Your mailing address may use a big city's name while you are actually in a separate town, suburb or unincorporated area. The map uses the official boundary, so it can show the smaller place.
+-   **Near a border.** Within a few hundred meters of a city, state or country line, a weak reading can put you on the wrong side. Check the accuracy radius: if it is larger than your distance to the border, the answer may be wrong.
+-   **VPN or IP-based location.** If you block location, many websites guess from your IP address instead, which often names the wrong city, or a different country when a VPN is on. This tool only uses the location your device reports. To see what your IP address alone reveals, try the [IP location lookup](https://getmylocations.com/ip-location).
+
+In the US you can also see your county and ZIP code with the [ZIP code finder](https://getmylocations.com/whats-my-zip-code), and in the UK your postcode with the [postcode finder](https://getmylocations.com/whats-my-postcode).
+
+* * *
+
 ## If the tool cannot read your location
 
 The tool needs location switched on in three places: for the device, for your browser, and for this site. If the prompt never appears or the reading fails, follow the steps for [iPhone and Android](https://getmylocations.com/blog/enable-location-on-iphone-and-android) or [Windows and Mac](https://getmylocations.com/blog/enable-location-on-windows-and-mac), or work through the [location troubleshooting checklist](https://getmylocations.com/fix-location-not-working). To read your coordinates in the apps already on your phone or computer instead (the iPhone Compass app, Google Maps or Apple Maps), see [how to find GPS coordinates on any device](https://getmylocations.com/blog/how-to-find-your-gps-coordinates).

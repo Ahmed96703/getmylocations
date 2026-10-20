@@ -197,6 +197,42 @@ export default function MyLocationPage() {
 
           <hr className="my-10 border-line" />
 
+          <h2 className="font-display text-2xl font-bold">Which city, state and country am I in?</h2>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            Press the button at the top of this page and allow location. The &ldquo;City, state,
+            country&rdquo; box then names the city or town you are in, the state, province or region
+            around it, and the country, worked out from your device&apos;s own GPS or Wi-Fi reading.
+            The full street address appears just below it.
+          </p>
+          <h3 className="font-display text-lg font-semibold mt-6 text-fg">Why the name can differ from what you expect</h3>
+          <ul className="mt-2 space-y-2 text-fg-muted list-disc list-inside leading-relaxed">
+            <li>
+              <strong className="text-fg">Suburbs and postal towns.</strong> Your mailing address may use
+              a big city&apos;s name while you are actually in a separate town, suburb or unincorporated
+              area. The map uses the official boundary, so it can show the smaller place.
+            </li>
+            <li>
+              <strong className="text-fg">Near a border.</strong> Within a few hundred meters of a city,
+              state or country line, a weak reading can put you on the wrong side. Check the accuracy
+              radius: if it is larger than your distance to the border, the answer may be wrong.
+            </li>
+            <li>
+              <strong className="text-fg">VPN or IP-based location.</strong> If you block location, many
+              websites guess from your IP address instead, which often names the wrong city, or a
+              different country when a VPN is on. This tool only uses the location your device reports.
+              To see what your IP address alone reveals, try the{' '}
+              <Link href="/ip-location" className="text-accent hover:underline">IP location lookup</Link>.
+            </li>
+          </ul>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            In the US you can also see your county and ZIP code with the{' '}
+            <Link href="/whats-my-zip-code" className="text-accent hover:underline">ZIP code finder</Link>, and in
+            the UK your postcode with the{' '}
+            <Link href="/whats-my-postcode" className="text-accent hover:underline">postcode finder</Link>.
+          </p>
+
+          <hr className="my-10 border-line" />
+
           <h2 className="font-display text-2xl font-bold">If the tool cannot read your location</h2>
           <p className="mt-3 text-fg-muted leading-relaxed">
             The tool needs location switched on in three places: for the device, for your browser, and for this

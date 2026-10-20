@@ -113,10 +113,10 @@ export default function Tool() {
               <dd className="font-mono mt-1">{meta.altitude != null ? `${Math.round(meta.altitude)} m` : '—'}</dd>
             </div>
             <div className="bg-tint/5 border border-line rounded-lg p-3">
-              <dt className="text-[10px] uppercase tracking-wider text-fg-subtle font-semibold">City, country</dt>
+              <dt className="text-[10px] uppercase tracking-wider text-fg-subtle font-semibold">City, state, country</dt>
               <dd className="mt-1 text-sm">
                 {place?.result
-                  ? [place.result.address?.city || place.result.address?.town || place.result.address?.village || place.result.address?.county, place.result.address?.country].filter(Boolean).join(', ') || '—'
+                  ? [place.result.address?.city || place.result.address?.town || place.result.address?.village || place.result.address?.county, place.result.address?.state, place.result.address?.country].filter((v, i, a) => v && a.indexOf(v) === i).join(', ') || '—'
                   : '—'}
               </dd>
             </div>

@@ -20,7 +20,31 @@ Before you change any setting, identify the symptom. Different problems need dif
 2.  **Page says “location permission denied” or never prompts** → the site is blocked by your browser's site settings. Same fix.
 3.  **Map shows the wrong city or country** → either a VPN/proxy is rewriting your IP or you only granted IP-level (not GPS-level) accuracy. Jump to [wrong city showing](#wrong-city).
 4.  **Coordinates fluctuate wildly every few seconds** → GPS signal is weak (indoors, surrounded by glass/metal) or you're on Wi-Fi-only positioning. Jump to [weak signal fixes](#weak-signal).
-5.  **Nothing happens — page just hangs** → the geolocation API is being blocked at the OS or network level. Jump to [advanced diagnostics](#nothing).
+5.  **You see “Location access required”, “Your location is not available” or “No sites added”** → see [what each message means](#messages).
+6.  **Location will not turn on at all on a laptop** → jump to [turning on location on Windows and Mac](#laptop).
+7.  **Nothing happens — page just hangs** → the geolocation API is being blocked at the OS or network level. Jump to [advanced diagnostics](#nothing).
+
+* * *
+
+## What common location messages mean
+
+The wording changes from site to site, but almost every message comes down to location being switched off in one of three places: the device, the browser, or the site's permission.
+
+### “Location access required”
+
+The site or app needs your location and does not have permission. Either you clicked “Block” earlier, or location is off for the whole device. Allow it for the site (the browser steps below), and check the device switch in the [laptop section](#laptop) or your phone's Location setting.
+
+### “Your location is not available” in Google Maps
+
+Google Maps shows this when it asks the browser for your position and gets nothing back. The message itself names the cause: browser or computer settings prevent websites from using your location. Allow location for `google.com` in your browser, make sure location is on for the computer, and reload. Until then you can still type a start and end address to get directions.
+
+### “Allowed to see your location: No sites added” in Chrome
+
+This is not an error. It is the list in Chrome's Location settings, and it is empty until you click “Allow” on a site's prompt. Open the site, click the icon left of the address, and set Location to Allow; the site then appears in the list. If the site is listed under “Not allowed to see your location” instead, remove it there and reload.
+
+### “User denied Geolocation” or “Location permission denied”
+
+The browser blocked the request, usually because of an earlier “Block”. Browsers remember that choice, so the prompt will not come back by itself. Reset it with the steps for your browser below.
 
 * * *
 
@@ -66,6 +90,26 @@ Safari has _two_ separate gates: Safari's own site permission, and macOS/iOS's s
 3.  Reload, then approve when prompted.
 
 Edge also respects Windows' system Location Privacy setting. If you blocked location at the OS level, no browser permission will help: open Windows Settings → Privacy & security → Location, and turn on both the master switch and the browser entry.
+
+## How to turn on location on a laptop (Windows and Mac)
+
+Browser permission is not enough if the laptop itself has location switched off. Most laptops have no GPS chip; they work out where they are from nearby Wi-Fi networks, so keep Wi-Fi turned on even when you are plugged into a network cable.
+
+### Windows 11
+
+1.  Open Settings → Privacy & security → Location.
+2.  Turn on **Location services**.
+3.  Turn on **Let apps access your location**, and **Let desktop apps access your location**. Chrome and Firefox count as desktop apps.
+4.  Restart the browser, then allow location for the site.
+
+On Windows 10 the path is Settings → Privacy → Location: click **Change** to turn location on for the device, then turn on access for apps and desktop apps on the same page.
+
+### Mac
+
+1.  Open System Settings → Privacy & Security → Location Services.
+2.  Turn on **Location Services**.
+3.  In the list below, turn it on for your browser (Safari, Chrome, Firefox or Edge).
+4.  Quit and reopen the browser, then allow location for the site.
 
 * * *
 

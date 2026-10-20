@@ -14,6 +14,10 @@ export const metadata = {
     'browser location not working',
     'location services not working',
     'gps not working',
+    'how to enable location permission in browser',
+    'location access required',
+    'your location is not available',
+    'turn on location on laptop',
   ],
   alternates: { canonical: '/fix-location-not-working' },
   openGraph: {
@@ -66,7 +70,7 @@ const articleSchema = {
   description:
     'Step-by-step fixes for Chrome, Safari, Firefox, Edge, iOS and Android — re-enable permissions, fix wrong-city errors, and stop GPS drift.',
   datePublished: '2026-05-15',
-  dateModified: '2026-09-30',
+  dateModified: '2026-10-20',
   author: AUTHOR,
   publisher: {
     '@type': 'Organization',
@@ -151,9 +155,52 @@ export default function FixLocationNotWorking() {
             <li><strong className="text-fg">Page says &ldquo;location permission denied&rdquo; or never prompts</strong> &rarr; the site is blocked by your browser&apos;s site settings. Same fix.</li>
             <li><strong className="text-fg">Map shows the wrong city or country</strong> &rarr; either a VPN/proxy is rewriting your IP or you only granted IP-level (not GPS-level) accuracy. Jump to <a className="text-accent hover:underline" href="#wrong-city">wrong city showing</a>.</li>
             <li><strong className="text-fg">Coordinates fluctuate wildly every few seconds</strong> &rarr; GPS signal is weak (indoors, surrounded by glass/metal) or you&apos;re on Wi-Fi-only positioning. Jump to <a className="text-accent hover:underline" href="#weak-signal">weak signal fixes</a>.</li>
+            <li><strong className="text-fg">You see &ldquo;Location access required&rdquo;, &ldquo;Your location is not available&rdquo; or &ldquo;No sites added&rdquo;</strong> &rarr; see <a className="text-accent hover:underline" href="#messages">what each message means</a>.</li>
+            <li><strong className="text-fg">Location will not turn on at all on a laptop</strong> &rarr; jump to <a className="text-accent hover:underline" href="#laptop">turning on location on Windows and Mac</a>.</li>
             <li><strong className="text-fg">Nothing happens — page just hangs</strong> &rarr; the geolocation API is being blocked at the OS or network level. Jump to <a className="text-accent hover:underline" href="#nothing">advanced diagnostics</a>.</li>
           </ol>
         </div>
+
+        <hr className="my-10 border-line" />
+
+        <h2 id="messages" className="font-display text-2xl font-bold">What common location messages mean</h2>
+        <p className="mt-3 text-fg-muted leading-relaxed">
+          The wording changes from site to site, but almost every message comes down to location being
+          switched off in one of three places: the device, the browser, or the site&apos;s permission.
+        </p>
+
+        <h3 className="font-display text-lg font-semibold mt-6 text-fg">&ldquo;Location access required&rdquo;</h3>
+        <p className="mt-2 text-fg-muted leading-relaxed">
+          The site or app needs your location and does not have permission. Either you clicked
+          &ldquo;Block&rdquo; earlier, or location is off for the whole device. Allow it for the site
+          (the browser steps below), and check the device switch in the{' '}
+          <a className="text-accent hover:underline" href="#laptop">laptop section</a> or your phone&apos;s
+          Location setting.
+        </p>
+
+        <h3 className="font-display text-lg font-semibold mt-6 text-fg">&ldquo;Your location is not available&rdquo; in Google Maps</h3>
+        <p className="mt-2 text-fg-muted leading-relaxed">
+          Google Maps shows this when it asks the browser for your position and gets nothing back. The
+          message itself names the cause: browser or computer settings prevent websites from using your
+          location. Allow location for <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">google.com</code> in
+          your browser, make sure location is on for the computer, and reload. Until then you can still
+          type a start and end address to get directions.
+        </p>
+
+        <h3 className="font-display text-lg font-semibold mt-6 text-fg">&ldquo;Allowed to see your location: No sites added&rdquo; in Chrome</h3>
+        <p className="mt-2 text-fg-muted leading-relaxed">
+          This is not an error. It is the list in Chrome&apos;s Location settings, and it is empty until
+          you click &ldquo;Allow&rdquo; on a site&apos;s prompt. Open the site, click the icon left of the
+          address, and set Location to Allow; the site then appears in the list. If the site is
+          listed under &ldquo;Not allowed to see your location&rdquo; instead, remove it there and reload.
+        </p>
+
+        <h3 className="font-display text-lg font-semibold mt-6 text-fg">&ldquo;User denied Geolocation&rdquo; or &ldquo;Location permission denied&rdquo;</h3>
+        <p className="mt-2 text-fg-muted leading-relaxed">
+          The browser blocked the request, usually because of an earlier &ldquo;Block&rdquo;. Browsers
+          remember that choice, so the prompt will not come back by itself. Reset it with the steps for
+          your browser below.
+        </p>
 
         <hr className="my-10 border-line" />
 
@@ -214,6 +261,31 @@ export default function FixLocationNotWorking() {
           the OS level, no browser permission will help: open Windows Settings &rarr; Privacy &amp;
           security &rarr; Location, and turn on both the master switch and the browser entry.
         </p>
+
+        <h2 id="laptop" className="font-display text-2xl font-bold mt-10">How to turn on location on a laptop (Windows and Mac)</h2>
+        <p className="mt-3 text-fg-muted leading-relaxed">
+          Browser permission is not enough if the laptop itself has location switched off. Most laptops
+          have no GPS chip; they work out where they are from nearby Wi-Fi networks, so keep Wi-Fi turned on
+          even when you are plugged into a network cable.
+        </p>
+        <h3 className="font-display text-lg font-semibold mt-6 text-fg">Windows 11</h3>
+        <ol className="mt-2 space-y-2 text-fg-muted list-decimal list-inside">
+          <li>Open Settings &rarr; Privacy &amp; security &rarr; Location.</li>
+          <li>Turn on <strong>Location services</strong>.</li>
+          <li>Turn on <strong>Let apps access your location</strong>, and <strong>Let desktop apps access your location</strong>. Chrome and Firefox count as desktop apps.</li>
+          <li>Restart the browser, then allow location for the site.</li>
+        </ol>
+        <p className="mt-3 text-fg-muted leading-relaxed">
+          On Windows 10 the path is Settings &rarr; Privacy &rarr; Location: click <strong>Change</strong> to turn
+          location on for the device, then turn on access for apps and desktop apps on the same page.
+        </p>
+        <h3 className="font-display text-lg font-semibold mt-6 text-fg">Mac</h3>
+        <ol className="mt-2 space-y-2 text-fg-muted list-decimal list-inside">
+          <li>Open System Settings &rarr; Privacy &amp; Security &rarr; Location Services.</li>
+          <li>Turn on <strong>Location Services</strong>.</li>
+          <li>In the list below, turn it on for your browser (Safari, Chrome, Firefox or Edge).</li>
+          <li>Quit and reopen the browser, then allow location for the site.</li>
+        </ol>
 
         <hr className="my-10 border-line" />
 
