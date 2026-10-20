@@ -118,6 +118,15 @@ export default function HowToShareGpsLocationSafely() {
         option. Just remember the timer keeps running &mdash; don&rsquo;t
         share to a group of 30 if only one person actually needs it.
       </p>
+      <h3 className="font-display text-lg font-semibold mt-6">Can you share live location on WhatsApp indefinitely?</h3>
+      <p className="mt-2 text-fg-muted leading-relaxed">
+        No. WhatsApp live location always stops after the time you pick:
+        15 minutes, 1 hour or 8 hours. To keep sharing, start a new live
+        location when the old one ends. If you want a share that never
+        expires, Apple&rsquo;s Find My and Google Maps offer one, but an
+        open-ended share is the easiest way to overshare, so pick a time
+        limit whenever you can.
+      </p>
 
       <h2 className="font-display text-2xl font-bold mt-12">iMessage and Find My (iPhone-only)</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
@@ -195,6 +204,14 @@ export default function HowToShareGpsLocationSafely() {
         The trade-off is that fewer of your contacts have it installed,
         and if you need someone to follow you on a walk home, you will need
         one of the live options above.
+      </p>
+      <h3 className="font-display text-lg font-semibold mt-6">Can you share live location on Signal?</h3>
+      <p className="mt-2 text-fg-muted leading-relaxed">
+        No. Signal has no live location sharing. In a chat, tap the
+        attachment button and choose <strong>Location</strong> to send your
+        current position as a single pin; it does not move as you do. For a
+        location that updates while you travel, use WhatsApp, Google Maps,
+        or Find My between iPhones.
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-12">Plus Codes &mdash; addresses where addresses don&rsquo;t exist</h2>

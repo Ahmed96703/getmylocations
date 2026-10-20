@@ -8,7 +8,7 @@ url: https://getmylocations.com/blog
 
 Plain-English guides to how GPS, coordinates and IP location work, and what to do when the location your phone or browser shows is wrong. Each guide sits next to the free tool that lets you see the idea in action.
 
-Updated October 15, 2026 · Written by [Ahmed Anwar](https://getmylocations.com/about)
+Updated October 20, 2026 · Written by [Ahmed Anwar](https://getmylocations.com/about)
 
 ## Fix a location problem fast
 
@@ -83,6 +83,15 @@ Turning location on in each operating system and browser, what a website can and
 
 -   [
     
+    Updated October 20, 2026·12 min read
+    
+    ### Share Your Location Safely: WhatsApp, iPhone, Google Maps
+    
+    Share your live location without oversharing: who can see it, how long it lasts, and how to stop it on WhatsApp, iPhone, Google Maps and Signal.
+    
+    Read article →](https://getmylocations.com/blog/how-to-share-gps-location-safely)
+-   [
+    
     Updated October 6, 2026·10 min read
     
     ### Browser Geolocation API: What Websites Can and Can't See
@@ -108,15 +117,6 @@ Turning location on in each operating system and browser, what a website can and
     Turn on Location Services on iPhone and Android, allow Safari or Chrome to use it, fix website permissions and Precise Location. Updated for 2026.
     
     Read article →](https://getmylocations.com/blog/enable-location-on-iphone-and-android)
--   [
-    
-    Updated October 5, 2026·12 min read
-    
-    ### Share Your Location Safely: WhatsApp, iPhone, Google Maps
-    
-    Share your live location without oversharing: who can see it, how long it lasts, and how to stop it on WhatsApp, iPhone, Google Maps and Messages.
-    
-    Read article →](https://getmylocations.com/blog/how-to-share-gps-location-safely)
 
 ## IP address and location
 

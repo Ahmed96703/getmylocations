@@ -1,6 +1,6 @@
 ---
-title: "Street View — See Any Address in Google Street View"
-description: "Find any address or GPS coordinate and open it in Google Street View facing the direction you choose. Accepts any coordinate format. Free."
+title: "Google Maps Street View by Address — Free & Instant"
+description: "Type any address or coordinates and open Google Maps Street View there in one click, facing the way you choose. Free, no signup, works on any device."
 url: https://getmylocations.com/street-view
 ---
 

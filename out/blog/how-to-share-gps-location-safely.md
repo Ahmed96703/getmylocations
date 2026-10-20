@@ -1,6 +1,6 @@
 ---
 title: "Share Your Location Safely: WhatsApp, iPhone, Google Maps"
-description: "Share your live location without oversharing: who can see it, how long it lasts, and how to stop it on WhatsApp, iPhone, Google Maps and Messages."
+description: "Share your live location without oversharing: who can see it, how long it lasts, and how to stop it on WhatsApp, iPhone, Google Maps and Signal."
 url: https://getmylocations.com/blog/how-to-share-gps-location-safely
 ---
 
@@ -10,7 +10,7 @@ A
 
 Ahmed Anwar
 
-May 18, 2026·Updated October 5, 2026·12 min read
+May 18, 2026·Updated October 20, 2026·12 min read
 
 -   privacy
 -   sharing
@@ -43,6 +43,10 @@ For most people on most days, WhatsApp is the right answer. **Send Location** dr
 
 Contents are end-to-end encrypted, so Meta can’t read the coordinates. Two caveats: (a) the _metadata_ — who shared with whom, when, for how long — is still visible to Meta and may be retained, and (b) everyone in the chat sees the live location, so sharing into a group shares with all of its members. For sharing inside a group chat with multiple people, WhatsApp is usually the safest cross-platform option. Just remember the timer keeps running — don’t share to a group of 30 if only one person actually needs it.
 
+### Can you share live location on WhatsApp indefinitely?
+
+No. WhatsApp live location always stops after the time you pick: 15 minutes, 1 hour or 8 hours. To keep sharing, start a new live location when the old one ends. If you want a share that never expires, Apple’s Find My and Google Maps offer one, but an open-ended share is the easiest way to overshare, so pick a time limit whenever you can.
+
 ## iMessage and Find My (iPhone-only)
 
 iPhones have two options that look similar but behave differently. **Send My Current Location** drops a static pin into the chat — one-shot, won’t update. **Share My Location** shares your live position for the duration you pick: one hour, until end of day, or indefinitely (the option to avoid). It appears in the conversation and in the recipient’s Find My app.
@@ -66,6 +70,10 @@ Google Messages on Android can now share your real-time location from inside a c
 Signal can send your current location as a one-time pin, end-to-end encrypted like every Signal message, from a service built to keep as little metadata as possible. It does _not_ offer live location sharing, so there is no timer to set and nothing to stop later. For telling one person where to meet you, when you care who can see it, that is often exactly what you want.
 
 The trade-off is that fewer of your contacts have it installed, and if you need someone to follow you on a walk home, you will need one of the live options above.
+
+### Can you share live location on Signal?
+
+No. Signal has no live location sharing. In a chat, tap the attachment button and choose **Location** to send your current position as a single pin; it does not move as you do. For a location that updates while you travel, use WhatsApp, Google Maps, or Find My between iPhones.
 
 ## Plus Codes — addresses where addresses don’t exist
 
