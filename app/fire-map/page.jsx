@@ -3,13 +3,12 @@ import { breadcrumbSchema } from '../components/breadcrumbSchema.js';
 import Tool from './Tool.jsx';
 import AuthorBio from '../components/AuthorBio.jsx';
 import AdSense from '../components/AdSense.jsx';
-import Monetag from '../components/Monetag.jsx';
 import { AUTHOR } from '../components/author.js';
 
 export const metadata = {
   title: 'Live Fire Map: Bushfires & Wildfires Near You (24 Hours)',
   description:
-    'See satellite-detected fires near you in the last 24 hours: distance, direction and time of each hotspot from NASA data. Australia, New Zealand, US and worldwide.',
+    'Satellite-detected fires near you in the last 24 hours, with distance, direction and time. Australia, New Zealand, the US and worldwide.',
   keywords: ['fire map', 'bushfire map', 'fires near me', 'wildfire map', 'bushfires near me', 'live fire map', 'wildfires near me', 'nasa fire map'],
   alternates: { canonical: '/fire-map' },
   openGraph: {
@@ -83,9 +82,9 @@ export default function FireMapPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs) }} />
 
+      {/* No Monetag here: its full-screen and pop-under formats do not belong
+          on a page people check during a fire. AdSense stays opt-in. */}
       <AdSense />
-
-      <Monetag />
 
       <main role="main" className="max-w-5xl mx-auto px-5 py-10">
         <nav aria-label="Breadcrumb" className="text-xs text-fg-subtle mb-3">

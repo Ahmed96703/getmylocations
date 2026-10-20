@@ -1,6 +1,6 @@
 ---
 title: "Live Fire Map: Bushfires & Wildfires Near You (24 Hours)"
-description: "See satellite-detected fires near you in the last 24 hours: distance, direction and time of each hotspot from NASA data. Australia, New Zealand, US and worldwide."
+description: "Satellite-detected fires near you in the last 24 hours, with distance, direction and time. Australia, New Zealand, the US and worldwide."
 url: https://getmylocations.com/fire-map
 ---
 
