@@ -14,11 +14,13 @@ import { useEffect } from 'react';
 // allow other networks alongside them): empty ZONES, or delete this component
 // and its imports. public/sw.js must then be replaced with a worker that
 // unregisters itself, or visitors who allowed push notifications keep it.
-// Multitag: one tag that serves every enabled Monetag format (push,
-// In-Page Push, Vignette and others). It replaced the separate push and
-// Vignette tags; running both would show duplicate ads.
+// Only two formats: OnClick (Popunder) and Push. They replaced the Multitag
+// (zone 298408), which also showed In-Page Push and Vignette; the Adsterra
+// Social Bar and sticky footer banner do those jobs now. Running the Multitag
+// alongside these would show duplicate ads.
 const ZONES = [
-  { zone: '298408', src: 'https://quge5.com/88/tag.min.js' }, // Multitag
+  { zone: '12092105', src: 'https://al5sm.com/tag.min.js' }, // OnClick (Popunder)
+  { zone: '12092113', src: 'https://5gvci.com/act/files/tag.min.js?z=12092113' }, // Push; public/sw.js uses the same zone
 ];
 
 function addTags() {

@@ -8,8 +8,8 @@ import { afterLoad, loadBanner } from './adQueue.js';
 // rest of the visit (this browser tab). While it is open the page gets extra
 // bottom padding, so it never covers the end of the page or the site footer.
 //
-// Monetag's In-Page Push also floats over the page: turn it off in the
-// Monetag Multitag settings so two floating ads never show together.
+// Monetag's In-Page Push is not used (see Monetag.jsx), so it never shows
+// alongside this bar.
 const PHONE = { key: '70f4ddd7d6099d44f345e85de8e3c074', width: 320, height: 50 };
 const WIDE = { key: 'a763592167bceee6b0a7f30bba35b478', width: 728, height: 90 };
 const CLOSED = 'stickyAdClosed';

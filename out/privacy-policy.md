@@ -66,7 +66,7 @@ For visitors in the European Economic Area, the United Kingdom, and Switzerland,
 
 Pop-under, push and full-screen ads on the site are served by Monetag. Monetag and its advertisers may set cookies and receive your IP address, device and browser details, and the page you are viewing, to choose and measure ads and to prevent fraud. If you allow notifications from this site, Monetag sends them through a service worker; you can turn them off at any time in your browser’s site settings. Monetag’s privacy policy is published at monetag.com/privacy.
 
-The banner and native ads marked “Sponsored” are served by Adsterra. Adsterra and its advertisers may likewise set cookies and receive your IP address, device and browser details, and the page you are viewing, to choose and measure ads and to prevent fraud. Adsterra’s privacy policy is published at adsterra.com.
+The banner and native ads marked “Sponsored”, and some pop-under and floating ads, are served by Adsterra. Adsterra and its advertisers may likewise set cookies and receive your IP address, device and browser details, and the page you are viewing, to choose and measure ads and to prevent fraud. Adsterra’s privacy policy is published at adsterra.com.
 
 ## 8\. What we do not do
 

@@ -205,7 +205,8 @@ export default function Privacy() {
       </p>
 
       <p className="mt-3 text-fg-muted leading-relaxed">
-        The banner and native ads marked &ldquo;Sponsored&rdquo; are served by Adsterra. Adsterra
+        The banner and native ads marked &ldquo;Sponsored&rdquo;, and some pop-under and floating
+        ads, are served by Adsterra. Adsterra
         and its advertisers may likewise set cookies and receive your IP address, device and
         browser details, and the page you are viewing, to choose and measure ads and to prevent
         fraud. Adsterra&rsquo;s privacy policy is published at{' '}

@@ -4,6 +4,7 @@ import SiteHeader from './components/SiteHeader.jsx';
 import Footer from './components/Footer.jsx';
 import StickyAd from './components/StickyAd.jsx';
 import MidAd from './components/MidAd.jsx';
+import AdsterraTags from './components/AdsterraTags.jsx';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -168,6 +169,7 @@ export default function RootLayout({ children }) {
         <Footer />
         <MidAd />
         <StickyAd />
+        <AdsterraTags />
       </body>
     </html>
   );
