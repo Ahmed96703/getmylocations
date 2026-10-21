@@ -3,6 +3,7 @@ import { breadcrumbSchema } from '../components/breadcrumbSchema.js';
 import AdSense from '../components/AdSense.jsx';
 import Monetag from '../components/Monetag.jsx';
 import NativeAd from '../components/NativeAd.jsx';
+import SideAd from '../components/SideAd.jsx';
 import { AUTHOR } from '../components/author.js';
 
 
@@ -313,6 +314,7 @@ export default function GpsVsIpAccuracy() {
           <li><Link href="/blog/what-is-ip-location-and-how-accurate" className="text-accent hover:underline">What is IP location and how accurate is it?</Link></li>
         </ul>
         <NativeAd />
+        <SideAd />
       </article>
     </main>
     </>

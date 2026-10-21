@@ -4,6 +4,7 @@ import AuthorBio from '../components/AuthorBio.jsx';
 import AdSense from '../components/AdSense.jsx';
 import Monetag from '../components/Monetag.jsx';
 import NativeAd from '../components/NativeAd.jsx';
+import SideAd from '../components/SideAd.jsx';
 import { measure } from './dist.js';
 import { AUTHOR } from '../components/author.js';
 
@@ -162,6 +163,7 @@ export default function DistanceCalculatorPage() {
 
         <Tool />
         <NativeAd />
+        <SideAd />
 
         <section className="mt-12">
           <h2 className="font-display text-2xl font-bold">What this calculator does</h2>

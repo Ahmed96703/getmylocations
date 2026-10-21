@@ -4,6 +4,8 @@ import Tool from './Tool.jsx';
 import AuthorBio from '../components/AuthorBio.jsx';
 import AdSense from '../components/AdSense.jsx';
 import { AUTHOR } from '../components/author.js';
+import NativeAd from '../components/NativeAd.jsx';
+import SideAd from '../components/SideAd.jsx';
 
 export const metadata = {
   title: 'Live Fire Map: Bushfires & Wildfires Near You (24 Hours)',
@@ -83,7 +85,9 @@ export default function FireMapPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs) }} />
 
       {/* No Monetag here: its full-screen and pop-under formats do not belong
-          on a page people check during a fire. AdSense stays opt-in. */}
+          on a page people check during a fire. The native banner sits at the
+          end of the guide and the side rail beside it; neither covers the map.
+          AdSense stays opt-in. */}
       <AdSense />
 
       <main role="main" className="max-w-5xl mx-auto px-5 py-10">
@@ -188,6 +192,8 @@ export default function FireMapPage() {
             ))}
           </div>
         </section>
+        <NativeAd />
+        <SideAd />
         <AuthorBio />
       </main>
     </>

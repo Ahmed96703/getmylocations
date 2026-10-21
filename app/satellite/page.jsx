@@ -5,6 +5,8 @@ import AuthorBio from '../components/AuthorBio.jsx';
 import AdSense from '../components/AdSense.jsx';
 import Monetag from '../components/Monetag.jsx';
 import { AUTHOR } from '../components/author.js';
+import NativeAd from '../components/NativeAd.jsx';
+import SideAd from '../components/SideAd.jsx';
 
 export const metadata = {
   title: 'Satellite View — Free Satellite Map of Any Address',
@@ -111,6 +113,8 @@ export default function SatellitePage() {
         </section>
 
         <Tool />
+        <NativeAd />
+        <SideAd />
 
         <section className="mt-12">
           <h2 className="font-display text-2xl font-bold">How to see any address from above</h2>

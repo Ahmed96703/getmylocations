@@ -273,3 +273,5 @@ In Chrome, click the small lock icon to the left of the URL, choose Site setting
 Is there an ad-free version?+
 
 The site is supported by ads served through Google AdSense. There is no paid plan. Everything the site does — reading your location, converting coordinates, displaying the map — is free and works without an account.
+
+Sponsored

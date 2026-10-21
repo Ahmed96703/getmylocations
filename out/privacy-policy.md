@@ -6,7 +6,7 @@ url: https://getmylocations.com/privacy-policy
 
 # Privacy Policy
 
-Last updated: October 19, 2026
+Last updated: October 21, 2026
 
 This page explains what information GetMyLocations receives when you use the site, what we do with it, and which third parties are involved. The summary at the top covers the common questions; the sections below give the details for anyone who wants them.
 
@@ -16,7 +16,7 @@ This page explains what information GetMyLocations receives when you use the sit
 -   Only the coordinate itself is sent to a third-party service so we can show a city name. No identifier we control travels with it.
 -   We use Google Analytics to count visits and see which pages are used. We do not have an account system.
 -   The host (Cloudflare) keeps short-lived request logs the way any web host does.
--   Ads are served by Monetag, and by Google AdSense once it is enabled. Both set their own advertising cookies. You can opt out of personalization at any time.
+-   Ads are served by Monetag and Adsterra, and by Google AdSense once it is enabled. Each sets its own advertising cookies. You can opt out of personalization at any time.
 
 ## 1\. What we read from your browser
 
@@ -58,13 +58,15 @@ The site is hosted on Cloudflare. Like every web host, Cloudflare keeps short re
 
 We use Google Analytics 4 to understand how many people visit, which pages and tools they use, and roughly where they come from (country and city level). Google Analytics sets first-party cookies (such as `_ga`) and receives your IP address, which Google Analytics 4 does not log or store. We see only totals, not individual visitors, and we do not link analytics to your GPS coordinates. You can opt out with Google’s browser add-on at tools.google.com/dlpage/gaoptout.
 
-## 7\. Advertising — Monetag and Google AdSense
+## 7\. Advertising — Monetag, Adsterra and Google AdSense
 
 Once Google AdSense is enabled on the site, Google and its advertising partners may set cookies (for example `__gads`, `__gpi`, and `NID`) to serve advertisements, prevent fraud, and — where you have consented — personalize them. You can review and change your ad personalization settings at adssettings.google.com or opt out of personalized advertising network-wide at aboutads.info/choices.
 
 For visitors in the European Economic Area, the United Kingdom, and Switzerland, the AdSense Consent Management Platform shows a consent dialog the first time you visit, in line with GDPR and ePrivacy rules.
 
-Ads on the site are currently served by Monetag. Monetag and its advertisers may set cookies and receive your IP address, device and browser details, and the page you are viewing, to choose and measure ads and to prevent fraud. If you allow notifications from this site, Monetag sends them through a service worker; you can turn them off at any time in your browser’s site settings. Monetag’s privacy policy is published at monetag.com/privacy.
+Pop-under, push and full-screen ads on the site are served by Monetag. Monetag and its advertisers may set cookies and receive your IP address, device and browser details, and the page you are viewing, to choose and measure ads and to prevent fraud. If you allow notifications from this site, Monetag sends them through a service worker; you can turn them off at any time in your browser’s site settings. Monetag’s privacy policy is published at monetag.com/privacy.
+
+The banner and native ads marked “Sponsored” are served by Adsterra. Adsterra and its advertisers may likewise set cookies and receive your IP address, device and browser details, and the page you are viewing, to choose and measure ads and to prevent fraud. Adsterra’s privacy policy is published at adsterra.com.
 
 ## 8\. What we do not do
 
@@ -88,3 +90,5 @@ We update this page when the services we use change. The date at the top reflect
 ## 12\. Contact
 
 Questions about anything on this page can go to [ahmed@getmylocations.com](mailto:ahmed@getmylocations.com). See the [Contact page](https://getmylocations.com/contact) for response-time expectations.
+
+Sponsored

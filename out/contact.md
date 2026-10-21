@@ -45,3 +45,5 @@ Email us with a screenshot and your browser version. Fixes usually ship within a
 Response policy
 
 We usually reply within 24 hours. Clear bug reports and factual corrections get priority, because those make the whole site better for everyone.
+
+Sponsored

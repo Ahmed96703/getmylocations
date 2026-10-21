@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import { breadcrumbSchema } from '../components/breadcrumbSchema.js';
+import NativeAd from '../components/NativeAd.jsx';
+import SideAd from '../components/SideAd.jsx';
 
 export const metadata = {
   title: 'Privacy Policy — GetMyLocations',
@@ -38,7 +40,7 @@ export default function Privacy() {
         </nav>
 
       <h1 className="font-display text-4xl font-extrabold tracking-tight">Privacy Policy</h1>
-      <p className="text-sm text-fg-subtle mt-2">Last updated: October 19, 2026</p>
+      <p className="text-sm text-fg-subtle mt-2">Last updated: October 21, 2026</p>
 
       <p className="mt-6 text-fg-muted leading-relaxed">
         This page explains what information GetMyLocations receives when you use the
@@ -53,7 +55,7 @@ export default function Privacy() {
         <li>Only the coordinate itself is sent to a third-party service so we can show a city name. No identifier we control travels with it.</li>
         <li>We use Google Analytics to count visits and see which pages are used. We do not have an account system.</li>
         <li>The host (Cloudflare) keeps short-lived request logs the way any web host does.</li>
-        <li>Ads are served by Monetag, and by Google AdSense once it is enabled. Both set their own advertising cookies. You can opt out of personalization at any time.</li>
+        <li>Ads are served by Monetag and Adsterra, and by Google AdSense once it is enabled. Each sets its own advertising cookies. You can opt out of personalization at any time.</li>
       </ul>
 
       <h2 className="font-display text-2xl font-bold mt-10">1. What we read from your browser</h2>
@@ -174,7 +176,7 @@ export default function Privacy() {
         <span className="text-fg-muted font-mono text-sm">tools.google.com/dlpage/gaoptout</span>.
       </p>
 
-      <h2 className="font-display text-2xl font-bold mt-10">7. Advertising — Monetag and Google AdSense</h2>
+      <h2 className="font-display text-2xl font-bold mt-10">7. Advertising — Monetag, Adsterra and Google AdSense</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
         Once Google AdSense is enabled on the site, Google and its advertising partners
         may set cookies (for example <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">__gads</code>,{' '}
@@ -193,13 +195,21 @@ export default function Privacy() {
       </p>
 
       <p className="mt-3 text-fg-muted leading-relaxed">
-        Ads on the site are currently served by Monetag. Monetag and its advertisers may
+        Pop-under, push and full-screen ads on the site are served by Monetag. Monetag and its advertisers may
         set cookies and receive your IP address, device and browser details, and the page
         you are viewing, to choose and measure ads and to prevent fraud. If you allow
         notifications from this site, Monetag sends them through a service worker; you
         can turn them off at any time in your browser&rsquo;s site settings. Monetag&rsquo;s
         privacy policy is published at{' '}
         <span className="text-fg-muted font-mono text-sm">monetag.com/privacy</span>.
+      </p>
+
+      <p className="mt-3 text-fg-muted leading-relaxed">
+        The banner and native ads marked &ldquo;Sponsored&rdquo; are served by Adsterra. Adsterra
+        and its advertisers may likewise set cookies and receive your IP address, device and
+        browser details, and the page you are viewing, to choose and measure ads and to prevent
+        fraud. Adsterra&rsquo;s privacy policy is published at{' '}
+        <span className="text-fg-muted font-mono text-sm">adsterra.com</span>.
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-10">8. What we do not do</h2>
@@ -240,6 +250,8 @@ export default function Privacy() {
         <a className="text-accent hover:underline" href="mailto:ahmed@getmylocations.com">ahmed@getmylocations.com</a>.
         See the <Link href="/contact" className="text-accent hover:underline">Contact page</Link> for response-time expectations.
       </p>
+      <NativeAd />
+      <SideAd />
     </main>
     </>
   );

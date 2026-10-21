@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import { breadcrumbSchema } from '../components/breadcrumbSchema.js';
+import NativeAd from '../components/NativeAd.jsx';
+import SideAd from '../components/SideAd.jsx';
 
 export const metadata = {
   title: 'Disclaimer — GetMyLocations',
@@ -124,6 +126,8 @@ export default function Disclaimer() {
         If you spot an error on the Service or have a question about this disclaimer,
         email <a className="text-accent hover:underline" href="mailto:ahmed@getmylocations.com">ahmed@getmylocations.com</a>.
       </p>
+      <NativeAd />
+      <SideAd />
     </main>
     </>
   );

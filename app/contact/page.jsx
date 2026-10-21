@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import { breadcrumbSchema } from '../components/breadcrumbSchema.js';
+import NativeAd from '../components/NativeAd.jsx';
+import SideAd from '../components/SideAd.jsx';
 
 export const metadata = {
   title: 'Contact GetMyLocations — Questions, Bugs and Corrections',
@@ -96,6 +98,8 @@ export default function Contact() {
           get priority, because those make the whole site better for everyone.
         </p>
       </section>
+      <NativeAd />
+      <SideAd />
     </main>
     </>
   );
