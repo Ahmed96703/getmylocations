@@ -2,6 +2,8 @@ import { Inter, Sora } from 'next/font/google';
 import './globals.css';
 import SiteHeader from './components/SiteHeader.jsx';
 import Footer from './components/Footer.jsx';
+import StickyAd from './components/StickyAd.jsx';
+import MidAd from './components/MidAd.jsx';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -164,6 +166,8 @@ export default function RootLayout({ children }) {
         <SiteHeader />
         <div id="content" tabIndex={-1}>{children}</div>
         <Footer />
+        <MidAd />
+        <StickyAd />
       </body>
     </html>
   );
