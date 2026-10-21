@@ -14,6 +14,8 @@ Tap the button below and the page shows your coordinates (latitude and longitude
 
 Click the button above to start.
 
+Sponsored
+
 * * *
 
 ## What latitude and longitude actually are

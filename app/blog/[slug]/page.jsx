@@ -20,6 +20,7 @@ import EnableLocationMobile from '../../posts/EnableLocationMobile.jsx';
 import HaversineVsVincenty from '../../posts/HaversineVsVincenty.jsx';
 import AdSense from '../../components/AdSense.jsx';
 import Monetag from '../../components/Monetag.jsx';
+import NativeAd from '../../components/NativeAd.jsx';
 import { AUTHOR } from '../../components/author.js';
 
 const POST_COMPONENTS = {
@@ -162,6 +163,7 @@ export default function BlogPost({ params }) {
 
         <Body />
 
+        <NativeAd />
         <AuthorBio />
 
         <Link href="/blog" className="block mt-10 text-sm text-accent hover:underline">← Back to all posts</Link>

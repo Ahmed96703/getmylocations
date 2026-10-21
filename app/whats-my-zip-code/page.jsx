@@ -4,6 +4,7 @@ import Tool from './Tool.jsx';
 import AuthorBio from '../components/AuthorBio.jsx';
 import AdSense from '../components/AdSense.jsx';
 import Monetag from '../components/Monetag.jsx';
+import NativeAd from '../components/NativeAd.jsx';
 import { AUTHOR } from '../components/author.js';
 
 export const metadata = {
@@ -98,6 +99,7 @@ export default function ZipCodePage() {
         </section>
 
         <Tool />
+        <NativeAd />
 
         <section className="mt-12">
           <h2 className="font-display text-2xl font-bold">How the tool finds your ZIP code</h2>

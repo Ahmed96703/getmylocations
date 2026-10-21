@@ -73,6 +73,8 @@ Linking an IP address to a specific human requires the cooperation of the ISP, a
 
 The cheapest experiment is to open the [IP Location tool](https://getmylocations.com/ip-location) and click _Lookup my IP_ twice in a row — once on Wi-Fi and once after switching to mobile data. The city often changes. Nothing about you changed; the carrier’s routing decision did. That’s the whole story of IP geolocation in a single tab. For a deeper dive into how IP databases are built and when they break, read [What is IP location and how accurate is it?](https://getmylocations.com/blog/what-is-ip-location-and-how-accurate). And for a side-by-side comparison of IP positioning against GPS, see [GPS vs IP accuracy](https://getmylocations.com/gps-vs-ip-accuracy).
 
+Sponsored
+
 AA
 
 Written by

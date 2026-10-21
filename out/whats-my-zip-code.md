@@ -14,6 +14,8 @@ Press one button to see the ZIP code for where you are, together with your count
 
 Click anywhere on the map to get the ZIP code, county, and districts at that spot.
 
+Sponsored
+
 ## How the tool finds your ZIP code
 
 Your browser asks your device for its position, which on a phone usually comes from GPS and Wi-Fi and is accurate to a few meters outdoors. The tool then makes two lookups at once. OpenStreetMap’s Nominatim service finds the nearest street address and the ZIP code recorded with it, which is the ZIP you would write on an envelope. The U.S. Census Bureau’s geocoder reports which official areas the point falls in: the Census ZIP area, county, city or town, congressional and state legislative districts, and school district.

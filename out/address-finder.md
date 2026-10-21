@@ -20,6 +20,8 @@ Reverse geocoding
 
 Geocoding by OpenStreetMap’s Nominatim service, limited to one request per second under its usage policy. Map data © OpenStreetMap contributors.
 
+Sponsored
+
 ## What this tool does
 
 The page does two related jobs. Type an address or a landmark name, such as “Eiffel Tower”, “1600 Pennsylvania Ave”, or “Badshahi Mosque, Lahore”, and it lists up to five matching places with their latitude and longitude in decimal degrees and DMS. Paste coordinates the other way, in decimal degrees, DMS, DDM, UTM, or as a Google Maps link, and it returns the nearest address. Every result says what kind of thing was matched, and reverse lookups also show how far the matched object is from your point. Both directions use OpenStreetMap’s Nominatim service, which is free for light use and covers most of the world.

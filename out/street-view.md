@@ -20,6 +20,8 @@ The pin marks the spot. The Street View panorama opens in Google Maps, which jum
 
 [Open Street View here ↗](https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=48.85826,2.294501&heading=0)
 
+Sponsored
+
 ## How to see any address in Street View
 
 1.  Type an address or landmark, or paste coordinates in any format (decimal degrees, DMS, UTM, or a Google Maps link), and press _Find_. Or tap one of the example places.

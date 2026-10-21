@@ -3,6 +3,7 @@ import LiveTool from './LiveTool.jsx';
 import AuthorBio from '../components/AuthorBio.jsx';
 import AdSense from '../components/AdSense.jsx';
 import Monetag from '../components/Monetag.jsx';
+import NativeAd from '../components/NativeAd.jsx';
 import { AUTHOR } from '../components/author.js';
 
 export const metadata = {
@@ -348,6 +349,7 @@ export default function LiveLocationPage() {
           </div>
         </section>
 
+        <NativeAd />
         <AuthorBio />
       </main>
     </>
