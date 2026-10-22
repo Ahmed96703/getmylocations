@@ -69,7 +69,7 @@ export default function MapsPage() {
             A free interactive map of <span className="text-accent">the world</span>
           </h1>
           <p className="text-lg text-fg-muted mt-4 max-w-3xl">
-            Search any place on Earth, switch between standard, satellite, and dark map styles, drop a pin to read off the GPS coordinates, or centre the map on your current location. Works anywhere &mdash; a street in Tokyo, a trailhead in Colorado, the whole outline of the United States. No signup, no API key.
+            Search any place on Earth, switch between standard, <strong>satellite</strong>, and dark map styles, drop a pin to read off the <strong>GPS coordinates</strong>, or centre the map on your <strong>current location</strong>. Works anywhere &mdash; a street in Tokyo, a trailhead in Colorado, the whole outline of the United States. No signup, no API key.
           </p>
         </section>
 

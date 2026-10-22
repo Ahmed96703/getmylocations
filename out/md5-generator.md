@@ -8,7 +8,7 @@ Free Tool · Text or file, on your device
 
 # MD5 & SHA hash generator
 
-Type text or pick a file to get its MD5, SHA-1, SHA-256, SHA-384 and SHA-512 hashes instantly, then paste a published hash to check it matches. Nothing is uploaded: hashing happens in your browser.
+Type text or pick a file to get its **MD5, SHA-1, SHA-256, SHA-384 and SHA-512 hashes** instantly, then paste a published hash to check it matches. Nothing is uploaded: hashing happens in your browser.
 
 ## Generate MD5, SHA-1 and SHA-256 hashes
 

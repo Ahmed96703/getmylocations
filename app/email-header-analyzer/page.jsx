@@ -25,6 +25,7 @@ export default function Page() {
       h1="Email header analyzer"
       accent="where did this email really come from?"
       intro="Paste an email’s full headers to see the IP address it was sent from, every server it passed through with the delay at each step, and whether it passed SPF, DKIM and DMARC. Nothing you paste leaves your browser."
+      bold={['full headers', 'the IP address it was sent from', 'SPF, DKIM and DMARC']}
       appDescription="Free, private email header analyzer that parses Received headers into a delivery path with delays, finds the originating IP, and summarises SPF, DKIM and DMARC results and key headers, entirely in the browser."
       tool={<Tool />}
       faqs={faqs}

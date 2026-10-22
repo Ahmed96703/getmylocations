@@ -8,7 +8,7 @@ Free Tool · 14 blocklists at once
 
 # IP blacklist checker: is this IP on a spam list?
 
-Enter an IPv4 address, or a domain to check its server, and see within seconds whether it is listed on 14 widely used spam blocklists, with the reason and a link to each list. Your own IP is checked to start.
+Enter an **IPv4 address**, or a domain to check its server, and see within seconds whether it is listed on **14 widely used spam blocklists**, with the reason and a link to each list. Your own IP is checked to start.
 
 ## Check an IP against spam blocklists
 

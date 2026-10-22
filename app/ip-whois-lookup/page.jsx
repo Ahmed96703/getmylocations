@@ -26,6 +26,7 @@ export default function Page() {
       h1="IP WHOIS lookup"
       accent="who owns this IP address?"
       intro="Enter any IPv4 or IPv6 address to see the organization it is registered to, its address range and country, the registry that issued it, and the abuse contact. Your own IP is looked up to start."
+      bold={['IPv4 or IPv6 address', 'organization it is registered to', 'abuse contact']}
       appDescription="Free IP WHOIS lookup that reads the RDAP record for an IPv4 or IPv6 address from the regional internet registry and shows the network name, address range, CIDR, country, registry, dates and contacts."
       tool={<Tool />}
       faqs={faqs}

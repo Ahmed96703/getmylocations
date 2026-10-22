@@ -24,6 +24,7 @@ export default function Page() {
       eyebrow="Free Tool · Text or file, on your device"
       h1="MD5 & SHA hash generator"
       intro="Type text or pick a file to get its MD5, SHA-1, SHA-256, SHA-384 and SHA-512 hashes instantly, then paste a published hash to check it matches. Nothing is uploaded: hashing happens in your browser."
+      bold={['MD5, SHA-1, SHA-256, SHA-384 and SHA-512 hashes']}
       appDescription="Free client-side hash generator computing MD5, SHA-1, SHA-256, SHA-384 and SHA-512 of UTF-8 text or local files, with uppercase output and a compare box for verifying checksums."
       tool={<Tool />}
       faqs={faqs}

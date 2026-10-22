@@ -19,6 +19,9 @@ export const metadata = {
     'my current location',
     'current location',
     'what is my current location address',
+    'how do i find my current location address',
+    'what is my current location on google maps',
+    'my present location',
     'gps coordinates of my location',
     'find my coordinates',
     'my coordinates',
@@ -144,9 +147,9 @@ export default function MyLocationPage() {
             My location: where am I right now?
           </h1>
           <p className="mt-4 text-lg text-fg-muted leading-relaxed">
-            What&rsquo;s my current location? The box below gives a rough answer from your IP address straight
-            away. Tap the button and it shows your exact coordinates (latitude and longitude, ready to
-            copy), the accuracy radius, your street address, city and postal code, and a map pin &mdash;
+            <strong>What&rsquo;s my current location?</strong> The box below gives a rough answer from your IP address straight
+            away. Tap the button and it shows your <strong>exact coordinates</strong> (latitude and longitude, ready to
+            copy), the accuracy radius, your <strong>street address, city and postal code</strong>, and a map pin &mdash;
             straight from your browser, without signing up or installing anything. Below the tool, the guide covers what the two numbers mean, how to
             read DD/DMS/UTM notation, how your device works out where you are, and what to do when the
             reading looks wrong.
@@ -166,7 +169,9 @@ export default function MyLocationPage() {
             a few seconds the tool shows where you are right now: your latitude and longitude, the street
             address nearest to you, and your city, state, country and postal code, with a pin on the map.
             Before you press it, the box at the top already gives a rough answer from your IP address, so
-            you can see at a glance which city you are in.
+            you can see at a glance which city you are in. Whether you call it your <strong>present
+            location</strong>, your <strong>current position</strong> or your <strong>exact location</strong>, it is the same
+            reading, taken the moment you press the button.
           </p>
 
           <h2 className="font-display text-2xl font-bold mt-10">What is my current location address?</h2>
@@ -176,6 +181,34 @@ export default function MyLocationPage() {
             so treat it as the address of the spot you are standing on, not proof of where you live. Indoors
             or with a weak signal the match can be a neighbouring building; the accuracy figure tells you how
             far off it may be.
+          </p>
+
+          <h2 className="font-display text-2xl font-bold mt-10">How do I find my current location address?</h2>
+          <ol className="mt-3 space-y-2 text-fg-muted list-decimal list-inside leading-relaxed">
+            <li>Press <strong>Find my location</strong> at the top of this page.</li>
+            <li>When your browser asks, choose <strong>Allow</strong>. On a phone, make sure Location is switched on in your settings.</li>
+            <li>Read your address in the <strong>&ldquo;Your current address&rdquo;</strong> box, and press <strong>Copy address</strong> to paste it into a form or message.</li>
+          </ol>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            The <strong>street number</strong> (house number) appears when the building is on the map. If it is
+            missing, the tool shows the nearest street instead: add the number from the door or a nearby sign,
+            or share your coordinates, which pin the exact spot even without an address. To look up the address
+            of any other place, use the <Link href="/address-finder" className="text-accent hover:underline">Address Finder</Link>.
+          </p>
+
+          <h2 className="font-display text-2xl font-bold mt-10">What is my current location on Google Maps?</h2>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            After the tool finds you, press the <strong>Google Maps</strong> button under the result: Google Maps opens
+            with a pin on your <strong>exact location</strong>, ready to get directions or share. You can also find
+            yourself in Google Maps directly:
+          </p>
+          <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside leading-relaxed">
+            <li><strong>Phone (Google Maps app):</strong> tap the location button (the target icon); the <strong>blue dot</strong> is your current location. Tap the blue dot for options to share it, or touch and hold the map to see the coordinates of that point.</li>
+            <li><strong>Computer (google.com/maps):</strong> click the location button in the bottom-right corner and allow location access. Right-click any point and the first line of the menu shows its latitude and longitude.</li>
+          </ul>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            If the blue dot is missing or in the wrong place, Google Maps has the same problem as any website: see{' '}
+            <Link href="/fix-location-not-working" className="text-accent hover:underline">how to fix location not working</Link>.
           </p>
 
           <h2 className="font-display text-2xl font-bold mt-10">My location vs IP location</h2>

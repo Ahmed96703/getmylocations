@@ -8,7 +8,7 @@ Free Tool · DMARC, SPF & DKIM
 
 # DMARC checker: is your email protected from spoofing?
 
-Enter your domain to check its DMARC policy and SPF record, with every tag explained and the SPF lookup limit counted. Add a DKIM selector to check the DKIM key as well.
+Enter your domain to check its **DMARC policy and SPF record**, with every tag explained and the SPF lookup limit counted. Add a **DKIM** selector to check the DKIM key as well.
 
 ## Check DMARC, SPF and DKIM
 

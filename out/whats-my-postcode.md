@@ -8,7 +8,7 @@ Free Tool · UK & Europe
 
 # What’s my postcode? Find it from where you are
 
-Press one button to see the postcode for your current location, with the nearest address, council, ward, and parliamentary constituency. UK postcodes come from the official Office for National Statistics directory; elsewhere in Europe the tool uses OpenStreetMap. You can also type an address, check a postcode someone gave you, or click any point on the map. Free, no signup.
+Press one button to see the **postcode for your current location**, with the **nearest address, council, ward, and parliamentary constituency**. UK postcodes come from the official Office for National Statistics directory; elsewhere in Europe the tool uses OpenStreetMap. You can also type an address, check a postcode someone gave you, or click any point on the map. Free, no signup.
 
 ## Find the postcode where you are
 

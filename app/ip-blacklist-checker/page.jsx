@@ -26,6 +26,7 @@ export default function Page() {
       h1="IP blacklist checker"
       accent="is this IP on a spam list?"
       intro="Enter an IPv4 address, or a domain to check its server, and see within seconds whether it is listed on 14 widely used spam blocklists, with the reason and a link to each list. Your own IP is checked to start."
+      bold={['IPv4 address', '14 widely used spam blocklists']}
       appDescription="Free IP blacklist checker that queries 14 DNS-based spam blocklists (DNSBLs), including Barracuda, SpamCop, UCEPROTECT and PSBL, for an IPv4 address or a domain's server, and shows the listing reason and removal links."
       tool={<Tool />}
       faqs={faqs}

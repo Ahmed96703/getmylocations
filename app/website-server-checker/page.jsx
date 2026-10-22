@@ -25,6 +25,7 @@ export default function Page() {
       h1="Website server checker"
       accent="what is this site running on?"
       intro="Enter a website to see its server software, the operating system when the server discloses it, the CDN, CMS and framework behind it, any redirects and the response time, and which security headers are missing."
+      bold={['server software', 'the operating system', 'which security headers are missing']}
       appDescription="Free website server and technology checker that fetches a page and reports the Server header, disclosed operating system, CDN, hosting, CMS and framework, redirects, response time, all response headers and missing security headers."
       tool={<Tool />}
       faqs={faqs}

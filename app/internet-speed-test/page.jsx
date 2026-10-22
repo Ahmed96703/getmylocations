@@ -26,6 +26,7 @@ export default function Page() {
       h1="Internet speed test"
       accent="how fast is your connection?"
       intro="Press Start to measure your download and upload speed in Mbps, plus ping and jitter, against Cloudflare’s nearest data center. No app, no signup, and nothing is stored."
+      bold={['download and upload speed in Mbps', 'ping and jitter']}
       appDescription="Free browser-based internet speed test that measures download and upload throughput with parallel streams, plus latency and jitter, against Cloudflare's global network, and shows the visitor's IP, network and test location."
       tool={<Tool />}
       faqs={faqs}

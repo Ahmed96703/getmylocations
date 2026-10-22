@@ -8,7 +8,7 @@ Free Tool · Miles or km
 
 # Radius map: draw a circle around any place
 
-See what lies within 1, 5, 10 or 100 miles (or kilometers) of an address, a ZIP code, or where you are now. Draw several circles at once, see the area each one covers, and share the map with a link. Free, no signup.
+See what lies within **1, 5, 10 or 100 miles (or kilometers)** of an address, a ZIP code, or where you are now. **Draw several circles at once**, see the area each one covers, and share the map with a link. Free, no signup.
 
 ## Draw a radius
 

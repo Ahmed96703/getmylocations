@@ -8,7 +8,7 @@ Free Tool · Official IEEE register
 
 # MAC address lookup: who made this device?
 
-Paste a MAC address, or just its first six digits, to see the manufacturer from the IEEE register, whether the address is private (randomized), and the same address in every common format.
+Paste a **MAC address**, or just its first six digits, to see the **manufacturer from the IEEE register**, whether the address is private (randomized), and the same address in every common format.
 
 ## Find the maker of a MAC address
 

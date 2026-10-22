@@ -8,7 +8,7 @@ Free Tool · Official registry data
 
 # Domain age checker: how old is this domain?
 
-Enter any domain to see exactly how old it is, when it was registered and when it expires, with its registrar, status and name servers, straight from the official registry.
+Enter any domain to see exactly **how old it is**, **when it was registered and when it expires**, with its registrar, status and name servers, straight from the official registry.
 
 ## Check how old a domain is
 

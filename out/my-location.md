@@ -8,7 +8,7 @@ Free Tool · Complete Guide
 
 # My location: where am I right now?
 
-What’s my current location? The box below gives a rough answer from your IP address straight away. Tap the button and it shows your exact coordinates (latitude and longitude, ready to copy), the accuracy radius, your street address, city and postal code, and a map pin — straight from your browser, without signing up or installing anything. Below the tool, the guide covers what the two numbers mean, how to read DD/DMS/UTM notation, how your device works out where you are, and what to do when the reading looks wrong.
+**What’s my current location?** The box below gives a rough answer from your IP address straight away. Tap the button and it shows your **exact coordinates** (latitude and longitude, ready to copy), the accuracy radius, your **street address, city and postal code**, and a map pin — straight from your browser, without signing up or installing anything. Below the tool, the guide covers what the two numbers mean, how to read DD/DMS/UTM notation, how your device works out where you are, and what to do when the reading looks wrong.
 
 ## Find my current location
 
@@ -20,11 +20,28 @@ Sponsored
 
 ## Where am I right now?
 
-Press **Find my location** and allow location access when your browser asks. Within a few seconds the tool shows where you are right now: your latitude and longitude, the street address nearest to you, and your city, state, country and postal code, with a pin on the map. Before you press it, the box at the top already gives a rough answer from your IP address, so you can see at a glance which city you are in.
+Press **Find my location** and allow location access when your browser asks. Within a few seconds the tool shows where you are right now: your latitude and longitude, the street address nearest to you, and your city, state, country and postal code, with a pin on the map. Before you press it, the box at the top already gives a rough answer from your IP address, so you can see at a glance which city you are in. Whether you call it your **present location**, your **current position** or your **exact location**, it is the same reading, taken the moment you press the button.
 
 ## What is my current location address?
 
 After the tool finds you, the “Your current address” box shows the nearest street address, with a copy button. It comes from OpenStreetMap and names the closest mapped building or street, so treat it as the address of the spot you are standing on, not proof of where you live. Indoors or with a weak signal the match can be a neighbouring building; the accuracy figure tells you how far off it may be.
+
+## How do I find my current location address?
+
+1.  Press **Find my location** at the top of this page.
+2.  When your browser asks, choose **Allow**. On a phone, make sure Location is switched on in your settings.
+3.  Read your address in the **“Your current address”** box, and press **Copy address** to paste it into a form or message.
+
+The **street number** (house number) appears when the building is on the map. If it is missing, the tool shows the nearest street instead: add the number from the door or a nearby sign, or share your coordinates, which pin the exact spot even without an address. To look up the address of any other place, use the [Address Finder](https://getmylocations.com/address-finder).
+
+## What is my current location on Google Maps?
+
+After the tool finds you, press the **Google Maps** button under the result: Google Maps opens with a pin on your **exact location**, ready to get directions or share. You can also find yourself in Google Maps directly:
+
+-   **Phone (Google Maps app):** tap the location button (the target icon); the **blue dot** is your current location. Tap the blue dot for options to share it, or touch and hold the map to see the coordinates of that point.
+-   **Computer (google.com/maps):** click the location button in the bottom-right corner and allow location access. Right-click any point and the first line of the menu shows its latitude and longitude.
+
+If the blue dot is missing or in the wrong place, Google Maps has the same problem as any website: see [how to fix location not working](https://getmylocations.com/fix-location-not-working).
 
 ## My location vs IP location
 

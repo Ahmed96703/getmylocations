@@ -25,6 +25,7 @@ export default function Page() {
       h1="Multiple URL opener"
       accent="open a list of links at once"
       intro="Paste links or domains, one per line, and open them all in new tabs with one click, or step through them with “Open next”. Duplicates and invalid lines are removed."
+      bold={['open them all in new tabs with one click']}
       appDescription="Free multiple URL opener that parses a pasted list of links or domains, removes duplicates, and opens them in new tabs all at once or one at a time."
       tool={<Tool />}
       faqs={faqs}

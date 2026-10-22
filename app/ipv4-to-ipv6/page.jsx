@@ -24,6 +24,7 @@ export default function Page() {
       eyebrow="Free Tool · Both directions"
       h1="IPv4 to IPv6 converter"
       intro="Type an IPv4 address to see it in every standard IPv6 form: IPv4-mapped, NAT64, 6to4 and the obsolete IPv4-compatible form. Paste one of those IPv6 forms to get the IPv4 address back."
+      bold={['IPv4 address', 'every standard IPv6 form', 'IPv4-mapped']}
       appDescription="Free converter that writes an IPv4 address in its IPv6 forms (IPv4-mapped ::ffff:, NAT64 64:ff9b::/96, 6to4 2002::/16, IPv4-compatible) in short and expanded notation, and extracts the IPv4 address from those forms."
       tool={<Tool />}
       faqs={faqs}

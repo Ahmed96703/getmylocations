@@ -26,6 +26,7 @@ export default function Page() {
       h1="DNS lookup"
       accent="see any domain’s records"
       intro="Enter a domain to see its A, AAAA, CNAME, MX, NS, TXT, SOA and CAA records at once, or pick one type. Enter an IP address for a reverse (PTR) lookup, and compare Cloudflare and Google DNS to check whether a change has spread."
+      bold={['A, AAAA, CNAME, MX, NS, TXT, SOA and CAA records', 'reverse (PTR) lookup']}
       appDescription="Free DNS lookup tool that queries A, AAAA, CNAME, MX, NS, TXT, SOA, CAA, SRV and PTR records over DNS-over-HTTPS, with TTLs and a Cloudflare versus Google comparison for propagation checks."
       tool={<Tool />}
       faqs={faqs}

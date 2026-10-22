@@ -8,7 +8,7 @@ Free Tool · Certificate Transparency
 
 # SSL certificate checker: issuer, expiry and fingerprints
 
-Enter a domain to see all its valid SSL/TLS certificates from the public Certificate Transparency logs: who issued them, which names they cover, when they expire, and their SHA-256, SHA-1 and public key fingerprints.
+Enter a domain to see all its **valid SSL/TLS certificates** from the public Certificate Transparency logs: who issued them, which names they cover, when they expire, and their **SHA-256, SHA-1 and public key fingerprints**.
 
 ## Check a domain’s SSL certificates
 

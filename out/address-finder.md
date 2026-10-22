@@ -8,7 +8,7 @@ Free Tool · Two-way Geocoding
 
 # Address finder — address ↔ GPS coordinates
 
-Type any address, landmark, or place name and get its GPS coordinates, with every matching place listed and a label saying how precise the match is. Or paste coordinates in any format and get the nearest address, plus how far that address is from your point. Powered by OpenStreetMap Nominatim. Free, no signup.
+Type any address, landmark, or place name and get its **GPS coordinates**, with every matching place listed and a label saying how precise the match is. Or paste coordinates in any format and get the **nearest address**, plus how far that address is from your point. Powered by OpenStreetMap Nominatim. Free, no signup.
 
 ## Address → Coordinates
 

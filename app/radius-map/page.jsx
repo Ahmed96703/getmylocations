@@ -107,7 +107,7 @@ export default function RadiusMapPage() {
             Radius map: <span className="text-accent">draw a circle around any place</span>
           </h1>
           <p className="text-lg text-fg-muted mt-4 max-w-3xl">
-            See what lies within 1, 5, 10 or 100 miles (or kilometers) of an address, a ZIP code, or where you are now. Draw several circles at once, see the area each one covers, and share the map with a link. Free, no signup.
+            See what lies within <strong>1, 5, 10 or 100 miles (or kilometers)</strong> of an address, a ZIP code, or where you are now. <strong>Draw several circles at once</strong>, see the area each one covers, and share the map with a link. Free, no signup.
           </p>
         </section>
 

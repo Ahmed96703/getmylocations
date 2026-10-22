@@ -8,7 +8,7 @@ Free Tool · United States
 
 # What’s my ZIP code? Plus your county and districts
 
-Press one button to see the ZIP code for where you are, together with your county, city, U.S. House district, state legislative districts, and school district from the U.S. Census Bureau. You can also type an address or a ZIP code, or click any point on the map. Free, no signup.
+Press one button to see the **ZIP code for where you are**, together with your **county, city, U.S. House district**, state legislative districts, and school district from the U.S. Census Bureau. You can also type an address or a ZIP code, or click any point on the map. Free, no signup.
 
 ## Find the ZIP code where you are
 

@@ -26,6 +26,7 @@ export default function Page() {
       h1="SSL certificate checker"
       accent="issuer, expiry and fingerprints"
       intro="Enter a domain to see all its valid SSL/TLS certificates from the public Certificate Transparency logs: who issued them, which names they cover, when they expire, and their SHA-256, SHA-1 and public key fingerprints."
+      bold={['valid SSL/TLS certificates', 'SHA-256, SHA-1 and public key fingerprints']}
       appDescription="Free SSL certificate checker that searches Certificate Transparency logs for a domain's valid certificates and shows issuer, subject alternative names, validity, days to expiry, revocation, and SHA-256, SHA-1 and public-key SHA-256 fingerprints."
       tool={<Tool />}
       faqs={faqs}

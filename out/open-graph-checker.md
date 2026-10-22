@@ -8,7 +8,7 @@ Free Tool · Social share preview
 
 # Open Graph checker: how will this link look when shared?
 
-Enter a page address to preview its share card on Facebook, LinkedIn, WhatsApp and X, see every Open Graph and Twitter Card tag, and get a list of what to fix, including image size.
+Enter a page address to **preview its share card** on Facebook, LinkedIn, WhatsApp and X, see every **Open Graph and Twitter Card tag**, and get a list of what to fix, including image size.
 
 ## Check a page’s Open Graph tags
 

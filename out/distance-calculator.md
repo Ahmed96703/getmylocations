@@ -8,7 +8,7 @@ Free Tool · Pure JavaScript Math
 
 # GPS distance calculator — between two coordinates
 
-Type two cities, addresses, or coordinates in any common format and get the distance between them in kilometers, miles, nautical miles, and meters, with the initial and final bearing, the midpoint, and the route on a map. Calculated on the WGS 84 ellipsoid, the same Earth model GPS uses, entirely in your browser: no API call, no signup.
+Type two cities, addresses, or coordinates in any common format and get the **distance between them** in **kilometers, miles, nautical miles, and meters**, with the initial and final bearing, the midpoint, and the route on a map. Calculated on the WGS 84 ellipsoid, the same Earth model GPS uses, entirely in your browser: no API call, no signup.
 
 ## Calculate distance
 

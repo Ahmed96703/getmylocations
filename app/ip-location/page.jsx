@@ -132,11 +132,11 @@ export default function IpLocationLookup() {
           IP location lookup &mdash; what your public IP reveals, and what it doesn&apos;t
         </h1>
         <p className="mt-4 text-lg text-fg-muted leading-relaxed">
-          Every device on the public internet has an IP address. That address quietly leaks a
-          surprising amount about you &mdash; your approximate city, your internet provider, the
+          Every device on the public internet has an <strong>IP address</strong>. That address quietly leaks a
+          surprising amount about you &mdash; <strong>your approximate city, your internet provider</strong>, the
           network that owns your address &mdash; but also <em>less</em> than most people assume.
-          This guide explains exactly what an IP lookup can and can&apos;t tell, how to find your
-          own public IP, how IP-based geolocation actually works under the hood, and what to do
+          This guide explains exactly what an IP lookup can and can&apos;t tell, how to <strong>find your
+          own public IP</strong>, how <strong>IP-based geolocation</strong> actually works under the hood, and what to do
           when the city it reports is wrong.
         </p>
 

@@ -8,7 +8,7 @@ Free Tool · Both directions
 
 # IPv4 to IPv6 converter
 
-Type an IPv4 address to see it in every standard IPv6 form: IPv4-mapped, NAT64, 6to4 and the obsolete IPv4-compatible form. Paste one of those IPv6 forms to get the IPv4 address back.
+Type an **IPv4 address** to see it in **every standard IPv6 form**: **IPv4-mapped**, NAT64, 6to4 and the obsolete IPv4-compatible form. Paste one of those IPv6 forms to get the IPv4 address back.
 
 ## Convert an IPv4 address to IPv6
 

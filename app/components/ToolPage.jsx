@@ -24,10 +24,23 @@ export function toolMetadata({ path, title, description, keywords }) {
   };
 }
 
+// Intro text with the page's key phrases in bold (first occurrence of each),
+// where people scanning the page look first.
+function highlight(text, phrases = []) {
+  if (!phrases.length || typeof text !== 'string') return text;
+  const esc = phrases.map((p) => p.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+  const parts = text.split(new RegExp(`(${esc.join('|')})`));
+  const used = new Set();
+  return parts.map((part, i) => {
+    if (phrases.includes(part) && !used.has(part)) { used.add(part); return <strong key={i}>{part}</strong>; }
+    return part;
+  });
+}
+
 // Shared layout for the network, web and text tools: breadcrumb, heading,
 // the tool, the ads, the guide (children), FAQ and related tools. Every page
 // still writes its own guide; this only removes the repeated frame.
-export default function ToolPage({ path, name, eyebrow, h1, accent, intro, appDescription, tool, faqs = [], related = [], children }) {
+export default function ToolPage({ path, name, eyebrow, h1, accent, intro, bold = [], appDescription, tool, faqs = [], related = [], children }) {
   const crumbs = breadcrumbSchema([{ name, path }]);
   const app = {
     '@context': 'https://schema.org',
@@ -72,7 +85,7 @@ export default function ToolPage({ path, name, eyebrow, h1, accent, intro, appDe
           <h1 className="font-display text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.05]">
             {h1}{accent && <>: <span className="text-accent">{accent}</span></>}
           </h1>
-          <p className="text-lg text-fg-muted mt-4 max-w-3xl">{intro}</p>
+          <p className="text-lg text-fg-muted mt-4 max-w-3xl">{highlight(intro, bold)}</p>
         </section>
 
         {tool}

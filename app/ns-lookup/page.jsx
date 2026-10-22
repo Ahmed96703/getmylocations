@@ -25,6 +25,7 @@ export default function Page() {
       h1="NS lookup"
       accent="who hosts this domain’s DNS?"
       intro="Enter a domain to see its name servers, their IPv4 and IPv6 addresses, the zone’s primary server and serial number, and which company hosts the DNS."
+      bold={['name servers', 'which company hosts the DNS']}
       appDescription="Free online NS lookup that lists a domain's name servers with their IP addresses, reads the SOA record (primary server, serial, admin contact) and identifies the DNS hosting provider."
       tool={<Tool />}
       faqs={faqs}

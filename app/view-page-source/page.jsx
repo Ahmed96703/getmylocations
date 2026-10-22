@@ -25,6 +25,7 @@ export default function Page() {
       h1="View page source"
       accent="see any page’s HTML"
       intro="Enter a web address to see the page’s HTML source with line numbers. Search inside it, wrap or unwrap long lines, and copy it. Handy on phones and tablets, which have no View Source button."
+      bold={['HTML source', 'line numbers']}
       appDescription="Free online HTML source viewer that fetches a web page and shows its source code with line numbers, search highlighting, line wrapping and copy, including on mobile devices."
       tool={<Tool />}
       faqs={faqs}

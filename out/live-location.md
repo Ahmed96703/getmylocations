@@ -8,7 +8,7 @@ Free Tool · Continuous GPS stream in your browser
 
 # My live location now — watch your real-time position update.
 
-Tap one button and the page subscribes to your device’s GPS stream. Coordinates, accuracy, speed, heading, and the map pin all refresh automatically as you move, and the map draws the path you have walked — not a single snapshot, but a running fix. When you are done, save the route as a GPX file. Your coordinates never reach a server we run, and the stream stops the moment you tap _Stop_.
+Tap one button and the page subscribes to your device’s **GPS stream**. Coordinates, accuracy, speed, heading, and the map pin all **refresh automatically as you move**, and the map draws the path you have walked — not a single snapshot, but a running fix. When you are done, **save the route as a GPX file**. Your coordinates never reach a server we run, and the stream stops the moment you tap _Stop_.
 
 ## Live location tracker
 

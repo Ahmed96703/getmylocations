@@ -8,7 +8,7 @@ Free Tool · Decimal and binary units
 
 # Bytes and bits converter
 
-Enter an amount in any unit to see it in bits, bytes, kilobytes, megabytes, gigabytes and terabytes, in both decimal (KB, MB, GB) and binary (KiB, MiB, GiB) units, and calculate how long a download takes.
+Enter an amount in any unit to see it in **bits, bytes, kilobytes, megabytes, gigabytes and terabytes**, in both decimal (KB, MB, GB) and binary (KiB, MiB, GiB) units, and calculate **how long a download takes**.
 
 ## Convert bytes, bits and data sizes
 

@@ -8,7 +8,7 @@ Comparison Guide
 
 # GPS vs IP accuracy — which method is more precise, and when does each one fail?
 
-Every “find my location” tool quietly chooses between two very different signals: the GPS chip in your device, and the public IP your network handed you. They're not remotely equivalent — one places you within a meter, the other within tens of kilometers — but the difference is invisible unless you know what to look for. This guide explains how accurate each one really is, when one fails and the other saves you, and why your browser sometimes shows the wrong city even with location permission granted.
+Every “find my location” tool quietly chooses between two very different signals: **the GPS chip in your device**, and **the public IP your network handed you**. They're not remotely equivalent — one places you within a meter, the other within tens of kilometers — but the difference is invisible unless you know what to look for. This guide explains how accurate each one really is, when one fails and the other saves you, and why your browser sometimes shows the wrong city even with location permission granted.
 
 * * *
 

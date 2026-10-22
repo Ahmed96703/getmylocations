@@ -24,6 +24,7 @@ export default function Page() {
       eyebrow="Free Tool · Decimal and binary units"
       h1="Bytes and bits converter"
       intro="Enter an amount in any unit to see it in bits, bytes, kilobytes, megabytes, gigabytes and terabytes, in both decimal (KB, MB, GB) and binary (KiB, MiB, GiB) units, and calculate how long a download takes."
+      bold={['bits, bytes, kilobytes, megabytes, gigabytes and terabytes', 'how long a download takes']}
       appDescription="Free data size converter between bits, bytes, decimal SI units (KB to PB, kb to Tb) and binary IEC units (KiB to TiB), with a download time calculator for a file size and speed in Mbps."
       tool={<Tool />}
       faqs={faqs}

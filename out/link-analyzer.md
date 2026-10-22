@@ -8,7 +8,7 @@ Free Tool · SEO
 
 # Website link analyzer: every link on a page
 
-Enter a page address to list all its links with their anchor text, split into internal, external, nofollow and other links, spot links with no anchor text, and copy the list as CSV.
+Enter a page address to list **all its links** with their anchor text, split into **internal, external, nofollow** and other links, spot links with no anchor text, and copy the list as CSV.
 
 ## Analyze the links on a page
 

@@ -95,7 +95,7 @@ export default function ZipCodePage() {
             What&rsquo;s my ZIP code? <span className="text-accent">Plus your county and districts</span>
           </h1>
           <p className="text-lg text-fg-muted mt-4 max-w-3xl">
-            Press one button to see the ZIP code for where you are, together with your county, city, U.S. House district, state legislative districts, and school district from the U.S. Census Bureau. You can also type an address or a ZIP code, or click any point on the map. Free, no signup.
+            Press one button to see the <strong>ZIP code for where you are</strong>, together with your <strong>county, city, U.S. House district</strong>, state legislative districts, and school district from the U.S. Census Bureau. You can also type an address or a ZIP code, or click any point on the map. Free, no signup.
           </p>
         </section>
 

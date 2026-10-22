@@ -8,7 +8,7 @@ Free Tool · Both directions
 
 # Binary to text converter
 
-Type text to see it in binary, or paste binary to read it as text. Switch to hex, decimal bytes or Base64 with one click. Both boxes update as you type.
+Type text to **see it in binary**, or paste binary to **read it as text**. Switch to hex, decimal bytes or Base64 with one click. Both boxes update as you type.
 
 ## Convert text to binary and back
 

@@ -8,7 +8,7 @@ Free Tool · Live HTTP check
 
 # Website server checker: what is this site running on?
 
-Enter a website to see its server software, the operating system when the server discloses it, the CDN, CMS and framework behind it, any redirects and the response time, and which security headers are missing.
+Enter a website to see its **server software**, **the operating system** when the server discloses it, the CDN, CMS and framework behind it, any redirects and the response time, and **which security headers are missing**.
 
 ## Check a website’s server
 

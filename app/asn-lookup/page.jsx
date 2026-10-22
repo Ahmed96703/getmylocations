@@ -26,6 +26,7 @@ export default function Page() {
       h1="ASN lookup"
       accent="who runs this network?"
       intro="Enter an AS number such as AS15169, or an IP address, to see the network’s owner, country and registry, when it was allocated, and every IP block it announces. Your own network is shown to start."
+      bold={['AS number', 'network’s owner', 'every IP block it announces']}
       appDescription="Free ASN WHOIS lookup: finds the autonomous system for an IP address and shows the AS name, country, registry, allocation date, abuse contact and announced IPv4 and IPv6 prefixes."
       tool={<Tool />}
       faqs={faqs}

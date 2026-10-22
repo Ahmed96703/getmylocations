@@ -140,7 +140,7 @@ export default function LiveLocationPage() {
             My <span className="text-accent">live location</span> now — watch your real-time position update.
           </h1>
           <p className="text-lg text-fg-muted mt-4 max-w-3xl">
-            Tap one button and the page subscribes to your device&rsquo;s GPS stream. Coordinates, accuracy, speed, heading, and the map pin all refresh automatically as you move, and the map draws the path you have walked — not a single snapshot, but a running fix. When you are done, save the route as a GPX file. Your coordinates never reach a server we run, and the stream stops the moment you tap <em>Stop</em>.
+            Tap one button and the page subscribes to your device&rsquo;s <strong>GPS stream</strong>. Coordinates, accuracy, speed, heading, and the map pin all <strong>refresh automatically as you move</strong>, and the map draws the path you have walked — not a single snapshot, but a running fix. When you are done, <strong>save the route as a GPX file</strong>. Your coordinates never reach a server we run, and the stream stops the moment you tap <em>Stop</em>.
           </p>
         </section>
 

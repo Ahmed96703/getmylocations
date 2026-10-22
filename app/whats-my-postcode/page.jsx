@@ -95,7 +95,7 @@ export default function PostcodePage() {
             What&rsquo;s my postcode? <span className="text-accent">Find it from where you are</span>
           </h1>
           <p className="text-lg text-fg-muted mt-4 max-w-3xl">
-            Press one button to see the postcode for your current location, with the nearest address, council, ward, and parliamentary constituency. UK postcodes come from the official Office for National Statistics directory; elsewhere in Europe the tool uses OpenStreetMap. You can also type an address, check a postcode someone gave you, or click any point on the map. Free, no signup.
+            Press one button to see the <strong>postcode for your current location</strong>, with the <strong>nearest address, council, ward, and parliamentary constituency</strong>. UK postcodes come from the official Office for National Statistics directory; elsewhere in Europe the tool uses OpenStreetMap. You can also type an address, check a postcode someone gave you, or click any point on the map. Free, no signup.
           </p>
         </section>
 

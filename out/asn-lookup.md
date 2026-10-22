@@ -8,7 +8,7 @@ Free Tool · BGP & registry data
 
 # ASN lookup: who runs this network?
 
-Enter an AS number such as AS15169, or an IP address, to see the network’s owner, country and registry, when it was allocated, and every IP block it announces. Your own network is shown to start.
+Enter an **AS number** such as AS15169, or an IP address, to see the **network’s owner**, country and registry, when it was allocated, and **every IP block it announces**. Your own network is shown to start.
 
 ## Look up an ASN
 

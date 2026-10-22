@@ -144,7 +144,7 @@ export default function AddressFinderPage() {
             Address finder — <span className="text-accent">address ↔ GPS coordinates</span>
           </h1>
           <p className="text-lg text-fg-muted mt-4 max-w-3xl">
-            Type any address, landmark, or place name and get its GPS coordinates, with every matching place listed and a label saying how precise the match is. Or paste coordinates in any format and get the nearest address, plus how far that address is from your point. Powered by OpenStreetMap Nominatim. Free, no signup.
+            Type any address, landmark, or place name and get its <strong>GPS coordinates</strong>, with every matching place listed and a label saying how precise the match is. Or paste coordinates in any format and get the <strong>nearest address</strong>, plus how far that address is from your point. Powered by OpenStreetMap Nominatim. Free, no signup.
           </p>
         </section>
 

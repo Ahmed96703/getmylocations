@@ -25,6 +25,7 @@ export default function Page() {
       h1="Open Graph checker"
       accent="how will this link look when shared?"
       intro="Enter a page address to preview its share card on Facebook, LinkedIn, WhatsApp and X, see every Open Graph and Twitter Card tag, and get a list of what to fix, including image size."
+      bold={['preview its share card', 'Open Graph and Twitter Card tag']}
       appDescription="Free Open Graph and Twitter Card checker that reads a page's og: and twitter: meta tags, previews the share cards for Facebook and X, measures the og:image and lists missing or weak tags."
       tool={<Tool />}
       faqs={faqs}

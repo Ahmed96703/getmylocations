@@ -23,6 +23,7 @@ export default function Page() {
       eyebrow="Free Tool · 7,776 common words"
       h1="Random word generator"
       intro="Get between 1 and 100 random English words at once. Pick the word length and first letter, capitalize them, and copy the list. Words are common and easy to spell."
+      bold={['1 and 100 random English words']}
       appDescription="Free random word generator that picks 1 to 100 distinct common English words from the EFF long word list with a secure random generator, filtered by length and first letter."
       tool={<Tool />}
       faqs={faqs}

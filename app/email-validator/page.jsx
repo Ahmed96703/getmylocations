@@ -25,6 +25,7 @@ export default function Page() {
       h1="Email validator"
       accent="is this address real?"
       intro="Type an email address to check its format, catch common typos such as gmial.com, confirm the domain exists and has mail servers, and spot throwaway and role addresses."
+      bold={['email address', 'catch common typos', 'has mail servers']}
       appDescription="Free email address validator that checks syntax against the RFC rules, suggests corrections for common domain typos, verifies the domain and its MX records, and flags disposable and role-based addresses."
       tool={<Tool />}
       faqs={faqs}

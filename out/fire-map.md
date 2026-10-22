@@ -8,7 +8,7 @@ Free Tool · Satellite data, last 24 hours
 
 # Live fire map: bushfires and wildfires near you
 
-See where satellites have detected fires in the last 24 hours, how far the nearest one is from you, and in which direction. Works in Australia, New Zealand, the US and worldwide. Free, no signup.
+See where satellites have **detected fires in the last 24 hours**, **how far the nearest one is from you**, and in which direction. Works in Australia, New Zealand, the US and worldwide. Free, no signup.
 
 **This is not a warning service.** For warnings and evacuation advice, follow your local fire service. In an emergency call **000** (Australia), **111** (New Zealand) or **911** (US and Canada).
 

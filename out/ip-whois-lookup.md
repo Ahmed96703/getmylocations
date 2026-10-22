@@ -8,7 +8,7 @@ Free Tool · Official registry data
 
 # IP WHOIS lookup: who owns this IP address?
 
-Enter any IPv4 or IPv6 address to see the organization it is registered to, its address range and country, the registry that issued it, and the abuse contact. Your own IP is looked up to start.
+Enter any **IPv4 or IPv6 address** to see the **organization it is registered to**, its address range and country, the registry that issued it, and the **abuse contact**. Your own IP is looked up to start.
 
 ## Look up an IP address
 

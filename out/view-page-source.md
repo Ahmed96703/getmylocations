@@ -8,7 +8,7 @@ Free Tool · Any device
 
 # View page source: see any page’s HTML
 
-Enter a web address to see the page’s HTML source with line numbers. Search inside it, wrap or unwrap long lines, and copy it. Handy on phones and tablets, which have no View Source button.
+Enter a web address to see the page’s **HTML source** with **line numbers**. Search inside it, wrap or unwrap long lines, and copy it. Handy on phones and tablets, which have no View Source button.
 
 ## View the HTML source of a page
 

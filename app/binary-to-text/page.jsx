@@ -24,6 +24,7 @@ export default function Page() {
       eyebrow="Free Tool · Both directions"
       h1="Binary to text converter"
       intro="Type text to see it in binary, or paste binary to read it as text. Switch to hex, decimal bytes or Base64 with one click. Both boxes update as you type."
+      bold={['see it in binary', 'read it as text']}
       appDescription="Free two-way converter between UTF-8 text and binary, hexadecimal, decimal byte values and Base64, with live conversion and validation."
       tool={<Tool />}
       faqs={faqs}

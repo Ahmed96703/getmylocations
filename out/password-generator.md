@@ -8,7 +8,7 @@ Free Tool · Generated on your device
 
 # Password generator: strong, random and private
 
-Create strong random passwords of any length, or passphrases made of random words that are easier to type. A meter shows how strong each one is. Everything is generated on your device and never sent anywhere.
+Create **strong random passwords** of any length, or **passphrases** made of random words that are easier to type. A meter shows how strong each one is. Everything is generated on your device and never sent anywhere.
 
 ## Generate a strong password
 

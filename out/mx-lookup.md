@@ -8,7 +8,7 @@ Free Tool · Live DNS
 
 # MX lookup: where does this domain’s email go?
 
-Enter a domain or an email address to see its mail servers in priority order, the IP address of each one, and which email provider it uses.
+Enter a domain or an email address to see its **mail servers in priority order**, the IP address of each one, and **which email provider it uses**.
 
 ## Find a domain’s mail servers
 

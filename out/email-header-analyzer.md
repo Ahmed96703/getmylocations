@@ -8,7 +8,7 @@ Free Tool · Runs in your browser
 
 # Email header analyzer: where did this email really come from?
 
-Paste an email’s full headers to see the IP address it was sent from, every server it passed through with the delay at each step, and whether it passed SPF, DKIM and DMARC. Nothing you paste leaves your browser.
+Paste an email’s **full headers** to see **the IP address it was sent from**, every server it passed through with the delay at each step, and whether it passed **SPF, DKIM and DMARC**. Nothing you paste leaves your browser.
 
 ## Analyze email headers
 

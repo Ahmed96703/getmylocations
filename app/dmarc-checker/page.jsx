@@ -26,6 +26,7 @@ export default function Page() {
       h1="DMARC checker"
       accent="is your email protected from spoofing?"
       intro="Enter your domain to check its DMARC policy and SPF record, with every tag explained and the SPF lookup limit counted. Add a DKIM selector to check the DKIM key as well."
+      bold={['DMARC policy and SPF record', 'DKIM']}
       appDescription="Free DMARC validation tool that reads and explains a domain's DMARC record, checks the SPF record for errors, the all mechanism and the 10 DNS lookup limit, and checks a DKIM key for a given selector."
       tool={<Tool />}
       faqs={faqs}

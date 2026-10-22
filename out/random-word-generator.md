@@ -8,7 +8,7 @@ Free Tool · 7,776 common words
 
 # Random word generator
 
-Get between 1 and 100 random English words at once. Pick the word length and first letter, capitalize them, and copy the list. Words are common and easy to spell.
+Get between **1 and 100 random English words** at once. Pick the word length and first letter, capitalize them, and copy the list. Words are common and easy to spell.
 
 ## Generate random words
 

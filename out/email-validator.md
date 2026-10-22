@@ -8,7 +8,7 @@ Free Tool · Format, domain & mail servers
 
 # Email validator: is this address real?
 
-Type an email address to check its format, catch common typos such as gmial.com, confirm the domain exists and has mail servers, and spot throwaway and role addresses.
+Type an **email address** to check its format, **catch common typos** such as gmial.com, confirm the domain exists and **has mail servers**, and spot throwaway and role addresses.
 
 ## Check an email address
 

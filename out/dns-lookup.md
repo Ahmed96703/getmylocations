@@ -8,7 +8,7 @@ Free Tool · Live DNS over HTTPS
 
 # DNS lookup: see any domain’s records
 
-Enter a domain to see its A, AAAA, CNAME, MX, NS, TXT, SOA and CAA records at once, or pick one type. Enter an IP address for a reverse (PTR) lookup, and compare Cloudflare and Google DNS to check whether a change has spread.
+Enter a domain to see its **A, AAAA, CNAME, MX, NS, TXT, SOA and CAA records** at once, or pick one type. Enter an IP address for a **reverse (PTR) lookup**, and compare Cloudflare and Google DNS to check whether a change has spread.
 
 ## Look up DNS records
 

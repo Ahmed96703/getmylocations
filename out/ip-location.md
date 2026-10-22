@@ -8,7 +8,7 @@ Complete Guide
 
 # IP location lookup — what your public IP reveals, and what it doesn't
 
-Every device on the public internet has an IP address. That address quietly leaks a surprising amount about you — your approximate city, your internet provider, the network that owns your address — but also _less_ than most people assume. This guide explains exactly what an IP lookup can and can't tell, how to find your own public IP, how IP-based geolocation actually works under the hood, and what to do when the city it reports is wrong.
+Every device on the public internet has an **IP address**. That address quietly leaks a surprising amount about you — **your approximate city, your internet provider**, the network that owns your address — but also _less_ than most people assume. This guide explains exactly what an IP lookup can and can't tell, how to **find your own public IP**, how **IP-based geolocation** actually works under the hood, and what to do when the city it reports is wrong.
 
 ## Lookup an IP address
 

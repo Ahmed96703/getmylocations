@@ -26,6 +26,7 @@ export default function Page() {
       h1="MAC address lookup"
       accent="who made this device?"
       intro="Paste a MAC address, or just its first six digits, to see the manufacturer from the IEEE register, whether the address is private (randomized), and the same address in every common format."
+      bold={['MAC address', 'manufacturer from the IEEE register']}
       appDescription="Free MAC address vendor lookup using the IEEE MA-L (OUI) register: shows the manufacturer, whether the address is unicast or multicast and universally or locally administered, and the address in colon, hyphen and dot notation."
       tool={<Tool />}
       faqs={faqs}

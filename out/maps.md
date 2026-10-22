@@ -8,7 +8,7 @@ Free Tool · World Map
 
 # A free interactive map of the world
 
-Search any place on Earth, switch between standard, satellite, and dark map styles, drop a pin to read off the GPS coordinates, or centre the map on your current location. Works anywhere — a street in Tokyo, a trailhead in Colorado, the whole outline of the United States. No signup, no API key.
+Search any place on Earth, switch between standard, **satellite**, and dark map styles, drop a pin to read off the **GPS coordinates**, or centre the map on your **current location**. Works anywhere — a street in Tokyo, a trailhead in Colorado, the whole outline of the United States. No signup, no API key.
 
 Map style:
 

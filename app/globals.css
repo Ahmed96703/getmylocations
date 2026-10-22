@@ -11,8 +11,8 @@
 :root, [data-theme="light"] {
   /* Foregrounds */
   --fg: 15 23 42;                /* slate-900 */
-  --fg-muted: 51 65 85;          /* slate-700 */
-  --fg-subtle: 71 85 105;        /* slate-600 — passes WCAG AA on white */
+  --fg-muted: 30 41 59;          /* slate-800: body copy, dark for easy reading */
+  --fg-subtle: 51 65 85;         /* slate-700 — small print, passes WCAG AA on white */
 
   /* Tint: an overlay color opposite to the surface */
   --tint: 15 23 42;              /* dark tint on light surfaces */
@@ -115,6 +115,12 @@
    ───────────────────────────────────────────── */
 
 html, body { height: 100%; }
+
+/* Bold text is where people's eyes land when they scan a page, so keywords
+   set in <strong> or <b> always use the full text colour and a heavy weight,
+   even inside lighter paragraphs. Low specificity (:where), so a colour class
+   on the element itself still wins. */
+:where(strong, b) { font-weight: 700; color: rgb(var(--fg)); }
 body {
   position: relative;
   isolation: isolate;
@@ -297,8 +303,10 @@ article.prose-invert li {
    INPUTS & BUTTONS (theme-aware)
    ───────────────────────────────────────────── */
 
+/* Full width by default; zero specificity so width utilities such as w-auto
+   or w-36 on the same element still apply. */
+:where(.field) { width: 100%; }
 .field {
-  width: 100%;
   background: rgb(var(--field-bg) / 0.6);
   border: 1px solid rgb(var(--field-border) / 0.5);
   border-radius: 0.75rem;

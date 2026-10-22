@@ -25,6 +25,7 @@ export default function Page() {
       h1="Website link analyzer"
       accent="every link on a page"
       intro="Enter a page address to list all its links with their anchor text, split into internal, external, nofollow and other links, spot links with no anchor text, and copy the list as CSV."
+      bold={['all its links', 'internal, external, nofollow']}
       appDescription="Free website link analyzer that extracts all links from a web page, classifies them as internal or external, shows anchor text and rel attributes (nofollow, sponsored, ugc), flags empty anchors and exports CSV."
       tool={<Tool />}
       faqs={faqs}

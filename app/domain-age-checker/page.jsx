@@ -25,6 +25,7 @@ export default function Page() {
       h1="Domain age checker"
       accent="how old is this domain?"
       intro="Enter any domain to see exactly how old it is, when it was registered and when it expires, with its registrar, status and name servers, straight from the official registry."
+      bold={['how old it is', 'when it was registered and when it expires']}
       appDescription="Free domain age checker that reads a domain's RDAP record to show its age, creation, expiry and last-updated dates, registrar, status codes and name servers."
       tool={<Tool />}
       faqs={faqs}

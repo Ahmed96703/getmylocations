@@ -8,7 +8,7 @@ Free Tool · About 20 seconds
 
 # Internet speed test: how fast is your connection?
 
-Press Start to measure your download and upload speed in Mbps, plus ping and jitter, against Cloudflare’s nearest data center. No app, no signup, and nothing is stored.
+Press Start to measure your **download and upload speed in Mbps**, plus **ping and jitter**, against Cloudflare’s nearest data center. No app, no signup, and nothing is stored.
 
 ## Test your internet speed
 

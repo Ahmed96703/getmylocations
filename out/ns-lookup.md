@@ -8,7 +8,7 @@ Free Tool · Live DNS
 
 # NS lookup: who hosts this domain’s DNS?
 
-Enter a domain to see its name servers, their IPv4 and IPv6 addresses, the zone’s primary server and serial number, and which company hosts the DNS.
+Enter a domain to see its **name servers**, their IPv4 and IPv6 addresses, the zone’s primary server and serial number, and **which company hosts the DNS**.
 
 ## Find a domain’s name servers
 

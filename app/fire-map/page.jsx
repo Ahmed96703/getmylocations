@@ -105,7 +105,7 @@ export default function FireMapPage() {
             Live fire map: <span className="text-accent">bushfires and wildfires near you</span>
           </h1>
           <p className="text-lg text-fg-muted mt-4 max-w-3xl">
-            See where satellites have detected fires in the last 24 hours, how far the nearest one is from you, and in which direction. Works in Australia, New Zealand, the US and worldwide. Free, no signup.
+            See where satellites have <strong>detected fires in the last 24 hours</strong>, <strong>how far the nearest one is from you</strong>, and in which direction. Works in Australia, New Zealand, the US and worldwide. Free, no signup.
           </p>
         </section>
 

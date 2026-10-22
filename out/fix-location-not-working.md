@@ -8,7 +8,7 @@ Troubleshooting Guide
 
 # Fix Location Not Working — a complete browser & GPS troubleshooting guide
 
-Location features can fail in a dozen different ways, and the error message you see rarely tells you which one. This guide walks through the seven most common causes — from a denied browser prompt to a VPN that's rewriting your IP — and exactly what to click to fix each one, on Chrome, Safari, Firefox, Edge, iOS, and Android.
+Location features can fail in a dozen different ways, and the error message you see rarely tells you which one. This guide walks through the **seven most common causes** — from a denied browser prompt to a VPN that's rewriting your IP — and exactly what to click to fix each one, on **Chrome, Safari, Firefox, Edge, iOS, and Android**.
 
 * * *
 

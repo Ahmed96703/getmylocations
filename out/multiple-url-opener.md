@@ -8,7 +8,7 @@ Free Tool · Any browser
 
 # Multiple URL opener: open a list of links at once
 
-Paste links or domains, one per line, and open them all in new tabs with one click, or step through them with “Open next”. Duplicates and invalid lines are removed.
+Paste links or domains, one per line, and **open them all in new tabs with one click**, or step through them with “Open next”. Duplicates and invalid lines are removed.
 
 ## Open a list of links
 

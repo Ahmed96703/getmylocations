@@ -25,6 +25,7 @@ export default function Page() {
       h1="Password generator"
       accent="strong, random and private"
       intro="Create strong random passwords of any length, or passphrases made of random words that are easier to type. A meter shows how strong each one is. Everything is generated on your device and never sent anywhere."
+      bold={['strong random passwords', 'passphrases']}
       appDescription="Free client-side password and passphrase generator using the Web Crypto secure random generator with unbiased selection, with length and character options, look-alike removal, EFF word-list passphrases, entropy and crack-time estimates."
       tool={<Tool />}
       faqs={faqs}

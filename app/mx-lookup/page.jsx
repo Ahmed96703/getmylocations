@@ -25,6 +25,7 @@ export default function Page() {
       h1="MX lookup"
       accent="where does this domain’s email go?"
       intro="Enter a domain or an email address to see its mail servers in priority order, the IP address of each one, and which email provider it uses."
+      bold={['mail servers in priority order', 'which email provider it uses']}
       appDescription="Free MX record lookup that lists a domain's mail exchangers in priority order with their IPv4 and IPv6 addresses, detects the email provider and recognises null MX records."
       tool={<Tool />}
       faqs={faqs}

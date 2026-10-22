@@ -138,9 +138,9 @@ export default function FixLocationNotWorking() {
         </h1>
         <p className="mt-4 text-lg text-fg-muted leading-relaxed">
           Location features can fail in a dozen different ways, and the error message you see rarely
-          tells you which one. This guide walks through the seven most common causes — from a denied
+          tells you which one. This guide walks through the <strong>seven most common causes</strong> — from a denied
           browser prompt to a VPN that&apos;s rewriting your IP — and exactly what to click to fix each
-          one, on Chrome, Safari, Firefox, Edge, iOS, and Android.
+          one, on <strong>Chrome, Safari, Firefox, Edge, iOS, and Android</strong>.
         </p>
 
         <hr className="my-10 border-line" />

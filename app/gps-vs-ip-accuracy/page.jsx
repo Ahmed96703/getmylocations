@@ -75,8 +75,8 @@ export default function GpsVsIpAccuracy() {
           GPS vs IP accuracy &mdash; which method is more precise, and when does each one fail?
         </h1>
         <p className="mt-4 text-lg text-fg-muted leading-relaxed">
-          Every &ldquo;find my location&rdquo; tool quietly chooses between two very different signals: the
-          GPS chip in your device, and the public IP your network handed you. They&apos;re not
+          Every &ldquo;find my location&rdquo; tool quietly chooses between two very different signals: <strong>the
+          GPS chip in your device</strong>, and <strong>the public IP your network handed you</strong>. They&apos;re not
           remotely equivalent &mdash; one places you within a meter, the other within tens of
           kilometers &mdash; but the difference is invisible unless you know what to look for. This
           guide explains how accurate each one really is, when one fails and the other saves you,

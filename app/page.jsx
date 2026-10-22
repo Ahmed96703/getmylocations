@@ -105,11 +105,11 @@ export default function HomePage() {
             My location now — <span className="text-accent">your coordinates and address</span>, instantly.
           </h1>
           <p className="text-fg-muted mt-3 max-w-3xl leading-relaxed">
-            An all-in-one location toolkit, free in your browser. The{' '}
+            An <strong>all-in-one location toolkit</strong>, free in your browser. The{' '}
             <Link href="/my-location" className="text-accent hover:underline">My Location</Link>{' '}
-            finder reads your GPS coordinates, resolves the city and country, and drops a live
+            finder reads your <strong>GPS coordinates</strong>, resolves the <strong>city and country</strong>, and drops a live
             map pin in two seconds. No account, no app install, and your coordinates are never
-            sent to a server we run. Eight more focused tools live one click away, including
+            sent to a server we run. More than 35 other free tools live one click away, including
             a{' '}
             <Link href="/coordinates-converter" className="text-accent hover:underline">coordinates converter</Link>,
             an{' '}
