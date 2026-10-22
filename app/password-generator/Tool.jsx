@@ -95,6 +95,12 @@ export default function Tool() {
             <span className="w-20">Length: <strong>{opt.length}</strong></span>
             <input type="range" min="6" max="64" value={opt.length} onChange={(e) => setOpt((o) => ({ ...o, length: Number(e.target.value) }))} className="flex-1" aria-label="Password length" />
           </label>
+          <div className="sm:col-span-2 flex flex-wrap items-center gap-1.5">
+            <span className="text-xs text-fg-muted mr-1">Quick length:</span>
+            {[8, 12, 15, 16, 20, 32].map((n) => (
+              <button key={n} type="button" onClick={() => setOpt((o) => ({ ...o, length: n }))} className={`text-xs px-2.5 py-1 rounded-md border transition ${opt.length === n ? 'bg-accent/15 border-accent/50 text-accent' : 'bg-tint/5 border-line hover:bg-accent/10'}`}>{n}</button>
+            ))}
+          </div>
           {[['upper', 'Uppercase (A–Z)'], ['lower', 'Lowercase (a–z)'], ['digits', 'Numbers (0–9)'], ['symbols', 'Symbols (!@#$…)'], ['noSimilar', 'Avoid look-alikes (l, 1, O, 0)']].map(([k, l]) => (
             <label key={k} className="flex items-center gap-2"><input type="checkbox" checked={opt[k]} onChange={() => toggle(k)} /> {l}</label>
           ))}
