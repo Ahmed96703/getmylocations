@@ -1,14 +1,14 @@
 ---
-title: "Domain Age Checker: When Was a Domain Registered?"
-description: "Find a domain’s exact age, registration and expiry dates, registrar and status from the official registry (RDAP). Free and instant, no signup."
+title: "Domain Age Checker: Free Website Age & Domain Age Lookup"
+description: "Check domain age free: see exactly how old any website or domain is in years, months and days, plus registration and expiry dates, from the official registry."
 url: https://getmylocations.com/domain-age-checker
 ---
 
-Free Tool · Official registry data
+Free Domain Age Checker · Official registry data
 
-# Domain age checker: how old is this domain?
+# Domain Age Checker
 
-Enter any domain to see exactly **how old it is**, **when it was registered and when it expires**, with its registrar, status and name servers, straight from the official registry.
+Enter any domain or website address to **check domain age**: see exactly **how old it is in years, months and days**, **when it was registered and when it expires**, with its registrar, status and name servers, straight from the official registry.
 
 ## Check how old a domain is
 
@@ -16,11 +16,31 @@ Try:
 
 Sponsored
 
+## How to check the age of a domain or website
+
+-   **Enter the domain,** such as example.com, or paste the full website address. Subdomains and page paths are removed for you.
+-   **Press Check age.** The checker asks the domain’s official registry for its record, the same data a WHOIS lookup shows.
+-   **Read the result:** the **domain age** in years, months and days, the registration date, the expiry date with time left, the registrar and the name servers.
+
+The **domain age calculator** counts from the registry’s creation date to today, so the figure is exact to the day, not rounded to the year.
+
 ## Why check a domain’s age
 
--   **Spotting scams:** a shop or bank site registered a few weeks ago deserves extra caution.
+-   **Spotting scams:** a shop or bank site registered a few weeks ago deserves extra caution. Phishing sites are often registered only days before they are used.
 -   **Buying a domain:** check its history and expiry before paying.
+-   **SEO and link building:** see how long a site has been around before you buy a link, a guest post or the whole site.
 -   **Your own domains:** see the expiry date before it lapses and someone else takes it.
+
+## Domain age vs website age
+
+|  | Domain age | Website age |
+| --- | --- | --- |
+| Counts from | The day the domain was registered | The day a site first went online |
+| Source | Official registry (RDAP / WHOIS) | Archive snapshots, such as the Wayback Machine |
+| Resets when | The domain expires and is registered again | Rarely; old snapshots stay |
+| Best for | Ownership, scam checks, expiry | Content history, past owners’ sites |
+
+For most purposes, **website age** and domain age are close. If you need to know what was on a domain before, open its earliest snapshot on the [Internet Archive’s Wayback Machine](https://web.archive.org/).
 
 ## Reading the domain status
 
@@ -29,13 +49,25 @@ Sponsored
 -   **redemption period / pending delete:** the domain has expired and will soon be released.
 -   **server hold / client hold:** the domain is suspended and will not resolve.
 
-To see where the domain points, use the [DNS lookup](https://getmylocations.com/dns-lookup); to check its certificates, the [SSL certificate checker](https://getmylocations.com/ssl-certificate-checker).
+To see who is behind an IP address, use the [IP WHOIS lookup](https://getmylocations.com/ip-whois-lookup); to see where the domain points, the [DNS lookup](https://getmylocations.com/dns-lookup); to check its certificates, the [SSL certificate checker](https://getmylocations.com/ssl-certificate-checker).
 
 ## Frequently asked questions
 
-How do I find out when a domain was registered?
+How do I check domain age?
 
-Type the domain into the checker. It reads the registration date from the registry that runs the domain’s ending (such as Verisign for .com), which is the official record.
+Type the domain or paste the website’s address into the checker and press Check age. It reads the registration date from the registry that runs the domain’s ending (such as Verisign for .com), which is the official record, and shows the age in years, months and days.
+
+Is this domain age checker free?
+
+Yes. It is free with no signup and no daily limit. Check as many domains as you like.
+
+Is website age the same as domain age?
+
+Not always. Domain age counts from the day the name was registered. A website can go live years later, or a domain can be re-registered after an older site on it expired. To see when a site was first online, look up its earliest snapshot on the Internet Archive’s Wayback Machine.
+
+Can I paste a full URL or a subdomain?
+
+Yes. Paste a full address such as https://blog.example.com/page and the checker reduces it to the registered domain, example.com, because only the registered domain has a registration date.
 
 Is domain age a Google ranking factor?
 
@@ -53,6 +85,18 @@ The tool uses RDAP, the modern replacement for WHOIS. All generic domains (.com,
 
 [
 
+### IP WHOIS Lookup
+
+Who owns an IP address
+
+](https://getmylocations.com/ip-whois-lookup)[
+
+### DNS Lookup
+
+A, AAAA, CNAME, TXT and more
+
+](https://getmylocations.com/dns-lookup)[
+
 ### NS Lookup
 
 Name servers for a domain
@@ -63,19 +107,7 @@ Name servers for a domain
 
 Certificates and fingerprints
 
-](https://getmylocations.com/ssl-certificate-checker)[
-
-### Website Server Checker
-
-Server software and headers
-
-](https://getmylocations.com/website-server-checker)[
-
-### View Page Source
-
-HTML source of any page
-
-](https://getmylocations.com/view-page-source)
+](https://getmylocations.com/ssl-certificate-checker)
 
 AA
 
