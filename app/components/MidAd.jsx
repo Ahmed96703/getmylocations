@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { afterLoad, loadBanner } from './adQueue.js';
+import { MID as UNIT, midDocksRight } from './adLayout.js';
 
 // 300x250 banner in the middle of the page's guide text. Rendered once in the
 // layout; on each page it finds the section headings that come after the
@@ -11,12 +12,16 @@ import { afterLoad, loadBanner } from './adQueue.js';
 // it uses the headings before it. Pages with fewer than three headings to
 // choose from get no banner.
 //
+// On screens with a wide right margin it goes under the 160x600 rail instead
+// (see adLayout.js), never in both places.
+//
 // It is inserted after load, so to avoid pushing text the visitor is reading,
 // it only goes in when the chosen heading is still below the screen.
-const UNIT = { key: '40947b0ac0230ed99d85724b16532294', width: 300, height: 250 };
 const NATIVE = '[id^="container-7e46cc3a"]';
 
 function insert() {
+  // On wide screens SideAd shows this banner in the right column instead.
+  if (midDocksRight()) return null;
   const main = document.querySelector('main');
   const native = main?.querySelector(NATIVE);
   if (!main || !native) return null;

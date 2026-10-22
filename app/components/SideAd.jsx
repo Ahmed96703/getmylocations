@@ -3,57 +3,54 @@
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { afterLoad, loadBanner } from './adQueue.js';
+import { TOP, GAP, RIGHT, LEFT, MID, placeRail } from './adLayout.js';
 
-// Side rails: a 160x600 banner in the empty margin right of the page content
-// and a 160x300 banner left of it. Each rail loads only when the screen is
-// wide and tall enough for the whole banner to sit beside <main> without
-// covering it, so phones, tablets and small laptops never load them and never
-// see an empty box. Both fade out while the footer is on screen.
-const RAILS = {
-  right: { key: '72441e3f6e9573bd52d1e4bfff97780f', width: 160, height: 600 },
-  left: { key: '79a6bc4777764a4918e11ff5161036bd', width: 160, height: 300 },
-};
-const TOP = 104; // below the sticky header
-const GAP = 16;
+// Side rails in the empty margins beside the page content: a 160x300 banner
+// on the left, and on the right a 160x600 banner, with the 300x250 banner
+// below it when the right margin is wide enough (see adLayout.js; MidAd then
+// leaves it out of the text). Rails load only when they fit beside <main>
+// without covering it, so phones, tablets and small laptops never load them
+// and never see an empty box. Fixed rails fade out while the footer is on
+// screen; a right column too tall for the screen scrolls with the page.
 
-// Where a rail goes, or null when there is no room for it.
-function place(side) {
-  const main = document.querySelector('main');
-  if (!main) return null;
-  const { width, height } = RAILS[side];
-  const rect = main.getBoundingClientRect();
-  const free = side === 'right' ? window.innerWidth - rect.right : rect.left;
-  if (free < width + 2 * GAP || window.innerHeight < TOP + height + 40) return null;
-  return { left: Math.round(side === 'right' ? rect.right + (free - width) / 2 : (free - width) / 2) };
+function Slot({ unit, load }) {
+  const ref = useRef(null);
+  useEffect(() => { if (load && ref.current) loadBanner(ref.current, unit); }, [load, unit]);
+  return (
+    <div>
+      <p className="text-[10px] uppercase tracking-[0.18em] text-fg-subtle font-semibold mb-1.5">Sponsored</p>
+      <div ref={ref} style={{ width: unit.width, minHeight: unit.height }} />
+    </div>
+  );
 }
 
 function Rail({ side, footerShown }) {
-  const slot = useRef(null);
   const [pos, setPos] = useState(null);
 
-  useEffect(() => afterLoad(() => setPos(place(side))), [side]);
+  useEffect(() => afterLoad(() => setPos(placeRail(side))), [side]);
 
   const shown = pos !== null;
   useEffect(() => {
-    if (!shown || !slot.current) return undefined;
-    loadBanner(slot.current, RAILS[side]);
-    const onResize = () => { const p = place(side); if (p) setPos(p); };
+    if (!shown) return undefined;
+    // Keep the column beside the content when the window is resized; what it
+    // contains (docked 300x250 or not) was decided once, when it loaded.
+    const onResize = () => { const p = placeRail(side); if (p) setPos((old) => ({ ...old, left: p.left, fixed: old.dockMid ? p.fixed : old.fixed })); };
     window.addEventListener('resize', onResize);
     return () => window.removeEventListener('resize', onResize);
   }, [shown, side]);
 
   if (!shown) return null;
-  const { width, height } = RAILS[side];
+  const hide = pos.fixed && footerShown;
   // Rendered into <body>: a parent with a blur or transform would otherwise
   // make "fixed" relative to that parent instead of the window.
   return createPortal(
     <aside
       aria-label="Sponsored"
-      className="fixed z-20 transition-opacity duration-300"
-      style={{ top: TOP, left: pos.left, width, opacity: footerShown ? 0 : 1, pointerEvents: footerShown ? 'none' : 'auto' }}
+      className={`${pos.fixed ? 'fixed' : 'absolute'} z-20 transition-opacity duration-300 flex flex-col items-center`}
+      style={{ top: TOP, left: pos.left, width: pos.width, gap: GAP, opacity: hide ? 0 : 1, pointerEvents: hide ? 'none' : 'auto' }}
     >
-      <p className="text-[10px] uppercase tracking-[0.18em] text-fg-subtle font-semibold mb-1.5">Sponsored</p>
-      <div ref={slot} style={{ width, minHeight: height }} />
+      <Slot unit={side === 'left' ? LEFT : RIGHT} load />
+      {pos.dockMid && <Slot unit={MID} load />}
     </aside>,
     document.body,
   );
