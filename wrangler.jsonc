@@ -4,7 +4,7 @@
   "compatibility_date": "2026-05-25",
   "observability": { "enabled": true },
   "compatibility_flags": ["nodejs_compat"],
-  // Small Worker for /api/* only (NASA fire data relay); every other request
+  // Small Worker for /api/* only (fire data relay, network-tool helpers); every other request
   // is answered straight from the static files below.
   "main": "./worker/index.js",
   "assets": {

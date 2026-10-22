@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Logo from './Logo.jsx';
 import ThemeToggle from './ThemeToggle.jsx';
+import { NET_GROUPS, NET_TOOLS } from './netTools.js';
 
 const NAV = [
   { href: '/', label: 'Home' },
@@ -57,7 +58,9 @@ export default function SiteHeader() {
 
         <nav aria-label="Primary">
           <ul className="flex items-center gap-1 text-sm font-medium">
-            <li>
+            {/* The logo links home too, so on the narrowest phones this link
+                gives way to keep the header on one line. */}
+            <li className="hidden min-[400px]:list-item">
               <Link
                 href="/"
                 className={`px-3 py-1.5 rounded-full transition ${pathname === '/' ? 'text-accent' : 'text-fg-muted hover:text-fg'}`}
@@ -84,23 +87,44 @@ export default function SiteHeader() {
                 <div
                   role="menu"
                   aria-label="All tools"
-                  className="absolute right-0 mt-2 w-[320px] max-w-[calc(100vw-2rem)] rounded-2xl border border-line bg-surface/95 backdrop-blur-xl shadow-2xl p-2 z-40"
+                  className="absolute right-0 mt-2 w-[320px] md:w-[640px] max-w-[calc(100vw-2rem)] max-h-[75vh] overflow-y-auto rounded-2xl border border-line bg-surface/95 backdrop-blur-xl shadow-2xl p-2 z-40"
                 >
-                  {TOOLS.map((t) => (
-                    <Link
-                      key={t.href}
-                      href={t.href}
-                      role="menuitem"
-                      onClick={() => setOpen(false)}
-                      className={`flex flex-col gap-0.5 px-3 py-2.5 rounded-xl hover:bg-accent/10 transition group ${
-                        pathname === t.href ? 'bg-accent/10' : ''
-                      }`}
-                    >
-                      <span className={`block text-sm font-semibold ${pathname === t.href ? 'text-accent' : 'text-fg group-hover:text-accent'}`}>
-                        {t.label}
-                      </span>
-                      <span className="block text-[11px] text-fg-subtle">{t.desc}</span>
-                    </Link>
+                  <p className="px-3 pt-2 pb-1 text-[10px] uppercase tracking-[0.18em] text-accent font-semibold">Location tools</p>
+                  <div className="grid md:grid-cols-2">
+                    {TOOLS.map((t) => (
+                      <Link
+                        key={t.href}
+                        href={t.href}
+                        role="menuitem"
+                        onClick={() => setOpen(false)}
+                        className={`flex flex-col gap-0.5 px-3 py-2 rounded-xl hover:bg-accent/10 transition group ${
+                          pathname === t.href ? 'bg-accent/10' : ''
+                        }`}
+                      >
+                        <span className={`block text-sm font-semibold ${pathname === t.href ? 'text-accent' : 'text-fg group-hover:text-accent'}`}>
+                          {t.label}
+                        </span>
+                        <span className="block text-[11px] text-fg-subtle">{t.desc}</span>
+                      </Link>
+                    ))}
+                  </div>
+                  {NET_GROUPS.map((g) => (
+                    <div key={g.id} className="mt-1 border-t border-line-subtle pt-1">
+                      <p className="px-3 pt-2 pb-1 text-[10px] uppercase tracking-[0.18em] text-accent font-semibold">{g.label}</p>
+                      <div className="grid grid-cols-2">
+                        {NET_TOOLS.filter((t) => t.group === g.id).map((t) => (
+                          <Link
+                            key={t.href}
+                            href={t.href}
+                            role="menuitem"
+                            onClick={() => setOpen(false)}
+                            className={`px-3 py-1.5 rounded-lg text-sm hover:bg-accent/10 transition ${pathname === t.href ? 'bg-accent/10 text-accent' : 'text-fg-muted hover:text-accent'}`}
+                          >
+                            {t.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
                   ))}
                 </div>
               )}

@@ -4,6 +4,7 @@ import { HOME_FAQS } from './home-faqs.js';
 import AdSense from './components/AdSense.jsx';
 import Monetag from './components/Monetag.jsx';
 import { AUTHOR } from './components/author.js';
+import { NET_GROUPS, NET_TOOLS } from './components/netTools.js';
 import NativeAd from './components/NativeAd.jsx';
 import SideAd from './components/SideAd.jsx';
 
@@ -162,7 +163,7 @@ export default function HomePage() {
         <section id="tools" aria-labelledby="hub" className="mb-10 scroll-mt-24">
           <h2 id="hub" className="font-display text-2xl font-bold">All-in-one location toolkit — pick a tool</h2>
           <p className="text-sm text-fg-muted mt-1 max-w-3xl">
-            All nine single-job tools on this site. Each one is free, runs in your browser, and needs no signup.
+            Every location tool on this site. Each one is free, runs in your browser, and needs no signup.
           </p>
           <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-5">
             {HUB_TOOLS.map((t) => (
@@ -174,6 +175,28 @@ export default function HomePage() {
               </li>
             ))}
           </ul>
+        </section>
+
+        <section aria-labelledby="net-hub" className="mb-10">
+          <h2 id="net-hub" className="font-display text-2xl font-bold">Network, web and everyday tools</h2>
+          <p className="text-sm text-fg-muted mt-1 max-w-3xl">
+            IP and DNS lookups, email and website checks, and quick converters. Free, no signup.
+          </p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-5">
+            {NET_GROUPS.map((g) => (
+              <div key={g.id}>
+                <h3 className="text-[11px] uppercase tracking-[0.18em] text-accent font-semibold">{g.label}</h3>
+                <ul className="mt-2 space-y-1.5 text-sm">
+                  {NET_TOOLS.filter((t) => t.group === g.id).map((t) => (
+                    <li key={t.href}>
+                      <Link href={t.href} className="text-fg hover:text-accent transition">{t.label}</Link>
+                      <span className="block text-xs text-fg-subtle">{t.desc}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </section>
 
         {/* Client-side interactive tool (Geolocation API, Leaflet map, etc.) */}

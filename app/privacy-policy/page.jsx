@@ -40,7 +40,7 @@ export default function Privacy() {
         </nav>
 
       <h1 className="font-display text-4xl font-extrabold tracking-tight">Privacy Policy</h1>
-      <p className="text-sm text-fg-subtle mt-2">Last updated: October 21, 2026</p>
+      <p className="text-sm text-fg-subtle mt-2">Last updated: October 22, 2026</p>
 
       <p className="mt-6 text-fg-muted leading-relaxed">
         This page explains what information GetMyLocations receives when you use the
@@ -129,7 +129,7 @@ export default function Privacy() {
         <span className="text-fg-muted font-mono text-sm">policies.google.com/privacy</span>.
       </p>
 
-      <h2 className="font-display text-2xl font-bold mt-10">4. IP lookups (IP Location tool)</h2>
+      <h2 className="font-display text-2xl font-bold mt-10">4. IP lookups and the network, web and everyday tools</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
         The IP Location tool calls the public freeipapi.com endpoint
         (privacy policy at{' '}
@@ -153,6 +153,20 @@ export default function Privacy() {
         addresses (such as 192.168.x.x) are recognised in your browser and are not sent to either service.
         The optional &ldquo;Measure the gap&rdquo; check reads your device location in the browser and only
         compares it with the lookup result there; that reading is not sent anywhere.
+      </p>
+      <p className="mt-3 text-fg-muted leading-relaxed">
+        The network, web and everyday tools send only what you type to the service that answers it,
+        directly from your browser: DNS questions to Cloudflare&rsquo;s and Google&rsquo;s public resolvers
+        (and, for the blacklist and ASN checks, to the blocklists and Team Cymru through DNS); IP, ASN
+        and domain registration lookups to the regional internet registries through rdap.org, and
+        announced IP blocks to RIPEstat; certificate searches to SSLMate&rsquo;s Cert Spotter; and the
+        speed test to Cloudflare&rsquo;s speed-test servers. Each of these sees your IP address as part of
+        the request. Tools that read a web page (View Page Source, Open Graph Checker, Link Analyzer and
+        Website Server Checker) ask our own server to fetch that page once; the address you enter passes
+        through Cloudflare&rsquo;s request logs like any other request, and we keep no copy of the page.
+        The password, hash, random word, binary and unit tools, the email header analyzer, the IPv4 to
+        IPv6 converter and the MAC lookup work entirely in your browser; what you type there is not sent
+        anywhere.
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-10">5. Hosting and request logs</h2>

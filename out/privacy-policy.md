@@ -6,7 +6,7 @@ url: https://getmylocations.com/privacy-policy
 
 # Privacy Policy
 
-Last updated: October 21, 2026
+Last updated: October 22, 2026
 
 This page explains what information GetMyLocations receives when you use the site, what we do with it, and which third parties are involved. The summary at the top covers the common questions; the sections below give the details for anyone who wants them.
 
@@ -42,13 +42,15 @@ The maps you see are rendered with Leaflet and use tile images from OpenStreetMa
 
 The Driving Directions tool embeds a Google Maps route, and the Street View tool opens Google Street View (or embeds it on the page when enabled). Those embeds and links are served by Google, which receives your IP and the place or route shown, under the Google Privacy Policy at policies.google.com/privacy.
 
-## 4\. IP lookups (IP Location tool)
+## 4\. IP lookups and the network, web and everyday tools
 
 The IP Location tool calls the public freeipapi.com endpoint (privacy policy at freeipapi.com/privacy). The IP you look up — your own when you click _Lookup my IP_, or any IP you paste — is sent to freeipapi.com, which returns the geolocation data. Their policy covers what they keep.
 
 On the homepage, if no exact location is available (you declined the prompt, it failed, or you have not answered yet), you can click _Show my approximate area_. Only then is your IP address sent to BigDataCloud (listed above) to estimate your city. Nothing is looked up unless you click.
 
 If you type a domain name (such as example.com) into the IP Location tool, your browser first asks Cloudflare’s public DNS resolver (cloudflare-dns.com, the 1.1.1.1 service) for the domain’s IP address, then looks that IP up at freeipapi.com. Cloudflare receives the domain name and your IP address as part of that DNS request; see 1.1.1.1/privacy. Private and reserved addresses (such as 192.168.x.x) are recognised in your browser and are not sent to either service. The optional “Measure the gap” check reads your device location in the browser and only compares it with the lookup result there; that reading is not sent anywhere.
+
+The network, web and everyday tools send only what you type to the service that answers it, directly from your browser: DNS questions to Cloudflare’s and Google’s public resolvers (and, for the blacklist and ASN checks, to the blocklists and Team Cymru through DNS); IP, ASN and domain registration lookups to the regional internet registries through rdap.org, and announced IP blocks to RIPEstat; certificate searches to SSLMate’s Cert Spotter; and the speed test to Cloudflare’s speed-test servers. Each of these sees your IP address as part of the request. Tools that read a web page (View Page Source, Open Graph Checker, Link Analyzer and Website Server Checker) ask our own server to fetch that page once; the address you enter passes through Cloudflare’s request logs like any other request, and we keep no copy of the page. The password, hash, random word, binary and unit tools, the email header analyzer, the IPv4 to IPv6 converter and the MAC lookup work entirely in your browser; what you type there is not sent anywhere.
 
 ## 5\. Hosting and request logs
 
