@@ -89,7 +89,7 @@ export default function SiteHeader() {
                   aria-label="All tools"
                   className="absolute right-0 mt-2 w-[320px] md:w-[640px] max-w-[calc(100vw-2rem)] max-h-[75vh] overflow-y-auto rounded-2xl border border-line bg-surface/95 backdrop-blur-xl shadow-2xl p-2 z-40"
                 >
-                  <p className="px-3 pt-2 pb-1 text-[10px] uppercase tracking-[0.18em] text-accent font-semibold">Location tools</p>
+                  <p className="px-3 pt-2 pb-1 text-xs font-bold text-fg flex items-center gap-1.5"><span aria-hidden="true">📍</span>Location tools</p>
                   <div className="grid md:grid-cols-2">
                     {TOOLS.map((t) => (
                       <Link
@@ -110,7 +110,7 @@ export default function SiteHeader() {
                   </div>
                   {NET_GROUPS.map((g) => (
                     <div key={g.id} className="mt-1 border-t border-line-subtle pt-1">
-                      <p className="px-3 pt-2 pb-1 text-[10px] uppercase tracking-[0.18em] text-accent font-semibold">{g.label}</p>
+                      <p className="px-3 pt-2 pb-1 text-xs font-bold text-fg flex items-center gap-1.5"><span aria-hidden="true">{g.icon}</span>{g.label}</p>
                       <div className="grid grid-cols-2">
                         {NET_TOOLS.filter((t) => t.group === g.id).map((t) => (
                           <Link

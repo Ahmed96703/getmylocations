@@ -2,10 +2,10 @@
 // home page, related-tool links and the sitemap check. Location tools stay in
 // SiteHeader.jsx and app/page.jsx.
 export const NET_GROUPS = [
-  { id: 'ip', label: 'IP tools' },
-  { id: 'dns', label: 'DNS & email tools' },
-  { id: 'web', label: 'Website & SEO tools' },
-  { id: 'util', label: 'Everyday tools' },
+  { id: 'ip', label: 'IP tools', icon: '🌐', blurb: 'Who owns an address, and is it trusted?' },
+  { id: 'dns', label: 'DNS & email tools', icon: '✉️', blurb: 'Records, mail servers and spoofing checks' },
+  { id: 'web', label: 'Website & SEO tools', icon: '🔍', blurb: 'What a site runs on and how it shares' },
+  { id: 'util', label: 'Everyday tools', icon: '🧰', blurb: 'Quick generators and converters' },
 ];
 
 export const NET_TOOLS = [

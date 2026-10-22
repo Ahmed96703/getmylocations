@@ -182,20 +182,37 @@ export default function HomePage() {
           <p className="text-sm text-fg-muted mt-1 max-w-3xl">
             IP and DNS lookups, email and website checks, and quick converters. Free, no signup.
           </p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-5">
-            {NET_GROUPS.map((g) => (
-              <div key={g.id}>
-                <h3 className="text-[11px] uppercase tracking-[0.18em] text-accent font-semibold">{g.label}</h3>
-                <ul className="mt-2 space-y-1.5 text-sm">
-                  {NET_TOOLS.filter((t) => t.group === g.id).map((t) => (
-                    <li key={t.href}>
-                      <Link href={t.href} className="text-fg hover:text-accent transition">{t.label}</Link>
-                      <span className="block text-xs text-fg-subtle">{t.desc}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-5">
+            {NET_GROUPS.map((g) => {
+              const tools = NET_TOOLS.filter((t) => t.group === g.id);
+              return (
+                <div key={g.id} className="glass rounded-2xl ring-1 ring-line p-5 flex flex-col">
+                  <div className="flex items-start gap-3 pb-3 border-b-2 border-accent/30 lg:min-h-[5.75rem]">
+                    <span aria-hidden="true" className="shrink-0 w-10 h-10 rounded-xl bg-accent/15 ring-1 ring-accent/30 flex items-center justify-center text-xl">{g.icon}</span>
+                    <div className="min-w-0">
+                      <h3 className="font-display text-lg font-extrabold text-fg leading-tight">
+                        {g.label}
+                        <span className="ml-2 align-middle text-[11px] font-semibold text-accent-strong bg-accent/10 rounded-full px-2 py-0.5">{tools.length}</span>
+                      </h3>
+                      <p className="text-xs text-fg-muted mt-0.5">{g.blurb}</p>
+                    </div>
+                  </div>
+                  <ul className="mt-3 space-y-1">
+                    {tools.map((t) => (
+                      <li key={t.href}>
+                        <Link href={t.href} className="group flex items-start justify-between gap-2 rounded-lg px-2 py-1.5 -mx-2 hover:bg-accent/10 transition no-underline">
+                          <span className="min-w-0">
+                            <span className="block text-sm font-semibold text-fg group-hover:text-accent transition">{t.label}</span>
+                            <span className="block text-xs text-fg-muted">{t.desc}</span>
+                          </span>
+                          <span aria-hidden="true" className="text-accent opacity-0 group-hover:opacity-100 transition mt-0.5">→</span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
           </div>
         </section>
 

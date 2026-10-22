@@ -137,41 +137,57 @@ Every location tool on this site. Each one is free, runs in your browser, and ne
 
 IP and DNS lookups, email and website checks, and quick converters. Free, no signup.
 
-### IP tools
+🌐
 
--   [IP WHOIS Lookup](https://getmylocations.com/ip-whois-lookup)Who owns an IP address
--   [ASN WHOIS Lookup](https://getmylocations.com/asn-lookup)Owner of an autonomous system
--   [IPv4 to IPv6](https://getmylocations.com/ipv4-to-ipv6)Convert an IPv4 address to IPv6
--   [IP Blacklist Checker](https://getmylocations.com/ip-blacklist-checker)Is an IP on spam blocklists?
--   [MAC Address Lookup](https://getmylocations.com/mac-address-lookup)Device maker from a MAC address
+### IP tools5
 
-### DNS & email tools
+Who owns an address, and is it trusted?
 
--   [DNS Lookup](https://getmylocations.com/dns-lookup)A, AAAA, CNAME, TXT and more
--   [MX Lookup](https://getmylocations.com/mx-lookup)Mail servers for a domain
--   [NS Lookup](https://getmylocations.com/ns-lookup)Name servers for a domain
--   [DMARC Checker](https://getmylocations.com/dmarc-checker)Check a domain’s DMARC and SPF
--   [Email Validator](https://getmylocations.com/email-validator)Check an address can receive mail
--   [Email Header Analyzer](https://getmylocations.com/email-header-analyzer)Trace where an email came from
+-   [IP WHOIS LookupWho owns an IP address→](https://getmylocations.com/ip-whois-lookup)
+-   [ASN WHOIS LookupOwner of an autonomous system→](https://getmylocations.com/asn-lookup)
+-   [IPv4 to IPv6Convert an IPv4 address to IPv6→](https://getmylocations.com/ipv4-to-ipv6)
+-   [IP Blacklist CheckerIs an IP on spam blocklists?→](https://getmylocations.com/ip-blacklist-checker)
+-   [MAC Address LookupDevice maker from a MAC address→](https://getmylocations.com/mac-address-lookup)
 
-### Website & SEO tools
+✉️
 
--   [Domain Age Checker](https://getmylocations.com/domain-age-checker)When a domain was registered
--   [SSL Certificate Checker](https://getmylocations.com/ssl-certificate-checker)Certificates and fingerprints
--   [Website Server Checker](https://getmylocations.com/website-server-checker)Server software and headers
--   [View Page Source](https://getmylocations.com/view-page-source)HTML source of any page
--   [Open Graph Checker](https://getmylocations.com/open-graph-checker)Preview a link’s share card
--   [Website Link Analyzer](https://getmylocations.com/link-analyzer)All links on a page
--   [Multiple URL Opener](https://getmylocations.com/multiple-url-opener)Open many links at once
+### DNS & email tools6
 
-### Everyday tools
+Records, mail servers and spoofing checks
 
--   [Internet Speed Test](https://getmylocations.com/internet-speed-test)Download, upload and ping
--   [Password Generator](https://getmylocations.com/password-generator)Strong passwords and passphrases
--   [MD5 & SHA Hash Generator](https://getmylocations.com/md5-generator)MD5, SHA-1 and SHA-256 hashes
--   [Random Word Generator](https://getmylocations.com/random-word-generator)Random English words
--   [Binary to Text](https://getmylocations.com/binary-to-text)Binary, text, hex and decimal
--   [Bytes & Bits Converter](https://getmylocations.com/bytes-bits-converter)KB, MB, GB, Mbps and more
+-   [DNS LookupA, AAAA, CNAME, TXT and more→](https://getmylocations.com/dns-lookup)
+-   [MX LookupMail servers for a domain→](https://getmylocations.com/mx-lookup)
+-   [NS LookupName servers for a domain→](https://getmylocations.com/ns-lookup)
+-   [DMARC CheckerCheck a domain’s DMARC and SPF→](https://getmylocations.com/dmarc-checker)
+-   [Email ValidatorCheck an address can receive mail→](https://getmylocations.com/email-validator)
+-   [Email Header AnalyzerTrace where an email came from→](https://getmylocations.com/email-header-analyzer)
+
+🔍
+
+### Website & SEO tools7
+
+What a site runs on and how it shares
+
+-   [Domain Age CheckerWhen a domain was registered→](https://getmylocations.com/domain-age-checker)
+-   [SSL Certificate CheckerCertificates and fingerprints→](https://getmylocations.com/ssl-certificate-checker)
+-   [Website Server CheckerServer software and headers→](https://getmylocations.com/website-server-checker)
+-   [View Page SourceHTML source of any page→](https://getmylocations.com/view-page-source)
+-   [Open Graph CheckerPreview a link’s share card→](https://getmylocations.com/open-graph-checker)
+-   [Website Link AnalyzerAll links on a page→](https://getmylocations.com/link-analyzer)
+-   [Multiple URL OpenerOpen many links at once→](https://getmylocations.com/multiple-url-opener)
+
+🧰
+
+### Everyday tools6
+
+Quick generators and converters
+
+-   [Internet Speed TestDownload, upload and ping→](https://getmylocations.com/internet-speed-test)
+-   [Password GeneratorStrong passwords and passphrases→](https://getmylocations.com/password-generator)
+-   [MD5 & SHA Hash GeneratorMD5, SHA-1 and SHA-256 hashes→](https://getmylocations.com/md5-generator)
+-   [Random Word GeneratorRandom English words→](https://getmylocations.com/random-word-generator)
+-   [Binary to TextBinary, text, hex and decimal→](https://getmylocations.com/binary-to-text)
+-   [Bytes & Bits ConverterKB, MB, GB, Mbps and more→](https://getmylocations.com/bytes-bits-converter)
 
 -   Coordinates in two seconds
 -   Move and watch it update
