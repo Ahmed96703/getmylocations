@@ -8,14 +8,17 @@ import SideAd from '../components/SideAd.jsx';
 import { AUTHOR } from '../components/author.js';
 
 export const metadata = {
-  title: 'What Is My Location? My Coordinates & Current Address',
+  title: 'My Location – Where Am I Right Now? Coordinates & Address',
   description:
-    'See your coordinates and current street address in two seconds, with the accuracy radius and a map pin. Free, in your browser, no signup.',
+    'Where am I right now? See your current location: coordinates, street address, city and postal code, next to your IP location. Free, no signup.',
   keywords: [
     'my location',
+    'where am i',
+    'where am i right now',
     'what is my location',
     'my current location',
-    'where am i',
+    'current location',
+    'what is my current location address',
     'gps coordinates of my location',
     'find my coordinates',
     'my coordinates',
@@ -23,17 +26,17 @@ export const metadata = {
   ],
   alternates: { canonical: '/my-location' },
   openGraph: {
-    title: 'What Is My Location? My Coordinates & Current Address',
+    title: 'My Location – Where Am I Right Now? Coordinates & Address',
     description:
-      'Your exact GPS coordinates, accuracy radius, and street address — free, in the browser, no signup.',
+      'Where am I right now? Your coordinates, street address, city and postal code, next to your IP location. Free, no signup.',
     url: 'https://getmylocations.com/my-location',
     type: 'website',
     images: ['/og-image.png'],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'What Is My Location? My Coordinates & Current Address',
-    description: 'Coordinates, accuracy, and address in two seconds. Free, browser-based, no signup.',
+    title: 'My Location – Where Am I Right Now? Coordinates & Address',
+    description: 'Where am I right now? Coordinates, address, city and postal code in two seconds. Free, no signup.',
     images: ['/og-image.png'],
   },
 };
@@ -138,11 +141,12 @@ export default function MyLocationPage() {
         <article>
           <p className="text-xs uppercase tracking-[0.18em] text-accent font-semibold">Free Tool · Complete Guide</p>
           <h1 className="font-display text-4xl font-extrabold tracking-tight mt-2 leading-[1.1]">
-            What is my location? My coordinates and current address, in two seconds
+            My location: where am I right now?
           </h1>
           <p className="mt-4 text-lg text-fg-muted leading-relaxed">
-            Tap the button below and the page shows your coordinates (latitude and longitude, ready to
-            copy), the accuracy radius, the nearest street address to where you are, and a map pin &mdash;
+            What&rsquo;s my current location? The box below gives a rough answer from your IP address straight
+            away. Tap the button and it shows your exact coordinates (latitude and longitude, ready to
+            copy), the accuracy radius, your street address, city and postal code, and a map pin &mdash;
             straight from your browser, without signing up or installing anything. Below the tool, the guide covers what the two numbers mean, how to
             read DD/DMS/UTM notation, how your device works out where you are, and what to do when the
             reading looks wrong.
@@ -153,6 +157,72 @@ export default function MyLocationPage() {
             <NativeAd />
             <SideAd />
           </div>
+
+          <hr className="my-10 border-line" />
+
+          <h2 className="font-display text-2xl font-bold">Where am I right now?</h2>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            Press <strong className="text-fg">Find my location</strong> and allow location access when your browser asks. Within
+            a few seconds the tool shows where you are right now: your latitude and longitude, the street
+            address nearest to you, and your city, state, country and postal code, with a pin on the map.
+            Before you press it, the box at the top already gives a rough answer from your IP address, so
+            you can see at a glance which city you are in.
+          </p>
+
+          <h2 className="font-display text-2xl font-bold mt-10">What is my current location address?</h2>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            After the tool finds you, the &ldquo;Your current address&rdquo; box shows the nearest street address,
+            with a copy button. It comes from OpenStreetMap and names the closest mapped building or street,
+            so treat it as the address of the spot you are standing on, not proof of where you live. Indoors
+            or with a weak signal the match can be a neighbouring building; the accuracy figure tells you how
+            far off it may be.
+          </p>
+
+          <h2 className="font-display text-2xl font-bold mt-10">My location vs IP location</h2>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            The table in the tool shows two answers side by side. They come from different places and are
+            rarely the same:
+          </p>
+          <div className="mt-4 overflow-x-auto rounded-xl ring-1 ring-line not-prose">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="bg-tint/5 text-left text-fg-muted">
+                  <th className="px-3 py-2 font-semibold">&nbsp;</th>
+                  <th className="px-3 py-2 font-semibold">Device location (GPS / Wi-Fi)</th>
+                  <th className="px-3 py-2 font-semibold">IP location</th>
+                </tr>
+              </thead>
+              <tbody className="text-fg-muted">
+                {[
+                  ['Accuracy', 'A few meters outdoors, tens of meters indoors', 'Usually the right country, often a nearby city'],
+                  ['Street address', 'Yes', 'No'],
+                  ['Needs your permission', 'Yes', 'No'],
+                  ['Affected by a VPN', 'No', 'Yes: shows the VPN server’s location'],
+                  ['Typical use', 'Maps, directions, sharing where you are', 'Language, currency and region of websites'],
+                ].map(([k, a, b]) => (
+                  <tr key={k} className="border-t border-line-subtle">
+                    <td className="px-3 py-2 text-fg font-semibold whitespace-nowrap">{k}</td>
+                    <td className="px-3 py-2">{a}</td>
+                    <td className="px-3 py-2">{b}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            For the full comparison with measured examples, see{' '}
+            <Link href="/gps-vs-ip-accuracy" className="text-accent hover:underline">GPS vs IP location accuracy</Link>.
+          </p>
+
+          <h2 className="font-display text-2xl font-bold mt-10">How do I share my location?</h2>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            Press <strong className="text-fg">Copy coordinates</strong> or <strong className="text-fg">Copy address</strong> and
+            paste it into a message, or open the point in Google Maps with the button under the result and
+            share it from there. Coordinates are the most exact way to share a spot, and they work even where
+            there is no street address. To share a position that keeps updating as you move, use{' '}
+            <Link href="/live-location" className="text-accent hover:underline">Live Location</Link>, and see{' '}
+            <Link href="/blog/how-to-share-gps-location-safely" className="text-accent hover:underline">how to share your location safely</Link>.
+          </p>
 
           <hr className="my-10 border-line" />
 

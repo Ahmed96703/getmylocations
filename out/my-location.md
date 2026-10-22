@@ -1,20 +1,48 @@
 ---
-title: "What Is My Location? My Coordinates & Current Address"
-description: "See your coordinates and current street address in two seconds, with the accuracy radius and a map pin. Free, in your browser, no signup."
+title: "My Location – Where Am I Right Now? Coordinates & Address"
+description: "Where am I right now? See your current location: coordinates, street address, city and postal code, next to your IP location. Free, no signup."
 url: https://getmylocations.com/my-location
 ---
 
 Free Tool · Complete Guide
 
-# What is my location? My coordinates and current address, in two seconds
+# My location: where am I right now?
 
-Tap the button below and the page shows your coordinates (latitude and longitude, ready to copy), the accuracy radius, the nearest street address to where you are, and a map pin — straight from your browser, without signing up or installing anything. Below the tool, the guide covers what the two numbers mean, how to read DD/DMS/UTM notation, how your device works out where you are, and what to do when the reading looks wrong.
+What’s my current location? The box below gives a rough answer from your IP address straight away. Tap the button and it shows your exact coordinates (latitude and longitude, ready to copy), the accuracy radius, your street address, city and postal code, and a map pin — straight from your browser, without signing up or installing anything. Below the tool, the guide covers what the two numbers mean, how to read DD/DMS/UTM notation, how your device works out where you are, and what to do when the reading looks wrong.
 
 ## Find my current location
 
 Click the button above to start.
 
 Sponsored
+
+* * *
+
+## Where am I right now?
+
+Press **Find my location** and allow location access when your browser asks. Within a few seconds the tool shows where you are right now: your latitude and longitude, the street address nearest to you, and your city, state, country and postal code, with a pin on the map. Before you press it, the box at the top already gives a rough answer from your IP address, so you can see at a glance which city you are in.
+
+## What is my current location address?
+
+After the tool finds you, the “Your current address” box shows the nearest street address, with a copy button. It comes from OpenStreetMap and names the closest mapped building or street, so treat it as the address of the spot you are standing on, not proof of where you live. Indoors or with a weak signal the match can be a neighbouring building; the accuracy figure tells you how far off it may be.
+
+## My location vs IP location
+
+The table in the tool shows two answers side by side. They come from different places and are rarely the same:
+
+|   | Device location (GPS / Wi-Fi) | IP location |
+| --- | --- | --- |
+| Accuracy | A few meters outdoors, tens of meters indoors | Usually the right country, often a nearby city |
+| Street address | Yes | No |
+| Needs your permission | Yes | No |
+| Affected by a VPN | No | Yes: shows the VPN server’s location |
+| Typical use | Maps, directions, sharing where you are | Language, currency and region of websites |
+
+For the full comparison with measured examples, see [GPS vs IP location accuracy](https://getmylocations.com/gps-vs-ip-accuracy).
+
+## How do I share my location?
+
+Press **Copy coordinates** or **Copy address** and paste it into a message, or open the point in Google Maps with the button under the result and share it from there. Coordinates are the most exact way to share a spot, and they work even where there is no street address. To share a position that keeps updating as you move, use [Live Location](https://getmylocations.com/live-location), and see [how to share your location safely](https://getmylocations.com/blog/how-to-share-gps-location-safely).
 
 * * *
 

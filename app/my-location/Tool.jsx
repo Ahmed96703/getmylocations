@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import CopyButton from '../components/CopyButton.jsx';
 import { reverseLookup, precisionOf, metersBetween, formatMeters } from '../address-finder/geocode.js';
@@ -10,11 +10,36 @@ const MapView = dynamic(() => import('../components/MapView.jsx'), {
   loading: () => <div className="w-full h-full bg-tint/5 animate-pulse rounded-2xl" />,
 });
 
+const countryName = (code) => {
+  try { return code ? new Intl.DisplayNames(['en'], { type: 'region' }).of(code) : ''; } catch { return code; }
+};
+
+// One row of the device-vs-IP table.
+function Row({ icon, label, device, ip }) {
+  return (
+    <tr className="border-t border-line-subtle">
+      <th scope="row" className="px-3 py-2.5 text-left font-semibold text-fg whitespace-nowrap"><span aria-hidden="true" className="mr-2">{icon}</span>{label}</th>
+      <td className="px-3 py-2.5 text-fg">{device || '—'}</td>
+      <td className="px-3 py-2.5 text-fg-muted">{ip || '—'}</td>
+    </tr>
+  );
+}
+
 export default function Tool() {
   const [pos, setPos] = useState(null);
   const [meta, setMeta] = useState({});
   const [place, setPlace] = useState(null); // reverse-geocoded result, or { error }
   const [status, setStatus] = useState({ type: 'idle', msg: '' });
+  const [ipLoc, setIpLoc] = useState(null); // approximate place from the visitor's IP, via our own Worker
+
+  // Answer "where am I?" roughly before any permission prompt: Cloudflare's
+  // estimate for the visitor's IP, served by this site's own /api/ip.
+  useEffect(() => {
+    fetch('/api/ip', { cache: 'no-store' })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => d && (d.city || d.country) && setIpLoc(d))
+      .catch(() => {});
+  }, []);
 
   const find = () => {
     if (!('geolocation' in navigator)) {
@@ -103,7 +128,7 @@ export default function Tool() {
             })()}
           </div>
 
-          <dl className="grid sm:grid-cols-3 gap-3 mt-4 text-sm">
+          <dl className="grid grid-cols-2 gap-3 mt-4 text-sm">
             <div className="bg-tint/5 border border-line rounded-lg p-3">
               <dt className="text-[10px] uppercase tracking-wider text-fg-subtle font-semibold">Accuracy</dt>
               <dd className="font-mono mt-1">{Math.round(meta.accuracy)} m</dd>
@@ -112,15 +137,40 @@ export default function Tool() {
               <dt className="text-[10px] uppercase tracking-wider text-fg-subtle font-semibold">Altitude</dt>
               <dd className="font-mono mt-1">{meta.altitude != null ? `${Math.round(meta.altitude)} m` : '—'}</dd>
             </div>
-            <div className="bg-tint/5 border border-line rounded-lg p-3">
-              <dt className="text-[10px] uppercase tracking-wider text-fg-subtle font-semibold">City, state, country</dt>
-              <dd className="mt-1 text-sm">
-                {place?.result
-                  ? [place.result.address?.city || place.result.address?.town || place.result.address?.village || place.result.address?.county, place.result.address?.state, place.result.address?.country].filter((v, i, a) => v && a.indexOf(v) === i).join(', ') || '—'
-                  : '—'}
-              </dd>
-            </div>
           </dl>
+
+          {(() => {
+            const a = place?.result?.address || {};
+            const city = a.city || a.town || a.village || a.municipality || a.county;
+            const gap = ipLoc?.latitude != null ? metersBetween(pos[0], pos[1], ipLoc.latitude, ipLoc.longitude) : null;
+            return (
+              <div className="mt-4 overflow-x-auto rounded-xl ring-1 ring-line">
+                <table className="w-full text-sm">
+                  <caption className="sr-only">Your location from your device compared with the location from your IP address</caption>
+                  <thead>
+                    <tr className="bg-tint/5 text-left">
+                      <th className="px-3 py-2 font-semibold text-fg-muted"><span className="sr-only">Detail</span></th>
+                      <th className="px-3 py-2 font-semibold text-fg">📍 Your device (GPS / Wi-Fi)</th>
+                      <th className="px-3 py-2 font-semibold text-fg-muted">🌐 Your IP address</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <Row icon="🌍" label="Country" device={a.country} ip={countryName(ipLoc?.country)} />
+                    <Row icon="🏛️" label="State / region" device={a.state || a.region || a.province} ip={ipLoc?.region} />
+                    <Row icon="🏙️" label="City" device={city} ip={ipLoc?.city} />
+                    <Row icon="📮" label="Postal code" device={a.postcode} ip={ipLoc?.postalCode} />
+                    <Row icon="↕️" label="Latitude" device={<span className="font-mono">{pos[0].toFixed(6)}</span>} ip={ipLoc?.latitude != null && <span className="font-mono">{ipLoc.latitude.toFixed(4)}</span>} />
+                    <Row icon="↔️" label="Longitude" device={<span className="font-mono">{pos[1].toFixed(6)}</span>} ip={ipLoc?.longitude != null && <span className="font-mono">{ipLoc.longitude.toFixed(4)}</span>} />
+                  </tbody>
+                </table>
+                {gap != null && (
+                  <p className="px-3 py-2 text-xs text-fg-subtle border-t border-line-subtle">
+                    Your IP location is {formatMeters(gap)} from where your device says you are{gap > 25000 ? ': normal for IP addresses, which usually point to a provider’s hub.' : '.'}
+                  </p>
+                )}
+              </div>
+            );
+          })()}
 
           <div className="flex flex-wrap gap-2 mt-4">
             <a href={`https://www.google.com/maps?q=${pos[0]},${pos[1]}`} target="_blank" rel="noopener" className="btn-ghost">Google Maps</a>
@@ -133,7 +183,19 @@ export default function Tool() {
         </>
       )}
 
-      {!pos && status.type === 'idle' && (
+      {!pos && ipLoc && (
+        <div className="mt-2 rounded-xl border border-line bg-tint/5 p-4">
+          <p className="text-[10px] uppercase tracking-wider text-fg-subtle font-semibold">Where am I? Approximate answer from your IP address</p>
+          <p className="text-xl font-bold text-fg mt-1">{[ipLoc.city, ipLoc.region, countryName(ipLoc.country)].filter(Boolean).join(', ')}</p>
+          <p className="text-sm text-fg-muted mt-1">
+            {ipLoc.postalCode && <>Postal code {ipLoc.postalCode} · </>}
+            {ipLoc.latitude != null && <>around {ipLoc.latitude.toFixed(2)}, {ipLoc.longitude.toFixed(2)} · </>}
+            IP <span className="font-mono">{ipLoc.ip}</span>
+          </p>
+          <p className="text-xs text-fg-subtle mt-2">IP location is often a nearby city or your provider’s hub, not your street. Press “Find my location” for your exact position.</p>
+        </div>
+      )}
+      {!pos && !ipLoc && status.type === 'idle' && (
         <p className="text-sm text-fg-subtle mt-2">Click the button above to start.</p>
       )}
     </section>

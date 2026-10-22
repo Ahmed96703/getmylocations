@@ -46,6 +46,8 @@ The Driving Directions tool embeds a Google Maps route, and the Street View tool
 
 The IP Location tool calls the public freeipapi.com endpoint (privacy policy at freeipapi.com/privacy). The IP you look up — your own when you click _Lookup my IP_, or any IP you paste — is sent to freeipapi.com, which returns the geolocation data. Their policy covers what they keep.
 
+On the My Location page, the rough location shown before you press the button is Cloudflare’s own estimate for your IP address, which this site’s server reads from the request and returns to your browser. It is not sent to any other service and is not stored.
+
 On the homepage, if no exact location is available (you declined the prompt, it failed, or you have not answered yet), you can click _Show my approximate area_. Only then is your IP address sent to BigDataCloud (listed above) to estimate your city. Nothing is looked up unless you click.
 
 If you type a domain name (such as example.com) into the IP Location tool, your browser first asks Cloudflare’s public DNS resolver (cloudflare-dns.com, the 1.1.1.1 service) for the domain’s IP address, then looks that IP up at freeipapi.com. Cloudflare receives the domain name and your IP address as part of that DNS request; see 1.1.1.1/privacy. Private and reserved addresses (such as 192.168.x.x) are recognised in your browser and are not sent to either service. The optional “Measure the gap” check reads your device location in the browser and only compares it with the lookup result there; that reading is not sent anywhere.

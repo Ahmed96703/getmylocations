@@ -139,6 +139,11 @@ export default function Privacy() {
         Their policy covers what they keep.
       </p>
       <p className="mt-3 text-fg-muted leading-relaxed">
+        On the My Location page, the rough location shown before you press the button is Cloudflare&rsquo;s
+        own estimate for your IP address, which this site&rsquo;s server reads from the request and returns to
+        your browser. It is not sent to any other service and is not stored.
+      </p>
+      <p className="mt-3 text-fg-muted leading-relaxed">
         On the homepage, if no exact location is available (you declined the prompt, it failed, or
         you have not answered yet), you can click <em>Show my approximate area</em>. Only then is
         your IP address sent to BigDataCloud (listed above) to estimate your city. Nothing is looked

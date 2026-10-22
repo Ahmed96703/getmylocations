@@ -50,12 +50,19 @@ const json = (data, status = 200, extra = {}) => new Response(JSON.stringify(dat
   headers: { 'Content-Type': 'application/json; charset=utf-8', 'X-Robots-Tag': 'noindex', ...extra },
 });
 
-// /api/ip: the visitor's own public IP address, as Cloudflare sees it.
+// /api/ip: the visitor's own public IP address, and the approximate place
+// Cloudflare's own geolocation gives for it (no third-party lookup).
 function visitorIp(request) {
   const cf = request.cf || {};
   return json({
     ip: request.headers.get('CF-Connecting-IP') || '',
     country: cf.country || '',
+    region: cf.region || '',
+    city: cf.city || '',
+    postalCode: cf.postalCode || '',
+    latitude: cf.latitude ? Number(cf.latitude) : null,
+    longitude: cf.longitude ? Number(cf.longitude) : null,
+    timezone: cf.timezone || '',
     asn: cf.asn || null,
     org: cf.asOrganization || '',
   }, 200, { 'Cache-Control': 'no-store' });
