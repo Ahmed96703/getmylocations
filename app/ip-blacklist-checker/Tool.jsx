@@ -48,25 +48,38 @@ export default function Tool() {
 
   const run = async (input) => {
     let ip = input.trim();
+    let via = '';
     setQ(ip);
     setRes(null);
     if (!isIPv4(ip)) {
-      // A domain: check the address its mail or web server uses.
+      // A domain or email address: check the mail server that receives its
+      // email (lowest-preference MX), falling back to the domain's own address.
       const d = toDomain(ip);
       if (isIPv6(ip)) { setStatus({ type: 'err', msg: 'These blocklists only cover IPv4 addresses. Enter an IPv4 address, or a domain to check its server.' }); return; }
-      if (!d) { setStatus({ type: 'err', msg: 'Enter an IPv4 address such as 203.0.113.7, or a domain name.' }); return; }
-      setStatus({ type: 'loading', msg: `Finding the address of ${d}…` });
-      const a = await dns(d, 'A').catch(() => null);
-      ip = a?.answers.find((x) => x.type === 'A')?.data;
+      if (!d) { setStatus({ type: 'err', msg: 'Enter an IPv4 address such as 203.0.113.7, a domain name or an email address.' }); return; }
+      setStatus({ type: 'loading', msg: `Finding the mail server of ${d}…` });
+      const mx = await dns(d, 'MX').catch(() => null);
+      const host = mx?.answers.filter((x) => x.type === 'MX').map((x) => x.data.split(' '))
+        .sort((x, y) => Number(x[0]) - Number(y[0]))[0]?.[1]?.replace(/\.$/, '');
+      if (host) {
+        const a = await dns(host, 'A').catch(() => null);
+        ip = a?.answers.find((x) => x.type === 'A')?.data;
+        if (ip) via = `mail server ${host} (MX of ${d})`;
+      }
+      if (!via) {
+        const a = await dns(d, 'A').catch(() => null);
+        ip = a?.answers.find((x) => x.type === 'A')?.data;
+        if (ip) via = `${d} (no mail server found, so its web address was checked)`;
+      }
       if (!ip) { setStatus({ type: 'err', msg: `${d} has no IPv4 address.` }); return; }
     }
     const rev = ip.split('.').reverse().join('.');
     setStatus({ type: 'loading', msg: `Checking ${ip} against ${LISTS.length} blocklists…` });
     const results = LISTS.map(([name, zone, url]) => ({ name, zone, url, state: null }));
-    setRes({ ip, results: [...results] });
+    setRes({ ip, via, results: [...results] });
     await Promise.all(results.map(async (r, i) => {
       results[i] = { ...r, state: await check(rev, r.zone) };
-      setRes({ ip, results: [...results] });
+      setRes({ ip, via, results: [...results] });
     }));
     setStatus(null);
   };
@@ -77,14 +90,15 @@ export default function Tool() {
   const done = res && res.results.every((r) => r.state);
 
   return (
-    <Card title="Check an IP against spam blocklists">
-      <QueryForm value={q} onChange={setQ} onSubmit={run} placeholder="203.0.113.7 or mail.example.com" label="IPv4 address or domain" busy={status?.type === 'loading'} />
+    <Card title="Check an IP, domain or email against spam blacklists">
+      <QueryForm value={q} onChange={setQ} onSubmit={run} placeholder="203.0.113.7, example.com or you@example.com" label="IPv4 address, domain or email address" busy={status?.type === 'loading'} />
       <Examples items={['8.8.8.8', '127.0.0.2', 'gmail.com']} onPick={run} />
       <Status status={status} />
       {res && (
         <>
           {done && (
             <div className={`mt-4 rounded-xl p-4 border ${listed.length ? 'bg-rose-500/10 border-rose-400/40' : 'bg-emerald-500/10 border-emerald-400/40'}`}>
+              {res.via && <p className="text-xs text-fg-muted mb-1">Checked {res.via}</p>}
               <p className="font-semibold text-fg">
                 {listed.length
                   ? `${res.ip} is listed on ${listed.length} of ${res.results.length} blocklists.`
