@@ -56,6 +56,15 @@ export default function Tool() {
   useEffect(() => {
     const h = readHash();
     if (h) goTo(h.lat, h.lon, 'Shared location', h.z);
+    // In-page view links (#zoom/lat/lon) move the map and bring it into view.
+    const onHash = () => {
+      const n = readHash();
+      if (!n) return;
+      goTo(n.lat, n.lon, 'Shared location', n.z);
+      document.getElementById('satellite-map')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+    window.addEventListener('hashchange', onHash);
+    return () => window.removeEventListener('hashchange', onHash);
   }, []);
 
   // Look up the photo under the centre of the screen, 400 ms after the map
@@ -135,7 +144,7 @@ export default function Tool() {
   const ll = pin ? `${pin.lat.toFixed(6)},${pin.lon.toFixed(6)}` : '';
 
   return (
-    <section className="glass rounded-2xl p-5 sm:p-6">
+    <section id="satellite-map" className="glass rounded-2xl p-5 sm:p-6 scroll-mt-24">
       <form onSubmit={(e) => { e.preventDefault(); search(query); }} className="flex flex-wrap gap-2 mb-3">
         <input
           className="field flex-1 min-w-[200px]"
@@ -210,6 +219,7 @@ export default function Tool() {
           <span>Link to this view:</span>
           <span className="font-mono text-fg-muted break-all">{shareUrl}</span>
           <CopyButton text={shareUrl} label="Copy link" className="text-accent hover:underline" />
+          <a href={`https://www.google.com/maps/@?api=1&map_action=map&center=${view.lat.toFixed(6)},${view.lon.toFixed(6)}&zoom=${Math.min(view.zoom, 21)}&basemap=satellite`} target="_blank" rel="noopener" className="text-accent hover:underline">Open this view in Google Maps satellite view</a>
         </div>
       )}
     </section>

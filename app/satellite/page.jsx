@@ -9,22 +9,29 @@ import NativeAd from '../components/NativeAd.jsx';
 import SideAd from '../components/SideAd.jsx';
 
 export const metadata = {
-  title: 'Satellite View — Free Satellite Map of Any Address',
+  title: 'Google Maps Satellite View Free: Satellite Map of Any Address',
   description:
-    'See any address from above in free satellite view, and find out when the photo was taken. Search by address or coordinates. No signup, no API key.',
-  keywords: ['satellite view', 'satellite view of my house', 'satellite map', 'satellite view by address', 'free satellite view', 'satellite image date', 'aerial view'],
+    'Free satellite view of any address, like Google Maps satellite view, with the most up-to-date satellite images and the date each photo was taken. No signup.',
+  keywords: [
+    'satellite view', 'satellite view of my house', 'satellite map', 'satellite view by address', 'free satellite view', 'satellite image date', 'aerial view',
+    'google maps satellite view', 'google maps satellite view free', 'google maps satellite view location', 'google satellite view', 'google map satellite view',
+    'google earth satellite view free', 'google earth view', 'satellite view of my location', 'satellite maps of my location', 'aerial view of my house',
+    'aerial view of property by address', 'free live satellite view street address', 'satellite maps street view', 'live satellite view',
+    'up to date satellite images', 'updated satellite images', 'most recent satellite images', 'most up to date satellite images',
+    'most up to date satellite maps', 'latest satellite imagery', 'satellite imagery', 'satellite maps',
+  ],
   alternates: { canonical: '/satellite' },
   openGraph: {
-    title: 'Satellite View — Free Satellite Map of Any Address',
-    description: 'See any address from above, and find out when the satellite photo was taken. Free, no signup.',
+    title: 'Google Maps Satellite View Free: Satellite Map of Any Address',
+    description: 'See any address from above with up-to-date satellite images, and find out when the photo was taken. Free, no signup.',
     url: 'https://getmylocations.com/satellite',
     type: 'website',
     images: ['/og-image.png'],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Satellite View — Free Satellite Map of Any Address',
-    description: 'See any address from above, and find out when the satellite photo was taken.',
+    title: 'Google Maps Satellite View Free: Satellite Map of Any Address',
+    description: 'See any address from above with up-to-date satellite images, and find out when the photo was taken.',
     images: ['/og-image.png'],
   },
 };
@@ -42,7 +49,7 @@ const webAppSchema = {
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
   publisher: { '@type': 'Organization', name: 'GetMyLocations' },
   author: AUTHOR,
-  dateModified: '2026-10-20',
+  dateModified: '2026-10-23',
 };
 
 // Capture dates read from Esri's imagery metadata on 15 October 2026. The
@@ -55,9 +62,31 @@ const SAMPLES = [
   { place: 'Rural Nebraska, USA', date: '2 October 2025', res: '31 cm', kind: 'Satellite (Vantor Vivid)' },
 ];
 
+// Ready-made views: #zoom/lat/lon opens the map at that spot.
+const VIEWS = [
+  { place: 'Statue of Liberty, New York', hash: '17/40.68925/-74.04450' },
+  { place: 'Olvera, Andalusia, Spain (white hill town)', hash: '16/36.93490/-5.26012' },
+  { place: 'Colorful rooftops of Burano, Venice', hash: '17/45.48540/12.41680' },
+  { place: 'Eiffel Tower, Paris', hash: '17/48.85837/2.29448' },
+  { place: 'Pyramids of Giza, Egypt', hash: '16/29.97650/31.13090' },
+  { place: 'Badshahi Mosque, Lahore', hash: '17/31.58800/74.30960' },
+];
+
 const faqs = [
   {
-    q: 'Is this satellite view live?',
+    q: 'Is this Google Maps satellite view?',
+    a: 'It works the same way, but the photos come from Esri\'s World Imagery rather than Google, and this map tells you the date each photo was taken, which Google Maps does not. To see Google\'s own picture of the same spot, press "Open this view in Google Maps satellite view" under the map. Both are free.',
+  },
+  {
+    q: 'How do I see a satellite view of my location?',
+    a: 'Press "My location" above the map and allow location access. The map centres on where you are, at street level, with the capture date of the photo shown under it. Your position stays in your browser and is not sent to us.',
+  },
+  {
+    q: 'Is there a free alternative to Google Earth satellite view?',
+    a: 'Yes. This page shows free satellite and aerial imagery of the whole world in your browser, with no download and no account, and opens any spot in Google Maps or Google Street View with one click. Google Earth adds 3D buildings and historical imagery; this map adds the capture date and source of every photo.',
+  },
+  {
+    q: 'Is this a live satellite view?',
     a: 'No, and no free service is. The detailed imagery on this page, on Google Maps, and on Bing Maps is a mosaic of photos taken months or years ago. The panel under the map tells you exactly when the photo you are looking at was taken. Satellites that do image the whole Earth continuously, such as weather satellites, see details of around half a kilometre at best, enough for clouds but not for buildings.',
   },
   {
@@ -101,13 +130,13 @@ export default function SatellitePage() {
         <section className="mb-8">
           <p className="text-[11px] uppercase tracking-[0.18em] text-accent font-semibold mb-2">Free Tool · Satellite Imagery</p>
           <h1 className="font-display text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.05]">
-            Satellite view of any address, <span className="text-accent">with the date the photo was taken</span>
+            Google Maps Satellite View
           </h1>
           <p className="text-lg text-fg-muted mt-4 max-w-3xl">
-            See any address from above in high-resolution satellite imagery and find out exactly when the photo was taken: under the map, the tool shows the capture date, how sharp the image is, and who took it, so you know whether you are looking at last spring or five years ago. Search an address, a place, or coordinates in any format. Free, no signup, no API key.
+            See any address from above in <strong className="text-fg">free satellite view</strong>, just like Google Maps satellite view, with <strong className="text-fg">up-to-date satellite images</strong> and the exact date each photo was taken: under the map, the tool shows the capture date, how sharp the image is, and who took it, so you know whether you are looking at last spring or five years ago. Search an address, a place, or coordinates in any format, or press <strong className="text-fg">My location</strong> for a <strong className="text-fg">satellite view of your location</strong>. One click opens the same spot in Google Maps. Free, no signup, no API key.
           </p>
           <p className="mt-3 text-sm text-fg-subtle">
-            Last updated <time dateTime="2026-10-20">October 20, 2026</time> by{' '}
+            Last updated <time dateTime="2026-10-23">October 23, 2026</time> by{' '}
             <Link href="/about" className="text-accent hover:underline">Ahmed Anwar</Link>.
           </p>
         </section>
@@ -127,13 +156,40 @@ export default function SatellitePage() {
           </ol>
         </section>
 
+
+        <section className="mt-10">
+          <h2 className="font-display text-2xl font-bold">Most up-to-date satellite images: check the date</h2>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            People searching for <strong className="text-fg">up-to-date satellite images</strong>, <strong className="text-fg">updated satellite images</strong> or the <strong className="text-fg">most recent satellite images</strong> usually want one thing: to know the photo shows the place as it is now. No free map is live, so the honest answer is to show the date. This map does that for every view: the imagery panel under the map gives the capture date, resolution and source of the exact photo you are looking at.
+          </p>
+          <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside leading-relaxed">
+            <li><strong className="text-fg">Big cities and landmarks:</strong> usually photographed within the last one to two years, as the table below shows.</li>
+            <li><strong className="text-fg">Towns and suburbs:</strong> typically one to three years old.</li>
+            <li><strong className="text-fg">Rural and remote areas:</strong> can be several years old, and zoomed out you see a global mosaic with no single date.</li>
+            <li><strong className="text-fg">Need the latest satellite imagery?</strong> Compare with Google Maps satellite view using the link under the map. Different providers update different places, so one of them is often newer.</li>
+          </ul>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            Because the date is always on screen, these are the <strong className="text-fg">most up-to-date satellite maps</strong> you can check for free without guessing: if the photo is too old for your purpose, you know straight away.
+          </p>
+        </section>
+
+        <section className="mt-10">
+          <h2 className="font-display text-2xl font-bold">Satellite view of my location, my house or any property</h2>
+          <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside leading-relaxed">
+            <li><strong className="text-fg">Satellite view of my location:</strong> press My location and allow access. The map jumps to where you are, at street level.</li>
+            <li><strong className="text-fg">Aerial view of my house:</strong> type your street address and press Search, then click your roof to pin it.</li>
+            <li><strong className="text-fg">Aerial view of a property by address:</strong> search the address, turn on Roads to see the street names, and check the date before relying on what you see.</li>
+            <li><strong className="text-fg">Satellite maps with street view:</strong> pin a point and press Street View here to see the same spot from the street, or use our <Link href="/street-view" className="text-accent hover:underline">Street View</Link> tool for any address.</li>
+          </ul>
+        </section>
+
         <section className="mt-10">
           <h2 className="font-display text-2xl font-bold">How old is the satellite image?</h2>
           <p className="mt-3 text-fg-muted leading-relaxed">
-            Satellite images of major cities on this map are usually less than two years old: the Eiffel Tower, the Statue of Liberty and the Pyramids of Giza were all photographed in 2025. Rural areas can be several years older. The tool shows the exact capture date for any point you look at.
+            <strong className="text-fg">Satellite images</strong> of major cities on this map are usually less than two years old: the Eiffel Tower, the Statue of Liberty and the Pyramids of Giza were all photographed in 2025. Rural areas can be several years older. The tool shows the exact capture date for any point you look at.
           </p>
           <p className="mt-3 text-fg-muted leading-relaxed">
-            Most satellite maps never tell you this. The imagery here comes from Esri&rsquo;s World Imagery mosaic, and Esri publishes metadata for every photo in it: the capture date, the resolution, the positional accuracy, and the provider. The tool reads that metadata for the point at the centre of your screen, at your current zoom, because a single view can mix several photos taken on different days.
+            Most satellite maps never tell you this. The <strong className="text-fg">satellite imagery</strong> here comes from Esri&rsquo;s World Imagery mosaic, and Esri publishes metadata for every photo in it: the capture date, the resolution, the positional accuracy, and the provider. The tool reads that metadata for the point at the centre of your screen, at your current zoom, because a single view can mix several photos taken on different days.
           </p>
           <p className="mt-3 text-fg-muted leading-relaxed">
             What we saw when we checked five places on 15 October 2026:
@@ -185,16 +241,68 @@ export default function SatellitePage() {
         </section>
 
         <section className="mt-10">
+          <h2 className="font-display text-2xl font-bold">Aerial views to try</h2>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            Open any of these in free <strong className="text-fg">satellite view</strong>; each link sets the map to the spot and zoom shown, and the panel shows when the photo was taken.
+          </p>
+          <ul className="mt-3 grid sm:grid-cols-2 gap-2">
+            {VIEWS.map((v) => (
+              <li key={v.hash}>
+                <a href={`/satellite#${v.hash}`} className="block glass rounded-xl px-4 py-3 text-fg hover:text-accent ring-1 ring-line transition no-underline">
+                  <strong>Aerial view of {v.place}</strong>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="mt-10">
           <h2 className="font-display text-2xl font-bold">Satellite or aerial photo?</h2>
           <p className="mt-3 text-fg-muted leading-relaxed">
-            &ldquo;Satellite view&rdquo; is the everyday name, but the sharpest imagery on any map is often taken from aircraft. Commercial satellites such as those operated by Vantor (formerly Maxar) photograph most of the world at around 30 to 50 cm per pixel. Planes fly lower and can capture 15 cm or finer, so many cities and national mapping programmes use aerial surveys instead. Esri&rsquo;s mosaic mixes both: in New York, for example, its metadata lists a 15 cm aerial survey from 2024 for the very closest zoom level, above 50 cm satellite imagery for everything else. The imagery panel names the source for whatever you are looking at.
+            &ldquo;<strong className="text-fg">Satellite view</strong>&rdquo; is the everyday name, but the sharpest imagery on any map is often taken from aircraft. Commercial satellites such as those operated by Vantor (formerly Maxar) photograph most of the world at around 30 to 50 cm per pixel. Planes fly lower and can capture 15 cm or finer, so many cities and national mapping programmes use aerial surveys instead. Esri&rsquo;s mosaic mixes both: in New York, for example, its metadata lists a 15 cm aerial survey from 2024 for the very closest zoom level, above 50 cm satellite imagery for everything else. The imagery panel names the source for whatever you are looking at.
           </p>
         </section>
 
         <section className="mt-10">
           <h2 className="font-display text-2xl font-bold">Why another map shows a different picture</h2>
           <p className="mt-3 text-fg-muted leading-relaxed">
-            Google Maps, Apple Maps, Bing Maps, and Esri each license imagery from different providers and update different places at different times. The same house can appear in summer on one map and in winter on another, with or without a new extension, or with a neighbouring building that has since been knocked down. Shadows point in different directions, and tall buildings lean differently, because each photo was taken from a slightly different angle. When the date matters, the &ldquo;Compare in Google Maps&rdquo; link under the map opens the same point in Google&rsquo;s satellite layer so you can check both.
+            <strong className="text-fg">Google Maps</strong>, Apple Maps, Bing Maps, and Esri each license imagery from different providers and update different places at different times. The same house can appear in summer on one map and in winter on another, with or without a new extension, or with a neighbouring building that has since been knocked down. Shadows point in different directions, and tall buildings lean differently, because each photo was taken from a slightly different angle. When the date matters, the &ldquo;Compare in Google Maps&rdquo; link under the map opens the same point in Google&rsquo;s satellite layer so you can check both.
+          </p>
+        </section>
+
+        <section className="mt-10">
+          <h2 className="font-display text-2xl font-bold">Google Maps satellite view, Google Earth or this map?</h2>
+          <div className="mt-4 overflow-x-auto rounded-xl ring-1 ring-line">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="bg-tint/5 text-left text-fg-muted">
+                  <th className="px-3 py-2 font-semibold"></th>
+                  <th className="px-3 py-2 font-semibold">This satellite map</th>
+                  <th className="px-3 py-2 font-semibold">Google Maps satellite view</th>
+                  <th className="px-3 py-2 font-semibold">Google Earth</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ['Free', 'Yes', 'Yes', 'Yes'],
+                  ['Shows the photo date', 'Yes, for every view', 'No (copyright year only)', 'In historical imagery mode'],
+                  ['Imagery source', 'Esri World Imagery (Vantor and aerial surveys)', 'Google’s providers', 'Google’s providers'],
+                  ['Street-level photos', 'One click to Google Street View', 'Yes', 'Yes'],
+                  ['Needs an app or account', 'No', 'No', 'Web or app, no account'],
+                  ['Coordinates in any format', 'Yes: DMS, UTM, Plus Codes, geohash', 'Decimal and Plus Codes', 'Decimal and DMS'],
+                ].map((r) => (
+                  <tr key={r[0]} className="border-t border-line-subtle">
+                    <td className="px-3 py-2 text-fg font-semibold">{r[0]}</td>
+                    <td className="px-3 py-2 text-fg-muted">{r[1]}</td>
+                    <td className="px-3 py-2 text-fg-muted">{r[2]}</td>
+                    <td className="px-3 py-2 text-fg-muted">{r[3]}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            Use whichever photo is newer for the place you care about. This map is the quickest way to check the date, and the link under it opens the same spot in <strong className="text-fg">Google Maps satellite view</strong> to compare. For a <strong className="text-fg">Google Earth view</strong> with 3D buildings, Google Earth on the web is also free.
           </p>
         </section>
 
