@@ -14,15 +14,16 @@ import { useEffect } from 'react';
 // allow other networks alongside them): empty ZONES, or delete this component
 // and its imports. public/sw.js must then be replaced with a worker that
 // unregisters itself, or visitors who allowed push notifications keep it.
-// Only two formats: OnClick (Popunder) and Push. They replaced the Multitag
-// (zone 298408), which also showed In-Page Push and Vignette. This OnClick
-// Popunder is the site's only popunder: the Adsterra Popunder, Social Bar and
-// sticky footer banner were removed on 2026-10-23 for earning almost nothing
-// (Adsterra Popunder $0.58 CPM vs Monetag's $19.58) while stealing first
-// clicks on the tools.
+// One Multitag (zone 300917, "Bright tag", added 2026-10-23 at the user's
+// request). It replaced the separate OnClick Popunder (12092105) and Push
+// (12092113) zones, which would otherwise run alongside it and show a second
+// popunder. Which formats it shows (Popunder, Push, In-Page Push, Vignette) is
+// set in the Monetag dashboard, not here. public/sw.js is the push worker
+// Monetag supplies for this tag (push zone 12104787 on 3nbf4.com). The Adsterra Popunder, Social
+// Bar and sticky footer were removed the same day, so this is the site's only
+// popunder.
 const ZONES = [
-  { zone: '12092105', src: 'https://al5sm.com/tag.min.js' }, // OnClick (Popunder)
-  { zone: '12092113', src: 'https://5gvci.com/act/files/tag.min.js?z=12092113' }, // Push; public/sw.js uses the same zone
+  { zone: '300917', src: 'https://quge5.com/88/tag.min.js' }, // Multitag
 ];
 
 function addTags() {
