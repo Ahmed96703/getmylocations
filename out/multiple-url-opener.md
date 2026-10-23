@@ -14,6 +14,8 @@ Paste links or domains, one per line, and **open them all in new tabs with one c
 
  0 valid links (duplicates removed)
 
+Sponsored
+
 ## How to open many links at once
 
 1.  Paste your list, one link per line. Spaces and commas also work as separators.

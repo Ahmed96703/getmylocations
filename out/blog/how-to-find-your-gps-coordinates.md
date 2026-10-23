@@ -110,6 +110,8 @@ Copy them as text (latitude, then longitude) and paste them into a message. Ever
 
 For how the phone actually computes the position, read [how GPS works](https://getmylocations.com/blog/how-gps-works).
 
+Sponsored
+
 AA
 
 Written by

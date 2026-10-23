@@ -14,6 +14,8 @@ Type an **IPv4 address** to see it in **every standard IPv6 form**: **IPv4-mappe
 
 Try:
 
+Sponsored
+
 ## How the conversion works
 
 An IPv4 address is 32 bits, written as four decimal numbers. An IPv6 address is 128 bits, written as eight groups of four hex digits. To fit IPv4 into IPv6, each pair of IPv4 numbers becomes one hex group, and a fixed prefix fills the rest.

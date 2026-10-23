@@ -49,3 +49,5 @@ We update this page when the services we rely on change. The date at the top ref
 ## Contact
 
 If you spot an error on the Service or have a question about this disclaimer, email [ahmed@getmylocations.com](mailto:ahmed@getmylocations.com).
+
+Sponsored

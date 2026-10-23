@@ -169,3 +169,5 @@ Why a map pin lands on the wrong door, and the tools for moving between places a
 Each guide is checked against standards documents, official platform documentation, and the devices it describes, rather than other people’s summaries. Numbers carry their source, and tool output is generated from the tools’ own code. When a guide is revised, the date on its card changes.
 
 Found a mistake? Send the page title and the sentence through the [contact page](https://getmylocations.com/contact); fixes are listed in the [public corrections log](https://getmylocations.com/about#corrections).
+
+Sponsored

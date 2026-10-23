@@ -14,6 +14,8 @@ Enter a website in this **website server checker** to **check host and server de
 
 Try:
 
+Sponsored
+
 ## How to check who is hosting a website
 
 -   **Enter the address,** such as example.com or a full link. The checker follows redirects to the page visitors really land on.

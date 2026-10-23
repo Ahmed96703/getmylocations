@@ -14,6 +14,8 @@ Press one button to see the **postcode for your current location**, with the **n
 
 Click anywhere on the map to get the postcode at that spot.
 
+Sponsored
+
 ## How the tool finds your postcode
 
 Your browser asks your device for its position, which on a phone usually comes from GPS and Wi-Fi and is accurate to a few meters outdoors. In Great Britain and Northern Ireland, the tool then asks [postcodes.io](https://postcodes.io), a free service built on the Office for National Statistics Postcode Directory, for the postcode whose centre point is nearest to you. Every UK postcode has one representative point placed among its addresses. At the same time, OpenStreetMap’s Nominatim service returns the nearest street address, so you can check the result against your own front door.

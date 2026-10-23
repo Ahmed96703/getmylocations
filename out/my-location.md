@@ -14,6 +14,8 @@ Free Tool · Complete Guide
 
 Click the button above to start.
 
+Sponsored
+
 * * *
 
 ## Where am I right now?

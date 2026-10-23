@@ -16,6 +16,8 @@ Last updated October 23, 2026 by [Ahmed Anwar](https://getmylocations.com/about)
 
 Type in either box; the other updates. Text is encoded as UTF-8, so accented letters and emoji take 2 to 4 bytes.
 
+Sponsored
+
 ## Binary translator: binary code to English
 
 This **binary to text converter** works as a **binary decoder** and an encoder at once. Paste a message written in 0s and 1s into the Binary box and the English text appears on the left; type in the Text box and you get **text to binary** on the right. It reads binary with or without spaces, so a long unbroken string like `0100100001101001` works as well as `01001000 01101001`.

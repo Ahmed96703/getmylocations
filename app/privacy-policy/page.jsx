@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import { breadcrumbSchema } from '../components/breadcrumbSchema.js';
+import NativeAd from '../components/NativeAd.jsx';
+import SideAd from '../components/SideAd.jsx';
 
 export const metadata = {
   title: 'Privacy Policy — GetMyLocations',
@@ -53,7 +55,7 @@ export default function Privacy() {
         <li>Only the coordinate itself is sent to a third-party service so we can show a city name. No identifier we control travels with it.</li>
         <li>We use Google Analytics to count visits and see which pages are used. We do not have an account system.</li>
         <li>The host (Cloudflare) keeps short-lived request logs the way any web host does.</li>
-        <li>Ads are served by Adcash, and by Google AdSense once it is enabled. Each sets its own advertising cookies. You can opt out of personalization at any time.</li>
+        <li>Banner ads are served by Adsterra, and by Google AdSense once it is enabled. Each sets its own advertising cookies. You can opt out of personalization at any time.</li>
       </ul>
 
       <h2 className="font-display text-2xl font-bold mt-10">1. What we read from your browser</h2>
@@ -193,7 +195,7 @@ export default function Privacy() {
         <span className="text-fg-muted font-mono text-sm">tools.google.com/dlpage/gaoptout</span>.
       </p>
 
-      <h2 className="font-display text-2xl font-bold mt-10">7. Advertising — Adcash and Google AdSense</h2>
+      <h2 className="font-display text-2xl font-bold mt-10">7. Advertising — Adsterra and Google AdSense</h2>
       <p className="mt-3 text-fg-muted leading-relaxed">
         Once Google AdSense is enabled on the site, Google and its advertising partners
         may set cookies (for example <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">__gads</code>,{' '}
@@ -212,18 +214,19 @@ export default function Privacy() {
       </p>
 
       <p className="mt-3 text-fg-muted leading-relaxed">
-        Pop-under, full-screen, in-page and other ads on the site are served by Adcash.
-        Adcash and its advertisers may set cookies and receive your IP address, device and
-        browser details, and the page you are viewing, to choose and measure ads and to
-        prevent fraud. Adcash&rsquo;s privacy policy is published at{' '}
-        <span className="text-fg-muted font-mono text-sm">adcash.com</span>.
+        The banner and native ads marked &ldquo;Sponsored&rdquo; are served by Adsterra. The site
+        shows banners only: no pop-under, push or full-screen ads. Adsterra and its advertisers
+        may set cookies and receive your IP address, device and browser details, and the page
+        you are viewing, to choose and measure ads and to prevent fraud. Adsterra&rsquo;s privacy
+        policy is published at{' '}
+        <span className="text-fg-muted font-mono text-sm">adsterra.com</span>.
       </p>
 
       <p className="mt-3 text-fg-muted leading-relaxed">
-        Until October 24, 2026 the site also showed ads from Monetag and Adsterra. If you
-        allowed notifications from this site while Monetag was used, the notification
-        service worker now removes itself the next time you visit; you can also turn
-        notifications off at any time in your browser&rsquo;s site settings.
+        Until October 2026 the site also used Monetag and, briefly, Adcash. If you allowed
+        notifications from this site while Monetag was used, the notification service worker
+        now removes itself the next time you visit; you can also turn notifications off at any
+        time in your browser&rsquo;s site settings.
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-10">8. What we do not do</h2>
@@ -264,6 +267,8 @@ export default function Privacy() {
         <a className="text-accent hover:underline" href="mailto:ahmed@getmylocations.com">ahmed@getmylocations.com</a>.
         See the <Link href="/contact" className="text-accent hover:underline">Contact page</Link> for response-time expectations.
       </p>
+      <NativeAd />
+      <SideAd />
     </main>
     </>
   );

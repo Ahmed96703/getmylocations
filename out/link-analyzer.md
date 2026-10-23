@@ -14,6 +14,8 @@ Enter a page address to list **all its links** with their anchor text, split int
 
 Try:
 
+Sponsored
+
 ## What to look for
 
 -   **Empty anchor text:** links with no words, such as icon-only links without alt text, tell visitors and search engines nothing.

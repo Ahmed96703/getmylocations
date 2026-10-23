@@ -134,6 +134,8 @@ If you want to feel the difference between accuracy values directly, open the [M
 
 If location isn’t working at all, the step-by-step guides for [iPhone & Android](https://getmylocations.com/blog/enable-location-on-iphone-and-android) and [Windows & Mac](https://getmylocations.com/blog/enable-location-on-windows-and-mac) walk through every toggle.
 
+Sponsored
+
 AA
 
 Written by

@@ -14,6 +14,8 @@ Enter any domain or website address to **check domain age**: see exactly **how o
 
 Try:
 
+Sponsored
+
 ## How to check the age of a domain or website
 
 -   **Enter the domain,** such as example.com, or paste the full website address. Subdomains and page paths are removed for you.

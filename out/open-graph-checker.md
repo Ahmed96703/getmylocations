@@ -14,6 +14,8 @@ Enter a page address to **preview its share card** on Facebook, LinkedIn, WhatsA
 
 Try:
 
+Sponsored
+
 ## The tags every page should have
 
 | Tag | Example |

@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { breadcrumbSchema } from '../components/breadcrumbSchema.js';
 import { AUTHOR_PROFILES } from '../components/author.js';
+import NativeAd from '../components/NativeAd.jsx';
+import SideAd from '../components/SideAd.jsx';
 
 export const metadata = {
   title: 'About GetMyLocations — Who Builds It and How It Is Checked',
@@ -166,6 +168,8 @@ export default function About() {
         questions, feedback, corrections, or partnership ideas. I read everything;
         I reply to most things within a day or two.
       </p>
+      <NativeAd />
+      <SideAd />
     </main>
     </>
   );

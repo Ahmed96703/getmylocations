@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import AuthorBio from '../components/AuthorBio.jsx';
 import AdSense from '../components/AdSense.jsx';
+import NativeAd from '../components/NativeAd.jsx';
+import SideAd from '../components/SideAd.jsx';
 import { AUTHOR } from '../components/author.js';
 
 export const metadata = {
@@ -369,6 +371,8 @@ export default function ReverseGeocoding() {
           <li><Link href="/fix-location-not-working" className="text-accent hover:underline">Fix location not working &mdash; troubleshooting</Link></li>
         </ul>
 
+        <NativeAd />
+        <SideAd />
         <AuthorBio />
       </article>
     </main>

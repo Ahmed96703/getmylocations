@@ -20,6 +20,8 @@ Mbps
 
 A full test uses up to about 250 MB of data on a fast connection, less on slower ones.
 
+Sponsored
+
 ## What does this speed test measure?
 
 This **internet speed test** runs four checks, one after another, and shows each result live:

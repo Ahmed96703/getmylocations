@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { breadcrumbSchema } from './breadcrumbSchema.js';
 import AuthorBio from './AuthorBio.jsx';
 import AdSense from './AdSense.jsx';
+import NativeAd from './NativeAd.jsx';
+import SideAd from './SideAd.jsx';
 import { AUTHOR } from './author.js';
 import { NET_TOOLS } from './netTools.js';
 
@@ -100,6 +102,8 @@ export default function ToolPage({ path, name, eyebrow, h1, accent, intro, bold 
         </section>
 
         {tool}
+        <NativeAd />
+        <SideAd />
 
         <div className="tool-guide">{children}</div>
 

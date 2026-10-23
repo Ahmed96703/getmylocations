@@ -18,6 +18,8 @@ Quick length:
 
 Generated on your device with the browser’s secure random generator. Nothing is sent or saved.
 
+Sponsored
+
 ## How to generate a strong password
 
 -   **Pick a length.** Tap a quick length such as 12, 15 or 16, or drag the slider anywhere from 6 to 64.

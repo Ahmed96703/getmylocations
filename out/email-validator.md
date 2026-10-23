@@ -14,6 +14,8 @@ Type an **email address** to check its format, **catch common typos** such as gm
 
 Try:
 
+Sponsored
+
 ## What the validator checks
 
 -   **Format:** one @, a name of up to 64 allowed characters, and a real-looking domain. `anna..b@x.com` or `anna@x` fail.

@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import AuthorBio from '../components/AuthorBio.jsx';
 import AdSense from '../components/AdSense.jsx';
+import NativeAd from '../components/NativeAd.jsx';
+import SideAd from '../components/SideAd.jsx';
 import { AUTHOR } from '../components/author.js';
 
 export const metadata = {
@@ -412,6 +414,8 @@ export default function FixLocationNotWorking() {
           <li><Link href="/my-location" className="text-accent hover:underline">What is my location? — the in-depth guide</Link></li>
         </ul>
 
+        <NativeAd />
+        <SideAd />
         <AuthorBio />
       </article>
     </main>

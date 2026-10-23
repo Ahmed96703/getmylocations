@@ -179,6 +179,8 @@ Three usual culprits: (1) battery optimisation is killing the background process
 
 For the underlying mechanics — what your phone actually does when an app asks for location, and how it fuses GPS, Wi-Fi, and cellular signals — see [how GPS works](https://getmylocations.com/blog/how-gps-works) and the [browser geolocation API explained](https://getmylocations.com/blog/browser-geolocation-api-explained). For the equivalent walkthrough on a laptop or desktop, see the [Windows and Mac guide](https://getmylocations.com/blog/enable-location-on-windows-and-mac). And if you just want to read your current coordinates fast, the [how to find your GPS coordinates](https://getmylocations.com/blog/how-to-find-your-gps-coordinates) guide covers every shortcut. To understand the difference between the question form and the live-tracking form, the [what is my location guide](https://getmylocations.com/my-location) and the [live location tracker](https://getmylocations.com/live-location) each take a different angle.
 
+Sponsored
+
 AA
 
 Written by

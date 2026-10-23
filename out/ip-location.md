@@ -12,6 +12,8 @@ Every device on the public internet has an **IP address**. That address quietly 
 
 ## Lookup an IP address
 
+Sponsored
+
 * * *
 
 ## What each IP address lookup result means

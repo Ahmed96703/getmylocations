@@ -14,6 +14,8 @@ Paste a **MAC address**, or just its first six digits, to see the **manufacturer
 
 Try:
 
+Sponsored
+
 ## How to read a MAC address
 
 | Part | Example: 3C:22:FB:12:34:56 | Meaning |

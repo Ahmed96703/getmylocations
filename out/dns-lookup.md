@@ -14,6 +14,8 @@ Enter a domain to see its **A, AAAA, CNAME, MX, NS, TXT, SOA and CAA records** a
 
 Try:
 
+Sponsored
+
 ## DNS record types
 
 | Type | What it holds | Example |

@@ -3,6 +3,8 @@ import { breadcrumbSchema } from '../components/breadcrumbSchema.js';
 import Tool from './Tool.jsx';
 import AuthorBio from '../components/AuthorBio.jsx';
 import AdSense from '../components/AdSense.jsx';
+import NativeAd from '../components/NativeAd.jsx';
+import SideAd from '../components/SideAd.jsx';
 import { AUTHOR } from '../components/author.js';
 
 export const metadata = {
@@ -122,6 +124,8 @@ export default function StreetViewPage() {
         </section>
 
         <Tool />
+        <NativeAd />
+        <SideAd />
 
         <section className="mt-10">
           <h2 className="font-display text-2xl font-bold">Google street views by address, instant and free</h2>

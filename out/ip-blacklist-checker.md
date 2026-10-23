@@ -14,6 +14,8 @@ Free Blacklist Checker · 14 blacklists at once
 
 Try:
 
+Sponsored
+
 ## How to check if your IP or email is blacklisted
 
 -   **Your own IP:** nothing to type. The page runs an **IP blacklist check** on your current address as soon as it opens, answering “**is my IP address blacklisted?**”.

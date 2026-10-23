@@ -14,6 +14,8 @@ Enter a domain to see its **name servers**, their IPv4 and IPv6 addresses, the z
 
 Try:
 
+Sponsored
+
 ## Why name servers matter
 
 Every DNS lookup for your domain ends at your name servers. If they are wrong, slow or down, your website and email stop working for everyone, even though the servers behind them are fine. That is why domains list at least two, ideally on different networks.

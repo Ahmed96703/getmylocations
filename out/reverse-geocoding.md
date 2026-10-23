@@ -136,6 +136,8 @@ For a one-off lookup, use the Address Finder tool — paste a lat/long pair (lat
 -   [Why maps put you on the wrong street](https://getmylocations.com/blog/why-maps-show-wrong-street)
 -   [Fix location not working — troubleshooting](https://getmylocations.com/fix-location-not-working)
 
+Sponsored
+
 AA
 
 Written by

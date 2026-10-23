@@ -2,6 +2,8 @@ import Link from 'next/link';
 import Tool from './Tool.jsx';
 import AuthorBio from '../components/AuthorBio.jsx';
 import AdSense from '../components/AdSense.jsx';
+import NativeAd from '../components/NativeAd.jsx';
+import SideAd from '../components/SideAd.jsx';
 import { ddToDms, ddToDdm, dmsToDd, latLonToUtm, utmToMgrs } from './geo.js';
 import { encode as plusCode, decode as decodePlusCode } from './pluscode.js';
 import { encode as geohash, cellDegrees } from './geohash.js';
@@ -226,6 +228,8 @@ export default function CoordinatesConverterPage() {
         </section>
 
         <Tool />
+        <NativeAd />
+        <SideAd />
 
         <section className="mt-12">
           <h2 className="font-display text-2xl font-bold">What are DD and DDM coordinates?</h2>

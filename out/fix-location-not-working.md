@@ -199,6 +199,8 @@ No. Modern browsers refuse to expose location to any page loaded over plain HTTP
 -   [How to find your GPS coordinates](https://getmylocations.com/blog/how-to-find-your-gps-coordinates)
 -   [What is my location? — the in-depth guide](https://getmylocations.com/my-location)
 
+Sponsored
+
 AA
 
 Written by

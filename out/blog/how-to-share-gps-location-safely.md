@@ -179,6 +179,8 @@ Default to a static pin. If you only need someone to find a meeting spot, a park
 
 Open the [My Location tool](https://getmylocations.com/my-location), click Allow, and your current latitude and longitude appear at the top of the dashboard. One click copies them in the format every app accepts. From there it pastes into Messages, WhatsApp, Maps, Signal, or any of the others above. If you want a continuously updating reading instead of a snapshot, the [Live Location tracker](https://getmylocations.com/live-location) keeps refreshing as you move.
 
+Sponsored
+
 AA
 
 Written by

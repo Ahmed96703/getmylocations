@@ -114,3 +114,5 @@ The fastest way to feel the difference: open [GetMyLocations](https://getmylocat
 -   [Reverse geocoding — coordinates to address](https://getmylocations.com/reverse-geocoding)
 -   [How GPS works — the satellite math](https://getmylocations.com/blog/how-gps-works)
 -   [What is IP location and how accurate is it?](https://getmylocations.com/blog/what-is-ip-location-and-how-accurate)
+
+Sponsored

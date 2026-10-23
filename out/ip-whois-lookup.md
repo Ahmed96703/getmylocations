@@ -14,6 +14,8 @@ Free IP WHOIS Lookup · Official registry data
 
 Try:
 
+Sponsored
+
 ## How to look up who owns an IP
 
 -   **Type or paste the address.** IPv4 (`203.0.113.7`) and IPv6 (`2001:db8::1`) both work. The tool starts with your own public IP, so it doubles as a “**what is my IP**” WHOIS check and an **IPv6 WHOIS** too.

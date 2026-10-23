@@ -14,6 +14,8 @@ Paste an email’s **full headers** to see **the IP address it was sent from**, 
 
 Everything is analyzed in your browser. The headers are not sent anywhere.
 
+Sponsored
+
 ## Reading the Received lines
 
 Each server that handles a message adds a `Received:` line at the top, so the newest is first and the oldest last. The analyzer reverses them to show the path in order, from the sending server to your inbox.
