@@ -6,9 +6,9 @@ url: https://getmylocations.com/street-view
 
 Free Tool · Powered by Google Street View
 
-# Street View — see any address in Google Street View
+# Google Maps Street View
 
-Type any address, landmark, or GPS coordinates, pick the direction you want to face, and open the spot in **Google Street View**. The tool finds the exact point first, so Street View lands on the right street. No signup, no app to install.
+Type any address, landmark, or GPS coordinates, pick the direction you want to face, and open the spot in **Google Street View**. It is an **instant street view** of any **Google Maps Street View location**: the tool finds the exact point first, so **Street View** lands on the right street. **Google street views by address** are **free**, with no signup and no app to install.
 
 ## Load a Street View
 
@@ -22,7 +22,16 @@ The pin marks the spot. The Street View panorama opens in Google Maps, which jum
 
 Sponsored
 
-## How to see any address in Street View
+## Google street views by address, instant and free
+
+Most people open **Google Maps Street View** to see one particular house, shop or street. This page is built for that: a **Google Street View address search** that goes from the address you type to the panorama in front of it.
+
+-   **Street view of an address:** type the house number, street and town, press Find, then Open Street View.
+-   **Google street views of houses by address:** face the side of the road the house is on (N, E, S or W) so the panorama opens looking at it.
+-   **Google Street View lookup by coordinates:** paste a GPS position or a Google Maps link for places with no postal address.
+-   **Google Maps Street View free on any device:** it works in any browser on a phone, tablet or computer, and opens the Google Maps app if you have it.
+
+## How to see Google Street View by address
 
 1.  Type an address or landmark, or paste coordinates in any format (decimal degrees, DMS, UTM, or a Google Maps link), and press _Find_. Or tap one of the example places.
 2.  Check the pin on the map and the place name above it. If the name is wrong, add the city and country and search again.
@@ -35,13 +44,27 @@ Typed addresses are turned into coordinates with OpenStreetMap’s free geocoder
 
 Most of the imagery comes from cars driving the public road network with a rooftop camera rig that shoots overlapping photos, stitched into 360-degree panoramas a few meters apart. By Street View’s 15th anniversary in 2022, Google said it had published more than 220 billion images from over 10 million miles of travel in 100 countries and territories, starting with five US cities in 2007. For places cars cannot reach — hiking trails, narrow alleys, museum interiors — the same panoramic kit is mounted on a backpack, a snowmobile, a small boat, or in the case of some museums, a trolley. All of it goes through the same stitching process before it appears in Street View.
 
-## Coverage and limitations
+## Google Street View locations and coverage
 
-Coverage is uneven and that is a feature of the service, not a bug. Most public roads in North America, western Europe, Japan, South Korea, and Australia have current imagery. Many cities in Pakistan, India, Brazil, and Indonesia have partial coverage — major streets are mapped, side streets are not. A few countries (parts of Germany, until recently, plus most of mainland China, Iran, and North Korea) have very limited Street View for legal or political reasons. When there is no panorama near your pin, Google Maps shows its normal map instead, which is the quickest sign that a place has no coverage.
+**Google Street View locations** are uneven, and that is a feature of the service, not a bug. Most public roads in North America, western Europe, Japan, South Korea, and Australia have current imagery. Many cities in Pakistan, India, Brazil, and Indonesia have partial coverage — major streets are mapped, side streets are not. A few countries (parts of Germany, until recently, plus most of mainland China, Iran, and North Korea) have very limited Street View for legal or political reasons. When there is no panorama near your pin, Google Maps shows its normal map instead, which is the quickest sign that a place has no coverage.
+
+## Street view other than Google
+
+Google has the widest coverage, but it is not the only **street viewer**. If Google has no imagery for a place, or only old imagery, one of these may do better:
+
+| Service | Who makes it | Good to know |
+| --- | --- | --- |
+| Apple Look Around | Apple | Sharp, smooth imagery in Apple Maps, mostly in large cities in North America, Europe and Japan |
+| Mapillary | Meta (crowdsourced) | Free street-level photos uploaded by volunteers, often covering paths and places Google has not driven |
+| Bing Maps Streetside | Microsoft | Street-level imagery inside Bing Maps for parts of the US and Europe |
+| Yandex Panoramas | Yandex | Strong coverage in Russia and neighbouring countries |
+| Naver and Kakao Maps | Naver, Kakao | The most complete street-level imagery for South Korea |
+
+For a **look around street view** on an iPhone or Mac, open the same address in Apple Maps and tap the binoculars. For the top-down view of the same place, use our [satellite view](https://getmylocations.com/satellite), which also tells you when the photo was taken.
 
 ## How old is what you are looking at?
 
-Every Street View image is dated. In Google Maps the capture month and year appear in the panel at the top left of the panorama; check it before drawing conclusions, because busy city centers are re-photographed far more often than small towns and rural roads, where imagery can be many years old. On a computer, the same panel has a “See more dates” option that lets you scroll back through older captures of the same spot.
+Every Street View image is dated, and none of it is live: a **free live street view** does not exist. In Google Maps the capture month and year appear in the panel at the top left of the panorama; check it before drawing conclusions, because busy city centers are re-photographed far more often than small towns and rural roads, where imagery can be many years old. On a computer, the same panel has a “See more dates” option that lets you scroll back through older captures of the same spot.
 
 ## Privacy and what you can ask Google to blur
 
@@ -68,6 +91,18 @@ To get a coordinate pair for where you are standing, use the [My Location tool](
 If Google Maps opens a normal map instead of a panorama, there is no imagery near your pin. Common reasons: the place is on a private road or estate, deep in a park, or in a country or region with little or no coverage. Try moving the pin to the nearest public road (get its coordinates from the [Address Finder](https://getmylocations.com/address-finder)), or look at the place from above in [satellite view](https://getmylocations.com/satellite).
 
 ## Frequently asked questions
+
+Is Google Maps Street View free?+
+
+Yes. Google Street View is free to look at, and so is this page: type an address, open the panorama, and walk along the street with no account, no app and no limit.
+
+Is there a live street view?+
+
+No. Google Maps Street View, Apple Look Around and every other street-level service show photos taken in the past, from weeks to many years ago. The capture date is shown in the panorama. For live pictures of a place you need a public webcam, not Street View.
+
+What is instant street view?+
+
+It means going straight from an address to the street-level panorama without first searching around a map. This tool does that: it finds the address, pins it, and opens Google Street View there in one click, facing the direction you choose.
 
 Is this the real Google Street View?+
 

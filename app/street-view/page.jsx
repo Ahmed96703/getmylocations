@@ -11,7 +11,13 @@ import { AUTHOR } from '../components/author.js';
 export const metadata = {
   title: 'Google Maps Street View by Address — Free & Instant',
   description: 'Type any address or coordinates and open Google Maps Street View there in one click, facing the way you choose. Free, no signup, works on any device.',
-  keywords: ['street view', 'google street view', 'google maps street view', 'street view by address', 'google street view address search', 'free street view', 'virtual tour'],
+  keywords: [
+    'street view', 'google street view', 'google maps street view', 'street view by address', 'google street view address search', 'free street view', 'virtual tour',
+    'google maps street view location', 'instant street view', 'google street views by address', 'google maps street view free', 'google street view locations',
+    'instant google street view', 'google street view by address', 'google street view lookup', 'google street view address lookup', 'street view of address',
+    'google street views of houses by address', 'google maps street view live', 'free live street view', 'google earth street view free', 'free street view maps online',
+    'look around street view', 'street view other than google', 'mapillary', 'google maps with street view', 'street viewer',
+  ],
   alternates: { canonical: '/street-view' },
   openGraph: {
     title: 'Google Maps Street View by Address — Free & Instant',
@@ -33,7 +39,7 @@ export const metadata = {
 const webAppSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebApplication',
-  name: 'Street View Tool',
+  name: 'Google Maps Street View by Address',
   description:
     'Free tool that finds any address, landmark, or GPS coordinate (any format), pins it on a map, and opens the nearest Google Street View panorama facing the chosen direction.',
   url: 'https://getmylocations.com/street-view',
@@ -47,6 +53,18 @@ const webAppSchema = {
 
 
 const faqs = [
+  {
+    q: 'Is Google Maps Street View free?',
+    a: 'Yes. Google Street View is free to look at, and so is this page: type an address, open the panorama, and walk along the street with no account, no app and no limit.',
+  },
+  {
+    q: 'Is there a live street view?',
+    a: 'No. Google Maps Street View, Apple Look Around and every other street-level service show photos taken in the past, from weeks to many years ago. The capture date is shown in the panorama. For live pictures of a place you need a public webcam, not Street View.',
+  },
+  {
+    q: 'What is instant street view?',
+    a: 'It means going straight from an address to the street-level panorama without first searching around a map. This tool does that: it finds the address, pins it, and opens Google Street View there in one click, facing the direction you choose.',
+  },
   {
     q: 'Is this the real Google Street View?',
     a: 'Yes. The panorama comes straight from Google: the imagery, the arrows for moving along the street, and the capture date are Google\'s own. This page finds the exact spot first, pins it, and then opens Google Street View there, facing the direction you picked. When the embedded viewer is enabled on this page the panorama appears below the search box; otherwise the Open Street View button opens it in Google Maps or the Google Maps app.',
@@ -100,10 +118,10 @@ export default function StreetViewPage() {
         <section className="mb-8">
           <p className="text-[11px] uppercase tracking-[0.18em] text-accent font-semibold mb-2">Free Tool · Powered by Google Street View</p>
           <h1 className="font-display text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.05]">
-            Street <span className="text-accent">View</span> — see any address in Google Street View
+            Google Maps Street View
           </h1>
           <p className="text-lg text-fg-muted mt-4 max-w-3xl">
-            Type any address, landmark, or GPS coordinates, pick the direction you want to face, and open the spot in <strong className="text-fg">Google Street View</strong>. The tool finds the exact point first, so Street View lands on the right street. No signup, no app to install.
+            Type any address, landmark, or GPS coordinates, pick the direction you want to face, and open the spot in <strong className="text-fg">Google Street View</strong>. It is an <strong className="text-fg">instant street view</strong> of any <strong className="text-fg">Google Maps Street View location</strong>: the tool finds the exact point first, so <strong className="text-fg">Street View</strong> lands on the right street. <strong className="text-fg">Google street views by address</strong> are <strong className="text-fg">free</strong>, with no signup and no app to install.
           </p>
         </section>
 
@@ -112,7 +130,20 @@ export default function StreetViewPage() {
         <SideAd />
 
         <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">How to see any address in Street View</h2>
+          <h2 className="font-display text-2xl font-bold">Google street views by address, instant and free</h2>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            Most people open <strong className="text-fg">Google Maps Street View</strong> to see one particular house, shop or street. This page is built for that: a <strong className="text-fg">Google Street View address search</strong> that goes from the address you type to the panorama in front of it.
+          </p>
+          <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside leading-relaxed">
+            <li><strong className="text-fg">Street view of an address:</strong> type the house number, street and town, press Find, then Open Street View.</li>
+            <li><strong className="text-fg">Google street views of houses by address:</strong> face the side of the road the house is on (N, E, S or W) so the panorama opens looking at it.</li>
+            <li><strong className="text-fg">Google Street View lookup by coordinates:</strong> paste a GPS position or a Google Maps link for places with no postal address.</li>
+            <li><strong className="text-fg">Google Maps Street View free on any device:</strong> it works in any browser on a phone, tablet or computer, and opens the Google Maps app if you have it.</li>
+          </ul>
+        </section>
+
+        <section className="mt-10">
+          <h2 className="font-display text-2xl font-bold">How to see Google Street View by address</h2>
           <ol className="mt-3 space-y-1.5 text-fg-muted list-decimal list-inside leading-relaxed">
             <li>Type an address or landmark, or paste coordinates in any format (decimal degrees, DMS, UTM, or a Google Maps link), and press <em>Find</em>. Or tap one of the example places.</li>
             <li>Check the pin on the map and the place name above it. If the name is wrong, add the city and country and search again.</li>
@@ -142,9 +173,9 @@ export default function StreetViewPage() {
         </section>
 
         <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">Coverage and limitations</h2>
+          <h2 className="font-display text-2xl font-bold">Google Street View locations and coverage</h2>
           <p className="mt-3 text-fg-muted leading-relaxed">
-            Coverage is uneven and that is a feature of the service, not a bug.
+            <strong className="text-fg">Google Street View locations</strong> are uneven, and that is a feature of the service, not a bug.
             Most public roads in North America, western Europe, Japan, South Korea,
             and Australia have current imagery. Many cities in Pakistan, India,
             Brazil, and Indonesia have partial coverage — major streets are
@@ -157,9 +188,45 @@ export default function StreetViewPage() {
         </section>
 
         <section className="mt-10">
+          <h2 className="font-display text-2xl font-bold">Street view other than Google</h2>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            Google has the widest coverage, but it is not the only <strong className="text-fg">street viewer</strong>. If Google has no imagery for a place, or only old imagery, one of these may do better:
+          </p>
+          <div className="mt-4 overflow-x-auto rounded-xl ring-1 ring-line">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="bg-tint/5 text-left text-fg-muted">
+                  <th className="px-3 py-2 font-semibold">Service</th>
+                  <th className="px-3 py-2 font-semibold">Who makes it</th>
+                  <th className="px-3 py-2 font-semibold">Good to know</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ['Apple Look Around', 'Apple', 'Sharp, smooth imagery in Apple Maps, mostly in large cities in North America, Europe and Japan'],
+                  ['Mapillary', 'Meta (crowdsourced)', 'Free street-level photos uploaded by volunteers, often covering paths and places Google has not driven'],
+                  ['Bing Maps Streetside', 'Microsoft', 'Street-level imagery inside Bing Maps for parts of the US and Europe'],
+                  ['Yandex Panoramas', 'Yandex', 'Strong coverage in Russia and neighbouring countries'],
+                  ['Naver and Kakao Maps', 'Naver, Kakao', 'The most complete street-level imagery for South Korea'],
+                ].map((r) => (
+                  <tr key={r[0]} className="border-t border-line-subtle">
+                    <td className="px-3 py-2 text-fg font-semibold">{r[0]}</td>
+                    <td className="px-3 py-2 text-fg-muted">{r[1]}</td>
+                    <td className="px-3 py-2 text-fg-muted">{r[2]}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            For a <strong className="text-fg">look around street view</strong> on an iPhone or Mac, open the same address in Apple Maps and tap the binoculars. For the top-down view of the same place, use our <Link href="/satellite" className="text-accent hover:underline">satellite view</Link>, which also tells you when the photo was taken.
+          </p>
+        </section>
+
+        <section className="mt-10">
           <h2 className="font-display text-2xl font-bold">How old is what you are looking at?</h2>
           <p className="mt-3 text-fg-muted leading-relaxed">
-            Every Street View image is dated. In Google Maps the capture month and year
+            Every Street View image is dated, and none of it is live: a <strong className="text-fg">free live street view</strong> does not exist. In Google Maps the capture month and year
             appear in the panel at the top left of the panorama; check it before drawing
             conclusions, because busy city centers are re-photographed far more often than
             small towns and rural roads, where imagery can be many years old. On a computer,
