@@ -48,3 +48,23 @@ export function afterLoad(fn, fallbackMs = 4000) {
     else window.clearTimeout(idle);
   };
 }
+
+// Watch a banner slot after loadBanner: if no ad element (anything other than
+// the <script>) appears within `ms`, call onEmpty, so an unfilled slot can be
+// hidden instead of showing an empty "Sponsored" box. If an ad arrives later,
+// onFill is called. Adsterra often has no banner to serve for some countries.
+// Returns a cancel function.
+export function watchFill(slot, { onEmpty, onFill }, ms = 10000) {
+  const filled = () => [...slot.querySelectorAll('*')].some((el) => el.tagName !== 'SCRIPT');
+  let empty = false;
+  const obs = new MutationObserver(() => {
+    if (empty && filled()) { empty = false; onFill?.(); obs.disconnect(); }
+  });
+  obs.observe(slot, { childList: true, subtree: true });
+  const timer = window.setTimeout(() => {
+    if (filled()) { obs.disconnect(); return; }
+    empty = true;
+    onEmpty();
+  }, ms);
+  return () => { window.clearTimeout(timer); obs.disconnect(); };
+}

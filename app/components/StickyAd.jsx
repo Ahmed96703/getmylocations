@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { afterLoad, loadBanner } from './adQueue.js';
+import { afterLoad, loadBanner, watchFill } from './adQueue.js';
 
 // Sticky footer banner: 320x50 on phones and tablets, 468x60 on desktop, chosen once
 // when it loads. It has a close button; once closed it stays closed for the
@@ -32,10 +32,15 @@ export default function StickyAd() {
 
   useEffect(() => {
     if (!unit || !slot.current) return undefined;
-    loadBanner(slot.current, unit);
+    let stop;
+    let live = true;
+    // No ad served (common in some countries): remove the empty bar.
+    loadBanner(slot.current, unit).then(() => {
+      if (live && slot.current) stop = watchFill(slot.current, { onEmpty: () => setUnit(null) });
+    });
     const pad = document.body.style.paddingBottom;
     document.body.style.paddingBottom = `${unit.height + 16}px`;
-    return () => { document.body.style.paddingBottom = pad; };
+    return () => { live = false; stop?.(); document.body.style.paddingBottom = pad; };
   }, [unit]);
 
   const close = () => {

@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
-import { afterLoad, loadBanner } from './adQueue.js';
+import { afterLoad, loadBanner, watchFill } from './adQueue.js';
 import { MID as UNIT, midDocksRight } from './adLayout.js';
 
 // 300x250 banner in the middle of the page's guide text. Rendered once in the
@@ -43,7 +43,10 @@ function insert() {
   slot.style.minHeight = `${UNIT.height}px`;
   box.appendChild(slot);
   target.parentNode.insertBefore(box, target);
-  loadBanner(slot, UNIT);
+  loadBanner(slot, UNIT).then(() => watchFill(slot, {
+    onEmpty: () => { box.style.display = 'none'; },
+    onFill: () => { box.style.display = ''; },
+  }));
   return box;
 }
 

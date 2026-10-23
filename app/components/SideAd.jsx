@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { afterLoad, loadBanner } from './adQueue.js';
+import { afterLoad, loadBanner, watchFill } from './adQueue.js';
 import { TOP, GAP, RIGHT, LEFT, MID, placeRail } from './adLayout.js';
 
 // Side rails in the empty margins beside the page content: a 160x300 banner
@@ -15,9 +15,18 @@ import { TOP, GAP, RIGHT, LEFT, MID, placeRail } from './adLayout.js';
 
 function Slot({ unit, load }) {
   const ref = useRef(null);
-  useEffect(() => { if (load && ref.current) loadBanner(ref.current, unit); }, [load, unit]);
+  const [empty, setEmpty] = useState(false);
+  useEffect(() => {
+    if (!load || !ref.current) return undefined;
+    let stop;
+    let live = true;
+    loadBanner(ref.current, unit).then(() => {
+      if (live) stop = watchFill(ref.current, { onEmpty: () => setEmpty(true), onFill: () => setEmpty(false) });
+    });
+    return () => { live = false; stop?.(); };
+  }, [load, unit]);
   return (
-    <div>
+    <div style={empty ? { display: 'none' } : undefined}>
       <p className="text-[10px] uppercase tracking-[0.18em] text-fg-subtle font-semibold mb-1.5">Sponsored</p>
       <div ref={ref} style={{ width: unit.width, minHeight: unit.height }} />
     </div>
