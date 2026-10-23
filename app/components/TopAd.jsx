@@ -6,8 +6,7 @@ import { afterLoad, loadBanner } from './adQueue.js';
 
 // 468x60 banner just under the site header, so it is on the first screen of
 // every page. Only on screens at least 500px wide: the banner does not fit a
-// phone, and phones already see the 320x50 sticky footer banner on the first
-// screen. Its space is part of the page HTML, so nothing moves when it loads.
+// phone. Its space is part of the page HTML, so nothing moves when it loads.
 // It loads again after each in-site navigation, as a new page view.
 const UNIT = { key: '751305b90a4f564c073f052bf38f2298', width: 468, height: 60 };
 const MIN_WIDTH = 500;

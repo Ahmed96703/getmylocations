@@ -15,9 +15,11 @@ import { useEffect } from 'react';
 // and its imports. public/sw.js must then be replaced with a worker that
 // unregisters itself, or visitors who allowed push notifications keep it.
 // Only two formats: OnClick (Popunder) and Push. They replaced the Multitag
-// (zone 298408), which also showed In-Page Push and Vignette; the Adsterra
-// Social Bar and sticky footer banner do those jobs now. Running the Multitag
-// alongside these would show duplicate ads.
+// (zone 298408), which also showed In-Page Push and Vignette. This OnClick
+// Popunder is the site's only popunder: the Adsterra Popunder, Social Bar and
+// sticky footer banner were removed on 2026-10-23 for earning almost nothing
+// (Adsterra Popunder $0.58 CPM vs Monetag's $19.58) while stealing first
+// clicks on the tools.
 const ZONES = [
   { zone: '12092105', src: 'https://al5sm.com/tag.min.js' }, // OnClick (Popunder)
   { zone: '12092113', src: 'https://5gvci.com/act/files/tag.min.js?z=12092113' }, // Push; public/sw.js uses the same zone
