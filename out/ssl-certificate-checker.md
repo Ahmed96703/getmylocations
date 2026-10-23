@@ -14,8 +14,6 @@ Enter a domain to see all its **valid SSL/TLS certificates** from the public Cer
 
 Try:
 
-Sponsored
-
 ## What to check on a certificate
 
 -   **Days left:** renew well before expiry; an expired certificate shows a full-page browser warning to every visitor.

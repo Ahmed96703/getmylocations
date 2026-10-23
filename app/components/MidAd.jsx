@@ -23,14 +23,23 @@ function insert() {
   // On wide screens SideAd shows this banner in the right column instead.
   if (midDocksRight()) return null;
   const main = document.querySelector('main');
-  const native = main?.querySelector(NATIVE);
-  if (!main || !native) return null;
+  if (!main) return null;
+  const native = main.querySelector(NATIVE);
   const all = [...main.querySelectorAll('h2')];
+  // The native banner now sits above <main> on every page: use all headings.
+  if (!native) {
+    if (all.length < 3) return null;
+    return place(all);
+  }
   // eslint-disable-next-line no-bitwise
   const after = all.filter((h) => native.compareDocumentPosition(h) & Node.DOCUMENT_POSITION_FOLLOWING);
   // Guides and blog posts have the native banner at the end: use the headings before it.
   const headings = after.length >= 3 ? after : all.filter((h) => !after.includes(h));
   if (headings.length < 3) return null;
+  return place(headings);
+}
+
+function place(headings) {
   const target = headings[Math.floor(headings.length / 2)];
   if (target.getBoundingClientRect().top < window.innerHeight) return null;
 

@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { breadcrumbSchema } from '../components/breadcrumbSchema.js';
 import { POSTS } from '../posts/manifest.js';
 import { AUTHOR } from '../components/author.js';
-import NativeAd from '../components/NativeAd.jsx';
 import SideAd from '../components/SideAd.jsx';
 
 const TITLE = 'GPS, Location & IP Guides — How It Works and How to Fix It';
@@ -208,7 +207,6 @@ export default function Blog() {
             <Link href="/about#corrections" className={link}>public corrections log</Link>.
           </p>
         </section>
-        <NativeAd />
         <SideAd />
       </main>
     </>

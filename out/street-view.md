@@ -20,8 +20,6 @@ The pin marks the spot. The Street View panorama opens in Google Maps, which jum
 
 [Open Street View here ↗](https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=48.85826,2.294501&heading=0)
 
-Sponsored
-
 ## Google street views by address, instant and free
 
 Most people open **Google Maps Street View** to see one particular house, shop or street. This page is built for that: a **Google Street View address search** that goes from the address you type to the panorama in front of it.

@@ -136,8 +136,6 @@ If the dot lands in the wrong city rather than a few metres off, the device has 
 
 For the practical side — ten real-world uses for the coordinates your chip produces — see [Ten uses for GPS coordinates](https://getmylocations.com/blog/10-uses-for-gps-coordinates). For a quick refresher on what latitude and longitude actually mean and how to read them, start with [Latitude vs longitude explained](https://getmylocations.com/blog/latitude-vs-longitude-explained). And for step-by-step instructions to read your coordinates on any device, there’s [How to find your GPS coordinates](https://getmylocations.com/blog/how-to-find-your-gps-coordinates).
 
-Sponsored
-
 AA
 
 Written by

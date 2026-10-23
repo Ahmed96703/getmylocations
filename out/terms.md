@@ -59,5 +59,3 @@ These terms can change as the Service evolves. The date at the top reflects the 
 ## 11\. Contact
 
 Questions about these terms can go to [ahmed@getmylocations.com](mailto:ahmed@getmylocations.com).
-
-Sponsored

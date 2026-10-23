@@ -3,7 +3,6 @@ import { breadcrumbSchema } from '../components/breadcrumbSchema.js';
 import Tool from './Tool.jsx';
 import AuthorBio from '../components/AuthorBio.jsx';
 import AdSense from '../components/AdSense.jsx';
-import NativeAd from '../components/NativeAd.jsx';
 import SideAd from '../components/SideAd.jsx';
 import { AUTHOR } from '../components/author.js';
 
@@ -72,7 +71,6 @@ export default function MapsPage() {
         </section>
 
         <Tool />
-        <NativeAd />
         <SideAd />
 
         <section className="mt-12">

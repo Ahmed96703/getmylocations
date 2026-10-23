@@ -94,5 +94,3 @@ We update this page when the services we use change. The date at the top reflect
 ## 12\. Contact
 
 Questions about anything on this page can go to [ahmed@getmylocations.com](mailto:ahmed@getmylocations.com). See the [Contact page](https://getmylocations.com/contact) for response-time expectations.
-
-Sponsored

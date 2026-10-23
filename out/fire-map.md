@@ -107,8 +107,6 @@ Exact distance between two points
 
 ](https://getmylocations.com/distance-calculator)
 
-Sponsored
-
 AA
 
 Written by

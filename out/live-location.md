@@ -207,8 +207,6 @@ Look up any IP address
 
 ](https://getmylocations.com/ip-location)
 
-Sponsored
-
 AA
 
 Written by

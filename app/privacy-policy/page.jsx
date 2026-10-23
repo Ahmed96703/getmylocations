@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { breadcrumbSchema } from '../components/breadcrumbSchema.js';
-import NativeAd from '../components/NativeAd.jsx';
 import SideAd from '../components/SideAd.jsx';
 
 export const metadata = {
@@ -267,7 +266,6 @@ export default function Privacy() {
         <a className="text-accent hover:underline" href="mailto:ahmed@getmylocations.com">ahmed@getmylocations.com</a>.
         See the <Link href="/contact" className="text-accent hover:underline">Contact page</Link> for response-time expectations.
       </p>
-      <NativeAd />
       <SideAd />
     </main>
     </>

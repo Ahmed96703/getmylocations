@@ -14,8 +14,6 @@ Enter a domain or an email address to see its **mail servers in priority order**
 
 Try:
 
-Sponsored
-
 ## How email finds its way
 
 1.  You send a message to `anna@example.com`.

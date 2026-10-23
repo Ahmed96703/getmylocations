@@ -2,7 +2,6 @@ import Link from 'next/link';
 import Tool from './Tool.jsx';
 import AuthorBio from '../components/AuthorBio.jsx';
 import AdSense from '../components/AdSense.jsx';
-import NativeAd from '../components/NativeAd.jsx';
 import SideAd from '../components/SideAd.jsx';
 import { AUTHOR } from '../components/author.js';
 
@@ -140,7 +139,6 @@ export default function IpLocationLookup() {
 
         <div className="not-prose my-8">
           <Tool />
-          <NativeAd />
           <SideAd />
         </div>
 

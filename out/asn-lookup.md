@@ -14,8 +14,6 @@ Enter an **AS number** such as AS15169, or an IP address, to see the **networkâ€
 
 Try:
 
-Sponsored
-
 ## How to use the ASN lookup
 
 -   **By number:** type `AS13335` or just `13335`.

@@ -66,8 +66,6 @@ What I think is worth pausing on: a Greek scholar in Alexandria, an English cloc
 
 Two clicks on the [GPS Coordinates tool](https://getmylocations.com/my-location) give you the latitude and longitude that took two millennia to make readable. The latitude number you see comes from astronomical principles a Greek scholar would have recognised; the longitude number comes from a Yorkshire clock and an 1884 vote. Your phone gives you decimal degrees; to see the same position in the older degrees-minutes-seconds notation sailors actually used, paste it into the [Coordinates Converter](https://getmylocations.com/coordinates-converter). For a quick primer on what the two numbers mean and how to tell them apart, see [Latitude vs longitude explained](https://getmylocations.com/blog/latitude-vs-longitude-explained).
 
-Sponsored
-
 AA
 
 Written by

@@ -19,7 +19,6 @@ import EnableLocationDesktop from '../../posts/EnableLocationDesktop.jsx';
 import EnableLocationMobile from '../../posts/EnableLocationMobile.jsx';
 import HaversineVsVincenty from '../../posts/HaversineVsVincenty.jsx';
 import AdSense from '../../components/AdSense.jsx';
-import NativeAd from '../../components/NativeAd.jsx';
 import SideAd from '../../components/SideAd.jsx';
 import { AUTHOR } from '../../components/author.js';
 
@@ -162,7 +161,6 @@ export default function BlogPost({ params }) {
 
         <Body />
 
-        <NativeAd />
         <SideAd />
         <AuthorBio />
 

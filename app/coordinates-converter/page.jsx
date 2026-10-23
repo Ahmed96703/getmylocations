@@ -2,7 +2,6 @@ import Link from 'next/link';
 import Tool from './Tool.jsx';
 import AuthorBio from '../components/AuthorBio.jsx';
 import AdSense from '../components/AdSense.jsx';
-import NativeAd from '../components/NativeAd.jsx';
 import SideAd from '../components/SideAd.jsx';
 import { ddToDms, ddToDdm, dmsToDd, latLonToUtm, utmToMgrs } from './geo.js';
 import { encode as plusCode, decode as decodePlusCode } from './pluscode.js';
@@ -228,7 +227,6 @@ export default function CoordinatesConverterPage() {
         </section>
 
         <Tool />
-        <NativeAd />
         <SideAd />
 
         <section className="mt-12">

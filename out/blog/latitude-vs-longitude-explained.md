@@ -160,8 +160,6 @@ How do I convert latitude and longitude between decimal degrees and DMS?+
 
 Decimal degrees and degrees-minutes-seconds are the same point in different notations. 40.712776° is the same as 40°42′45.99″. To convert manually: keep the integer part as degrees, multiply the fractional part by 60 to get minutes, then multiply the fraction of that by 60 again to get seconds. Or open our free coordinates converter, paste a coordinate in any format, and it returns all three (DD, DMS, DDM, plus UTM) instantly.
 
-Sponsored
-
 AA
 
 Written by

@@ -172,8 +172,6 @@ Is IP location better than GPS for finding where I am?+
 
 No — they are not comparable. GPS gives you 3 to 5 metres of accuracy outdoors. IP gives you 5 to 50 kilometres in the best case. IP is the right tool for country-level licensing, fraud detection, and rough localisation; GPS is the right tool for "where am I, exactly?" If you want a single coordinate you can copy into a map, use a browser geolocation tool instead of an IP lookup.
 
-Sponsored
-
 AA
 
 Written by

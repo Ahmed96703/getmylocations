@@ -37,8 +37,6 @@ atMbps
 
 At full speed. Real downloads are usually 10 to 20 percent slower because of network overhead and Wi-Fi.
 
-Sponsored
-
 ## Decimal and binary units
 
 | Decimal (SI) | Bytes | Binary (IEC) | Bytes |

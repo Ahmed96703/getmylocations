@@ -4,7 +4,6 @@ import Tool from './Tool.jsx';
 import AuthorBio from '../components/AuthorBio.jsx';
 import AdSense from '../components/AdSense.jsx';
 import { AUTHOR } from '../components/author.js';
-import NativeAd from '../components/NativeAd.jsx';
 import SideAd from '../components/SideAd.jsx';
 
 export const metadata = {
@@ -191,7 +190,6 @@ export default function FireMapPage() {
             ))}
           </div>
         </section>
-        <NativeAd />
         <SideAd />
         <AuthorBio />
       </main>

@@ -28,8 +28,6 @@ Preview: the dashed line joins the two places in a straight line; it is not the 
 
 [Open route in Google Maps ↗](https://www.google.com/maps/dir/?api=1&origin=Allama%20Iqbal%20International%20Airport%2C%20Lahore&destination=Badshahi%20Mosque%2C%20Lahore&travelmode=driving)
 
-Sponsored
-
 ## How to get directions between two places
 
 1.  Type the starting point and the destination: an address, a landmark, or coordinates in any format. Or tap _Use my location_ for the start.

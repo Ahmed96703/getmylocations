@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { afterLoad, loadBanner, watchFill } from './adQueue.js';
 
-// Sticky footer banner: 320x50 on phones and tablets, 468x60 on desktop, chosen once
+// Sticky footer banner: 320x50 on phones and tablets, 728x90 on desktop, chosen once
 // when it loads. It has a close button; once closed it stays closed for the
 // rest of the visit (this browser tab). While it is open the page gets extra
 // bottom padding, so it never covers the end of the page or the site footer.
@@ -11,9 +11,8 @@ import { afterLoad, loadBanner, watchFill } from './adQueue.js';
 // Since 2026-10-24 the site runs Adsterra banners only: no popunders, Social
 // Bar, Smartlink or push ads, so nothing else floats over the page.
 const PHONE = { key: '70f4ddd7d6099d44f345e85de8e3c074', width: 320, height: 50 };
-// On desktop the top banner uses 728x90 (see TopAd.jsx), so the footer uses
-// 468x60 there; below 760px it is 320x50.
-const WIDE = { key: '751305b90a4f564c073f052bf38f2298', width: 468, height: 60 };
+// 728x90 on desktop (at least 760px wide), 320x50 below that.
+const WIDE = { key: 'a763592167bceee6b0a7f30bba35b478', width: 728, height: 90 };
 const WIDE_MIN = 760;
 const CLOSED = 'stickyAdClosed';
 
