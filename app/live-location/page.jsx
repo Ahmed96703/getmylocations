@@ -8,29 +8,35 @@ import SideAd from '../components/SideAd.jsx';
 import { AUTHOR } from '../components/author.js';
 
 export const metadata = {
-  title: 'My Live Location Now — Track Your Real-Time Position Free',
+  title: 'Live Location Now: My Live Location & Real-Time GPS Tracker',
   description:
-    'Watch your GPS position, speed and path update live, then save the route as a GPX file. Runs in your browser with no signup or stored data. Start now.',
+    'See your live location now on a real-time map: a free live GPS tracker for your current location, coordinates, speed and route. No app, no signup.',
   keywords: [
     'my live location now',
     'my location live',
     'my location right now',
     'my location now',
     'live location',
+    'live location now', 'current location live', 'my location', 'location now live', 'real time location',
+    'my location live map', 'live location open now', 'live gps location', 'my live coordinates', 'live location watch',
+    'location now', 'my location now live', 'live position', 'my position now', 'track my location now',
+    'my location live now', 'live location tracker', 'gps tracking live location', 'live location map',
+    'my current location live', 'live gps tracker', 'live gps tracking', 'my current location live map',
+    'free live gps tracker', 'real time gps location tracker', 'track my location', 'live map my location',
   ],
   alternates: { canonical: '/live-location' },
   openGraph: {
-    title: 'My Live Location Now — Track Your Real-Time Position Free',
+    title: 'Live Location Now: My Live Location & Real-Time GPS Tracker',
     description:
-      'Live, continuously-updating GPS position, speed, heading and path in your browser. Free, no signup, and we never store a coordinate.',
+      'Your live location now on a real-time map: continuously updating GPS position, speed, heading and path. Free, no signup, and we never store a coordinate.',
     url: 'https://getmylocations.com/live-location',
     type: 'website',
     images: ['/og-image.png'],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'My Live Location Now — Track Your Real-Time Position',
-    description: 'Free live GPS tracker that updates as you move. Browser-based, no signup.',
+    title: 'Live Location Now: My Live Location & Real-Time GPS Tracker',
+    description: 'Free live location tracker that updates as you move. Browser-based, no signup.',
     images: ['/og-image.png'],
   },
 };
@@ -38,7 +44,7 @@ export const metadata = {
 const webAppSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebApplication',
-  name: 'My Live Location Now',
+  name: 'Live Location Now',
   description:
     'Browser-based live location tracker. Uses the W3C watchPosition API to stream your GPS coordinates continuously, show accuracy, speed, heading and altitude, draw the path you have travelled on an interactive map, and download that path as a GPX 1.1 file built in the browser.',
   url: 'https://getmylocations.com/live-location',
@@ -60,6 +66,18 @@ const breadcrumbSchema = {
 };
 
 const faqs = [
+  {
+    q: 'How do I see my live location now?',
+    a: 'Tap Start live tracking at the top of this page and allow location access. Your current location appears on a live map within a few seconds, with your coordinates, accuracy and the town you are in, and the pin moves as you move. Nothing needs installing.',
+  },
+  {
+    q: 'Is this live location tracker free?',
+    a: 'Yes. It is a free live GPS tracker with no signup, no app and no time limit. It runs in your browser and works on iPhone, Android and computers.',
+  },
+  {
+    q: 'Can I track someone else\'s live location with this page?',
+    a: 'No. It only shows the live location of the device it is open on, to the person holding it. To see a friend or family member\'s real-time location, they need to share it with you from Google Maps, Apple Find My or WhatsApp, as described on this page.',
+  },
   {
     q: 'What does "live location" actually mean?',
     a: 'A live location is a position that keeps updating, not a single one-shot reading. The tracker subscribes to a stream of GPS fixes — usually one every one to five seconds — and replaces the displayed coordinates with the newest one each time. As long as the page stays open and the button is in the "Live" state, the map pin follows wherever you walk, drive, or ride.',
@@ -137,14 +155,29 @@ export default function LiveLocationPage() {
             Free Tool · Continuous GPS stream in your browser
           </p>
           <h1 className="font-display text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.05]">
-            My <span className="text-accent">live location</span> now — watch your real-time position update.
+            Live Location Now
           </h1>
           <p className="text-lg text-fg-muted mt-4 max-w-3xl">
-            Tap one button and the page subscribes to your device&rsquo;s <strong>GPS stream</strong>. Coordinates, accuracy, speed, heading, and the map pin all <strong>refresh automatically as you move</strong>, and the map draws the path you have walked — not a single snapshot, but a running fix. When you are done, <strong>save the route as a GPX file</strong>. Your coordinates never reach a server we run, and the stream stops the moment you tap <em>Stop</em>.
+            See <strong className="text-fg">my live location now</strong> on a <strong className="text-fg">real-time location map</strong>. Tap one button and the page subscribes to your device&rsquo;s <strong className="text-fg">live GPS location</strong> stream. Coordinates, accuracy, speed, heading, and the map pin all <strong className="text-fg">refresh automatically as you move</strong>, and the map draws the path you have walked — not a single snapshot, but a running fix. When you are done, <strong className="text-fg">save the route as a GPX file</strong>. It is a free <strong className="text-fg">live location tracker</strong>, with no app and no signup. Your coordinates never reach a server we run, and the stream stops the moment you tap <em>Stop</em>.
           </p>
         </section>
 
         <LiveTool />
+
+        <section className="mt-12">
+          <h2 className="font-display text-2xl font-bold">My location live now: what the tracker shows</h2>
+          <ul className="mt-4 space-y-2 text-fg-muted leading-relaxed list-disc list-inside">
+            <li><strong className="text-fg">Current location live:</strong> your position on the map, updated every one to five seconds while you move.</li>
+            <li><strong className="text-fg">My live coordinates:</strong> latitude and longitude to six decimal places, with the accuracy radius in meters.</li>
+            <li><strong className="text-fg">My position now by place name:</strong> the town or city and country you are in, refreshed as you travel.</li>
+            <li><strong className="text-fg">Live position, speed and heading:</strong> how fast and in which direction you are going.</li>
+            <li><strong className="text-fg">Live location map with your route:</strong> a line along the path you have taken, the distance covered, and a GPX download.</li>
+          </ul>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            To <strong className="text-fg">track my location now</strong>, keep this page open and in front: the pin follows you like a <strong className="text-fg">live GPS tracker</strong>, and you can watch your live location on the map until you tap Stop. For a single reading of where you are, your address and your coordinates, use 
+            <Link href="/my-location" className="text-accent hover:underline">My Location</Link> instead.
+          </p>
+        </section>
 
         <section className="mt-12">
           <h2 className="font-display text-2xl font-bold">Live vs. one-shot — the difference matters</h2>
@@ -160,7 +193,7 @@ export default function LiveLocationPage() {
         </section>
 
         <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">What each live GPS location reading means</h2>
+          <h2 className="font-display text-2xl font-bold">My live coordinates and each live GPS reading explained</h2>
           <p className="mt-3 text-fg-muted leading-relaxed">
             Every update the browser delivers carries more than a coordinate. Here is what each tile in the tracker shows, and when it is allowed to be blank under the <a href="https://www.w3.org/TR/geolocation/" target="_blank" rel="noopener" className="text-accent hover:underline">W3C Geolocation API specification</a>.
           </p>
@@ -193,7 +226,7 @@ export default function LiveLocationPage() {
         </section>
 
         <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">How real-time positioning actually works</h2>
+          <h2 className="font-display text-2xl font-bold">Real-time location: how live GPS tracking works</h2>
           <p className="mt-3 text-fg-muted leading-relaxed">
             Inside your phone, the GPS chip is solving the same equation several times per second. It hears timestamps from four or more satellites overhead and back-solves for the only position on Earth where those particular delays line up. When you walk, the math changes — you are slightly closer to one satellite, slightly farther from another — and the chip outputs a new coordinate. The operating system passes that coordinate up to the browser, which passes it to this page, which redraws the dot.
           </p>
@@ -203,7 +236,7 @@ export default function LiveLocationPage() {
         </section>
 
         <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">Track my location on the map: path and distance travelled</h2>
+          <h2 className="font-display text-2xl font-bold">Track my location now: live location map, path and distance</h2>
           <p className="mt-3 text-fg-muted leading-relaxed">
             While tracking is on, the map draws a line along the route you have taken and the Distance tile adds up its length. GPS jitter would normally turn a person standing still into a growing scribble, so the tracker is strict about which readings join the path: a new point is only added once you have moved at least 10 meters from the last one, and only from a reading accurate to 50 meters or better. Standing still therefore adds nothing, and a sudden indoor Wi-Fi guess hundreds of meters off is left out.
           </p>
@@ -248,7 +281,7 @@ export default function LiveLocationPage() {
         </section>
 
         <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">Battery, accuracy, and the live-tracking tradeoff</h2>
+          <h2 className="font-display text-2xl font-bold">Real-time location accuracy and battery</h2>
           <p className="mt-3 text-fg-muted leading-relaxed">
             High-accuracy live tracking is the most expensive geolocation mode a browser can run. It keeps the GPS radio warm, the Wi-Fi scanner active, and the application processor awake to deliver each callback. How much battery that costs depends on the phone, the signal, and above all whether the screen stays on, so the honest way to know is to note your battery percentage before and after a ten-minute session. It matters on a long road trip and barely registers on a short walk. The widget above releases all of those handles the instant you tap <em>Stop tracking</em>, and disconnects them automatically if you navigate away from this page.
           </p>
@@ -292,7 +325,7 @@ export default function LiveLocationPage() {
         </section>
 
         <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">How to share your live location with someone</h2>
+          <h2 className="font-display text-2xl font-bold">Share your live location (WhatsApp, Google Maps)</h2>
           <p className="mt-3 text-fg-muted leading-relaxed">
             This page only ever shows your own position to you. It cannot create a link for someone else to follow, because that would mean sending your coordinates to a server, which this site deliberately never does. To share a moving position with someone you trust, use an app built for it:
           </p>

@@ -1,18 +1,28 @@
 ---
-title: "My Live Location Now — Track Your Real-Time Position Free"
-description: "Watch your GPS position, speed and path update live, then save the route as a GPX file. Runs in your browser with no signup or stored data. Start now."
+title: "Live Location Now: My Live Location & Real-Time GPS Tracker"
+description: "See your live location now on a real-time map: a free live GPS tracker for your current location, coordinates, speed and route. No app, no signup."
 url: https://getmylocations.com/live-location
 ---
 
 Free Tool · Continuous GPS stream in your browser
 
-# My live location now — watch your real-time position update.
+# Live Location Now
 
-Tap one button and the page subscribes to your device’s **GPS stream**. Coordinates, accuracy, speed, heading, and the map pin all **refresh automatically as you move**, and the map draws the path you have walked — not a single snapshot, but a running fix. When you are done, **save the route as a GPX file**. Your coordinates never reach a server we run, and the stream stops the moment you tap _Stop_.
+See **my live location now** on a **real-time location map**. Tap one button and the page subscribes to your device’s **live GPS location** stream. Coordinates, accuracy, speed, heading, and the map pin all **refresh automatically as you move**, and the map draws the path you have walked — not a single snapshot, but a running fix. When you are done, **save the route as a GPX file**. It is a free **live location tracker**, with no app and no signup. Your coordinates never reach a server we run, and the stream stops the moment you tap _Stop_.
 
 ## Live location tracker
 
 Tap _Start live tracking_ to begin. Your position refreshes automatically as you move; tap _Stop_ when you are done.
+
+## My location live now: what the tracker shows
+
+-   **Current location live:** your position on the map, updated every one to five seconds while you move.
+-   **My live coordinates:** latitude and longitude to six decimal places, with the accuracy radius in meters.
+-   **My position now by place name:** the town or city and country you are in, refreshed as you travel.
+-   **Live position, speed and heading:** how fast and in which direction you are going.
+-   **Live location map with your route:** a line along the path you have taken, the distance covered, and a GPX download.
+
+To **track my location now**, keep this page open and in front: the pin follows you like a **live GPS tracker**, and you can watch your live location on the map until you tap Stop. For a single reading of where you are, your address and your coordinates, use[My Location](https://getmylocations.com/my-location) instead.
 
 ## Live vs. one-shot — the difference matters
 
@@ -22,7 +32,7 @@ Live tracking is the opposite. The page asks the browser to _keep handing back n
 
 The tool asks for the strictest settings the API allows: `enableHighAccuracy: true` so the OS powers up the GPS receiver rather than settling for Wi-Fi, `maximumAge: 0` so it never replays a cached fix, and a `timeout` of 20 seconds before it reports that no reading arrived.
 
-## What each live GPS location reading means
+## My live coordinates and each live GPS reading explained
 
 Every update the browser delivers carries more than a coordinate. Here is what each tile in the tracker shows, and when it is allowed to be blank under the [W3C Geolocation API specification](https://www.w3.org/TR/geolocation/).
 
@@ -40,13 +50,13 @@ Every update the browser delivers carries more than a coordinate. Here is what e
 
 For how the browser decides which of these values to fill in, see our guide to[how the browser Geolocation API works](https://getmylocations.com/blog/browser-geolocation-api-explained).
 
-## How real-time positioning actually works
+## Real-time location: how live GPS tracking works
 
 Inside your phone, the GPS chip is solving the same equation several times per second. It hears timestamps from four or more satellites overhead and back-solves for the only position on Earth where those particular delays line up. When you walk, the math changes — you are slightly closer to one satellite, slightly farther from another — and the chip outputs a new coordinate. The operating system passes that coordinate up to the browser, which passes it to this page, which redraws the dot.
 
 Two practical knobs decide how lively the “live” reading actually feels. The first is the GPS sample rate, which most chipsets run at 1 Hz (one fix per second) by default. The second is the operating system’s smoothing layer, which sometimes withholds a new reading if it has not changed enough to matter. A clean outdoor walk should generate one update every second or two; a stationary indoor reading often updates only every five to ten seconds because the OS sees no real movement.
 
-## Track my location on the map: path and distance travelled
+## Track my location now: live location map, path and distance
 
 While tracking is on, the map draws a line along the route you have taken and the Distance tile adds up its length. GPS jitter would normally turn a person standing still into a growing scribble, so the tracker is strict about which readings join the path: a new point is only added once you have moved at least 10 meters from the last one, and only from a reading accurate to 50 meters or better. Standing still therefore adds nothing, and a sudden indoor Wi-Fi guess hundreds of meters off is left out.
 
@@ -80,7 +90,7 @@ The file is assembled by JavaScript in your browser and saved straight to your d
 2.  Expect slow, infrequent updates. Most laptops have no GPS chip, so the browser falls back to Wi-Fi positioning, which only changes when you move between buildings or float between access points.
 3.  If you need crisp updates while moving, open this page on your phone instead. Neither macOS nor Windows passes a phone’s GPS fix through to a laptop browser, so a laptop will only ever see Wi-Fi or IP positioning.
 
-## Battery, accuracy, and the live-tracking tradeoff
+## Real-time location accuracy and battery
 
 High-accuracy live tracking is the most expensive geolocation mode a browser can run. It keeps the GPS radio warm, the Wi-Fi scanner active, and the application processor awake to deliver each callback. How much battery that costs depends on the phone, the signal, and above all whether the screen stays on, so the honest way to know is to note your battery percentage before and after a ten-minute session. It matters on a long road trip and barely registers on a short walk. The widget above releases all of those handles the instant you tap _Stop tracking_, and disconnects them automatically if you navigate away from this page.
 
@@ -105,7 +115,7 @@ If the update counter stops climbing or the timestamp goes stale, one of these i
 
 If tracking never starts at all, work through the [location not working fix guide](https://getmylocations.com/fix-location-not-working).
 
-## How to share your live location with someone
+## Share your live location (WhatsApp, Google Maps)
 
 This page only ever shows your own position to you. It cannot create a link for someone else to follow, because that would mean sending your coordinates to a server, which this site deliberately never does. To share a moving position with someone you trust, use an app built for it:
 
@@ -122,6 +132,18 @@ Live tracking sounds invasive, but the data path is no different from a single-s
 If you want to dig further into what a browser is — and is not — allowed to do with your GPS, our [guide to the W3C Geolocation API](https://getmylocations.com/blog/browser-geolocation-api-explained) walks through the permission model and the difference between `getCurrentPosition` and `watchPosition` in plain English.
 
 ## Frequently asked questions
+
+How do I see my live location now?+
+
+Tap Start live tracking at the top of this page and allow location access. Your current location appears on a live map within a few seconds, with your coordinates, accuracy and the town you are in, and the pin moves as you move. Nothing needs installing.
+
+Is this live location tracker free?+
+
+Yes. It is a free live GPS tracker with no signup, no app and no time limit. It runs in your browser and works on iPhone, Android and computers.
+
+Can I track someone else's live location with this page?+
+
+No. It only shows the live location of the device it is open on, to the person holding it. To see a friend or family member's real-time location, they need to share it with you from Google Maps, Apple Find My or WhatsApp, as described on this page.
 
 What does "live location" actually mean?+
 
