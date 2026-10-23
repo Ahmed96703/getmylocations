@@ -19,7 +19,7 @@ export default function Tool() {
   const [raw, setRaw] = useState(false);
 
   const lookup = async (ip) => {
-    if (!isIPv4(ip) && !isIPv6(ip)) { setStatus({ type: 'err', msg: 'Enter an IPv4 address such as 8.8.8.8, or an IPv6 address such as 2001:4860:4860::8888.' }); return; }
+    if (!isIPv4(ip) && !isIPv6(ip)) { setStatus({ type: 'err', msg: 'Enter a valid IP address: an IPv4 address such as 8.8.8.8, or an IPv6 address such as 2001:4860:4860::8888.' }); return; }
     setQ(ip);
     setStatus({ type: 'loading', msg: 'Asking the regional internet registry…' });
     setRes(null);
@@ -50,7 +50,7 @@ export default function Tool() {
           <Rows rows={[
             ['IP address', <span className="font-mono">{res.ip}</span>],
             ['Network name', obj.name],
-            ['Address range', obj.startAddress && <span className="font-mono">{obj.startAddress} – {obj.endAddress}</span>],
+            ['IP range (NetRange)', obj.startAddress && <span className="font-mono">{obj.startAddress} – {obj.endAddress}</span>],
             ['CIDR', cidrs && <span className="font-mono">{cidrs}</span>],
             ['Country', obj.country],
             ['Allocation type', obj.type],
