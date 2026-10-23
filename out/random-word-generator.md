@@ -16,8 +16,6 @@ Get between **1 and 100 random English words** at once. Pick the word length and
 
 Loading word list…
 
-Sponsored
-
 ## Ideas for random words
 
 -   **Games:** Pictionary, charades, Taboo-style guessing and word association.

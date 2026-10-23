@@ -3,9 +3,6 @@ import { breadcrumbSchema } from '../components/breadcrumbSchema.js';
 import Tool from './Tool.jsx';
 import AuthorBio from '../components/AuthorBio.jsx';
 import AdSense from '../components/AdSense.jsx';
-import Monetag from '../components/Monetag.jsx';
-import NativeAd from '../components/NativeAd.jsx';
-import SideAd from '../components/SideAd.jsx';
 import { AUTHOR } from '../components/author.js';
 
 export const metadata = {
@@ -90,7 +87,6 @@ export default function RadiusMapPage() {
 
       <AdSense />
 
-      <Monetag />
 
       <main role="main" className="max-w-5xl mx-auto px-5 py-10">
         <nav aria-label="Breadcrumb" className="text-xs text-fg-subtle mb-3">
@@ -112,8 +108,6 @@ export default function RadiusMapPage() {
         </section>
 
         <Tool />
-        <NativeAd />
-        <SideAd />
 
         <section className="mt-12">
           <h2 className="font-display text-2xl font-bold">How to draw a radius on a map</h2>

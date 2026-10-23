@@ -19,9 +19,6 @@ import EnableLocationDesktop from '../../posts/EnableLocationDesktop.jsx';
 import EnableLocationMobile from '../../posts/EnableLocationMobile.jsx';
 import HaversineVsVincenty from '../../posts/HaversineVsVincenty.jsx';
 import AdSense from '../../components/AdSense.jsx';
-import Monetag from '../../components/Monetag.jsx';
-import NativeAd from '../../components/NativeAd.jsx';
-import SideAd from '../../components/SideAd.jsx';
 import { AUTHOR } from '../../components/author.js';
 
 const POST_COMPONENTS = {
@@ -122,7 +119,6 @@ export default function BlogPost({ params }) {
 
       <AdSense />
 
-      <Monetag />
 
       <main role="main" className="max-w-3xl mx-auto px-5 py-12">
         <nav aria-label="Breadcrumb" className="text-xs text-fg-subtle mb-4">
@@ -164,8 +160,6 @@ export default function BlogPost({ params }) {
 
         <Body />
 
-        <NativeAd />
-        <SideAd />
         <AuthorBio />
 
         <Link href="/blog" className="block mt-10 text-sm text-accent hover:underline">← Back to all posts</Link>

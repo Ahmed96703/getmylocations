@@ -175,8 +175,6 @@ Should I use What3Words or just say the numbers?+
 
 Raw decimal degrees are still the safer choice in the moment. They are universally understood by every dispatch system on Earth, do not require the dispatcher to have a specific lookup tool open, and work in any language. What3Words and Plus Codes are excellent backups, especially in places without street addresses, but in the twenty-second window when the dispatcher is asking where you are, raw numbers travel best.
 
-Sponsored
-
 AA
 
 Written by

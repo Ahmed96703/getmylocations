@@ -3,9 +3,6 @@ import { breadcrumbSchema } from '../components/breadcrumbSchema.js';
 import Tool from './Tool.jsx';
 import AuthorBio from '../components/AuthorBio.jsx';
 import AdSense from '../components/AdSense.jsx';
-import Monetag from '../components/Monetag.jsx';
-import NativeAd from '../components/NativeAd.jsx';
-import SideAd from '../components/SideAd.jsx';
 import { AUTHOR } from '../components/author.js';
 
 export const metadata = {
@@ -105,7 +102,6 @@ export default function StreetViewPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <AdSense />
-      <Monetag />
       <main role="main" className="max-w-5xl mx-auto px-5 py-10">
         <nav aria-label="Breadcrumb" className="text-xs text-fg-subtle mb-3">
           <ol className="flex items-center gap-1.5">
@@ -126,8 +122,6 @@ export default function StreetViewPage() {
         </section>
 
         <Tool />
-        <NativeAd />
-        <SideAd />
 
         <section className="mt-10">
           <h2 className="font-display text-2xl font-bold">Google street views by address, instant and free</h2>

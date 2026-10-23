@@ -26,8 +26,6 @@ Statue of Liberty
 
 [Compare in Google Maps](https://www.google.com/maps/@?api=1&map_action=map&center=40.689250,-74.044500&zoom=18&basemap=satellite)[Street View here](https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=40.689250,-74.044500)[Convert these coordinates](https://getmylocations.com/coordinates-converter)
 
-Sponsored
-
 ## How to see any address from above
 
 1.  **Search.** Type a street address, a town, or a landmark. Coordinates work too, in any format: `40.6892, -74.0445`, degrees-minutes-seconds, UTM, a Plus Code such as `8FW4V75V+9R`, a geohash, or a Google Maps link.

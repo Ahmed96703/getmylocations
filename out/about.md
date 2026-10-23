@@ -56,5 +56,3 @@ Mistakes that made it past review, and what changed. Typos and wording tweaks ar
 ## Contact
 
 Email [ahmed@getmylocations.com](mailto:ahmed@getmylocations.com) for questions, feedback, corrections, or partnership ideas. I read everything; I reply to most things within a day or two.
-
-Sponsored

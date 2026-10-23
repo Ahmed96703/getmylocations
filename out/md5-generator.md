@@ -14,8 +14,6 @@ Type text or pick a file to get its **MD5, SHA-1, SHA-256, SHA-384 and SHA-512 h
 
  Text is encoded as UTF-8. Nothing leaves your device.
 
-Sponsored
-
 ## Which hash to use
 
 | Algorithm | Length | Use it for |

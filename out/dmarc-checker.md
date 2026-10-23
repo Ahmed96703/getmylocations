@@ -14,8 +14,6 @@ Enter your domain to check its **DMARC policy and SPF record**, with every tag e
 
 Try:
 
-Sponsored
-
 ## SPF, DKIM and DMARC in one minute
 
 | Record | Where | What it proves |

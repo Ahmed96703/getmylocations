@@ -1,7 +1,5 @@
 import Link from 'next/link';
 import { breadcrumbSchema } from '../components/breadcrumbSchema.js';
-import NativeAd from '../components/NativeAd.jsx';
-import SideAd from '../components/SideAd.jsx';
 
 export const metadata = {
   title: 'Terms of Service — GetMyLocations',
@@ -140,8 +138,6 @@ export default function Terms() {
         Questions about these terms can go to{' '}
         <a className="text-accent hover:underline" href="mailto:ahmed@getmylocations.com">ahmed@getmylocations.com</a>.
       </p>
-      <NativeAd />
-      <SideAd />
     </main>
     </>
   );

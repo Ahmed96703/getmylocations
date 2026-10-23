@@ -71,8 +71,6 @@ For ordinary cases none of this is a crisis. The pin is close enough, you find t
 
 The quickest way to see how badly your address is mapped is to use the [Address Finder](https://getmylocations.com/address-finder). Type in your full address and see where the resulting pin lands. If it’s on the wrong building, you now know why the courier keeps getting confused, and you have the coordinate of where the pin actually _is_ so you can give people a sentence to explain the offset. You can also check the satellite imagery on the [interactive map](https://getmylocations.com/maps) to confirm the building footprint, or preview the street frontage in [Street View](https://getmylocations.com/street-view). For the underlying algorithm that translates coordinates into addresses, see the [reverse geocoding guide](https://getmylocations.com/reverse-geocoding). And for the basics on how your phone produces the GPS fix that feeds into all of this, read [How GPS works](https://getmylocations.com/blog/how-gps-works).
 
-Sponsored
-
 AA
 
 Written by

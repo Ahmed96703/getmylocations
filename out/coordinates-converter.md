@@ -30,8 +30,6 @@ Convert any GPS coordinate between **Decimal Degrees**, **Degrees-Minutes-Second
 
 All formats use the WGS 84 datum, the same one GPS receivers and web maps use.
 
-Sponsored
-
 ## What are DD and DDM coordinates?
 
 **DD (decimal degrees)** writes latitude and longitude as plain decimal numbers, with a minus sign for south and west: the Eiffel Tower is at `48.8584, 2.2945`. It is the format Google Maps, phones and most websites use when you copy a location.

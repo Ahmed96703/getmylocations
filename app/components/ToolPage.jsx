@@ -2,9 +2,6 @@ import Link from 'next/link';
 import { breadcrumbSchema } from './breadcrumbSchema.js';
 import AuthorBio from './AuthorBio.jsx';
 import AdSense from './AdSense.jsx';
-import Monetag from './Monetag.jsx';
-import NativeAd from './NativeAd.jsx';
-import SideAd from './SideAd.jsx';
 import { AUTHOR } from './author.js';
 import { NET_TOOLS } from './netTools.js';
 
@@ -78,7 +75,6 @@ export default function ToolPage({ path, name, eyebrow, h1, accent, intro, bold 
 
       <AdSense />
 
-      <Monetag />
 
       <main role="main" className="max-w-5xl mx-auto px-5 py-10">
         <nav aria-label="Breadcrumb" className="text-xs text-fg-subtle mb-3">
@@ -104,8 +100,6 @@ export default function ToolPage({ path, name, eyebrow, h1, accent, intro, bold 
         </section>
 
         {tool}
-        <NativeAd />
-        <SideAd />
 
         <div className="tool-guide">{children}</div>
 

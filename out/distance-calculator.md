@@ -50,8 +50,6 @@ Sphere (haversine) for comparison
 
 This is the straight-line (“as the crow flies”) distance. For the distance by road, use [driving directions](https://getmylocations.com/driving-directions). Distance and bearings are calculated on the WGS 84 ellipsoid (Vincenty’s formulae).
 
-Sponsored
-
 ## What this calculator does
 
 The tool above takes two points and returns the shortest distance between them over Earth’s surface, the kind of distance an airline quotes when it tells you the flight is 5,000 km, not the longer driving distance that follows roads. It calculates on the WGS 84 ellipsoid using Vincenty’s formulae, published in 1975 and widely used in survey and mapping software, and shows:

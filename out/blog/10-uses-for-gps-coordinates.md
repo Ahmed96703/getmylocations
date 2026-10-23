@@ -72,8 +72,6 @@ Selling a property privately? Share the listing photo with the coordinate pasted
 
 Whenever you need a coordinate for any of the above — open [GetMyLocations](https://getmylocations.com/), approve the location prompt, copy the six-decimal lat/lon from the dashboard. Paste it into your notes app and it’ll still work in 2036.
 
-Sponsored
-
 AA
 
 Written by

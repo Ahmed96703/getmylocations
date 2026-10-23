@@ -12,8 +12,6 @@ Search any place on Earth, switch between standard, **satellite**, and dark map 
 
 Map style:
 
-Sponsored
-
 ## Three map styles, one click apart
 
 -   **Standard** — OpenStreetMap rendered through CARTO’s Voyager style. Clean labels, full road network, easy on the eye for navigation tasks.

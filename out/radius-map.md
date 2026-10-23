@@ -42,8 +42,6 @@ Center: 40.75800, -73.98550 (Times Square, New York)
 
 Circles are measured in a straight line on the Earth’s surface (the WGS 84 ellipsoid), not along roads. The link keeps every circle, so whoever opens it sees the same map.
 
-Sponsored
-
 ## How to draw a radius on a map
 
 1.  **Set the center.** Search for an address, town or ZIP code, press “Use my location”, or click anywhere on the map.

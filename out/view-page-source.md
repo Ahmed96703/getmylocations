@@ -14,8 +14,6 @@ Enter a web address to see the page’s **HTML source** with **line numbers**. S
 
 Try:
 
-Sponsored
-
 ## What to look for in the source
 
 -   **SEO tags:** search for `<title`, `name="description"`, `rel="canonical"` and `robots`.

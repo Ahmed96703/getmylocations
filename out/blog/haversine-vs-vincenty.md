@@ -103,8 +103,6 @@ The route and 100 km tables are computed from the distance calculator’s sourc
 
 Try any pair yourself in the [distance calculator](https://getmylocations.com/distance-calculator), which shows both results side by side, or convert coordinates first with the [coordinates converter](https://getmylocations.com/coordinates-converter). If latitude and longitude still trip you up, start with [latitude vs longitude explained](https://getmylocations.com/blog/latitude-vs-longitude-explained).
 
-Sponsored
-
 AA
 
 Written by

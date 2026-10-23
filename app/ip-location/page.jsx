@@ -2,9 +2,6 @@ import Link from 'next/link';
 import Tool from './Tool.jsx';
 import AuthorBio from '../components/AuthorBio.jsx';
 import AdSense from '../components/AdSense.jsx';
-import Monetag from '../components/Monetag.jsx';
-import NativeAd from '../components/NativeAd.jsx';
-import SideAd from '../components/SideAd.jsx';
 import { AUTHOR } from '../components/author.js';
 
 export const metadata = {
@@ -115,7 +112,6 @@ export default function IpLocationLookup() {
 
     <AdSense />
 
-    <Monetag />
 
     <main role="main" className="max-w-3xl mx-auto px-5 py-12 prose-invert">
       <nav aria-label="Breadcrumb" className="text-xs text-fg-subtle mb-4 not-prose">
@@ -142,8 +138,6 @@ export default function IpLocationLookup() {
 
         <div className="not-prose my-8">
           <Tool />
-          <NativeAd />
-          <SideAd />
         </div>
 
         <hr className="my-10 border-line" />
