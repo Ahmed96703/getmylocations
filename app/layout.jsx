@@ -4,6 +4,7 @@ import SiteHeader from './components/SiteHeader.jsx';
 import Footer from './components/Footer.jsx';
 import MidAd from './components/MidAd.jsx';
 import TopAd from './components/TopAd.jsx';
+import Adcash from './components/Adcash.jsx';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -168,6 +169,7 @@ export default function RootLayout({ children }) {
         <div id="content" tabIndex={-1}>{children}</div>
         <Footer />
         <MidAd />
+        <Adcash />
       </body>
     </html>
   );
