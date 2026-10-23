@@ -12,17 +12,22 @@ const SITE = 'https://getmylocations.com';
 
 // Page metadata for a tool page: title, description and keywords, with the
 // canonical URL, Open Graph and Twitter cards filled in the same way as the
-// other tool pages.
-export function toolMetadata({ path, title, description, keywords }) {
+// other tool pages. `image` is an optional page-specific 1200x630 share image;
+// pages without one use the site-wide /og-image.png.
+export function toolMetadata({ path, title, description, keywords, image = '/og-image.png' }) {
   return {
     title,
     description,
     keywords,
     alternates: { canonical: path },
-    openGraph: { title, description, url: `${SITE}${path}`, type: 'website', images: ['/og-image.png'] },
-    twitter: { card: 'summary_large_image', title, description, images: ['/og-image.png'] },
+    openGraph: { title, description, url: `${SITE}${path}`, type: 'website', images: [image] },
+    twitter: { card: 'summary_large_image', title, description, images: [image] },
   };
 }
+
+// "2026-10-23" -> "October 23, 2026", fixed to UTC so the server and the
+// browser print the same day.
+const longDate = (iso) => new Date(`${iso}T00:00:00Z`).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
 
 // Intro text with the page's key phrases in bold (first occurrence of each),
 // where people scanning the page look first.
@@ -40,7 +45,10 @@ function highlight(text, phrases = []) {
 // Shared layout for the network, web and text tools: breadcrumb, heading,
 // the tool, the ads, the guide (children), FAQ and related tools. Every page
 // still writes its own guide; this only removes the repeated frame.
-export default function ToolPage({ path, name, eyebrow, h1, accent, intro, bold = [], appDescription, tool, faqs = [], related = [], children }) {
+// `updated` (an ISO date, optional) adds a visible "Last updated" line and
+// dateModified in the structured data; set it when the guide is substantially
+// revised, not for small edits.
+export default function ToolPage({ path, name, eyebrow, h1, accent, intro, bold = [], appDescription, tool, faqs = [], related = [], updated, children }) {
   const crumbs = breadcrumbSchema([{ name, path }]);
   const app = {
     '@context': 'https://schema.org',
@@ -54,6 +62,7 @@ export default function ToolPage({ path, name, eyebrow, h1, accent, intro, bold 
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     publisher: { '@type': 'Organization', name: 'GetMyLocations' },
     author: AUTHOR,
+    ...(updated && { dateModified: updated }),
   };
   // Related tools: the ones the page names first, then others from the same group.
   const own = NET_TOOLS.find((t) => t.href === path);
@@ -86,6 +95,12 @@ export default function ToolPage({ path, name, eyebrow, h1, accent, intro, bold 
             {h1}{accent && <>: <span className="text-accent">{accent}</span></>}
           </h1>
           <p className="text-lg text-fg-muted mt-4 max-w-3xl">{highlight(intro, bold)}</p>
+          {updated && (
+            <p className="mt-3 text-sm text-fg-subtle">
+              Last updated <time dateTime={updated}>{longDate(updated)}</time> by{' '}
+              <Link href="/about" className="text-accent hover:underline">Ahmed Anwar</Link>.
+            </p>
+          )}
         </section>
 
         {tool}

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="360" viewBox="0 0 800 360" role="img" aria-labelledby="t d">
+  <title id="t">Binary to text: 01001000 01101001 is "Hi"</title>
+  <desc id="d">Each 8-bit binary group is one byte. 01001000 is 72, the letter H; 01101001 is 105, the letter i.</desc>
+  <rect width="800" height="360" rx="20" fill="#0b1224"/>
+  <g font-family="Menlo, SFMono-Regular, monospace" text-anchor="middle">
+    <text x="210" y="70" fill="#94a3b8" font-size="20">Binary</text>
+    <text x="590" y="70" fill="#94a3b8" font-size="20">Binary</text>
+    <text x="210" y="120" fill="#38bdf8" font-size="40" font-weight="700">01001000</text>
+    <text x="590" y="120" fill="#38bdf8" font-size="40" font-weight="700">01101001</text>
+    <text x="210" y="170" fill="#64748b" font-size="28">↓</text>
+    <text x="590" y="170" fill="#64748b" font-size="28">↓</text>
+    <text x="210" y="210" fill="#e2e8f0" font-size="26">decimal 72</text>
+    <text x="590" y="210" fill="#e2e8f0" font-size="26">decimal 105</text>
+    <text x="210" y="250" fill="#64748b" font-size="28">↓</text>
+    <text x="590" y="250" fill="#64748b" font-size="28">↓</text>
+    <text x="210" y="310" fill="#ffffff" font-size="56" font-weight="700">H</text>
+    <text x="590" y="310" fill="#ffffff" font-size="56" font-weight="700">i</text>
+  </g>
+</svg>
