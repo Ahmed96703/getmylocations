@@ -18,11 +18,11 @@ Sponsored
 
 ## How to look up who owns an IP
 
--   **Type or paste the address.** IPv4 (`203.0.113.7`) and IPv6 (`2001:db8::1`) both work. The tool starts with your own public IP, so it doubles as a “what is my IP” WHOIS check.
--   **Read the network and IP range.** Addresses are handed out in blocks, so the record covers a range, shown both as first–last address (the **NetRange**) and in CIDR form.
--   **Check the contacts.** The table lists the organizations attached to the record and their role: registrant, administrative, technical or abuse.
+-   **Type or paste the address.** IPv4 (`203.0.113.7`) and IPv6 (`2001:db8::1`) both work. The tool starts with your own public IP, so it doubles as a “**what is my IP**” WHOIS check and an **IPv6 WHOIS** too.
+-   **Read the network and IP range.** Addresses are handed out in blocks, so the record covers a range, shown both as first–last address (the **NetRange**) and in CIDR form, so it also works as a **CIDR lookup**.
+-   **Check the contacts.** The table lists the organizations attached to the record and their role: registrant, administrative, technical or abuse. The **IP abuse contact** is where to report misuse.
 
-Whether you search for **IP WHOIS**, **WHOIS IP**, **“who is” IP** or **ipwhois**, it is the same lookup: the public registration record for an IP address.
+Whether you search for **IP WHOIS**, **WHOIS IP**, **“who is” IP** or **ipwhois**, this **free IP WHOIS lookup** does the same job: the public registration record for an IP address. It is also an **IP owner lookup** and **ISP lookup**, the quickest way to **find the IP owner** and answer “**who owns this IP**?”
 
 ## What the WHOIS IP result means
 
@@ -49,7 +49,7 @@ The global pool is managed by IANA, which gives large blocks to five regional in
 | Latin America and Caribbean Network Information Centre (LACNIC) | Latin America and parts of the Caribbean |
 | Réseaux IP Européens Network Coordination Centre (RIPE NCC) | Europe, the Middle East and Central Asia |
 
-The tool asks [rdap.org](https://rdap.org/), which forwards the question to whichever registry holds the address, so you always get the authoritative record, whether it is an ARIN, RIPE, APNIC, LACNIC or AFRINIC WHOIS.
+The tool asks [rdap.org](https://rdap.org/), which forwards the question to whichever registry holds the address, so you always get the authoritative record, whether it is an **ARIN WHOIS**, **RIPE WHOIS**, **APNIC WHOIS**, LACNIC or AFRINIC record.
 
 ## WHOIS lookup vs IP geolocation
 

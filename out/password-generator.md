@@ -24,10 +24,10 @@ Sponsored
 
 -   **Pick a length.** Tap a quick length such as 12, 15 or 16, or drag the slider anywhere from 6 to 64.
 -   **Choose the characters:** uppercase, lowercase, numbers and symbols. Turn on “Avoid look-alikes” if you will read the password aloud or type it from paper.
--   **Copy the suggested password,** or press New for five fresh suggestions.
+-   **Copy the suggested password,** or press New for five fresh suggestions. Whenever you need to **generate password** ideas or want a site to **suggest a password**, this does it in one tap.
 -   **Save it in a password manager** straight away, so you never need to remember it.
 
-Every **random password** comes from your browser’s cryptographically secure random number generator, the same source used for encryption keys, and each character is chosen without bias. That makes this a true **random password generator** and a **secure password generator**, not just a “random-looking” one.
+Every **random password** comes from your browser’s cryptographically secure random number generator, the same source used for encryption keys, and each character is chosen without bias. This **password maker** (or **password creator**) is a true **random password generator** and a **secure password generator**, not just a “random-looking” one.
 
 ## How strong is strong enough?
 
@@ -52,13 +52,13 @@ Every **random password** comes from your browser’s cryptographically secure r
 | 16 characters | Email, banking, social media, cloud storage |
 | 20–32 characters | Password manager vaults, Wi-Fi networks, admin and server accounts |
 
-Set this **strong password generator** to **15 characters** with all four character types and you have a sensible choice for almost any account. For a **Wi-Fi password**, 20 or more characters with “Avoid look-alikes” on keeps it strong and still easy to type on a TV or games console.
+Use it as a **12 character password generator** for everyday accounts or a **16 character password generator** for email and banking; it is a **password generator with symbols** by default. Set this **strong password generator** to **15 characters** with all four character types and you have a sensible choice for almost any account. As a **WiFi password generator**, 20 or more characters with “Avoid look-alikes” on keeps it strong and still easy to type on a TV or games console.
 
 ## Random password or memorable passphrase?
 
-Switch to **Passphrase** for a **memorable password** made of random words, such as a phrase for your computer login or password manager. Five or six words beat a short random password and are much easier to type. For everything saved in a password manager, a long **strong password** of random characters is best.
+Switch to **Passphrase** to use it as a **passphrase generator** or **memorable password generator**: a password made of random words, such as a phrase for your computer login or password manager. Five or six words beat a short random password and are much easier to type. For everything saved in a password manager, a long **strong password** of random characters is best.
 
-Need a numeric **PIN**? Turn off everything except Numbers and set the length to 6 or more.
+Need a **PIN generator**? Turn off everything except Numbers and set the length to 6 or more.
 
 ## Good password habits
 
@@ -66,7 +66,7 @@ Need a numeric **PIN**? Turn off everything except Numbers and set the length to
 -   **Use a password manager** to store a different random password for each site.
 -   **Turn on two-factor authentication** for email, banking and social accounts.
 -   **Change a password** when a service reports a breach, not on a fixed schedule.
--   **Don’t build passwords from personal details** like names, birthdays or pets. A password maker with real randomness is far harder to guess.
+-   **Create a strong password** every time, and **don’t build passwords from personal details** like names, birthdays or pets. A password maker with real randomness is far harder to guess.
 
 The passphrase words come from the EFF long word list (7,776 words, CC BY 3.0, Electronic Frontier Foundation). To create checksums of text instead, use the [hash generator](https://getmylocations.com/md5-generator).
 

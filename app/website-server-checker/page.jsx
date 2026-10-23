@@ -33,8 +33,8 @@ export default function Page() {
       name="Website Server Checker"
       eyebrow="Free Hosting Checker · Live server check"
       h1="Website Server Checker"
-      intro="Enter a website to check host and server details: who is hosting the site, its server IP and location, the server software and operating system when disclosed, the CDN, CMS and framework, any redirects and the response time, and which security headers are missing."
-      bold={['check host and server details', 'who is hosting the site', 'server IP and location', 'which security headers are missing']}
+      intro="Enter a website in this website server checker to check host and server details: who is hosting the site, its server IP and location, the server software and operating system when disclosed, the CDN, CMS and framework, any redirects and the response time, and which security headers are missing."
+      bold={['website server checker', 'check host and server details', 'who is hosting the site', 'server IP and location', 'which security headers are missing']}
       appDescription="Free website server checker and hosting checker that fetches a page and reports who hosts the site (network owner of its IP), server IP and estimated location, the Server header, disclosed operating system, CDN, hosting platform, CMS and framework, redirects, response time, all response headers and missing security headers."
       tool={<Tool />}
       faqs={faqs}
@@ -43,7 +43,7 @@ export default function Page() {
       <Section title="How to check who is hosting a website">
         <UL items={[
           <><B>Enter the address,</B> such as example.com or a full link. The checker follows redirects to the page visitors really land on.</>,
-          <><B>Read “Hosting &amp; server location”:</B> the server IP, the company it belongs to (the <B>web host</B> or CDN) and the estimated city and country.</>,
+          <><B>Read “Hosting &amp; server location”:</B> the server IP (a <B>website IP lookup</B>), the company it belongs to (the <B>web host</B> or CDN) and the estimated city and country, like a <B>server location checker</B>.</>,
           <><B>Read the server details:</B> server software, operating system when shown, response time, and the platform, CMS and framework detected.</>,
           <><B>Check the security headers</B> to see which protections the site is missing.</>,
         ]} />
@@ -65,19 +65,19 @@ export default function Page() {
 
       <Section title="How the check works">
         <P>
-          To <B>check the server of a website</B>, the tool requests the page once from our server, follows up to ten redirects, and records the response headers and the HTML. It then looks for known signatures: a <Code>cf-ray</Code> header means Cloudflare, <Code>wp-content</Code> in the HTML means WordPress, and the <Code>Server</Code> header often names the web server and sometimes its operating system.
+          To <B>check the server of a website</B>, and see <B>what server a website is using</B>, the tool requests the page once from our server, follows up to ten redirects, and records the response headers and the HTML. It then looks for known signatures: a <Code>cf-ray</Code> header means Cloudflare, <Code>wp-content</Code> in the HTML means WordPress, and the <Code>Server</Code> header often names the web server and sometimes its operating system.
         </P>
         <P>
-          To find the host, it resolves the domain to its IP address with public DNS and looks up which network that IP belongs to and roughly where it is. This is how any <B>hosting checker</B> works, and why a site behind a CDN shows the CDN: the real origin server is deliberately hidden.
+          To find the host, it resolves the domain to its IP address with public DNS and looks up which network that IP belongs to and roughly where it is. This is how any <B>hosting checker</B>, <B>web host lookup</B> or <B>hosting provider lookup</B> works, and why a site behind a CDN shows the CDN: the real origin server is deliberately hidden.
         </P>
       </Section>
 
       <Section title="What the results are good for">
         <UL items={[
-          <><B>Finding a site’s host:</B> answer “who hosts this site?” to report abuse or a copyright problem to the hosting company, or to see which host a competitor uses.</>,
-          <><B>Security review:</B> missing headers are quick wins, and a server that advertises an old version number is worth updating or hiding.</>,
+          <><B>Finding a site’s host:</B> answer “<B>who hosts this site</B>?” or “<B>who is hosting this</B>?” and <B>find the website host</B> to report abuse or a copyright problem to the hosting company, or to see which host a competitor uses.</>,
+          <><B>Security review:</B> as an <B>HTTP header checker</B> and <B>security headers check</B>, it shows missing headers, which are quick wins, and a server that advertises an old version number is worth updating or hiding.</>,
           <><B>Migration checks:</B> after moving host or adding a CDN, confirm the new server is the one answering and the site server is in the right country.</>,
-          <><B>Speed checks:</B> a slow response time points to the server or hosting plan rather than the page itself.</>,
+          <><B>Speed checks:</B> the <B>website response time</B> works like a quick way to <B>ping a website</B>; a slow one points to the server or hosting plan rather than the page itself.</>,
           <><B>Redirect problems:</B> see every hop, such as http → https → www, and remove unnecessary ones that slow the first visit.</>,
         ]} />
         <P>To read the page&rsquo;s full HTML, use <A href="/view-page-source">View Page Source</A>; for its social sharing tags, the <A href="/open-graph-checker">Open Graph checker</A>; and to see how long the domain has been registered, the <A href="/domain-age-checker">domain age checker</A>.</P>

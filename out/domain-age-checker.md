@@ -19,17 +19,17 @@ Sponsored
 ## How to check the age of a domain or website
 
 -   **Enter the domain,** such as example.com, or paste the full website address. Subdomains and page paths are removed for you.
--   **Press Check age.** The checker asks the domain’s official registry for its record, the same data a WHOIS lookup shows.
--   **Read the result:** the **domain age** in years, months and days, the registration date, the expiry date with time left, the registrar and the name servers.
+-   **Press Check age.** The checker asks the domain’s official registry for its record, the same data a **WHOIS domain age** lookup shows.
+-   **Read the result:** the **domain age** in years, months and days, the **domain registration date** (the **domain creation date**), the expiry date with time left, the registrar and the name servers.
 
-The **domain age calculator** counts from the registry’s creation date to today, so the figure is exact to the day, not rounded to the year.
+This **domain age checker** works as a **domain age calculator**: it counts from the registry’s creation date to today, so the figure is exact to the day, not rounded to the year.
 
 ## Why check a domain’s age
 
 -   **Spotting scams:** a shop or bank site registered a few weeks ago deserves extra caution. Phishing sites are often registered only days before they are used.
--   **Buying a domain:** check its history and expiry before paying.
+-   **Buying a domain:** check its **domain history** and expiry before paying.
 -   **SEO and link building:** see how long a site has been around before you buy a link, a guest post or the whole site.
--   **Your own domains:** see the expiry date before it lapses and someone else takes it.
+-   **Your own domains:** use it as a **domain expiry date checker** and see the expiry date before it lapses and someone else takes it.
 
 ## Domain age vs website age
 
@@ -40,7 +40,7 @@ The **domain age calculator** counts from the registry’s creation date to toda
 | Resets when | The domain expires and is registered again | Rarely; old snapshots stay |
 | Best for | Ownership, scam checks, expiry | Content history, past owners’ sites |
 
-For most purposes, **website age** and domain age are close. If you need to know what was on a domain before, open its earliest snapshot on the [Internet Archive’s Wayback Machine](https://web.archive.org/).
+For most purposes, **website age** and domain age are close, so this **website age checker** answers both “**how old is a domain**” and “**how old is a website**”. If you need to know what was on a domain before, open its earliest snapshot on the [Internet Archive’s Wayback Machine](https://web.archive.org/).
 
 ## Reading the domain status
 

@@ -32,8 +32,8 @@ export default function Page() {
       name="Internet Speed Test"
       eyebrow="Free Speed Test · About 20 seconds"
       h1="Internet Speed Test"
-      intro="Press Start to check your internet speed: download and upload in Mbps, plus ping and jitter, measured against Cloudflare’s nearest data center. A free speed test for WiFi, broadband, DSL, fiber and mobile 5G, with no app, no signup and nothing stored."
-      bold={['check your internet speed', 'download and upload in Mbps', 'ping and jitter', 'free speed test']}
+      intro="Press Start to check internet speed: download and upload in Mbps, plus ping and jitter, measured against Cloudflare’s nearest data center. A free speed test for WiFi, broadband, DSL, fiber and mobile 5G, with no app, no signup and nothing stored."
+      bold={['check internet speed', 'download and upload in Mbps', 'ping and jitter', 'free speed test']}
       appDescription="Free browser-based internet speed test (net speed test and WiFi speed test) that measures download and upload throughput with parallel streams, plus latency and jitter, against Cloudflare's global network, for WiFi, DSL, cable, fiber and mobile connections, and shows the visitor's IP, network and test location."
       tool={<Tool />}
       faqs={faqs}
@@ -50,7 +50,7 @@ export default function Page() {
           <><B>Jitter</B> (ms): how much ping varies. Steady, low jitter keeps calls smooth.</>,
         ]} />
         <P>
-          Several parallel streams fill the connection the way a real download does, so the figure reflects your line rather than a single slow request. It works as a <B>broadband speed test</B>, a <B>bandwidth test</B> and a quick <B>internet speed checker</B> in one.
+          Several parallel streams fill the connection the way a real download does, so the figure reflects your line rather than a single slow request. It works as a <B>download speed test</B>, <B>upload speed test</B>, <B>ping test</B> and <B>jitter test</B> in one, and as a <B>broadband speed test</B>, a <B>bandwidth test</B> and a quick <B>internet speed checker</B>.
         </P>
       </Section>
 
@@ -90,7 +90,7 @@ export default function Page() {
           ['Satellite', '25–250 Mbps', '5–30 Mbps', 'High ping on older geostationary services'],
         ]} />
         <P>
-          A <B>DSL speed test</B> often shows a much lower upload than download: that is how DSL is built, not a fault. For a <B>mobile speed test</B> or <B>5G speed test</B>, switch off WiFi first so the phone uses the mobile network.
+          A <B>DSL speed test</B> often shows a much lower upload than download: that is how DSL is built, not a fault. A <B>fiber speed test</B> often shows upload almost as fast as download, while a <B>cable speed test</B> usually shows a much lower upload. For a <B>mobile speed test</B> or <B>5G speed test</B>, switch off WiFi first so the phone uses the mobile network.
         </P>
       </Section>
 

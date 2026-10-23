@@ -8,7 +8,7 @@ Free Tool · Satellite Imagery
 
 # Google Maps Satellite View
 
-See any address from above in **free satellite view**, just like Google Maps satellite view, with **up-to-date satellite images** and the exact date each photo was taken: under the map, the tool shows the capture date, how sharp the image is, and who took it, so you know whether you are looking at last spring or five years ago. Search an address, a place, or coordinates in any format, or press **My location** for a **satellite view of your location**. One click opens the same spot in Google Maps. Free, no signup, no API key.
+See any address from above in **free satellite view**, just like Google Maps satellite view, with **up-to-date satellite images** and the exact date each photo was taken: under the map, the tool shows the capture date, how sharp the image is, and who took it, so you know whether you are looking at last spring or five years ago. Search an address, a place, or coordinates in any format for a **satellite view by address**, or press **My location** for a **satellite view of your location**. One click opens the same spot in Google Maps. Free, no signup, no API key.
 
 Last updated October 23, 2026 by [Ahmed Anwar](https://getmylocations.com/about).
 
@@ -38,7 +38,7 @@ Sponsored
 
 ## Most up-to-date satellite images: check the date
 
-People searching for **up-to-date satellite images**, **updated satellite images** or the **most recent satellite images** usually want one thing: to know the photo shows the place as it is now. No free map is live, so the honest answer is to show the date. This map does that for every view: the imagery panel under the map gives the capture date, resolution and source of the exact photo you are looking at.
+People searching for **up-to-date satellite images**, **updated satellite images** or the **most recent satellite images** usually want one thing: to know the photo shows the place as it is now. No free map offers a **live satellite view**, so the honest answer is to show the date. This map does that for every view: the imagery panel under the map gives the capture date, resolution and source of the exact photo you are looking at.
 
 -   **Big cities and landmarks:** usually photographed within the last one to two years, as the table below shows.
 -   **Towns and suburbs:** typically one to three years old.
@@ -49,14 +49,14 @@ Because the date is always on screen, these are the **most up-to-date satellite 
 
 ## Satellite view of my location, my house or any property
 
--   **Satellite view of my location:** press My location and allow access. The map jumps to where you are, at street level.
--   **Aerial view of my house:** type your street address and press Search, then click your roof to pin it.
+-   **Satellite view of my location:** press My location and allow access to see **satellite maps of my location**. The map jumps to where you are, at street level.
+-   **Aerial view of my house:** for a **satellite view of my house**, type your street address and press Search, then click your roof to pin it.
 -   **Aerial view of a property by address:** search the address, turn on Roads to see the street names, and check the date before relying on what you see.
 -   **Satellite maps with street view:** pin a point and press Street View here to see the same spot from the street, or use our [Street View](https://getmylocations.com/street-view) tool for any address.
 
 ## How old is the satellite image?
 
-**Satellite images** of major cities on this map are usually less than two years old: the Eiffel Tower, the Statue of Liberty and the Pyramids of Giza were all photographed in 2025. Rural areas can be several years older. The tool shows the exact capture date for any point you look at.
+**Satellite images** of major cities on this map are usually less than two years old: the Eiffel Tower, the Statue of Liberty and the Pyramids of Giza were all photographed in 2025. Rural areas can be several years older. The tool shows the exact **satellite image date** for any point you look at.
 
 Most satellite maps never tell you this. The **satellite imagery** here comes from Esri’s World Imagery mosaic, and Esri publishes metadata for every photo in it: the capture date, the resolution, the positional accuracy, and the provider. The tool reads that metadata for the point at the centre of your screen, at your current zoom, because a single view can mix several photos taken on different days.
 
@@ -101,7 +101,7 @@ Open any of these in free **satellite view**; each link sets the map to the spot
 
 ## Why another map shows a different picture
 
-**Google Maps**, Apple Maps, Bing Maps, and Esri each license imagery from different providers and update different places at different times. The same house can appear in summer on one map and in winter on another, with or without a new extension, or with a neighbouring building that has since been knocked down. Shadows point in different directions, and tall buildings lean differently, because each photo was taken from a slightly different angle. When the date matters, the “Compare in Google Maps” link under the map opens the same point in Google’s satellite layer so you can check both.
+**Google Maps**, Apple Maps, Bing Maps, and Esri each license imagery from different providers and update different places at different times. The same house can appear in summer on one map and in winter on another, with or without a new extension, or with a neighbouring building that has since been knocked down. Shadows point in different directions, and tall buildings lean differently, because each photo was taken from a slightly different angle. When the date matters, the “Compare in Google Maps” link under the map opens the same point in **Google satellite view** so you can check both.
 
 ## Google Maps satellite view, Google Earth or this map?
 
@@ -114,7 +114,7 @@ Open any of these in free **satellite view**; each link sets the map to the spot
 | Needs an app or account | No | No | Web or app, no account |
 | Coordinates in any format | Yes: DMS, UTM, Plus Codes, geohash | Decimal and Plus Codes | Decimal and DMS |
 
-Use whichever photo is newer for the place you care about. This map is the quickest way to check the date, and the link under it opens the same spot in **Google Maps satellite view** to compare. For a **Google Earth view** with 3D buildings, Google Earth on the web is also free.
+Use whichever photo is newer for the place you care about. This map is the quickest way to check the date, and the link under it opens the same spot in **Google Maps satellite view** to compare. For a **Google Earth view** with 3D buildings, open Google Earth on the web: **Google Earth satellite view free** of charge is another option. Both this map and **Google Maps satellite view free** of charge need no account.
 
 ## When satellite view beats a regular map
 

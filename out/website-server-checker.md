@@ -8,7 +8,7 @@ Free Hosting Checker · Live server check
 
 # Website Server Checker
 
-Enter a website to **check host and server details**: **who is hosting the site**, its **server IP and location**, the server software and operating system when disclosed, the CDN, CMS and framework, any redirects and the response time, and **which security headers are missing**.
+Enter a website in this **website server checker** to **check host and server details**: **who is hosting the site**, its **server IP and location**, the server software and operating system when disclosed, the CDN, CMS and framework, any redirects and the response time, and **which security headers are missing**.
 
 ## Check a website’s server
 
@@ -19,7 +19,7 @@ Sponsored
 ## How to check who is hosting a website
 
 -   **Enter the address,** such as example.com or a full link. The checker follows redirects to the page visitors really land on.
--   **Read “Hosting & server location”:** the server IP, the company it belongs to (the **web host** or CDN) and the estimated city and country.
+-   **Read “Hosting & server location”:** the server IP (a **website IP lookup**), the company it belongs to (the **web host** or CDN) and the estimated city and country, like a **server location checker**.
 -   **Read the server details:** server software, operating system when shown, response time, and the platform, CMS and framework detected.
 -   **Check the security headers** to see which protections the site is missing.
 
@@ -38,16 +38,16 @@ For the full ownership record of the server’s IP, including its address range 
 
 ## How the check works
 
-To **check the server of a website**, the tool requests the page once from our server, follows up to ten redirects, and records the response headers and the HTML. It then looks for known signatures: a `cf-ray` header means Cloudflare, `wp-content` in the HTML means WordPress, and the `Server` header often names the web server and sometimes its operating system.
+To **check the server of a website**, and see **what server a website is using**, the tool requests the page once from our server, follows up to ten redirects, and records the response headers and the HTML. It then looks for known signatures: a `cf-ray` header means Cloudflare, `wp-content` in the HTML means WordPress, and the `Server` header often names the web server and sometimes its operating system.
 
-To find the host, it resolves the domain to its IP address with public DNS and looks up which network that IP belongs to and roughly where it is. This is how any **hosting checker** works, and why a site behind a CDN shows the CDN: the real origin server is deliberately hidden.
+To find the host, it resolves the domain to its IP address with public DNS and looks up which network that IP belongs to and roughly where it is. This is how any **hosting checker**, **web host lookup** or **hosting provider lookup** works, and why a site behind a CDN shows the CDN: the real origin server is deliberately hidden.
 
 ## What the results are good for
 
--   **Finding a site’s host:** answer “who hosts this site?” to report abuse or a copyright problem to the hosting company, or to see which host a competitor uses.
--   **Security review:** missing headers are quick wins, and a server that advertises an old version number is worth updating or hiding.
+-   **Finding a site’s host:** answer “**who hosts this site**?” or “**who is hosting this**?” and **find the website host** to report abuse or a copyright problem to the hosting company, or to see which host a competitor uses.
+-   **Security review:** as an **HTTP header checker** and **security headers check**, it shows missing headers, which are quick wins, and a server that advertises an old version number is worth updating or hiding.
 -   **Migration checks:** after moving host or adding a CDN, confirm the new server is the one answering and the site server is in the right country.
--   **Speed checks:** a slow response time points to the server or hosting plan rather than the page itself.
+-   **Speed checks:** the **website response time** works like a quick way to **ping a website**; a slow one points to the server or hosting plan rather than the page itself.
 -   **Redirect problems:** see every hop, such as http → https → www, and remove unnecessary ones that slow the first visit.
 
 To read the page’s full HTML, use [View Page Source](https://getmylocations.com/view-page-source); for its social sharing tags, the [Open Graph checker](https://getmylocations.com/open-graph-checker); and to see how long the domain has been registered, the [domain age checker](https://getmylocations.com/domain-age-checker).

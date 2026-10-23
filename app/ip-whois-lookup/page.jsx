@@ -41,12 +41,12 @@ export default function Page() {
     >
       <Section title="How to look up who owns an IP">
         <UL items={[
-          <><B>Type or paste the address.</B> IPv4 (<Code>203.0.113.7</Code>) and IPv6 (<Code>2001:db8::1</Code>) both work. The tool starts with your own public IP, so it doubles as a “what is my IP” WHOIS check.</>,
-          <><B>Read the network and IP range.</B> Addresses are handed out in blocks, so the record covers a range, shown both as first–last address (the <B>NetRange</B>) and in CIDR form.</>,
-          <><B>Check the contacts.</B> The table lists the organizations attached to the record and their role: registrant, administrative, technical or abuse.</>,
+          <><B>Type or paste the address.</B> IPv4 (<Code>203.0.113.7</Code>) and IPv6 (<Code>2001:db8::1</Code>) both work. The tool starts with your own public IP, so it doubles as a “<B>what is my IP</B>” WHOIS check and an <B>IPv6 WHOIS</B> too.</>,
+          <><B>Read the network and IP range.</B> Addresses are handed out in blocks, so the record covers a range, shown both as first–last address (the <B>NetRange</B>) and in CIDR form, so it also works as a <B>CIDR lookup</B>.</>,
+          <><B>Check the contacts.</B> The table lists the organizations attached to the record and their role: registrant, administrative, technical or abuse. The <B>IP abuse contact</B> is where to report misuse.</>,
         ]} />
         <P>
-          Whether you search for <B>IP WHOIS</B>, <B>WHOIS IP</B>, <B>“who is” IP</B> or <B>ipwhois</B>, it is the same lookup: the public registration record for an IP address.
+          Whether you search for <B>IP WHOIS</B>, <B>WHOIS IP</B>, <B>“who is” IP</B> or <B>ipwhois</B>, this <B>free IP WHOIS lookup</B> does the same job: the public registration record for an IP address. It is also an <B>IP owner lookup</B> and <B>ISP lookup</B>, the quickest way to <B>find the IP owner</B> and answer “<B>who owns this IP</B>?”
         </P>
       </Section>
 
@@ -75,7 +75,7 @@ export default function Page() {
           ['Réseaux IP Européens Network Coordination Centre (RIPE NCC)', 'Europe, the Middle East and Central Asia'],
         ]} />
         <P>
-          The tool asks <A href="https://rdap.org/">rdap.org</A>, which forwards the question to whichever registry holds the address, so you always get the authoritative record, whether it is an ARIN, RIPE, APNIC, LACNIC or AFRINIC WHOIS.
+          The tool asks <A href="https://rdap.org/">rdap.org</A>, which forwards the question to whichever registry holds the address, so you always get the authoritative record, whether it is an <B>ARIN WHOIS</B>, <B>RIPE WHOIS</B>, <B>APNIC WHOIS</B>, LACNIC or AFRINIC record.
         </P>
       </Section>
 

@@ -8,7 +8,7 @@ Free Speed Test · About 20 seconds
 
 # Internet Speed Test
 
-Press Start to **check your internet speed**: **download and upload in Mbps**, plus **ping and jitter**, measured against Cloudflare’s nearest data center. A **free speed test** for WiFi, broadband, DSL, fiber and mobile 5G, with no app, no signup and nothing stored.
+Press Start to **check internet speed**: **download and upload in Mbps**, plus **ping and jitter**, measured against Cloudflare’s nearest data center. A **free speed test** for WiFi, broadband, DSL, fiber and mobile 5G, with no app, no signup and nothing stored.
 
 ## Test your internet speed
 
@@ -31,7 +31,7 @@ This **internet speed test** runs four checks, one after another, and shows each
 -   **Ping** (ms): the round trip to the server. Lower is better for gaming and calls.
 -   **Jitter** (ms): how much ping varies. Steady, low jitter keeps calls smooth.
 
-Several parallel streams fill the connection the way a real download does, so the figure reflects your line rather than a single slow request. It works as a **broadband speed test**, a **bandwidth test** and a quick **internet speed checker** in one.
+Several parallel streams fill the connection the way a real download does, so the figure reflects your line rather than a single slow request. It works as a **download speed test**, **upload speed test**, **ping test** and **jitter test** in one, and as a **broadband speed test**, a **bandwidth test** and a quick **internet speed checker**.
 
 ## What speed do you need?
 
@@ -66,7 +66,7 @@ The same **net speed test** works on any kind of connection and any provider. Wh
 | Mobile 5G | 100–1,000 Mbps | 10–100 Mbps | Best near a mid-band or mmWave mast |
 | Satellite | 25–250 Mbps | 5–30 Mbps | High ping on older geostationary services |
 
-A **DSL speed test** often shows a much lower upload than download: that is how DSL is built, not a fault. For a **mobile speed test** or **5G speed test**, switch off WiFi first so the phone uses the mobile network.
+A **DSL speed test** often shows a much lower upload than download: that is how DSL is built, not a fault. A **fiber speed test** often shows upload almost as fast as download, while a **cable speed test** usually shows a much lower upload. For a **mobile speed test** or **5G speed test**, switch off WiFi first so the phone uses the mobile network.
 
 ## Getting an accurate result
 

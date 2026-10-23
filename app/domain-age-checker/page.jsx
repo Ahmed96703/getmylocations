@@ -41,20 +41,20 @@ export default function Page() {
       <Section title="How to check the age of a domain or website">
         <UL items={[
           <><B>Enter the domain,</B> such as example.com, or paste the full website address. Subdomains and page paths are removed for you.</>,
-          <><B>Press Check age.</B> The checker asks the domain’s official registry for its record, the same data a WHOIS lookup shows.</>,
-          <><B>Read the result:</B> the <B>domain age</B> in years, months and days, the registration date, the expiry date with time left, the registrar and the name servers.</>,
+          <><B>Press Check age.</B> The checker asks the domain’s official registry for its record, the same data a <B>WHOIS domain age</B> lookup shows.</>,
+          <><B>Read the result:</B> the <B>domain age</B> in years, months and days, the <B>domain registration date</B> (the <B>domain creation date</B>), the expiry date with time left, the registrar and the name servers.</>,
         ]} />
         <P>
-          The <B>domain age calculator</B> counts from the registry’s creation date to today, so the figure is exact to the day, not rounded to the year.
+          This <B>domain age checker</B> works as a <B>domain age calculator</B>: it counts from the registry’s creation date to today, so the figure is exact to the day, not rounded to the year.
         </P>
       </Section>
 
       <Section title="Why check a domain’s age">
         <UL items={[
           <><B>Spotting scams:</B> a shop or bank site registered a few weeks ago deserves extra caution. Phishing sites are often registered only days before they are used.</>,
-          <><B>Buying a domain:</B> check its history and expiry before paying.</>,
+          <><B>Buying a domain:</B> check its <B>domain history</B> and expiry before paying.</>,
           <><B>SEO and link building:</B> see how long a site has been around before you buy a link, a guest post or the whole site.</>,
-          <><B>Your own domains:</B> see the expiry date before it lapses and someone else takes it.</>,
+          <><B>Your own domains:</B> use it as a <B>domain expiry date checker</B> and see the expiry date before it lapses and someone else takes it.</>,
         ]} />
       </Section>
 
@@ -66,7 +66,7 @@ export default function Page() {
           ['Best for', 'Ownership, scam checks, expiry', 'Content history, past owners’ sites'],
         ]} />
         <P>
-          For most purposes, <B>website age</B> and domain age are close. If you need to know what was on a domain before, open its earliest snapshot on the <A href="https://web.archive.org/">Internet Archive’s Wayback Machine</A>.
+          For most purposes, <B>website age</B> and domain age are close, so this <B>website age checker</B> answers both “<B>how old is a domain</B>” and “<B>how old is a website</B>”. If you need to know what was on a domain before, open its earliest snapshot on the <A href="https://web.archive.org/">Internet Archive’s Wayback Machine</A>.
         </P>
       </Section>
 

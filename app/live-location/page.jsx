@@ -171,10 +171,10 @@ export default function LiveLocationPage() {
             <li><strong className="text-fg">My live coordinates:</strong> latitude and longitude to six decimal places, with the accuracy radius in meters.</li>
             <li><strong className="text-fg">My position now by place name:</strong> the town or city and country you are in, refreshed as you travel.</li>
             <li><strong className="text-fg">Live position, speed and heading:</strong> how fast and in which direction you are going.</li>
-            <li><strong className="text-fg">Live location map with your route:</strong> a line along the path you have taken, the distance covered, and a GPX download.</li>
+            <li><strong className="text-fg">My location live map with your route:</strong> a line along the path you have taken, the distance covered, and a GPX download.</li>
           </ul>
           <p className="mt-3 text-fg-muted leading-relaxed">
-            To <strong className="text-fg">track my location now</strong>, keep this page open and in front: the pin follows you like a <strong className="text-fg">live GPS tracker</strong>, and you can watch your live location on the map until you tap Stop. For a single reading of where you are, your address and your coordinates, use 
+            To <strong className="text-fg">track my location now</strong>, keep this page open and in front: this <strong className="text-fg">GPS tracking live location</strong> view follows you like a <strong className="text-fg">live GPS tracker</strong>, so you can see <strong className="text-fg">my location right now</strong> and <strong className="text-fg">my current location live</strong> on the <strong className="text-fg">live location map</strong> until you tap Stop. It is <strong className="text-fg">live GPS tracking</strong> in the browser, a <strong className="text-fg">real-time GPS location tracker</strong> with nothing to install. For a single reading of where you are, your address and your coordinates, use 
             <Link href="/my-location" className="text-accent hover:underline">My Location</Link> instead.
           </p>
         </section>

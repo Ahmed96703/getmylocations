@@ -43,11 +43,11 @@ export default function Page() {
         <UL items={[
           <><B>Pick a length.</B> Tap a quick length such as 12, 15 or 16, or drag the slider anywhere from 6 to 64.</>,
           <><B>Choose the characters:</B> uppercase, lowercase, numbers and symbols. Turn on “Avoid look-alikes” if you will read the password aloud or type it from paper.</>,
-          <><B>Copy the suggested password,</B> or press New for five fresh suggestions.</>,
+          <><B>Copy the suggested password,</B> or press New for five fresh suggestions. Whenever you need to <B>generate password</B> ideas or want a site to <B>suggest a password</B>, this does it in one tap.</>,
           <><B>Save it in a password manager</B> straight away, so you never need to remember it.</>,
         ]} />
         <P>
-          Every <B>random password</B> comes from your browser’s cryptographically secure random number generator, the same source used for encryption keys, and each character is chosen without bias. That makes this a true <B>random password generator</B> and a <B>secure password generator</B>, not just a “random-looking” one.
+          Every <B>random password</B> comes from your browser’s cryptographically secure random number generator, the same source used for encryption keys, and each character is chosen without bias. This <B>password maker</B> (or <B>password creator</B>) is a true <B>random password generator</B> and a <B>secure password generator</B>, not just a “random-looking” one.
         </P>
       </Section>
 
@@ -72,16 +72,16 @@ export default function Page() {
           ['20–32 characters', 'Password manager vaults, Wi-Fi networks, admin and server accounts'],
         ]} />
         <P>
-          Set this <B>strong password generator</B> to <B>15 characters</B> with all four character types and you have a sensible choice for almost any account. For a <B>Wi-Fi password</B>, 20 or more characters with “Avoid look-alikes” on keeps it strong and still easy to type on a TV or games console.
+          Use it as a <B>12 character password generator</B> for everyday accounts or a <B>16 character password generator</B> for email and banking; it is a <B>password generator with symbols</B> by default. Set this <B>strong password generator</B> to <B>15 characters</B> with all four character types and you have a sensible choice for almost any account. As a <B>WiFi password generator</B>, 20 or more characters with “Avoid look-alikes” on keeps it strong and still easy to type on a TV or games console.
         </P>
       </Section>
 
       <Section title="Random password or memorable passphrase?">
         <P>
-          Switch to <B>Passphrase</B> for a <B>memorable password</B> made of random words, such as a phrase for your computer login or password manager. Five or six words beat a short random password and are much easier to type. For everything saved in a password manager, a long <B>strong password</B> of random characters is best.
+          Switch to <B>Passphrase</B> to use it as a <B>passphrase generator</B> or <B>memorable password generator</B>: a password made of random words, such as a phrase for your computer login or password manager. Five or six words beat a short random password and are much easier to type. For everything saved in a password manager, a long <B>strong password</B> of random characters is best.
         </P>
         <P>
-          Need a numeric <B>PIN</B>? Turn off everything except Numbers and set the length to 6 or more.
+          Need a <B>PIN generator</B>? Turn off everything except Numbers and set the length to 6 or more.
         </P>
       </Section>
 
@@ -91,7 +91,7 @@ export default function Page() {
           <><B>Use a password manager</B> to store a different random password for each site.</>,
           <><B>Turn on two-factor authentication</B> for email, banking and social accounts.</>,
           <><B>Change a password</B> when a service reports a breach, not on a fixed schedule.</>,
-          <><B>Don’t build passwords from personal details</B> like names, birthdays or pets. A password maker with real randomness is far harder to guess.</>,
+          <><B>Create a strong password</B> every time, and <B>don’t build passwords from personal details</B> like names, birthdays or pets. A password maker with real randomness is far harder to guess.</>,
         ]} />
         <P>The passphrase words come from the EFF long word list (7,776 words, CC BY 3.0, Electronic Frontier Foundation). To create checksums of text instead, use the <A href="/md5-generator">hash generator</A>.</P>
       </Section>
