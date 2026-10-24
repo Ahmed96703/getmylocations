@@ -16,6 +16,7 @@ export function loadBanner(slot, { key, width, height }) {
     const script = document.createElement('script');
     script.src = `https://bauval.org/22/${key}`;
     script.async = true;
+    script.dataset.cfasync = 'false'; // keep Cloudflare Rocket Loader off it, as Adsterra asks
     const done = () => window.setTimeout(resolve, GAP_MS);
     script.onload = done;
     script.onerror = done;
