@@ -8,7 +8,7 @@ Free Tool · Pure JavaScript Math
 
 # Distance Calculator
 
-How far is it from one place to another? Type two cities, addresses, or GPS coordinates in any common format and get the **distance between them** in **kilometers, miles, nautical miles, and meters**, with the initial and final bearing, the midpoint, and the route on a map. Calculated on the WGS 84 ellipsoid, the same Earth model GPS uses, entirely in your browser: no API call, no signup.
+This free **distance calculator** answers **how far is it** from one place to another. Type two cities, addresses, or **GPS coordinates** in any common format and get the **distance between them** in **kilometers, miles, nautical miles, and meters**, with the initial and final bearing, the midpoint, and the route on a map. Calculated on the WGS 84 ellipsoid, the same Earth model GPS uses, entirely in your browser: no API call, no signup.
 
 ## Calculate distance
 
@@ -64,7 +64,7 @@ Need the coordinates first? The [My Location tool](https://getmylocations.com/my
 
 ## How far is it? Distance between two places or addresses
 
-You do not need coordinates. To find the distance from one place to another, type a city, town, street address or landmark into each box, such as `Chicago` and `Denver`, and press Enter or **Calculate**. The tool finds each place on OpenStreetMap, shows the name it found under the box, and gives the distance in kilometers and miles. For the distance between two addresses, type each full street address with its city.
+You do not need coordinates. To find the **distance from** one place to another, or the **distance between two places**, type a city, town, street address or landmark into each box, such as `Chicago` and `Denver`, and press Enter or **Calculate**. The tool finds each place on OpenStreetMap, shows the name it found under the box, and gives the distance in kilometers and miles. For the **distance between two addresses**, type each full street address with its city.
 
 -   **Add the state or country** when a name is shared by several places: _Perth, Australia_ or _Perth, Scotland_; _Portland, Oregon_ or _Portland, Maine_.
 -   **A city is measured from its center,** as the map service defines it. For an exact spot, type the full address or paste its coordinates.
@@ -72,7 +72,7 @@ You do not need coordinates. To find the distance from one place to another, typ
 
 ## How far is it from one country to another?
 
-A country covers a large area, so “how far is Iran from Israel” has no single answer. The usual answer is the distance between major cities. These are calculated with the tool’s own code; type any two cities into the calculator to measure others.
+A country covers a large area, so the **Iran to Israel distance** or the **Iran to America distance** has no single answer. The usual answer is the distance between major cities. These are calculated with the tool’s own code; type any two cities into the calculator to measure others.
 
 | Countries | From | To | km | miles |
 | --- | --- | --- | --- | --- |
@@ -87,7 +87,7 @@ These are straight-line distances. A flight is usually longer, because aircraft 
 
 ## GPS distance calculator in meters
 
-For short distances, such as across a field, along a street or between two survey marks, read the **Meters** box, which shows the GPS distance to a tenth of a meter. Paste the two GPS coordinates with at least five decimal places: five decimals pin a point to about 1.1 m, six to about 11 cm.
+For short distances, such as across a field, along a street or between two survey marks, read the **Meters** box, which shows the **GPS distance** to a tenth of a meter. Paste the two GPS coordinates with at least five decimal places: five decimals pin a point to about 1.1 m, six to about 11 cm.
 
 The calculation is exact; the coordinates usually are not. A smartphone’s GPS is typically accurate to within about 4.9 m (16 ft) under open sky, according to [GPS.gov](https://www.gps.gov/systems/gps/performance/accuracy/), and worse near buildings or trees. Two readings taken standing still can be several meters apart, so for a distance of a few meters, take each reading more than once.
 
@@ -105,7 +105,7 @@ You can mix formats: a DMS point A and a UTM point B work fine. Out-of-range val
 
 ## Sanity-check the math against known distances
 
-The first time you use any distance calculator, it pays to verify it against pairs you already know. These six city pairs are calculated with the calculator’s own code when the page is built, so pasting any pair into the tool gives exactly these numbers. The last two columns show what a spherical haversine calculator would say instead, and how far off that is.
+The first time you use any **GPS coordinate distance calculator**, it pays to verify it against pairs you already know. These six city pairs are calculated with the calculator’s own code when the page is built, so pasting any pair into the tool gives exactly these numbers. The last two columns show what a spherical haversine calculator would say instead, and how far off that is.
 
 | From | To | km | mi | NM | Sphere km | Sphere error |
 | --- | --- | --- | --- | --- | --- | --- |

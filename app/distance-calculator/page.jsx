@@ -184,7 +184,7 @@ export default function DistanceCalculatorPage() {
             Distance Calculator
           </h1>
           <p className="text-lg text-fg-muted mt-4 max-w-3xl">
-            How far is it from one place to another? Type two cities, addresses, or GPS coordinates in any common format and get the <strong>distance between them</strong> in <strong>kilometers, miles, nautical miles, and meters</strong>, with the initial and final bearing, the midpoint, and the route on a map. Calculated on the WGS 84 ellipsoid, the same Earth model GPS uses, entirely in your browser: no API call, no signup.
+            This free <strong className="text-fg">distance calculator</strong> answers <strong className="text-fg">how far is it</strong> from one place to another. Type two cities, addresses, or <strong className="text-fg">GPS coordinates</strong> in any common format and get the <strong>distance between them</strong> in <strong>kilometers, miles, nautical miles, and meters</strong>, with the initial and final bearing, the midpoint, and the route on a map. Calculated on the WGS 84 ellipsoid, the same Earth model GPS uses, entirely in your browser: no API call, no signup.
           </p>
         </section>
 
@@ -217,7 +217,7 @@ export default function DistanceCalculatorPage() {
           <section className="mt-10">
             <h2 className="font-display text-2xl font-bold">How far is it? Distance between two places or addresses</h2>
             <p className="mt-3 text-fg-muted leading-relaxed">
-              You do not need coordinates. To find the distance from one place to another, type a city, town, street address or landmark into each box, such as <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">Chicago</code> and <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">Denver</code>, and press Enter or <strong className="text-fg">Calculate</strong>. The tool finds each place on OpenStreetMap, shows the name it found under the box, and gives the distance in kilometers and miles. For the distance between two addresses, type each full street address with its city.
+              You do not need coordinates. To find the <strong className="text-fg">distance from</strong> one place to another, or the <strong className="text-fg">distance between two places</strong>, type a city, town, street address or landmark into each box, such as <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">Chicago</code> and <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">Denver</code>, and press Enter or <strong className="text-fg">Calculate</strong>. The tool finds each place on OpenStreetMap, shows the name it found under the box, and gives the distance in kilometers and miles. For the <strong className="text-fg">distance between two addresses</strong>, type each full street address with its city.
             </p>
             <ul className="mt-3 space-y-1.5 text-fg-muted list-disc list-inside leading-relaxed">
               <li><strong className="text-fg">Add the state or country</strong> when a name is shared by several places: <em>Perth, Australia</em> or <em>Perth, Scotland</em>; <em>Portland, Oregon</em> or <em>Portland, Maine</em>.</li>
@@ -230,7 +230,7 @@ export default function DistanceCalculatorPage() {
           <section className="mt-10">
             <h2 className="font-display text-2xl font-bold">How far is it from one country to another?</h2>
             <p className="mt-3 text-fg-muted leading-relaxed">
-              A country covers a large area, so &ldquo;how far is Iran from Israel&rdquo; has no single answer. The usual answer is the distance between major cities. These are calculated with the tool&rsquo;s own code; type any two cities into the calculator to measure others.
+              A country covers a large area, so the <strong className="text-fg">Iran to Israel distance</strong> or the <strong className="text-fg">Iran to America distance</strong> has no single answer. The usual answer is the distance between major cities. These are calculated with the tool&rsquo;s own code; type any two cities into the calculator to measure others.
             </p>
             <div className="mt-4 overflow-x-auto rounded-xl ring-1 ring-line" tabIndex={0} role="region" aria-label="Distances between countries, city to city">
               <table className="w-full text-sm">
@@ -264,7 +264,7 @@ export default function DistanceCalculatorPage() {
           <section className="mt-10">
             <h2 className="font-display text-2xl font-bold">GPS distance calculator in meters</h2>
             <p className="mt-3 text-fg-muted leading-relaxed">
-              For short distances, such as across a field, along a street or between two survey marks, read the <strong className="text-fg">Meters</strong> box, which shows the GPS distance to a tenth of a meter. Paste the two GPS coordinates with at least five decimal places: five decimals pin a point to about 1.1 m, six to about 11 cm.
+              For short distances, such as across a field, along a street or between two survey marks, read the <strong className="text-fg">Meters</strong> box, which shows the <strong className="text-fg">GPS distance</strong> to a tenth of a meter. Paste the two GPS coordinates with at least five decimal places: five decimals pin a point to about 1.1 m, six to about 11 cm.
             </p>
             <p className="mt-3 text-fg-muted leading-relaxed">
               The calculation is exact; the coordinates usually are not. A smartphone&rsquo;s GPS is typically accurate to within about 4.9 m (16 ft) under open sky, according to{' '}
@@ -292,7 +292,7 @@ export default function DistanceCalculatorPage() {
           <section className="mt-10">
             <h2 className="font-display text-2xl font-bold">Sanity-check the math against known distances</h2>
             <p className="mt-3 text-fg-muted leading-relaxed">
-              The first time you use any distance calculator, it pays to verify it against pairs you already know. These six city pairs are calculated with the calculator&rsquo;s own code when the page is built, so pasting any pair into the tool gives exactly these numbers. The last two columns show what a spherical haversine calculator would say instead, and how far off that is.
+              The first time you use any <strong className="text-fg">GPS coordinate distance calculator</strong>, it pays to verify it against pairs you already know. These six city pairs are calculated with the calculator&rsquo;s own code when the page is built, so pasting any pair into the tool gives exactly these numbers. The last two columns show what a spherical haversine calculator would say instead, and how far off that is.
             </p>
             <div className="mt-4 overflow-x-auto rounded-xl ring-1 ring-line">
               <table className="w-full text-sm">
