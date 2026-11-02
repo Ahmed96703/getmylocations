@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { afterLoad, loadBanner, watchFill } from './adQueue.js';
+import { LEGACY_ADS, afterLoad, loadBanner, watchFill } from './adQueue.js';
 import { TOP, GAP, RIGHT, LEFT, MID, placeRail } from './adLayout.js';
 
 // Side rails in the empty margins beside the page content: a 160x300 banner
@@ -66,6 +66,10 @@ function Rail({ side, footerShown }) {
 }
 
 export default function SideAd() {
+  return LEGACY_ADS ? <SideRails /> : null;
+}
+
+function SideRails() {
   const [footerShown, setFooterShown] = useState(false);
   useEffect(() => {
     const footer = document.querySelector('footer[role="contentinfo"]');

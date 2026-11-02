@@ -4,6 +4,12 @@
 // waits for the previous script to finish (plus a short gap) before setting
 // atOptions for the next one.
 
+// Adsterra banners (NativeAd, MidAd, StickyAd, SideAd) and the AdSense loader
+// are off while Mediavine verifies the site: Mediavine will not verify a page
+// that still carries another programmatic partner's ad code. Set back to true
+// to bring them back.
+export const LEGACY_ADS = false;
+
 const GAP_MS = 300;
 let chain = Promise.resolve();
 

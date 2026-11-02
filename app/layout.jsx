@@ -5,6 +5,7 @@ import Footer from './components/Footer.jsx';
 import MidAd from './components/MidAd.jsx';
 import NativeAd from './components/NativeAd.jsx';
 import StickyAd from './components/StickyAd.jsx';
+import { LEGACY_ADS } from './components/adQueue.js';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -138,6 +139,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" dir="ltr" data-theme="light" className={`${inter.variable} ${sora.variable}`}>
       <head>
+        {/* Mediavine (Journey) ad script, first in <head> as Mediavine asks:
+            earlier execution means more competitive bids. */}
+        <script
+          type="text/javascript"
+          async
+          data-noptimize="1"
+          data-cfasync="false"
+          src="https://scripts.scriptwrapper.com/tags/a06f0ea4-130f-4d01-9141-3bd6dcc5e239.js"
+        />
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
         <script
           type="application/ld+json"
@@ -165,11 +175,11 @@ export default function RootLayout({ children }) {
       <body>
         <a href="#content" className="skip-link">Skip to content</a>
         <SiteHeader />
-        <NativeAd />
+        {LEGACY_ADS && <NativeAd />}
         <div id="content" tabIndex={-1}>{children}</div>
         <Footer />
-        <MidAd />
-        <StickyAd />
+        {LEGACY_ADS && <MidAd />}
+        {LEGACY_ADS && <StickyAd />}
       </body>
     </html>
   );
