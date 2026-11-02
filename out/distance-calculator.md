@@ -1,14 +1,14 @@
 ---
-title: "GPS Distance Calculator — Between Two Coordinates (Free)"
-description: "Measure the distance between two GPS coordinates on the WGS 84 ellipsoid in km, miles and nautical miles, with bearing, midpoint and map. Try it free."
+title: "Distance Calculator: How Far Is It Between Two Places?"
+description: "Free distance calculator: how far is it between two places, addresses or GPS coordinates? Get the distance in km, miles and meters, with bearing and a map."
 url: https://getmylocations.com/distance-calculator
 ---
 
 Free Tool · Pure JavaScript Math
 
-# GPS distance calculator — between two coordinates
+# Distance Calculator
 
-Type two cities, addresses, or coordinates in any common format and get the **distance between them** in **kilometers, miles, nautical miles, and meters**, with the initial and final bearing, the midpoint, and the route on a map. Calculated on the WGS 84 ellipsoid, the same Earth model GPS uses, entirely in your browser: no API call, no signup.
+How far is it from one place to another? Type two cities, addresses, or GPS coordinates in any common format and get the **distance between them** in **kilometers, miles, nautical miles, and meters**, with the initial and final bearing, the midpoint, and the route on a map. Calculated on the WGS 84 ellipsoid, the same Earth model GPS uses, entirely in your browser: no API call, no signup.
 
 ## Calculate distance
 
@@ -62,13 +62,34 @@ The tool above takes two points and returns the shortest distance between them o
 
 Need the coordinates first? The [My Location tool](https://getmylocations.com/my-location) gives you yours in two seconds. To see the same point in every format, use the [Coordinates Converter](https://getmylocations.com/coordinates-converter). To pick two points visually instead of typing them, drop pins on the [interactive map](https://getmylocations.com/maps) and read off the coordinates.
 
-## Distance between two cities or places
+## How far is it? Distance between two places or addresses
 
-You do not need coordinates. Type a city, town, address or landmark into each box, such as `Chicago` and `Denver`, and press Enter or **Calculate**. The tool finds each place on OpenStreetMap, shows the name it found under the box, and gives the distance in kilometers and miles.
+You do not need coordinates. To find the distance from one place to another, type a city, town, street address or landmark into each box, such as `Chicago` and `Denver`, and press Enter or **Calculate**. The tool finds each place on OpenStreetMap, shows the name it found under the box, and gives the distance in kilometers and miles. For the distance between two addresses, type each full street address with its city.
 
 -   **Add the state or country** when a name is shared by several places: _Perth, Australia_ or _Perth, Scotland_; _Portland, Oregon_ or _Portland, Maine_.
 -   **A city is measured from its center,** as the map service defines it. For an exact spot, type the full address or paste its coordinates.
 -   **The result is the straight-line distance,** sometimes called “as the crow flies”. A trip by road is longer, often much longer; for the road distance and time, use [driving directions](https://getmylocations.com/driving-directions).
+
+## How far is it from one country to another?
+
+A country covers a large area, so “how far is Iran from Israel” has no single answer. The usual answer is the distance between major cities. These are calculated with the tool’s own code; type any two cities into the calculator to measure others.
+
+| Countries | From | To | km | miles |
+| --- | --- | --- | --- | --- |
+| Iran to Israel | Tehran | Jerusalem | 1,559 | 969 |
+| Iran to Israel | Tehran | Tel Aviv | 1,585 | 985 |
+| Iran to America | Tehran | Washington, D.C. | 10,198 | 6,337 |
+| Iran to America | Tehran | New York | 9,877 | 6,138 |
+| Iran to America | Tehran | Los Angeles | 12,209 | 7,586 |
+| Pakistan to India | Islamabad | New Delhi | 688 | 427 |
+
+These are straight-line distances. A flight is usually longer, because aircraft follow air routes and avoid closed airspace, and a road trip longer still.
+
+## GPS distance calculator in meters
+
+For short distances, such as across a field, along a street or between two survey marks, read the **Meters** box, which shows the GPS distance to a tenth of a meter. Paste the two GPS coordinates with at least five decimal places: five decimals pin a point to about 1.1 m, six to about 11 cm.
+
+The calculation is exact; the coordinates usually are not. A smartphone’s GPS is typically accurate to within about 4.9 m (16 ft) under open sky, according to [GPS.gov](https://www.gps.gov/systems/gps/performance/accuracy/), and worse near buildings or trees. Two readings taken standing still can be several meters apart, so for a distance of a few meters, take each reading more than once.
 
 ## Enter latitude and longitude in any format
 
@@ -128,6 +149,14 @@ The midpoint is the place exactly halfway along the shortest route, and it is sh
 The blue line is the actual shortest route. On a flat web map it usually looks curved, bowing toward the nearer pole, because the map stretches the globe sideways. That curve is the straight line on the real planet. Routes that cross the 180° meridian, such as Tokyo to Los Angeles, are drawn across the Pacific rather than the long way round the map.
 
 ## Frequently asked questions
+
+How far is Iran from Israel?+
+
+Tehran to Jerusalem is about 1,559 km (969 miles) in a straight line, and Tehran to Tel Aviv about 1,585 km (985 miles). The two countries do not share a border: Iraq and Jordan or Syria lie between them, so the closest points of the two countries are much nearer than their big cities. For any other pair of cities, type both names into the calculator above.
+
+How far is Iran from America?+
+
+Tehran to Washington, D.C. is about 10,198 km (6,337 miles) along the shortest route over Earth's surface, Tehran to New York about 9,877 km (6,138 miles), and Tehran to Los Angeles about 12,209 km (7,586 miles). The shortest route from Tehran to the US East Coast heads northwest over Europe and the North Atlantic, which is why it looks curved on a flat map.
 
 How do I calculate the distance between two GPS coordinates?+
 

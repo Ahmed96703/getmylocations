@@ -7,33 +7,38 @@ import { measure } from './dist.js';
 import { AUTHOR } from '../components/author.js';
 
 export const metadata = {
-  title: 'GPS Distance Calculator — Between Two Coordinates (Free)',
+  title: 'Distance Calculator: How Far Is It Between Two Places?',
   description:
-    'Measure the distance between two GPS coordinates on the WGS 84 ellipsoid in km, miles and nautical miles, with bearing, midpoint and map. Try it free.',
+    'Free distance calculator: how far is it between two places, addresses or GPS coordinates? Get the distance in km, miles and meters, with bearing and a map.',
   keywords: [
     'distance calculator',
+    'distance',
+    'how far is it',
+    'how far is',
+    'distance from',
+    'distance between',
+    'distance between two places',
+    'distance between two addresses',
     'gps distance calculator',
-    'distance between coordinates',
-    'distance between two points',
-    'haversine calculator',
-    'great circle distance',
-    'distance between two locations',
-    'distance between cities',
-    'how far is it between two places',
+    'gps coordinate distance calculator',
+    'gps distance',
+    'gps distance calculator in meters',
+    'iran to israel distance',
+    'iran to america distance',
   ],
   alternates: { canonical: '/distance-calculator' },
   openGraph: {
-    title: 'GPS Distance Calculator — Between Two Coordinates (Free)',
+    title: 'Distance Calculator: How Far Is It Between Two Places?',
     description:
-      'Distance between two GPS coordinates on the WGS 84 ellipsoid in km, miles, nautical miles, and meters, with bearings, midpoint, and a great-circle map.',
+      'Distance between two places, addresses or GPS coordinates in km, miles, nautical miles and meters, with bearings, midpoint and a great-circle map.',
     url: 'https://getmylocations.com/distance-calculator',
     type: 'website',
     images: ['/og-image.png'],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'GPS Distance Calculator — Between Two Coordinates',
-    description: 'Ellipsoidal distance, bearings, and midpoint between two GPS coordinates. Free, no signup.',
+    title: 'Distance Calculator: How Far Is It Between Two Places?',
+    description: 'Distance between two places, addresses or GPS coordinates in km, miles and meters. Free, no signup.',
     images: ['/og-image.png'],
   },
 };
@@ -41,7 +46,8 @@ export const metadata = {
 const webAppSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebApplication',
-  name: 'GPS Distance Calculator',
+  name: 'Distance Calculator',
+  alternateName: ['GPS Distance Calculator', 'GPS Coordinate Distance Calculator'],
   description:
     'Free browser-based tool that calculates the distance, initial and final bearing, and midpoint between two GPS coordinates on the WGS 84 ellipsoid (Vincenty), shows the spherical haversine result for comparison, accepts place names and addresses as well as DD, DMS, DDM, and UTM input, and draws the great-circle route on a map.',
   url: 'https://getmylocations.com/distance-calculator',
@@ -62,7 +68,31 @@ const breadcrumbSchema = {
   ],
 };
 
+// Country-to-country distances, measured between major cities with the
+// tool's own code at build time.
+const COUNTRY_PAIRS = [
+  ['Iran to Israel', 'Tehran', 35.6892, 51.389, 'Jerusalem', 31.7683, 35.2137],
+  ['Iran to Israel', 'Tehran', 35.6892, 51.389, 'Tel Aviv', 32.0853, 34.7818],
+  ['Iran to America', 'Tehran', 35.6892, 51.389, 'Washington, D.C.', 38.9072, -77.0369],
+  ['Iran to America', 'Tehran', 35.6892, 51.389, 'New York', 40.7128, -74.006],
+  ['Iran to America', 'Tehran', 35.6892, 51.389, 'Los Angeles', 34.0522, -118.2437],
+  ['Pakistan to India', 'Islamabad', 33.6844, 73.0479, 'New Delhi', 28.6139, 77.209],
+];
+const countryPairs = COUNTRY_PAIRS.map(([route, an, alat, alon, bn, blat, blon]) => {
+  const km = measure(alat, alon, blat, blon).meters / 1000;
+  return { route, a: an, b: bn, km: Math.round(km).toLocaleString('en-US'), mi: Math.round(km * 0.621371192).toLocaleString('en-US') };
+});
+const pair = (b) => countryPairs.find((p) => p.b === b);
+
 const faqs = [
+  {
+    q: 'How far is Iran from Israel?',
+    a: `Tehran to Jerusalem is about ${pair('Jerusalem').km} km (${pair('Jerusalem').mi} miles) in a straight line, and Tehran to Tel Aviv about ${pair('Tel Aviv').km} km (${pair('Tel Aviv').mi} miles). The two countries do not share a border: Iraq and Jordan or Syria lie between them, so the closest points of the two countries are much nearer than their big cities. For any other pair of cities, type both names into the calculator above.`,
+  },
+  {
+    q: 'How far is Iran from America?',
+    a: `Tehran to Washington, D.C. is about ${pair('Washington, D.C.').km} km (${pair('Washington, D.C.').mi} miles) along the shortest route over Earth's surface, Tehran to New York about ${pair('New York').km} km (${pair('New York').mi} miles), and Tehran to Los Angeles about ${pair('Los Angeles').km} km (${pair('Los Angeles').mi} miles). The shortest route from Tehran to the US East Coast heads northwest over Europe and the North Atlantic, which is why it looks curved on a flat map.`,
+  },
   {
     q: 'How do I calculate the distance between two GPS coordinates?',
     a: 'Paste each point into the tool above, latitude first, in any common format: decimal degrees, DMS, DDM, or UTM. The page returns the distance in kilometers, miles, nautical miles, and meters, the initial and final bearing, the midpoint, and a map of the route. The math runs entirely in your browser; no signup, no API call. For an outdoor measurement against a known landmark, six decimals of input precision is more than enough.',
@@ -151,10 +181,10 @@ export default function DistanceCalculatorPage() {
         <section className="mb-8">
           <p className="text-[11px] uppercase tracking-[0.18em] text-accent font-semibold mb-2">Free Tool · Pure JavaScript Math</p>
           <h1 className="font-display text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.05]">
-            GPS distance calculator — <span className="text-accent">between two coordinates</span>
+            Distance Calculator
           </h1>
           <p className="text-lg text-fg-muted mt-4 max-w-3xl">
-            Type two cities, addresses, or coordinates in any common format and get the <strong>distance between them</strong> in <strong>kilometers, miles, nautical miles, and meters</strong>, with the initial and final bearing, the midpoint, and the route on a map. Calculated on the WGS 84 ellipsoid, the same Earth model GPS uses, entirely in your browser: no API call, no signup.
+            How far is it from one place to another? Type two cities, addresses, or GPS coordinates in any common format and get the <strong>distance between them</strong> in <strong>kilometers, miles, nautical miles, and meters</strong>, with the initial and final bearing, the midpoint, and the route on a map. Calculated on the WGS 84 ellipsoid, the same Earth model GPS uses, entirely in your browser: no API call, no signup.
           </p>
         </section>
 
@@ -185,9 +215,9 @@ export default function DistanceCalculatorPage() {
           </section>
 
           <section className="mt-10">
-            <h2 className="font-display text-2xl font-bold">Distance between two cities or places</h2>
+            <h2 className="font-display text-2xl font-bold">How far is it? Distance between two places or addresses</h2>
             <p className="mt-3 text-fg-muted leading-relaxed">
-              You do not need coordinates. Type a city, town, address or landmark into each box, such as <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">Chicago</code> and <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">Denver</code>, and press Enter or <strong className="text-fg">Calculate</strong>. The tool finds each place on OpenStreetMap, shows the name it found under the box, and gives the distance in kilometers and miles.
+              You do not need coordinates. To find the distance from one place to another, type a city, town, street address or landmark into each box, such as <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">Chicago</code> and <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">Denver</code>, and press Enter or <strong className="text-fg">Calculate</strong>. The tool finds each place on OpenStreetMap, shows the name it found under the box, and gives the distance in kilometers and miles. For the distance between two addresses, type each full street address with its city.
             </p>
             <ul className="mt-3 space-y-1.5 text-fg-muted list-disc list-inside leading-relaxed">
               <li><strong className="text-fg">Add the state or country</strong> when a name is shared by several places: <em>Perth, Australia</em> or <em>Perth, Scotland</em>; <em>Portland, Oregon</em> or <em>Portland, Maine</em>.</li>
@@ -195,6 +225,51 @@ export default function DistanceCalculatorPage() {
               <li><strong className="text-fg">The result is the straight-line distance,</strong> sometimes called &ldquo;as the crow flies&rdquo;. A trip by road is longer, often much longer; for the road distance and time, use{' '}
                 <Link href="/driving-directions" className="text-accent hover:underline">driving directions</Link>.</li>
             </ul>
+          </section>
+
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">How far is it from one country to another?</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              A country covers a large area, so &ldquo;how far is Iran from Israel&rdquo; has no single answer. The usual answer is the distance between major cities. These are calculated with the tool&rsquo;s own code; type any two cities into the calculator to measure others.
+            </p>
+            <div className="mt-4 overflow-x-auto rounded-xl ring-1 ring-line" tabIndex={0} role="region" aria-label="Distances between countries, city to city">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="bg-tint/5 text-left text-fg-muted">
+                    <th className="px-3 py-2 font-semibold">Countries</th>
+                    <th className="px-3 py-2 font-semibold">From</th>
+                    <th className="px-3 py-2 font-semibold">To</th>
+                    <th className="px-3 py-2 font-semibold">km</th>
+                    <th className="px-3 py-2 font-semibold">miles</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {countryPairs.map((row) => (
+                    <tr key={row.a + row.b} className="border-t border-line-subtle">
+                      <td className="px-3 py-2 text-fg">{row.route}</td>
+                      <td className="px-3 py-2 text-fg-muted">{row.a}</td>
+                      <td className="px-3 py-2 text-fg-muted">{row.b}</td>
+                      <td className="px-3 py-2 font-mono text-fg">{row.km}</td>
+                      <td className="px-3 py-2 font-mono text-fg-muted">{row.mi}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              These are straight-line distances. A flight is usually longer, because aircraft follow air routes and avoid closed airspace, and a road trip longer still.
+            </p>
+          </section>
+
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">GPS distance calculator in meters</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              For short distances, such as across a field, along a street or between two survey marks, read the <strong className="text-fg">Meters</strong> box, which shows the GPS distance to a tenth of a meter. Paste the two GPS coordinates with at least five decimal places: five decimals pin a point to about 1.1 m, six to about 11 cm.
+            </p>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              The calculation is exact; the coordinates usually are not. A smartphone&rsquo;s GPS is typically accurate to within about 4.9 m (16 ft) under open sky, according to{' '}
+              <a href="https://www.gps.gov/systems/gps/performance/accuracy/" target="_blank" rel="noopener" className="text-accent underline">GPS.gov</a>, and worse near buildings or trees. Two readings taken standing still can be several meters apart, so for a distance of a few meters, take each reading more than once.
+            </p>
           </section>
 
           <section className="mt-10">
