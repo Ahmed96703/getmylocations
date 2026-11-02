@@ -59,7 +59,7 @@ export default function Page() {
       </Section>
 
       <Section title="Domain age vs website age">
-        <Table head={['', 'Domain age', 'Website age']} rows={[
+        <Table head={['Feature', 'Domain age', 'Website age']} rows={[
           ['Counts from', 'The day the domain was registered', 'The day a site first went online'],
           ['Source', 'Official registry (RDAP / WHOIS)', 'Archive snapshots, such as the Wayback Machine'],
           ['Resets when', 'The domain expires and is registered again', 'Rarely; old snapshots stay'],

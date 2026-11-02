@@ -31,7 +31,7 @@ This **domain age checker** works as a **domain age calculator**: it counts from
 
 ## Domain age vs website age
 
-|  | Domain age | Website age |
+| Feature | Domain age | Website age |
 | --- | --- | --- |
 | Counts from | The day the domain was registered | The day a site first went online |
 | Source | Official registry (RDAP / WHOIS) | Archive snapshots, such as the Wayback Machine |
