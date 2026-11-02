@@ -114,7 +114,11 @@
    BASE
    ───────────────────────────────────────────── */
 
-html, body { height: 100%; }
+/* min-height, not height: a body fixed to the viewport height ends the
+   sticky header's containing block after one screen, so the header scrolled
+   away on long pages. */
+html { height: 100%; }
+body { min-height: 100%; }
 
 /* Bold text is where people's eyes land when they scan a page, so keywords
    set in <strong> or <b> always use the full text colour and a heavy weight,
