@@ -7,21 +7,36 @@ import SideAd from '../components/SideAd.jsx';
 import { AUTHOR } from '../components/author.js';
 
 export const metadata = {
-  title: 'Maps — Free Interactive World & Satellite Map with Search',
-  description: 'Free interactive map with search, pin-drop coordinates, and a toggle for standard, satellite and dark views. Worldwide, no signup, no API key.',
-  keywords: ['free online map', 'interactive map online', 'world map online', 'us map', 'map of the united states', 'map with coordinates', 'map with search'],
+  title: 'World Map with Countries: Free Interactive Map of the World',
+  description: 'Free interactive world map with countries and country names. Zoom into any country, city or address, switch to satellite view and read GPS coordinates.',
+  keywords: [
+    'world map',
+    'world map with countries',
+    'world map with country name',
+    'world map countries',
+    'map of the world',
+    'map of world',
+    'global map',
+    'earth map',
+    'interactive map',
+    'free interactive maps online',
+    'free online maps',
+    'free maps',
+    'satellite map',
+    'free interactive world map download',
+  ],
   alternates: { canonical: '/maps' },
   openGraph: {
-    title: 'Maps — Free Interactive World & Satellite Map with Search',
-    description: 'Free interactive map with search, pin-drop coordinates, and a toggle for standard, satellite and dark views. Worldwide, no signup, no API key.',
+    title: 'World Map with Countries: Free Interactive Map of the World',
+    description: 'Free interactive world map with countries and country names. Zoom into any country, city or address, switch to satellite view and read GPS coordinates.',
     url: 'https://getmylocations.com/maps',
     type: 'website',
     images: ['/og-image.png'],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Maps — Free Interactive World & Satellite Map',
-    description: 'Free interactive map with search, pin-drop coordinates, standard/satellite/dark views. No signup.',
+    title: 'World Map with Countries: Free Interactive Map of the World',
+    description: 'Free interactive world map with country names, search, satellite view and GPS coordinates. No signup.',
     images: ['/og-image.png'],
   },
 };
@@ -29,9 +44,10 @@ export const metadata = {
 const webAppSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebApplication',
-  name: 'Interactive Maps',
+  name: 'World Map',
+  alternateName: ['Map of the World', 'Interactive World Map'],
   description:
-    'Free interactive world map with search, pin-drop GPS coordinates, and a toggle for standard, satellite, and dark views. No signup, no API key.',
+    'Free interactive world map with countries and country names, search, pin-drop GPS coordinates, and a toggle for standard, satellite, and dark views. No signup, no API key.',
   url: 'https://getmylocations.com/maps',
   applicationCategory: 'UtilitiesApplication',
   operatingSystem: 'Web',
@@ -42,7 +58,7 @@ const webAppSchema = {
 };
 
 export default function MapsPage() {
-  const crumbs = breadcrumbSchema([{ name: 'Interactive Maps', path: '/maps' }]);
+  const crumbs = breadcrumbSchema([{ name: 'World Map', path: '/maps' }]);
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }} />
@@ -56,17 +72,17 @@ export default function MapsPage() {
           <ol className="flex items-center gap-1.5">
             <li><Link href="/" className="hover:text-accent transition">Home</Link></li>
             <li aria-hidden="true">›</li>
-            <li className="text-fg-muted">Interactive Maps</li>
+            <li className="text-fg-muted">World Map</li>
           </ol>
         </nav>
 
         <section className="mb-8">
           <p className="text-[11px] uppercase tracking-[0.18em] text-accent font-semibold mb-2">Free Tool · World Map</p>
           <h1 className="font-display text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.05]">
-            A free interactive map of <span className="text-accent">the world</span>
+            World Map
           </h1>
           <p className="text-lg text-fg-muted mt-4 max-w-3xl">
-            Search any place on Earth, switch between standard, <strong>satellite</strong>, and dark map styles, drop a pin to read off the <strong>GPS coordinates</strong>, or centre the map on your <strong>current location</strong>. Works anywhere &mdash; a street in Tokyo, a trailhead in Colorado, the whole outline of the United States. No signup, no API key.
+            A free, interactive <strong className="text-fg">world map with countries</strong> and <strong className="text-fg">country names</strong>. The <strong className="text-fg">map of the world</strong> opens on the whole globe; zoom into any country, city or street, switch between standard, <strong>satellite</strong>, and dark map styles, drop a pin to read off the <strong>GPS coordinates</strong>, or centre the map on your <strong>current location</strong>. Works anywhere &mdash; a street in Tokyo, a trailhead in Colorado, the whole outline of the United States. No signup, no API key.
           </p>
         </section>
 
@@ -75,6 +91,64 @@ export default function MapsPage() {
 
         <article>
           <section className="mt-12">
+            <h2 className="font-display text-2xl font-bold">World map with countries and country names</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              The map opens zoomed out on the entire <strong className="text-fg">global map</strong>, with country borders drawn in. It works as a <strong className="text-fg">world map with country name</strong> labels: every country large enough to fit a label shows its name. Zoom in and the labels change with the scale: first the larger cities, then states and provinces, then towns and streets. Smaller countries such as Luxembourg, Singapore or the Caribbean islands get their label after a zoom step or two. To go straight to a country, type its name in the search box.
+            </p>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Country borders and names come from OpenStreetMap, whose volunteers draw borders as they are controlled on the ground. Where a border is disputed, the map may show a dashed line, and the names are in English or the local language depending on the place.
+            </p>
+          </section>
+
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">How many countries are on the world map?</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              There are 195 <strong className="text-fg">world map countries</strong> in the usual count: the 193 member states of the 
+              <a href="https://www.un.org/en/about-us/member-states" target="_blank" rel="noopener" className="text-accent underline">United Nations</a> 
+              plus its two observer states, the Holy See (Vatican City) and Palestine. By continent:
+            </p>
+            <div className="overflow-x-auto mt-4 rounded-xl ring-1 ring-line" tabIndex={0} role="region" aria-label="Countries by continent">
+              <table className="w-full text-sm text-left">
+                <thead>
+                  <tr className="bg-tint/5 text-fg-muted">
+                    <th className="px-3 py-2 font-semibold">Continent</th>
+                    <th className="px-3 py-2 font-semibold">Countries</th>
+                    <th className="px-3 py-2 font-semibold">Largest by area</th>
+                  </tr>
+                </thead>
+                <tbody className="text-fg-muted">
+                  {[
+                    ['Africa', '54', 'Algeria'],
+                    ['Asia', '48', 'China'],
+                    ['Europe', '44', 'Russia'],
+                    ['North America', '23', 'Canada'],
+                    ['South America', '12', 'Brazil'],
+                    ['Oceania', '14', 'Australia'],
+                    ['Total', '195', 'Russia'],
+                  ].map(([c, n, big]) => (
+                    <tr key={c} className="border-t border-line-subtle">
+                      <td className="px-3 py-2 text-fg">{c}</td>
+                      <td className="px-3 py-2 font-mono">{n}</td>
+                      <td className="px-3 py-2">{big}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-3 text-sm text-fg-subtle">
+              Russia and Turkey span Europe and Asia; here Russia is counted in Europe and Turkey in Asia, as in most lists. North America includes Central America and the Caribbean. Antarctica has no countries.
+            </p>
+          </section>
+
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">Why the map of the world makes Greenland look huge</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Every flat <strong className="text-fg">map of world</strong> has to stretch the round Earth somewhere. This one, like Google Maps and most web maps, uses the Web Mercator projection, which keeps shapes right at any one spot but makes land look bigger the farther it is from the equator. On screen Greenland looks about as big as Africa; in reality Africa, at about 30 million km&sup2;, is roughly 14 times larger than Greenland&rsquo;s 2.2 million km&sup2;. Antarctica is left off the bottom because Mercator stretches the poles to infinity. To compare real sizes, use the 
+              <Link href="/radius-map" className="text-accent hover:underline">radius map</Link>: a 1,000 km circle drawn over Norway looks far wider than the same circle over Kenya.
+            </p>
+          </section>
+
+          <section className="mt-10">
             <h2 className="font-display text-2xl font-bold">Three map styles, one click apart</h2>
             <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside">
               <li><strong>Standard</strong> &mdash; OpenStreetMap rendered through CARTO&rsquo;s Voyager style. Clean labels, full road network, easy on the eye for navigation tasks.</li>
@@ -116,12 +190,33 @@ export default function MapsPage() {
 
 
           <section className="mt-10">
-            <h2 className="font-display text-2xl font-bold">Looking at a place from above?</h2>
+            <h2 className="font-display text-2xl font-bold">Earth map in satellite view</h2>
             <p className="mt-3 text-fg-muted leading-relaxed">
-              The Satellite style here is fine for a quick look. For inspecting an address, the{' '}
-              <Link href="/satellite" className="text-accent hover:underline">Satellite View tool</Link>{' '}
-              does more: it opens on imagery, overlays place names and roads on the photo, and tells you when the
-              photo under your screen was taken and how sharp it is.
+              Switch to the Satellite style for a free <strong className="text-fg">earth map</strong> made of aerial photos: a <strong className="text-fg">satellite map</strong> of the whole planet that you can zoom down to single buildings, including an <strong className="text-fg">aerial view of my location</strong> with the My location button. The imagery is Esri World Imagery, not Google&rsquo;s, but it covers the same places for free and needs no Google Earth download.
+            </p>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              For a closer look at one address, such as a <strong className="text-fg">satellite view of my house</strong>, the 
+              <Link href="/satellite" className="text-accent hover:underline">Google Maps satellite view</Link> 
+              tool does more: it opens on imagery, overlays place names and roads on the photo, and tells you when the
+              photo under your screen was taken and how sharp it is. To see a street from ground level, use 
+              <Link href="/street-view" className="text-accent hover:underline">Street View</Link>.
+            </p>
+          </section>
+
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">Free online maps with directions and your live location</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              This is one of several <strong className="text-fg">free online maps</strong> on the site, all <strong className="text-fg">free interactive maps online</strong> with no signup or app. Type your address to find your house on the map, or tap My location to show your current location. For a position that keeps updating as you move, use 
+              <Link href="/live-location" className="text-accent hover:underline">Live Location</Link>. For <strong className="text-fg">free maps</strong> with a route, turn-by-turn steps and the travel time from your location, use 
+              <Link href="/driving-directions" className="text-accent hover:underline">driving directions</Link>.
+            </p>
+          </section>
+
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">Can I download this interactive world map?</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              This <strong className="text-fg">interactive map</strong> runs in the browser and has no download button; it needs an internet connection to load each area as you zoom. For a <strong className="text-fg">free interactive world map download</strong> to use offline, the map data behind it is open: OpenStreetMap data is free to download and reuse under the 
+              <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener" className="text-accent underline">Open Database License</a>, and offline map apps such as Organic Maps and OsmAnd use it. For a picture of the world map, take a screenshot and keep the credit &ldquo;&copy; OpenStreetMap contributors, &copy; CARTO&rdquo;.
             </p>
           </section>
 

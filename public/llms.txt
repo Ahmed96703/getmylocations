@@ -19,7 +19,7 @@ Audience: anyone who needs to find their current GPS coordinates, IP location, l
 - [Address Finder](https://getmylocations.com/address-finder): Reverse-geocode GPS coordinates into a street address.
 - [Street View](https://getmylocations.com/street-view): Explore any location with embedded street-level imagery.
 - [Driving Directions](https://getmylocations.com/driving-directions): Get turn-by-turn driving directions between two addresses or coordinates.
-- [Maps](https://getmylocations.com/maps): Interactive full-screen map with multiple tile layers.
+- [World Map](https://getmylocations.com/maps): Interactive world map with countries and country names, search, satellite view and pin-drop GPS coordinates.
 - [What's My ZIP Code](https://getmylocations.com/whats-my-zip-code): The ZIP code of your current location, a typed address or ZIP, or any map point, with county, city, U.S. House and state legislative districts, and school district from the U.S. Census Bureau geocoder. Explains Census ZIP areas (ZCTAs) versus mailing ZIP codes.
 - [What's My Postcode](https://getmylocations.com/whats-my-postcode): The postcode of your current location, a typed address, or any map point. UK postcodes from the ONS Postcode Directory with council, ward and constituency; other countries from OpenStreetMap. Detects retired UK postcodes.
 - [Radius Map](https://getmylocations.com/radius-map): Draw geodesic circles of any radius (miles, km, meters, feet) around an address, ZIP code, your location or a map point; shows diameter, circumference and area, supports up to 10 circles, and shares the map as a link.
