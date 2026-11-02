@@ -14,7 +14,7 @@ Audience: anyone who needs to find their current GPS coordinates, IP location, l
 - [Live Location Tracker](https://getmylocations.com/live-location): Real-time GPS tracking with a moving map, speed, altitude, elapsed time and average speed; the walked path downloads as a GPX file built in the browser.
 - [My Location](https://getmylocations.com/my-location): One-tap current location: coordinates to copy, accuracy radius, and the nearest street address with how precise the match is.
 - [Coordinates Converter](https://getmylocations.com/coordinates-converter): Convert between decimal degrees, DMS, DDM, UTM, MGRS, Plus Codes (Open Location Code), including short codes with a town name, and geohash.
-- [IP Location Lookup](https://getmylocations.com/ip-location): Find the approximate location of any IP address using free geolocation APIs.
+- [IP Address Lookup](https://getmylocations.com/ip-location): IP address lookup and IP location finder: city, country, ISP and ASN of any IP address or domain, or your own IP location.
 - [Distance Calculator](https://getmylocations.com/distance-calculator): How far is it between two places, addresses or GPS coordinates. Geodesic distance, bearings and midpoint on the WGS 84 ellipsoid (Vincenty), with the spherical haversine result alongside.
 - [Address Finder](https://getmylocations.com/address-finder): Reverse-geocode GPS coordinates into a street address.
 - [Street View](https://getmylocations.com/street-view): Explore any location with embedded street-level imagery.

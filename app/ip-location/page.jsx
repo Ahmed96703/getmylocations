@@ -6,11 +6,20 @@ import SideAd from '../components/SideAd.jsx';
 import { AUTHOR } from '../components/author.js';
 
 export const metadata = {
-  title: 'IP Location Lookup — Find Any IP\'s City and ISP (Free)',
+  title: 'IP Address Lookup: Free IP Location Finder & IP Checker',
   description:
-    'Look up any IPv4 or IPv6 address to see its city, country, ISP and ASN on a map, plus how far your IP location is from where you actually are. Try it.',
+    'Free IP address lookup: check any IP address location, city, country, ISP and ASN on a map, or see your own IP location. Fast IP checker, no signup.',
   keywords: [
+    'ip address lookup',
     'ip location',
+    'ip address location',
+    'my ip location',
+    'what is my ip location',
+    'iplocation',
+    'ip checker',
+    'ip address checker',
+    'ip location finder',
+    'track ip address exact location',
     'ip location lookup',
     'my geolocation',
     'geolocation finder',
@@ -20,17 +29,17 @@ export const metadata = {
   ],
   alternates: { canonical: '/ip-location' },
   openGraph: {
-    title: 'IP Location Lookup — Find Any IP\'s City and ISP',
+    title: 'IP Address Lookup: Free IP Location Finder & IP Checker',
     description:
-      'Free IP location lookup — city, country, ISP, and approximate geolocation in two seconds. Plus a complete guide.',
+      'Free IP address lookup: city, country, ISP and approximate location of any IP in two seconds, plus a guide to how IP location works.',
     url: 'https://getmylocations.com/ip-location',
     type: 'website',
     images: ['/og-image.png'],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'IP Location Lookup — City, ISP, and Geolocation',
-    description: 'Look up any IP free. Plus a complete guide to how IP geolocation works.',
+    title: 'IP Address Lookup: Free IP Location Finder & IP Checker',
+    description: 'Look up any IP address free: location, ISP and ASN on a map. Plus a guide to how IP location works.',
     images: ['/og-image.png'],
   },
 };
@@ -38,7 +47,8 @@ export const metadata = {
 const webAppSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebApplication',
-  name: 'IP Location Lookup',
+  name: 'IP Address Lookup',
+  alternateName: ['IP Location Finder', 'IP Checker', 'IP Location Lookup'],
   description:
     'Free browser-based tool that looks up any IPv4 or IPv6 address or domain name and returns the database-estimated city, country, ISP, ASN, and timezone on a map. Recognises private and reserved addresses locally, and can measure how far your IP location is from your GPS position.',
   url: 'https://getmylocations.com/ip-location',
@@ -55,11 +65,15 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://getmylocations.com/' },
-    { '@type': 'ListItem', position: 2, name: 'IP Location Lookup', item: 'https://getmylocations.com/ip-location' },
+    { '@type': 'ListItem', position: 2, name: 'IP Address Lookup', item: 'https://getmylocations.com/ip-location' },
   ],
 };
 
 const faqs = [
+  {
+    q: 'Can I track an IP address to an exact location?',
+    a: 'No. An IP address lookup shows the city, region, country and internet provider an address is registered to, and the map pin is an estimate for that area, often the provider\'s hub. No public tool can turn an IP into a street address. An exact location needs the device\'s own GPS, shared with permission, and only the internet provider can link an IP to a customer, which it does for police or courts.',
+  },
   {
     q: 'How do I look up my own IP location?',
     a: 'Tap the "Lookup my IP" button on the tool above. Within a second or two the page returns your public IP (IPv4 or IPv6), the database-guessed city and country, the ISP and ASN that own the IP block, the timezone, and a map pin. No permission prompt is needed — IP geolocation uses only the address your connection already exposes. If you then tap "Measure the gap", the tool compares that estimate with your device location and shows the distance between them.',
@@ -119,15 +133,18 @@ export default function IpLocationLookup() {
         <ol className="flex items-center gap-1.5">
           <li><Link href="/" className="hover:text-accent transition">Home</Link></li>
           <li aria-hidden="true">›</li>
-          <li className="text-fg-muted">IP Location Lookup</li>
+          <li className="text-fg-muted">IP Address Lookup</li>
         </ol>
       </nav>
 
       <article>
         <p className="text-xs uppercase tracking-[0.18em] text-accent font-semibold">Complete Guide</p>
         <h1 className="font-display text-4xl font-extrabold tracking-tight mt-2 leading-[1.1]">
-          IP location lookup &mdash; what your public IP reveals, and what it doesn&apos;t
+          IP Address Lookup
         </h1>
+        <p className="mt-4 text-lg text-fg-muted leading-relaxed">
+          This free <strong className="text-fg">IP address lookup</strong> shows the <strong className="text-fg">IP location</strong> of any address: the city, country, internet provider and network on a map. Tap the button to see <strong className="text-fg">my IP location</strong>, or paste any IPv4, IPv6 address or domain name to check its <strong className="text-fg">IP address location</strong>.
+        </p>
         <p className="mt-4 text-lg text-fg-muted leading-relaxed">
           Every device on the public internet has an <strong>IP address</strong>. That address quietly leaks a
           surprising amount about you &mdash; <strong>your approximate city, your internet provider</strong>, the
@@ -168,6 +185,18 @@ export default function IpLocationLookup() {
             </tbody>
           </table>
         </div>
+
+        <hr className="my-10 border-line" />
+
+        <h2 className="font-display text-2xl font-bold">What is my IP location?</h2>
+        <p className="mt-3 text-fg-muted leading-relaxed">
+          Your IP location is where IP databases place the public address your connection uses right now. To answer <strong className="text-fg">what is my IP location</strong>, leave the box empty and tap <em>Lookup my IP</em>: the tool shows your public IP, then the city, region and country it is registered to, your internet provider and a pin on the map. No permission prompt appears, because the lookup uses only the address every website already sees.
+        </p>
+        <p className="mt-3 text-fg-muted leading-relaxed">
+          The pin usually lands on your city or your provider&rsquo;s nearest hub, not your house. If it shows another country, a VPN, proxy or work network is the usual reason. For your real position from your phone&rsquo;s GPS, use 
+          <Link href="/my-location" className="text-accent hover:underline">my location</Link> 
+          instead. Some people search for this as one word, <strong className="text-fg">iplocation</strong>; it is the same lookup.
+        </p>
 
         <hr className="my-10 border-line" />
 
@@ -303,6 +332,30 @@ export default function IpLocationLookup() {
           A gap of a few kilometres means the database knows your ISP&rsquo;s local network well. Tens of kilometres usually means you are being placed at the ISP&rsquo;s regional hub. Hundreds of kilometres or a different country almost always means a VPN, a corporate network, or a mobile carrier routing you through a distant gateway. Try it on Wi-Fi and again on mobile data to see the difference. For the full comparison of the two methods, see 
           <Link href="/gps-vs-ip-accuracy" className="text-accent hover:underline">GPS vs IP accuracy</Link>.
         </p>
+
+        <hr className="my-10 border-line" />
+
+        <h2 className="font-display text-2xl font-bold">Can you track an IP address to an exact location?</h2>
+        <p className="mt-3 text-fg-muted leading-relaxed">
+          No. People often search for a way to <strong className="text-fg">track IP address exact location</strong>, but no public tool can, this one included. An IP address is assigned to a network, not to a building, so the best any <strong className="text-fg">IP location finder</strong> can do is the city or the provider&rsquo;s local hub, as the accuracy figures above show. Sites that promise a street address from an IP are showing a map pin for the city centre or the database&rsquo;s guess.
+        </p>
+        <p className="mt-3 text-fg-muted leading-relaxed">
+          An exact location needs the device itself: its GPS, shared with permission. That is how 
+          <Link href="/live-location" className="text-accent hover:underline">live location</Link> 
+          sharing works. Only the internet provider knows which customer had an IP address at a given time, and it releases that to police or courts, not to the public.
+        </p>
+
+        <hr className="my-10 border-line" />
+
+        <h2 className="font-display text-2xl font-bold">IP checker: more ways to check an IP address</h2>
+        <p className="mt-3 text-fg-muted leading-relaxed">
+          This page is an <strong className="text-fg">IP checker</strong> for location and provider. For other questions about an IP, use the matching <strong className="text-fg">IP address checker</strong>:
+        </p>
+        <ul className="mt-3 space-y-1.5 text-fg-muted list-disc list-inside">
+          <li><Link href="/ip-whois-lookup" className="text-accent hover:underline">IP WHOIS lookup</Link>: who owns the IP range, with the registry&rsquo;s abuse contact</li>
+          <li><Link href="/ip-blacklist-checker" className="text-accent hover:underline">IP blacklist checker</Link>: whether the IP is on spam blocklists</li>
+          <li><Link href="/asn-lookup" className="text-accent hover:underline">ASN lookup</Link>: the network the IP belongs to and its other address blocks</li>
+        </ul>
 
         <hr className="my-10 border-line" />
 
