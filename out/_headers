@@ -51,13 +51,15 @@
 # No Content-Security-Policy-Report-Only: the ad network (Mediavine, since
 # 2026-11-02) loads scripts, frames and beacons from hundreds of bidder
 # domains, so an allow-list cannot be kept current and every miss logged a
-# console error (Lighthouse Best Practices 73).
+# console error (Lighthouse Best Practices 73). The enforced policy below sets
+# only rules that do not depend on which domains ads load from.
 /*
   X-Content-Type-Options: nosniff
   X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: geolocation=(self), camera=(), microphone=()
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  Content-Security-Policy: upgrade-insecure-requests; frame-ancestors 'self'; object-src 'none'; base-uri 'self'
 
 # Next.js build files have content hashes in their names, so they never change
 # in place and can be cached for a year.
