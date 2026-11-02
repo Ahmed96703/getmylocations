@@ -133,6 +133,8 @@ const siteNavSchema = {
 
 // Runs synchronously before paint to apply the user's preferred theme.
 // Avoids the flash-of-wrong-theme on first load.
+const GROW_INIT_SCRIPT = `!(function(){window.growMe||((window.growMe=function(e){window.growMe._.push(e);}),(window.growMe._=[]));var e=document.createElement("script");(e.type="text/javascript"),(e.src="https://faves.grow.me/main.js"),(e.defer=!0),e.setAttribute("data-grow-faves-site-id","U2l0ZTo0OGU5NzA1Zi04ZGRmLTRlODMtODE4Mi05MDlmMDAzZDQxM2Y=");var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t);})();`;
+
 const THEME_INIT_SCRIPT = `(function(){try{var t=localStorage.getItem('theme');if(!t){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','light');}})();`;
 
 export default function RootLayout({ children }) {
@@ -147,6 +149,11 @@ export default function RootLayout({ children }) {
           data-noptimize="1"
           data-cfasync="false"
           src="https://scripts.scriptwrapper.com/tags/a06f0ea4-130f-4d01-9141-3bd6dcc5e239.js"
+        />
+        {/* Grow (Mediavine) installation script, as given in the Grow dashboard. */}
+        <script
+          data-grow-initializer=""
+          dangerouslySetInnerHTML={{ __html: GROW_INIT_SCRIPT }}
         />
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
         <script
