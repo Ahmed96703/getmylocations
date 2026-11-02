@@ -94,7 +94,7 @@ Speeds are in megabits per second; file sizes are in megabytes, eight times larg
 
 Many people know the **Ookla speed test** (Speedtest.net). It and this test measure the same four numbers, but they use different server networks, so results can differ by a few percent:
 
-|  | This speed test | Ookla Speedtest |
+| Feature | This speed test | Ookla Speedtest |
 | --- | --- | --- |
 | Servers | Cloudflare’s nearest data center | Choice of thousands of hosted servers |
 | Measures | Download, upload, ping, jitter | Download, upload, ping, jitter |

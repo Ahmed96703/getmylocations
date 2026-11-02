@@ -101,7 +101,7 @@ export default function ToolPage({ path, name, eyebrow, h1, accent, intro, bold 
           {updated && (
             <p className="mt-3 text-sm text-fg-subtle">
               Last updated <time dateTime={updated}>{longDate(updated)}</time> by{' '}
-              <Link href="/about" className="text-accent hover:underline">Ahmed Anwar</Link>.
+              <Link href="/about" className={LINK}>Ahmed Anwar</Link>.
             </p>
           )}
         </section>
@@ -182,15 +182,21 @@ export function Code({ children }) {
   return <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">{children}</code>;
 }
 
+// Links sit inside running text, so they are underlined as well as coloured:
+// colour alone fails WCAG 1.4.1 (Lighthouse "Links rely on color").
+const LINK = 'text-accent underline decoration-accent/40 underline-offset-2 hover:decoration-accent';
+
 export function A({ href, children }) {
   return href.startsWith('/')
-    ? <Link href={href} className="text-accent hover:underline">{children}</Link>
-    : <a href={href} target="_blank" rel="noopener" className="text-accent hover:underline">{children}</a>;
+    ? <Link href={href} className={LINK}>{children}</Link>
+    : <a href={href} target="_blank" rel="noopener" className={LINK}>{children}</a>;
 }
 
+// The wrapper scrolls sideways on phones, so it takes keyboard focus and a
+// name (axe "scrollable-region-focusable").
 export function Table({ head, rows }) {
   return (
-    <div className="mt-4 overflow-x-auto rounded-xl ring-1 ring-line">
+    <div className="mt-4 overflow-x-auto rounded-xl ring-1 ring-line" tabIndex={0} role="region" aria-label={`Table: ${head.filter(Boolean).join(', ')}`}>
       <table className="w-full text-sm">
         <thead>
           <tr className="bg-tint/5 text-left text-fg-muted">

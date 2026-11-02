@@ -63,7 +63,7 @@ export function Rows({ rows }) {
 
 export function ResultTable({ head, rows, mono = [] }) {
   return (
-    <div className="mt-4 overflow-x-auto rounded-xl ring-1 ring-line">
+    <div className="mt-4 overflow-x-auto rounded-xl ring-1 ring-line" tabIndex={0} role="region" aria-label={`Results: ${head.filter(Boolean).join(', ')}`}>
       <table className="w-full text-sm">
         <thead>
           <tr className="bg-tint/5 text-left text-fg-muted">

@@ -137,7 +137,7 @@ export default function Page() {
         <P>
           Many people know the <B>Ookla speed test</B> (Speedtest.net). It and this test measure the same four numbers, but they use different server networks, so results can differ by a few percent:
         </P>
-        <Table head={['', 'This speed test', 'Ookla Speedtest']} rows={[
+        <Table head={['Feature', 'This speed test', 'Ookla Speedtest']} rows={[
           ['Servers', 'Cloudflare’s nearest data center', 'Choice of thousands of hosted servers'],
           ['Measures', 'Download, upload, ping, jitter', 'Download, upload, ping, jitter'],
           ['Needs an app', 'No, runs in the browser', 'Browser or app'],
