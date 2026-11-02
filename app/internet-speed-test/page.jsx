@@ -40,6 +40,7 @@ export default function Page() {
       faqs={faqs}
       related={['/bytes-bits-converter', '/ip-whois-lookup', '/website-server-checker', '/dns-lookup']}
       updated="2026-11-02"
+      image="/images/og-internet-speed-test.png"
       features={['Download speed in Mbps', 'Upload speed in Mbps', 'Ping (latency)', 'Jitter', 'Shows your IP, network and test location', 'Works on WiFi, DSL, cable, fiber and 5G']}
     >
       <Section title="What is an internet speed test?">
@@ -125,6 +126,7 @@ export default function Page() {
           <><B>Test at different times:</B> evenings are often slower when the whole neighborhood is online.</>,
           <><B>Turn off a VPN,</B> which adds distance and overhead, unless you want to measure the VPN.</>,
           <><B>Close other browser tabs,</B> especially video and cloud sync, before you press Start.</>,
+          <><B>Let the page finish loading</B> before you press Start, so nothing else on the page is still downloading while you test.</>,
         ]} />
         <P>
           Speeds are in megabits per second; file sizes are in megabytes, eight times larger. A 100 Mbps connection downloads about 12.5 MB each second. Convert any figure with the <A href="/bytes-bits-converter">bytes and bits converter</A>.
@@ -149,7 +151,7 @@ export default function Page() {
 
       <Section title="Speed test slow? What to try next">
         <UL items={[
-          <><B>Compare with your plan.</B> Getting 80–90% of the advertised speed on a cable is normal.</>,
+          <><B>Compare with your plan.</B> Getting 80–90% of the advertised speed on a cable is normal. Run the internet speed test two or three times before you judge.</>,
           <><B>Check for many devices</B> sharing the connection: phones updating apps, TVs streaming, cloud backups.</>,
           <><B>Update the router firmware,</B> or replace a router older than about five years.</>,
           <><B>Record a few results</B> at different times. A screenshot of repeated slow tests is the best evidence for your provider.</>,

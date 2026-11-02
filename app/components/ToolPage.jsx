@@ -47,8 +47,9 @@ function highlight(text, phrases = []) {
 // dateModified in the structured data; set it when the guide is substantially
 // revised, not for small edits.
 // `features` (optional) lists what the tool does, as featureList in the
-// structured data.
-export default function ToolPage({ path, name, eyebrow, h1, accent, intro, bold = [], appDescription, tool, faqs = [], related = [], updated, features = [], children }) {
+// structured data. `image` (optional) is the page's share image, also given
+// as the app's image and screenshot.
+export default function ToolPage({ path, name, eyebrow, h1, accent, intro, bold = [], appDescription, tool, faqs = [], related = [], updated, features = [], image, children }) {
   const crumbs = breadcrumbSchema([{ name, path }]);
   const app = {
     '@context': 'https://schema.org',
@@ -65,6 +66,7 @@ export default function ToolPage({ path, name, eyebrow, h1, accent, intro, bold 
     author: AUTHOR,
     ...(updated && { dateModified: updated }),
     ...(features.length > 0 && { featureList: features }),
+    ...(image && { image: `${SITE}${image}`, screenshot: `${SITE}${image}` }),
   };
   // Related tools: the ones the page names first, then others from the same group.
   const own = NET_TOOLS.find((t) => t.href === path);

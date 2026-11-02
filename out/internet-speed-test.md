@@ -86,6 +86,7 @@ A **DSL speed test** often shows a much lower upload than download: that is how 
 -   **Test at different times:** evenings are often slower when the whole neighborhood is online.
 -   **Turn off a VPN,** which adds distance and overhead, unless you want to measure the VPN.
 -   **Close other browser tabs,** especially video and cloud sync, before you press Start.
+-   **Let the page finish loading** before you press Start, so nothing else on the page is still downloading while you test.
 
 Speeds are in megabits per second; file sizes are in megabytes, eight times larger. A 100 Mbps connection downloads about 12.5 MB each second. Convert any figure with the [bytes and bits converter](https://getmylocations.com/bytes-bits-converter).
 
@@ -105,7 +106,7 @@ If one **speed test** shows a slow result, run another to confirm before contact
 
 ## Speed test slow? What to try next
 
--   **Compare with your plan.** Getting 80–90% of the advertised speed on a cable is normal.
+-   **Compare with your plan.** Getting 80–90% of the advertised speed on a cable is normal. Run the internet speed test two or three times before you judge.
 -   **Check for many devices** sharing the connection: phones updating apps, TVs streaming, cloud backups.
 -   **Update the router firmware,** or replace a router older than about five years.
 -   **Record a few results** at different times. A screenshot of repeated slow tests is the best evidence for your provider.
