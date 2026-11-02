@@ -24,7 +24,7 @@ const GUIDE_LINKS = [
 
 export default function Footer() {
   return (
-    <footer role="contentinfo" className="mt-16 px-3 sm:px-4 pb-4">
+    <footer role="contentinfo" className="site-footer mt-16 px-3 sm:px-4 pb-4">
       <div className="max-w-7xl mx-auto glass-strong rounded-[1.75rem] border border-line-subtle shadow-2xl p-6 sm:p-8">
         <nav aria-label="Guides" className="mb-6 pb-6 border-b border-line-subtle">
           <h3 className="text-[11px] uppercase tracking-[0.18em] text-accent font-semibold mb-3">Guides</h3>

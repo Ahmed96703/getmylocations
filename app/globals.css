@@ -416,3 +416,25 @@ main.max-w-5xl > * {
 }
 .skip-link:focus { top: 0.75rem; }
 #content:focus { outline: none; }
+
+/* Mediavine sidebar (#journey-sidebar, filled by the Mediavine script). It sits
+   in the empty right margin beside <main>, from the top of the page content to
+   the footer, so Mediavine's sticky 300px ad can scroll with the text. It never
+   moves the page layout (absolutely positioned) and shows only on pages with an
+   <article> (tool guides, blog posts) when the margin fits 300px + 16px each
+   side: a 1432px window for max-w-3xl pages, 1688px for max-w-5xl pages. */
+.journey-wrap { position: relative; }
+#journey-sidebar {
+  display: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 300px;
+  left: calc(50% + var(--half) + (50% - var(--half) - 300px) / 2);
+}
+@media (min-width: 1432px) {
+  .journey-wrap:has(main.max-w-3xl article) > #journey-sidebar { display: block; --half: 24rem; }
+}
+@media (min-width: 1688px) {
+  .journey-wrap:has(main.max-w-5xl article) > #journey-sidebar { display: block; --half: 32rem; }
+}

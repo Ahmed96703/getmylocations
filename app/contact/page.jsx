@@ -55,7 +55,7 @@ export default function Contact() {
       </div>
 
       <section className="mt-8 grid gap-4 sm:grid-cols-2">
-        <article className="glass rounded-2xl p-5 ring-1 ring-line">
+        <div className="glass rounded-2xl p-5 ring-1 ring-line">
           <p className="text-[11px] uppercase tracking-[0.18em] text-accent font-semibold">Corrections</p>
           <h2 className="font-display text-xl font-bold mt-1">What to include</h2>
           <p className="mt-2 text-sm text-fg-muted leading-relaxed">
@@ -63,15 +63,15 @@ export default function Contact() {
             you used, and what the correct version should say. That is usually enough
             to patch the issue without a long back-and-forth.
           </p>
-        </article>
-        <article className="glass rounded-2xl p-5 ring-1 ring-line">
+        </div>
+        <div className="glass rounded-2xl p-5 ring-1 ring-line">
           <p className="text-[11px] uppercase tracking-[0.18em] text-accent font-semibold">Partnerships</p>
           <h2 className="font-display text-xl font-bold mt-1">What we can discuss</h2>
           <p className="mt-2 text-sm text-fg-muted leading-relaxed">
             Tool integrations, content collaborations, and technical questions are all
             welcome. Please include enough detail that we can answer without guessing.
           </p>
-        </article>
+        </div>
       </section>
 
       <h2 className="font-display text-2xl font-bold mt-10">Frequently asked</h2>

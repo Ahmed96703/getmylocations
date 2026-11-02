@@ -99,80 +99,82 @@ export default function PostcodePage() {
         <Tool />
         <SideAd />
 
-        <section className="mt-12">
-          <h2 className="font-display text-2xl font-bold">How the tool finds your postcode</h2>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            Your browser asks your device for its position, which on a phone usually comes from GPS and Wi-Fi and is accurate to a few meters outdoors. In Great Britain and Northern Ireland, the tool then asks <a href="https://postcodes.io" target="_blank" rel="noopener" className="text-accent hover:underline">postcodes.io</a>, a free service built on the Office for National Statistics Postcode Directory, for the postcode whose centre point is nearest to you. Every UK postcode has one representative point placed among its addresses. At the same time, OpenStreetMap&rsquo;s Nominatim service returns the nearest street address, so you can check the result against your own front door.
-          </p>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            Outside the UK there is no equivalent open, official directory for most countries, so the postcode comes from the address OpenStreetMap holds for that spot. Either way, only the coordinates are sent to those two services for the lookup; nothing is stored by this site. See the{' '}
-            <Link href="/privacy-policy" className="text-accent hover:underline">Privacy Policy</Link> for details.
-          </p>
-        </section>
+        <article>
+          <section className="mt-12">
+            <h2 className="font-display text-2xl font-bold">How the tool finds your postcode</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Your browser asks your device for its position, which on a phone usually comes from GPS and Wi-Fi and is accurate to a few meters outdoors. In Great Britain and Northern Ireland, the tool then asks <a href="https://postcodes.io" target="_blank" rel="noopener" className="text-accent hover:underline">postcodes.io</a>, a free service built on the Office for National Statistics Postcode Directory, for the postcode whose centre point is nearest to you. Every UK postcode has one representative point placed among its addresses. At the same time, OpenStreetMap&rsquo;s Nominatim service returns the nearest street address, so you can check the result against your own front door.
+            </p>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Outside the UK there is no equivalent open, official directory for most countries, so the postcode comes from the address OpenStreetMap holds for that spot. Either way, only the coordinates are sent to those two services for the lookup; nothing is stored by this site. See the{' '}
+              <Link href="/privacy-policy" className="text-accent hover:underline">Privacy Policy</Link> for details.
+            </p>
+          </section>
 
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">How a UK postcode is built</h2>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            Royal Mail&rsquo;s address file holds around 1.8 million postcodes. Each one covers about 15 addresses on average, and an ordinary postcode never covers more than 100 delivery points. Every postcode narrows down in four steps, which the tool shows under each result. Taking <code className={code}>SW1A 2AA</code>:
-          </p>
-          <div className="mt-4 overflow-x-auto rounded-xl ring-1 ring-line">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="bg-tint/5 text-left text-fg-muted">
-                  <th className="px-3 py-2 font-semibold">Part</th>
-                  <th className="px-3 py-2 font-semibold">Example</th>
-                  <th className="px-3 py-2 font-semibold">What it identifies</th>
-                </tr>
-              </thead>
-              <tbody className="text-fg-muted">
-                {[
-                  ['Area', 'SW', 'One or two letters for a large region, usually named after a main town or, in London, a compass direction (South Western).'],
-                  ['District', 'SW1A', 'The whole first half, called the outward code, which takes mail to the right delivery office.'],
-                  ['Sector', 'SW1A 2', 'The district plus the first digit of the second half: a few streets or a neighbourhood.'],
-                  ['Unit', 'SW1A 2AA', 'The full postcode: one side of a street, a block of flats, or a single large organisation.'],
-                ].map(([p, e, d]) => (
-                  <tr key={p} className="border-t border-line-subtle">
-                    <td className="px-3 py-2 text-fg">{p}</td>
-                    <td className="px-3 py-2 font-mono text-xs text-fg">{e}</td>
-                    <td className="px-3 py-2">{d}</td>
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">How a UK postcode is built</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Royal Mail&rsquo;s address file holds around 1.8 million postcodes. Each one covers about 15 addresses on average, and an ordinary postcode never covers more than 100 delivery points. Every postcode narrows down in four steps, which the tool shows under each result. Taking <code className={code}>SW1A 2AA</code>:
+            </p>
+            <div className="mt-4 overflow-x-auto rounded-xl ring-1 ring-line">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="bg-tint/5 text-left text-fg-muted">
+                    <th className="px-3 py-2 font-semibold">Part</th>
+                    <th className="px-3 py-2 font-semibold">Example</th>
+                    <th className="px-3 py-2 font-semibold">What it identifies</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            The second half, the inward code, is always a digit followed by two letters, which is why a missing space rarely matters but a swapped letter does. Organisations that receive a lot of post can have a postcode of their own.
-          </p>
-        </section>
+                </thead>
+                <tbody className="text-fg-muted">
+                  {[
+                    ['Area', 'SW', 'One or two letters for a large region, usually named after a main town or, in London, a compass direction (South Western).'],
+                    ['District', 'SW1A', 'The whole first half, called the outward code, which takes mail to the right delivery office.'],
+                    ['Sector', 'SW1A 2', 'The district plus the first digit of the second half: a few streets or a neighbourhood.'],
+                    ['Unit', 'SW1A 2AA', 'The full postcode: one side of a street, a block of flats, or a single large organisation.'],
+                  ].map(([p, e, d]) => (
+                    <tr key={p} className="border-t border-line-subtle">
+                      <td className="px-3 py-2 text-fg">{p}</td>
+                      <td className="px-3 py-2 font-mono text-xs text-fg">{e}</td>
+                      <td className="px-3 py-2">{d}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              The second half, the inward code, is always a digit followed by two letters, which is why a missing space rarely matters but a swapped letter does. Organisations that receive a lot of post can have a postcode of their own.
+            </p>
+          </section>
 
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">Why the postcode shown might not be yours</h2>
-          <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside leading-relaxed">
-            <li><strong className="text-fg">You are near a postcode boundary.</strong> Postcode areas follow streets and buildings, not circles, so the nearest centre point can belong to the house opposite or the next road.</li>
-            <li><strong className="text-fg">Your location fix is rough.</strong> Indoors, or on a laptop without GPS, your position can be 50 m or more out. The tool warns you when your device reports low accuracy.</li>
-            <li><strong className="text-fg">You live in a large building or estate.</strong> A block of flats, a hospital, or a university campus can have several postcodes, one per entrance or department.</li>
-            <li><strong className="text-fg">The property is new.</strong> Brand-new homes have no postcode until the council has named the street and Royal Mail has allocated one.</li>
-          </ul>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            The fix is the same each time: click your exact building on the map, or type your street address, and the tool looks up the postcode for that spot instead.
-          </p>
-        </section>
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">Why the postcode shown might not be yours</h2>
+            <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside leading-relaxed">
+              <li><strong className="text-fg">You are near a postcode boundary.</strong> Postcode areas follow streets and buildings, not circles, so the nearest centre point can belong to the house opposite or the next road.</li>
+              <li><strong className="text-fg">Your location fix is rough.</strong> Indoors, or on a laptop without GPS, your position can be 50 m or more out. The tool warns you when your device reports low accuracy.</li>
+              <li><strong className="text-fg">You live in a large building or estate.</strong> A block of flats, a hospital, or a university campus can have several postcodes, one per entrance or department.</li>
+              <li><strong className="text-fg">The property is new.</strong> Brand-new homes have no postcode until the council has named the street and Royal Mail has allocated one.</li>
+            </ul>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              The fix is the same each time: click your exact building on the map, or type your street address, and the tool looks up the postcode for that spot instead.
+            </p>
+          </section>
 
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">Check a postcode, including retired ones</h2>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            Type a full UK postcode, with or without the space, and the tool shows where it is and which council, ward, and constituency it belongs to. If a form has rejected a postcode you are sure is right, it may have been retired: Royal Mail withdraws postcodes when streets are rebuilt or renumbered. For example, <code className={code}>E1W 1UU</code> in east London was retired in 2015. The tool recognises retired postcodes and tells you the year, so you know to look up the one in use now.
-          </p>
-        </section>
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">Check a postcode, including retired ones</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Type a full UK postcode, with or without the space, and the tool shows where it is and which council, ward, and constituency it belongs to. If a form has rejected a postcode you are sure is right, it may have been retired: Royal Mail withdraws postcodes when streets are rebuilt or renumbered. For example, <code className={code}>E1W 1UU</code> in east London was retired in 2015. The tool recognises retired postcodes and tells you the year, so you know to look up the one in use now.
+            </p>
+          </section>
 
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">Postcodes elsewhere in Europe</h2>
-          <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside leading-relaxed">
-            <li><strong className="text-fg">Germany, France, Spain, Italy:</strong> five digits, for example <code className={code}>10117</code> for central Berlin or <code className={code}>75007</code> for the area around the Eiffel Tower. One code usually covers a whole district of a city or several villages, so it says much less about an exact address than a UK postcode does.</li>
-            <li><strong className="text-fg">Netherlands:</strong> four digits and two letters (Dam Square in Amsterdam is <code className={code}>1012 NP</code>), precise to a street or part of one, much like a UK postcode.</li>
-            <li><strong className="text-fg">Ireland:</strong> Eircodes, introduced in 2015, are unique to every address. They are not in open data, so for Ireland the tool shows the address and links to the official Eircode finder.</li>
-          </ul>
-        </section>
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">Postcodes elsewhere in Europe</h2>
+            <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside leading-relaxed">
+              <li><strong className="text-fg">Germany, France, Spain, Italy:</strong> five digits, for example <code className={code}>10117</code> for central Berlin or <code className={code}>75007</code> for the area around the Eiffel Tower. One code usually covers a whole district of a city or several villages, so it says much less about an exact address than a UK postcode does.</li>
+              <li><strong className="text-fg">Netherlands:</strong> four digits and two letters (Dam Square in Amsterdam is <code className={code}>1012 NP</code>), precise to a street or part of one, much like a UK postcode.</li>
+              <li><strong className="text-fg">Ireland:</strong> Eircodes, introduced in 2015, are unique to every address. They are not in open data, so for Ireland the tool shows the address and links to the official Eircode finder.</li>
+            </ul>
+          </section>
+        </article>
 
         <section className="mt-10">
           <h2 className="font-display text-2xl font-bold">Frequently asked questions</h2>

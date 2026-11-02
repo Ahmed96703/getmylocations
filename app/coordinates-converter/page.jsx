@@ -229,399 +229,401 @@ export default function CoordinatesConverterPage() {
         <Tool />
         <SideAd />
 
-        <section className="mt-12">
-          <h2 className="font-display text-2xl font-bold">What are DD and DDM coordinates?</h2>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            <strong className="text-fg">DD (decimal degrees)</strong> writes latitude and longitude as plain decimal numbers, with a minus sign for south and west: the Eiffel Tower is at <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">48.8584, 2.2945</code>. It is the format Google Maps, phones and most websites use when you copy a location.
-          </p>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            <strong className="text-fg">DDM (degrees and decimal minutes)</strong> keeps the whole degrees and turns the rest into minutes, where one degree is 60 minutes: the same point is <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">48° 51.504′ N, 2° 17.670′ E</code>. Marine GPS units, chart plotters and geocaching sites usually show DDM.
-          </p>
-          <h3 className="font-display text-lg font-semibold mt-6 text-fg">Convert decimal degrees to DDM</h3>
-          <ol className="mt-2 space-y-1.5 text-fg-muted list-decimal list-inside leading-relaxed">
-            <li>Keep the whole number as degrees: 48.8584 → <strong className="text-fg">48°</strong>.</li>
-            <li>Multiply the decimal part by 60 for minutes: 0.8584 × 60 = <strong className="text-fg">51.504′</strong>.</li>
-            <li>Add N or S for latitude (E or W for longitude) from the sign: positive is N or E, negative is S or W.</li>
-          </ol>
-          <h3 className="font-display text-lg font-semibold mt-6 text-fg">Convert DDM to decimal degrees</h3>
-          <p className="mt-2 text-fg-muted leading-relaxed">
-            Divide the minutes by 60 and add them to the degrees: 48° 51.504′ → 48 + 51.504 ÷ 60 = <strong className="text-fg">48.8584</strong>. Make the result negative for S or W. To do either conversion instantly, type into the DD or DDM row of the tool above.
-          </p>
-        </section>
-
-        <section className="mt-12">
-          <h2 className="font-display text-2xl font-bold">Paste a GPS coordinate in any format</h2>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            The <em>Paste any coordinate</em> box at the top of the tool works out which format you have and converts it. It understands:
-          </p>
-          <ul className="mt-3 space-y-1.5 text-fg-muted list-disc list-inside leading-relaxed">
-            <li><strong className="text-fg">Decimal degrees:</strong> <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">48.8584, 2.2945</code> or <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">40.7128° N, 74.0060° W</code></li>
-            <li><strong className="text-fg">DMS:</strong> <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">48°51'30.3"N 2°17'40.2"E</code>, typographic marks (′ ″) included</li>
-            <li><strong className="text-fg">DDM:</strong> <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">48°51.505'N 2°17.670'E</code> or <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">N48 51.505 E2 17.670</code></li>
-            <li><strong className="text-fg">Bare numbers:</strong> two, four, or six numbers are read as DD, DDM, or DMS</li>
-            <li><strong className="text-fg">UTM:</strong> <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">31U 448252 5411957</code></li>
-            <li><strong className="text-fg">Plus Codes:</strong> <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">8FW4V75V+9R</code>, or a short code with a town, such as <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">V75V+9R Paris</code></li>
-            <li><strong className="text-fg">Geohash:</strong> <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">u09tunquc</code> (five characters or more) or a <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">geohash.org/u09tunquc</code> link</li>
-            <li><strong className="text-fg">Map links:</strong> a Google Maps URL containing <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">@lat,lon</code> or <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">?q=lat,lon</code></li>
-          </ul>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            If the longitude is written first with its E or W letter, the tool swaps the pair for you. It tells you which format it detected, so you can confirm it read your input the way you meant.
-          </p>
-        </section>
-
-        <section className="mt-12">
-          <h2 className="font-display text-2xl font-bold">When you actually need to convert coordinates</h2>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            For everyday use, your phone hands you decimal degrees and every app accepts them. The conversion problem only shows up when two systems disagree on format, and it shows up more often than you would think:
-          </p>
-          <ul className="mt-4 space-y-2 text-fg-muted leading-relaxed">
-            <li>
-              <strong>Aviation flight plans</strong> usually require degrees-minutes-seconds. A modern smartphone reading needs translating before it can go into the flight planner.
-            </li>
-            <li>
-              <strong>Marine GPS units</strong> typically display degrees-decimal-minutes. Cross-referencing a chart coordinate against your modern phone takes a quick DD ↔ DDM conversion.
-            </li>
-            <li>
-              <strong>Land-survey documents and older maps</strong> almost always use DMS. Reading a deed or a topographic chart from before about 1995 and matching it to a modern satellite view is a DMS-to-DD job.
-            </li>
-            <li>
-              <strong>Hiking and search-and-rescue work</strong> often uses UTM because grid distances map directly to meters on the ground. You can pace UTM offsets in a way you cannot pace decimal-degree differences.
-            </li>
-            <li>
-              <strong>GIS pipelines and GeoJSON</strong> use (longitude, latitude) order, while Google Maps and consumer apps use (latitude, longitude). The tool above normalises the order; using the wrong order is the most common silent error in coordinate work.
-            </li>
-            <li>
-              <strong>Emergency dispatch.</strong> Most dispatchers can take decimal degrees or DMS. Knowing which one you are reading off your phone matters more than the conversion itself — see our{' '}
-              <Link href="/blog/gps-coordinates-emergencies-aml-guide" className="text-accent hover:underline">emergency GPS guide</Link>{' '}
-              for the four-line script to say on the call.
-            </li>
-          </ul>
-        </section>
-
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">Worked examples: five landmarks in every format</h2>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            The same five points in every format the tool produces. These values are generated by the converter&rsquo;s own code when the page is built, so they always match what the tool shows. The last column is a round-trip check: convert the decimal degrees to DMS, round the seconds to three decimals, convert back, and measure how far the result moved.
-          </p>
-          <div className="mt-4 overflow-x-auto rounded-xl ring-1 ring-line">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="bg-tint/5 text-left text-fg-muted">
-                  <th className="px-3 py-2 font-semibold">Landmark</th>
-                  <th className="px-3 py-2 font-semibold">DD</th>
-                  <th className="px-3 py-2 font-semibold">DMS</th>
-                  <th className="px-3 py-2 font-semibold">DDM</th>
-                  <th className="px-3 py-2 font-semibold">UTM</th>
-                  <th className="px-3 py-2 font-semibold">MGRS</th>
-                  <th className="px-3 py-2 font-semibold">Round trip</th>
-                </tr>
-              </thead>
-              <tbody>
-                {landmarks.map((l) => (
-                  <tr key={l.name} className="border-t border-line-subtle">
-                    <td className="px-3 py-2 text-fg-muted">{l.name}</td>
-                    <td className="px-3 py-2 font-mono text-xs text-fg">{l.dd}</td>
-                    <td className="px-3 py-2 font-mono text-xs text-fg-muted">{l.dms}</td>
-                    <td className="px-3 py-2 font-mono text-xs text-fg-muted">{l.ddm}</td>
-                    <td className="px-3 py-2 font-mono text-xs text-fg-muted">{l.utm}</td>
-                    <td className="px-3 py-2 font-mono text-xs text-fg-muted">{l.mgrs}</td>
-                    <td className="px-3 py-2 font-mono text-xs text-fg-muted">{l.err} cm</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            Two things worth noticing. Ny-Ålesund sits at 11.9° E, which would normally be UTM zone 32, but it is reported in zone 33X because of the Svalbard exception described below. And three-decimal seconds hold a position to within about 1.5 cm, far finer than any phone GPS can measure.
-          </p>
-        </section>
-
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">How the tool handles each format</h2>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            Every format reads from and writes to one shared position. Decimal-degree fields convert as you type. DMS and DDM fields convert when you leave the field or change the hemisphere letter, so a half-typed number does not jump the map around. UTM converts when you press <em>Convert UTM</em>. MGRS is calculated from the UTM result and shown as output only. Whatever you change, every other format, the copy buttons, and the map pin update together.
-          </p>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            Need a coordinate to convert? The{' '}
-            <Link href="/my-location" className="text-accent hover:underline">My Location tool</Link>{' '}
-            reads your GPS and gives you a copyable DD pair in two seconds. For a deeper read on what each format represents, the{' '}
-            <Link href="/blog/latitude-vs-longitude-explained" className="text-accent hover:underline">latitude vs longitude post</Link>{' '}
-            covers signs, order, and the memory tricks.
-          </p>
-        </section>
-
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">How the UTM zone is calculated</h2>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            UTM divides the world into 60 vertical zones, each six degrees of longitude wide. Zone 1 starts at the international date line and runs east. Your zone number is found from your longitude with the formula{' '}
-            <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm mx-1">floor((lon + 180) / 6) + 1</code>.
-            The letter that follows the zone number, like the U in &ldquo;31U&rdquo;, is the latitude band: 20 bands lettered C to X (skipping I and O), each eight degrees tall, except band X, which runs 12 degrees from 72°N to 84°N.
-          </p>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            Two regions break the simple formula, and the tool applies both:
-          </p>
-          <ul className="mt-3 space-y-1.5 text-fg-muted list-disc list-inside leading-relaxed">
-            <li><strong className="text-fg">South-west Norway (56°N to 64°N):</strong> zone 32V is widened west to 3°E so the coast is not split across two zones.</li>
-            <li><strong className="text-fg">Svalbard (72°N to 84°N):</strong> zones 32X, 34X, and 36X do not exist. Instead 31X covers 0° to 9°E, 33X covers 9°E to 21°E, 35X covers 21°E to 33°E, and 37X covers 33°E to 42°E.</li>
-          </ul>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            UTM itself stops at 84°N and 80°S; the polar caps use a different grid called UPS, so the tool shows no UTM or MGRS value there.
-          </p>
-        </section>
-
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">Convert UTM to latitude and longitude</h2>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            UTM to lat long is the conversion people search for most, usually with a grid reference from a topographic map or a survey file. To do it in the tool:
-          </p>
-          <ol className="mt-3 space-y-1.5 text-fg-muted list-decimal list-inside leading-relaxed">
-            <li>Enter the <strong className="text-fg">zone number</strong> (1 to 60) and the <strong className="text-fg">latitude band letter</strong>. The band matters: letters N to X mean the northern hemisphere, C to M the southern.</li>
-            <li>Enter the <strong className="text-fg">easting</strong> in meters. It is always between about 160,000 and 840,000, because every zone is centred on a false easting of 500,000 m.</li>
-            <li>Enter the <strong className="text-fg">northing</strong> in meters. In the southern hemisphere it includes a false northing of 10,000,000 m, which is why the band letter is needed to read it correctly.</li>
-            <li>Press <em>Convert UTM</em>. Decimal degrees, DMS, DDM, MGRS, and the map all update. You can also paste the whole reference, such as <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">56H 334900 6252290</code>, into the paste box.</li>
-          </ol>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            The tool uses the standard transverse Mercator equations on the WGS 84 ellipsoid. In our tests against the open-source PROJ library, its results agreed to within 2 cm everywhere UTM is defined, including the Norway and Svalbard zones.
-          </p>
-        </section>
-
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">MGRS: UTM with a grid square</h2>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            The Military Grid Reference System, used by NATO forces and many search-and-rescue teams, is UTM with a shortcut. After the zone and band, two letters name a 100 km grid square, and the easting and northing are given only within that square. <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">31U DQ 48252 11957</code> means zone 31U, square DQ, then 48,252 m east and 11,957 m north inside the square.
-          </p>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            Five digits each give 1 m precision; you can drop digits from the end of both numbers for coarser references (four digits is 10 m, three is 100 m). MGRS digits are truncated, never rounded, so a point at 334,899.6 m east appears as 334900 in the UTM row but 34899 in MGRS. Both are correct.
-          </p>
-        </section>
-
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">Plus Codes: an address for places without one</h2>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            A Plus Code (the official name is Open Location Code) is a short code for a location, built from the same latitude and longitude as everything else on this page. Google published it as an open, free system in 2014, and Google Maps shows one for any point you drop a pin on. It is useful where street addresses are missing or unreliable: rural roads, new housing, informal settlements, or a gate in a long fence.
-          </p>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            The code splits the world into a grid and names a cell inside it. Characters are read in pairs, latitude first then longitude, and each pair narrows the cell twenty times in each direction: 20° → 1° → 0.05° → 0.0025° → 0.000125°. The <strong className="text-fg">+</strong> always sits after the eighth character. Only 20 characters are used (<code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">23456789CFGHJMPQRVWX</code>), chosen so that no vowels can spell words and easily confused shapes like 0/O and 1/I never appear.
-          </p>
-          <ul className="mt-3 space-y-1.5 text-fg-muted list-disc list-inside leading-relaxed">
-            <li><strong className="text-fg">10 digits</strong> (e.g. <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">8FW4V75V+9R</code>): a cell about {cell10.h.toFixed(1)} × {cell10.w.toFixed(1)} m at the equator, enough for a building entrance.</li>
-            <li><strong className="text-fg">11 digits</strong> (e.g. <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">8FW4V75V+9R6</code>): the last character splits that cell into a 4 × 5 grid, about {cell11.h.toFixed(1)} × {cell11.w.toFixed(1)} m.</li>
-            <li><strong className="text-fg">Short codes</strong> (e.g. <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">V75V+9R Paris</code>): the first four characters are dropped and replaced by a nearby town. The town must be within about half a degree (roughly 50 km) of the place, which is why Google Maps prints short codes with a locality name.</li>
-          </ul>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            East–west cells shrink toward the poles, as longitude lines converge, so the sizes above are the largest a cell gets. A Plus Code describes an area, not a point; the converter places the pin at the centre of the cell, which is what Google Maps does too.
-          </p>
-          <div className="mt-4 overflow-x-auto rounded-xl ring-1 ring-line">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="bg-tint/5 text-left text-fg-muted">
-                  <th className="px-3 py-2 font-semibold">Landmark</th>
-                  <th className="px-3 py-2 font-semibold">DD</th>
-                  <th className="px-3 py-2 font-semibold">Plus Code (10)</th>
-                  <th className="px-3 py-2 font-semibold">Plus Code (11)</th>
-                  <th className="px-3 py-2 font-semibold">Short form</th>
-                </tr>
-              </thead>
-              <tbody>
-                {landmarks.map((l) => (
-                  <tr key={l.name} className="border-t border-line-subtle">
-                    <td className="px-3 py-2 text-fg-muted">{l.name}</td>
-                    <td className="px-3 py-2 font-mono text-xs text-fg-muted">{l.dd}</td>
-                    <td className="px-3 py-2 font-mono text-xs text-fg">{l.olc10}</td>
-                    <td className="px-3 py-2 font-mono text-xs text-fg-muted">{l.olc11}</td>
-                    <td className="px-3 py-2 font-mono text-xs text-fg-muted">{l.olc10.slice(4)} + town</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            To convert a Plus Code, type it into row ⑥ of the tool or paste it into the box at the top. A full code needs nothing else. A short code can carry a town after it; the town is looked up on OpenStreetMap&rsquo;s Nominatim service when you press convert, and only the town name is sent. Typed into row ⑥ without a town, a short code is placed near the converter&rsquo;s current position. The encoder and decoder follow Google&rsquo;s{' '}
-            <a href="https://github.com/google/open-location-code" className="text-accent hover:underline" rel="noopener" target="_blank">open-source specification</a>; we checked them against Google&rsquo;s reference JavaScript library on 20,000 random points, and every code, decoded cell, and recovered short code matched.
-          </p>
-        </section>
-
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">Geohash: coordinates as a sortable string</h2>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            A geohash turns a latitude and longitude into a short string such as <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">u09tunquc</code>. Gustavo Niemeyer released it into the public domain in 2008, and it is now built into databases and search engines (Elasticsearch, Redis, MongoDB, and PostGIS among them), because places that are close together usually share the start of their geohash. That makes &ldquo;find everything near here&rdquo; a simple prefix search.
-          </p>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            The encoding halves the map again and again. The first bit says whether the point is in the east or west half of the world, the second whether it is in the north or south half, and so on, alternating longitude and latitude. Every five bits become one character from a 32-character alphabet (<code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">0123456789bcdefghjkmnpqrstuvwxyz</code>, without a, i, l, and o). So each extra character makes the cell 32 times smaller, alternately four by eight or eight by four.
-          </p>
-          <div className="mt-4 overflow-x-auto rounded-xl ring-1 ring-line">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="bg-tint/5 text-left text-fg-muted">
-                  <th className="px-3 py-2 font-semibold">Characters</th>
-                  <th className="px-3 py-2 font-semibold">Cell height (north–south)</th>
-                  <th className="px-3 py-2 font-semibold">Cell width at the equator</th>
-                </tr>
-              </thead>
-              <tbody>
-                {geohashSizes.map((g) => (
-                  <tr key={g.n} className="border-t border-line-subtle">
-                    <td className="px-3 py-2 font-mono text-xs text-fg">{g.n}</td>
-                    <td className="px-3 py-2 font-mono text-xs text-fg-muted">{g.h}</td>
-                    <td className="px-3 py-2 font-mono text-xs text-fg-muted">{g.w}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            Cells get narrower east–west toward the poles, so the widths above are the largest they get. Nine characters (about 5 m) suit most uses; the tool shows the size of the cell at the current latitude next to the length selector. The same five landmarks as nine-character geohashes:
-          </p>
-          <ul className="mt-3 space-y-1.5 text-fg-muted list-disc list-inside leading-relaxed">
-            {landmarks.map((l) => (
-              <li key={l.name}>{l.name}: <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">{l.gh}</code></li>
-            ))}
-          </ul>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            One catch: the shared-prefix rule only works one way. Two points with a long common prefix are always close, but two close points can have completely different geohashes when a cell boundary runs between them; either side of the Greenwich meridian is the extreme case, where the first character already differs. Proximity searches therefore check the neighbouring cells as well. As with Plus Codes, a geohash names a cell, and the converter puts the pin at its centre. We checked the encoder and decoder against the widely used ngeohash library on 20,000 random points, with every hash and cell edge matching.
-          </p>
-        </section>
-
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">Datum: every format here assumes WGS 84</h2>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            A coordinate is only meaningful together with its datum, the model of the Earth&rsquo;s shape it is measured against. Every result on this page uses WGS 84 (also listed as EPSG:4326), the datum GPS satellites broadcast and that Google Maps, Apple Maps, and OpenStreetMap use. Converting between formats never changes the datum; it only rewrites the same point in a different notation.
-          </p>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            Older paper maps often use a regional datum such as NAD27 in North America, ED50 in Europe, or OSGB36 in Great Britain. The same numbers on those datums can point to a spot tens of meters, and in places more than a hundred meters, away from the WGS 84 position. If a coordinate from an old map lands slightly off, check the datum printed in the map margin before blaming the conversion.
-          </p>
-        </section>
-
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">Common mistakes the tool catches</h2>
-          <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside">
-            <li><strong className="text-fg">Out-of-range values.</strong> A latitude outside &minus;90 to 90 or a longitude outside &minus;180 to 180 shows an error and leaves the last valid result in place.</li>
-            <li><strong className="text-fg">Minutes or seconds of 60 or more.</strong> DMS and DDM entries are rejected with a message instead of silently rolling over.</li>
-            <li><strong className="text-fg">Impossible UTM references.</strong> Zones outside 1 to 60, the letters I and O as bands, and eastings or northings outside the valid range are all flagged.</li>
-            <li><strong className="text-fg">Longitude written first with its letter.</strong> If you paste something like 2°17′E 48°51′N, the paste box swaps it into latitude-first order. Without hemisphere letters it cannot know, so a pair like (2.29, 48.86) is read as latitude 2.29; if the map pin lands in the wrong place, swap the two numbers.</li>
-            <li><strong className="text-fg">Pasted text it cannot read.</strong> Instead of guessing, it says so and shows an example of a format it accepts.</li>
-          </ul>
-        </section>
-
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">The DD ↔ DMS conversion math</h2>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            Decimal degrees and DMS encode the same angle in different notations. The math both ways:
-          </p>
-          <h3 className="font-display text-lg font-semibold mt-5 text-fg">DD → DMS</h3>
-          <ol className="mt-2 space-y-1.5 text-fg-muted list-decimal list-inside">
-            <li>Take the integer part of the decimal degree — that is your degrees value.</li>
-            <li>Multiply the fractional part by 60 — the integer part of the result is your minutes.</li>
-            <li>Multiply the remaining fraction by 60 again — that is your seconds.</li>
-          </ol>
-          <p className="mt-2 text-fg-muted leading-relaxed">
-            Example: 48.858420° → 48° + (0.858420 × 60)′ = 48° 51.5052′ → 48° 51′ (0.5052 × 60)″ = 48° 51′ 30.31″.
-          </p>
-          <h3 className="font-display text-lg font-semibold mt-5 text-fg">DMS → DD</h3>
-          <p className="mt-2 text-fg-muted leading-relaxed">
-            Take the degrees as is, divide the minutes by 60, divide the seconds by 3600, then add
-            the three together. For southern latitudes or western longitudes, negate the final result
-            (since DMS uses an N/S/E/W letter where DD uses a sign).
-          </p>
-          <p className="mt-2 text-fg-muted leading-relaxed">
-            Example: 48° 51′ 30.31″ N = 48 + 51/60 + 30.31/3600 = 48.858420°.
-          </p>
-          <p className="mt-2 text-fg-muted leading-relaxed">
-            How much precision survives the round trip? One second of latitude is about 31 m, so rounding seconds to three decimals moves the point by at most 0.0005″, roughly 1.5 cm. The worked-examples table above shows the measured round-trip error for each landmark.
-          </p>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            Once you have two coordinates in decimal degrees, the{' '}
-            <Link href="/distance-calculator" className="text-accent hover:underline">Distance Calculator</Link>{' '}
-            gives you the great-circle distance between them. If you have an address instead of a coordinate, the{' '}
-            <Link href="/address-finder" className="text-accent hover:underline">Address Finder</Link>{' '}
-            converts it to DD for you.
-          </p>
-
+        <article>
+          <section className="mt-12">
+            <h2 className="font-display text-2xl font-bold">What are DD and DDM coordinates?</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              <strong className="text-fg">DD (decimal degrees)</strong> writes latitude and longitude as plain decimal numbers, with a minus sign for south and west: the Eiffel Tower is at <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">48.8584, 2.2945</code>. It is the format Google Maps, phones and most websites use when you copy a location.
+            </p>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              <strong className="text-fg">DDM (degrees and decimal minutes)</strong> keeps the whole degrees and turns the rest into minutes, where one degree is 60 minutes: the same point is <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">48° 51.504′ N, 2° 17.670′ E</code>. Marine GPS units, chart plotters and geocaching sites usually show DDM.
+            </p>
+            <h3 className="font-display text-lg font-semibold mt-6 text-fg">Convert decimal degrees to DDM</h3>
+            <ol className="mt-2 space-y-1.5 text-fg-muted list-decimal list-inside leading-relaxed">
+              <li>Keep the whole number as degrees: 48.8584 → <strong className="text-fg">48°</strong>.</li>
+              <li>Multiply the decimal part by 60 for minutes: 0.8584 × 60 = <strong className="text-fg">51.504′</strong>.</li>
+              <li>Add N or S for latitude (E or W for longitude) from the sign: positive is N or E, negative is S or W.</li>
+            </ol>
+            <h3 className="font-display text-lg font-semibold mt-6 text-fg">Convert DDM to decimal degrees</h3>
+            <p className="mt-2 text-fg-muted leading-relaxed">
+              Divide the minutes by 60 and add them to the degrees: 48° 51.504′ → 48 + 51.504 ÷ 60 = <strong className="text-fg">48.8584</strong>. Make the result negative for S or W. To do either conversion instantly, type into the DD or DDM row of the tool above.
+            </p>
           </section>
 
-        <section className="mt-10">
-
-          <h2 className="font-display text-2xl font-bold">When to use DD versus DMS</h2>
-          <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside">
-            <li><strong>Use DD</strong> for anything digital &mdash; APIs, spreadsheets, Google Maps URLs, GIS files, navigation apps. It is the modern standard and avoids parsing the ° ′ ″ symbols.</li>
-            <li><strong>Use DMS</strong> for paper nautical charts, aviation publications, land-survey documents, and historical references. Many published surveys still cite DMS.</li>
-            <li><strong>Use DDM</strong> on marine GPS units. DDM splits the minute decimal but skips seconds entirely — a notation most chart-plotter manufacturers default to.</li>
-            <li><strong>Use UTM</strong> for hiking, search-and-rescue, surveying — anywhere grid distances need to map directly to metres on the ground.</li>
-            <li><strong>Convert when crossing formats</strong> &mdash; e.g., reading a coordinate off an old chart and pasting it into Google Maps, or copying a phone&apos;s coordinate into a printed expedition report.</li>
-          </ul>
-
+          <section className="mt-12">
+            <h2 className="font-display text-2xl font-bold">Paste a GPS coordinate in any format</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              The <em>Paste any coordinate</em> box at the top of the tool works out which format you have and converts it. It understands:
+            </p>
+            <ul className="mt-3 space-y-1.5 text-fg-muted list-disc list-inside leading-relaxed">
+              <li><strong className="text-fg">Decimal degrees:</strong> <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">48.8584, 2.2945</code> or <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">40.7128° N, 74.0060° W</code></li>
+              <li><strong className="text-fg">DMS:</strong> <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">48°51'30.3"N 2°17'40.2"E</code>, typographic marks (′ ″) included</li>
+              <li><strong className="text-fg">DDM:</strong> <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">48°51.505'N 2°17.670'E</code> or <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">N48 51.505 E2 17.670</code></li>
+              <li><strong className="text-fg">Bare numbers:</strong> two, four, or six numbers are read as DD, DDM, or DMS</li>
+              <li><strong className="text-fg">UTM:</strong> <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">31U 448252 5411957</code></li>
+              <li><strong className="text-fg">Plus Codes:</strong> <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">8FW4V75V+9R</code>, or a short code with a town, such as <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">V75V+9R Paris</code></li>
+              <li><strong className="text-fg">Geohash:</strong> <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">u09tunquc</code> (five characters or more) or a <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">geohash.org/u09tunquc</code> link</li>
+              <li><strong className="text-fg">Map links:</strong> a Google Maps URL containing <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">@lat,lon</code> or <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">?q=lat,lon</code></li>
+            </ul>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              If the longitude is written first with its E or W letter, the tool swaps the pair for you. It tells you which format it detected, so you can confirm it read your input the way you meant.
+            </p>
           </section>
 
-        <section className="mt-10">
-
-          <h2 className="font-display text-2xl font-bold">DD precision — how many decimal places you really need</h2>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            Each decimal place of latitude or longitude shrinks your error by roughly a factor of ten.
-            The full table:
-          </p>
-          <div className="mt-4 overflow-x-auto rounded-xl ring-1 ring-line not-prose">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="bg-tint/5 text-left text-fg-muted">
-                  <th className="px-3 py-2 font-semibold">Decimals</th>
-                  <th className="px-3 py-2 font-semibold">Precision</th>
-                  <th className="px-3 py-2 font-semibold">What it identifies</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-t border-line-subtle"><td className="px-3 py-2 font-mono">0</td><td className="px-3 py-2 font-mono">~111 km</td><td className="px-3 py-2 text-fg-muted">A country or region</td></tr>
-                <tr className="border-t border-line-subtle"><td className="px-3 py-2 font-mono">1</td><td className="px-3 py-2 font-mono">~11 km</td><td className="px-3 py-2 text-fg-muted">A large city</td></tr>
-                <tr className="border-t border-line-subtle"><td className="px-3 py-2 font-mono">2</td><td className="px-3 py-2 font-mono">~1.1 km</td><td className="px-3 py-2 text-fg-muted">A neighbourhood</td></tr>
-                <tr className="border-t border-line-subtle"><td className="px-3 py-2 font-mono">3</td><td className="px-3 py-2 font-mono">~110 m</td><td className="px-3 py-2 text-fg-muted">A city block</td></tr>
-                <tr className="border-t border-line-subtle"><td className="px-3 py-2 font-mono">4</td><td className="px-3 py-2 font-mono">~11 m</td><td className="px-3 py-2 text-fg-muted">A single building</td></tr>
-                <tr className="border-t border-line-subtle"><td className="px-3 py-2 font-mono">5</td><td className="px-3 py-2 font-mono">~1.1 m</td><td className="px-3 py-2 text-fg-muted">A parking space — smartphone GPS limit</td></tr>
-                <tr className="border-t border-line-subtle"><td className="px-3 py-2 font-mono">6</td><td className="px-3 py-2 font-mono">~11 cm</td><td className="px-3 py-2 text-fg-muted">Survey grade — false precision for consumer GPS</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            For DMS, one second of latitude is about 31 metres, and one decimal of a second is about
-            3 metres. Old surveys often give whole-second precision — perfectly adequate for showing
-            a landmark, less so for guiding a drone.
-          </p>
-
+          <section className="mt-12">
+            <h2 className="font-display text-2xl font-bold">When you actually need to convert coordinates</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              For everyday use, your phone hands you decimal degrees and every app accepts them. The conversion problem only shows up when two systems disagree on format, and it shows up more often than you would think:
+            </p>
+            <ul className="mt-4 space-y-2 text-fg-muted leading-relaxed">
+              <li>
+                <strong>Aviation flight plans</strong> usually require degrees-minutes-seconds. A modern smartphone reading needs translating before it can go into the flight planner.
+              </li>
+              <li>
+                <strong>Marine GPS units</strong> typically display degrees-decimal-minutes. Cross-referencing a chart coordinate against your modern phone takes a quick DD ↔ DDM conversion.
+              </li>
+              <li>
+                <strong>Land-survey documents and older maps</strong> almost always use DMS. Reading a deed or a topographic chart from before about 1995 and matching it to a modern satellite view is a DMS-to-DD job.
+              </li>
+              <li>
+                <strong>Hiking and search-and-rescue work</strong> often uses UTM because grid distances map directly to meters on the ground. You can pace UTM offsets in a way you cannot pace decimal-degree differences.
+              </li>
+              <li>
+                <strong>GIS pipelines and GeoJSON</strong> use (longitude, latitude) order, while Google Maps and consumer apps use (latitude, longitude). The tool above normalises the order; using the wrong order is the most common silent error in coordinate work.
+              </li>
+              <li>
+                <strong>Emergency dispatch.</strong> Most dispatchers can take decimal degrees or DMS. Knowing which one you are reading off your phone matters more than the conversion itself — see our{' '}
+                <Link href="/blog/gps-coordinates-emergencies-aml-guide" className="text-accent hover:underline">emergency GPS guide</Link>{' '}
+                for the four-line script to say on the call.
+              </li>
+            </ul>
           </section>
 
-        <section className="mt-10">
-
-          <h2 className="font-display text-2xl font-bold">Hemispheres and signs — the most common DD mistakes</h2>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            DD uses signs: positive for North/East, negative for South/West. DMS uses hemisphere
-            letters (N, S, E, W) instead. Mixing the two is the single most common mistake in
-            conversion. A reference of landmarks in all four hemispheres:
-          </p>
-          <div className="mt-4 overflow-x-auto rounded-xl ring-1 ring-line not-prose">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="bg-tint/5 text-left text-fg-muted">
-                  <th className="px-3 py-2 font-semibold">Landmark</th>
-                  <th className="px-3 py-2 font-semibold">DD</th>
-                  <th className="px-3 py-2 font-semibold">Hemispheres</th>
-                </tr>
-              </thead>
-              <tbody>
-                {ddExamples.map((row) => (
-                  <tr key={row.name} className="border-t border-line-subtle">
-                    <td className="px-3 py-2 text-fg-muted">{row.name}</td>
-                    <td className="px-3 py-2 font-mono text-xs text-fg">{row.dd}</td>
-                    <td className="px-3 py-2 font-mono text-fg-muted">{row.hemi}</td>
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">Worked examples: five landmarks in every format</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              The same five points in every format the tool produces. These values are generated by the converter&rsquo;s own code when the page is built, so they always match what the tool shows. The last column is a round-trip check: convert the decimal degrees to DMS, round the seconds to three decimals, convert back, and measure how far the result moved.
+            </p>
+            <div className="mt-4 overflow-x-auto rounded-xl ring-1 ring-line">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="bg-tint/5 text-left text-fg-muted">
+                    <th className="px-3 py-2 font-semibold">Landmark</th>
+                    <th className="px-3 py-2 font-semibold">DD</th>
+                    <th className="px-3 py-2 font-semibold">DMS</th>
+                    <th className="px-3 py-2 font-semibold">DDM</th>
+                    <th className="px-3 py-2 font-semibold">UTM</th>
+                    <th className="px-3 py-2 font-semibold">MGRS</th>
+                    <th className="px-3 py-2 font-semibold">Round trip</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            Two landmarks worth memorising as sanity checks: Sydney is -33.8568, 151.2153 (south,
-            east — first number negative, second positive); the Statue of Liberty is 40.6892,
-            -74.0445 (north, west — first positive, second negative). If your map ends up in the wrong
-            ocean, one of those signs is off.
-          </p>
-        </section>
+                </thead>
+                <tbody>
+                  {landmarks.map((l) => (
+                    <tr key={l.name} className="border-t border-line-subtle">
+                      <td className="px-3 py-2 text-fg-muted">{l.name}</td>
+                      <td className="px-3 py-2 font-mono text-xs text-fg">{l.dd}</td>
+                      <td className="px-3 py-2 font-mono text-xs text-fg-muted">{l.dms}</td>
+                      <td className="px-3 py-2 font-mono text-xs text-fg-muted">{l.ddm}</td>
+                      <td className="px-3 py-2 font-mono text-xs text-fg-muted">{l.utm}</td>
+                      <td className="px-3 py-2 font-mono text-xs text-fg-muted">{l.mgrs}</td>
+                      <td className="px-3 py-2 font-mono text-xs text-fg-muted">{l.err} cm</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Two things worth noticing. Ny-Ålesund sits at 11.9° E, which would normally be UTM zone 32, but it is reported in zone 33X because of the Svalbard exception described below. And three-decimal seconds hold a position to within about 1.5 cm, far finer than any phone GPS can measure.
+            </p>
+          </section>
+
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">How the tool handles each format</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Every format reads from and writes to one shared position. Decimal-degree fields convert as you type. DMS and DDM fields convert when you leave the field or change the hemisphere letter, so a half-typed number does not jump the map around. UTM converts when you press <em>Convert UTM</em>. MGRS is calculated from the UTM result and shown as output only. Whatever you change, every other format, the copy buttons, and the map pin update together.
+            </p>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Need a coordinate to convert? The{' '}
+              <Link href="/my-location" className="text-accent hover:underline">My Location tool</Link>{' '}
+              reads your GPS and gives you a copyable DD pair in two seconds. For a deeper read on what each format represents, the{' '}
+              <Link href="/blog/latitude-vs-longitude-explained" className="text-accent hover:underline">latitude vs longitude post</Link>{' '}
+              covers signs, order, and the memory tricks.
+            </p>
+          </section>
+
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">How the UTM zone is calculated</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              UTM divides the world into 60 vertical zones, each six degrees of longitude wide. Zone 1 starts at the international date line and runs east. Your zone number is found from your longitude with the formula{' '}
+              <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm mx-1">floor((lon + 180) / 6) + 1</code>.
+              The letter that follows the zone number, like the U in &ldquo;31U&rdquo;, is the latitude band: 20 bands lettered C to X (skipping I and O), each eight degrees tall, except band X, which runs 12 degrees from 72°N to 84°N.
+            </p>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Two regions break the simple formula, and the tool applies both:
+            </p>
+            <ul className="mt-3 space-y-1.5 text-fg-muted list-disc list-inside leading-relaxed">
+              <li><strong className="text-fg">South-west Norway (56°N to 64°N):</strong> zone 32V is widened west to 3°E so the coast is not split across two zones.</li>
+              <li><strong className="text-fg">Svalbard (72°N to 84°N):</strong> zones 32X, 34X, and 36X do not exist. Instead 31X covers 0° to 9°E, 33X covers 9°E to 21°E, 35X covers 21°E to 33°E, and 37X covers 33°E to 42°E.</li>
+            </ul>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              UTM itself stops at 84°N and 80°S; the polar caps use a different grid called UPS, so the tool shows no UTM or MGRS value there.
+            </p>
+          </section>
+
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">Convert UTM to latitude and longitude</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              UTM to lat long is the conversion people search for most, usually with a grid reference from a topographic map or a survey file. To do it in the tool:
+            </p>
+            <ol className="mt-3 space-y-1.5 text-fg-muted list-decimal list-inside leading-relaxed">
+              <li>Enter the <strong className="text-fg">zone number</strong> (1 to 60) and the <strong className="text-fg">latitude band letter</strong>. The band matters: letters N to X mean the northern hemisphere, C to M the southern.</li>
+              <li>Enter the <strong className="text-fg">easting</strong> in meters. It is always between about 160,000 and 840,000, because every zone is centred on a false easting of 500,000 m.</li>
+              <li>Enter the <strong className="text-fg">northing</strong> in meters. In the southern hemisphere it includes a false northing of 10,000,000 m, which is why the band letter is needed to read it correctly.</li>
+              <li>Press <em>Convert UTM</em>. Decimal degrees, DMS, DDM, MGRS, and the map all update. You can also paste the whole reference, such as <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">56H 334900 6252290</code>, into the paste box.</li>
+            </ol>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              The tool uses the standard transverse Mercator equations on the WGS 84 ellipsoid. In our tests against the open-source PROJ library, its results agreed to within 2 cm everywhere UTM is defined, including the Norway and Svalbard zones.
+            </p>
+          </section>
+
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">MGRS: UTM with a grid square</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              The Military Grid Reference System, used by NATO forces and many search-and-rescue teams, is UTM with a shortcut. After the zone and band, two letters name a 100 km grid square, and the easting and northing are given only within that square. <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">31U DQ 48252 11957</code> means zone 31U, square DQ, then 48,252 m east and 11,957 m north inside the square.
+            </p>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Five digits each give 1 m precision; you can drop digits from the end of both numbers for coarser references (four digits is 10 m, three is 100 m). MGRS digits are truncated, never rounded, so a point at 334,899.6 m east appears as 334900 in the UTM row but 34899 in MGRS. Both are correct.
+            </p>
+          </section>
+
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">Plus Codes: an address for places without one</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              A Plus Code (the official name is Open Location Code) is a short code for a location, built from the same latitude and longitude as everything else on this page. Google published it as an open, free system in 2014, and Google Maps shows one for any point you drop a pin on. It is useful where street addresses are missing or unreliable: rural roads, new housing, informal settlements, or a gate in a long fence.
+            </p>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              The code splits the world into a grid and names a cell inside it. Characters are read in pairs, latitude first then longitude, and each pair narrows the cell twenty times in each direction: 20° → 1° → 0.05° → 0.0025° → 0.000125°. The <strong className="text-fg">+</strong> always sits after the eighth character. Only 20 characters are used (<code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">23456789CFGHJMPQRVWX</code>), chosen so that no vowels can spell words and easily confused shapes like 0/O and 1/I never appear.
+            </p>
+            <ul className="mt-3 space-y-1.5 text-fg-muted list-disc list-inside leading-relaxed">
+              <li><strong className="text-fg">10 digits</strong> (e.g. <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">8FW4V75V+9R</code>): a cell about {cell10.h.toFixed(1)} × {cell10.w.toFixed(1)} m at the equator, enough for a building entrance.</li>
+              <li><strong className="text-fg">11 digits</strong> (e.g. <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">8FW4V75V+9R6</code>): the last character splits that cell into a 4 × 5 grid, about {cell11.h.toFixed(1)} × {cell11.w.toFixed(1)} m.</li>
+              <li><strong className="text-fg">Short codes</strong> (e.g. <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">V75V+9R Paris</code>): the first four characters are dropped and replaced by a nearby town. The town must be within about half a degree (roughly 50 km) of the place, which is why Google Maps prints short codes with a locality name.</li>
+            </ul>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              East–west cells shrink toward the poles, as longitude lines converge, so the sizes above are the largest a cell gets. A Plus Code describes an area, not a point; the converter places the pin at the centre of the cell, which is what Google Maps does too.
+            </p>
+            <div className="mt-4 overflow-x-auto rounded-xl ring-1 ring-line">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="bg-tint/5 text-left text-fg-muted">
+                    <th className="px-3 py-2 font-semibold">Landmark</th>
+                    <th className="px-3 py-2 font-semibold">DD</th>
+                    <th className="px-3 py-2 font-semibold">Plus Code (10)</th>
+                    <th className="px-3 py-2 font-semibold">Plus Code (11)</th>
+                    <th className="px-3 py-2 font-semibold">Short form</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {landmarks.map((l) => (
+                    <tr key={l.name} className="border-t border-line-subtle">
+                      <td className="px-3 py-2 text-fg-muted">{l.name}</td>
+                      <td className="px-3 py-2 font-mono text-xs text-fg-muted">{l.dd}</td>
+                      <td className="px-3 py-2 font-mono text-xs text-fg">{l.olc10}</td>
+                      <td className="px-3 py-2 font-mono text-xs text-fg-muted">{l.olc11}</td>
+                      <td className="px-3 py-2 font-mono text-xs text-fg-muted">{l.olc10.slice(4)} + town</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              To convert a Plus Code, type it into row ⑥ of the tool or paste it into the box at the top. A full code needs nothing else. A short code can carry a town after it; the town is looked up on OpenStreetMap&rsquo;s Nominatim service when you press convert, and only the town name is sent. Typed into row ⑥ without a town, a short code is placed near the converter&rsquo;s current position. The encoder and decoder follow Google&rsquo;s{' '}
+              <a href="https://github.com/google/open-location-code" className="text-accent hover:underline" rel="noopener" target="_blank">open-source specification</a>; we checked them against Google&rsquo;s reference JavaScript library on 20,000 random points, and every code, decoded cell, and recovered short code matched.
+            </p>
+          </section>
+
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">Geohash: coordinates as a sortable string</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              A geohash turns a latitude and longitude into a short string such as <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">u09tunquc</code>. Gustavo Niemeyer released it into the public domain in 2008, and it is now built into databases and search engines (Elasticsearch, Redis, MongoDB, and PostGIS among them), because places that are close together usually share the start of their geohash. That makes &ldquo;find everything near here&rdquo; a simple prefix search.
+            </p>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              The encoding halves the map again and again. The first bit says whether the point is in the east or west half of the world, the second whether it is in the north or south half, and so on, alternating longitude and latitude. Every five bits become one character from a 32-character alphabet (<code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">0123456789bcdefghjkmnpqrstuvwxyz</code>, without a, i, l, and o). So each extra character makes the cell 32 times smaller, alternately four by eight or eight by four.
+            </p>
+            <div className="mt-4 overflow-x-auto rounded-xl ring-1 ring-line">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="bg-tint/5 text-left text-fg-muted">
+                    <th className="px-3 py-2 font-semibold">Characters</th>
+                    <th className="px-3 py-2 font-semibold">Cell height (north–south)</th>
+                    <th className="px-3 py-2 font-semibold">Cell width at the equator</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {geohashSizes.map((g) => (
+                    <tr key={g.n} className="border-t border-line-subtle">
+                      <td className="px-3 py-2 font-mono text-xs text-fg">{g.n}</td>
+                      <td className="px-3 py-2 font-mono text-xs text-fg-muted">{g.h}</td>
+                      <td className="px-3 py-2 font-mono text-xs text-fg-muted">{g.w}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Cells get narrower east–west toward the poles, so the widths above are the largest they get. Nine characters (about 5 m) suit most uses; the tool shows the size of the cell at the current latitude next to the length selector. The same five landmarks as nine-character geohashes:
+            </p>
+            <ul className="mt-3 space-y-1.5 text-fg-muted list-disc list-inside leading-relaxed">
+              {landmarks.map((l) => (
+                <li key={l.name}>{l.name}: <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">{l.gh}</code></li>
+              ))}
+            </ul>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              One catch: the shared-prefix rule only works one way. Two points with a long common prefix are always close, but two close points can have completely different geohashes when a cell boundary runs between them; either side of the Greenwich meridian is the extreme case, where the first character already differs. Proximity searches therefore check the neighbouring cells as well. As with Plus Codes, a geohash names a cell, and the converter puts the pin at its centre. We checked the encoder and decoder against the widely used ngeohash library on 20,000 random points, with every hash and cell edge matching.
+            </p>
+          </section>
+
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">Datum: every format here assumes WGS 84</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              A coordinate is only meaningful together with its datum, the model of the Earth&rsquo;s shape it is measured against. Every result on this page uses WGS 84 (also listed as EPSG:4326), the datum GPS satellites broadcast and that Google Maps, Apple Maps, and OpenStreetMap use. Converting between formats never changes the datum; it only rewrites the same point in a different notation.
+            </p>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Older paper maps often use a regional datum such as NAD27 in North America, ED50 in Europe, or OSGB36 in Great Britain. The same numbers on those datums can point to a spot tens of meters, and in places more than a hundred meters, away from the WGS 84 position. If a coordinate from an old map lands slightly off, check the datum printed in the map margin before blaming the conversion.
+            </p>
+          </section>
+
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">Common mistakes the tool catches</h2>
+            <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside">
+              <li><strong className="text-fg">Out-of-range values.</strong> A latitude outside &minus;90 to 90 or a longitude outside &minus;180 to 180 shows an error and leaves the last valid result in place.</li>
+              <li><strong className="text-fg">Minutes or seconds of 60 or more.</strong> DMS and DDM entries are rejected with a message instead of silently rolling over.</li>
+              <li><strong className="text-fg">Impossible UTM references.</strong> Zones outside 1 to 60, the letters I and O as bands, and eastings or northings outside the valid range are all flagged.</li>
+              <li><strong className="text-fg">Longitude written first with its letter.</strong> If you paste something like 2°17′E 48°51′N, the paste box swaps it into latitude-first order. Without hemisphere letters it cannot know, so a pair like (2.29, 48.86) is read as latitude 2.29; if the map pin lands in the wrong place, swap the two numbers.</li>
+              <li><strong className="text-fg">Pasted text it cannot read.</strong> Instead of guessing, it says so and shows an example of a format it accepts.</li>
+            </ul>
+          </section>
+
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">The DD ↔ DMS conversion math</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Decimal degrees and DMS encode the same angle in different notations. The math both ways:
+            </p>
+            <h3 className="font-display text-lg font-semibold mt-5 text-fg">DD → DMS</h3>
+            <ol className="mt-2 space-y-1.5 text-fg-muted list-decimal list-inside">
+              <li>Take the integer part of the decimal degree — that is your degrees value.</li>
+              <li>Multiply the fractional part by 60 — the integer part of the result is your minutes.</li>
+              <li>Multiply the remaining fraction by 60 again — that is your seconds.</li>
+            </ol>
+            <p className="mt-2 text-fg-muted leading-relaxed">
+              Example: 48.858420° → 48° + (0.858420 × 60)′ = 48° 51.5052′ → 48° 51′ (0.5052 × 60)″ = 48° 51′ 30.31″.
+            </p>
+            <h3 className="font-display text-lg font-semibold mt-5 text-fg">DMS → DD</h3>
+            <p className="mt-2 text-fg-muted leading-relaxed">
+              Take the degrees as is, divide the minutes by 60, divide the seconds by 3600, then add
+              the three together. For southern latitudes or western longitudes, negate the final result
+              (since DMS uses an N/S/E/W letter where DD uses a sign).
+            </p>
+            <p className="mt-2 text-fg-muted leading-relaxed">
+              Example: 48° 51′ 30.31″ N = 48 + 51/60 + 30.31/3600 = 48.858420°.
+            </p>
+            <p className="mt-2 text-fg-muted leading-relaxed">
+              How much precision survives the round trip? One second of latitude is about 31 m, so rounding seconds to three decimals moves the point by at most 0.0005″, roughly 1.5 cm. The worked-examples table above shows the measured round-trip error for each landmark.
+            </p>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Once you have two coordinates in decimal degrees, the{' '}
+              <Link href="/distance-calculator" className="text-accent hover:underline">Distance Calculator</Link>{' '}
+              gives you the great-circle distance between them. If you have an address instead of a coordinate, the{' '}
+              <Link href="/address-finder" className="text-accent hover:underline">Address Finder</Link>{' '}
+              converts it to DD for you.
+            </p>
+
+            </section>
+
+          <section className="mt-10">
+
+            <h2 className="font-display text-2xl font-bold">When to use DD versus DMS</h2>
+            <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside">
+              <li><strong>Use DD</strong> for anything digital &mdash; APIs, spreadsheets, Google Maps URLs, GIS files, navigation apps. It is the modern standard and avoids parsing the ° ′ ″ symbols.</li>
+              <li><strong>Use DMS</strong> for paper nautical charts, aviation publications, land-survey documents, and historical references. Many published surveys still cite DMS.</li>
+              <li><strong>Use DDM</strong> on marine GPS units. DDM splits the minute decimal but skips seconds entirely — a notation most chart-plotter manufacturers default to.</li>
+              <li><strong>Use UTM</strong> for hiking, search-and-rescue, surveying — anywhere grid distances need to map directly to metres on the ground.</li>
+              <li><strong>Convert when crossing formats</strong> &mdash; e.g., reading a coordinate off an old chart and pasting it into Google Maps, or copying a phone&apos;s coordinate into a printed expedition report.</li>
+            </ul>
+
+            </section>
+
+          <section className="mt-10">
+
+            <h2 className="font-display text-2xl font-bold">DD precision — how many decimal places you really need</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Each decimal place of latitude or longitude shrinks your error by roughly a factor of ten.
+              The full table:
+            </p>
+            <div className="mt-4 overflow-x-auto rounded-xl ring-1 ring-line not-prose">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="bg-tint/5 text-left text-fg-muted">
+                    <th className="px-3 py-2 font-semibold">Decimals</th>
+                    <th className="px-3 py-2 font-semibold">Precision</th>
+                    <th className="px-3 py-2 font-semibold">What it identifies</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-t border-line-subtle"><td className="px-3 py-2 font-mono">0</td><td className="px-3 py-2 font-mono">~111 km</td><td className="px-3 py-2 text-fg-muted">A country or region</td></tr>
+                  <tr className="border-t border-line-subtle"><td className="px-3 py-2 font-mono">1</td><td className="px-3 py-2 font-mono">~11 km</td><td className="px-3 py-2 text-fg-muted">A large city</td></tr>
+                  <tr className="border-t border-line-subtle"><td className="px-3 py-2 font-mono">2</td><td className="px-3 py-2 font-mono">~1.1 km</td><td className="px-3 py-2 text-fg-muted">A neighbourhood</td></tr>
+                  <tr className="border-t border-line-subtle"><td className="px-3 py-2 font-mono">3</td><td className="px-3 py-2 font-mono">~110 m</td><td className="px-3 py-2 text-fg-muted">A city block</td></tr>
+                  <tr className="border-t border-line-subtle"><td className="px-3 py-2 font-mono">4</td><td className="px-3 py-2 font-mono">~11 m</td><td className="px-3 py-2 text-fg-muted">A single building</td></tr>
+                  <tr className="border-t border-line-subtle"><td className="px-3 py-2 font-mono">5</td><td className="px-3 py-2 font-mono">~1.1 m</td><td className="px-3 py-2 text-fg-muted">A parking space — smartphone GPS limit</td></tr>
+                  <tr className="border-t border-line-subtle"><td className="px-3 py-2 font-mono">6</td><td className="px-3 py-2 font-mono">~11 cm</td><td className="px-3 py-2 text-fg-muted">Survey grade — false precision for consumer GPS</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              For DMS, one second of latitude is about 31 metres, and one decimal of a second is about
+              3 metres. Old surveys often give whole-second precision — perfectly adequate for showing
+              a landmark, less so for guiding a drone.
+            </p>
+
+            </section>
+
+          <section className="mt-10">
+
+            <h2 className="font-display text-2xl font-bold">Hemispheres and signs — the most common DD mistakes</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              DD uses signs: positive for North/East, negative for South/West. DMS uses hemisphere
+              letters (N, S, E, W) instead. Mixing the two is the single most common mistake in
+              conversion. A reference of landmarks in all four hemispheres:
+            </p>
+            <div className="mt-4 overflow-x-auto rounded-xl ring-1 ring-line not-prose">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="bg-tint/5 text-left text-fg-muted">
+                    <th className="px-3 py-2 font-semibold">Landmark</th>
+                    <th className="px-3 py-2 font-semibold">DD</th>
+                    <th className="px-3 py-2 font-semibold">Hemispheres</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {ddExamples.map((row) => (
+                    <tr key={row.name} className="border-t border-line-subtle">
+                      <td className="px-3 py-2 text-fg-muted">{row.name}</td>
+                      <td className="px-3 py-2 font-mono text-xs text-fg">{row.dd}</td>
+                      <td className="px-3 py-2 font-mono text-fg-muted">{row.hemi}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Two landmarks worth memorising as sanity checks: Sydney is -33.8568, 151.2153 (south,
+              east — first number negative, second positive); the Statue of Liberty is 40.6892,
+              -74.0445 (north, west — first positive, second negative). If your map ends up in the wrong
+              ocean, one of those signs is off.
+            </p>
+          </section>
+        </article>
 
         <section className="mt-10">
           <h2 className="font-display text-2xl font-bold">Frequently asked questions</h2>

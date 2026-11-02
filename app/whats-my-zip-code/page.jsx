@@ -99,85 +99,87 @@ export default function ZipCodePage() {
         <Tool />
         <SideAd />
 
-        <section className="mt-12">
-          <h2 className="font-display text-2xl font-bold">How the tool finds your ZIP code</h2>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            Your browser asks your device for its position, which on a phone usually comes from GPS and Wi-Fi and is accurate to a few meters outdoors. The tool then makes two lookups at once. OpenStreetMap&rsquo;s Nominatim service finds the nearest street address and the ZIP code recorded with it, which is the ZIP you would write on an envelope. The U.S. Census Bureau&rsquo;s geocoder reports which official areas the point falls in: the Census ZIP area, county, city or town, congressional and state legislative districts, and school district.
-          </p>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            Only the coordinates are sent to those services, and nothing is stored by this site. If the Census service is slow or down, the county and state come from the FCC&rsquo;s Area API instead. See the{' '}
-            <Link href="/privacy-policy" className="text-accent hover:underline">Privacy Policy</Link> for details.
-          </p>
-        </section>
+        <article>
+          <section className="mt-12">
+            <h2 className="font-display text-2xl font-bold">How the tool finds your ZIP code</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Your browser asks your device for its position, which on a phone usually comes from GPS and Wi-Fi and is accurate to a few meters outdoors. The tool then makes two lookups at once. OpenStreetMap&rsquo;s Nominatim service finds the nearest street address and the ZIP code recorded with it, which is the ZIP you would write on an envelope. The U.S. Census Bureau&rsquo;s geocoder reports which official areas the point falls in: the Census ZIP area, county, city or town, congressional and state legislative districts, and school district.
+            </p>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Only the coordinates are sent to those services, and nothing is stored by this site. If the Census service is slow or down, the county and state come from the FCC&rsquo;s Area API instead. See the{' '}
+              <Link href="/privacy-policy" className="text-accent hover:underline">Privacy Policy</Link> for details.
+            </p>
+          </section>
 
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">How ZIP codes work</h2>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            The Postal Service introduced ZIP codes, for Zone Improvement Plan, in 1963, and today there are about 42,000 of them. The five digits narrow down step by step:
-          </p>
-          <div className="mt-4 overflow-x-auto rounded-xl ring-1 ring-line">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="bg-tint/5 text-left text-fg-muted">
-                  <th className="px-3 py-2 font-semibold">Digits</th>
-                  <th className="px-3 py-2 font-semibold">Example (10118)</th>
-                  <th className="px-3 py-2 font-semibold">What they identify</th>
-                </tr>
-              </thead>
-              <tbody className="text-fg-muted">
-                {[
-                  ['First digit', '1', 'A group of states, from 0 in the Northeast to 9 on the West Coast, Alaska, and Hawaii. 1 covers New York, Pennsylvania, and Delaware.'],
-                  ['First three', '101', 'The sectional center facility, the mail processing plant that serves the area.'],
-                  ['All five', '10118', 'The delivery area: a post office\'s routes, a town, or, as here, a single building (the Empire State Building).'],
-                  ['ZIP+4', '10118-####', 'Four more digits for a block, one side of a street, a floor, or a large mail recipient.'],
-                ].map(([p, e, d]) => (
-                  <tr key={p} className="border-t border-line-subtle">
-                    <td className="px-3 py-2 text-fg">{p}</td>
-                    <td className="px-3 py-2 font-mono text-xs text-fg">{e}</td>
-                    <td className="px-3 py-2">{d}</td>
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">How ZIP codes work</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              The Postal Service introduced ZIP codes, for Zone Improvement Plan, in 1963, and today there are about 42,000 of them. The five digits narrow down step by step:
+            </p>
+            <div className="mt-4 overflow-x-auto rounded-xl ring-1 ring-line">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="bg-tint/5 text-left text-fg-muted">
+                    <th className="px-3 py-2 font-semibold">Digits</th>
+                    <th className="px-3 py-2 font-semibold">Example (10118)</th>
+                    <th className="px-3 py-2 font-semibold">What they identify</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            The key point is that a ZIP code is a set of mail delivery routes, not an area with an official boundary. That is why it does not tell you your county or district on its own.
-          </p>
-        </section>
+                </thead>
+                <tbody className="text-fg-muted">
+                  {[
+                    ['First digit', '1', 'A group of states, from 0 in the Northeast to 9 on the West Coast, Alaska, and Hawaii. 1 covers New York, Pennsylvania, and Delaware.'],
+                    ['First three', '101', 'The sectional center facility, the mail processing plant that serves the area.'],
+                    ['All five', '10118', 'The delivery area: a post office\'s routes, a town, or, as here, a single building (the Empire State Building).'],
+                    ['ZIP+4', '10118-####', 'Four more digits for a block, one side of a street, a floor, or a large mail recipient.'],
+                  ].map(([p, e, d]) => (
+                    <tr key={p} className="border-t border-line-subtle">
+                      <td className="px-3 py-2 text-fg">{p}</td>
+                      <td className="px-3 py-2 font-mono text-xs text-fg">{e}</td>
+                      <td className="px-3 py-2">{d}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              The key point is that a ZIP code is a set of mail delivery routes, not an area with an official boundary. That is why it does not tell you your county or district on its own.
+            </p>
+          </section>
 
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">ZIP code or Census ZIP area?</h2>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            Because ZIP codes are routes, the Census Bureau draws its own approximation of them as areas, called ZIP Code Tabulation Areas (ZCTAs), built from census blocks. There were 33,791 ZCTAs in the 2020 Census, against roughly 42,000 ZIP codes. The missing ones are mostly ZIP codes for P.O. boxes only and for single buildings or organizations, which have no area of their own.
-          </p>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            The tool shows both. At the White House, the mailing ZIP is <code className={code}>20500</code>, but the Census area is <code className={code}>20006</code>. At the Empire State Building, the mailing ZIP is <code className={code}>10118</code> and the Census area <code className={code}>10001</code>. On an ordinary street the two are usually the same. When they differ, use the mailing ZIP for post and forms, and the Census area only for statistics.
-          </p>
-        </section>
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">ZIP code or Census ZIP area?</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Because ZIP codes are routes, the Census Bureau draws its own approximation of them as areas, called ZIP Code Tabulation Areas (ZCTAs), built from census blocks. There were 33,791 ZCTAs in the 2020 Census, against roughly 42,000 ZIP codes. The missing ones are mostly ZIP codes for P.O. boxes only and for single buildings or organizations, which have no area of their own.
+            </p>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              The tool shows both. At the White House, the mailing ZIP is <code className={code}>20500</code>, but the Census area is <code className={code}>20006</code>. At the Empire State Building, the mailing ZIP is <code className={code}>10118</code> and the Census area <code className={code}>10001</code>. On an ordinary street the two are usually the same. When they differ, use the mailing ZIP for post and forms, and the Census area only for statistics.
+            </p>
+          </section>
 
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">Why a ZIP code alone cannot tell you your county or district</h2>
-          <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside leading-relaxed">
-            <li><strong className="text-fg">ZIP codes cross county lines.</strong> Many rural ZIP codes, and plenty of suburban ones, cover parts of two or more counties. Property tax, voting, jury service, and court cases all follow the county, so use the exact location.</li>
-            <li><strong className="text-fg">Districts are drawn from census blocks.</strong> Congressional, state senate, and state house districts follow census blocks, which split ZIP codes freely. Two houses with the same ZIP can be in different districts.</li>
-            <li><strong className="text-fg">Cities are not ZIP codes either.</strong> The place name in a mailing address is the post office&rsquo;s, which can differ from the town you actually live in. The tool shows the incorporated city or town from the Census Bureau, or the township or census subdivision where there is none.</li>
-          </ul>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            That is why the tool looks up your location rather than your ZIP code for these. When you type a ZIP code, the county and districts shown are for its center, and the result says so.
-          </p>
-        </section>
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">Why a ZIP code alone cannot tell you your county or district</h2>
+            <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside leading-relaxed">
+              <li><strong className="text-fg">ZIP codes cross county lines.</strong> Many rural ZIP codes, and plenty of suburban ones, cover parts of two or more counties. Property tax, voting, jury service, and court cases all follow the county, so use the exact location.</li>
+              <li><strong className="text-fg">Districts are drawn from census blocks.</strong> Congressional, state senate, and state house districts follow census blocks, which split ZIP codes freely. Two houses with the same ZIP can be in different districts.</li>
+              <li><strong className="text-fg">Cities are not ZIP codes either.</strong> The place name in a mailing address is the post office&rsquo;s, which can differ from the town you actually live in. The tool shows the incorporated city or town from the Census Bureau, or the township or census subdivision where there is none.</li>
+            </ul>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              That is why the tool looks up your location rather than your ZIP code for these. When you type a ZIP code, the county and districts shown are for its center, and the result says so.
+            </p>
+          </section>
 
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">When the result might not be yours</h2>
-          <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside leading-relaxed">
-            <li><strong className="text-fg">Rough location fix.</strong> Indoors, or on a laptop without GPS, your position can be 50 m or more out, enough to land on the next street or across a boundary. The tool warns you when your device reports low accuracy.</li>
-            <li><strong className="text-fg">You live near a boundary.</strong> ZIP, county, and district lines often run down the middle of a road. Click your own building on the map to be sure.</li>
-            <li><strong className="text-fg">The map has no address for your building.</strong> OpenStreetMap is edited by volunteers, and some new or rural addresses are missing. The tool then falls back to the Census ZIP area and says so.</li>
-          </ul>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            For anything official, such as voter registration, confirm with the source: the USPS ZIP code lookup for mail, and your state or county election office for districts.
-          </p>
-        </section>
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">When the result might not be yours</h2>
+            <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside leading-relaxed">
+              <li><strong className="text-fg">Rough location fix.</strong> Indoors, or on a laptop without GPS, your position can be 50 m or more out, enough to land on the next street or across a boundary. The tool warns you when your device reports low accuracy.</li>
+              <li><strong className="text-fg">You live near a boundary.</strong> ZIP, county, and district lines often run down the middle of a road. Click your own building on the map to be sure.</li>
+              <li><strong className="text-fg">The map has no address for your building.</strong> OpenStreetMap is edited by volunteers, and some new or rural addresses are missing. The tool then falls back to the Census ZIP area and says so.</li>
+            </ul>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              For anything official, such as voter registration, confirm with the source: the USPS ZIP code lookup for mail, and your state or county election office for districts.
+            </p>
+          </section>
+        </article>
 
         <section className="mt-10">
           <h2 className="font-display text-2xl font-bold">Frequently asked questions</h2>

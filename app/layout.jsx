@@ -176,7 +176,13 @@ export default function RootLayout({ children }) {
         <a href="#content" className="skip-link">Skip to content</a>
         <SiteHeader />
         {LEGACY_ADS && <NativeAd />}
-        <div id="content" tabIndex={-1}>{children}</div>
+        <div className="journey-wrap">
+          <div id="content" tabIndex={-1}>{children}</div>
+          {/* Mediavine puts its sticky sidebar ad in here (selector #journey-sidebar,
+              stopping at .site-footer). Shown only in the right margin of text
+              pages wide enough for a 300px ad; see globals.css. */}
+          <aside id="journey-sidebar" aria-label="Advertisement" />
+        </div>
         <Footer />
         {LEGACY_ADS && <MidAd />}
         {LEGACY_ADS && <StickyAd />}

@@ -111,83 +111,85 @@ export default function RadiusMapPage() {
         <Tool />
         <SideAd />
 
-        <section className="mt-12">
-          <h2 className="font-display text-2xl font-bold">How to draw a radius on a map</h2>
-          <ol className="mt-3 space-y-2 text-fg-muted list-decimal list-inside leading-relaxed">
-            <li><strong className="text-fg">Set the center.</strong> Search for an address, town or ZIP code, press &ldquo;Use my location&rdquo;, or click anywhere on the map.</li>
-            <li><strong className="text-fg">Choose the radius.</strong> Type a distance or tap a preset, and pick miles, kilometers, meters or feet. The tool starts in miles in the US and UK and in kilometers elsewhere.</li>
-            <li><strong className="text-fg">Add more circles if you need them.</strong> &ldquo;+ Add circle&rdquo; draws a wider ring around the same center; click the map to move it to a second place.</li>
-            <li><strong className="text-fg">Share or save it.</strong> &ldquo;Copy link to this map&rdquo; gives a link that opens the same circles for anyone.</li>
-          </ol>
-        </section>
+        <article>
+          <section className="mt-12">
+            <h2 className="font-display text-2xl font-bold">How to draw a radius on a map</h2>
+            <ol className="mt-3 space-y-2 text-fg-muted list-decimal list-inside leading-relaxed">
+              <li><strong className="text-fg">Set the center.</strong> Search for an address, town or ZIP code, press &ldquo;Use my location&rdquo;, or click anywhere on the map.</li>
+              <li><strong className="text-fg">Choose the radius.</strong> Type a distance or tap a preset, and pick miles, kilometers, meters or feet. The tool starts in miles in the US and UK and in kilometers elsewhere.</li>
+              <li><strong className="text-fg">Add more circles if you need them.</strong> &ldquo;+ Add circle&rdquo; draws a wider ring around the same center; click the map to move it to a second place.</li>
+              <li><strong className="text-fg">Share or save it.</strong> &ldquo;Copy link to this map&rdquo; gives a link that opens the same circles for anyone.</li>
+            </ol>
+          </section>
 
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">What people use a radius map for</h2>
-          <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside leading-relaxed">
-            <li><strong className="text-fg">Delivery and service areas.</strong> Restaurants, florists, cleaners and tradespeople show which neighborhoods they cover, often with a second ring for an extra charge.</li>
-            <li><strong className="text-fg">House hunting.</strong> Draw 5 or 10 miles around your workplace, a school or family to see which towns are close enough.</li>
-            <li><strong className="text-fg">Rules that use a distance.</strong> Some jobs, leases, school places and travel policies are set by distance, such as a non-compete clause covering 25 miles. Check which places fall inside the line.</li>
-            <li><strong className="text-fg">&ldquo;Near me&rdquo; settings.</strong> Dating, job and shopping apps often search within a set radius. The map shows what that distance really covers around you.</li>
-            <li><strong className="text-fg">Planning trips and events.</strong> See which towns are within an hour&rsquo;s reach, or where guests would travel from.</li>
-          </ul>
-        </section>
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">What people use a radius map for</h2>
+            <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside leading-relaxed">
+              <li><strong className="text-fg">Delivery and service areas.</strong> Restaurants, florists, cleaners and tradespeople show which neighborhoods they cover, often with a second ring for an extra charge.</li>
+              <li><strong className="text-fg">House hunting.</strong> Draw 5 or 10 miles around your workplace, a school or family to see which towns are close enough.</li>
+              <li><strong className="text-fg">Rules that use a distance.</strong> Some jobs, leases, school places and travel policies are set by distance, such as a non-compete clause covering 25 miles. Check which places fall inside the line.</li>
+              <li><strong className="text-fg">&ldquo;Near me&rdquo; settings.</strong> Dating, job and shopping apps often search within a set radius. The map shows what that distance really covers around you.</li>
+              <li><strong className="text-fg">Planning trips and events.</strong> See which towns are within an hour&rsquo;s reach, or where guests would travel from.</li>
+            </ul>
+          </section>
 
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">How big is a 5-mile radius?</h2>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            The area of a circle grows with the square of its radius, so doubling the radius covers four times the ground. A 5-mile radius covers about 78.5 square miles; a 10-mile radius covers about 314. Travel times are rough guides for reaching the edge.
-          </p>
-          <div className="mt-4 overflow-x-auto rounded-xl ring-1 ring-line">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="bg-tint/5 text-left text-fg-muted">
-                  <th className="px-3 py-2 font-semibold">Radius</th>
-                  <th className="px-3 py-2 font-semibold">In km</th>
-                  <th className="px-3 py-2 font-semibold">Area</th>
-                  <th className="px-3 py-2 font-semibold">Area in km²</th>
-                  <th className="px-3 py-2 font-semibold">What it covers</th>
-                </tr>
-              </thead>
-              <tbody className="text-fg-muted">
-                {ROWS.map(([r, km, a, akm, d]) => (
-                  <tr key={r} className="border-t border-line-subtle">
-                    <td className="px-3 py-2 text-fg whitespace-nowrap">{r}</td>
-                    <td className="px-3 py-2 font-mono text-xs text-fg whitespace-nowrap">{km}</td>
-                    <td className="px-3 py-2 font-mono text-xs text-fg whitespace-nowrap">{a}</td>
-                    <td className="px-3 py-2 font-mono text-xs text-fg whitespace-nowrap">{akm}</td>
-                    <td className="px-3 py-2">{d}</td>
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">How big is a 5-mile radius?</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              The area of a circle grows with the square of its radius, so doubling the radius covers four times the ground. A 5-mile radius covers about 78.5 square miles; a 10-mile radius covers about 314. Travel times are rough guides for reaching the edge.
+            </p>
+            <div className="mt-4 overflow-x-auto rounded-xl ring-1 ring-line">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="bg-tint/5 text-left text-fg-muted">
+                    <th className="px-3 py-2 font-semibold">Radius</th>
+                    <th className="px-3 py-2 font-semibold">In km</th>
+                    <th className="px-3 py-2 font-semibold">Area</th>
+                    <th className="px-3 py-2 font-semibold">Area in km²</th>
+                    <th className="px-3 py-2 font-semibold">What it covers</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            In kilometers the numbers work the same way: a 10 km radius covers about 314 km² (31,400 hectares), and a 50 km radius about 7,854 km².
-          </p>
-        </section>
+                </thead>
+                <tbody className="text-fg-muted">
+                  {ROWS.map(([r, km, a, akm, d]) => (
+                    <tr key={r} className="border-t border-line-subtle">
+                      <td className="px-3 py-2 text-fg whitespace-nowrap">{r}</td>
+                      <td className="px-3 py-2 font-mono text-xs text-fg whitespace-nowrap">{km}</td>
+                      <td className="px-3 py-2 font-mono text-xs text-fg whitespace-nowrap">{a}</td>
+                      <td className="px-3 py-2 font-mono text-xs text-fg whitespace-nowrap">{akm}</td>
+                      <td className="px-3 py-2">{d}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              In kilometers the numbers work the same way: a 10 km radius covers about 314 km² (31,400 hectares), and a 50 km radius about 7,854 km².
+            </p>
+          </section>
 
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">Radius or driving distance?</h2>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            A radius measures in a straight line, &ldquo;as the crow flies&rdquo;. Roads rarely run straight to where you are going: they follow rivers, hills, bridges and street grids, so the distance you actually drive is longer, often by a fifth or more, and much more where a river or a mountain range is in the way. A place just inside a 10-mile circle can easily be a 14-mile drive.
-          </p>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            Use the radius map to see which places fall within a distance, and{' '}
-            <Link href="/driving-directions" className="text-accent hover:underline">Driving Directions</Link> to check the real route to one of them. For the exact straight-line distance between two points, use the{' '}
-            <Link href="/distance-calculator" className="text-accent hover:underline">Distance Calculator</Link>.
-          </p>
-        </section>
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">Radius or driving distance?</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              A radius measures in a straight line, &ldquo;as the crow flies&rdquo;. Roads rarely run straight to where you are going: they follow rivers, hills, bridges and street grids, so the distance you actually drive is longer, often by a fifth or more, and much more where a river or a mountain range is in the way. A place just inside a 10-mile circle can easily be a 14-mile drive.
+            </p>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Use the radius map to see which places fall within a distance, and{' '}
+              <Link href="/driving-directions" className="text-accent hover:underline">Driving Directions</Link> to check the real route to one of them. For the exact straight-line distance between two points, use the{' '}
+              <Link href="/distance-calculator" className="text-accent hover:underline">Distance Calculator</Link>.
+            </p>
+          </section>
 
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">How the circles are drawn</h2>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            Each circle is made of 128 points, each placed exactly the chosen distance from the center on the WGS 84 ellipsoid, the model of the Earth that GPS uses, with Vincenty&rsquo;s formulae. That keeps the circle correct at any size and anywhere on the globe, including across the date line. The area and circumference are worked out on a sphere of the Earth&rsquo;s mean radius, within about half a percent of the exact figure.
-          </p>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            Your location is read by your browser and used only on this page. Place searches go to OpenStreetMap&rsquo;s Nominatim service, and the map comes from OpenStreetMap. Nothing is stored by this site; see the{' '}
-            <Link href="/privacy-policy" className="text-accent hover:underline">Privacy Policy</Link>.
-          </p>
-        </section>
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">How the circles are drawn</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Each circle is made of 128 points, each placed exactly the chosen distance from the center on the WGS 84 ellipsoid, the model of the Earth that GPS uses, with Vincenty&rsquo;s formulae. That keeps the circle correct at any size and anywhere on the globe, including across the date line. The area and circumference are worked out on a sphere of the Earth&rsquo;s mean radius, within about half a percent of the exact figure.
+            </p>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Your location is read by your browser and used only on this page. Place searches go to OpenStreetMap&rsquo;s Nominatim service, and the map comes from OpenStreetMap. Nothing is stored by this site; see the{' '}
+              <Link href="/privacy-policy" className="text-accent hover:underline">Privacy Policy</Link>.
+            </p>
+          </section>
+        </article>
 
         <section className="mt-10">
           <h2 className="font-display text-2xl font-bold">Frequently asked questions</h2>

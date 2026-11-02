@@ -103,7 +103,7 @@ export default function ToolPage({ path, name, eyebrow, h1, accent, intro, bold 
         {tool}
         <SideAd />
 
-        <div className="tool-guide">{children}</div>
+        <article className="tool-guide">{children}</article>
 
         {faqs.length > 0 && (
           <section className="mt-10">

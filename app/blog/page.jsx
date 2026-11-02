@@ -173,40 +173,42 @@ export default function Blog() {
           <Link href="/about" className={link}>Ahmed Anwar</Link>
         </p>
 
-        <section className="mt-8 rounded-2xl border border-line-subtle bg-tint/5 p-5" aria-labelledby="fix-fast">
-          <h2 id="fix-fast" className="font-display text-xl font-bold">Fix a location problem fast</h2>
-          <ul className="mt-3 space-y-2 text-sm">
-            {FIXES.map(([label, href]) => (
-              <li key={href}>
-                <Link href={href} className={link}>{label} →</Link>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        {TOPICS.map((t) => (
-          <section key={t.id} className="mt-12" aria-labelledby={`topic-${t.id}`}>
-            <h2 id={`topic-${t.id}`} className="font-display text-2xl font-bold">{t.title}</h2>
-            <p className="mt-2 text-fg-muted leading-relaxed">{t.intro}</p>
-            <ul className="mt-5 space-y-5">
-              {byTopic(t.id).map((p) => <PostCard key={p.slug} p={p} />)}
+        <article>
+          <section className="mt-8 rounded-2xl border border-line-subtle bg-tint/5 p-5" aria-labelledby="fix-fast">
+            <h2 id="fix-fast" className="font-display text-xl font-bold">Fix a location problem fast</h2>
+            <ul className="mt-3 space-y-2 text-sm">
+              {FIXES.map(([label, href]) => (
+                <li key={href}>
+                  <Link href={href} className={link}>{label} →</Link>
+                </li>
+              ))}
             </ul>
           </section>
-        ))}
 
-        <section className="mt-12 rounded-2xl border border-line-subtle bg-tint/5 p-5" aria-labelledby="how-written">
-          <h2 id="how-written" className="font-display text-xl font-bold">How these guides are written</h2>
-          <p className="mt-2 text-sm text-fg-muted leading-relaxed">
-            Each guide is checked against standards documents, official platform documentation, and the devices it
-            describes, rather than other people&rsquo;s summaries. Numbers carry their source, and tool output is
-            generated from the tools&rsquo; own code. When a guide is revised, the date on its card changes.
-          </p>
-          <p className="mt-2 text-sm text-fg-muted leading-relaxed">
-            Found a mistake? Send the page title and the sentence through the{' '}
-            <Link href="/contact" className={link}>contact page</Link>; fixes are listed in the{' '}
-            <Link href="/about#corrections" className={link}>public corrections log</Link>.
-          </p>
-        </section>
+          {TOPICS.map((t) => (
+            <section key={t.id} className="mt-12" aria-labelledby={`topic-${t.id}`}>
+              <h2 id={`topic-${t.id}`} className="font-display text-2xl font-bold">{t.title}</h2>
+              <p className="mt-2 text-fg-muted leading-relaxed">{t.intro}</p>
+              <ul className="mt-5 space-y-5">
+                {byTopic(t.id).map((p) => <PostCard key={p.slug} p={p} />)}
+              </ul>
+            </section>
+          ))}
+
+          <section className="mt-12 rounded-2xl border border-line-subtle bg-tint/5 p-5" aria-labelledby="how-written">
+            <h2 id="how-written" className="font-display text-xl font-bold">How these guides are written</h2>
+            <p className="mt-2 text-sm text-fg-muted leading-relaxed">
+              Each guide is checked against standards documents, official platform documentation, and the devices it
+              describes, rather than other people&rsquo;s summaries. Numbers carry their source, and tool output is
+              generated from the tools&rsquo; own code. When a guide is revised, the date on its card changes.
+            </p>
+            <p className="mt-2 text-sm text-fg-muted leading-relaxed">
+              Found a mistake? Send the page title and the sentence through the{' '}
+              <Link href="/contact" className={link}>contact page</Link>; fixes are listed in the{' '}
+              <Link href="/about#corrections" className={link}>public corrections log</Link>.
+            </p>
+          </section>
+        </article>
         <SideAd />
       </main>
     </>

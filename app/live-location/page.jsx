@@ -161,193 +161,195 @@ export default function LiveLocationPage() {
 
         <LiveTool />
 
-        <section className="mt-12">
-          <h2 className="font-display text-2xl font-bold">My location live now: what the tracker shows</h2>
-          <ul className="mt-4 space-y-2 text-fg-muted leading-relaxed list-disc list-inside">
-            <li><strong className="text-fg">Current location live:</strong> your position on the map, updated every one to five seconds while you move.</li>
-            <li><strong className="text-fg">My live coordinates:</strong> latitude and longitude to six decimal places, with the accuracy radius in meters.</li>
-            <li><strong className="text-fg">My position now by place name:</strong> the town or city and country you are in, refreshed as you travel.</li>
-            <li><strong className="text-fg">Live position, speed and heading:</strong> how fast and in which direction you are going.</li>
-            <li><strong className="text-fg">My location live map with your route:</strong> a line along the path you have taken, the distance covered, and a GPX download.</li>
-          </ul>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            To <strong className="text-fg">track my location now</strong>, keep this page open and in front: this <strong className="text-fg">GPS tracking live location</strong> view follows you like a <strong className="text-fg">live GPS tracker</strong>, so you can see <strong className="text-fg">my location right now</strong> and <strong className="text-fg">my current location live</strong> on the <strong className="text-fg">live location map</strong> until you tap Stop. It is <strong className="text-fg">live GPS tracking</strong> in the browser, a <strong className="text-fg">real-time GPS location tracker</strong> with nothing to install. For a single reading of where you are, your address and your coordinates, use 
-            <Link href="/my-location" className="text-accent hover:underline">My Location</Link> instead.
-          </p>
-        </section>
+        <article>
+          <section className="mt-12">
+            <h2 className="font-display text-2xl font-bold">My location live now: what the tracker shows</h2>
+            <ul className="mt-4 space-y-2 text-fg-muted leading-relaxed list-disc list-inside">
+              <li><strong className="text-fg">Current location live:</strong> your position on the map, updated every one to five seconds while you move.</li>
+              <li><strong className="text-fg">My live coordinates:</strong> latitude and longitude to six decimal places, with the accuracy radius in meters.</li>
+              <li><strong className="text-fg">My position now by place name:</strong> the town or city and country you are in, refreshed as you travel.</li>
+              <li><strong className="text-fg">Live position, speed and heading:</strong> how fast and in which direction you are going.</li>
+              <li><strong className="text-fg">My location live map with your route:</strong> a line along the path you have taken, the distance covered, and a GPX download.</li>
+            </ul>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              To <strong className="text-fg">track my location now</strong>, keep this page open and in front: this <strong className="text-fg">GPS tracking live location</strong> view follows you like a <strong className="text-fg">live GPS tracker</strong>, so you can see <strong className="text-fg">my location right now</strong> and <strong className="text-fg">my current location live</strong> on the <strong className="text-fg">live location map</strong> until you tap Stop. It is <strong className="text-fg">live GPS tracking</strong> in the browser, a <strong className="text-fg">real-time GPS location tracker</strong> with nothing to install. For a single reading of where you are, your address and your coordinates, use 
+              <Link href="/my-location" className="text-accent hover:underline">My Location</Link> instead.
+            </p>
+          </section>
 
-        <section className="mt-12">
-          <h2 className="font-display text-2xl font-bold">Live vs. one-shot — the difference matters</h2>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            Most location tools return a single fix and then go quiet. You tap, you see a coordinate, the page is done. That is fine if you are standing still and want to copy your position into a form (the iPhone Compass app or Google Maps can do that too; see <Link href="/blog/how-to-find-your-gps-coordinates" className="text-accent hover:underline">how to find GPS coordinates on any device</Link>). It is useless the moment you start moving — the pin stays where you were five seconds ago.
-          </p>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            Live tracking is the opposite. The page asks the browser to <em>keep handing back new readings</em> as the GPS receiver computes them. The browser provides this through a standard call called <code className="font-mono text-sm bg-tint/10 px-1.5 py-0.5 rounded">watchPosition</code>: you supply a callback once, and it fires every time the operating system has a fresh fix to report. That is exactly what the tool above does, and it is why the &ldquo;Updates&rdquo; counter rises on its own while the &ldquo;Live&rdquo; badge is showing.
-          </p>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            The tool asks for the strictest settings the API allows: <code className="font-mono text-sm bg-tint/10 px-1.5 py-0.5 rounded">enableHighAccuracy: true</code> so the OS powers up the GPS receiver rather than settling for Wi-Fi, <code className="font-mono text-sm bg-tint/10 px-1.5 py-0.5 rounded">maximumAge: 0</code> so it never replays a cached fix, and a <code className="font-mono text-sm bg-tint/10 px-1.5 py-0.5 rounded">timeout</code> of 20 seconds before it reports that no reading arrived.
-          </p>
-        </section>
+          <section className="mt-12">
+            <h2 className="font-display text-2xl font-bold">Live vs. one-shot — the difference matters</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Most location tools return a single fix and then go quiet. You tap, you see a coordinate, the page is done. That is fine if you are standing still and want to copy your position into a form (the iPhone Compass app or Google Maps can do that too; see <Link href="/blog/how-to-find-your-gps-coordinates" className="text-accent hover:underline">how to find GPS coordinates on any device</Link>). It is useless the moment you start moving — the pin stays where you were five seconds ago.
+            </p>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Live tracking is the opposite. The page asks the browser to <em>keep handing back new readings</em> as the GPS receiver computes them. The browser provides this through a standard call called <code className="font-mono text-sm bg-tint/10 px-1.5 py-0.5 rounded">watchPosition</code>: you supply a callback once, and it fires every time the operating system has a fresh fix to report. That is exactly what the tool above does, and it is why the &ldquo;Updates&rdquo; counter rises on its own while the &ldquo;Live&rdquo; badge is showing.
+            </p>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              The tool asks for the strictest settings the API allows: <code className="font-mono text-sm bg-tint/10 px-1.5 py-0.5 rounded">enableHighAccuracy: true</code> so the OS powers up the GPS receiver rather than settling for Wi-Fi, <code className="font-mono text-sm bg-tint/10 px-1.5 py-0.5 rounded">maximumAge: 0</code> so it never replays a cached fix, and a <code className="font-mono text-sm bg-tint/10 px-1.5 py-0.5 rounded">timeout</code> of 20 seconds before it reports that no reading arrived.
+            </p>
+          </section>
 
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">My live coordinates and each live GPS reading explained</h2>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            Every update the browser delivers carries more than a coordinate. Here is what each tile in the tracker shows, and when it is allowed to be blank under the <a href="https://www.w3.org/TR/geolocation/" target="_blank" rel="noopener" className="text-accent hover:underline">W3C Geolocation API specification</a>.
-          </p>
-          <div className="mt-4 overflow-x-auto">
-            <table className="w-full text-sm text-left">
-              <thead>
-                <tr className="border-b border-line text-fg">
-                  <th className="py-2 pr-4 font-semibold">Reading</th>
-                  <th className="py-2 pr-4 font-semibold">Unit</th>
-                  <th className="py-2 font-semibold">What it tells you</th>
-                </tr>
-              </thead>
-              <tbody className="text-fg-muted">
-                <tr className="border-b border-line-subtle"><td className="py-2 pr-4">Latitude, longitude</td><td className="py-2 pr-4">degrees</td><td className="py-2">Your position, shown to six decimal places.</td></tr>
-                <tr className="border-b border-line-subtle"><td className="py-2 pr-4">Accuracy</td><td className="py-2 pr-4">meters</td><td className="py-2">The radius of a circle the device is 95% confident you are inside. Smaller is better.</td></tr>
-                <tr className="border-b border-line-subtle"><td className="py-2 pr-4">Speed</td><td className="py-2 pr-4">km/h</td><td className="py-2">Reported by the device in meters per second and converted here. Blank when the device cannot measure it.</td></tr>
-                <tr className="border-b border-line-subtle"><td className="py-2 pr-4">Heading</td><td className="py-2 pr-4">degrees from true north</td><td className="py-2">Your direction of travel, with a compass point. Always blank while you are standing still.</td></tr>
-                <tr className="border-b border-line-subtle"><td className="py-2 pr-4">Altitude</td><td className="py-2 pr-4">meters</td><td className="py-2">Height reported by the device. Often blank on laptops and on Wi-Fi-only fixes.</td></tr>
-                <tr className="border-b border-line-subtle"><td className="py-2 pr-4">Distance</td><td className="py-2 pr-4">m or km</td><td className="py-2">Length of the path drawn on the map since you tapped Start.</td></tr>
-                <tr className="border-b border-line-subtle"><td className="py-2 pr-4">Time elapsed</td><td className="py-2 pr-4">minutes:seconds</td><td className="py-2">Time since you tapped Start. It stops counting when you tap Stop.</td></tr>
-                <tr className="border-b border-line-subtle"><td className="py-2 pr-4">Average speed</td><td className="py-2 pr-4">km/h</td><td className="py-2">Distance divided by time elapsed, so stops at traffic lights pull it down. Shown after the first ten seconds.</td></tr>
-                <tr><td className="py-2 pr-4">Updates</td><td className="py-2 pr-4">count, time</td><td className="py-2">How many readings have arrived, and when the latest one did.</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            For how the browser decides which of these values to fill in, see our guide to 
-            <Link href="/blog/browser-geolocation-api-explained" className="text-accent hover:underline">how the browser Geolocation API works</Link>.
-          </p>
-        </section>
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">My live coordinates and each live GPS reading explained</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Every update the browser delivers carries more than a coordinate. Here is what each tile in the tracker shows, and when it is allowed to be blank under the <a href="https://www.w3.org/TR/geolocation/" target="_blank" rel="noopener" className="text-accent hover:underline">W3C Geolocation API specification</a>.
+            </p>
+            <div className="mt-4 overflow-x-auto">
+              <table className="w-full text-sm text-left">
+                <thead>
+                  <tr className="border-b border-line text-fg">
+                    <th className="py-2 pr-4 font-semibold">Reading</th>
+                    <th className="py-2 pr-4 font-semibold">Unit</th>
+                    <th className="py-2 font-semibold">What it tells you</th>
+                  </tr>
+                </thead>
+                <tbody className="text-fg-muted">
+                  <tr className="border-b border-line-subtle"><td className="py-2 pr-4">Latitude, longitude</td><td className="py-2 pr-4">degrees</td><td className="py-2">Your position, shown to six decimal places.</td></tr>
+                  <tr className="border-b border-line-subtle"><td className="py-2 pr-4">Accuracy</td><td className="py-2 pr-4">meters</td><td className="py-2">The radius of a circle the device is 95% confident you are inside. Smaller is better.</td></tr>
+                  <tr className="border-b border-line-subtle"><td className="py-2 pr-4">Speed</td><td className="py-2 pr-4">km/h</td><td className="py-2">Reported by the device in meters per second and converted here. Blank when the device cannot measure it.</td></tr>
+                  <tr className="border-b border-line-subtle"><td className="py-2 pr-4">Heading</td><td className="py-2 pr-4">degrees from true north</td><td className="py-2">Your direction of travel, with a compass point. Always blank while you are standing still.</td></tr>
+                  <tr className="border-b border-line-subtle"><td className="py-2 pr-4">Altitude</td><td className="py-2 pr-4">meters</td><td className="py-2">Height reported by the device. Often blank on laptops and on Wi-Fi-only fixes.</td></tr>
+                  <tr className="border-b border-line-subtle"><td className="py-2 pr-4">Distance</td><td className="py-2 pr-4">m or km</td><td className="py-2">Length of the path drawn on the map since you tapped Start.</td></tr>
+                  <tr className="border-b border-line-subtle"><td className="py-2 pr-4">Time elapsed</td><td className="py-2 pr-4">minutes:seconds</td><td className="py-2">Time since you tapped Start. It stops counting when you tap Stop.</td></tr>
+                  <tr className="border-b border-line-subtle"><td className="py-2 pr-4">Average speed</td><td className="py-2 pr-4">km/h</td><td className="py-2">Distance divided by time elapsed, so stops at traffic lights pull it down. Shown after the first ten seconds.</td></tr>
+                  <tr><td className="py-2 pr-4">Updates</td><td className="py-2 pr-4">count, time</td><td className="py-2">How many readings have arrived, and when the latest one did.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              For how the browser decides which of these values to fill in, see our guide to 
+              <Link href="/blog/browser-geolocation-api-explained" className="text-accent hover:underline">how the browser Geolocation API works</Link>.
+            </p>
+          </section>
 
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">Real-time location: how live GPS tracking works</h2>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            Inside your phone, the GPS chip is solving the same equation several times per second. It hears timestamps from four or more satellites overhead and back-solves for the only position on Earth where those particular delays line up. When you walk, the math changes — you are slightly closer to one satellite, slightly farther from another — and the chip outputs a new coordinate. The operating system passes that coordinate up to the browser, which passes it to this page, which redraws the dot.
-          </p>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            Two practical knobs decide how lively the &ldquo;live&rdquo; reading actually feels. The first is the GPS sample rate, which most chipsets run at 1 Hz (one fix per second) by default. The second is the operating system&rsquo;s smoothing layer, which sometimes withholds a new reading if it has not changed enough to matter. A clean outdoor walk should generate one update every second or two; a stationary indoor reading often updates only every five to ten seconds because the OS sees no real movement.
-          </p>
-        </section>
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">Real-time location: how live GPS tracking works</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Inside your phone, the GPS chip is solving the same equation several times per second. It hears timestamps from four or more satellites overhead and back-solves for the only position on Earth where those particular delays line up. When you walk, the math changes — you are slightly closer to one satellite, slightly farther from another — and the chip outputs a new coordinate. The operating system passes that coordinate up to the browser, which passes it to this page, which redraws the dot.
+            </p>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Two practical knobs decide how lively the &ldquo;live&rdquo; reading actually feels. The first is the GPS sample rate, which most chipsets run at 1 Hz (one fix per second) by default. The second is the operating system&rsquo;s smoothing layer, which sometimes withholds a new reading if it has not changed enough to matter. A clean outdoor walk should generate one update every second or two; a stationary indoor reading often updates only every five to ten seconds because the OS sees no real movement.
+            </p>
+          </section>
 
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">Track my location now: live location map, path and distance</h2>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            While tracking is on, the map draws a line along the route you have taken and the Distance tile adds up its length. GPS jitter would normally turn a person standing still into a growing scribble, so the tracker is strict about which readings join the path: a new point is only added once you have moved at least 10 meters from the last one, and only from a reading accurate to 50 meters or better. Standing still therefore adds nothing, and a sudden indoor Wi-Fi guess hundreds of meters off is left out.
-          </p>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            The trade-off is that very small movements, like pacing around a room, will not register. The path and distance reset each time you tap <em>Start live tracking</em>, and nothing is kept once you close the tab unless you download it first.
-          </p>
-          <h3 className="font-display text-lg font-bold mt-5">Save your route as a GPX file</h3>
-          <p className="mt-2 text-fg-muted leading-relaxed">
-            Once the path has two points, a <em>Download route (GPX)</em> button appears under the readings. GPX is the standard file format for GPS tracks (<a href="https://www.topografix.com/GPX/1/1/" target="_blank" rel="noopener" className="text-accent hover:underline">version 1.1, published by Topografix</a>), so Strava, Komoot, Garmin Connect, Google Earth and most hiking apps can open it. Each point in the file carries its latitude and longitude, the time it was recorded, and the altitude when the device reported one. The file holds exactly the points drawn on the map, after the 10-meter and 50-meter filters above.
-          </p>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            The file is assembled by JavaScript in your browser and saved straight to your device; it is not uploaded anywhere first. You can download it while still tracking or after tapping <em>Stop</em>. To measure the straight-line gap between where you started and where you ended, paste both coordinates into the{' '}
-            <Link href="/distance-calculator" className="text-accent hover:underline">distance calculator</Link>.
-          </p>
-        </section>
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">Track my location now: live location map, path and distance</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              While tracking is on, the map draws a line along the route you have taken and the Distance tile adds up its length. GPS jitter would normally turn a person standing still into a growing scribble, so the tracker is strict about which readings join the path: a new point is only added once you have moved at least 10 meters from the last one, and only from a reading accurate to 50 meters or better. Standing still therefore adds nothing, and a sudden indoor Wi-Fi guess hundreds of meters off is left out.
+            </p>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              The trade-off is that very small movements, like pacing around a room, will not register. The path and distance reset each time you tap <em>Start live tracking</em>, and nothing is kept once you close the tab unless you download it first.
+            </p>
+            <h3 className="font-display text-lg font-bold mt-5">Save your route as a GPX file</h3>
+            <p className="mt-2 text-fg-muted leading-relaxed">
+              Once the path has two points, a <em>Download route (GPX)</em> button appears under the readings. GPX is the standard file format for GPS tracks (<a href="https://www.topografix.com/GPX/1/1/" target="_blank" rel="noopener" className="text-accent hover:underline">version 1.1, published by Topografix</a>), so Strava, Komoot, Garmin Connect, Google Earth and most hiking apps can open it. Each point in the file carries its latitude and longitude, the time it was recorded, and the altitude when the device reported one. The file holds exactly the points drawn on the map, after the 10-meter and 50-meter filters above.
+            </p>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              The file is assembled by JavaScript in your browser and saved straight to your device; it is not uploaded anywhere first. You can download it while still tracking or after tapping <em>Stop</em>. To measure the straight-line gap between where you started and where you ended, paste both coordinates into the{' '}
+              <Link href="/distance-calculator" className="text-accent hover:underline">distance calculator</Link>.
+            </p>
+          </section>
 
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">Enabling live updates on each device</h2>
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">Enabling live updates on each device</h2>
 
-          <h3 className="font-display text-lg font-bold mt-5">iPhone</h3>
-          <ol className="mt-2 space-y-1.5 text-fg-muted list-decimal list-inside leading-relaxed">
-            <li>In Settings → Privacy &amp; Security → Location Services, make sure the service is on at the system level.</li>
-            <li>Scroll to your browser, tap it, and select <em>While Using the App</em> with <em>Precise Location</em> turned on. Without precise mode iOS feeds the browser a deliberately fuzzed coordinate that does not update as you move.</li>
-            <li>Come back, tap <em>Start live tracking</em>, and choose <em>Allow While Using App</em> on the permission prompt.</li>
-            <li>Keep the tab in the foreground — iOS pauses the GPS stream to background tabs to save battery.</li>
-          </ol>
+            <h3 className="font-display text-lg font-bold mt-5">iPhone</h3>
+            <ol className="mt-2 space-y-1.5 text-fg-muted list-decimal list-inside leading-relaxed">
+              <li>In Settings → Privacy &amp; Security → Location Services, make sure the service is on at the system level.</li>
+              <li>Scroll to your browser, tap it, and select <em>While Using the App</em> with <em>Precise Location</em> turned on. Without precise mode iOS feeds the browser a deliberately fuzzed coordinate that does not update as you move.</li>
+              <li>Come back, tap <em>Start live tracking</em>, and choose <em>Allow While Using App</em> on the permission prompt.</li>
+              <li>Keep the tab in the foreground — iOS pauses the GPS stream to background tabs to save battery.</li>
+            </ol>
 
-          <h3 className="font-display text-lg font-bold mt-5">Android</h3>
-          <ol className="mt-2 space-y-1.5 text-fg-muted list-decimal list-inside leading-relaxed">
-            <li>In Settings → Location, switch Location on, then open <em>Location services</em> and make sure <em>Google Location Accuracy</em> is on (it adds Wi-Fi and cell positioning to GPS). Android 9 and older call this the <em>High accuracy</em> mode.</li>
-            <li>In Chrome, tap the address-bar lock icon → Permissions → Location → Allow.</li>
-            <li>Tap <em>Start live tracking</em>. On Android 12 and later, the prompt asks you to choose between precise and approximate — choose precise; approximate will not update meaningfully as you walk.</li>
-            <li>Like iOS, Android throttles GPS to background tabs; keep this one focused while tracking.</li>
-          </ol>
+            <h3 className="font-display text-lg font-bold mt-5">Android</h3>
+            <ol className="mt-2 space-y-1.5 text-fg-muted list-decimal list-inside leading-relaxed">
+              <li>In Settings → Location, switch Location on, then open <em>Location services</em> and make sure <em>Google Location Accuracy</em> is on (it adds Wi-Fi and cell positioning to GPS). Android 9 and older call this the <em>High accuracy</em> mode.</li>
+              <li>In Chrome, tap the address-bar lock icon → Permissions → Location → Allow.</li>
+              <li>Tap <em>Start live tracking</em>. On Android 12 and later, the prompt asks you to choose between precise and approximate — choose precise; approximate will not update meaningfully as you walk.</li>
+              <li>Like iOS, Android throttles GPS to background tabs; keep this one focused while tracking.</li>
+            </ol>
 
-          <h3 className="font-display text-lg font-bold mt-5">Desktop or laptop</h3>
-          <ol className="mt-2 space-y-1.5 text-fg-muted list-decimal list-inside leading-relaxed">
-            <li>Click <em>Start live tracking</em> and allow the permission prompt under the address bar.</li>
-            <li>Expect slow, infrequent updates. Most laptops have no GPS chip, so the browser falls back to Wi-Fi positioning, which only changes when you move between buildings or float between access points.</li>
-            <li>If you need crisp updates while moving, open this page on your phone instead. Neither macOS nor Windows passes a phone&rsquo;s GPS fix through to a laptop browser, so a laptop will only ever see Wi-Fi or IP positioning.</li>
-          </ol>
-        </section>
+            <h3 className="font-display text-lg font-bold mt-5">Desktop or laptop</h3>
+            <ol className="mt-2 space-y-1.5 text-fg-muted list-decimal list-inside leading-relaxed">
+              <li>Click <em>Start live tracking</em> and allow the permission prompt under the address bar.</li>
+              <li>Expect slow, infrequent updates. Most laptops have no GPS chip, so the browser falls back to Wi-Fi positioning, which only changes when you move between buildings or float between access points.</li>
+              <li>If you need crisp updates while moving, open this page on your phone instead. Neither macOS nor Windows passes a phone&rsquo;s GPS fix through to a laptop browser, so a laptop will only ever see Wi-Fi or IP positioning.</li>
+            </ol>
+          </section>
 
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">Real-time location accuracy and battery</h2>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            High-accuracy live tracking is the most expensive geolocation mode a browser can run. It keeps the GPS radio warm, the Wi-Fi scanner active, and the application processor awake to deliver each callback. How much battery that costs depends on the phone, the signal, and above all whether the screen stays on, so the honest way to know is to note your battery percentage before and after a ten-minute session. It matters on a long road trip and barely registers on a short walk. The widget above releases all of those handles the instant you tap <em>Stop tracking</em>, and disconnects them automatically if you navigate away from this page.
-          </p>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            There is also a sneakier tradeoff: <em>jitter</em>. A static one-shot reading hides the natural noise in any GPS fix, because you only see the final smoothed coordinate. Live tracking exposes the noise — you watch the dot wander a few meters as the chip recomputes. That is not the tool being wrong; it is the GPS being honest. (If the dot sits in the wrong city entirely, the browser has probably fallen back to IP location; see{' '}
-            <Link href="/gps-vs-ip-accuracy" className="text-accent hover:underline">why GPS and IP disagree</Link>.) If you need a single clean reading, our{' '}
-            <Link href="/my-location" className="text-accent hover:underline">one-shot My Location page</Link>{' '}
-            is the better fit. If you want to explore the area around your position with satellite imagery or switch between map styles, the{' '}
-            <Link href="/maps" className="text-accent hover:underline">interactive map</Link>{' '}
-            gives you a larger, freeform canvas.
-          </p>
-        </section>
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">Real-time location accuracy and battery</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              High-accuracy live tracking is the most expensive geolocation mode a browser can run. It keeps the GPS radio warm, the Wi-Fi scanner active, and the application processor awake to deliver each callback. How much battery that costs depends on the phone, the signal, and above all whether the screen stays on, so the honest way to know is to note your battery percentage before and after a ten-minute session. It matters on a long road trip and barely registers on a short walk. The widget above releases all of those handles the instant you tap <em>Stop tracking</em>, and disconnects them automatically if you navigate away from this page.
+            </p>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              There is also a sneakier tradeoff: <em>jitter</em>. A static one-shot reading hides the natural noise in any GPS fix, because you only see the final smoothed coordinate. Live tracking exposes the noise — you watch the dot wander a few meters as the chip recomputes. That is not the tool being wrong; it is the GPS being honest. (If the dot sits in the wrong city entirely, the browser has probably fallen back to IP location; see{' '}
+              <Link href="/gps-vs-ip-accuracy" className="text-accent hover:underline">why GPS and IP disagree</Link>.) If you need a single clean reading, our{' '}
+              <Link href="/my-location" className="text-accent hover:underline">one-shot My Location page</Link>{' '}
+              is the better fit. If you want to explore the area around your position with satellite imagery or switch between map styles, the{' '}
+              <Link href="/maps" className="text-accent hover:underline">interactive map</Link>{' '}
+              gives you a larger, freeform canvas.
+            </p>
+          </section>
 
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">Keep the screen awake while tracking</h2>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            Phones pause location updates to a web page once the screen turns off, so a walk with the phone in your pocket can leave long gaps in the path. Tick <em>Keep screen on</em> next to the start button and the page asks the browser for a screen wake lock (the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Screen_Wake_Lock_API" target="_blank" rel="noopener" className="text-accent hover:underline">Screen Wake Lock API</a>), which stops the display from sleeping while tracking is running.
-          </p>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            The lock is released the moment you stop tracking or untick the box. If you switch to another app the browser drops it automatically, and the page asks for it again when you come back. If your browser does not support wake locks, the option is simply not shown. Battery-saver modes can also refuse the request; tracking still works, but the screen may sleep.
-          </p>
-        </section>
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">Keep the screen awake while tracking</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Phones pause location updates to a web page once the screen turns off, so a walk with the phone in your pocket can leave long gaps in the path. Tick <em>Keep screen on</em> next to the start button and the page asks the browser for a screen wake lock (the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Screen_Wake_Lock_API" target="_blank" rel="noopener" className="text-accent hover:underline">Screen Wake Lock API</a>), which stops the display from sleeping while tracking is running.
+            </p>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              The lock is released the moment you stop tracking or untick the box. If you switch to another app the browser drops it automatically, and the page asks for it again when you come back. If your browser does not support wake locks, the option is simply not shown. Battery-saver modes can also refuse the request; tracking still works, but the screen may sleep.
+            </p>
+          </section>
 
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">When the live feed lags or freezes</h2>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            If the update counter stops climbing or the timestamp goes stale, one of these is usually the cause:
-          </p>
-          <ul className="mt-4 space-y-2 text-fg-muted leading-relaxed">
-            <li><strong className="text-fg">Tab moved to the background.</strong> Both iOS and Android pause the GPS stream to inactive tabs. Bring this page back to the foreground.</li>
-            <li><strong className="text-fg">Indoor signal loss.</strong> Walking from a parking lot into a steel-framed building can drop GPS within seconds; the OS waits to see if the signal returns before falling back to Wi-Fi.</li>
-            <li><strong className="text-fg">Screen went to sleep.</strong> A dark screen pauses the stream on most phones. Tick <em>Keep screen on</em> before you start, as described above.</li>
-            <li><strong className="text-fg">Battery-saver kicked in.</strong> Low-power modes downsample GPS or block the radio entirely while the screen is dim. Disable battery saver for the session.</li>
-            <li><strong className="text-fg">Browser denied background permission.</strong> Some browsers stop firing the watch callback after a few minutes if they decide the page is idle. Close and re-open the tab to restart the stream.</li>
-            <li><strong className="text-fg">No movement.</strong> If you are sitting still, the OS may legitimately have nothing new to report. The last fix on screen is still your current position.</li>
-          </ul>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            If tracking never starts at all, work through the{' '}
-            <Link href="/fix-location-not-working" className="text-accent hover:underline">location not working fix guide</Link>.
-          </p>
-        </section>
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">When the live feed lags or freezes</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              If the update counter stops climbing or the timestamp goes stale, one of these is usually the cause:
+            </p>
+            <ul className="mt-4 space-y-2 text-fg-muted leading-relaxed">
+              <li><strong className="text-fg">Tab moved to the background.</strong> Both iOS and Android pause the GPS stream to inactive tabs. Bring this page back to the foreground.</li>
+              <li><strong className="text-fg">Indoor signal loss.</strong> Walking from a parking lot into a steel-framed building can drop GPS within seconds; the OS waits to see if the signal returns before falling back to Wi-Fi.</li>
+              <li><strong className="text-fg">Screen went to sleep.</strong> A dark screen pauses the stream on most phones. Tick <em>Keep screen on</em> before you start, as described above.</li>
+              <li><strong className="text-fg">Battery-saver kicked in.</strong> Low-power modes downsample GPS or block the radio entirely while the screen is dim. Disable battery saver for the session.</li>
+              <li><strong className="text-fg">Browser denied background permission.</strong> Some browsers stop firing the watch callback after a few minutes if they decide the page is idle. Close and re-open the tab to restart the stream.</li>
+              <li><strong className="text-fg">No movement.</strong> If you are sitting still, the OS may legitimately have nothing new to report. The last fix on screen is still your current position.</li>
+            </ul>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              If tracking never starts at all, work through the{' '}
+              <Link href="/fix-location-not-working" className="text-accent hover:underline">location not working fix guide</Link>.
+            </p>
+          </section>
 
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">Share your live location (WhatsApp, Google Maps)</h2>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            This page only ever shows your own position to you. It cannot create a link for someone else to follow, because that would mean sending your coordinates to a server, which this site deliberately never does. To share a moving position with someone you trust, use an app built for it:
-          </p>
-          <ol className="mt-3 space-y-1.5 text-fg-muted list-decimal list-inside leading-relaxed">
-            <li><strong className="text-fg">Google Maps:</strong> tap your profile picture → <em>Location sharing</em> → <em>New share</em>, choose how long, then pick a contact.</li>
-            <li><strong className="text-fg">Apple Find My or Messages:</strong> in a conversation, tap the contact&rsquo;s name → <em>Share My Location</em>, then choose one hour, until the end of the day, or indefinitely.</li>
-            <li><strong className="text-fg">WhatsApp:</strong> in a chat, tap the attachment button → <em>Location</em> → <em>Share live location</em>, then choose 15 minutes, 1 hour, or 8 hours.</li>
-          </ol>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            All three let you stop sharing early. To show someone a route after the fact instead, download it as a GPX file above and send the file. Before you share, read 
-            <Link href="/blog/how-to-share-gps-location-safely" className="text-accent hover:underline">how to share your GPS location safely</Link>.
-          </p>
-        </section>
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">Share your live location (WhatsApp, Google Maps)</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              This page only ever shows your own position to you. It cannot create a link for someone else to follow, because that would mean sending your coordinates to a server, which this site deliberately never does. To share a moving position with someone you trust, use an app built for it:
+            </p>
+            <ol className="mt-3 space-y-1.5 text-fg-muted list-decimal list-inside leading-relaxed">
+              <li><strong className="text-fg">Google Maps:</strong> tap your profile picture → <em>Location sharing</em> → <em>New share</em>, choose how long, then pick a contact.</li>
+              <li><strong className="text-fg">Apple Find My or Messages:</strong> in a conversation, tap the contact&rsquo;s name → <em>Share My Location</em>, then choose one hour, until the end of the day, or indefinitely.</li>
+              <li><strong className="text-fg">WhatsApp:</strong> in a chat, tap the attachment button → <em>Location</em> → <em>Share live location</em>, then choose 15 minutes, 1 hour, or 8 hours.</li>
+            </ol>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              All three let you stop sharing early. To show someone a route after the fact instead, download it as a GPX file above and send the file. Before you share, read 
+              <Link href="/blog/how-to-share-gps-location-safely" className="text-accent hover:underline">how to share your GPS location safely</Link>.
+            </p>
+          </section>
 
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">Privacy: the stream stays with you</h2>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            Live tracking sounds invasive, but the data path is no different from a single-shot reading — there are just more readings. Every coordinate is delivered to JavaScript inside your own tab; none of them are posted to a server we control, written to any database, or correlated with anything else about your session. The page makes one throttled network call per ten seconds (at most) to translate the latest coordinate into a readable place name, and that request contains nothing but two numbers. A downloaded GPX file stays on your device unless you choose to send it to someone.
-          </p>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            If you want to dig further into what a browser is — and is not — allowed to do with your GPS, our{' '}
-            <Link href="/blog/browser-geolocation-api-explained" className="text-accent hover:underline">guide to the W3C Geolocation API</Link>{' '}
-            walks through the permission model and the difference between <code className="font-mono text-xs bg-tint/10 px-1 rounded">getCurrentPosition</code> and <code className="font-mono text-xs bg-tint/10 px-1 rounded">watchPosition</code> in plain English.
-          </p>
-        </section>
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">Privacy: the stream stays with you</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Live tracking sounds invasive, but the data path is no different from a single-shot reading — there are just more readings. Every coordinate is delivered to JavaScript inside your own tab; none of them are posted to a server we control, written to any database, or correlated with anything else about your session. The page makes one throttled network call per ten seconds (at most) to translate the latest coordinate into a readable place name, and that request contains nothing but two numbers. A downloaded GPX file stays on your device unless you choose to send it to someone.
+            </p>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              If you want to dig further into what a browser is — and is not — allowed to do with your GPS, our{' '}
+              <Link href="/blog/browser-geolocation-api-explained" className="text-accent hover:underline">guide to the W3C Geolocation API</Link>{' '}
+              walks through the permission model and the difference between <code className="font-mono text-xs bg-tint/10 px-1 rounded">getCurrentPosition</code> and <code className="font-mono text-xs bg-tint/10 px-1 rounded">watchPosition</code> in plain English.
+            </p>
+          </section>
+        </article>
 
         <section className="mt-12">
           <h2 className="font-display text-2xl font-bold">Frequently asked questions</h2>

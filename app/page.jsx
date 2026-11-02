@@ -128,90 +128,92 @@ export default function HomePage() {
           </p>
         </section>
 
-        <section className="grid gap-4 md:grid-cols-3 mb-8">
-          <div className="glass rounded-2xl p-5 ring-1 ring-line">
-            <p className="text-[11px] uppercase tracking-[0.18em] text-accent font-semibold">One fast tool</p>
-            <h2 className="font-display text-xl font-bold mt-1">Coordinates and address in two seconds</h2>
-            <p className="mt-2 text-sm text-fg-muted leading-relaxed">
-              The widget below reads your live GPS, reverse-geocodes the coordinate
-              into a street, city, and country, and draws a live map pin — all in one tap.
-            </p>
-          </div>
-          <div className="glass rounded-2xl p-5 ring-1 ring-line">
-            <p className="text-[11px] uppercase tracking-[0.18em] text-accent font-semibold">Nine tools, one hub</p>
-            <h2 className="font-display text-xl font-bold mt-1">A focused tool for every job</h2>
-            <p className="mt-2 text-sm text-fg-muted leading-relaxed">
-              Need DD ↔ DMS, the distance between two points, the city of an IP, or the
-              address of a coordinate? Each job has a dedicated tool, linked below.
-            </p>
-          </div>
-          <div className="glass rounded-2xl p-5 ring-1 ring-line">
-            <p className="text-[11px] uppercase tracking-[0.18em] text-accent font-semibold">Private by default</p>
-            <h2 className="font-display text-xl font-bold mt-1">Your location stays in your browser</h2>
-            <p className="mt-2 text-sm text-fg-muted leading-relaxed">
-              Coordinates are read by JavaScript in your tab. The only place they are sent is a
-              reverse-geocoding lookup (BigDataCloud, with OpenStreetMap as the fallback) that
-              turns the numbers into a place name — no server we operate sees them.
-            </p>
-          </div>
-        </section>
+        <article>
+          <section className="grid gap-4 md:grid-cols-3 mb-8">
+            <div className="glass rounded-2xl p-5 ring-1 ring-line">
+              <p className="text-[11px] uppercase tracking-[0.18em] text-accent font-semibold">One fast tool</p>
+              <h2 className="font-display text-xl font-bold mt-1">Coordinates and address in two seconds</h2>
+              <p className="mt-2 text-sm text-fg-muted leading-relaxed">
+                The widget below reads your live GPS, reverse-geocodes the coordinate
+                into a street, city, and country, and draws a live map pin — all in one tap.
+              </p>
+            </div>
+            <div className="glass rounded-2xl p-5 ring-1 ring-line">
+              <p className="text-[11px] uppercase tracking-[0.18em] text-accent font-semibold">Nine tools, one hub</p>
+              <h2 className="font-display text-xl font-bold mt-1">A focused tool for every job</h2>
+              <p className="mt-2 text-sm text-fg-muted leading-relaxed">
+                Need DD ↔ DMS, the distance between two points, the city of an IP, or the
+                address of a coordinate? Each job has a dedicated tool, linked below.
+              </p>
+            </div>
+            <div className="glass rounded-2xl p-5 ring-1 ring-line">
+              <p className="text-[11px] uppercase tracking-[0.18em] text-accent font-semibold">Private by default</p>
+              <h2 className="font-display text-xl font-bold mt-1">Your location stays in your browser</h2>
+              <p className="mt-2 text-sm text-fg-muted leading-relaxed">
+                Coordinates are read by JavaScript in your tab. The only place they are sent is a
+                reverse-geocoding lookup (BigDataCloud, with OpenStreetMap as the fallback) that
+                turns the numbers into a place name — no server we operate sees them.
+              </p>
+            </div>
+          </section>
 
-        {/* Tool hub — prerendered links so Googlebot sees the cluster on first byte */}
-        <section id="tools" aria-labelledby="hub" className="mb-10 scroll-mt-24">
-          <h2 id="hub" className="font-display text-2xl font-bold">All-in-one location toolkit — pick a tool</h2>
-          <p className="text-sm text-fg-muted mt-1 max-w-3xl">
-            Every location tool on this site. Each one is free, runs in your browser, and needs no signup.
-          </p>
-          <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-5">
-            {HUB_TOOLS.map((t) => (
-              <li key={t.href}>
-                <Link href={t.href} className="glass rounded-2xl p-4 ring-1 ring-line hover:ring-accent/40 transition group block no-underline h-full">
-                  <h3 className="font-display text-base font-bold text-fg group-hover:text-accent transition">{t.t}</h3>
-                  <p className="text-xs text-fg-subtle mt-1.5 leading-snug">{t.d}</p>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
+          {/* Tool hub — prerendered links so Googlebot sees the cluster on first byte */}
+          <section id="tools" aria-labelledby="hub" className="mb-10 scroll-mt-24">
+            <h2 id="hub" className="font-display text-2xl font-bold">All-in-one location toolkit — pick a tool</h2>
+            <p className="text-sm text-fg-muted mt-1 max-w-3xl">
+              Every location tool on this site. Each one is free, runs in your browser, and needs no signup.
+            </p>
+            <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-5">
+              {HUB_TOOLS.map((t) => (
+                <li key={t.href}>
+                  <Link href={t.href} className="glass rounded-2xl p-4 ring-1 ring-line hover:ring-accent/40 transition group block no-underline h-full">
+                    <h3 className="font-display text-base font-bold text-fg group-hover:text-accent transition">{t.t}</h3>
+                    <p className="text-xs text-fg-subtle mt-1.5 leading-snug">{t.d}</p>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
 
-        <section aria-labelledby="net-hub" className="mb-10">
-          <h2 id="net-hub" className="font-display text-2xl font-bold">Network, web and everyday tools</h2>
-          <p className="text-sm text-fg-muted mt-1 max-w-3xl">
-            IP and DNS lookups, email and website checks, and quick converters. Free, no signup.
-          </p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-5">
-            {NET_GROUPS.map((g) => {
-              const tools = NET_TOOLS.filter((t) => t.group === g.id);
-              return (
-                <div key={g.id} className="glass rounded-2xl ring-1 ring-line p-5 flex flex-col">
-                  <div className="flex items-start gap-3 pb-3 border-b-2 border-accent/30 lg:min-h-[5.75rem]">
-                    <span aria-hidden="true" className="shrink-0 w-10 h-10 rounded-xl bg-accent/15 ring-1 ring-accent/30 flex items-center justify-center text-xl">{g.icon}</span>
-                    <div className="min-w-0">
-                      <h3 className="font-display text-lg font-extrabold text-fg leading-tight">
-                        {g.label}
-                        <span className="ml-2 align-middle text-[11px] font-semibold text-accent-strong bg-accent/10 rounded-full px-2 py-0.5">{tools.length}</span>
-                      </h3>
-                      <p className="text-xs text-fg-muted mt-0.5">{g.blurb}</p>
+          <section aria-labelledby="net-hub" className="mb-10">
+            <h2 id="net-hub" className="font-display text-2xl font-bold">Network, web and everyday tools</h2>
+            <p className="text-sm text-fg-muted mt-1 max-w-3xl">
+              IP and DNS lookups, email and website checks, and quick converters. Free, no signup.
+            </p>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-5">
+              {NET_GROUPS.map((g) => {
+                const tools = NET_TOOLS.filter((t) => t.group === g.id);
+                return (
+                  <div key={g.id} className="glass rounded-2xl ring-1 ring-line p-5 flex flex-col">
+                    <div className="flex items-start gap-3 pb-3 border-b-2 border-accent/30 lg:min-h-[5.75rem]">
+                      <span aria-hidden="true" className="shrink-0 w-10 h-10 rounded-xl bg-accent/15 ring-1 ring-accent/30 flex items-center justify-center text-xl">{g.icon}</span>
+                      <div className="min-w-0">
+                        <h3 className="font-display text-lg font-extrabold text-fg leading-tight">
+                          {g.label}
+                          <span className="ml-2 align-middle text-[11px] font-semibold text-accent-strong bg-accent/10 rounded-full px-2 py-0.5">{tools.length}</span>
+                        </h3>
+                        <p className="text-xs text-fg-muted mt-0.5">{g.blurb}</p>
+                      </div>
                     </div>
+                    <ul className="mt-3 space-y-1">
+                      {tools.map((t) => (
+                        <li key={t.href}>
+                          <Link href={t.href} className="group flex items-start justify-between gap-2 rounded-lg px-2 py-1.5 -mx-2 hover:bg-accent/10 transition no-underline">
+                            <span className="min-w-0">
+                              <span className="block text-sm font-semibold text-fg group-hover:text-accent transition">{t.label}</span>
+                              <span className="block text-xs text-fg-muted">{t.desc}</span>
+                            </span>
+                            <span aria-hidden="true" className="text-accent opacity-0 group-hover:opacity-100 transition mt-0.5">→</span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <ul className="mt-3 space-y-1">
-                    {tools.map((t) => (
-                      <li key={t.href}>
-                        <Link href={t.href} className="group flex items-start justify-between gap-2 rounded-lg px-2 py-1.5 -mx-2 hover:bg-accent/10 transition no-underline">
-                          <span className="min-w-0">
-                            <span className="block text-sm font-semibold text-fg group-hover:text-accent transition">{t.label}</span>
-                            <span className="block text-xs text-fg-muted">{t.desc}</span>
-                          </span>
-                          <span aria-hidden="true" className="text-accent opacity-0 group-hover:opacity-100 transition mt-0.5">→</span>
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              );
-            })}
-          </div>
-        </section>
+                );
+              })}
+            </div>
+          </section>
+        </article>
 
         {/* Client-side interactive tool (Geolocation API, Leaflet map, etc.) */}
         <HomeClient />

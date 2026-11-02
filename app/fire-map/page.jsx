@@ -113,54 +113,56 @@ export default function FireMapPage() {
 
         <Tool />
 
-        <section className="mt-12">
-          <h2 className="font-display text-2xl font-bold">How to check for fires near you</h2>
-          <ol className="mt-3 space-y-2 text-fg-muted list-decimal list-inside leading-relaxed">
-            <li><strong className="text-fg">Choose the place.</strong> Press &ldquo;Fires near me&rdquo; to use your location, search for a town, address or postcode, or click anywhere on the map.</li>
-            <li><strong className="text-fg">Choose the distance.</strong> Pick 10 to 500 km, or switch to miles. The blue circle shows the area being checked.</li>
-            <li><strong className="text-fg">Read the result.</strong> The box says how many hotspots lie inside the circle and how far and in which direction the nearest one is. The table lists the ten nearest; &ldquo;Show&rdquo; zooms the map to one.</li>
-            <li><strong className="text-fg">Check the official source.</strong> If anything is close, open your fire service&rsquo;s map or app for warnings, which the satellite data cannot give you.</li>
-          </ol>
-        </section>
+        <article>
+          <section className="mt-12">
+            <h2 className="font-display text-2xl font-bold">How to check for fires near you</h2>
+            <ol className="mt-3 space-y-2 text-fg-muted list-decimal list-inside leading-relaxed">
+              <li><strong className="text-fg">Choose the place.</strong> Press &ldquo;Fires near me&rdquo; to use your location, search for a town, address or postcode, or click anywhere on the map.</li>
+              <li><strong className="text-fg">Choose the distance.</strong> Pick 10 to 500 km, or switch to miles. The blue circle shows the area being checked.</li>
+              <li><strong className="text-fg">Read the result.</strong> The box says how many hotspots lie inside the circle and how far and in which direction the nearest one is. The table lists the ten nearest; &ldquo;Show&rdquo; zooms the map to one.</li>
+              <li><strong className="text-fg">Check the official source.</strong> If anything is close, open your fire service&rsquo;s map or app for warnings, which the satellite data cannot give you.</li>
+            </ol>
+          </section>
 
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">Official fire warnings</h2>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            Fire services combine satellite data with reports from crews, aircraft and the public, and they are the only source of warnings and evacuation orders. Use them alongside this map:
-          </p>
-          <ul className="mt-3 space-y-1.5 text-fg-muted list-disc list-inside leading-relaxed">
-            {OFFICIAL.map(([where, who, href]) => (
-              <li key={where}><strong className="text-fg">{where}:</strong>{' '}<a href={href} target="_blank" rel="noopener" className={link}>{who}</a></li>
-            ))}
-            <li><strong className="text-fg">Queensland, Tasmania, the ACT and the NT:</strong> your state or territory fire and emergency service.</li>
-          </ul>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            In Australia, warnings follow the Australian Warning System&rsquo;s three levels: <strong className="text-fg">Advice</strong>, <strong className="text-fg">Watch and Act</strong>, and <strong className="text-fg">Emergency Warning</strong>, the highest, when you may need to act immediately. Separately, the daily Fire Danger Rating (Moderate, High, Extreme or Catastrophic) tells you how dangerous a fire would be if one started.
-          </p>
-        </section>
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">Official fire warnings</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Fire services combine satellite data with reports from crews, aircraft and the public, and they are the only source of warnings and evacuation orders. Use them alongside this map:
+            </p>
+            <ul className="mt-3 space-y-1.5 text-fg-muted list-disc list-inside leading-relaxed">
+              {OFFICIAL.map(([where, who, href]) => (
+                <li key={where}><strong className="text-fg">{where}:</strong>{' '}<a href={href} target="_blank" rel="noopener" className={link}>{who}</a></li>
+              ))}
+              <li><strong className="text-fg">Queensland, Tasmania, the ACT and the NT:</strong> your state or territory fire and emergency service.</li>
+            </ul>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              In Australia, warnings follow the Australian Warning System&rsquo;s three levels: <strong className="text-fg">Advice</strong>, <strong className="text-fg">Watch and Act</strong>, and <strong className="text-fg">Emergency Warning</strong>, the highest, when you may need to act immediately. Separately, the daily Fire Danger Rating (Moderate, High, Extreme or Catastrophic) tells you how dangerous a fire would be if one started.
+            </p>
+          </section>
 
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">Where the fire data comes from</h2>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            The dots are &ldquo;active fire&rdquo; detections from the VIIRS instrument on two polar-orbiting satellites, Suomi NPP and NOAA-20, published by NASA&rsquo;s{' '}
-            <a href="https://firms.modaps.eosdis.nasa.gov/" target="_blank" rel="noopener" className={link}>Fire Information for Resource Management System (FIRMS)</a>. VIIRS sees the ground in pixels about 375 m across and flags a pixel when it is much hotter than the land around it, by day and by night.
-          </p>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            The colors show how long ago each detection was made: red for under 6 hours, orange for 6 to 12 hours, and yellow for 12 to 24 hours. Larger dots mark stronger fires (more than 50 megawatts of radiated heat). A dot is the center of a hot pixel, not the edge of a fire front, and one large fire usually shows up as a cluster of dots.
-          </p>
-        </section>
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">Where the fire data comes from</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              The dots are &ldquo;active fire&rdquo; detections from the VIIRS instrument on two polar-orbiting satellites, Suomi NPP and NOAA-20, published by NASA&rsquo;s{' '}
+              <a href="https://firms.modaps.eosdis.nasa.gov/" target="_blank" rel="noopener" className={link}>Fire Information for Resource Management System (FIRMS)</a>. VIIRS sees the ground in pixels about 375 m across and flags a pixel when it is much hotter than the land around it, by day and by night.
+            </p>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              The colors show how long ago each detection was made: red for under 6 hours, orange for 6 to 12 hours, and yellow for 12 to 24 hours. Larger dots mark stronger fires (more than 50 megawatts of radiated heat). A dot is the center of a hot pixel, not the edge of a fire front, and one large fire usually shows up as a cluster of dots.
+            </p>
+          </section>
 
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">What the map cannot tell you</h2>
-          <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside leading-relaxed">
-            <li><strong className="text-fg">Where the fire is now.</strong> A detection is a snapshot from the moment the satellite passed. Fires can move many kilometres in a few hours on a hot, windy day.</li>
-            <li><strong className="text-fg">Fires hidden by cloud or smoke,</strong> or too small or cool to detect.</li>
-            <li><strong className="text-fg">Whether a fire is under control,</strong> a planned burn, or an emergency. Only the fire service knows.</li>
-          </ul>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            If you are in a bushfire-prone area, make a bushfire plan before the season, and decide in advance when you would leave. Leaving early is the safest option.
-          </p>
-        </section>
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">What the map cannot tell you</h2>
+            <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside leading-relaxed">
+              <li><strong className="text-fg">Where the fire is now.</strong> A detection is a snapshot from the moment the satellite passed. Fires can move many kilometres in a few hours on a hot, windy day.</li>
+              <li><strong className="text-fg">Fires hidden by cloud or smoke,</strong> or too small or cool to detect.</li>
+              <li><strong className="text-fg">Whether a fire is under control,</strong> a planned burn, or an emergency. Only the fire service knows.</li>
+            </ul>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              If you are in a bushfire-prone area, make a bushfire plan before the season, and decide in advance when you would leave. Leaving early is the safest option.
+            </p>
+          </section>
+        </article>
 
         <section className="mt-10">
           <h2 className="font-display text-2xl font-bold">Frequently asked questions</h2>

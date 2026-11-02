@@ -141,192 +141,194 @@ export default function SatellitePage() {
         <Tool />
         <SideAd />
 
-        <section className="mt-12">
-          <h2 className="font-display text-2xl font-bold">How to see any address from above</h2>
-          <ol className="mt-3 space-y-2 text-fg-muted list-decimal list-inside leading-relaxed">
-            <li><strong className="text-fg">Search.</strong> Type a street address, a town, or a landmark. Coordinates work too, in any format: <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">40.6892, -74.0445</code>, degrees-minutes-seconds, UTM, a Plus Code such as <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">8FW4V75V+9R</code>, a geohash, or a Google Maps link.</li>
-            <li><strong className="text-fg">Get your bearings.</strong> Place labels are on by default; turn on Roads to see street names and road lines drawn over the photo. Turn both off for a clean image.</li>
-            <li><strong className="text-fg">Pin the building.</strong> Click the map to drop a pin and read its exact coordinates, copy them, or open the same point in Google Maps or Street View.</li>
-            <li><strong className="text-fg">Check the date.</strong> The imagery panel updates every time you move the map. If the photo is older than you need, compare it with Google&rsquo;s, which is often from a different year.</li>
-            <li><strong className="text-fg">Share it.</strong> The address bar always holds the current view, so the copied link opens the same spot at the same zoom.</li>
-          </ol>
-        </section>
+        <article>
+          <section className="mt-12">
+            <h2 className="font-display text-2xl font-bold">How to see any address from above</h2>
+            <ol className="mt-3 space-y-2 text-fg-muted list-decimal list-inside leading-relaxed">
+              <li><strong className="text-fg">Search.</strong> Type a street address, a town, or a landmark. Coordinates work too, in any format: <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">40.6892, -74.0445</code>, degrees-minutes-seconds, UTM, a Plus Code such as <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">8FW4V75V+9R</code>, a geohash, or a Google Maps link.</li>
+              <li><strong className="text-fg">Get your bearings.</strong> Place labels are on by default; turn on Roads to see street names and road lines drawn over the photo. Turn both off for a clean image.</li>
+              <li><strong className="text-fg">Pin the building.</strong> Click the map to drop a pin and read its exact coordinates, copy them, or open the same point in Google Maps or Street View.</li>
+              <li><strong className="text-fg">Check the date.</strong> The imagery panel updates every time you move the map. If the photo is older than you need, compare it with Google&rsquo;s, which is often from a different year.</li>
+              <li><strong className="text-fg">Share it.</strong> The address bar always holds the current view, so the copied link opens the same spot at the same zoom.</li>
+            </ol>
+          </section>
 
 
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">Most up-to-date satellite images: check the date</h2>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            People searching for <strong className="text-fg">up-to-date satellite images</strong>, <strong className="text-fg">updated satellite images</strong> or the <strong className="text-fg">most recent satellite images</strong> usually want one thing: to know the photo shows the place as it is now. No free map offers a <strong className="text-fg">live satellite view</strong>, so the honest answer is to show the date. This map does that for every view: the imagery panel under the map gives the capture date, resolution and source of the exact photo you are looking at.
-          </p>
-          <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside leading-relaxed">
-            <li><strong className="text-fg">Big cities and landmarks:</strong> usually photographed within the last one to two years, as the table below shows.</li>
-            <li><strong className="text-fg">Towns and suburbs:</strong> typically one to three years old.</li>
-            <li><strong className="text-fg">Rural and remote areas:</strong> can be several years old, and zoomed out you see a global mosaic with no single date.</li>
-            <li><strong className="text-fg">Need the latest satellite imagery?</strong> Compare with Google Maps satellite view using the link under the map. Different providers update different places, so one of them is often newer.</li>
-          </ul>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            Because the date is always on screen, these are the <strong className="text-fg">most up-to-date satellite maps</strong> you can check for free without guessing: if the photo is too old for your purpose, you know straight away.
-          </p>
-        </section>
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">Most up-to-date satellite images: check the date</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              People searching for <strong className="text-fg">up-to-date satellite images</strong>, <strong className="text-fg">updated satellite images</strong> or the <strong className="text-fg">most recent satellite images</strong> usually want one thing: to know the photo shows the place as it is now. No free map offers a <strong className="text-fg">live satellite view</strong>, so the honest answer is to show the date. This map does that for every view: the imagery panel under the map gives the capture date, resolution and source of the exact photo you are looking at.
+            </p>
+            <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside leading-relaxed">
+              <li><strong className="text-fg">Big cities and landmarks:</strong> usually photographed within the last one to two years, as the table below shows.</li>
+              <li><strong className="text-fg">Towns and suburbs:</strong> typically one to three years old.</li>
+              <li><strong className="text-fg">Rural and remote areas:</strong> can be several years old, and zoomed out you see a global mosaic with no single date.</li>
+              <li><strong className="text-fg">Need the latest satellite imagery?</strong> Compare with Google Maps satellite view using the link under the map. Different providers update different places, so one of them is often newer.</li>
+            </ul>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Because the date is always on screen, these are the <strong className="text-fg">most up-to-date satellite maps</strong> you can check for free without guessing: if the photo is too old for your purpose, you know straight away.
+            </p>
+          </section>
 
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">Satellite view of my location, my house or any property</h2>
-          <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside leading-relaxed">
-            <li><strong className="text-fg">Satellite view of my location:</strong> press My location and allow access to see <strong className="text-fg">satellite maps of my location</strong>. The map jumps to where you are, at street level.</li>
-            <li><strong className="text-fg">Aerial view of my house:</strong> for a <strong className="text-fg">satellite view of my house</strong>, type your street address and press Search, then click your roof to pin it.</li>
-            <li><strong className="text-fg">Aerial view of a property by address:</strong> search the address, turn on Roads to see the street names, and check the date before relying on what you see.</li>
-            <li><strong className="text-fg">Satellite maps with street view:</strong> pin a point and press Street View here to see the same spot from the street, or use our <Link href="/street-view" className="text-accent hover:underline">Street View</Link> tool for any address.</li>
-          </ul>
-        </section>
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">Satellite view of my location, my house or any property</h2>
+            <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside leading-relaxed">
+              <li><strong className="text-fg">Satellite view of my location:</strong> press My location and allow access to see <strong className="text-fg">satellite maps of my location</strong>. The map jumps to where you are, at street level.</li>
+              <li><strong className="text-fg">Aerial view of my house:</strong> for a <strong className="text-fg">satellite view of my house</strong>, type your street address and press Search, then click your roof to pin it.</li>
+              <li><strong className="text-fg">Aerial view of a property by address:</strong> search the address, turn on Roads to see the street names, and check the date before relying on what you see.</li>
+              <li><strong className="text-fg">Satellite maps with street view:</strong> pin a point and press Street View here to see the same spot from the street, or use our <Link href="/street-view" className="text-accent hover:underline">Street View</Link> tool for any address.</li>
+            </ul>
+          </section>
 
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">How old is the satellite image?</h2>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            <strong className="text-fg">Satellite images</strong> of major cities on this map are usually less than two years old: the Eiffel Tower, the Statue of Liberty and the Pyramids of Giza were all photographed in 2025. Rural areas can be several years older. The tool shows the exact <strong className="text-fg">satellite image date</strong> for any point you look at.
-          </p>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            Most satellite maps never tell you this. The <strong className="text-fg">satellite imagery</strong> here comes from Esri&rsquo;s World Imagery mosaic, and Esri publishes metadata for every photo in it: the capture date, the resolution, the positional accuracy, and the provider. The tool reads that metadata for the point at the centre of your screen, at your current zoom, because a single view can mix several photos taken on different days.
-          </p>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            What we saw when we checked five places on 15 October 2026:
-          </p>
-          <div className="mt-4 overflow-x-auto rounded-xl ring-1 ring-line">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="bg-tint/5 text-left text-fg-muted">
-                  <th className="px-3 py-2 font-semibold">Place</th>
-                  <th className="px-3 py-2 font-semibold">Captured</th>
-                  <th className="px-3 py-2 font-semibold">Resolution</th>
-                  <th className="px-3 py-2 font-semibold">Source</th>
-                </tr>
-              </thead>
-              <tbody>
-                {SAMPLES.map((s) => (
-                  <tr key={s.place} className="border-t border-line-subtle">
-                    <td className="px-3 py-2 text-fg-muted">{s.place}</td>
-                    <td className="px-3 py-2 text-fg">{s.date}</td>
-                    <td className="px-3 py-2 font-mono text-xs text-fg-muted">{s.res}</td>
-                    <td className="px-3 py-2 text-fg-muted">{s.kind}</td>
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">How old is the satellite image?</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              <strong className="text-fg">Satellite images</strong> of major cities on this map are usually less than two years old: the Eiffel Tower, the Statue of Liberty and the Pyramids of Giza were all photographed in 2025. Rural areas can be several years older. The tool shows the exact <strong className="text-fg">satellite image date</strong> for any point you look at.
+            </p>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Most satellite maps never tell you this. The <strong className="text-fg">satellite imagery</strong> here comes from Esri&rsquo;s World Imagery mosaic, and Esri publishes metadata for every photo in it: the capture date, the resolution, the positional accuracy, and the provider. The tool reads that metadata for the point at the centre of your screen, at your current zoom, because a single view can mix several photos taken on different days.
+            </p>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              What we saw when we checked five places on 15 October 2026:
+            </p>
+            <div className="mt-4 overflow-x-auto rounded-xl ring-1 ring-line">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="bg-tint/5 text-left text-fg-muted">
+                    <th className="px-3 py-2 font-semibold">Place</th>
+                    <th className="px-3 py-2 font-semibold">Captured</th>
+                    <th className="px-3 py-2 font-semibold">Resolution</th>
+                    <th className="px-3 py-2 font-semibold">Source</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            So well-known places were photographed within the last year or two, but there is no fixed schedule. Big cities and fast-changing areas are refreshed more often; quiet rural areas can wait several years. Esri replaces tiles as new photos arrive, so the panel may show a newer date than the table by the time you read this.
-          </p>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            Zoomed out, below roughly city level, you are not looking at one photo at all but at a 15 m-per-pixel global mosaic assembled from many cloud-free scenes, which has no single date. The panel tells you when that is the case.
-          </p>
-        </section>
+                </thead>
+                <tbody>
+                  {SAMPLES.map((s) => (
+                    <tr key={s.place} className="border-t border-line-subtle">
+                      <td className="px-3 py-2 text-fg-muted">{s.place}</td>
+                      <td className="px-3 py-2 text-fg">{s.date}</td>
+                      <td className="px-3 py-2 font-mono text-xs text-fg-muted">{s.res}</td>
+                      <td className="px-3 py-2 text-fg-muted">{s.kind}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              So well-known places were photographed within the last year or two, but there is no fixed schedule. Big cities and fast-changing areas are refreshed more often; quiet rural areas can wait several years. Esri replaces tiles as new photos arrive, so the panel may show a newer date than the table by the time you read this.
+            </p>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Zoomed out, below roughly city level, you are not looking at one photo at all but at a 15 m-per-pixel global mosaic assembled from many cloud-free scenes, which has no single date. The panel tells you when that is the case.
+            </p>
+          </section>
 
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">What you can and cannot see</h2>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            Resolution is the size of the patch of ground one pixel covers. In most towns the imagery here is 30 to 50 cm per pixel, which in practice means:
-          </p>
-          <ul className="mt-3 space-y-1.5 text-fg-muted list-disc list-inside leading-relaxed">
-            <li><strong className="text-fg">Clearly visible:</strong> buildings and roof shapes, driveways, gardens, swimming pools, cars (about ten pixels long), trees, paths, and field boundaries.</li>
-            <li><strong className="text-fg">Just about visible:</strong> road markings, garden furniture, people as a dark dot or shadow.</li>
-            <li><strong className="text-fg">Not visible:</strong> faces, number plates, house numbers, or anything under a roof or tree canopy.</li>
-          </ul>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            Everything is seen from straight above, so walls and shopfronts do not appear. For the face of a building, use{' '}
-            <Link href="/street-view" className="text-accent hover:underline">Street View</Link>, which shows the street-level photos instead.
-          </p>
-        </section>
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">What you can and cannot see</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Resolution is the size of the patch of ground one pixel covers. In most towns the imagery here is 30 to 50 cm per pixel, which in practice means:
+            </p>
+            <ul className="mt-3 space-y-1.5 text-fg-muted list-disc list-inside leading-relaxed">
+              <li><strong className="text-fg">Clearly visible:</strong> buildings and roof shapes, driveways, gardens, swimming pools, cars (about ten pixels long), trees, paths, and field boundaries.</li>
+              <li><strong className="text-fg">Just about visible:</strong> road markings, garden furniture, people as a dark dot or shadow.</li>
+              <li><strong className="text-fg">Not visible:</strong> faces, number plates, house numbers, or anything under a roof or tree canopy.</li>
+            </ul>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Everything is seen from straight above, so walls and shopfronts do not appear. For the face of a building, use{' '}
+              <Link href="/street-view" className="text-accent hover:underline">Street View</Link>, which shows the street-level photos instead.
+            </p>
+          </section>
 
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">Aerial views to try</h2>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            Open any of these in free <strong className="text-fg">satellite view</strong>; each link sets the map to the spot and zoom shown, and the panel shows when the photo was taken.
-          </p>
-          <ul className="mt-3 grid sm:grid-cols-2 gap-2">
-            {VIEWS.map((v) => (
-              <li key={v.hash}>
-                <a href={`/satellite#${v.hash}`} className="block glass rounded-xl px-4 py-3 text-fg hover:text-accent ring-1 ring-line transition no-underline">
-                  <strong>Aerial view of {v.place}</strong>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </section>
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">Aerial views to try</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Open any of these in free <strong className="text-fg">satellite view</strong>; each link sets the map to the spot and zoom shown, and the panel shows when the photo was taken.
+            </p>
+            <ul className="mt-3 grid sm:grid-cols-2 gap-2">
+              {VIEWS.map((v) => (
+                <li key={v.hash}>
+                  <a href={`/satellite#${v.hash}`} className="block glass rounded-xl px-4 py-3 text-fg hover:text-accent ring-1 ring-line transition no-underline">
+                    <strong>Aerial view of {v.place}</strong>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
 
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">Satellite or aerial photo?</h2>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            &ldquo;<strong className="text-fg">Satellite view</strong>&rdquo; is the everyday name, but the sharpest imagery on any map is often taken from aircraft. Commercial satellites such as those operated by Vantor (formerly Maxar) photograph most of the world at around 30 to 50 cm per pixel. Planes fly lower and can capture 15 cm or finer, so many cities and national mapping programmes use aerial surveys instead. Esri&rsquo;s mosaic mixes both: in New York, for example, its metadata lists a 15 cm aerial survey from 2024 for the very closest zoom level, above 50 cm satellite imagery for everything else. The imagery panel names the source for whatever you are looking at.
-          </p>
-        </section>
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">Satellite or aerial photo?</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              &ldquo;<strong className="text-fg">Satellite view</strong>&rdquo; is the everyday name, but the sharpest imagery on any map is often taken from aircraft. Commercial satellites such as those operated by Vantor (formerly Maxar) photograph most of the world at around 30 to 50 cm per pixel. Planes fly lower and can capture 15 cm or finer, so many cities and national mapping programmes use aerial surveys instead. Esri&rsquo;s mosaic mixes both: in New York, for example, its metadata lists a 15 cm aerial survey from 2024 for the very closest zoom level, above 50 cm satellite imagery for everything else. The imagery panel names the source for whatever you are looking at.
+            </p>
+          </section>
 
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">Why another map shows a different picture</h2>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            <strong className="text-fg">Google Maps</strong>, Apple Maps, Bing Maps, and Esri each license imagery from different providers and update different places at different times. The same house can appear in summer on one map and in winter on another, with or without a new extension, or with a neighbouring building that has since been knocked down. Shadows point in different directions, and tall buildings lean differently, because each photo was taken from a slightly different angle. When the date matters, the &ldquo;Compare in Google Maps&rdquo; link under the map opens the same point in <strong className="text-fg">Google satellite view</strong> so you can check both.
-          </p>
-        </section>
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">Why another map shows a different picture</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              <strong className="text-fg">Google Maps</strong>, Apple Maps, Bing Maps, and Esri each license imagery from different providers and update different places at different times. The same house can appear in summer on one map and in winter on another, with or without a new extension, or with a neighbouring building that has since been knocked down. Shadows point in different directions, and tall buildings lean differently, because each photo was taken from a slightly different angle. When the date matters, the &ldquo;Compare in Google Maps&rdquo; link under the map opens the same point in <strong className="text-fg">Google satellite view</strong> so you can check both.
+            </p>
+          </section>
 
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">Google Maps satellite view, Google Earth or this map?</h2>
-          <div className="mt-4 overflow-x-auto rounded-xl ring-1 ring-line">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="bg-tint/5 text-left text-fg-muted">
-                  <th className="px-3 py-2 font-semibold"></th>
-                  <th className="px-3 py-2 font-semibold">This satellite map</th>
-                  <th className="px-3 py-2 font-semibold">Google Maps satellite view</th>
-                  <th className="px-3 py-2 font-semibold">Google Earth</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  ['Free', 'Yes', 'Yes', 'Yes'],
-                  ['Shows the photo date', 'Yes, for every view', 'No (copyright year only)', 'In historical imagery mode'],
-                  ['Imagery source', 'Esri World Imagery (Vantor and aerial surveys)', 'Google’s providers', 'Google’s providers'],
-                  ['Street-level photos', 'One click to Google Street View', 'Yes', 'Yes'],
-                  ['Needs an app or account', 'No', 'No', 'Web or app, no account'],
-                  ['Coordinates in any format', 'Yes: DMS, UTM, Plus Codes, geohash', 'Decimal and Plus Codes', 'Decimal and DMS'],
-                ].map((r) => (
-                  <tr key={r[0]} className="border-t border-line-subtle">
-                    <td className="px-3 py-2 text-fg font-semibold">{r[0]}</td>
-                    <td className="px-3 py-2 text-fg-muted">{r[1]}</td>
-                    <td className="px-3 py-2 text-fg-muted">{r[2]}</td>
-                    <td className="px-3 py-2 text-fg-muted">{r[3]}</td>
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">Google Maps satellite view, Google Earth or this map?</h2>
+            <div className="mt-4 overflow-x-auto rounded-xl ring-1 ring-line">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="bg-tint/5 text-left text-fg-muted">
+                    <th className="px-3 py-2 font-semibold"></th>
+                    <th className="px-3 py-2 font-semibold">This satellite map</th>
+                    <th className="px-3 py-2 font-semibold">Google Maps satellite view</th>
+                    <th className="px-3 py-2 font-semibold">Google Earth</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            Use whichever photo is newer for the place you care about. This map is the quickest way to check the date, and the link under it opens the same spot in <strong className="text-fg">Google Maps satellite view</strong> to compare. For a <strong className="text-fg">Google Earth view</strong> with 3D buildings, open Google Earth on the web: <strong className="text-fg">Google Earth satellite view free</strong> of charge is another option. Both this map and <strong className="text-fg">Google Maps satellite view free</strong> of charge need no account.
-          </p>
-        </section>
+                </thead>
+                <tbody>
+                  {[
+                    ['Free', 'Yes', 'Yes', 'Yes'],
+                    ['Shows the photo date', 'Yes, for every view', 'No (copyright year only)', 'In historical imagery mode'],
+                    ['Imagery source', 'Esri World Imagery (Vantor and aerial surveys)', 'Google’s providers', 'Google’s providers'],
+                    ['Street-level photos', 'One click to Google Street View', 'Yes', 'Yes'],
+                    ['Needs an app or account', 'No', 'No', 'Web or app, no account'],
+                    ['Coordinates in any format', 'Yes: DMS, UTM, Plus Codes, geohash', 'Decimal and Plus Codes', 'Decimal and DMS'],
+                  ].map((r) => (
+                    <tr key={r[0]} className="border-t border-line-subtle">
+                      <td className="px-3 py-2 text-fg font-semibold">{r[0]}</td>
+                      <td className="px-3 py-2 text-fg-muted">{r[1]}</td>
+                      <td className="px-3 py-2 text-fg-muted">{r[2]}</td>
+                      <td className="px-3 py-2 text-fg-muted">{r[3]}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Use whichever photo is newer for the place you care about. This map is the quickest way to check the date, and the link under it opens the same spot in <strong className="text-fg">Google Maps satellite view</strong> to compare. For a <strong className="text-fg">Google Earth view</strong> with 3D buildings, open Google Earth on the web: <strong className="text-fg">Google Earth satellite view free</strong> of charge is another option. Both this map and <strong className="text-fg">Google Maps satellite view free</strong> of charge need no account.
+            </p>
+          </section>
 
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">When satellite view beats a regular map</h2>
-          <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside leading-relaxed">
-            <li>Checking what a property and its surroundings look like before you visit, rent, or buy.</li>
-            <li>Confirming a building actually exists at an address you have been given.</li>
-            <li>Finding the right entrance, gate, or car park on a large site for a delivery or a meeting.</li>
-            <li>Planning a walk or hike where the map lacks detail but the photo shows tracks and clearings.</li>
-            <li>Seeing context a map leaves out: is the place in a desert, next to water, surrounded by forest?</li>
-          </ul>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            For the opposite job, a clean labelled map for finding your way, the{' '}
-            <Link href="/maps" className="text-accent hover:underline">interactive map</Link>{' '}
-            is a better fit, and{' '}
-            <Link href="/driving-directions" className="text-accent hover:underline">Driving Directions</Link>{' '}
-            plans the route there.
-          </p>
-        </section>
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">When satellite view beats a regular map</h2>
+            <ul className="mt-3 space-y-2 text-fg-muted list-disc list-inside leading-relaxed">
+              <li>Checking what a property and its surroundings look like before you visit, rent, or buy.</li>
+              <li>Confirming a building actually exists at an address you have been given.</li>
+              <li>Finding the right entrance, gate, or car park on a large site for a delivery or a meeting.</li>
+              <li>Planning a walk or hike where the map lacks detail but the photo shows tracks and clearings.</li>
+              <li>Seeing context a map leaves out: is the place in a desert, next to water, surrounded by forest?</li>
+            </ul>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              For the opposite job, a clean labelled map for finding your way, the{' '}
+              <Link href="/maps" className="text-accent hover:underline">interactive map</Link>{' '}
+              is a better fit, and{' '}
+              <Link href="/driving-directions" className="text-accent hover:underline">Driving Directions</Link>{' '}
+              plans the route there.
+            </p>
+          </section>
 
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">Where the imagery and searches come from</h2>
-          <p className="mt-3 text-fg-muted leading-relaxed">
-            The photos and their metadata come from Esri&rsquo;s World Imagery service, which combines imagery from Vantor, Earthstar Geographics, government mapping agencies, and other contributors. The place-label and road overlays are Esri reference layers built from HERE, Garmin, and OpenStreetMap data. Address searches use OpenStreetMap&rsquo;s Nominatim geocoder; coordinates are read in your browser and never sent anywhere. The map requests imagery tiles and metadata for the area you are viewing from Esri&rsquo;s servers, as every web map does. More detail is in our{' '}
-            <Link href="/privacy-policy" className="text-accent hover:underline">Privacy Policy</Link>.
-          </p>
-        </section>
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">Where the imagery and searches come from</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              The photos and their metadata come from Esri&rsquo;s World Imagery service, which combines imagery from Vantor, Earthstar Geographics, government mapping agencies, and other contributors. The place-label and road overlays are Esri reference layers built from HERE, Garmin, and OpenStreetMap data. Address searches use OpenStreetMap&rsquo;s Nominatim geocoder; coordinates are read in your browser and never sent anywhere. The map requests imagery tiles and metadata for the area you are viewing from Esri&rsquo;s servers, as every web map does. More detail is in our{' '}
+              <Link href="/privacy-policy" className="text-accent hover:underline">Privacy Policy</Link>.
+            </p>
+          </section>
+        </article>
 
         <section className="mt-10">
           <h2 className="font-display text-2xl font-bold">Frequently asked questions</h2>
