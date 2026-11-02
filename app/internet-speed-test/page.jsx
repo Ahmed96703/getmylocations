@@ -12,10 +12,11 @@ export const metadata = toolMetadata({
     'ping test', 'jitter test', 'mobile speed test', '5g speed test', 'fiber speed test', 'cable speed test',
     'bandwidth test', 'mbps test', 'speedtest',
   ],
+  image: '/images/og-internet-speed-test.png',
 });
 
 const faqs = [
-  { q: 'What is a good internet speed?', a: 'For one person, 25 Mbps download handles HD streaming and video calls. A household streaming 4K on several screens is comfortable with 100 Mbps or more. For video calls and gaming, ping under 50 ms and jitter under 10 ms matter more than raw speed.' },
+  { q: 'What is a good internet speed?', a: 'For one person, 25 Mbps download covers any single activity in the FCC’s speed guide, including 4K streaming. A household streaming 4K on several screens is comfortable with 100 Mbps or more. For video calls and gaming, ping under 50 ms and jitter under 10 ms matter more than raw speed.' },
   { q: 'How do I run a WiFi speed test?', a: 'Connect your phone or laptop to the WiFi network, stay in the room you want to check and press Start. Run it again next to the router: if that result is much faster, the line is fine and the WiFi signal is what slows you down.' },
   { q: 'Is this the same as the Ookla speed test?', a: 'No. Speedtest by Ookla is a separate service with its own servers. This net speed test measures the same things (download, upload, ping and jitter) against Cloudflare’s network, so results are usually close but not identical. Testing on both is a good way to confirm a slow result.' },
   { q: 'Does it work as a DSL, cable, fiber or 5G speed test?', a: 'Yes. The test measures whatever connection your device is using, so it works as a DSL speed test, a cable or fiber broadband speed test, or a mobile 4G and 5G speed test, on any provider.' },
@@ -38,10 +39,15 @@ export default function Page() {
       tool={<Tool />}
       faqs={faqs}
       related={['/bytes-bits-converter', '/ip-whois-lookup', '/website-server-checker', '/dns-lookup']}
+      updated="2026-11-02"
+      features={['Download speed in Mbps', 'Upload speed in Mbps', 'Ping (latency)', 'Jitter', 'Shows your IP, network and test location', 'Works on WiFi, DSL, cable, fiber and 5G']}
     >
-      <Section title="What does this speed test measure?">
+      <Section title="What is an internet speed test?">
         <P>
-          This <B>internet speed test</B> runs four checks, one after another, and shows each result live:
+          An <B>internet speed test</B> measures how fast your connection moves data: download and upload speed in megabits per second (Mbps), plus ping and jitter in milliseconds. It sends and receives test data from a nearby server and times it, so the result reflects your WiFi, router and provider together.
+        </P>
+        <P>
+          This one runs four checks, one after another, and shows each result live:
         </P>
         <UL items={[
           <><B>Download speed</B> (Mbps): how fast data reaches you. It decides how quickly pages load and whether video streams in HD or 4K.</>,
@@ -50,19 +56,26 @@ export default function Page() {
           <><B>Jitter</B> (ms): how much ping varies. Steady, low jitter keeps calls smooth.</>,
         ]} />
         <P>
-          Several parallel streams fill the connection the way a real download does, so the figure reflects your line rather than a single slow request. It works as a <B>download speed test</B>, <B>upload speed test</B>, <B>ping test</B> and <B>jitter test</B> in one, and as a <B>broadband speed test</B>, a <B>bandwidth test</B> and a quick <B>internet speed checker</B>.
+          Several parallel streams fill the connection the way a real download does, so the figure reflects your line rather than a single slow request. The test data comes from <A href="https://speed.cloudflare.com/">Cloudflare’s speed test</A> endpoints, answered by its data center nearest to you. It works as a <B>download speed test</B>, <B>upload speed test</B>, <B>ping test</B> and <B>jitter test</B> in one, and as a <B>broadband speed test</B>, a <B>bandwidth test</B> and a quick <B>internet speed checker</B>.
         </P>
       </Section>
 
       <Section title="What speed do you need?">
-        <Table head={['Activity', 'Download per device', 'Also important']} rows={[
-          ['Browsing, email, music', '5 Mbps', '—'],
-          ['HD video streaming', '5–10 Mbps', '—'],
-          ['4K video streaming', '25 Mbps', '—'],
-          ['Video calls (HD)', '4–8 Mbps', 'Upload 3+ Mbps, low jitter'],
-          ['Online gaming', '10 Mbps', 'Ping under 50 ms'],
-          ['Uploading large files, live streaming', '—', 'Upload 10+ Mbps'],
+        <P>
+          Most activities need far less than people expect: the FCC puts 4K streaming, the most demanding one, at 25 Mbps download, and HD video at 5–8 Mbps. Add these figures up for everything your household does at the same time.
+        </P>
+        <Table head={['Activity', 'FCC minimum download', 'Also important']} rows={[
+          ['Browsing, email, social media', '1 Mbps', '—'],
+          ['HD video streaming', '5–8 Mbps', 'Netflix asks for 5 Mbps for 1080p'],
+          ['4K video streaming', '25 Mbps', 'Netflix asks for 15 Mbps for 4K'],
+          ['HD video conferencing', '6 Mbps', 'Steady upload and low jitter'],
+          ['Online multiplayer gaming', '4 Mbps', 'Ping under 50 ms'],
+          ['File downloading', '10 Mbps', '—'],
+          ['Working from home', '5–25 Mbps', 'Upload matters for calls and cloud files'],
         ]} />
+        <P>
+          Sources: the FCC’s <A href="https://www.fcc.gov/consumers/guides/broadband-speed-guide">Broadband Speed Guide</A> (one activity at a time) and Netflix’s <A href="https://help.netflix.com/en/node/306">internet speed recommendations</A>. The ping figure is a common gaming rule of thumb, not an FCC number.
+        </P>
       </Section>
 
       <Section title="WiFi speed test: is it the WiFi or the line?">
@@ -75,9 +88,20 @@ export default function Page() {
           <><B>Try the 5 GHz band</B> (or 6 GHz on newer routers). It is much faster than 2.4 GHz at short range.</>,
           <><B>Restart the router</B> and test again. It clears a surprising number of slowdowns.</>,
         ]} />
+        <figure className="mt-4">
+          <img
+            src="/images/internet-speed-test-path.svg"
+            width={800}
+            height={300}
+            loading="lazy"
+            alt="A speed test times the whole path: your device, the WiFi link, your router, your provider's line and Cloudflare's nearest data center. Testing on a cable or next to the router removes the WiFi step."
+            className="w-full h-auto rounded-xl ring-1 ring-line"
+          />
+          <figcaption className="mt-2 text-sm text-fg-subtle">The slowest step on the path sets your result.</figcaption>
+        </figure>
       </Section>
 
-      <Section title="DSL, cable, fiber and mobile speed tests">
+      <Section title="DSL, cable, fiber and 5G speed tests: what speed is normal?">
         <P>
           The same <B>net speed test</B> works on any kind of connection and any provider. What counts as a normal result depends on the technology:
         </P>
@@ -94,7 +118,7 @@ export default function Page() {
         </P>
       </Section>
 
-      <Section title="Getting an accurate result">
+      <Section title="How do you get an accurate speed test result?">
         <UL items={[
           <><B>Pause other downloads</B> and streaming on the same connection.</>,
           <><B>Test close to the router,</B> or on a cable, to separate Wi-Fi problems from the line itself.</>,

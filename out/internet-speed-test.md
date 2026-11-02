@@ -10,6 +10,8 @@ Free Speed Test · About 20 seconds
 
 Press Start to **check internet speed**: **download and upload in Mbps**, plus **ping and jitter**, measured against Cloudflare’s nearest data center. A **free speed test** for WiFi, broadband, DSL, fiber and mobile 5G, with no app, no signup and nothing stored.
 
+Last updated November 2, 2026 by [Ahmed Anwar](https://getmylocations.com/about).
+
 ## Test your internet speed
 
 Ready
@@ -20,27 +22,34 @@ Mbps
 
 A full test uses up to about 250 MB of data on a fast connection, less on slower ones.
 
-## What does this speed test measure?
+## What is an internet speed test?
 
-This **internet speed test** runs four checks, one after another, and shows each result live:
+An **internet speed test** measures how fast your connection moves data: download and upload speed in megabits per second (Mbps), plus ping and jitter in milliseconds. It sends and receives test data from a nearby server and times it, so the result reflects your WiFi, router and provider together.
+
+This one runs four checks, one after another, and shows each result live:
 
 -   **Download speed** (Mbps): how fast data reaches you. It decides how quickly pages load and whether video streams in HD or 4K.
 -   **Upload speed** (Mbps): how fast you send data. It matters for video calls, cloud backups and live streaming.
 -   **Ping** (ms): the round trip to the server. Lower is better for gaming and calls.
 -   **Jitter** (ms): how much ping varies. Steady, low jitter keeps calls smooth.
 
-Several parallel streams fill the connection the way a real download does, so the figure reflects your line rather than a single slow request. It works as a **download speed test**, **upload speed test**, **ping test** and **jitter test** in one, and as a **broadband speed test**, a **bandwidth test** and a quick **internet speed checker**.
+Several parallel streams fill the connection the way a real download does, so the figure reflects your line rather than a single slow request. The test data comes from [Cloudflare’s speed test](https://speed.cloudflare.com/) endpoints, answered by its data center nearest to you. It works as a **download speed test**, **upload speed test**, **ping test** and **jitter test** in one, and as a **broadband speed test**, a **bandwidth test** and a quick **internet speed checker**.
 
 ## What speed do you need?
 
-| Activity | Download per device | Also important |
+Most activities need far less than people expect: the FCC puts 4K streaming, the most demanding one, at 25 Mbps download, and HD video at 5–8 Mbps. Add these figures up for everything your household does at the same time.
+
+| Activity | FCC minimum download | Also important |
 | --- | --- | --- |
-| Browsing, email, music | 5 Mbps | — |
-| HD video streaming | 5–10 Mbps | — |
-| 4K video streaming | 25 Mbps | — |
-| Video calls (HD) | 4–8 Mbps | Upload 3+ Mbps, low jitter |
-| Online gaming | 10 Mbps | Ping under 50 ms |
-| Uploading large files, live streaming | — | Upload 10+ Mbps |
+| Browsing, email, social media | 1 Mbps | — |
+| HD video streaming | 5–8 Mbps | Netflix asks for 5 Mbps for 1080p |
+| 4K video streaming | 25 Mbps | Netflix asks for 15 Mbps for 4K |
+| HD video conferencing | 6 Mbps | Steady upload and low jitter |
+| Online multiplayer gaming | 4 Mbps | Ping under 50 ms |
+| File downloading | 10 Mbps | — |
+| Working from home | 5–25 Mbps | Upload matters for calls and cloud files |
+
+Sources: the FCC’s [Broadband Speed Guide](https://www.fcc.gov/consumers/guides/broadband-speed-guide) (one activity at a time) and Netflix’s [internet speed recommendations](https://help.netflix.com/en/node/306). The ping figure is a common gaming rule of thumb, not an FCC number.
 
 ## WiFi speed test: is it the WiFi or the line?
 
@@ -51,7 +60,11 @@ A **WiFi speed test** measures the whole path: your device, the wireless signal,
 -   **Try the 5 GHz band** (or 6 GHz on newer routers). It is much faster than 2.4 GHz at short range.
 -   **Restart the router** and test again. It clears a surprising number of slowdowns.
 
-## DSL, cable, fiber and mobile speed tests
+![A speed test times the whole path: your device, the WiFi link, your router, your provider's line and Cloudflare's nearest data center. Testing on a cable or next to the router removes the WiFi step.](https://getmylocations.com/images/internet-speed-test-path.svg)
+
+The slowest step on the path sets your result.
+
+## DSL, cable, fiber and 5G speed tests: what speed is normal?
 
 The same **net speed test** works on any kind of connection and any provider. What counts as a normal result depends on the technology:
 
@@ -66,7 +79,7 @@ The same **net speed test** works on any kind of connection and any provider. Wh
 
 A **DSL speed test** often shows a much lower upload than download: that is how DSL is built, not a fault. A **fiber speed test** often shows upload almost as fast as download, while a **cable speed test** usually shows a much lower upload. For a **mobile speed test** or **5G speed test**, switch off WiFi first so the phone uses the mobile network.
 
-## Getting an accurate result
+## How do you get an accurate speed test result?
 
 -   **Pause other downloads** and streaming on the same connection.
 -   **Test close to the router,** or on a cable, to separate Wi-Fi problems from the line itself.
@@ -102,7 +115,7 @@ If one **speed test** shows a slow result, run another to confirm before contact
 
 What is a good internet speed?
 
-For one person, 25 Mbps download handles HD streaming and video calls. A household streaming 4K on several screens is comfortable with 100 Mbps or more. For video calls and gaming, ping under 50 ms and jitter under 10 ms matter more than raw speed.
+For one person, 25 Mbps download covers any single activity in the FCC’s speed guide, including 4K streaming. A household streaming 4K on several screens is comfortable with 100 Mbps or more. For video calls and gaming, ping under 50 ms and jitter under 10 ms matter more than raw speed.
 
 How do I run a WiFi speed test?
 

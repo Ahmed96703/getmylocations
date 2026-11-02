@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="300" viewBox="0 0 800 300" role="img" aria-labelledby="t d">
+  <title id="t">What a WiFi speed test measures</title>
+  <desc id="d">The test data travels from your device over WiFi to the router, along your provider's line, to Cloudflare's nearest data center. Testing next to the router or on a cable removes the WiFi step.</desc>
+  <rect width="800" height="300" rx="20" fill="#0b1224"/>
+  <g font-family="Inter, Helvetica, Arial, sans-serif" text-anchor="middle">
+    <g fill="#13203d" stroke="#38bdf8" stroke-width="2">
+      <rect x="12" y="90" width="156" height="80" rx="14"/>
+      <rect x="222" y="90" width="156" height="80" rx="14"/>
+      <rect x="432" y="90" width="156" height="80" rx="14"/>
+      <rect x="632" y="90" width="156" height="80" rx="14"/>
+    </g>
+    <g fill="#ffffff" font-size="20" font-weight="700">
+      <text x="90" y="128">Your device</text>
+      <text x="300" y="128">Router</text>
+      <text x="510" y="128">Provider</text>
+      <text x="710" y="128">Cloudflare</text>
+    </g>
+    <g fill="#94a3b8" font-size="13.5">
+      <text x="90" y="152">phone, laptop</text>
+      <text x="300" y="152">at home</text>
+      <text x="510" y="152">DSL, cable, fiber, 5G</text>
+      <text x="710" y="152">nearest data center</text>
+    </g>
+    <g stroke="#64748b" stroke-width="3" fill="none">
+      <path d="M172 130 H213" stroke-dasharray="7 6"/>
+      <path d="M382 130 H423"/>
+      <path d="M592 130 H623"/>
+    </g>
+    <g fill="#64748b"><path d="M213 123 l8 7 -8 7z"/><path d="M423 123 l8 7 -8 7z"/><path d="M623 123 l8 7 -8 7z"/></g>
+    <g font-size="16" fill="#38bdf8" font-weight="600">
+      <text x="195" y="80">WiFi</text>
+      <text x="405" y="80">your line</text>
+      <text x="610" y="80">internet</text>
+    </g>
+    <text x="400" y="225" fill="#e2e8f0" font-size="19">The speed test times the whole path. The slowest step sets your result.</text>
+    <text x="400" y="255" fill="#94a3b8" font-size="16">Test on a cable or next to the router to take WiFi out of the picture.</text>
+  </g>
+</svg>

@@ -46,7 +46,9 @@ function highlight(text, phrases = []) {
 // `updated` (an ISO date, optional) adds a visible "Last updated" line and
 // dateModified in the structured data; set it when the guide is substantially
 // revised, not for small edits.
-export default function ToolPage({ path, name, eyebrow, h1, accent, intro, bold = [], appDescription, tool, faqs = [], related = [], updated, children }) {
+// `features` (optional) lists what the tool does, as featureList in the
+// structured data.
+export default function ToolPage({ path, name, eyebrow, h1, accent, intro, bold = [], appDescription, tool, faqs = [], related = [], updated, features = [], children }) {
   const crumbs = breadcrumbSchema([{ name, path }]);
   const app = {
     '@context': 'https://schema.org',
@@ -56,11 +58,13 @@ export default function ToolPage({ path, name, eyebrow, h1, accent, intro, bold 
     url: `${SITE}${path}`,
     applicationCategory: 'UtilitiesApplication',
     operatingSystem: 'Web',
+    inLanguage: 'en',
     isAccessibleForFree: true,
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     publisher: { '@type': 'Organization', name: 'GetMyLocations' },
     author: AUTHOR,
     ...(updated && { dateModified: updated }),
+    ...(features.length > 0 && { featureList: features }),
   };
   // Related tools: the ones the page names first, then others from the same group.
   const own = NET_TOOLS.find((t) => t.href === path);

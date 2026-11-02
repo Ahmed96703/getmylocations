@@ -46,7 +46,7 @@ Audience: anyone who needs to find their current GPS coordinates, IP location, l
 - [Open Graph Checker](https://getmylocations.com/open-graph-checker): Preview a link’s share card.
 - [Website Link Analyzer](https://getmylocations.com/link-analyzer): All links on a page.
 - [Multiple URL Opener](https://getmylocations.com/multiple-url-opener): Open many links at once.
-- [Internet Speed Test](https://getmylocations.com/internet-speed-test): Download, upload and ping.
+- [Internet Speed Test](https://getmylocations.com/internet-speed-test): Download and upload in Mbps, ping and jitter, measured against Cloudflare's nearest data center; works for WiFi, DSL, cable, fiber and 5G, with FCC speed guidelines per activity.
 - [Password Generator](https://getmylocations.com/password-generator): Strong passwords and passphrases.
 - [MD5 & SHA Hash Generator](https://getmylocations.com/md5-generator): MD5, SHA-1 and SHA-256 hashes.
 - [Random Word Generator](https://getmylocations.com/random-word-generator): Random English words.
