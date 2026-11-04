@@ -1,6 +1,6 @@
 ---
 title: "Open Graph Checker: Preview Link Cards for Facebook & X"
-description: "Check a page’s Open Graph and Twitter Card tags and preview how its link looks on Facebook, LinkedIn, WhatsApp and X, with fixes for missing tags and small images."
+description: "Check a page’s Open Graph and Twitter Card tags and preview its link on Facebook, LinkedIn, WhatsApp and X, with fixes for missing tags and small images."
 url: https://getmylocations.com/open-graph-checker
 ---
 
@@ -10,9 +10,15 @@ Free Tool · Social share preview
 
 Enter a page address to **preview its share card** on Facebook, LinkedIn, WhatsApp and X, see every **Open Graph and Twitter Card tag**, and get a list of what to fix, including image size.
 
+Last updated November 4, 2026 by [Ahmed Anwar](https://getmylocations.com/about).
+
 ## Check a page’s Open Graph tags
 
 Try:
+
+## What is an Open Graph checker?
+
+An Open Graph checker reads the hidden tags in a page’s HTML that social apps use to build a link preview: the title, short description and picture you see when someone shares the address. [Open Graph](https://ogp.me/) was created by Facebook and is now read by LinkedIn, WhatsApp, Slack, Discord, Telegram and others; X adds its own Twitter Card tags. This checker shows the tags, draws the preview, and tells you what is missing before you share.
 
 ## The tags every page should have
 
@@ -21,17 +27,38 @@ Try:
 | og:title | `<meta property="og:title" content="Radius Map">` |
 | og:description | One or two sentences, under about 200 characters |
 | og:image | Full https:// address of a 1200 × 630 image |
+| og:image:alt | A short description of the image, read aloud by screen readers |
 | og:url | The canonical address of the page |
 | og:type | `website` for most pages, `article` for posts |
 | twitter:card | `summary_large_image` |
 
-## Common mistakes
+## What the checker tests
 
+-   **Fix:** `og:title` or `og:image` is missing, or the image address does not load.
+-   **Tip:** `og:description`, `og:url` or `twitter:card` is missing; the image is smaller than 1200 × 630; or `og:title` is longer than 90 characters and will be cut off.
+-   **OK:** the image loads and is at least 1200 pixels wide.
+
+The image is measured by loading it in your browser, the same way a social app would. The page itself is fetched once by our server, so a page behind a login shows its logged-out tags, which is what social apps see too.
+
+## How each app builds the preview
+
+| App | Reads | Notes |
+| --- | --- | --- |
+| Facebook | og: tags | Caches the preview; refresh it in the Sharing Debugger |
+| LinkedIn | og: tags | Caches for about a week; refresh it in Post Inspector |
+| WhatsApp | og: tags | Often shows a small square thumbnail; keep text in the centre of the image |
+| X (Twitter) | twitter: tags, then og: | Needs twitter:card = summary\_large\_image for the big picture |
+| Slack, Discord, Telegram | og: and twitter: tags | Show the site name from og:site\_name when it is set |
+
+## Why is my link preview wrong or not showing?
+
+-   **An old preview:** the app cached it before your fix. Use Facebook’s Sharing Debugger or LinkedIn’s Post Inspector; on WhatsApp, a slightly changed address (such as adding `?v=2`) is fetched fresh.
 -   **Relative image paths** such as `/img/share.png`: some platforms need the full address.
 -   **Tags added by JavaScript:** share crawlers read only the original HTML, so tags must be in the page source.
+-   **The site blocks bots:** a firewall that challenges unknown visitors also blocks the apps’ preview crawlers, so no card appears.
 -   **One image for every page:** works, but a page-specific image gets more clicks.
 
-Check the raw HTML with [View Page Source](https://getmylocations.com/view-page-source), or every link on the page with the [link analyzer](https://getmylocations.com/link-analyzer).
+Check the raw HTML with [View Page Source](https://getmylocations.com/view-page-source), or every link on the page with the [link analyzer](https://getmylocations.com/link-analyzer). To open a list of your pages in tabs and review them one after another, use the [multiple URL opener](https://getmylocations.com/multiple-url-opener).
 
 ## Frequently asked questions
 
@@ -50,6 +77,14 @@ Facebook and LinkedIn cache previews. Open Facebook’s Sharing Debugger or Link
 Does X (Twitter) use Open Graph?
 
 X reads its own twitter: tags first and falls back to Open Graph. Add twitter:card = summary\_large\_image to get the large picture card.
+
+Do Open Graph tags help SEO?
+
+Not directly: Google does not rank pages by their og: tags. They decide how a link looks when shared, and a clear title and picture get more clicks from social apps and chats, which brings visitors who may link to the page.
+
+Why does the checker say the image could not be loaded?
+
+The address in og:image returned an error, is not a public https:// address, or the image host blocks requests from other sites. Open the image address in a new tab; if it does not show there, social apps cannot load it either.
 
 ## Related tools
 
