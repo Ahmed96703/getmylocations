@@ -10,9 +10,15 @@ Free Tool · Official IEEE register
 
 Paste a **MAC address**, or just its first six digits, to see the **manufacturer from the IEEE register**, whether the address is private (randomized), and the same address in every common format.
 
+Last updated November 4, 2026 by [Ahmed Anwar](https://getmylocations.com/about).
+
 ## Find the maker of a MAC address
 
 Try:
+
+## What is a MAC address lookup?
+
+A MAC address lookup reads the first half of a device’s hardware address and tells you which company made its network chip. Every Wi-Fi card, Ethernet port and Bluetooth radio gets a 48-bit MAC address, and the first 24 bits are a prefix that the [IEEE Registration Authority](https://standards.ieee.org/products-programs/regauth/) sells to manufacturers. Matching the prefix against the IEEE’s public register gives the maker, which is usually enough to tell what an unknown device is.
 
 ## How to read a MAC address
 
@@ -25,6 +31,51 @@ Try:
 
 A quick way to spot a private address: if the second character is `2`, `6`, `A` or `E`, as in `DA:A1:19:…`, the address is locally administered and will not match a manufacturer.
 
+## Which manufacturers own the most MAC prefixes?
+
+The register the tool uses holds 40,366 prefixes owned by 20,120 organizations. These are the 15 largest holders, counted from the same data:
+
+| Manufacturer (as registered) | Prefixes |
+| --- | --- |
+| Apple, Inc. | 1,573 |
+| HUAWEI TECHNOLOGIES CO.,LTD | 1,416 |
+| Cisco Systems, Inc | 1,257 |
+| Samsung Electronics Co.,Ltd | 906 |
+| Huawei Device Co., Ltd. | 670 |
+| Intel Corporate | 666 |
+| zte corporation | 505 |
+| IEEE Registration Authority | 439 |
+| Texas Instruments | 401 |
+| Espressif Inc. | 355 |
+| Commscope | 345 |
+| Xiaomi Communications Co Ltd | 241 |
+| Sagemcom Broadband SAS | 219 |
+| Fiberhome Telecommunication Technologies Co.,LTD | 218 |
+| Juniper Networks | 217 |
+
+Each prefix covers 224, about 16.7 million, addresses. The IEEE Registration Authority itself appears because it splits some prefixes into the smaller MA-M and MA-S blocks sold to small makers. Chip makers such as Espressif and Texas Instruments rank high because their Wi-Fi chips sit inside other companies’ products, from smart plugs to thermostats.
+
+## How to identify an unknown device on your Wi-Fi
+
+1.  **Open your router’s device list.** It is usually under Connected devices, DHCP clients or Attached devices in the router’s admin page, often at `192.168.1.1` or `192.168.0.1`.
+2.  **Copy the MAC address** of the device you do not recognize and paste it above.
+3.  **Read the manufacturer** and compare it with what is in your home: the table below gives common matches.
+4.  **Still unsure?** Switch suspect devices off one at a time and watch which entry disappears. If nothing matches, change your Wi-Fi password: every device then has to reconnect with the new one.
+
+| Manufacturer shown | Often turns out to be |
+| --- | --- |
+| Espressif | A smart plug, light bulb, camera or other cheap smart-home gadget |
+| Amazon Technologies | An Echo speaker, Fire TV stick, Kindle or Ring doorbell |
+| Apple, Samsung, Xiaomi, OPPO, vivo | A phone, tablet, laptop or TV |
+| Sagemcom, Commscope, ZTE, Huawei | The router or modem from your internet provider |
+| Texas Instruments, Silicon Labs | A smart-home hub, sensor or other small connected device |
+| Intel, Dell, Hewlett Packard | A laptop, desktop or printer |
+| “Private address”, no maker | A phone or computer using a random Wi-Fi address |
+
+## Why so many devices show no manufacturer
+
+Phones and computers now hide their real MAC address on Wi-Fi. iPhones and iPads use a private Wi-Fi address for each network since iOS 14, Android has randomized it by default since Android 10, and Windows offers random hardware addresses in its Wi-Fi settings. A random address has the “locally administered” bit set, belongs to no company, and may change when the device forgets and rejoins the network. To see the real maker, look in the device’s own settings for its hardware address, or turn the private address off for your home network.
+
 ## Common uses
 
 -   **Unknown devices on your Wi-Fi:** your router lists connected MAC addresses; the maker often tells you what the device is (a TV, a printer, a smart plug).
@@ -34,6 +85,10 @@ A quick way to spot a private address: if the second character is `2`, `6`, `A` 
 The register is the IEEE’s public MA-L list, with more than 40,000 prefixes. Larger blocks are listed; the smaller MA-M and MA-S blocks used by some small makers are not, so a few devices show the parent prefix’s holder or no match. For addresses on the internet rather than the local network, see the [IP WHOIS lookup](https://getmylocations.com/ip-whois-lookup).
 
 ## Frequently asked questions
+
+Which company has the most MAC address prefixes?
+
+Apple, with 1,573 of the 40,366 prefixes in the IEEE MA-L register, followed by Huawei Technologies and Cisco. Each prefix covers about 16.7 million addresses, so big makers buy new ones as they ship more devices.
 
 What is a MAC address?
 
