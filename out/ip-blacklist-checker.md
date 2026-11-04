@@ -10,6 +10,8 @@ Free Blacklist Checker · 14 blacklists at once
 
 **Is my IP blacklisted?** Enter an IPv4 address, a domain or an email address for a **free blacklist check** against **14 widely used spam blacklists**, with the reason and a link to each list. For an **email blacklist check**, the tool tests the mail server that handles the domain’s email. Your own IP is checked to start.
 
+Last updated November 4, 2026 by [Ahmed Anwar](https://getmylocations.com/about).
+
 ## Check an IP, domain or email against spam blacklists
 
 Try:
@@ -42,7 +44,27 @@ A DNS blocklist (DNSBL or RBL) is a list of IP addresses published through DNS. 
 1.  **Read the reason** shown in the results and on the list’s site. It often names the date and type of problem.
 2.  **Fix the cause.** Scan devices for malware, change passwords of mail accounts that may be compromised, close open relays, and protect website forms with a captcha.
 3.  **Check your mail setup.** Make sure the server has SPF, DKIM and DMARC records and a matching reverse DNS name. The [DMARC checker](https://getmylocations.com/dmarc-checker) helps, and the [MX lookup](https://getmylocations.com/mx-lookup) shows which servers receive your mail.
-4.  **Request removal** through the list’s own page. Some, such as SpamCop and PSBL, expire listings automatically once spam stops.
+4.  **Request removal** through the list’s own page. Some, such as SpamCop and blocklist.de, drop listings automatically once spam stops; the table below gives each listSome, such as SpamCop and PSBL, expire listings automatically once spam stops.rsquo;s process.
+
+## How to get removed from each blacklist
+
+Fix the cause first: every list below adds the address again if spam keeps coming from it. Then follow the list’s own process. Many lists need no request at all and drop the address once the spam stops.
+
+| Blacklist | How removal works | How long |
+| --- | --- | --- |
+| Spamhaus | Look the address up at [check.spamhaus.org](https://check.spamhaus.org/); it explains the listing and offers the removal steps for that list | Depends on the list |
+| Barracuda | Fill in the [removal request](https://www.barracudacentral.org/rbl/removal-request) form with the IP, your email and a reason. Requests without valid details are ignored | Usually within 12 hours |
+| SpamCop | Automatic: no request needed. [SpamCop](https://www.spamcop.net/bl.shtml) drops the address when reports stop | About 24 hours after the last report |
+| UCEPROTECT Level 1 | Automatic, or a paid express removal. See its [removal policy](https://www.uceprotect.net/en/index.php?m=7&s=6). Levels 2 and 3 list whole networks: ask your provider | 7 days after the last spam |
+| PSBL | Self-service: anyone can remove an address on [psbl.org](https://psbl.org/) | Immediate, then DNS updates |
+| Mailspike (both lists) | Use the delist form on its [IP check page](https://mailspike.io/ip_verify). Botnet listings wait until the infection is gone | 6 to 36 hours |
+| blocklist.de | Automatic, or early removal on the [delist page](https://www.blocklist.de/en/delist.html) once the problem is fixed | 48 hours, or within an hour of a request |
+| 0spam | Automatic for its realtime list; otherwise a free account and a removal request on [0spam.org](https://0spam.org/) | 24 hours; long-term listings need 60 days clean |
+| SPFBL | Free [delist](https://spfbl.net/en/delist/) if the server’s reverse DNS points back to it; a paid option otherwise | Not stated |
+| DroneBL | Look the address up on [dronebl.org](https://dronebl.org/lookup) and follow the instructions it gives | Not stated |
+| InterServer, GBUdb, Anonmails, s5h.net | Follow the link next to the list in your results above | See the list’s site |
+
+Checked on each list’s own website on 4 November 2026. Lists change their rules, so the list’s page is always the final word. If an address keeps coming back, ask its owner: the [IP WHOIS lookup](https://getmylocations.com/ip-whois-lookup) shows the abuse contact.
 
 ## Which lists matter most
 
@@ -63,6 +85,14 @@ Usually not. When a website, game or forum says **your IP has been banned**, tha
 If spam blacklists list your IP too, that points to malware or a misused connection: fix that first, then ask the site to lift the ban.
 
 ## Frequently asked questions
+
+How long does it take to get off a blacklist?
+
+It depends on the list. SpamCop drops a listing about 24 hours after reports stop, blocklist.de after 48 hours, and UCEPROTECT Level 1 seven days after the last spam reached its traps. Barracuda reviews removal requests, usually within 12 hours, and Mailspike removes an address 6 to 36 hours after a delist request. All of them list the address again if the spam continues.
+
+Do I have to pay to be removed from a blacklist?
+
+No, not from the main lists. SpamCop, PSBL, blocklist.de, Mailspike and 0spam remove addresses for free, by request or automatically. UCEPROTECT offers a paid express removal, but its Level 1 listings expire on their own after seven days, so paying is optional.
 
 Is my IP blacklisted?
 

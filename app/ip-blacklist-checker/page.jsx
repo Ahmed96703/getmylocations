@@ -15,6 +15,8 @@ export const metadata = toolMetadata({
 });
 
 const faqs = [
+  { q: 'How long does it take to get off a blacklist?', a: 'It depends on the list. SpamCop drops a listing about 24 hours after reports stop, blocklist.de after 48 hours, and UCEPROTECT Level 1 seven days after the last spam reached its traps. Barracuda reviews removal requests, usually within 12 hours, and Mailspike removes an address 6 to 36 hours after a delist request. All of them list the address again if the spam continues.' },
+  { q: 'Do I have to pay to be removed from a blacklist?', a: 'No, not from the main lists. SpamCop, PSBL, blocklist.de, Mailspike and 0spam remove addresses for free, by request or automatically. UCEPROTECT offers a paid express removal, but its Level 1 listings expire on their own after seven days, so paying is optional.' },
   { q: 'Is my IP blacklisted?', a: 'Open this page and your own IP address is checked straight away against 14 spam blacklists. A green result means it is on none of them; a red one names each list and the reason it gives.' },
   { q: 'How do I do an email blacklist check?', a: 'Type your email address or its domain, such as you@example.com or example.com. The checker finds the mail server that handles the domain’s email (its MX record) and checks that server’s IP address against every blacklist, because that is the address other mail servers judge you by.' },
   { q: 'Is this blacklist checker free?', a: 'Yes. It is free with no signup and no limit, for IP addresses, domains and email addresses.' },
@@ -38,6 +40,7 @@ export default function Page() {
       tool={<Tool />}
       faqs={faqs}
       related={['/mx-lookup', '/dmarc-checker', '/ip-whois-lookup', '/email-validator', '/email-header-analyzer']}
+      updated="2026-11-04"
     >
       <Section title="How to check if your IP or email is blacklisted">
         <UL items={[
@@ -73,8 +76,30 @@ export default function Page() {
           <><B>Read the reason</B> shown in the results and on the list&rsquo;s site. It often names the date and type of problem.</>,
           <><B>Fix the cause.</B> Scan devices for malware, change passwords of mail accounts that may be compromised, close open relays, and protect website forms with a captcha.</>,
           <><B>Check your mail setup.</B> Make sure the server has SPF, DKIM and DMARC records and a matching reverse DNS name. The <A href="/dmarc-checker">DMARC checker</A> helps, and the <A href="/mx-lookup">MX lookup</A> shows which servers receive your mail.</>,
-          <><B>Request removal</B> through the list&rsquo;s own page. Some, such as SpamCop and PSBL, expire listings automatically once spam stops.</>,
+          <><B>Request removal</B> through the list&rsquo;s own page. Some, such as SpamCop and blocklist.de, drop listings automatically once spam stops; the table below gives each listSome, such as SpamCop and PSBL, expire listings automatically once spam stops.rsquo;s process.</>,
         ]} />
+      </Section>
+
+      <Section title="How to get removed from each blacklist">
+        <P>
+          Fix the cause first: every list below adds the address again if spam keeps coming from it. Then follow the list&rsquo;s own process. Many lists need no request at all and drop the address once the spam stops.
+        </P>
+        <Table head={['Blacklist', 'How removal works', 'How long']} rows={[
+          ['Spamhaus', <>Look the address up at <A href="https://check.spamhaus.org/">check.spamhaus.org</A>; it explains the listing and offers the removal steps for that list</>, 'Depends on the list'],
+          ['Barracuda', <>Fill in the <A href="https://www.barracudacentral.org/rbl/removal-request">removal request</A> form with the IP, your email and a reason. Requests without valid details are ignored</>, 'Usually within 12 hours'],
+          ['SpamCop', <>Automatic: no request needed. <A href="https://www.spamcop.net/bl.shtml">SpamCop</A> drops the address when reports stop</>, 'About 24 hours after the last report'],
+          ['UCEPROTECT Level 1', <>Automatic, or a paid express removal. See its <A href="https://www.uceprotect.net/en/index.php?m=7&s=6">removal policy</A>. Levels 2 and 3 list whole networks: ask your provider</>, '7 days after the last spam'],
+          ['PSBL', <>Self-service: anyone can remove an address on <A href="https://psbl.org/">psbl.org</A></>, 'Immediate, then DNS updates'],
+          ['Mailspike (both lists)', <>Use the delist form on its <A href="https://mailspike.io/ip_verify">IP check page</A>. Botnet listings wait until the infection is gone</>, '6 to 36 hours'],
+          ['blocklist.de', <>Automatic, or early removal on the <A href="https://www.blocklist.de/en/delist.html">delist page</A> once the problem is fixed</>, '48 hours, or within an hour of a request'],
+          ['0spam', <>Automatic for its realtime list; otherwise a free account and a removal request on <A href="https://0spam.org/">0spam.org</A></>, '24 hours; long-term listings need 60 days clean'],
+          ['SPFBL', <>Free <A href="https://spfbl.net/en/delist/">delist</A> if the server&rsquo;s reverse DNS points back to it; a paid option otherwise</>, 'Not stated'],
+          ['DroneBL', <>Look the address up on <A href="https://dronebl.org/lookup">dronebl.org</A> and follow the instructions it gives</>, 'Not stated'],
+          ['InterServer, GBUdb, Anonmails, s5h.net', 'Follow the link next to the list in your results above', 'See the list’s site'],
+        ]} />
+        <P>
+          Checked on each list&rsquo;s own website on 4 November 2026. Lists change their rules, so the list&rsquo;s page is always the final word. If an address keeps coming back, ask its owner: the <A href="/ip-whois-lookup">IP WHOIS lookup</A> shows the abuse contact.
+        </P>
       </Section>
 
       <Section title="Which lists matter most">
