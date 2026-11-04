@@ -10,6 +10,8 @@ Free Domain Age Checker · Official registry data
 
 Enter any domain or website address to **check domain age**: see exactly **how old it is in years, months and days**, **when it was registered and when it expires**, with its registrar, status and name servers, straight from the official registry.
 
+Last updated November 4, 2026 by [Ahmed Anwar](https://getmylocations.com/about).
+
 ## Check how old a domain is
 
 Try:
@@ -40,6 +42,38 @@ This **domain age checker** works as a **domain age calculator**: it counts from
 
 For most purposes, **website age** and domain age are close, so this **website age checker** answers both “**how old is a domain**” and “**how old is a website**”. If you need to know what was on a domain before, open its earliest snapshot on the [Internet Archive’s Wayback Machine](https://web.archive.org/).
 
+## How old are famous websites?
+
+These are the registration dates of well-known domains, read from each one’s official registry record. Several are older than the company that uses them now: the name was registered by someone else first and bought later, or registered long before launch. That is the gap between domain age and website age in practice.
+
+| Domain | Registered | Age | Note |
+| --- | --- | --- | --- |
+| symbolics.com | 15 March 1985 | 41 years | The first .com ever registered |
+| bbn.com | 24 April 1985 | 41 years | BBN built the ARPANET, the internet’s forerunner |
+| ibm.com | 19 March 1986 | 40 years | — |
+| apple.com | 19 February 1987 | 39 years | — |
+| microsoft.com | 2 May 1991 | 35 years | — |
+| x.com | 2 April 1993 | 33 years | Used for X (formerly Twitter) since 2023 |
+| cnn.com | 22 September 1993 | 33 years | — |
+| amazon.com | 1 November 1994 | 32 years | — |
+| yahoo.com | 18 January 1995 | 31 years | — |
+| ebay.com | 4 August 1995 | 31 years | — |
+| tiktok.com | 21 July 1996 | 30 years | TikTok launched worldwide in 2017 |
+| facebook.com | 29 March 1997 | 29 years | Facebook launched in 2004 |
+| google.com | 15 September 1997 | 29 years | — |
+| netflix.com | 11 November 1997 | 28 years | — |
+| twitter.com | 21 January 2000 | 26 years | Twitter launched in 2006 |
+| wikipedia.org | 13 January 2001 | 25 years | — |
+| linkedin.com | 2 November 2002 | 24 years | — |
+| instagram.com | 4 June 2004 | 22 years | Instagram launched in 2010 |
+| youtube.com | 15 February 2005 | 21 years | — |
+| reddit.com | 29 April 2005 | 21 years | — |
+| openai.com | 19 January 2007 | 19 years | OpenAI was founded in 2015 |
+| github.com | 9 October 2007 | 19 years | — |
+| whatsapp.com | 4 September 2008 | 18 years | — |
+
+Ages are counted to 4 November 2026, when the records were checked. Type any of these domains into the checker above for its age today, to the day.
+
 ## Reading the domain status
 
 -   **client transfer prohibited:** transfer lock set by the registrar, normal and recommended.
@@ -50,6 +84,14 @@ For most purposes, **website age** and domain age are close, so this **website a
 To see who is behind an IP address, use the [IP WHOIS lookup](https://getmylocations.com/ip-whois-lookup); to see where the domain points, the [DNS lookup](https://getmylocations.com/dns-lookup); to check its certificates, the [SSL certificate checker](https://getmylocations.com/ssl-certificate-checker).
 
 ## Frequently asked questions
+
+What is the oldest domain name?
+
+symbolics.com, registered on 15 March 1985, is the oldest .com domain and the first ever registered in the .com zone. bbn.com followed on 24 April 1985. Both are still registered today.
+
+How old is google.com?
+
+google.com was registered on 15 September 1997, which makes it 29 years old as of 4 November 2026. The domain is a year older than Google the company, which was founded in September 1998.
 
 How do I check domain age?
 

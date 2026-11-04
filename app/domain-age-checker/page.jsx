@@ -14,7 +14,46 @@ export const metadata = toolMetadata({
   ],
 });
 
+// Registration dates read from each domain's RDAP record (via rdap.org) on
+// CHECKED. Ages are counted to that date, so the table stays true between
+// rebuilds; recheck the list when the date is moved.
+const CHECKED = '2026-11-04';
+const FAMOUS = [
+  ['symbolics.com', '1985-03-15', 'The first .com ever registered'],
+  ['bbn.com', '1985-04-24', 'BBN built the ARPANET, the internet’s forerunner'],
+  ['ibm.com', '1986-03-19', ''],
+  ['apple.com', '1987-02-19', ''],
+  ['microsoft.com', '1991-05-02', ''],
+  ['x.com', '1993-04-02', 'Used for X (formerly Twitter) since 2023'],
+  ['cnn.com', '1993-09-22', ''],
+  ['amazon.com', '1994-11-01', ''],
+  ['yahoo.com', '1995-01-18', ''],
+  ['ebay.com', '1995-08-04', ''],
+  ['tiktok.com', '1996-07-21', 'TikTok launched worldwide in 2017'],
+  ['facebook.com', '1997-03-29', 'Facebook launched in 2004'],
+  ['google.com', '1997-09-15', ''],
+  ['netflix.com', '1997-11-11', ''],
+  ['twitter.com', '2000-01-21', 'Twitter launched in 2006'],
+  ['wikipedia.org', '2001-01-13', ''],
+  ['linkedin.com', '2002-11-02', ''],
+  ['instagram.com', '2004-06-04', 'Instagram launched in 2010'],
+  ['youtube.com', '2005-02-15', ''],
+  ['reddit.com', '2005-04-29', ''],
+  ['openai.com', '2007-01-19', 'OpenAI was founded in 2015'],
+  ['github.com', '2007-10-09', ''],
+  ['whatsapp.com', '2008-09-04', ''],
+];
+const yearsBetween = (from, to) => {
+  const [a, b] = [new Date(from), new Date(to)];
+  let y = b.getUTCFullYear() - a.getUTCFullYear();
+  if (b.getUTCMonth() < a.getUTCMonth() || (b.getUTCMonth() === a.getUTCMonth() && b.getUTCDate() < a.getUTCDate())) y -= 1;
+  return y;
+};
+const longDate = (iso) => new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+
 const faqs = [
+  { q: 'What is the oldest domain name?', a: 'symbolics.com, registered on 15 March 1985, is the oldest .com domain and the first ever registered in the .com zone. bbn.com followed on 24 April 1985. Both are still registered today.' },
+  { q: 'How old is google.com?', a: `google.com was registered on 15 September 1997, which makes it ${yearsBetween('1997-09-15', CHECKED)} years old as of ${longDate(CHECKED)}. The domain is a year older than Google the company, which was founded in September 1998.` },
   { q: 'How do I check domain age?', a: 'Type the domain or paste the website’s address into the checker and press Check age. It reads the registration date from the registry that runs the domain’s ending (such as Verisign for .com), which is the official record, and shows the age in years, months and days.' },
   { q: 'Is this domain age checker free?', a: 'Yes. It is free with no signup and no daily limit. Check as many domains as you like.' },
   { q: 'Is website age the same as domain age?', a: 'Not always. Domain age counts from the day the name was registered. A website can go live years later, or a domain can be re-registered after an older site on it expired. To see when a site was first online, look up its earliest snapshot on the Internet Archive’s Wayback Machine.' },
@@ -37,6 +76,7 @@ export default function Page() {
       tool={<Tool />}
       faqs={faqs}
       related={['/ip-whois-lookup', '/dns-lookup', '/ns-lookup', '/ssl-certificate-checker', '/website-server-checker']}
+      updated="2026-11-04"
     >
       <Section title="How to check the age of a domain or website">
         <UL items={[
@@ -67,6 +107,21 @@ export default function Page() {
         ]} />
         <P>
           For most purposes, <B>website age</B> and domain age are close, so this <B>website age checker</B> answers both “<B>how old is a domain</B>” and “<B>how old is a website</B>”. If you need to know what was on a domain before, open its earliest snapshot on the <A href="https://web.archive.org/">Internet Archive’s Wayback Machine</A>.
+        </P>
+      </Section>
+
+      <Section title="How old are famous websites?">
+        <P>
+          These are the registration dates of well-known domains, read from each one&rsquo;s official registry record. Several are older than the company that uses them now: the name was registered by someone else first and bought later, or registered long before launch. That is the gap between domain age and website age in practice.
+        </P>
+        <Table head={['Domain', 'Registered', 'Age', 'Note']} rows={FAMOUS.map(([d, reg, note]) => [
+          d,
+          longDate(reg),
+          `${yearsBetween(reg, CHECKED)} years`,
+          note || '—',
+        ])} />
+        <P>
+          Ages are counted to {longDate(CHECKED)}, when the records were checked. Type any of these domains into the checker above for its age today, to the day.
         </P>
       </Section>
 
