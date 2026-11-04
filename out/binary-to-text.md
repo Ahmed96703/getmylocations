@@ -10,7 +10,7 @@ Free Binary Translator · Both directions
 
 Paste **binary code** to **read it as text**, or type text to **see it in binary**. This **free binary translator** also converts hex, decimal bytes and Base64, handles accents and emoji, and updates both boxes as you type.
 
-Last updated October 23, 2026 by [Ahmed Anwar](https://getmylocations.com/about).
+Last updated November 4, 2026 by [Ahmed Anwar](https://getmylocations.com/about).
 
 ## Convert text to binary and back
 
@@ -76,6 +76,23 @@ The **letters in binary**, as computers store them. Capital and small letters di
 | 4 | `00110100` | 9 | `00111001` |
 | space | `00100000` | ! | `00100001` |
 | . | `00101110` | ? | `00111111` |
+
+## Common words and phrases in binary
+
+Each phrase written as 8-bit bytes, one byte per character, with spaces as `00100000`. Capital letters matter: `Love` and `love` start with different bytes.
+
+| Text | Binary |
+| --- | --- |
+| Hi | `01001000 01101001` |
+| Hello | `01001000 01100101 01101100 01101100 01101111` |
+| Hello World | `01001000 01100101 01101100 01101100 01101111 00100000 01010111 01101111 01110010 01101100 01100100` |
+| Love | `01001100 01101111 01110110 01100101` |
+| I love you | `01001001 00100000 01101100 01101111 01110110 01100101 00100000 01111001 01101111 01110101` |
+| Yes | `01011001 01100101 01110011` |
+| No | `01001110 01101111` |
+| Help | `01001000 01100101 01101100 01110000` |
+| SOS | `01010011 01001111 01010011` |
+| Thank you | `01010100 01101000 01100001 01101110 01101011 00100000 01111001 01101111 01110101` |
 
 ## How binary text works
 

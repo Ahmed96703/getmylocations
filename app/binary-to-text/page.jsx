@@ -18,6 +18,7 @@ export const metadata = toolMetadata({
 const bin = (ch) => ch.charCodeAt(0).toString(2).padStart(8, '0');
 const UPPER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 const DIGITS = '0123456789'.split('');
+const WORDS = ['Hi', 'Hello', 'Hello World', 'Love', 'I love you', 'Yes', 'No', 'Help', 'SOS', 'Thank you'];
 
 const faqs = [
   { q: 'How do I convert binary to text?', a: 'Paste the binary into the right-hand box with the Binary tab selected. Each group of 8 bits is one byte; the tool turns the bytes into text using UTF-8. Spaces between groups are optional.' },
@@ -42,7 +43,8 @@ export default function Page() {
       tool={<Tool />}
       faqs={faqs}
       related={['/bytes-bits-converter', '/md5-generator', '/password-generator']}
-      updated="2026-10-23"
+      updated="2026-11-04"
+      features={['Binary to text and text to binary', 'Hex, decimal bytes and Base64', 'Converts both ways as you type', 'UTF-8: accents, other scripts and emoji', 'Binary with or without spaces', 'Runs in your browser, nothing is sent']}
     >
       <Section title="Binary translator: binary code to English">
         <P>
@@ -88,6 +90,13 @@ export default function Page() {
           ['space', <Code key="s">{bin(' ')}</Code>, '!', <Code key="e">{bin('!')}</Code>],
           ['.', <Code key="p">{bin('.')}</Code>, '?', <Code key="q">{bin('?')}</Code>],
         ]} />
+      </Section>
+
+      <Section title="Common words and phrases in binary">
+        <P>
+          Each phrase written as 8-bit bytes, one byte per character, with spaces as <Code>{bin(' ')}</Code>. Capital letters matter: <Code>Love</Code> and <Code>love</Code> start with different bytes.
+        </P>
+        <Table head={['Text', 'Binary']} rows={WORDS.map((w) => [w, <Code key="b">{w.split('').map(bin).join(' ')}</Code>])} />
       </Section>
 
       <Section title="How binary text works">
