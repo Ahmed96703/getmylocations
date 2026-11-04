@@ -31,14 +31,14 @@ Every **random password** comes from your browser’s cryptographically secure r
 
 | Password | Entropy | Offline guessing time\* |
 | --- | --- | --- |
-| 8 characters, all types | ≈ 51 bits | about 5 hours |
-| 12 characters, all types | ≈ 77 bits | about 300 centuries |
+| 8 characters, all types | ≈ 52 bits | about 4.6 hours |
+| 12 characters, all types | ≈ 77 bits | about 298 centuries |
 | 15 characters, all types | ≈ 97 bits | longer than the age of the universe |
 | 16 characters, all types | ≈ 103 bits | longer than the age of the universe |
-| 4 random words | ≈ 52 bits | about 5 hours |
-| 6 random words | ≈ 78 bits | about 350 centuries |
+| 4 random words | ≈ 52 bits | about 5.1 hours |
+| 6 random words | ≈ 78 bits | about 351 centuries |
 
-\* At 100 billion guesses a second against a fast hash. Online logins allow far fewer guesses, but databases leak, so plan for the offline case.
+\* At 100 billion guesses a second against a fast hash, with all 87 characters the generator can use, or words from its 7,776\-word list; the same figures the strength meter shows. Online logins allow far fewer guesses, but databases leak, so plan for the offline case.
 
 ## Which password length should you use?
 

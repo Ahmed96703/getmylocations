@@ -1,5 +1,16 @@
+import fs from 'node:fs';
+import path_ from 'node:path';
 import ToolPage, { toolMetadata, Section, P, UL, B, A, Table } from '../components/ToolPage.jsx';
 import Tool from './Tool.jsx';
+import { SETS, crackTime } from './strength.js';
+
+// Worked out at build time from the tool's own character sets and word list.
+const CHARS = Object.values(SETS).join('').length;
+const WORDS = JSON.parse(fs.readFileSync(path_.join(process.cwd(), 'public', 'data', 'words.json'), 'utf8')).length;
+const strengthRows = [
+  ...[8, 12, 15, 16].map((n) => [`${n} characters, all types`, n * Math.log2(CHARS)]),
+  ...[4, 6].map((n) => [`${n} random words`, n * Math.log2(WORDS)]),
+].map(([label, bits]) => [label, `≈ ${Math.round(bits)} bits`, crackTime(bits)]);
 
 const path = '/password-generator';
 export const metadata = toolMetadata({
@@ -38,6 +49,7 @@ export default function Page() {
       tool={<Tool />}
       faqs={faqs}
       related={['/md5-generator', '/random-word-generator', '/email-validator', '/ip-blacklist-checker']}
+      features={['Lengths from 6 to 64 characters', 'Quick lengths: 8, 12, 15, 16, 20 and 32', 'Uppercase, lowercase, numbers and symbols', 'Avoid look-alike characters', 'Passphrases from a 7,776-word list', 'Strength meter, made on your device']}
     >
       <Section title="How to generate a strong password">
         <UL items={[
@@ -52,15 +64,8 @@ export default function Page() {
       </Section>
 
       <Section title="How strong is strong enough?">
-        <Table head={['Password', 'Entropy', 'Offline guessing time*']} rows={[
-          ['8 characters, all types', '≈ 51 bits', 'about 5 hours'],
-          ['12 characters, all types', '≈ 77 bits', 'about 300 centuries'],
-          ['15 characters, all types', '≈ 97 bits', 'longer than the age of the universe'],
-          ['16 characters, all types', '≈ 103 bits', 'longer than the age of the universe'],
-          ['4 random words', '≈ 52 bits', 'about 5 hours'],
-          ['6 random words', '≈ 78 bits', 'about 350 centuries'],
-        ]} />
-        <P>* At 100 billion guesses a second against a fast hash. Online logins allow far fewer guesses, but databases leak, so plan for the offline case.</P>
+        <Table head={['Password', 'Entropy', 'Offline guessing time*']} rows={strengthRows} />
+        <P>* At 100 billion guesses a second against a fast hash, with all {CHARS} characters the generator can use, or words from its {WORDS.toLocaleString('en-US')}-word list; the same figures the strength meter shows. Online logins allow far fewer guesses, but databases leak, so plan for the offline case.</P>
       </Section>
 
       <Section title="Which password length should you use?">

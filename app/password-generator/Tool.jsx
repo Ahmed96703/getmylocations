@@ -3,13 +3,8 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Card, CopyButton } from '../components/toolUi.jsx';
 import { randInt } from '../components/random.js';
+import { SETS, crackTime } from './strength.js';
 
-const SETS = {
-  upper: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-  lower: 'abcdefghijklmnopqrstuvwxyz',
-  digits: '0123456789',
-  symbols: '!@#$%^&*()-_=+[]{};:,.?/~',
-};
 const SIMILAR = /[Il1O0o|`'"]/g;
 
 function makePassword({ length, upper, lower, digits, symbols, noSimilar }) {
@@ -28,21 +23,6 @@ function makePhrase(words, { count, sep, caps, number }) {
   let bits = count * Math.log2(words.length);
   if (number) { picked.push(String(randInt(100))); bits += Math.log2(100); }
   return { value: picked.join(sep), bits };
-}
-
-// Rough offline cracking time at 100 billion guesses a second (a well-funded attacker against a fast hash).
-function crackTime(bits) {
-  const seconds = 2 ** bits / 2 / 1e11;
-  const units = [['century', 3.15e9], ['year', 3.15e7], ['day', 86400], ['hour', 3600], ['minute', 60], ['second', 1]];
-  if (seconds < 1) return 'instantly';
-  for (const [u, s] of units) {
-    if (seconds >= s) {
-      const n = seconds / s;
-      if (u === 'century' && n > 1.38e8) return 'longer than the age of the universe'; // 13.8 billion years
-      return `about ${n >= 100 ? Math.round(n).toLocaleString() : n.toFixed(n < 10 ? 1 : 0)} ${u === 'century' ? (n >= 2 ? 'centuries' : 'century') : `${u}${n >= 2 ? 's' : ''}`}`;
-    }
-  }
-  return 'instantly';
 }
 
 const strength = (bits) => (bits < 40 ? ['Weak', 'bg-rose-500', 25] : bits < 60 ? ['Fair', 'bg-amber-500', 50] : bits < 80 ? ['Strong', 'bg-emerald-500', 75] : ['Very strong', 'bg-emerald-600', 100]);
