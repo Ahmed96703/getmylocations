@@ -2,13 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { Card } from '../components/toolUi.jsx';
-import { toUrl } from '../components/net.js';
-
-// One address per line (or separated by spaces/commas); bare domains get https://.
-export function parseUrls(text) {
-  const seen = new Set();
-  return text.split(/[\s,]+/).map((s) => toUrl(s)).filter((u) => u && !seen.has(u) && seen.add(u));
-}
+import { parseUrls } from './parse.js';
 
 export default function Tool() {
   const [text, setText] = useState('');
