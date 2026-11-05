@@ -214,6 +214,10 @@ export default function RootLayout({ children }) {
         )}
       </head>
       <body>
+        {/* Mediavine "Disable Ads" settings, from its dashboard tool. In the
+            layout, so they apply to every page: no ZergNet (a widget that sends
+            readers to other sites) and no Chicory (recipe ingredient ads). */}
+        <div id="ad-management-config-settings" data-blocklist-chicory="1" data-blocklist-zergnet="1" />
         <a href="#content" className="skip-link">Skip to content</a>
         <SiteHeader />
         {LEGACY_ADS && <NativeAd />}
