@@ -7,8 +7,8 @@ import SideAd from '../components/SideAd.jsx';
 import { AUTHOR } from '../components/author.js';
 
 export const metadata = {
-  title: 'Google Maps Street View by Address — Free & Instant',
-  description: 'Type any address or coordinates and open Google Maps Street View there in one click, facing the way you choose. Free, no signup, works on any device.',
+  title: 'Street View — See Any Address in Google Street View',
+  description: 'Find any address or GPS coordinate and open it in Google Street View facing the direction you choose. Accepts any coordinate format. Free.',
   keywords: [
     'street view', 'google street view', 'google maps street view', 'street view by address', 'google street view address search', 'free street view', 'virtual tour',
     'google maps street view location', 'instant street view', 'google street views by address', 'google maps street view free', 'google street view locations',
@@ -18,7 +18,7 @@ export const metadata = {
   ],
   alternates: { canonical: '/street-view' },
   openGraph: {
-    title: 'Google Maps Street View by Address — Free & Instant',
+    title: 'Street View — See Any Address in Google Street View',
     description:
       'Enter any address or GPS coordinates and see the location in Google Street View.',
     url: 'https://getmylocations.com/street-view',
@@ -27,7 +27,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Google Maps Street View by Address — Free & Instant',
+    title: 'Street View — See Any Address in Google Street View',
     description:
       'Enter any address or GPS coordinates and see the location in Google Street View.',
     images: ['/og-image.png'],
