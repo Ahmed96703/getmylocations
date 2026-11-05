@@ -39,7 +39,7 @@ export default function Privacy() {
         </nav>
 
       <h1 className="font-display text-4xl font-extrabold tracking-tight">Privacy Policy</h1>
-      <p className="text-sm text-fg-subtle mt-2">Last updated: October 24, 2026</p>
+      <p className="text-sm text-fg-subtle mt-2">Last updated: November 5, 2026</p>
 
       <p className="mt-6 text-fg-muted leading-relaxed">
         This page explains what information GetMyLocations receives when you use the
@@ -192,6 +192,19 @@ export default function Privacy() {
         only totals, not individual visitors, and we do not link analytics to your GPS
         coordinates. You can opt out with Google&rsquo;s browser add-on at{' '}
         <span className="text-fg-muted font-mono text-sm">tools.google.com/dlpage/gaoptout</span>.
+      </p>
+      <p className="mt-3 text-fg-muted leading-relaxed">
+        To learn which tools work, we also send Google Analytics short events such as
+        &ldquo;a location was found&rdquo;, &ldquo;location permission was denied&rdquo;,
+        &ldquo;a lookup was run&rdquo; or &ldquo;a result was copied&rdquo;, with the page they
+        happened on. These events never contain what you typed or what a tool found: no
+        coordinates, addresses, IP addresses, email addresses or domain names.
+      </p>
+      <p className="mt-3 text-fg-muted leading-relaxed">
+        In the European Economic Area, the United Kingdom and Switzerland, Google Analytics
+        starts without cookies (Google Consent Mode) and only sets them if you accept
+        measurement in the consent banner; until then it sends Google only basic page signals
+        without setting or reading any cookie.
       </p>
 
       <h2 className="font-display text-2xl font-bold mt-10">7. Advertising — Adsterra and Google AdSense</h2>

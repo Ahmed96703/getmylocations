@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { track } from './track.js';
 
 // A copy button that says whether the copy worked. The label sits in a
 // polite live region, so screen readers and browsing agents hear the result
@@ -11,6 +12,7 @@ export default function CopyButton({ text, label = 'Copy', className }) {
   const onClick = async () => {
     try {
       await navigator.clipboard.writeText(text);
+      track('copy_result');
       setState('done');
     } catch {
       setState('fail');

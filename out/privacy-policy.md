@@ -6,7 +6,7 @@ url: https://getmylocations.com/privacy-policy
 
 # Privacy Policy
 
-Last updated: October 24, 2026
+Last updated: November 5, 2026
 
 This page explains what information GetMyLocations receives when you use the site, what we do with it, and which third parties are involved. The summary at the top covers the common questions; the sections below give the details for anyone who wants them.
 
@@ -61,6 +61,10 @@ The site is hosted on Cloudflare. Like every web host, Cloudflare keeps short re
 ## 6\. Analytics — Google Analytics
 
 We use Google Analytics 4 to understand how many people visit, which pages and tools they use, and roughly where they come from (country and city level). Google Analytics sets first-party cookies (such as `_ga`) and receives your IP address, which Google Analytics 4 does not log or store. We see only totals, not individual visitors, and we do not link analytics to your GPS coordinates. You can opt out with Google’s browser add-on at tools.google.com/dlpage/gaoptout.
+
+To learn which tools work, we also send Google Analytics short events such as “a location was found”, “location permission was denied”, “a lookup was run” or “a result was copied”, with the page they happened on. These events never contain what you typed or what a tool found: no coordinates, addresses, IP addresses, email addresses or domain names.
+
+In the European Economic Area, the United Kingdom and Switzerland, Google Analytics starts without cookies (Google Consent Mode) and only sets them if you accept measurement in the consent banner; until then it sends Google only basic page signals without setting or reading any cookie.
 
 ## 7\. Advertising — Adsterra and Google AdSense
 

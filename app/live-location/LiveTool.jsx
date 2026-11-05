@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import CopyButton from '../components/CopyButton.jsx';
 import { downloadGpx } from './gpx.js';
+import { track } from '../components/track.js';
 
 const MapView = dynamic(() => import('../components/MapView.jsx'), {
   ssr: false,
@@ -88,6 +89,7 @@ export default function LiveTool() {
   }
 
   const start = () => {
+    track('live_tracking_start');
     if (!('geolocation' in navigator)) {
       setStatus({ type: 'err', msg: 'Geolocation is not supported by your browser.' });
       return;
@@ -312,7 +314,7 @@ export default function LiveTool() {
           <div className="flex flex-wrap gap-2 mt-4">
             <CopyButton text={`${pos[0].toFixed(6)}, ${pos[1].toFixed(6)}`} label="📋 Copy coordinates" className="btn-ghost" />
             {trail.length >= 2 && (
-              <button type="button" onClick={() => downloadGpx(trackRef.current)} className="btn-ghost">
+              <button type="button" onClick={() => { downloadGpx(trackRef.current); track('gpx_download'); }} className="btn-ghost">
                 ⬇ Download route (GPX)
               </button>
             )}

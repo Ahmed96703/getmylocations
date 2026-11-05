@@ -135,6 +135,32 @@ const siteNavSchema = {
 // Avoids the flash-of-wrong-theme on first load.
 const GROW_INIT_SCRIPT = `!(function(){window.growMe||((window.growMe=function(e){window.growMe._.push(e);}),(window.growMe._=[]));var e=document.createElement("script");(e.type="text/javascript"),(e.src="https://faves.grow.me/main.js"),(e.defer=!0),e.setAttribute("data-grow-faves-site-id","U2l0ZTo0OGU5NzA1Zi04ZGRmLTRlODMtODE4Mi05MDlmMDAzZDQxM2Y=");var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t);})();`;
 
+// GA4 with Google Consent Mode. In the EEA, UK and Switzerland analytics and
+// ad storage start denied; Mediavine's consent banner (IAB TCF, shown only
+// where the law requires it) then decides. Its own Consent Mode switch is off
+// ("cm_cmp_consentmode": false in its config), so the TCF choice is passed to
+// gtag here: analytics needs purposes 1 (store on device) and 8 (measure
+// content), ads purposes 1, 3, 4 and 7 as Google maps them.
+const CONSENT_REGIONS = ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB', 'CH'];
+const GA_INIT_SCRIPT = `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',region:${JSON.stringify(CONSENT_REGIONS)},wait_for_update:500});
+gtag('consent','default',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});
+gtag('js',new Date());gtag('config','${GA_ID}');
+(function(){var n=0;function hook(){if(typeof window.__tcfapi!=='function'){if(n++<40)setTimeout(hook,250);return}
+window.__tcfapi('addEventListener',2,function(d,ok){if(!ok||!d||!d.gdprApplies)return;if(d.eventStatus!=='tcloaded'&&d.eventStatus!=='useractioncomplete')return;
+var c=(d.purpose&&d.purpose.consents)||{};function g(b){return b?'granted':'denied'}
+gtag('consent','update',{ad_storage:g(c[1]),ad_user_data:g(c[1]&&c[7]),ad_personalization:g(c[3]&&c[4]),analytics_storage:g(c[1]&&c[8])});});}hook();})();`;
+
+// Location permission events for every tool at once: wraps the browser's
+// geolocation calls and reports only whether a position was found, denied or
+// failed, never the position itself. One event per call (per watch, for live
+// tracking). See app/components/track.js for the other events.
+const GEO_TRACK_SCRIPT = `(function(){var g=navigator.geolocation;if(!g)return;
+function ev(n,p){try{var o={tool:location.pathname};for(var k in p)o[k]=p[k];window.gtag&&window.gtag('event',n,o)}catch(e){}}
+function wrap(name){var orig=g[name];if(typeof orig!=='function')return;g[name]=function(ok,err,opt){var sent=false;function once(n,p){if(!sent){sent=true;ev(n,p)}}
+return orig.call(g,function(pos){once('location_found',{method:name==='watchPosition'?'live':'once'});if(ok)ok(pos)},function(e){once(e&&e.code===1?'location_denied':'location_error',{code:e?e.code:0});if(err)err(e)},opt)}}
+wrap('getCurrentPosition');wrap('watchPosition')})();`;
+
 const THEME_INIT_SCRIPT = `(function(){try{var t=localStorage.getItem('theme');if(!t){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','light');}})();`;
 
 export default function RootLayout({ children }) {
@@ -170,12 +196,14 @@ export default function RootLayout({ children }) {
         />
         {GA_ID && (
           <>
-            <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />
+            {/* Consent defaults first, then the library. */}
             <script
               dangerouslySetInnerHTML={{
-                __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${GA_ID}');`,
+                __html: GA_INIT_SCRIPT,
               }}
             />
+            <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />
+            <script dangerouslySetInnerHTML={{ __html: GEO_TRACK_SCRIPT }} />
           </>
         )}
       </head>

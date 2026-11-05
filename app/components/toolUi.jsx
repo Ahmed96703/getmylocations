@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { track } from './track.js';
 
 // Small shared pieces for the tool boxes, so every tool looks the same as the
 // location tools: a glass card, a search row, status lines and result rows.
@@ -21,7 +22,7 @@ export function Card({ title, children, right }) {
 export function QueryForm({ value, onChange, onSubmit, placeholder, label, button = 'Check', busy, mono = true, extra }) {
   return (
     <form
-      onSubmit={(e) => { e.preventDefault(); onSubmit(value.trim()); }}
+      onSubmit={(e) => { e.preventDefault(); track('tool_run'); onSubmit(value.trim()); }}
       className="flex flex-wrap gap-2"
     >
       <input
@@ -91,7 +92,7 @@ export function CopyButton({ text, label = 'Copy' }) {
       type="button"
       className="btn-ghost text-xs"
       onClick={async () => {
-        try { await navigator.clipboard.writeText(text); setDone(true); setTimeout(() => setDone(false), 1500); } catch { /* clipboard blocked */ }
+        try { await navigator.clipboard.writeText(text); track('copy_result'); setDone(true); setTimeout(() => setDone(false), 1500); } catch { /* clipboard blocked */ }
       }}
     >
       {done ? 'Copied ✓' : label}

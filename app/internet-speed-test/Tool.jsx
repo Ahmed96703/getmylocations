@@ -2,6 +2,7 @@
 
 import { useRef, useState } from 'react';
 import { Card, Rows } from '../components/toolUi.jsx';
+import { track } from '../components/track.js';
 
 // Speed test against Cloudflare's public speed-test endpoints (the same ones
 // speed.cloudflare.com uses), which answer browsers from any site.
@@ -95,6 +96,7 @@ export default function Tool() {
       const u = await upload(signal, setLive);
       setRes((r) => ({ ...r, up: u }));
       setPhase('done');
+      track('speed_test_complete');
     } catch (e) {
       setPhase('idle');
       if (e.name !== 'AbortError') setErr('The test could not reach the speed-test server. Check your connection or ad blocker and try again.');

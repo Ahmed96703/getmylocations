@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
+import { track } from '../components/track.js';
 import { parseCoordinate } from '../coordinates-converter/geo.js';
 import { searchAddress } from '../address-finder/geocode.js';
 
@@ -153,7 +154,7 @@ export default function Tool() {
       )}
 
       <div className="flex flex-wrap gap-2 mt-4">
-        <a href={openUrl} target="_blank" rel="noopener" className="btn-primary">
+        <a href={openUrl} target="_blank" rel="noopener" className="btn-primary" onClick={() => track('street_view_open')}>
           {EMBED_KEY ? 'Open full screen in Google Maps' : 'Open Street View here ↗'}
         </a>
       </div>

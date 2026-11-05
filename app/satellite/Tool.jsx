@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
+import { track } from '../components/track.js';
 import CopyButton from '../components/CopyButton.jsx';
 import { parseCoordinate } from '../coordinates-converter/geo.js';
 import { imageryAt, ageText } from './imagery.js';
@@ -92,6 +93,7 @@ export default function Tool() {
   const search = async (q) => {
     const text = q?.trim();
     if (!text) return;
+    track('satellite_search');
     setBusy(true);
     setErr('');
     try {
