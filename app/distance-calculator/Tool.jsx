@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import dynamic from 'next/dynamic';
-import Link from 'next/link';
+import Link from '@/app/components/Link.jsx';
 import { measure, compass } from './dist.js';
 import { parseCoordinate } from '../coordinates-converter/geo.js';
 import { searchAddress } from '../address-finder/geocode.js';

@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import Link from '@/app/components/Link.jsx';
 import CopyButton from './CopyButton.jsx';
 import IpFallback from './IpFallback.jsx';
 import { precisionOf, metersBetween, formatMeters } from '../address-finder/geocode.js';

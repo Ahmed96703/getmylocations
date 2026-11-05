@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/app/components/Link.jsx';
 import AuthorBio from '../components/AuthorBio.jsx';
 import AdSense from '../components/AdSense.jsx';
 import SideAd from '../components/SideAd.jsx';

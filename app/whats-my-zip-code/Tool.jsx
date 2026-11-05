@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
-import Link from 'next/link';
+import Link from '@/app/components/Link.jsx';
 import CopyButton from '../components/CopyButton.jsx';
 import { reverseLookup, searchAddress, searchPostcode, formatMeters } from '../address-finder/geocode.js';
 import { inUs, isZip, censusAt, fccAt } from './census.js';

@@ -1,7 +1,7 @@
 'use client';
 
 import { Suspense, useEffect, useState } from 'react';
-import Link from 'next/link';
+import Link from '@/app/components/Link.jsx';
 import dynamic from 'next/dynamic';
 import Dashboard from './components/Dashboard.jsx';
 import ManualInput from './components/ManualInput.jsx';

@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/app/components/Link.jsx';
 import { notFound } from 'next/navigation';
 import { POSTS, findPost } from '../../posts/manifest.js';
 import { breadcrumbSchema } from '../../components/breadcrumbSchema.js';

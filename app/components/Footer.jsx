@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/app/components/Link.jsx';
 import { NET_GROUPS, NET_TOOLS } from './netTools.js';
 
 const YEAR = new Date().getFullYear();

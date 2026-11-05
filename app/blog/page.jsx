@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/app/components/Link.jsx';
 import { breadcrumbSchema } from '../components/breadcrumbSchema.js';
 import { POSTS } from '../posts/manifest.js';
 import { AUTHOR } from '../components/author.js';

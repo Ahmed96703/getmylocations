@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
+import Link from '@/app/components/Link.jsx';
 
 // Shown on the homepage when no GPS/Wi-Fi fix is available (permission denied,
 // an error, or no answer yet). The IP lookup only runs when the visitor asks

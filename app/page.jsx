@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/app/components/Link.jsx';
 import HomeClient from './HomeClient.jsx';
 import { HOME_FAQS } from './home-faqs.js';
 import AdSense from './components/AdSense.jsx';

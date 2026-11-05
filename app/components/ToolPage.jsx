@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/app/components/Link.jsx';
 import { breadcrumbSchema } from './breadcrumbSchema.js';
 import AuthorBio from './AuthorBio.jsx';
 import AdSense from './AdSense.jsx';

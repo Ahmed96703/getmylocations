@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/app/components/Link.jsx';
 import BlogImage from '../components/BlogImage.jsx';
 
 export default function HowGpsWorks() {

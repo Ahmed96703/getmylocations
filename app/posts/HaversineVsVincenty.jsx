@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/app/components/Link.jsx';
 import { haversine, vincentyInverse, vincentyDirect } from '../distance-calculator/dist.js';
 
 // Both tables below are computed from the Distance Calculator's own code when

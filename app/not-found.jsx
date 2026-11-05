@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/app/components/Link.jsx';
 
 export const metadata = {
   title: '404 — Page Not Found',

@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
-import Link from 'next/link';
+import Link from '@/app/components/Link.jsx';
 import { track } from '../components/track.js';
 import CopyButton from '../components/CopyButton.jsx';
 import { parseCoordinate } from '../coordinates-converter/geo.js';

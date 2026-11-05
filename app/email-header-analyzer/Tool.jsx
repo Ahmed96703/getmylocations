@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
+import Link from '@/app/components/Link.jsx';
 import { Card, ResultTable, Rows, Badge } from '../components/toolUi.jsx';
 
 // Unfold headers (continuation lines start with whitespace) into [name, value] pairs.

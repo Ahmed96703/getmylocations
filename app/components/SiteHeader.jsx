@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import Link from 'next/link';
+import Link from '@/app/components/Link.jsx';
 import { usePathname } from 'next/navigation';
 import Logo from './Logo.jsx';
 import ThemeToggle from './ThemeToggle.jsx';

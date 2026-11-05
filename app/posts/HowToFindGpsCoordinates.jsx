@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/app/components/Link.jsx';
 
 const ext = 'text-accent hover:underline';
 const code = 'bg-tint/10 px-1.5 py-0.5 rounded text-accent';
