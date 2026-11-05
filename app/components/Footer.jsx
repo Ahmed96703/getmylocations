@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { NET_GROUPS, NET_TOOLS } from './netTools.js';
 
 const YEAR = new Date().getFullYear();
 
@@ -37,6 +38,25 @@ export default function Footer() {
               </li>
             ))}
           </ul>
+        </nav>
+        {/* The header's Tools menu only renders when opened, so this is the
+            crawlable link to each tool from every page. */}
+        <nav aria-label="Tools" className="mb-6 pb-6 border-b border-line-subtle">
+          <h3 className="text-[11px] uppercase tracking-[0.18em] text-accent font-semibold mb-3">Free tools</h3>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 text-sm">
+            {NET_GROUPS.map((g) => (
+              <div key={g.id}>
+                <h4 className="text-xs font-semibold text-fg mb-1.5">{g.label}</h4>
+                <ul className="space-y-1 text-fg-muted">
+                  {NET_TOOLS.filter((t) => t.group === g.id).map((t) => (
+                    <li key={t.href}>
+                      <Link href={t.href} className="hover:text-accent transition">{t.label}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </nav>
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-sm">
           <nav aria-label="Site">
