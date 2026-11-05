@@ -167,6 +167,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" dir="ltr" data-theme="light" className={`${inter.variable} ${sora.variable}`}>
       <head>
+        {/* Open connections to the ad servers while the HTML is still arriving:
+            the wrapper, its settings and Google's ad tag each start a new
+            connection otherwise, which pushes the first ad back. */}
+        <link rel="preconnect" href="https://scripts.scriptwrapper.com" />
+        <link rel="preconnect" href="https://scripts.journeymv.com" />
+        <link rel="preconnect" href="https://securepubads.g.doubleclick.net" />
         {/* Mediavine (Journey) ad script, first in <head> as Mediavine asks:
             earlier execution means more competitive bids. */}
         <script
