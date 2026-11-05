@@ -125,6 +125,10 @@ This page only ever shows your own position to you. It cannot create a link for 
 
 All three let you stop sharing early. To show someone a route after the fact instead, download it as a GPX file above and send the file. Before you share, read[how to share your GPS location safely](https://getmylocations.com/blog/how-to-share-gps-location-safely).
 
+### GPS tracking of someone else’s phone
+
+No website can find another phone’s live location from a number or a name: the position only leaves a phone when its owner shares it. For family members, the owner turns on sharing once with one of the three apps above, and you then follow them on your own map. For a lost or stolen phone of your own, sign in to Google Find My Device (Android) or Apple Find My (iPhone) on any browser. Tracking someone’s phone without their consent, including with hidden tracking apps, is a crime in many countries.
+
 ## Privacy: the stream stays with you
 
 Live tracking sounds invasive, but the data path is no different from a single-shot reading — there are just more readings. Every coordinate is delivered to JavaScript inside your own tab; none of them are posted to a server we control, written to any database, or correlated with anything else about your session. The page makes one throttled network call per ten seconds (at most) to translate the latest coordinate into a readable place name, and that request contains nothing but two numbers. A downloaded GPX file stays on your device unless you choose to send it to someone.

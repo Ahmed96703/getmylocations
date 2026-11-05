@@ -218,6 +218,12 @@ export default function MapsPage() {
               This <strong className="text-fg">interactive map</strong> runs in the browser and has no download button; it needs an internet connection to load each area as you zoom. For a <strong className="text-fg">free interactive world map download</strong> to use offline, the map data behind it is open: OpenStreetMap data is free to download and reuse under the 
               <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener" className="text-accent underline">Open Database License</a>, and offline map apps such as Organic Maps and OsmAnd use it. For a picture of the world map, take a screenshot and keep the credit &ldquo;&copy; OpenStreetMap contributors, &copy; CARTO&rdquo;.
             </p>
+            <h3 className="font-display text-lg font-bold mt-5">How to download a map of your location for offline use</h3>
+            <ol className="mt-2 space-y-1.5 text-fg-muted list-decimal list-inside leading-relaxed">
+              <li><strong className="text-fg">Google Maps app</strong> (Android and iPhone): tap your profile picture &rarr; <em>Offline maps</em> &rarr; <em>Select your own map</em>, drag the box over your town or region, then tap <em>Download</em>. Directions and search keep working there without signal.</li>
+              <li><strong className="text-fg">Organic Maps or OsmAnd</strong> (free, OpenStreetMap data): open the app, find your area, and accept the prompt to download that country or region. Whole countries download, not only a box.</li>
+              <li><strong className="text-fg">A picture of one spot:</strong> tap <em>My location</em> on the map above, zoom to the area you need, and take a screenshot. It is an image, so it will not update or let you search.</li>
+            </ol>
           </section>
 
           <section className="mt-10">

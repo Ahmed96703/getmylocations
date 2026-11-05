@@ -336,6 +336,10 @@ export default function LiveLocationPage() {
               All three let you stop sharing early. To show someone a route after the fact instead, download it as a GPX file above and send the file. Before you share, read 
               <Link href="/blog/how-to-share-gps-location-safely" className="text-accent hover:underline">how to share your GPS location safely</Link>.
             </p>
+            <h3 className="font-display text-lg font-bold mt-5">GPS tracking of someone else&rsquo;s phone</h3>
+            <p className="mt-2 text-fg-muted leading-relaxed">
+              No website can find another phone&rsquo;s live location from a number or a name: the position only leaves a phone when its owner shares it. For family members, the owner turns on sharing once with one of the three apps above, and you then follow them on your own map. For a lost or stolen phone of your own, sign in to Google Find My Device (Android) or Apple Find My (iPhone) on any browser. Tracking someone&rsquo;s phone without their consent, including with hidden tracking apps, is a crime in many countries.
+            </p>
           </section>
 
           <section className="mt-10">

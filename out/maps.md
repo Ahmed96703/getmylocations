@@ -66,6 +66,12 @@ This is one of several **free online maps** on the site, all **free interactive 
 
 This **interactive map** runs in the browser and has no download button; it needs an internet connection to load each area as you zoom. For a **free interactive world map download** to use offline, the map data behind it is open: OpenStreetMap data is free to download and reuse under the[Open Database License](https://www.openstreetmap.org/copyright), and offline map apps such as Organic Maps and OsmAnd use it. For a picture of the world map, take a screenshot and keep the credit “© OpenStreetMap contributors, © CARTO”.
 
+### How to download a map of your location for offline use
+
+1.  **Google Maps app** (Android and iPhone): tap your profile picture → _Offline maps_ → _Select your own map_, drag the box over your town or region, then tap _Download_. Directions and search keep working there without signal.
+2.  **Organic Maps or OsmAnd** (free, OpenStreetMap data): open the app, find your area, and accept the prompt to download that country or region. Whole countries download, not only a box.
+3.  **A picture of one spot:** tap _My location_ on the map above, zoom to the area you need, and take a screenshot. It is an image, so it will not update or let you search.
+
 ## Three things you can do here
 
 -   **Find any location.** Type a city, ZIP or postal code, or full street address and the map jumps to it.
