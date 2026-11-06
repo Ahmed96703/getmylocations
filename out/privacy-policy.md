@@ -6,7 +6,7 @@ url: https://getmylocations.com/privacy-policy
 
 # Privacy Policy
 
-Last updated: November 5, 2026
+Last updated: November 6, 2026
 
 This page explains what information GetMyLocations receives when you use the site, what we do with it, and which third parties are involved. The summary at the top covers the common questions; the sections below give the details for anyone who wants them.
 
@@ -32,6 +32,7 @@ A coordinate on its own is just numbers. To show a readable street address, city
 -   **OpenStreetMap Nominatim** — used for the nearest street address on the homepage and My Location, by the Address Finder, by the Street View tool to turn a typed address into coordinates, by What’s My Postcode for the nearest address and for postcodes outside the UK, and as a fallback elsewhere. Their privacy policy is published at wiki.osmfoundation.org/wiki/Privacy\_Policy.
 -   **postcodes.io** — used by What’s My Postcode to find the UK postcode nearest a coordinate, or the details of a postcode you type. It is a free, open-source service maintained by Ideal Postcodes on Office for National Statistics data (source code at github.com/ideal-postcodes/postcodes.io). It does not publish a separate privacy policy; the request carries only the coordinate or postcode and your IP, as above.
 -   **U.S. Census Bureau geocoder** — used by What’s My ZIP Code to find the county, city, districts, and Census ZIP area for a coordinate in the United States. The page loads the answer as a small script from geocoding.geo.census.gov, which receives the coordinate and your IP. The Census Bureau’s privacy policy is at census.gov/about/policies/privacy.html.
+-   **OpenStreetMap Overpass API** — used by Pharmacy Near Me and Public Toilets Near Me to find places nearby. Your browser rounds the position to a grid of about 2 km (pharmacies) or 1 km (toilets) and sends only that rounded point to our own server, which asks Overpass and keeps the answer for up to a day. Overpass sees our server, not your IP. Distances are worked out in your browser. Overpass is run by the OpenStreetMap community; the OSM Foundation’s privacy policy is at wiki.osmfoundation.org/wiki/Privacy\_Policy.
 -   **FCC Area API** — a backup for the county and state on What’s My ZIP Code when the Census service does not answer. It receives the coordinate and your IP. The FCC’s privacy policy is at fcc.gov/general/privacy-policy.
 
 Each request contains the coordinate and your IP (visible to any web service you connect to). It does not contain a username, an email, or any identifier we attach. Where a service publishes a privacy or retention policy, it is linked above.

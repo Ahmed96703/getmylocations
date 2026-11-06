@@ -118,6 +118,8 @@ const siteNavSchema = {
     { '@type': 'WebPage', name: 'Distance Calculator', url: 'https://getmylocations.com/distance-calculator' },
     { '@type': 'WebPage', name: 'Radius Map', url: 'https://getmylocations.com/radius-map' },
     { '@type': 'WebPage', name: 'Fire Map', url: 'https://getmylocations.com/fire-map' },
+    { '@type': 'WebPage', name: 'Pharmacy Near Me', url: 'https://getmylocations.com/pharmacy-near-me' },
+    { '@type': 'WebPage', name: 'Public Toilets Near Me', url: 'https://getmylocations.com/public-toilets-near-me' },
     { '@type': 'WebPage', name: 'Address Finder', url: 'https://getmylocations.com/address-finder' },
     { '@type': 'WebPage', name: "What's My ZIP Code", url: 'https://getmylocations.com/whats-my-zip-code' },
     { '@type': 'WebPage', name: "What's My Postcode", url: 'https://getmylocations.com/whats-my-postcode' },

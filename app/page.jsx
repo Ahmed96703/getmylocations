@@ -70,6 +70,8 @@ const HUB_TOOLS = [
   { href: '/distance-calculator', t: 'Distance Calculator', d: 'Great-circle distance between two coordinates using the Haversine formula.' },
   { href: '/radius-map', t: 'Radius Map', d: 'Draw a radius of any size around an address or your location, in miles or km.' },
   { href: '/fire-map', t: 'Live Fire Map', d: 'Satellite-detected bushfires and wildfires near you in the last 24 hours.' },
+  { href: '/pharmacy-near-me', t: 'Pharmacy Near Me', d: 'The nearest pharmacy, hospital with A&E and public defibrillator, with hours and directions.' },
+  { href: '/public-toilets-near-me', t: 'Public Toilets Near Me', d: 'The nearest public toilets, free or paid, with wheelchair access and baby changing.' },
   { href: '/address-finder', t: 'Address Finder', d: 'Address-to-coordinates and coordinates-to-address geocoding both ways.' },
   { href: '/whats-my-zip-code', t: "What's My ZIP Code", d: 'Your ZIP code, county, city, and congressional district from your location (US).' },
   { href: '/whats-my-postcode', t: "What's My Postcode", d: 'Your postcode, nearest address, council and ward from your location, in one tap.' },

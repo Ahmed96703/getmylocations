@@ -23,6 +23,8 @@ const TOOLS = [
   { href: '/address-finder', label: 'Address Finder', desc: 'Address ↔ coordinates' },
   { href: '/radius-map', label: 'Radius Map', desc: 'Draw a circle in miles or km' },
   { href: '/fire-map', label: 'Fire Map', desc: 'Bushfires & wildfires near you' },
+  { href: '/pharmacy-near-me', label: 'Pharmacy Near Me', desc: 'Pharmacy, hospital & defibrillator' },
+  { href: '/public-toilets-near-me', label: 'Public Toilets Near Me', desc: 'Free & accessible toilets nearby' },
   { href: '/whats-my-zip-code', label: "What's My ZIP Code", desc: 'ZIP, county & district (US)' },
   { href: '/whats-my-postcode', label: "What's My Postcode", desc: 'Your postcode in one tap (UK)' },
   { href: '/maps', label: 'Interactive Maps', desc: 'World map with layers' },

@@ -39,7 +39,7 @@ export default function Privacy() {
         </nav>
 
       <h1 className="font-display text-4xl font-extrabold tracking-tight">Privacy Policy</h1>
-      <p className="text-sm text-fg-subtle mt-2">Last updated: November 5, 2026</p>
+      <p className="text-sm text-fg-subtle mt-2">Last updated: November 6, 2026</p>
 
       <p className="mt-6 text-fg-muted leading-relaxed">
         This page explains what information GetMyLocations receives when you use the
@@ -95,6 +95,10 @@ export default function Privacy() {
           <strong>U.S. Census Bureau geocoder</strong> — used by What&rsquo;s My ZIP Code to find the county, city, districts, and Census ZIP area for a coordinate in the United States. The page loads the answer as a small script from{' '}
           <span className="text-fg-muted font-mono text-sm">geocoding.geo.census.gov</span>, which receives the coordinate and your IP. The Census Bureau&rsquo;s privacy policy is at{' '}
           <span className="text-fg-muted font-mono text-sm">census.gov/about/policies/privacy.html</span>.
+        </li>
+        <li>
+          <strong>OpenStreetMap Overpass API</strong> — used by Pharmacy Near Me and Public Toilets Near Me to find places nearby. Your browser rounds the position to a grid of about 2 km (pharmacies) or 1 km (toilets) and sends only that rounded point to our own server, which asks Overpass and keeps the answer for up to a day. Overpass sees our server, not your IP. Distances are worked out in your browser. Overpass is run by the OpenStreetMap community; the OSM Foundation&rsquo;s privacy policy is at{' '}
+          <span className="text-fg-muted font-mono text-sm">wiki.osmfoundation.org/wiki/Privacy_Policy</span>.
         </li>
         <li>
           <strong>FCC Area API</strong> — a backup for the county and state on What&rsquo;s My ZIP Code when the Census service does not answer. It receives the coordinate and your IP. The FCC&rsquo;s privacy policy is at{' '}

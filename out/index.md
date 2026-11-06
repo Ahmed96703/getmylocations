@@ -85,6 +85,20 @@ Every location tool on this site. Each one is free, runs in your browser, and ne
     ](https://getmylocations.com/fire-map)
 -   [
     
+    ### Pharmacy Near Me
+    
+    The nearest pharmacy, hospital with A&E and public defibrillator, with hours and directions.
+    
+    ](https://getmylocations.com/pharmacy-near-me)
+-   [
+    
+    ### Public Toilets Near Me
+    
+    The nearest public toilets, free or paid, with wheelchair access and baby changing.
+    
+    ](https://getmylocations.com/public-toilets-near-me)
+-   [
+    
     ### Address Finder
     
     Address-to-coordinates and coordinates-to-address geocoding both ways.

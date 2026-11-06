@@ -138,14 +138,116 @@ async function page(target) {
   }, 200, { 'Cache-Control': 'private, max-age=300' });
 }
 
+// /api/nearby?kind=health|toilets&lat=..&lon=.. answers the Pharmacy Near Me
+// and Public Toilets Near Me tools from OpenStreetMap, through the public
+// Overpass API. The browser rounds the position to a grid cell before it
+// asks (about 2 km for health, 1 km for toilets), so neither this Worker nor
+// Overpass sees the exact location, and every visitor in the same cell shares
+// one cached answer for a day. The query radius is the advertised radius plus
+// the cell's half-diagonal, so the browser can measure from the exact point.
+// Overpass mirrors are tried in turn because the main one is often at capacity.
+
+const OVERPASS = [
+  'https://overpass-api.de/api/interpreter',
+  'https://overpass.private.coffee/api/interpreter',
+  'https://maps.mail.ru/osm/tools/overpass/api/interpreter',
+];
+const NEARBY = {
+  health: {
+    cell: 0.02,
+    parts: [
+      ['pharmacy', 'nwr["amenity"="pharmacy"]', 4700],
+      ['hospital', 'nwr["amenity"="hospital"]', 16700],
+      ['aed', 'node["emergency"="defibrillator"]', 4700],
+    ],
+  },
+  toilets: { cell: 0.01, parts: [['toilets', 'nwr["amenity"="toilets"]', 2800]] },
+};
+const KEEP = [
+  'name', 'brand', 'operator', 'opening_hours', 'phone', 'contact:phone', 'website', 'contact:website',
+  'addr:street', 'addr:housenumber', 'addr:city', 'addr:postcode', 'emergency', 'dispensing',
+  'fee', 'charge', 'wheelchair', 'changing_table', 'unisex', 'access', 'indoor', 'level',
+  'defibrillator:location', 'description',
+];
+const NEARBY_CACHE_SECONDS = 86400;
+
+const snap = (v, cell) => (Math.round(v / cell) * cell).toFixed(4);
+
+function kindOf(tags) {
+  if (tags.emergency === 'defibrillator') return 'aed';
+  return tags.amenity === 'toilets' ? 'toilets' : tags.amenity;
+}
+
+async function overpass(query) {
+  let last = 'no server answered';
+  for (const endpoint of OVERPASS) {
+    try {
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'User-Agent': 'GetMyLocations/1.0 (+https://getmylocations.com/contact)',
+        },
+        body: new URLSearchParams({ data: query }),
+        signal: AbortSignal.timeout(20000),
+      });
+      if (res.ok) return await res.json();
+      last = `HTTP ${res.status}`;
+    } catch (err) {
+      last = err.name === 'TimeoutError' ? 'timed out' : 'network error';
+    }
+  }
+  throw new Error(last);
+}
+
+async function nearby(url, ctx) {
+  const cfg = NEARBY[url.searchParams.get('kind')];
+  const lat = Number(url.searchParams.get('lat'));
+  const lon = Number(url.searchParams.get('lon'));
+  if (!cfg || !Number.isFinite(lat) || !Number.isFinite(lon) || Math.abs(lat) > 85 || Math.abs(lon) > 180) {
+    return json({ error: 'kind, lat and lon are required' }, 400);
+  }
+  const sLat = snap(lat, cfg.cell);
+  const sLon = snap(lon, cfg.cell);
+  const key = new Request(`https://getmylocations.com/api/nearby?kind=${url.searchParams.get('kind')}&lat=${sLat}&lon=${sLon}`);
+  const cache = caches.default;
+  const hit = await cache.match(key);
+  if (hit) return hit;
+
+  const parts = cfg.parts.map(([, sel, r]) => `${sel}(around:${r},${sLat},${sLon});`).join('');
+  let data;
+  try {
+    data = await overpass(`[out:json][timeout:25];(${parts});out center tags qt 3000;`);
+  } catch (err) {
+    return json({ error: `OpenStreetMap is busy (${err.message}). Try again in a minute.` }, 503, { 'Cache-Control': 'no-store' });
+  }
+  const places = [];
+  for (const el of data.elements || []) {
+    const tags = el.tags || {};
+    const plat = el.lat ?? el.center?.lat;
+    const plon = el.lon ?? el.center?.lon;
+    if (plat == null || plon == null) continue;
+    if (tags.access === 'private' || tags.access === 'no') continue;
+    const keep = {};
+    for (const k of KEEP) if (tags[k]) keep[k] = String(tags[k]).slice(0, 200);
+    places.push({ k: kindOf(tags), lat: plat, lon: plon, id: `${el.type[0]}${el.id}`, tags: keep });
+  }
+  const res = json({ lat: Number(sLat), lon: Number(sLon), at: new Date().toISOString(), places }, 200, {
+    'Cache-Control': `public, max-age=${NEARBY_CACHE_SECONDS}`,
+  });
+  ctx.waitUntil(cache.put(key, res.clone()));
+  return res;
+}
+
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
     const url = new URL(request.url);
     if (request.method === 'GET') {
       const m = /^\/api\/fires\/([a-z0-9]+)\/([a-z]+)\.csv$/.exec(url.pathname);
       if (m) return fires(m[1], m[2]);
       if (url.pathname === '/api/ip') return visitorIp(request);
       if (url.pathname === '/api/page') return page(url.searchParams.get('url') || '');
+      if (url.pathname === '/api/nearby') return nearby(url, ctx);
     }
     if (url.pathname.startsWith('/api/')) return new Response('Not found', { status: 404 });
     return env.ASSETS.fetch(request);
