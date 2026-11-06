@@ -112,6 +112,13 @@ export default function ZipCodePage() {
           </section>
 
           <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">What is my current ZIP code?</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Your <strong className="text-fg">current ZIP code</strong> is the one for where you are standing now, which is not always the one on your mail when you are traveling or at work. Press the button in the tool above and it finds the ZIP code of your location from your device&rsquo;s position, with the county, city and districts for the same spot. To check a ZIP code you already have, type it in instead and the tool shows the county and state for its center.
+            </p>
+          </section>
+
+          <section className="mt-10">
             <h2 className="font-display text-2xl font-bold">How ZIP codes work</h2>
             <p className="mt-3 text-fg-muted leading-relaxed">
               The Postal Service introduced ZIP codes, for Zone Improvement Plan, in 1963, and today there are about 42,000 of them. The five digits narrow down step by step:

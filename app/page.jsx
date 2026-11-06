@@ -213,6 +213,21 @@ export default function HomePage() {
               })}
             </div>
           </section>
+
+          <section className="mt-12">
+            <h2 className="font-display text-2xl font-bold">What is my GPS address?</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Your <strong className="text-fg">GPS address</strong> is your position written two ways: the latitude and longitude your device reports, such as <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">40.7484, -73.9857</code>, and the nearest street address those numbers match. Allow location access when your browser asks, and the tool below shows both, the coordinates and the nearest street address with its city and country, each with a copy button. To go the other way, from a street address to its coordinates, use the 
+              <Link href="/address-finder" className="text-accent hover:underline">address finder</Link>.
+            </p>
+          </section>
+
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">Where am I located right now?</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              The tool below answers <strong className="text-fg">where am I located</strong> from your device&rsquo;s own GPS or Wi-Fi position, not from your IP address, so it usually shows the street you are on rather than a nearby city. If you are asking <strong className="text-fg">where do I live</strong> because you need your home address for a form, run it at home: the address shown is the one the map service has on record for that spot. Check the house number before you use it, because the nearest mapped address can be a neighbor&rsquo;s.
+            </p>
+          </section>
         </article>
 
         {/* Client-side interactive tool (Geolocation API, Leaflet map, etc.) */}

@@ -70,6 +70,10 @@ You do not need coordinates. To find the **distance from** one place to another,
 -   **A city is measured from its center,** as the map service defines it. For an exact spot, type the full address or paste its coordinates.
 -   **The result is the straight-line distance,** sometimes called “as the crow flies”. A trip by road is longer, often much longer; for the road distance and time, use [driving directions](https://getmylocations.com/driving-directions).
 
+## Distance between cities in miles
+
+Type two city names to get the **distance between cities** in miles and kilometers at once. London to Paris is 214 miles (344 km) in a straight line, and San Francisco to Los Angeles is 347 miles (559 km). The same works for the **miles between two locations** of any kind: towns, airports, landmarks or full street addresses.
+
 ## How far is it from one country to another?
 
 A country covers a large area, so the **Iran to Israel distance** or the **Iran to America distance** has no single answer. The usual answer is the distance between major cities. These are calculated with the tool’s own code; type any two cities into the calculator to measure others.

@@ -30,6 +30,12 @@ Convert any GPS coordinate between **Decimal Degrees**, **Degrees-Minutes-Second
 
 All formats use the WGS 84 datum, the same one GPS receivers and web maps use.
 
+## Which is latitude and which is longitude?
+
+**Latitude comes first** and says how far north or south of the equator a point is, from −90° at the South Pole to 90° at the North Pole. **Longitude comes second** and says how far east or west of the Greenwich meridian it is, from −180° to 180°. In `48.8584, 2.2945` (the Eiffel Tower), 48.8584 is the latitude and 2.2945 the longitude.
+
+Two quick checks: a number above 90 or below −90 can only be a longitude, and a coordinate marked N or S is a latitude while E or W is a longitude. Some software, including GeoJSON files, lists longitude first, so a point that lands in the wrong country often has the two swapped.
+
 ## What are DD and DDM coordinates?
 
 **DD (decimal degrees)** writes latitude and longitude as plain decimal numbers, with a minus sign for south and west: the Eiffel Tower is at `48.8584, 2.2945`. It is the format Google Maps, phones and most websites use when you copy a location.

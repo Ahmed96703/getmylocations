@@ -228,6 +228,13 @@ export default function DistanceCalculatorPage() {
           </section>
 
           <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">Distance between cities in miles</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Type two city names to get the <strong className="text-fg">distance between cities</strong> in miles and kilometers at once. London to Paris is {cityPairs[0].mi} miles ({cityPairs[0].km} km) in a straight line, and San Francisco to Los Angeles is {cityPairs[4].mi} miles ({cityPairs[4].km} km). The same works for the <strong className="text-fg">miles between two locations</strong> of any kind: towns, airports, landmarks or full street addresses.
+            </p>
+          </section>
+
+          <section className="mt-10">
             <h2 className="font-display text-2xl font-bold">How far is it from one country to another?</h2>
             <p className="mt-3 text-fg-muted leading-relaxed">
               A country covers a large area, so the <strong className="text-fg">Iran to Israel distance</strong> or the <strong className="text-fg">Iran to America distance</strong> has no single answer. The usual answer is the distance between major cities. These are calculated with the tool&rsquo;s own code; type any two cities into the calculator to measure others.

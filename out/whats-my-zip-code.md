@@ -20,6 +20,10 @@ Your browser asks your device for its position, which on a phone usually comes f
 
 Only the coordinates are sent to those services, and nothing is stored by this site. If the Census service is slow or down, the county and state come from the FCC’s Area API instead. See the [Privacy Policy](https://getmylocations.com/privacy-policy) for details.
 
+## What is my current ZIP code?
+
+Your **current ZIP code** is the one for where you are standing now, which is not always the one on your mail when you are traveling or at work. Press the button in the tool above and it finds the ZIP code of your location from your device’s position, with the county, city and districts for the same spot. To check a ZIP code you already have, type it in instead and the tool shows the county and state for its center.
+
 ## How ZIP codes work
 
 The Postal Service introduced ZIP codes, for Zone Improvement Plan, in 1963, and today there are about 42,000 of them. The five digits narrow down step by step:

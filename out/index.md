@@ -189,6 +189,14 @@ Quick generators and converters
 -   [Binary to TextBinary, text, hex and decimal→](https://getmylocations.com/binary-to-text)
 -   [Bytes & Bits ConverterKB, MB, GB, Mbps and more→](https://getmylocations.com/bytes-bits-converter)
 
+## What is my GPS address?
+
+Your **GPS address** is your position written two ways: the latitude and longitude your device reports, such as `40.7484, -73.9857`, and the nearest street address those numbers match. Allow location access when your browser asks, and the tool below shows both, the coordinates and the nearest street address with its city and country, each with a copy button. To go the other way, from a street address to its coordinates, use the[address finder](https://getmylocations.com/address-finder).
+
+## Where am I located right now?
+
+The tool below answers **where am I located** from your device’s own GPS or Wi-Fi position, not from your IP address, so it usually shows the street you are on rather than a nearby city. If you are asking **where do I live** because you need your home address for a form, run it at home: the address shown is the one the map service has on record for that spot. Check the house number before you use it, because the nearest mapped address can be a neighbor’s.
+
 -   Coordinates in two seconds
 -   Move and watch it update
 -   Street address, city and country

@@ -231,6 +231,16 @@ export default function CoordinatesConverterPage() {
 
         <article>
           <section className="mt-12">
+            <h2 className="font-display text-2xl font-bold">Which is latitude and which is longitude?</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              <strong className="text-fg">Latitude comes first</strong> and says how far north or south of the equator a point is, from −90° at the South Pole to 90° at the North Pole. <strong className="text-fg">Longitude comes second</strong> and says how far east or west of the Greenwich meridian it is, from −180° to 180°. In <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">48.8584, 2.2945</code> (the Eiffel Tower), 48.8584 is the latitude and 2.2945 the longitude.
+            </p>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Two quick checks: a number above 90 or below −90 can only be a longitude, and a coordinate marked N or S is a latitude while E or W is a longitude. Some software, including GeoJSON files, lists longitude first, so a point that lands in the wrong country often has the two swapped.
+            </p>
+          </section>
+
+          <section className="mt-12">
             <h2 className="font-display text-2xl font-bold">What are DD and DDM coordinates?</h2>
             <p className="mt-3 text-fg-muted leading-relaxed">
               <strong className="text-fg">DD (decimal degrees)</strong> writes latitude and longitude as plain decimal numbers, with a minus sign for south and west: the Eiffel Tower is at <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">48.8584, 2.2945</code>. It is the format Google Maps, phones and most websites use when you copy a location.
