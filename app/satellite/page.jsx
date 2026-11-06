@@ -301,6 +301,12 @@ export default function SatellitePage() {
             <p className="mt-3 text-fg-muted leading-relaxed">
               Use whichever photo is newer for the place you care about. This map is the quickest way to check the date, and the link under it opens the same spot in <strong className="text-fg">Google Maps satellite view</strong> to compare. For a <strong className="text-fg">Google Earth view</strong> with 3D buildings, open Google Earth on the web: <strong className="text-fg">Google Earth satellite view free</strong> of charge is another option. Both this map and <strong className="text-fg">Google Maps satellite view free</strong> of charge need no account.
             </p>
+            <h3 className="font-display text-lg font-bold mt-5">Google satellite view vs Google Earth: free options</h3>
+            <ul className="mt-2 space-y-1.5 text-fg-muted list-disc list-inside leading-relaxed">
+              <li><strong className="text-fg">Google satellite view in Google Maps:</strong> on a computer, click the <em>Layers</em> square in the bottom-left corner of the map; in the Google Maps app, tap the layers button near the top right and choose <em>Satellite</em>. It is the quickest Google option for one address.</li>
+              <li><strong className="text-fg">Google Earth on the web:</strong> open earth.google.com in Chrome, Edge, Firefox or Safari. It is free, adds 3D buildings and terrain, and its historical imagery lets you step back through older photos.</li>
+              <li><strong className="text-fg">This map:</strong> no app and no Google account, any coordinate format, and the capture date of the photo shown for every view.</li>
+            </ul>
           </section>
 
           <section className="mt-10">

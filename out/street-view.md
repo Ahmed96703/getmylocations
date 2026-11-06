@@ -29,6 +29,12 @@ Most people open **Google Maps Street View** to see one particular house, shop o
 -   **Google Street View lookup by coordinates:** paste a GPS position or a Google Maps link for places with no postal address.
 -   **Google Maps Street View free on any device:** it works in any browser on a phone, tablet or computer, and opens the Google Maps app if you have it.
 
+## Instant Street View: open any address in one click
+
+An **instant Google Street View** skips the usual steps in Google Maps: search, drop the yellow Pegman on the right street, then turn to face the house. Here you type the address once, check the pin, and one click on _Open Street View_ lands on the nearest panorama already facing the direction you chose. Coordinates and Google Maps links open without the address lookup, so they are the fastest of all.
+
+**Streetview**, written as one word, is the same thing: Google’s street-level photos, called Street View. Searching “streetview”, “street view maps” or “Google Street View address search” all lead to the same tool above.
+
 ## How to see Google Street View by address
 
 1.  Type an address or landmark, or paste coordinates in any format (decimal degrees, DMS, UTM, or a Google Maps link), and press _Find_. Or tap one of the example places.

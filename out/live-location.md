@@ -22,7 +22,7 @@ Tap _Start live tracking_ to begin. Your position refreshes automatically as you
 -   **Live position, speed and heading:** how fast and in which direction you are going.
 -   **My location live map with your route:** a line along the path you have taken, the distance covered, and a GPX download.
 
-To **track my location now**, keep this page open and in front: this **GPS tracking live location** view follows you like a **live GPS tracker**, so you can see **my location right now** and **my current location live** on the **live location map** until you tap Stop. It is **live GPS tracking** in the browser, a **real-time GPS location tracker** with nothing to install. For a single reading of where you are, your address and your coordinates, use[My Location](https://getmylocations.com/my-location) instead.
+To **track my location now**, keep this page open and in front: this **GPS tracking live location** view follows you like a **live GPS tracker**, so you can see **my location right now** and **my current location live** on the **live location map** until you tap Stop. It is **live GPS tracking** in the browser, a **real-time GPS location tracker** with nothing to install. For a single reading of where you are, your address and your coordinates, use[My Location](https://getmylocations.com/my-location) instead: it shows your **current location** once, with the nearest street address.
 
 ## Live vs. one-shot — the difference matters
 

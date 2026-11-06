@@ -140,6 +140,16 @@ export default function StreetViewPage() {
           </section>
 
           <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">Instant Street View: open any address in one click</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              An <strong className="text-fg">instant Google Street View</strong> skips the usual steps in Google Maps: search, drop the yellow Pegman on the right street, then turn to face the house. Here you type the address once, check the pin, and one click on <em>Open Street View</em> lands on the nearest panorama already facing the direction you chose. Coordinates and Google Maps links open without the address lookup, so they are the fastest of all.
+            </p>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              <strong className="text-fg">Streetview</strong>, written as one word, is the same thing: Google&rsquo;s street-level photos, called Street View. Searching &ldquo;streetview&rdquo;, &ldquo;street view maps&rdquo; or &ldquo;Google Street View address search&rdquo; all lead to the same tool above.
+            </p>
+          </section>
+
+          <section className="mt-10">
             <h2 className="font-display text-2xl font-bold">How to see Google Street View by address</h2>
             <ol className="mt-3 space-y-1.5 text-fg-muted list-decimal list-inside leading-relaxed">
               <li>Type an address or landmark, or paste coordinates in any format (decimal degrees, DMS, UTM, or a Google Maps link), and press <em>Find</em>. Or tap one of the example places.</li>

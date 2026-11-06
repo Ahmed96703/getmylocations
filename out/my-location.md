@@ -20,6 +20,10 @@ Click the button above to start.
 
 Press **Find my location** and allow location access when your browser asks. Within a few seconds the tool shows where you are right now: your latitude and longitude, the street address nearest to you, and your city, state, country and postal code, with a pin on the map. Before you press it, the box at the top already gives a rough answer from your IP address, so you can see at a glance which city you are in. Whether you call it your **present location**, your **current position** or your **exact location**, it is the same reading, taken the moment you press the button.
 
+## My location right now
+
+Your location right now is the reading at the top of this page once you press **Find my location**: coordinates, street address and city, taken at that moment. To see **my location now** again after you have moved, press the button again. To have it follow you without pressing anything, open [Live Location](https://getmylocations.com/live-location), which keeps updating the pin while the page is open.
+
 ## What is my current location address?
 
 After the tool finds you, the “Your current address” box shows the nearest street address, with a copy button. It comes from OpenStreetMap and names the closest mapped building or street, so treat it as the address of the spot you are standing on, not proof of where you live. Indoors or with a weak signal the match can be a neighbouring building; the accuracy figure tells you how far off it may be.

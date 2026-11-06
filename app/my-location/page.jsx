@@ -170,6 +170,15 @@ export default function MyLocationPage() {
             reading, taken the moment you press the button.
           </p>
 
+          <h2 className="font-display text-2xl font-bold mt-10">My location right now</h2>
+          <p className="mt-3 text-fg-muted leading-relaxed">
+            Your location right now is the reading at the top of this page once you press <strong className="text-fg">Find my location</strong>:
+            coordinates, street address and city, taken at that moment. To see <strong>my location now</strong> again after
+            you have moved, press the button again. To have it follow you without pressing anything, open{' '}
+            <Link href="/live-location" className="text-accent hover:underline">Live Location</Link>, which keeps
+            updating the pin while the page is open.
+          </p>
+
           <h2 className="font-display text-2xl font-bold mt-10">What is my current location address?</h2>
           <p className="mt-3 text-fg-muted leading-relaxed">
             After the tool finds you, the &ldquo;Your current address&rdquo; box shows the nearest street address,

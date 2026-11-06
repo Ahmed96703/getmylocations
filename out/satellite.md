@@ -114,6 +114,12 @@ Open any of these in free **satellite view**; each link sets the map to the spot
 
 Use whichever photo is newer for the place you care about. This map is the quickest way to check the date, and the link under it opens the same spot in **Google Maps satellite view** to compare. For a **Google Earth view** with 3D buildings, open Google Earth on the web: **Google Earth satellite view free** of charge is another option. Both this map and **Google Maps satellite view free** of charge need no account.
 
+### Google satellite view vs Google Earth: free options
+
+-   **Google satellite view in Google Maps:** on a computer, click the _Layers_ square in the bottom-left corner of the map; in the Google Maps app, tap the layers button near the top right and choose _Satellite_. It is the quickest Google option for one address.
+-   **Google Earth on the web:** open earth.google.com in Chrome, Edge, Firefox or Safari. It is free, adds 3D buildings and terrain, and its historical imagery lets you step back through older photos.
+-   **This map:** no app and no Google account, any coordinate format, and the capture date of the photo shown for every view.
+
 ## When satellite view beats a regular map
 
 -   Checking what a property and its surroundings look like before you visit, rent, or buy.

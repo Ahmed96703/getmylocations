@@ -172,8 +172,8 @@ export default function LiveLocationPage() {
               <li><strong className="text-fg">My location live map with your route:</strong> a line along the path you have taken, the distance covered, and a GPX download.</li>
             </ul>
             <p className="mt-3 text-fg-muted leading-relaxed">
-              To <strong className="text-fg">track my location now</strong>, keep this page open and in front: this <strong className="text-fg">GPS tracking live location</strong> view follows you like a <strong className="text-fg">live GPS tracker</strong>, so you can see <strong className="text-fg">my location right now</strong> and <strong className="text-fg">my current location live</strong> on the <strong className="text-fg">live location map</strong> until you tap Stop. It is <strong className="text-fg">live GPS tracking</strong> in the browser, a <strong className="text-fg">real-time GPS location tracker</strong> with nothing to install. For a single reading of where you are, your address and your coordinates, use 
-              <Link href="/my-location" className="text-accent hover:underline">My Location</Link> instead.
+              To <strong className="text-fg">track my location now</strong>, keep this page open and in front: this <strong className="text-fg">GPS tracking live location</strong> view follows you like a <strong className="text-fg">live GPS tracker</strong>, so you can see <strong className="text-fg">my location right now</strong> and <strong className="text-fg">my current location live</strong> on the <strong className="text-fg">live location map</strong> until you tap Stop. It is <strong className="text-fg">live GPS tracking</strong> in the browser, a <strong className="text-fg">real-time GPS location tracker</strong> with nothing to install. For a single reading of where you are, your address and your coordinates, use
+              <Link href="/my-location" className="text-accent hover:underline">My Location</Link> instead: it shows your <strong className="text-fg">current location</strong> once, with the nearest street address.
             </p>
           </section>
 
