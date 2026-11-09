@@ -146,7 +146,7 @@ async function page(target) {
 // one cached answer for a week. The query radius is the advertised radius plus
 // the cell's half-diagonal, so the browser can measure from the exact point.
 // The data comes from QLever's OpenStreetMap index (University of Freiburg),
-// which answers in 10-40 s for an uncached cell; the public Overpass servers are the fallback, as
+// which answers in 10-25 s for an uncached cell; the public Overpass servers are the fallback, as
 // in November 2026 they were mostly at capacity and timed out.
 
 const OVERPASS = [
@@ -184,45 +184,57 @@ function kindOf(tags) {
 
 const OSM_UA = 'GetMyLocations/1.0 (+https://getmylocations.com/contact)';
 
-// One spatial search per kind of place, run in parallel, then the tags we show.
-async function qleverPart([k, key, val, r], lat, lon) {
-  const keys = [...KEEP, 'amenity'].map((t) => `osmkey:${t}`).join(' ');
-  const query = `PREFIX osmkey: <https://www.openstreetmap.org/wiki/Key:>
+// QLever: one query per kind of place, run in parallel, finds everything whose
+// centroid is inside a box around the cell (most hospitals, and many toilets
+// and pharmacies, are mapped as outlines, which QLever's spatial search
+// skips). A second query then fetches the tags for those places by ID.
+const QPREFIX = `PREFIX osmkey: <https://www.openstreetmap.org/wiki/Key:>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
-PREFIX spatialSearch: <https://qlever.cs.uni-freiburg.de/spatialSearch/>
-SELECT ?osm ?c ?key ?val WHERE {
-  BIND ("POINT(${lon} ${lat})"^^geo:wktLiteral AS ?center)
-  SERVICE spatialSearch: {
-    _:config spatialSearch:algorithm spatialSearch:s2 ; spatialSearch:left ?center ; spatialSearch:right ?wkt ;
-             spatialSearch:maxDistance ${r} ; spatialSearch:payload ?osm .
-    { ?osm osmkey:${key} "${val}" . ?osm geo:hasGeometry/geo:asWKT ?wkt }
-  }
-  BIND (geof:centroid(?wkt) AS ?c)
-  OPTIONAL { VALUES ?key { ${keys} } ?osm ?key ?val }
-}`;
+`;
+
+async function sparql(query) {
   const res = await fetch(QLEVER, {
     method: 'POST',
     headers: { Accept: 'application/sparql-results+json', 'Content-Type': 'application/x-www-form-urlencoded', 'User-Agent': OSM_UA },
-    body: new URLSearchParams({ query }),
+    body: new URLSearchParams({ query: QPREFIX + query }),
     signal: AbortSignal.timeout(50000),
   });
   if (!res.ok) throw new Error(`QLever HTTP ${res.status}`);
-  const data = await res.json();
-  const byId = new Map();
-  for (const b of data.results?.bindings || []) {
-    const m = /\/(node|way|relation)\/(\d+)$/.exec(b.osm.value);
-    const pt = /POINT\(([-\d.]+) ([-\d.]+)\)/.exec(b.c?.value || '');
-    if (!m || !pt) continue;
-    const id = `${m[1][0]}${m[2]}`;
-    let p = byId.get(id);
-    if (!p) byId.set(id, (p = { k, lat: Number(pt[2]), lon: Number(pt[1]), id, tags: {} }));
-    if (b.key) p.tags[b.key.value.slice(b.key.value.indexOf('/wiki/Key:') + 10)] = b.val.value;
-  }
-  return [...byId.values()];
+  return (await res.json()).results?.bindings || [];
 }
 
-const qlever = async (parts, lat, lon) => (await Promise.all(parts.map((part) => qleverPart(part, lat, lon)))).flat();
+async function qleverPart([k, key, val, r], lat, lon) {
+  const dLat = r / 111320;
+  const dLon = r / (111320 * Math.max(0.05, Math.cos((lat * Math.PI) / 180)));
+  const rows = await sparql(`SELECT ?osm ?c WHERE {
+  ?osm osmkey:${key} "${val}" . ?osm geo:hasGeometry/geo:asWKT ?wkt . BIND (geof:centroid(?wkt) AS ?c)
+  FILTER (geof:latitude(?c) > ${lat - dLat} && geof:latitude(?c) < ${+lat + dLat} && geof:longitude(?c) > ${lon - dLon} && geof:longitude(?c) < ${+lon + dLon})
+} LIMIT 3000`);
+  const out = [];
+  for (const b of rows) {
+    const m = /\/(node|way|relation)\/(\d+)$/.exec(b.osm.value);
+    const pt = /POINT\(([-\d.]+) ([-\d.]+)\)/.exec(b.c?.value || '');
+    if (m && pt) out.push({ k, lat: Number(pt[2]), lon: Number(pt[1]), id: `${m[1][0]}${m[2]}`, uri: b.osm.value, tags: {} });
+  }
+  return out;
+}
+
+async function qlever(parts, lat, lon) {
+  const places = (await Promise.all(parts.map((part) => qleverPart(part, Number(lat), Number(lon))))).flat();
+  const byUri = new Map(places.map((p) => [p.uri, p]));
+  const uris = [...byUri.keys()];
+  const keys = KEEP.map((t) => `osmkey:${t}`).join(' ');
+  for (let i = 0; i < uris.length; i += 500) {
+    const ids = uris.slice(i, i + 500).map((u) => `<${u}>`).join(' ');
+    const rows = await sparql(`SELECT ?osm ?key ?val WHERE { VALUES ?osm { ${ids} } VALUES ?key { ${keys} } ?osm ?key ?val }`);
+    for (const b of rows) {
+      const p = byUri.get(b.osm.value);
+      if (p) p.tags[b.key.value.slice(b.key.value.indexOf('/wiki/Key:') + 10)] = b.val.value;
+    }
+  }
+  return places.map(({ uri, ...p }) => p);
+}
 
 async function overpass(parts, lat, lon) {
   const sel = parts.map(([, key, val, r]) => `${key === 'emergency' ? 'node' : 'nwr'}["${key}"="${val}"](around:${r},${lat},${lon});`).join('');
