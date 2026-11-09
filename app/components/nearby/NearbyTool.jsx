@@ -6,6 +6,7 @@ import { searchAddress } from '../../address-finder/geocode.js';
 import { compass } from '../../distance-calculator/dist.js';
 import { track } from '../track.js';
 import { loadNearby, nearest, address, hours, phone, directionsUrl, osmUrl } from './places.js';
+import { isOpen } from './openNow.js';
 
 const NearbyMap = dynamic(() => import('./NearbyMap.jsx'), {
   ssr: false,
@@ -19,14 +20,16 @@ const walk = (m) => `${Math.max(1, Math.round((m * 1.3) / 80))} min walk`; // 80
 // Shared tool for "near me" pages. `categories` lists the kinds of place the
 // Worker returns for `kind` ({ id, label, one, radius, color }); `filters` are
 // optional checkboxes ({ id, label, test(tags) }); `badges(place)` returns
-// short labels from the OpenStreetMap tags.
-export default function NearbyTool({ kind, title, button, categories, filters = [], badges, empty }) {
+// short labels from the OpenStreetMap tags. `nameFilter` adds a box to match
+// a name or chain, such as Costco or Boots.
+export default function NearbyTool({ kind, title, button, categories, filters = [], badges, empty, nameFilter }) {
   const [center, setCenter] = useState(null);
   const [places, setPlaces] = useState([]);
   const [cat, setCat] = useState(categories[0].id);
   const [on, setOn] = useState({});
   const [status, setStatus] = useState({ type: 'idle', msg: '' });
   const [query, setQuery] = useState('');
+  const [named, setNamed] = useState('');
   const [fitKey, setFitKey] = useState(0);
   const [focus, setFocus] = useState(null);
 
@@ -86,9 +89,11 @@ export default function NearbyTool({ kind, title, button, categories, filters = 
   const list = useMemo(() => {
     if (!center) return [];
     let all = nearest(places, cat, center.lat, center.lon, current.radius);
-    for (const f of filters) if (on[f.id]) all = all.filter((p) => f.test(p.tags));
+    for (const f of filters) if (on[f.id] && (!f.only || f.only === cat)) all = all.filter((p) => f.test(p.tags));
+    const want = named.trim().toLowerCase();
+    if (want) all = all.filter((p) => [p.tags.name, p.tags.brand, p.tags.operator].some((v) => v && v.toLowerCase().includes(want)));
     return all;
-  }, [places, center, cat, current, filters, on]);
+  }, [places, center, cat, current, filters, on, named]);
 
   const shown = list.slice(0, 10);
   const busy = status.type === 'loading';
@@ -130,9 +135,18 @@ export default function NearbyTool({ kind, title, button, categories, filters = 
         </div>
       )}
 
-      {filters.length > 0 && (
-        <div className="flex flex-wrap gap-4 mb-3 text-sm text-fg-muted">
-          {filters.map((f) => (
+      {(filters.length > 0 || nameFilter) && (
+        <div className="flex flex-wrap items-center gap-4 mb-3 text-sm text-fg-muted">
+          {nameFilter && (
+            <input
+              className="field w-auto min-w-[180px] py-1.5 text-sm"
+              value={named}
+              onChange={(e) => setNamed(e.target.value)}
+              placeholder={nameFilter}
+              aria-label="Show only places whose name or chain contains this text"
+            />
+          )}
+          {filters.filter((f) => !f.only || f.only === cat).map((f) => (
             <label key={f.id} className="inline-flex items-center gap-2 cursor-pointer">
               <input type="checkbox" checked={!!on[f.id]} onChange={(e) => setOn((o) => ({ ...o, [f.id]: e.target.checked }))} />
               {f.label}
@@ -182,7 +196,13 @@ export default function NearbyTool({ kind, title, button, categories, filters = 
                   <span className="text-sm font-mono text-fg">{dist(p.d)} {compass(p.dir)}<span className="text-fg-subtle font-sans text-xs"> · {walk(p.d)}</span></span>
                 </div>
                 {addr && <p className="text-sm text-fg-muted mt-1">{addr}</p>}
-                {h && <p className="text-sm text-fg-muted mt-1"><span className="text-fg-subtle">Hours as mapped:</span> {h}</p>}
+                {h && (
+                  <p className="text-sm text-fg-muted mt-1">
+                    {isOpen(p.tags.opening_hours) === true && <span className="font-semibold text-emerald-600 dark:text-emerald-400 mr-2">Open now</span>}
+                    {isOpen(p.tags.opening_hours) === false && <span className="font-semibold text-rose-500 mr-2">Closed now</span>}
+                    <span className="text-fg-subtle">Hours as mapped:</span> {h}
+                  </p>
+                )}
                 {tags.length > 0 && (
                   <ul className="mt-2 flex flex-wrap gap-1.5">
                     {tags.map((t) => <li key={t} className="text-xs px-2 py-0.5 rounded-full bg-accent/10 text-accent">{t}</li>)}

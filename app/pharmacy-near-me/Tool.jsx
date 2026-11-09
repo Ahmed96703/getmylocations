@@ -1,11 +1,17 @@
 'use client';
 
 import NearbyTool from '../components/nearby/NearbyTool.jsx';
+import { isOpen } from '../components/nearby/openNow.js';
 
 const CATEGORIES = [
   { id: 'pharmacy', label: 'Pharmacies', one: 'Pharmacy', radius: 3000, color: '#16a34a' },
   { id: 'hospital', label: 'Hospitals', one: 'Hospital', radius: 15000, color: '#dc2626' },
   { id: 'aed', label: 'Defibrillators', one: 'Defibrillator (AED)', radius: 3000, color: '#f59e0b' },
+];
+
+const FILTERS = [
+  { id: 'open', label: 'Open now', test: (t) => isOpen(t.opening_hours) === true },
+  { id: 'independent', label: 'Not part of a chain', only: 'pharmacy', test: (t) => !t.brand },
 ];
 
 function badges({ k, tags }) {
@@ -37,8 +43,10 @@ export default function Tool() {
       title="Pharmacies, hospitals and defibrillators near a place"
       button="Find near me"
       categories={CATEGORIES}
+      filters={FILTERS}
       badges={badges}
-      empty="Try another tab, or search a nearby town."
+      nameFilter="Name or chain, e.g. Costco"
+      empty="Try another tab, clear the filters, or search a nearby town."
     />
   );
 }

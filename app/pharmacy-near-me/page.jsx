@@ -9,8 +9,8 @@ import SideAd from '../components/SideAd.jsx';
 export const metadata = {
   title: 'Pharmacy Near Me: Nearest Pharmacy, Hospital & Defibrillator',
   description:
-    'Find the nearest pharmacy, hospital with A&E and public defibrillator (AED) from your location, with distance, opening hours and directions. Free, works across Europe.',
-  keywords: ['pharmacy near me', 'nearest pharmacy', 'hospital near me', 'nearest hospital', 'defibrillator near me', 'aed near me', 'nearest a&e', 'chemist near me'],
+    'Find a pharmacy near me that is open now: the nearest pharmacies, hospitals with A&E and public defibrillators, with distance, opening hours and directions. Free.',
+  keywords: ['pharmacy near me', 'pharmacies near me', 'find a pharmacy near me', 'local pharmacies near me', 'independent pharmacy near me', 'farmacia near me', 'nearest open pharmacy', 'pharmacy hours', 'costco pharmacy near me', 'costco pharmacy hours', 'what time does costco pharmacy open', 'nearest pharmacy', 'hospital near me', 'nearest hospital', 'defibrillator near me', 'aed near me', 'nearest a&e', 'chemist near me'],
   alternates: { canonical: '/pharmacy-near-me' },
   openGraph: {
     title: 'Pharmacy Near Me: Nearest Pharmacy, Hospital & Defibrillator',
@@ -49,6 +49,14 @@ const faqs = [
   {
     q: 'Does it show which pharmacy is open tonight?',
     a: 'Not reliably. It shows the opening hours that OpenStreetMap volunteers have recorded, which are usually right but not always up to date. In many European countries pharmacies take turns to stay open at night and on public holidays, and that rota is not in the map data. Use your country\'s rota service (see the list on this page) or the notice on the door of the nearest pharmacy, which shows the duty pharmacy.',
+  },
+  {
+    q: 'What time does Costco pharmacy open?',
+    a: 'It depends on the warehouse. Each Costco sets its own pharmacy hours, which are often shorter than the store hours and may differ on weekends. Type Costco in the name box of the tool to see the nearest ones and the hours mapped for them, then confirm on the warehouse page on costco.com or by phone before you go.',
+  },
+  {
+    q: 'How do I find a pharmacy near me that is open now?',
+    a: 'Press "Find near me", then tick "Open now". The list keeps only pharmacies whose mapped opening hours include the current time on your device, nearest first. Places with no hours, or hours written in an unusual way, are hidden by this filter, so untick it if the list is empty, and check the duty pharmacy rota at night.',
   },
   {
     q: 'Does a hospital on the list have an emergency department?',
@@ -101,6 +109,9 @@ export default function PharmacyNearMePage() {
           <p className="text-lg text-fg-muted mt-4 max-w-3xl">
             One tap lists the <strong>nearest pharmacies</strong>, <strong>hospitals</strong> and <strong>public defibrillators (AEDs)</strong> around you, with the distance, the opening hours where they are known, and directions. Works anywhere, with the best coverage in Europe. Free, no signup.
           </p>
+          <p className="text-fg-muted mt-3 max-w-3xl">
+            Use it to <strong className="text-fg">find a pharmacy near me</strong>, compare <strong className="text-fg">local pharmacies near me</strong>, see which is the <strong className="text-fg">nearest open pharmacy</strong>, or pick an <strong className="text-fg">independent pharmacy near me</strong> instead of a chain.
+          </p>
         </section>
 
         <div role="note" className="mb-6 rounded-xl border border-rose-400/50 bg-rose-500/10 p-4 text-sm text-fg-muted leading-relaxed">
@@ -119,6 +130,34 @@ export default function PharmacyNearMePage() {
               <li><strong className="text-fg">Check the hours and labels.</strong> Each result shows the opening hours as mapped, and labels such as &ldquo;Dispenses prescriptions&rdquo; or &ldquo;Emergency department (A&amp;E)&rdquo; where they are recorded.</li>
               <li><strong className="text-fg">Press Directions</strong> to open walking directions in Google Maps, or call the number shown before you set off.</li>
             </ol>
+          </section>
+
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">Pharmacies near me that are open now</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Tick <strong className="text-fg">Open now</strong> to keep only the <strong className="text-fg">pharmacies near me</strong> whose mapped <strong className="text-fg">pharmacy hours</strong> include the current time on your device; each result also says <em>Open now</em> or <em>Closed now</em> next to its hours. The first result is then the <strong className="text-fg">nearest open pharmacy</strong>. Hours written in an unusual way, or not mapped at all, show no status rather than a guess, and public holidays are not taken into account, so call ahead late at night or on a holiday.
+            </p>
+          </section>
+
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">Independent and local pharmacies near me</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Tick <strong className="text-fg">Not part of a chain</strong> on the Pharmacies tab to hide branches of chains, leaving the <strong className="text-fg">independent pharmacy near me</strong> options and other <strong className="text-fg">local pharmacies</strong>. The tool goes by the brand recorded on OpenStreetMap, which is filled in for almost every branch of the big chains, so a small chain without a brand tag can still slip through. To look for one chain instead, type its name in the <strong className="text-fg">Name or chain</strong> box.
+            </p>
+          </section>
+
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">Costco pharmacy near me and Costco pharmacy hours</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              To find a <strong className="text-fg">Costco pharmacy near me</strong>, type <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">Costco</code> in the name box and switch on location, or search a town. It lists the Costco pharmacies that are mapped on OpenStreetMap, with the hours recorded there. <strong className="text-fg">Costco pharmacy hours</strong> are set warehouse by warehouse and are usually shorter than the store&rsquo;s shopping hours, so to check <strong className="text-fg">what time Costco pharmacy opens</strong> today, use the warehouse&rsquo;s own page on costco.com or call its pharmacy. The same name box works for any chain, such as Boots, Walgreens, CVS or dm.
+            </p>
+          </section>
+
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">Farmacia near me: pharmacies in any country</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              The tool finds a <strong className="text-fg">farmacia near me</strong> in Spain, Italy or Latin America, a <em>farmácia</em> in Portugal or Brazil, an <em>Apotheke</em> in Germany or Austria and a <em>pharmacie</em> in France the same way, because every pharmacy on OpenStreetMap carries the same tag whatever the local word. Names are shown as written locally.
+            </p>
           </section>
 
           <section className="mt-10">

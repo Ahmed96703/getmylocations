@@ -1,10 +1,12 @@
 'use client';
 
 import NearbyTool from '../components/nearby/NearbyTool.jsx';
+import { isOpen } from '../components/nearby/openNow.js';
 
 const CATEGORIES = [{ id: 'toilets', label: 'Toilets', one: 'Public toilet', radius: 2000, color: '#2563eb' }];
 
 const FILTERS = [
+  { id: 'open', label: 'Open now', test: (t) => t.opening_hours ? isOpen(t.opening_hours) === true : false },
   { id: 'free', label: 'Free only', test: (t) => t.fee === 'no' },
   { id: 'wheelchair', label: 'Wheelchair accessible', test: (t) => t.wheelchair === 'yes' },
   { id: 'baby', label: 'Baby changing', test: (t) => t.changing_table === 'yes' },
