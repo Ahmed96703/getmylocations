@@ -194,12 +194,12 @@ PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
 `;
 
-async function sparql(query) {
+async function sparql(query, ms = 50000) {
   const res = await fetch(QLEVER, {
     method: 'POST',
     headers: { Accept: 'application/sparql-results+json', 'Content-Type': 'application/x-www-form-urlencoded', 'User-Agent': OSM_UA },
     body: new URLSearchParams({ query: QPREFIX + query }),
-    signal: AbortSignal.timeout(50000),
+    signal: AbortSignal.timeout(ms),
   });
   if (!res.ok) throw new Error(`QLever HTTP ${res.status}`);
   return (await res.json()).results?.bindings || [];
@@ -208,10 +208,25 @@ async function sparql(query) {
 async function qleverPart([k, key, val, r], lat, lon) {
   const dLat = r / 111320;
   const dLon = r / (111320 * Math.max(0.05, Math.cos((lat * Math.PI) / 180)));
-  const rows = await sparql(`SELECT ?osm ?c WHERE {
+  let rows;
+  try {
+    rows = await sparql(`SELECT ?osm ?c WHERE {
   ?osm osmkey:${key} "${val}" . ?osm geo:hasGeometry/geo:asWKT ?wkt . BIND (geof:centroid(?wkt) AS ?c)
   FILTER (geof:latitude(?c) > ${lat - dLat} && geof:latitude(?c) < ${+lat + dLat} && geof:longitude(?c) > ${lon - dLon} && geof:longitude(?c) < ${+lon + dLon})
-} LIMIT 3000`);
+} LIMIT 3000`, 35000);
+  } catch {
+    // When the box query is too slow, the spatial index still finds the places
+    // mapped as points, which is most pharmacies, toilets and defibrillators.
+    rows = await sparql(`PREFIX spatialSearch: <https://qlever.cs.uni-freiburg.de/spatialSearch/>
+SELECT ?osm (?wkt AS ?c) WHERE {
+  BIND ("POINT(${lon} ${lat})"^^geo:wktLiteral AS ?center)
+  SERVICE spatialSearch: {
+    _:config spatialSearch:algorithm spatialSearch:s2 ; spatialSearch:left ?center ; spatialSearch:right ?wkt ;
+             spatialSearch:maxDistance ${r} ; spatialSearch:payload ?osm .
+    { ?osm osmkey:${key} "${val}" . ?osm geo:hasGeometry/geo:asWKT ?wkt }
+  }
+}`, 20000);
+  }
   const out = [];
   for (const b of rows) {
     const m = /\/(node|way|relation)\/(\d+)$/.exec(b.osm.value);
