@@ -10,6 +10,8 @@ Free Tool · Real-time Conversion
 
 Convert any GPS coordinate between **Decimal Degrees**, **Degrees-Minutes-Seconds**, **Degrees-Decimal-Minutes**, and **Universal Transverse Mercator**, **Plus Codes**, and **geohash**. Paste a coordinate in any common format, or edit any field, and every other format updates instantly, along with the MGRS grid reference and a map pin. Free, no signup, runs entirely in your browser.
 
+One **coordinate converter** for every job: a **lat long converter** for map links, a **GPS coordinate converter** for phone and GPS-unit readings, **DMS to decimal** and **decimal degrees to DMS** in both directions, and **UTM coordinates** to latitude and longitude. Every **coordinate conversion** in this **coordinates converter**, the free **GPS coordinates converter** on this site, is done on your device.
+
 ## Convert coordinates
 
 ① Decimal Degrees (DD)
@@ -51,6 +53,29 @@ Two quick checks: a number above 90 or below −90 can only be a longitude, and 
 ### Convert DDM to decimal degrees
 
 Divide the minutes by 60 and add them to the degrees: 48° 51.504′ → 48 + 51.504 ÷ 60 = **48.8584**. Make the result negative for S or W. To do either conversion instantly, type into the DD or DDM row of the tool above.
+
+## Degrees minutes seconds to decimal (DMS to decimal)
+
+To convert **degrees minutes seconds to decimal**, divide the minutes by 60 and the seconds by 3,600, then add both to the degrees: **DD = degrees + minutes ÷ 60 + seconds ÷ 3600**. Make the result negative for S or W. Going the other way, from **decimal degrees to DMS**, keep the whole degrees, multiply the remainder by 60 for minutes, and multiply what is left of that by 60 for seconds.
+
+### Worked example: 3.4237° N, 101.7938° E
+
+1.  Latitude **3.4237° N**: 0.4237 × 60 = 25.422, so 25 minutes; 0.422 × 60 = 25.32 seconds. Result: **3° 25′ 25.32″ N**.
+2.  Longitude **101.7938° E**: the same steps give **101° 47′ 37.68″ E**.
+3.  Back to decimal: 3 + 25 ÷ 60 + 25.32 ÷ 3600 = 3 + 0.416667 + 0.007033, which rounds to **3.4237, 101.7938** for the pair.
+4.  The same point in UTM is `47N 810452 378879`.
+
+Paste `3.4237° N, 101.7938° E` into the tool above to see it in every format at once, with the point on the map.
+
+## How to write coordinates
+
+**How to write coordinates** so nobody misreads them:
+
+-   **Latitude first, then longitude,** separated by a comma: `3.4237, 101.7938`.
+-   **Use a sign or a letter, never both:** `-33.8688, 151.2093` or `33.8688° S, 151.2093° E`.
+-   **In DMS, use the degree, minute and second marks** and give each value its own unit: `3° 25′ 25.32″ N, 101° 47′ 37.68″ E`. On a keyboard, an apostrophe and a double quote are accepted for ′ and ″.
+-   **Keep enough decimals:** five or six decimal places in DD (about 1 m or 11 cm) for a building or a meeting point; four (about 11 m) for a street.
+-   **Write UTM as zone, band, easting, northing:** `47N 810452 378879`.
 
 ## Paste a GPS coordinate in any format
 
@@ -119,6 +144,12 @@ UTM to lat long is the conversion people search for most, usually with a grid re
 4.  Press _Convert UTM_. Decimal degrees, DMS, DDM, MGRS, and the map all update. You can also paste the whole reference, such as `56H 334900 6252290`, into the paste box.
 
 The tool uses the standard transverse Mercator equations on the WGS 84 ellipsoid. In our tests against the open-source PROJ library, its results agreed to within 2 cm everywhere UTM is defined, including the Norway and Svalbard zones.
+
+### Convert easting and northing to lat long
+
+To **convert easting northing to lat long**, you need the zone and band as well as the two numbers, because the same **easting** and northing repeat in all 60 zones. For example, easting 810,452 and northing 378,879 in zone 47N is 3.4237° N, 101.7938° E; in another zone the same numbers are a different place. With the zone known, the steps above turn **easting northing to lat long**, and an **easting to lat long** conversion is never possible from the easting alone.
+
+Eastings and northings from a national grid are a different system. British National Grid references such as `TQ 30080 80660`, or 6-digit eastings and northings from an Ordnance Survey map, are measured from a different origin on the OSGB36 datum, and this tool does not convert them; entering them as UTM would give a wrong point.
 
 ## MGRS: UTM with a grid square
 

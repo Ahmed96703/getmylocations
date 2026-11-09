@@ -29,6 +29,18 @@ export const metadata = {
     'decimal degrees to lat long',
     'dd coordinates',
     'degrees decimal minutes',
+    'coordinate converter',
+    'gps coordinate converter',
+    'lat long converter',
+    'degrees minutes seconds to decimal',
+    'dms to decimal',
+    'decimal degrees to dms',
+    'coordinate conversion',
+    'utm coordinates',
+    'easting northing to lat long',
+    'convert easting northing to lat long',
+    'easting to lat long',
+    'how to write coordinates',
   ],
   alternates: { canonical: '/coordinates-converter' },
   openGraph: {
@@ -197,6 +209,24 @@ const geohashSizes = [1, 3, 5, 6, 7, 8, 9, 10, 12].map((n) => {
   return { n, h: fmtLen(c.lat * 111320), w: fmtLen(c.lon * 111320) };
 });
 
+// Worked example for the DMS-to-decimal section, computed with the tool's own code.
+const EX = { lat: 3.4237, lon: 101.7938 };
+const exLa = ddToDms(EX.lat), exLo = ddToDms(EX.lon);
+const s2 = (v) => (Math.round(v * 100) / 100).toFixed(2);
+const exBackLat = dmsToDd(exLa.d, exLa.m, Number(s2(exLa.s)), 'N');
+const exBackLon = dmsToDd(exLo.d, exLo.m, Number(s2(exLo.s)), 'E');
+const exUtm = latLonToUtm(EX.lat, EX.lon);
+const ex = {
+  la: exLa, lo: exLo,
+  laS: s2(exLa.s), loS: s2(exLo.s),
+  laMin: (exLa.m / 60).toFixed(6), laSec: (Number(s2(exLa.s)) / 3600).toFixed(6),
+  back: `${exBackLat.toFixed(4)}, ${exBackLon.toFixed(4)}`,
+  utm: `${exUtm.zone}${exUtm.band} ${Math.round(exUtm.easting)} ${Math.round(exUtm.northing)}`,
+  utmZone: `${exUtm.zone}${exUtm.band}`,
+  e: Math.round(exUtm.easting).toLocaleString('en-US'),
+  n: Math.round(exUtm.northing).toLocaleString('en-US'),
+};
+
 export default function CoordinatesConverterPage() {
   return (
     <>
@@ -223,6 +253,9 @@ export default function CoordinatesConverterPage() {
           </h1>
           <p className="text-lg text-fg-muted mt-4 max-w-3xl">
             Convert any GPS coordinate between <strong className="text-fg">Decimal Degrees</strong>, <strong className="text-fg">Degrees-Minutes-Seconds</strong>, <strong className="text-fg">Degrees-Decimal-Minutes</strong>, and <strong className="text-fg">Universal Transverse Mercator</strong>, <strong className="text-fg">Plus Codes</strong>, and <strong className="text-fg">geohash</strong>. Paste a coordinate in any common format, or edit any field, and every other format updates instantly, along with the MGRS grid reference and a map pin. Free, no signup, runs entirely in your browser.
+          </p>
+          <p className="text-fg-muted mt-3 max-w-3xl">
+            One <strong className="text-fg">coordinate converter</strong> for every job: a <strong className="text-fg">lat long converter</strong> for map links, a <strong className="text-fg">GPS coordinate converter</strong> for phone and GPS-unit readings, <strong className="text-fg">DMS to decimal</strong> and <strong className="text-fg">decimal degrees to DMS</strong> in both directions, and <strong className="text-fg">UTM coordinates</strong> to latitude and longitude. Every <strong className="text-fg">coordinate conversion</strong> in this <strong className="text-fg">coordinates converter</strong>, the free <strong className="text-fg">GPS coordinates converter</strong> on this site, is done on your device.
           </p>
         </section>
 
@@ -258,6 +291,37 @@ export default function CoordinatesConverterPage() {
             <p className="mt-2 text-fg-muted leading-relaxed">
               Divide the minutes by 60 and add them to the degrees: 48° 51.504′ → 48 + 51.504 ÷ 60 = <strong className="text-fg">48.8584</strong>. Make the result negative for S or W. To do either conversion instantly, type into the DD or DDM row of the tool above.
             </p>
+          </section>
+
+          <section className="mt-12">
+            <h2 className="font-display text-2xl font-bold">Degrees minutes seconds to decimal (DMS to decimal)</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              To convert <strong className="text-fg">degrees minutes seconds to decimal</strong>, divide the minutes by 60 and the seconds by 3,600, then add both to the degrees: <strong className="text-fg">DD = degrees + minutes ÷ 60 + seconds ÷ 3600</strong>. Make the result negative for S or W. Going the other way, from <strong className="text-fg">decimal degrees to DMS</strong>, keep the whole degrees, multiply the remainder by 60 for minutes, and multiply what is left of that by 60 for seconds.
+            </p>
+            <h3 className="font-display text-lg font-semibold mt-6 text-fg">Worked example: 3.4237° N, 101.7938° E</h3>
+            <ol className="mt-2 space-y-1.5 text-fg-muted list-decimal list-inside leading-relaxed">
+              <li>Latitude <strong className="text-fg">3.4237° N</strong>: 0.4237 × 60 = {(0.4237 * 60).toFixed(3)}, so {ex.la.m} minutes; 0.{(0.4237 * 60).toFixed(3).split('.')[1]} × 60 = {ex.laS} seconds. Result: <strong className="text-fg">{ex.la.d}° {ex.la.m}′ {ex.laS}″ N</strong>.</li>
+              <li>Longitude <strong className="text-fg">101.7938° E</strong>: the same steps give <strong className="text-fg">{ex.lo.d}° {ex.lo.m}′ {ex.loS}″ E</strong>.</li>
+              <li>Back to decimal: {ex.la.d} + {ex.la.m} ÷ 60 + {ex.laS} ÷ 3600 = {ex.la.d} + {ex.laMin} + {ex.laSec}, which rounds to <strong className="text-fg">{ex.back}</strong> for the pair.</li>
+              <li>The same point in UTM is <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">{ex.utm}</code>.</li>
+            </ol>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Paste <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">3.4237° N, 101.7938° E</code> into the tool above to see it in every format at once, with the point on the map.
+            </p>
+          </section>
+
+          <section className="mt-12">
+            <h2 className="font-display text-2xl font-bold">How to write coordinates</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              <strong className="text-fg">How to write coordinates</strong> so nobody misreads them:
+            </p>
+            <ul className="mt-3 space-y-1.5 text-fg-muted list-disc list-inside leading-relaxed">
+              <li><strong className="text-fg">Latitude first, then longitude,</strong> separated by a comma: <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">3.4237, 101.7938</code>.</li>
+              <li><strong className="text-fg">Use a sign or a letter, never both:</strong> <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">-33.8688, 151.2093</code> or <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">33.8688° S, 151.2093° E</code>.</li>
+              <li><strong className="text-fg">In DMS, use the degree, minute and second marks</strong> and give each value its own unit: <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">{ex.la.d}° {ex.la.m}′ {ex.laS}″ N, {ex.lo.d}° {ex.lo.m}′ {ex.loS}″ E</code>. On a keyboard, an apostrophe and a double quote are accepted for ′ and ″.</li>
+              <li><strong className="text-fg">Keep enough decimals:</strong> five or six decimal places in DD (about 1 m or 11 cm) for a building or a meeting point; four (about 11 m) for a street.</li>
+              <li><strong className="text-fg">Write UTM as zone, band, easting, northing:</strong> <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">{ex.utm}</code>.</li>
+            </ul>
           </section>
 
           <section className="mt-12">
@@ -393,6 +457,13 @@ export default function CoordinatesConverterPage() {
             </ol>
             <p className="mt-3 text-fg-muted leading-relaxed">
               The tool uses the standard transverse Mercator equations on the WGS 84 ellipsoid. In our tests against the open-source PROJ library, its results agreed to within 2 cm everywhere UTM is defined, including the Norway and Svalbard zones.
+            </p>
+            <h3 className="font-display text-lg font-semibold mt-6 text-fg">Convert easting and northing to lat long</h3>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              To <strong className="text-fg">convert easting northing to lat long</strong>, you need the zone and band as well as the two numbers, because the same <strong className="text-fg">easting</strong> and northing repeat in all 60 zones. For example, easting {ex.e} and northing {ex.n} in zone {ex.utmZone} is 3.4237° N, 101.7938° E; in another zone the same numbers are a different place. With the zone known, the steps above turn <strong className="text-fg">easting northing to lat long</strong>, and an <strong className="text-fg">easting to lat long</strong> conversion is never possible from the easting alone.
+            </p>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Eastings and northings from a national grid are a different system. British National Grid references such as <code className="bg-tint/10 px-1.5 py-0.5 rounded text-accent text-sm">TQ 30080 80660</code>, or 6-digit eastings and northings from an Ordnance Survey map, are measured from a different origin on the OSGB36 datum, and this tool does not convert them; entering them as UTM would give a wrong point.
             </p>
           </section>
 
