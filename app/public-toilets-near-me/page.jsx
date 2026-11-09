@@ -60,7 +60,7 @@ const faqs = [
   },
   {
     q: 'Why is a toilet I know missing, or closed?',
-    a: 'It may not be on OpenStreetMap yet, or it closed after it was mapped. Our copy is up to a day old. The "Details or fix" link under each result opens it on openstreetmap.org, where anyone can add a toilet or mark one closed.',
+    a: 'It may not be on OpenStreetMap yet, or it closed after it was mapped. Our copy is up to a week old. The "Details or fix" link under each result opens it on openstreetmap.org, where anyone can add a toilet or mark one closed.',
   },
   {
     q: 'Is my location stored?',
@@ -136,7 +136,7 @@ export default function PublicToiletsNearMePage() {
             <h2 className="font-display text-2xl font-bold">Where the data comes from</h2>
             <p className={P}>
               The toilets come from{' '}
-              <a href="https://www.openstreetmap.org/" target="_blank" rel="noopener" className={link}>OpenStreetMap</a>, the free map built by volunteers, read through the Overpass API. Toilets that are private, or marked as closed to the public, are left out. Our server keeps each area&rsquo;s answer for up to a day. If a toilet is missing or has closed, the &ldquo;Details or fix&rdquo; link opens it on OpenStreetMap, where anyone can update it for the next person.
+              <a href="https://www.openstreetmap.org/" target="_blank" rel="noopener" className={link}>OpenStreetMap</a>, the free map built by volunteers, read through the QLever search engine of the University of Freiburg, with the Overpass API as a backup. Toilets that are private, or marked as closed to the public, are left out. Our server keeps each area&rsquo;s answer for up to a week. If a toilet is missing or has closed, the &ldquo;Details or fix&rdquo; link opens it on OpenStreetMap, where anyone can update it for the next person.
             </p>
           </section>
         </article>

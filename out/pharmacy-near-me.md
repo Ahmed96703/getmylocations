@@ -18,7 +18,7 @@ Press the button to use your location, search for a place, or click the map.
 
 Tap a dot to see its number in the list; the three nearest are larger. Click the map to search somewhere else.
 
-Places and opening hours from [OpenStreetMap](https://www.openstreetmap.org/copyright) contributors, refreshed at most daily. Distances are straight-line; walking times assume streets about 30% longer. Your position is rounded to about 2 km before the lookup is sent, and distances are worked out in your browser.
+Places and opening hours from [OpenStreetMap](https://www.openstreetmap.org/copyright) contributors, refreshed weekly. Distances are straight-line; walking times assume streets about 30% longer. Your position is rounded to about 2 km before the lookup is sent, and distances are worked out in your browser.
 
 ## How to find the nearest pharmacy
 
@@ -52,7 +52,7 @@ Some cabinets are locked, and the call handler gives you the code. A defibrillat
 
 ## Where the data comes from
 
-Every place comes from [OpenStreetMap](https://www.openstreetmap.org/), the free map of the world built by volunteers, read through the Overpass API. Coverage of pharmacies and hospitals is very good in most European towns, and defibrillators have been added in large numbers by local first-responder groups. Our server keeps each area’s answer for up to a day, so a place added this morning may not show until tomorrow. When something is wrong, the “Details or fix” link under each result opens it on OpenStreetMap, where anyone can correct it.
+Every place comes from [OpenStreetMap](https://www.openstreetmap.org/), the free map of the world built by volunteers, read through the QLever search engine of the University of Freiburg, with the Overpass API as a backup. Coverage of pharmacies and hospitals is very good in most European towns, and defibrillators have been added in large numbers by local first-responder groups. Our server keeps each area’s answer for up to a week, so a place added recently may take a few days to show. When something is wrong, the “Details or fix” link under each result opens it on OpenStreetMap, where anyone can correct it.
 
 ## Frequently asked questions
 
@@ -70,7 +70,7 @@ Yes. Public AEDs are built for untrained people: once switched on, they give spo
 
 Why is a pharmacy I know missing?
 
-Because nobody has added it to OpenStreetMap yet, or it was added recently and our copy is up to a day old. Coverage is very good in most European cities and patchier in rural areas. You can add or correct a place on openstreetmap.org, and the "Details or fix" link under each result opens it there.
+Because nobody has added it to OpenStreetMap yet, or it was added recently and our copy is up to a week old. Coverage is very good in most European cities and patchier in rural areas. You can add or correct a place on openstreetmap.org, and the "Details or fix" link under each result opens it there.
 
 Is my location stored?
 

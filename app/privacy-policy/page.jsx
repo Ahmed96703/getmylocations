@@ -97,8 +97,7 @@ export default function Privacy() {
           <span className="text-fg-muted font-mono text-sm">census.gov/about/policies/privacy.html</span>.
         </li>
         <li>
-          <strong>OpenStreetMap Overpass API</strong> — used by Pharmacy Near Me and Public Toilets Near Me to find places nearby. Your browser rounds the position to a grid of about 2 km (pharmacies) or 1 km (toilets) and sends only that rounded point to our own server, which asks Overpass and keeps the answer for up to a day. Overpass sees our server, not your IP. Distances are worked out in your browser. Overpass is run by the OpenStreetMap community; the OSM Foundation&rsquo;s privacy policy is at{' '}
-          <span className="text-fg-muted font-mono text-sm">wiki.osmfoundation.org/wiki/Privacy_Policy</span>.
+          <strong>QLever (University of Freiburg) and the OpenStreetMap Overpass API</strong> — used by Pharmacy Near Me and Public Toilets Near Me to find places nearby. Your browser rounds the position to a grid of about 2 km (pharmacies) or 1 km (toilets) and sends only that rounded point to our own server, which asks QLever&rsquo;s OpenStreetMap index (or an Overpass server when QLever does not answer) and keeps the answer for up to a week. These services see our server, not your IP. Distances are worked out in your browser.
         </li>
         <li>
           <strong>FCC Area API</strong> — a backup for the county and state on What&rsquo;s My ZIP Code when the Census service does not answer. It receives the coordinate and your IP. The FCC&rsquo;s privacy policy is at{' '}

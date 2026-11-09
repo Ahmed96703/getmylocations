@@ -16,7 +16,7 @@ Press the button to use your location, search for a place, or click the map.
 
 Tap a dot to see its number in the list; the three nearest are larger. Click the map to search somewhere else.
 
-Places and opening hours from [OpenStreetMap](https://www.openstreetmap.org/copyright) contributors, refreshed at most daily. Distances are straight-line; walking times assume streets about 30% longer. Your position is rounded to about 1 km before the lookup is sent, and distances are worked out in your browser.
+Places and opening hours from [OpenStreetMap](https://www.openstreetmap.org/copyright) contributors, refreshed weekly. Distances are straight-line; walking times assume streets about 30% longer. Your position is rounded to about 1 km before the lookup is sent, and distances are worked out in your browser.
 
 ## How to find the nearest public toilet
 
@@ -42,7 +42,7 @@ Tick **Wheelchair accessible** to see only toilets recorded as step-free with ro
 
 ## Where the data comes from
 
-The toilets come from [OpenStreetMap](https://www.openstreetmap.org/), the free map built by volunteers, read through the Overpass API. Toilets that are private, or marked as closed to the public, are left out. Our server keeps each area’s answer for up to a day. If a toilet is missing or has closed, the “Details or fix” link opens it on OpenStreetMap, where anyone can update it for the next person.
+The toilets come from [OpenStreetMap](https://www.openstreetmap.org/), the free map built by volunteers, read through the QLever search engine of the University of Freiburg, with the Overpass API as a backup. Toilets that are private, or marked as closed to the public, are left out. Our server keeps each area’s answer for up to a week. If a toilet is missing or has closed, the “Details or fix” link opens it on OpenStreetMap, where anyone can update it for the next person.
 
 ## Frequently asked questions
 
@@ -60,7 +60,7 @@ Tick "Wheelchair accessible" to show only toilets recorded as fully accessible. 
 
 Why is a toilet I know missing, or closed?
 
-It may not be on OpenStreetMap yet, or it closed after it was mapped. Our copy is up to a day old. The "Details or fix" link under each result opens it on openstreetmap.org, where anyone can add a toilet or mark one closed.
+It may not be on OpenStreetMap yet, or it closed after it was mapped. Our copy is up to a week old. The "Details or fix" link under each result opens it on openstreetmap.org, where anyone can add a toilet or mark one closed.
 
 Is my location stored?
 

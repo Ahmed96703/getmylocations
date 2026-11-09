@@ -60,7 +60,7 @@ const faqs = [
   },
   {
     q: 'Why is a pharmacy I know missing?',
-    a: 'Because nobody has added it to OpenStreetMap yet, or it was added recently and our copy is up to a day old. Coverage is very good in most European cities and patchier in rural areas. You can add or correct a place on openstreetmap.org, and the "Details or fix" link under each result opens it there.',
+    a: 'Because nobody has added it to OpenStreetMap yet, or it was added recently and our copy is up to a week old. Coverage is very good in most European cities and patchier in rural areas. You can add or correct a place on openstreetmap.org, and the "Details or fix" link under each result opens it there.',
   },
   {
     q: 'Is my location stored?',
@@ -159,7 +159,7 @@ export default function PharmacyNearMePage() {
             <h2 className="font-display text-2xl font-bold">Where the data comes from</h2>
             <p className={P}>
               Every place comes from{' '}
-              <a href="https://www.openstreetmap.org/" target="_blank" rel="noopener" className={link}>OpenStreetMap</a>, the free map of the world built by volunteers, read through the Overpass API. Coverage of pharmacies and hospitals is very good in most European towns, and defibrillators have been added in large numbers by local first-responder groups. Our server keeps each area&rsquo;s answer for up to a day, so a place added this morning may not show until tomorrow. When something is wrong, the &ldquo;Details or fix&rdquo; link under each result opens it on OpenStreetMap, where anyone can correct it.
+              <a href="https://www.openstreetmap.org/" target="_blank" rel="noopener" className={link}>OpenStreetMap</a>, the free map of the world built by volunteers, read through the QLever search engine of the University of Freiburg, with the Overpass API as a backup. Coverage of pharmacies and hospitals is very good in most European towns, and defibrillators have been added in large numbers by local first-responder groups. Our server keeps each area&rsquo;s answer for up to a week, so a place added recently may take a few days to show. When something is wrong, the &ldquo;Details or fix&rdquo; link under each result opens it on OpenStreetMap, where anyone can correct it.
             </p>
           </section>
         </article>

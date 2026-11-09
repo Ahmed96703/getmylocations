@@ -36,6 +36,9 @@ export default function NearbyTool({ kind, title, button, categories, filters = 
     setCenter({ lat, lon, place });
     setFocus(null);
     setStatus({ type: 'loading', msg: 'Finding places on OpenStreetMap…' });
+    const slow = setTimeout(() => setStatus((s) => (s.type === 'loading'
+      ? { type: 'loading', msg: 'Still searching. The first search in an area can take up to a minute; after that it is instant for everyone nearby.' }
+      : s)), 6000);
     try {
       setPlaces(await loadNearby(kind, lat, lon));
       setStatus({ type: 'ok', msg: '' });
@@ -44,6 +47,8 @@ export default function NearbyTool({ kind, title, button, categories, filters = 
     } catch (err) {
       setPlaces([]);
       setStatus({ type: 'err', msg: err.message });
+    } finally {
+      clearTimeout(slow);
     }
   };
 
@@ -196,7 +201,7 @@ export default function NearbyTool({ kind, title, button, categories, filters = 
       )}
 
       <p className="mt-4 text-xs text-fg-subtle leading-relaxed">
-        Places and opening hours from <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener" className="hover:underline">OpenStreetMap</a> contributors, refreshed at most daily. Distances are straight-line; walking times assume streets about 30% longer. Your position is rounded to about {kind === 'health' ? '2 km' : '1 km'} before the lookup is sent, and distances are worked out in your browser.
+        Places and opening hours from <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener" className="hover:underline">OpenStreetMap</a> contributors, refreshed weekly. Distances are straight-line; walking times assume streets about 30% longer. Your position is rounded to about {kind === 'health' ? '2 km' : '1 km'} before the lookup is sent, and distances are worked out in your browser.
       </p>
     </section>
   );

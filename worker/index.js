@@ -143,25 +143,29 @@ async function page(target) {
 // Overpass API. The browser rounds the position to a grid cell before it
 // asks (about 2 km for health, 1 km for toilets), so neither this Worker nor
 // Overpass sees the exact location, and every visitor in the same cell shares
-// one cached answer for a day. The query radius is the advertised radius plus
+// one cached answer for a week. The query radius is the advertised radius plus
 // the cell's half-diagonal, so the browser can measure from the exact point.
-// Overpass mirrors are tried in turn because the main one is often at capacity.
+// The data comes from QLever's OpenStreetMap index (University of Freiburg),
+// which answers in 10-40 s for an uncached cell; the public Overpass servers are the fallback, as
+// in November 2026 they were mostly at capacity and timed out.
 
 const OVERPASS = [
   'https://overpass-api.de/api/interpreter',
   'https://overpass.private.coffee/api/interpreter',
   'https://maps.mail.ru/osm/tools/overpass/api/interpreter',
 ];
+const QLEVER = 'https://qlever.dev/api/osm-planet';
+// [kind, OSM key, OSM value, query radius in meters]
 const NEARBY = {
   health: {
     cell: 0.02,
     parts: [
-      ['pharmacy', 'nwr["amenity"="pharmacy"]', 4700],
-      ['hospital', 'nwr["amenity"="hospital"]', 16700],
-      ['aed', 'node["emergency"="defibrillator"]', 4700],
+      ['pharmacy', 'amenity', 'pharmacy', 4700],
+      ['hospital', 'amenity', 'hospital', 16700],
+      ['aed', 'emergency', 'defibrillator', 4700],
     ],
   },
-  toilets: { cell: 0.01, parts: [['toilets', 'nwr["amenity"="toilets"]', 2800]] },
+  toilets: { cell: 0.01, parts: [['toilets', 'amenity', 'toilets', 2800]] },
 };
 const KEEP = [
   'name', 'brand', 'operator', 'opening_hours', 'phone', 'contact:phone', 'website', 'contact:website',
@@ -169,7 +173,7 @@ const KEEP = [
   'fee', 'charge', 'wheelchair', 'changing_table', 'unisex', 'access', 'indoor', 'level',
   'defibrillator:location', 'description',
 ];
-const NEARBY_CACHE_SECONDS = 86400;
+const NEARBY_CACHE_SECONDS = 7 * 86400;
 
 const snap = (v, cell) => (Math.round(v / cell) * cell).toFixed(4);
 
@@ -178,7 +182,51 @@ function kindOf(tags) {
   return tags.amenity === 'toilets' ? 'toilets' : tags.amenity;
 }
 
-async function overpass(query) {
+const OSM_UA = 'GetMyLocations/1.0 (+https://getmylocations.com/contact)';
+
+// One spatial search per kind of place, run in parallel, then the tags we show.
+async function qleverPart([k, key, val, r], lat, lon) {
+  const keys = [...KEEP, 'amenity'].map((t) => `osmkey:${t}`).join(' ');
+  const query = `PREFIX osmkey: <https://www.openstreetmap.org/wiki/Key:>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX spatialSearch: <https://qlever.cs.uni-freiburg.de/spatialSearch/>
+SELECT ?osm ?c ?key ?val WHERE {
+  BIND ("POINT(${lon} ${lat})"^^geo:wktLiteral AS ?center)
+  SERVICE spatialSearch: {
+    _:config spatialSearch:algorithm spatialSearch:s2 ; spatialSearch:left ?center ; spatialSearch:right ?wkt ;
+             spatialSearch:maxDistance ${r} ; spatialSearch:payload ?osm .
+    { ?osm osmkey:${key} "${val}" . ?osm geo:hasGeometry/geo:asWKT ?wkt }
+  }
+  BIND (geof:centroid(?wkt) AS ?c)
+  OPTIONAL { VALUES ?key { ${keys} } ?osm ?key ?val }
+}`;
+  const res = await fetch(QLEVER, {
+    method: 'POST',
+    headers: { Accept: 'application/sparql-results+json', 'Content-Type': 'application/x-www-form-urlencoded', 'User-Agent': OSM_UA },
+    body: new URLSearchParams({ query }),
+    signal: AbortSignal.timeout(50000),
+  });
+  if (!res.ok) throw new Error(`QLever HTTP ${res.status}`);
+  const data = await res.json();
+  const byId = new Map();
+  for (const b of data.results?.bindings || []) {
+    const m = /\/(node|way|relation)\/(\d+)$/.exec(b.osm.value);
+    const pt = /POINT\(([-\d.]+) ([-\d.]+)\)/.exec(b.c?.value || '');
+    if (!m || !pt) continue;
+    const id = `${m[1][0]}${m[2]}`;
+    let p = byId.get(id);
+    if (!p) byId.set(id, (p = { k, lat: Number(pt[2]), lon: Number(pt[1]), id, tags: {} }));
+    if (b.key) p.tags[b.key.value.slice(b.key.value.indexOf('/wiki/Key:') + 10)] = b.val.value;
+  }
+  return [...byId.values()];
+}
+
+const qlever = async (parts, lat, lon) => (await Promise.all(parts.map((part) => qleverPart(part, lat, lon)))).flat();
+
+async function overpass(parts, lat, lon) {
+  const sel = parts.map(([, key, val, r]) => `${key === 'emergency' ? 'node' : 'nwr'}["${key}"="${val}"](around:${r},${lat},${lon});`).join('');
+  const query = `[out:json][timeout:25];(${sel});out center tags qt 3000;`;
   let last = 'no server answered';
   for (const endpoint of OVERPASS) {
     try {
@@ -186,12 +234,21 @@ async function overpass(query) {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
-          'User-Agent': 'GetMyLocations/1.0 (+https://getmylocations.com/contact)',
+          'User-Agent': OSM_UA,
         },
         body: new URLSearchParams({ data: query }),
-        signal: AbortSignal.timeout(20000),
+        signal: AbortSignal.timeout(10000),
       });
-      if (res.ok) return await res.json();
+      if (res.ok) {
+        const data = await res.json();
+        return (data.elements || []).flatMap((el) => {
+          const tags = el.tags || {};
+          const plat = el.lat ?? el.center?.lat;
+          const plon = el.lon ?? el.center?.lon;
+          if (plat == null || plon == null) return [];
+          return [{ k: kindOf(tags), lat: plat, lon: plon, id: `${el.type[0]}${el.id}`, tags }];
+        });
+      }
       last = `HTTP ${res.status}`;
     } catch (err) {
       last = err.name === 'TimeoutError' ? 'timed out' : 'network error';
@@ -214,25 +271,26 @@ async function nearby(url, ctx) {
   const hit = await cache.match(key);
   if (hit) return hit;
 
-  const parts = cfg.parts.map(([, sel, r]) => `${sel}(around:${r},${sLat},${sLon});`).join('');
-  let data;
+  let raw;
+  let source = 'qlever';
   try {
-    data = await overpass(`[out:json][timeout:25];(${parts});out center tags qt 3000;`);
-  } catch (err) {
-    return json({ error: `OpenStreetMap is busy (${err.message}). Try again in a minute.` }, 503, { 'Cache-Control': 'no-store' });
+    raw = await qlever(cfg.parts, sLat, sLon);
+  } catch (qErr) {
+    source = 'overpass';
+    try {
+      raw = await overpass(cfg.parts, sLat, sLon);
+    } catch (err) {
+      return json({ error: `The OpenStreetMap servers are busy (${qErr.message}; ${err.message}). Try again in a minute.` }, 503, { 'Cache-Control': 'no-store' });
+    }
   }
   const places = [];
-  for (const el of data.elements || []) {
-    const tags = el.tags || {};
-    const plat = el.lat ?? el.center?.lat;
-    const plon = el.lon ?? el.center?.lon;
-    if (plat == null || plon == null) continue;
-    if (tags.access === 'private' || tags.access === 'no') continue;
+  for (const p of raw) {
+    if (p.tags.access === 'private' || p.tags.access === 'no') continue;
     const keep = {};
-    for (const k of KEEP) if (tags[k]) keep[k] = String(tags[k]).slice(0, 200);
-    places.push({ k: kindOf(tags), lat: plat, lon: plon, id: `${el.type[0]}${el.id}`, tags: keep });
+    for (const k of KEEP) if (p.tags[k]) keep[k] = String(p.tags[k]).slice(0, 200);
+    places.push({ ...p, tags: keep });
   }
-  const res = json({ lat: Number(sLat), lon: Number(sLon), at: new Date().toISOString(), places }, 200, {
+  const res = json({ lat: Number(sLat), lon: Number(sLon), at: new Date().toISOString(), source, places }, 200, {
     'Cache-Control': `public, max-age=${NEARBY_CACHE_SECONDS}`,
   });
   ctx.waitUntil(cache.put(key, res.clone()));
