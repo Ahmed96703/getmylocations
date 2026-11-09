@@ -174,6 +174,7 @@ const KEEP = [
   'defibrillator:location', 'description',
 ];
 const NEARBY_CACHE_SECONDS = 7 * 86400;
+const NEARBY_VERSION = 2;
 
 const snap = (v, cell) => (Math.round(v / cell) * cell).toFixed(4);
 
@@ -278,7 +279,8 @@ async function nearby(url, ctx) {
   }
   const sLat = snap(lat, cfg.cell);
   const sLon = snap(lon, cfg.cell);
-  const key = new Request(`https://getmylocations.com/api/nearby?kind=${url.searchParams.get('kind')}&lat=${sLat}&lon=${sLon}`);
+  // Bump NEARBY_VERSION when the query changes, so cached answers are replaced.
+  const key = new Request(`https://getmylocations.com/api/nearby?v=${NEARBY_VERSION}&kind=${url.searchParams.get('kind')}&lat=${sLat}&lon=${sLon}`);
   const cache = caches.default;
   const hit = await cache.match(key);
   if (hit) return hit;
