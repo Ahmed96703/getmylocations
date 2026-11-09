@@ -10,6 +10,8 @@ Free Tool · Pure JavaScript Math
 
 This free **distance calculator** answers **how far is it** from one place to another. Type two cities, addresses, or **GPS coordinates** in any common format and get the **distance between them** in **kilometers, miles, nautical miles, and meters**, with the initial and final bearing, the midpoint, and the route on a map. Calculated on the WGS 84 ellipsoid, the same Earth model GPS uses, entirely in your browser: no API call, no signup.
 
+It is also a **miles calculator** and a **GPS coordinate distance calculator**, and further down the page you will find the **distance formula** with a small **distance formula calculator** for math homework.
+
 ## Calculate distance
 
 London, UK · 51.507351, \-0.127758
@@ -70,13 +72,22 @@ You do not need coordinates. To find the **distance from** one place to another,
 -   **A city is measured from its center,** as the map service defines it. For an exact spot, type the full address or paste its coordinates.
 -   **The result is the straight-line distance,** sometimes called “as the crow flies”. A trip by road is longer, often much longer; for the road distance and time, use [driving directions](https://getmylocations.com/driving-directions).
 
+## Distance between two points on a map
+
+Every result is drawn on a map: point A, point B, the line between them and the halfway point, so the tool works as a **distance between two points map**: you see the distance as well as read it. Points can be anything the boxes accept: a city, a street address, a landmark, GPS coordinates, or your own position with **Use my location**.
+
+-   **Address to address:** as a **distance calculator address to address**, type a full street address with its town in each box.
+-   **Any two locations:** to **find the distance between 2 locations** you only know by name, type the names; the tool shows which place it found under each box so you can check it.
+-   **Coordinates:** as a **GPS distance calculator**, paste two latitude/longitude pairs in any format.
+-   **Travel distance:** as a **travel distance calculator** it gives the straight-line distance, which is what flight distances are based on. For the distance by road and the driving time, use [driving directions](https://getmylocations.com/driving-directions).
+
 ## Distance between cities in miles
 
 Type two city names to get the **distance between cities** in miles and kilometers at once. London to Paris is 214 miles (344 km) in a straight line, and San Francisco to Los Angeles is 347 miles (559 km). The same works for the **miles between two locations** of any kind: towns, airports, landmarks or full street addresses.
 
 ## How far is it from one country to another?
 
-A country covers a large area, so the **Iran to Israel distance** or the **Iran to America distance** has no single answer. The usual answer is the distance between major cities. These are calculated with the tool’s own code; type any two cities into the calculator to measure others.
+A country covers a large area, so the **Iran to Israel distance**, the **Iran to America distance** or the **Iran to India distance** has no single answer. The usual answer is the distance between major cities. These are calculated with the tool’s own code; type any two cities into the calculator to measure others.
 
 | Countries | From | To | km | miles |
 | --- | --- | --- | --- | --- |
@@ -86,8 +97,62 @@ A country covers a large area, so the **Iran to Israel distance** or the **Iran 
 | Iran to America | Tehran | New York | 9,877 | 6,138 |
 | Iran to America | Tehran | Los Angeles | 12,209 | 7,586 |
 | Pakistan to India | Islamabad | New Delhi | 688 | 427 |
+| Iran to India | Tehran | New Delhi | 2,550 | 1,585 |
+| Iran to India | Tehran | Mumbai | 2,800 | 1,740 |
 
 These are straight-line distances. A flight is usually longer, because aircraft follow air routes and avoid closed airspace, and a road trip longer still.
+
+## Kitni dur hai? Distance in any language
+
+Searching **“Lahore se Karachi kitni dur hai”** or **“Delhi se Mumbai kitni dur hai”**? Type the two city names into the boxes above, in English or in the local spelling, and press Calculate. Lahore to Karachi is 1,032 km (641 miles) in a straight line, and Delhi to Mumbai 1,145 km (711 miles); by road both are longer.
+
+The same works as a **Distanzrechner** (_Entfernung berechnen_): Berlin to Munich is 505 km in a straight line. Place names are looked up on OpenStreetMap, which knows most places in their local language as well as in English.
+
+## Distance formula: how to find the distance between two points
+
+For two points on a flat grid, such as a graph in a math class or a floor plan, the **distance formula** is:
+
+d = √((x₂ − x₁)² + (y₂ − y₁)²)
+
+This is **how to find the distance between two points**: subtract the x values, subtract the y values, square both differences, add them, and take the square root. It is Pythagoras’ theorem, with the two differences as the short sides of a right triangle and the **distance between two points** as the long side.
+
+**Worked example:** from (1, 2) to (4, 6), the differences are 4 − 1 = 3 and 6 − 2 = 4, so d = √(3² + 4²) = √(9 + 16) = √25 = **5**. In three dimensions, add (z₂ − z₁)² under the square root. Try your own numbers in the **distance formula calculator**:
+
+### Distance formula calculator
+
+d = √((4 − 1)² + (6 − 2)²)
+
+d = √(3² + 4²) = √25
+
+d = 5
+
+### The distance formula for latitude and longitude
+
+The flat formula breaks down for places on Earth, because a degree of longitude shrinks from about 111 km at the equator to zero at the poles. **Calculating distance** between GPS coordinates needs a formula for a sphere or an ellipsoid. The common one is the haversine formula, with latitudes φ and longitudes λ in radians and Earth’s mean radius R = 6,371 km:
+
+a = sin²(Δφ/2) + cos φ₁ · cos φ₂ · sin²(Δλ/2)  
+d = 2R · atan2(√a, √(1 − a))
+
+The calculator at the top of this page goes one step further and uses Vincenty’s formulae on the WGS 84 ellipsoid, the Earth model GPS uses, and shows the haversine answer next to it so you can see the difference.
+
+## Miles calculator: kilometers to miles
+
+Every result is shown in miles and kilometers at once, so the tool doubles as a **miles calculator**. The conversion is exact by definition: **1 mile = 1.609344 km** and 1 km = 0.621371 miles. A nautical mile, used at sea and in the air, is exactly 1.852 km.
+
+| Miles | Kilometers |
+| --- | --- |
+| 1 | 1.609 |
+| 5 | 8.047 |
+| 10 | 16.1 |
+| 26.2 (marathon) | 42.2 |
+| 50 | 80.5 |
+| 100 | 160.9 |
+| 500 | 804.7 |
+| 1000 | 1609.3 |
+
+### Mile tracker: the distance you actually travel
+
+This calculator measures between two fixed points. To log the distance you walk, run or drive as you go, like a **mile tracker**, open [Live Location](https://getmylocations.com/live-location), which adds up the distance travelled from your phone’s GPS and can save the route as a GPX file.
 
 ## GPS distance calculator in meters
 
@@ -153,6 +218,14 @@ The midpoint is the place exactly halfway along the shortest route, and it is sh
 The blue line is the actual shortest route. On a flat web map it usually looks curved, bowing toward the nearer pole, because the map stretches the globe sideways. That curve is the straight line on the real planet. Routes that cross the 180° meridian, such as Tokyo to Los Angeles, are drawn across the Pacific rather than the long way round the map.
 
 ## Frequently asked questions
+
+How far is Iran from India?+
+
+Tehran to New Delhi is about 2,550 km (1,585 miles) in a straight line, and Tehran to Mumbai about 2,800 km (1,740 miles). Pakistan lies between the two countries, so their nearest border points are closer than their capitals. Type any two cities into the calculator for others.
+
+What is the distance formula?+
+
+The distance between two points (x₁, y₁) and (x₂, y₂) on a flat grid is d = √((x₂ − x₁)² + (y₂ − y₁)²). It is Pythagoras' theorem: the horizontal and vertical differences are the two short sides of a right triangle, and the distance is the long side. In 3D, add (z₂ − z₁)² under the square root. For latitude and longitude it does not work, because Earth is round; use the haversine formula or this page's calculator instead.
 
 How far is Iran from Israel?+
 

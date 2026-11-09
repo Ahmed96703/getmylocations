@@ -1,5 +1,6 @@
 import Link from '@/app/components/Link.jsx';
 import Tool from './Tool.jsx';
+import FormulaCalc from './FormulaCalc.jsx';
 import AuthorBio from '../components/AuthorBio.jsx';
 import AdSense from '../components/AdSense.jsx';
 import SideAd from '../components/SideAd.jsx';
@@ -25,6 +26,20 @@ export const metadata = {
     'gps distance calculator in meters',
     'iran to israel distance',
     'iran to america distance',
+    'iran to india distance',
+    'distance between two points',
+    'distance between two points map',
+    'how to find distance between two points',
+    'distance formula',
+    'distance formula calculator',
+    'miles calculator',
+    'mile tracker',
+    'kitni dur hai',
+    'distance calculator address to address',
+    'travel distance calculator',
+    'find distance between 2 locations',
+    'calculating distance',
+    'distanzrechner',
   ],
   alternates: { canonical: '/distance-calculator' },
   openGraph: {
@@ -77,14 +92,36 @@ const COUNTRY_PAIRS = [
   ['Iran to America', 'Tehran', 35.6892, 51.389, 'New York', 40.7128, -74.006],
   ['Iran to America', 'Tehran', 35.6892, 51.389, 'Los Angeles', 34.0522, -118.2437],
   ['Pakistan to India', 'Islamabad', 33.6844, 73.0479, 'New Delhi', 28.6139, 77.209],
+  ['Iran to India', 'Tehran', 35.6892, 51.389, 'New Delhi', 28.6139, 77.209],
+  ['Iran to India', 'Tehran', 35.6892, 51.389, 'Mumbai', 19.076, 72.8777],
 ];
 const countryPairs = COUNTRY_PAIRS.map(([route, an, alat, alon, bn, blat, blon]) => {
   const km = measure(alat, alon, blat, blon).meters / 1000;
   return { route, a: an, b: bn, km: Math.round(km).toLocaleString('en-US'), mi: Math.round(km * 0.621371192).toLocaleString('en-US') };
 });
-const pair = (b) => countryPairs.find((p) => p.b === b);
+const pair = (b, a = 'Tehran') => countryPairs.find((p) => p.b === b && p.a === a);
+
+// Examples for the "kitni dur hai" section, measured the same way.
+const kmMi = (alat, alon, blat, blon) => {
+  const km = measure(alat, alon, blat, blon).meters / 1000;
+  return { km: Math.round(km).toLocaleString('en-US'), mi: Math.round(km * 0.621371192).toLocaleString('en-US') };
+};
+const lahoreKarachi = kmMi(31.5204, 74.3587, 24.8607, 67.0011);
+const delhiMumbai = kmMi(28.6139, 77.209, 19.076, 72.8777);
+const berlinMunich = kmMi(52.52, 13.405, 48.1351, 11.582);
+
+// Miles calculator table: exact definitions (1 mile = 1.609344 km, 1 nautical mile = 1.852 km).
+const MILES = [1, 5, 10, 26.2, 50, 100, 500, 1000].map((mi) => ({ mi, km: (mi * 1.609344).toFixed(mi < 10 ? 3 : 1) }));
 
 const faqs = [
+  {
+    q: 'How far is Iran from India?',
+    a: `Tehran to New Delhi is about ${pair('New Delhi').km} km (${pair('New Delhi').mi} miles) in a straight line, and Tehran to Mumbai about ${pair('Mumbai').km} km (${pair('Mumbai').mi} miles). Pakistan lies between the two countries, so their nearest border points are closer than their capitals. Type any two cities into the calculator for others.`,
+  },
+  {
+    q: 'What is the distance formula?',
+    a: 'The distance between two points (x₁, y₁) and (x₂, y₂) on a flat grid is d = √((x₂ − x₁)² + (y₂ − y₁)²). It is Pythagoras\' theorem: the horizontal and vertical differences are the two short sides of a right triangle, and the distance is the long side. In 3D, add (z₂ − z₁)² under the square root. For latitude and longitude it does not work, because Earth is round; use the haversine formula or this page\'s calculator instead.',
+  },
   {
     q: 'How far is Iran from Israel?',
     a: `Tehran to Jerusalem is about ${pair('Jerusalem').km} km (${pair('Jerusalem').mi} miles) in a straight line, and Tehran to Tel Aviv about ${pair('Tel Aviv').km} km (${pair('Tel Aviv').mi} miles). The two countries do not share a border: Iraq and Jordan or Syria lie between them, so the closest points of the two countries are much nearer than their big cities. For any other pair of cities, type both names into the calculator above.`,
@@ -186,6 +223,9 @@ export default function DistanceCalculatorPage() {
           <p className="text-lg text-fg-muted mt-4 max-w-3xl">
             This free <strong className="text-fg">distance calculator</strong> answers <strong className="text-fg">how far is it</strong> from one place to another. Type two cities, addresses, or <strong className="text-fg">GPS coordinates</strong> in any common format and get the <strong>distance between them</strong> in <strong>kilometers, miles, nautical miles, and meters</strong>, with the initial and final bearing, the midpoint, and the route on a map. Calculated on the WGS 84 ellipsoid, the same Earth model GPS uses, entirely in your browser: no API call, no signup.
           </p>
+          <p className="text-fg-muted mt-3 max-w-3xl">
+            It is also a <strong className="text-fg">miles calculator</strong> and a <strong className="text-fg">GPS coordinate distance calculator</strong>, and further down the page you will find the <strong className="text-fg">distance formula</strong> with a small <strong className="text-fg">distance formula calculator</strong> for math homework.
+          </p>
         </section>
 
         <Tool />
@@ -228,6 +268,20 @@ export default function DistanceCalculatorPage() {
           </section>
 
           <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">Distance between two points on a map</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Every result is drawn on a map: point A, point B, the line between them and the halfway point, so the tool works as a <strong className="text-fg">distance between two points map</strong>: you see the distance as well as read it. Points can be anything the boxes accept: a city, a street address, a landmark, GPS coordinates, or your own position with <strong className="text-fg">Use my location</strong>.
+            </p>
+            <ul className="mt-3 space-y-1.5 text-fg-muted list-disc list-inside leading-relaxed">
+              <li><strong className="text-fg">Address to address:</strong> as a <strong className="text-fg">distance calculator address to address</strong>, type a full street address with its town in each box.</li>
+              <li><strong className="text-fg">Any two locations:</strong> to <strong className="text-fg">find the distance between 2 locations</strong> you only know by name, type the names; the tool shows which place it found under each box so you can check it.</li>
+              <li><strong className="text-fg">Coordinates:</strong> as a <strong className="text-fg">GPS distance calculator</strong>, paste two latitude/longitude pairs in any format.</li>
+              <li><strong className="text-fg">Travel distance:</strong> as a <strong className="text-fg">travel distance calculator</strong> it gives the straight-line distance, which is what flight distances are based on. For the distance by road and the driving time, use{' '}
+                <Link href="/driving-directions" className="text-accent hover:underline">driving directions</Link>.</li>
+            </ul>
+          </section>
+
+          <section className="mt-10">
             <h2 className="font-display text-2xl font-bold">Distance between cities in miles</h2>
             <p className="mt-3 text-fg-muted leading-relaxed">
               Type two city names to get the <strong className="text-fg">distance between cities</strong> in miles and kilometers at once. London to Paris is {cityPairs[0].mi} miles ({cityPairs[0].km} km) in a straight line, and San Francisco to Los Angeles is {cityPairs[4].mi} miles ({cityPairs[4].km} km). The same works for the <strong className="text-fg">miles between two locations</strong> of any kind: towns, airports, landmarks or full street addresses.
@@ -237,7 +291,7 @@ export default function DistanceCalculatorPage() {
           <section className="mt-10">
             <h2 className="font-display text-2xl font-bold">How far is it from one country to another?</h2>
             <p className="mt-3 text-fg-muted leading-relaxed">
-              A country covers a large area, so the <strong className="text-fg">Iran to Israel distance</strong> or the <strong className="text-fg">Iran to America distance</strong> has no single answer. The usual answer is the distance between major cities. These are calculated with the tool&rsquo;s own code; type any two cities into the calculator to measure others.
+              A country covers a large area, so the <strong className="text-fg">Iran to Israel distance</strong>, the <strong className="text-fg">Iran to America distance</strong> or the <strong className="text-fg">Iran to India distance</strong> has no single answer. The usual answer is the distance between major cities. These are calculated with the tool&rsquo;s own code; type any two cities into the calculator to measure others.
             </p>
             <div className="mt-4 overflow-x-auto rounded-xl ring-1 ring-line" tabIndex={0} role="region" aria-label="Distances between countries, city to city">
               <table className="w-full text-sm">
@@ -265,6 +319,69 @@ export default function DistanceCalculatorPage() {
             </div>
             <p className="mt-3 text-fg-muted leading-relaxed">
               These are straight-line distances. A flight is usually longer, because aircraft follow air routes and avoid closed airspace, and a road trip longer still.
+            </p>
+          </section>
+
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">Kitni dur hai? Distance in any language</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Searching <strong className="text-fg">&ldquo;Lahore se Karachi kitni dur hai&rdquo;</strong> or <strong className="text-fg">&ldquo;Delhi se Mumbai kitni dur hai&rdquo;</strong>? Type the two city names into the boxes above, in English or in the local spelling, and press Calculate. Lahore to Karachi is {lahoreKarachi.km} km ({lahoreKarachi.mi} miles) in a straight line, and Delhi to Mumbai {delhiMumbai.km} km ({delhiMumbai.mi} miles); by road both are longer.
+            </p>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              The same works as a <strong className="text-fg">Distanzrechner</strong> (<em>Entfernung berechnen</em>): Berlin to Munich is {berlinMunich.km} km in a straight line. Place names are looked up on OpenStreetMap, which knows most places in their local language as well as in English.
+            </p>
+          </section>
+
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">Distance formula: how to find the distance between two points</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              For two points on a flat grid, such as a graph in a math class or a floor plan, the <strong className="text-fg">distance formula</strong> is:
+            </p>
+            <p className="mt-3 text-center font-mono text-lg text-fg bg-tint/5 rounded-xl py-3">d = √((x₂ − x₁)² + (y₂ − y₁)²)</p>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              This is <strong className="text-fg">how to find the distance between two points</strong>: subtract the x values, subtract the y values, square both differences, add them, and take the square root. It is Pythagoras&rsquo; theorem, with the two differences as the short sides of a right triangle and the <strong className="text-fg">distance between two points</strong> as the long side.
+            </p>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              <strong className="text-fg">Worked example:</strong> from (1, 2) to (4, 6), the differences are 4 − 1 = 3 and 6 − 2 = 4, so d = √(3² + 4²) = √(9 + 16) = √25 = <strong className="text-fg">5</strong>. In three dimensions, add (z₂ − z₁)² under the square root. Try your own numbers in the <strong className="text-fg">distance formula calculator</strong>:
+            </p>
+            <FormulaCalc />
+            <h3 className="font-display text-lg font-semibold mt-6 text-fg">The distance formula for latitude and longitude</h3>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              The flat formula breaks down for places on Earth, because a degree of longitude shrinks from about 111 km at the equator to zero at the poles. <strong className="text-fg">Calculating distance</strong> between GPS coordinates needs a formula for a sphere or an ellipsoid. The common one is the haversine formula, with latitudes φ and longitudes λ in radians and Earth&rsquo;s mean radius R = 6,371 km:
+            </p>
+            <p className="mt-3 text-center font-mono text-sm sm:text-base text-fg bg-tint/5 rounded-xl py-3 px-2">a = sin²(Δφ/2) + cos φ₁ · cos φ₂ · sin²(Δλ/2)<br />d = 2R · atan2(√a, √(1 − a))</p>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              The calculator at the top of this page goes one step further and uses Vincenty&rsquo;s formulae on the WGS 84 ellipsoid, the Earth model GPS uses, and shows the haversine answer next to it so you can see the difference.
+            </p>
+          </section>
+
+          <section className="mt-10">
+            <h2 className="font-display text-2xl font-bold">Miles calculator: kilometers to miles</h2>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              Every result is shown in miles and kilometers at once, so the tool doubles as a <strong className="text-fg">miles calculator</strong>. The conversion is exact by definition: <strong className="text-fg">1 mile = 1.609344 km</strong> and 1 km = 0.621371 miles. A nautical mile, used at sea and in the air, is exactly 1.852 km.
+            </p>
+            <div className="mt-4 overflow-x-auto rounded-xl ring-1 ring-line max-w-md" tabIndex={0} role="region" aria-label="Miles to kilometers">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="bg-tint/5 text-left text-fg-muted">
+                    <th className="px-3 py-2 font-semibold">Miles</th>
+                    <th className="px-3 py-2 font-semibold">Kilometers</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {MILES.map((r) => (
+                    <tr key={r.mi} className="border-t border-line-subtle">
+                      <td className="px-3 py-2 font-mono text-fg">{r.mi}{r.mi === 26.2 ? ' (marathon)' : ''}</td>
+                      <td className="px-3 py-2 font-mono text-fg-muted">{r.km}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <h3 className="font-display text-lg font-semibold mt-6 text-fg">Mile tracker: the distance you actually travel</h3>
+            <p className="mt-3 text-fg-muted leading-relaxed">
+              This calculator measures between two fixed points. To log the distance you walk, run or drive as you go, like a <strong className="text-fg">mile tracker</strong>, open{' '}
+              <Link href="/live-location" className="text-accent hover:underline">Live Location</Link>, which adds up the distance travelled from your phone&rsquo;s GPS and can save the route as a GPX file.
             </p>
           </section>
 
