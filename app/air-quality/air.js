@@ -1,20 +1,48 @@
-// Air quality, UV and pollen from Open-Meteo's free air-quality API (CAMS
-// forecasts from the EU's Copernicus programme). Pollen is only modelled for
-// Europe and comes back as null elsewhere. No React, testable on its own.
+// Air quality from the nearest monitoring stations (OpenAQ, through our
+// Worker's /api/aq relay) and the UV index from MET Norway's forecast
+// (/api/weather). No React, testable on its own.
 
-const API = 'https://air-quality-api.open-meteo.com/v1/air-quality';
-const CURRENT = ['european_aqi', 'us_aqi', 'pm2_5', 'pm10', 'nitrogen_dioxide', 'ozone', 'sulphur_dioxide', 'carbon_monoxide', 'uv_index', 'alder_pollen', 'birch_pollen', 'grass_pollen', 'mugwort_pollen', 'olive_pollen', 'ragweed_pollen'];
-const HOURLY = ['european_aqi', 'us_aqi', 'uv_index', 'pm2_5', 'grass_pollen', 'birch_pollen', 'ragweed_pollen'];
-
-export async function airAt(lat, lon) {
-  const url = `${API}?latitude=${lat.toFixed(2)}&longitude=${lon.toFixed(2)}&current=${CURRENT.join(',')}&hourly=${HOURLY.join(',')}&forecast_days=4&timezone=auto`;
-  const res = await fetch(url);
+export async function stationsNear(lat, lon) {
+  const res = await fetch(`/api/aq?lat=${lat.toFixed(2)}&lon=${lon.toFixed(2)}`);
   const body = await res.json().catch(() => null);
-  if (!res.ok || body?.error) throw new Error(body?.reason ? `The air quality service could not answer: ${body.reason}` : 'The air quality service did not answer. Try again in a minute.');
-  return body;
+  if (res.status === 503 && body?.error === 'not-configured') return null;
+  if (!res.ok) throw new Error(body?.error || 'The air quality service did not answer. Try again in a minute.');
+  return body.stations;
 }
 
-// [upper bound, label, colour, advice] bands.
+// UV index (clear sky) for the coming hours from the weather relay.
+export async function uvNear(lat, lon) {
+  const res = await fetch(`/api/weather?lat=${lat.toFixed(2)}&lon=${lon.toFixed(2)}`);
+  if (!res.ok) return [];
+  const { series } = await res.json();
+  return series.slice(0, 48).map((s) => ({ time: s.time, uv: s.data.instant.details.ultraviolet_index_clear_sky })).filter((s) => s.uv != null);
+}
+
+// US EPA breakpoints (2024 revision) for PM2.5 and PM10 in µg/m³.
+const BREAKS = {
+  pm25: [[0, 9, 0, 50], [9.1, 35.4, 51, 100], [35.5, 55.4, 101, 150], [55.5, 125.4, 151, 200], [125.5, 225.4, 201, 300], [225.5, 325.4, 301, 500]],
+  pm10: [[0, 54, 0, 50], [55, 154, 51, 100], [155, 254, 101, 150], [255, 354, 151, 200], [355, 424, 201, 300], [425, 604, 301, 500]],
+};
+
+// AQI for one pollutant, or null when it has no breakpoints or bad units.
+export function aqiFor(param, value, units) {
+  const table = BREAKS[param];
+  if (!table || value == null || value < 0 || !/µg|ug/i.test(units || '')) return null;
+  const c = param === 'pm25' ? Math.floor(value * 10) / 10 : Math.floor(value);
+  for (const [cl, ch, il, ih] of table) {
+    if (c <= ch) return Math.round(((ih - il) / (ch - cl)) * (Math.max(c, cl) - cl) + il);
+  }
+  return 500;
+}
+
+export function stationAqi(readings) {
+  const parts = ['pm25', 'pm10'].map((p) => [p, aqiFor(p, readings[p]?.value, readings[p]?.units)]).filter(([, v]) => v != null);
+  if (!parts.length) return null;
+  const [param, value] = parts.reduce((a, b) => (b[1] > a[1] ? b : a));
+  return { value, param };
+}
+
+// [upper bound, label, colour, advice]
 const US = [
   [50, 'Good', '#16a34a', 'Air quality is good. Enjoy being outside.'],
   [100, 'Moderate', '#ca8a04', 'Acceptable. Unusually sensitive people should consider less prolonged effort outdoors.'],
@@ -23,14 +51,6 @@ const US = [
   [300, 'Very unhealthy', '#9333ea', 'Everyone should avoid long or heavy effort outdoors.'],
   [Infinity, 'Hazardous', '#7f1d1d', 'Everyone should avoid all physical activity outdoors.'],
 ];
-const EU = [
-  [20, 'Good', '#16a34a', 'Air quality is good. Enjoy your usual outdoor activities.'],
-  [40, 'Fair', '#65a30d', 'Enjoy your usual outdoor activities.'],
-  [60, 'Moderate', '#ca8a04', 'Sensitive people should consider reducing intense activity outdoors if they have symptoms.'],
-  [80, 'Poor', '#ea580c', 'Consider reducing intense activity outdoors, especially with symptoms such as sore eyes or a cough.'],
-  [100, 'Very poor', '#dc2626', 'Reduce physical activity outdoors; sensitive people should avoid it.'],
-  [Infinity, 'Extremely poor', '#7f1d1d', 'Avoid physical activity outdoors.'],
-];
 const UV = [
   [2.5, 'Low', '#16a34a', 'No protection needed for most people.'],
   [5.5, 'Moderate', '#ca8a04', 'Seek shade around midday; wear sunscreen, a hat and sunglasses.'],
@@ -38,53 +58,19 @@ const UV = [
   [10.5, 'Very high', '#dc2626', 'Extra protection: avoid the midday sun, cover up and reapply sunscreen.'],
   [Infinity, 'Extreme', '#9333ea', 'Avoid being outside around midday; unprotected skin burns in minutes.'],
 ];
-
 const band = (bands, v) => (v == null ? null : bands.find(([max]) => v <= max));
 export const usBand = (v) => band(US, v);
-export const euBand = (v) => band(EU, v);
 export const uvBand = (v) => band(UV, v);
 
-// Pollen in grains per cubic metre, banded with thresholds used for UK
-// forecasts: trees (alder, birch, olive), grass, and weeds (mugwort, ragweed).
-const POLLEN_BANDS = {
-  tree: [40, 80, 200],
-  grass: [30, 50, 150],
-  weed: [10, 30, 50],
+// WHO 2021 air quality guideline levels (24-hour for particles and NO2,
+// 8-hour for ozone), in µg/m³.
+export const WHO = { pm25: 15, pm10: 45, no2: 25, o3: 100 };
+
+export const PARAMS = {
+  pm25: ['PM2.5', 'Fine particles from traffic, heating, industry and smoke'],
+  pm10: ['PM10', 'Coarser dust and particles'],
+  no2: ['NO₂', 'Nitrogen dioxide, mostly from road traffic'],
+  o3: ['Ozone', 'Forms in sunshine; highest on summer afternoons'],
+  so2: ['SO₂', 'Sulphur dioxide, from burning coal and oil'],
+  co: ['CO', 'Carbon monoxide, from engines and burning'],
 };
-export const POLLEN = [
-  ['grass_pollen', 'Grass', 'grass'],
-  ['birch_pollen', 'Birch', 'tree'],
-  ['alder_pollen', 'Alder', 'tree'],
-  ['olive_pollen', 'Olive', 'tree'],
-  ['ragweed_pollen', 'Ragweed', 'weed'],
-  ['mugwort_pollen', 'Mugwort', 'weed'],
-];
-export function pollenLevel(v, kind) {
-  if (v == null) return null;
-  if (v < 1) return ['None', '#94a3b8'];
-  const [m, h, vh] = POLLEN_BANDS[kind];
-  if (v < m) return ['Low', '#16a34a'];
-  if (v < h) return ['Moderate', '#ca8a04'];
-  if (v < vh) return ['High', '#ea580c'];
-  return ['Very high', '#dc2626'];
-}
-
-// The next `n` hours from the current hour.
-export function nextHours(data, n = 24) {
-  const start = Math.max(0, data.hourly.time.findIndex((t) => t.slice(0, 13) >= data.current.time.slice(0, 13)));
-  return data.hourly.time.slice(start, start + n).map((t, i) => Object.fromEntries([['time', t], ...HOURLY.map((k) => [k, data.hourly[k][start + i]])]));
-}
-
-// Daily highs over the forecast for the outlook table.
-export function dailyMax(data) {
-  const days = {};
-  data.hourly.time.forEach((t, i) => {
-    const d = t.slice(0, 10);
-    const o = (days[d] ||= { date: d });
-    for (const k of HOURLY) {
-      const v = data.hourly[k][i];
-      if (v != null) o[k] = Math.max(o[k] ?? -Infinity, v);
-    }
-  });
-  return Object.values(days);
-}

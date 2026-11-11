@@ -1,21 +1,56 @@
-// Ground elevation from Open-Meteo's elevation API (Copernicus DEM, 90 m
-// grid). Up to 100 points per request. No React, testable on its own.
+// Ground elevation from the Terrain Tiles open dataset on AWS (Mapzen /
+// Tilezen; free for any use with attribution), read in the browser: each
+// 256 px "terrarium" PNG tile stores height as red * 256 + green + blue / 256
+// - 32768 metres, with sea-floor depths below zero. No React; the tile
+// decoding needs a browser canvas.
 
 import { haversine } from '../distance-calculator/dist.js';
 
-const API = 'https://api.open-meteo.com/v1/elevation';
+const TILE = (z, x, y) => `https://s3.amazonaws.com/elevation-tiles-prod/terrarium/${z}/${x}/${y}.png`;
+const tiles = new Map();
 
-export async function elevations(points) {
-  const out = [];
-  for (let i = 0; i < points.length; i += 100) {
-    const batch = points.slice(i, i + 100);
-    const url = `${API}?latitude=${batch.map((p) => p[0].toFixed(5)).join(',')}&longitude=${batch.map((p) => p[1].toFixed(5)).join(',')}`;
-    const res = await fetch(url);
-    const body = await res.json().catch(() => null);
-    if (!res.ok || !Array.isArray(body?.elevation)) throw new Error(body?.reason || 'The elevation service did not answer. Try again in a minute.');
-    out.push(...body.elevation);
+function loadTile(z, x, y) {
+  const key = `${z}/${x}/${y}`;
+  if (!tiles.has(key)) {
+    tiles.set(key, new Promise((resolve, reject) => {
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+      img.onload = () => {
+        const c = document.createElement('canvas');
+        c.width = 256;
+        c.height = 256;
+        const g = c.getContext('2d', { willReadFrequently: true });
+        g.drawImage(img, 0, 0);
+        resolve(g.getImageData(0, 0, 256, 256).data);
+      };
+      img.onerror = () => { tiles.delete(key); reject(new Error('The elevation data did not load. Check your connection and try again.')); };
+      img.src = TILE(z, x, y);
+    }));
   }
-  return out;
+  return tiles.get(key);
+}
+
+// Position of a point in the tile grid at zoom z (Web Mercator).
+export function tilePixel(lat, lon, z) {
+  const n = 2 ** z;
+  const x = ((lon + 180) / 360) * n;
+  const r = (Math.max(-85.05, Math.min(85.05, lat)) * Math.PI) / 180;
+  const y = ((1 - Math.log(Math.tan(r) + 1 / Math.cos(r)) / Math.PI) / 2) * n;
+  return { tx: Math.floor(x) % n, ty: Math.floor(y), px: Math.floor((x % 1) * 256), py: Math.floor((y % 1) * 256) };
+}
+
+export const decode = (r, g, b) => r * 256 + g + b / 256 - 32768;
+
+// Heights in metres for [lat, lon] points. Zoom 14 (about 10 m pixels at the
+// equator) for a few points, 12 for long profiles to fetch fewer tiles.
+export async function elevations(points) {
+  const z = points.length > 10 ? 12 : 14;
+  return Promise.all(points.map(async ([lat, lon]) => {
+    const { tx, ty, px, py } = tilePixel(lat, lon, z);
+    const data = await loadTile(z, tx, ty);
+    const i = (py * 256 + px) * 4;
+    return Math.round(decode(data[i], data[i + 1], data[i + 2]) * 10) / 10;
+  }));
 }
 
 // Points every equal step along the drawn line (n in total), with the

@@ -163,7 +163,7 @@ export default function Tool() {
           <p className="text-xs uppercase tracking-wide text-fg-subtle">Elevation {point.label ? `of ${point.label}` : 'here'}</p>
           <p className="font-display text-4xl font-bold text-fg mt-1">{m(point.h, ft)} <span className="text-lg font-semibold text-fg-muted">{ft ? `(${Math.round(point.h)} m)` : `(${Math.round(point.h * FT).toLocaleString()} ft)`}</span></p>
           <p className="text-sm text-fg-muted mt-1">
-            {point.h <= 0 ? 'At or below sea level (the sea, or land below the mean sea level).' : 'Above mean sea level.'} At {point.lat.toFixed(5)}, {point.lon.toFixed(5)}.{' '}
+            {point.h < 0 ? 'Below mean sea level.' : point.h === 0 ? 'At sea level, or on open water.' : 'Above mean sea level.'} At {point.lat.toFixed(5)}, {point.lon.toFixed(5)}.{' '}
             <CopyButton text={`${Math.round(point.h)} m (${Math.round(point.h * FT)} ft) at ${point.lat.toFixed(5)}, ${point.lon.toFixed(5)}`} className="text-accent hover:underline" />
           </p>
           {point.gps != null && (
@@ -194,7 +194,7 @@ export default function Tool() {
       <p className="mt-2 text-xs text-fg-subtle">{mode === 'point' ? 'Click anywhere on the map to get its height above sea level.' : 'Click to add points along a route, then press "Show elevation profile".'}</p>
 
       <p className="mt-4 text-xs text-fg-subtle leading-relaxed">
-        Heights from <a href="https://open-meteo.com/en/docs/elevation-api" target="_blank" rel="noopener" className="hover:underline">Open-Meteo</a>, using the Copernicus 90 m elevation model. Each figure is an average over a square about 90 m across, so sharp summits read lower than their official height, and because the model measures the surface seen from space, dense forest or large buildings can add a few metres. The profile samples the straight lines between your points.
+        Heights from the <a href="https://registry.opendata.aws/terrain-tiles/" target="_blank" rel="noopener" className="hover:underline">Terrain Tiles</a> open dataset on AWS (Mapzen), which combines SRTM, GMTED, ETOPO1, the US National Elevation Dataset and other sources (<a href="https://github.com/tilezen/joerd/blob/master/docs/attribution.md" target="_blank" rel="noopener" className="hover:underline">full attribution</a>), read on your device. Pixels are about 10 to 30 m across depending on the area, so sharp summits can read a little lower than their official height. The profile samples the straight lines between your points.
       </p>
     </section>
   );

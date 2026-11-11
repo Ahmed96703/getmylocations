@@ -1,3 +1,5 @@
+import { fileURLToPath } from 'node:url';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Static export — generates real HTML for every page at build time.
@@ -20,6 +22,16 @@ const nextConfig = {
 
   // Don't ESLint on build
   eslint: { ignoreDuringBuilds: true },
+
+  // satellite.js (ISS Tracker) also ships an optional WebAssembly build that
+  // needs Node built-ins; the tracker uses only the JavaScript SGP4, so drop it.
+  webpack(config) {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      [fileURLToPath(new URL('./node_modules/satellite.js/dist/wasm/index.js', import.meta.url))]: false,
+    };
+    return config;
+  },
 };
 
 export default nextConfig;

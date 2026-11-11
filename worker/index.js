@@ -330,6 +330,133 @@ async function nearby(url, ctx) {
   return res;
 }
 
+// Small cached relays for the weather-style tools. Each answer is kept at
+// Cloudflare's edge so the upstream services see few requests, and the
+// browser rounds the position before it asks.
+async function cachedJson(key, seconds, ctx, produce) {
+  const cache = caches.default;
+  const req = new Request(`https://getmylocations.com/__cache/${key}`);
+  const hit = await cache.match(req);
+  if (hit) return hit;
+  let body;
+  try {
+    body = await produce();
+  } catch (err) {
+    return json({ error: err.message || 'The data service did not answer. Try again in a minute.' }, 502, { 'Cache-Control': 'no-store' });
+  }
+  const res = json(body, 200, { 'Cache-Control': `public, max-age=${seconds}` });
+  ctx.waitUntil(cache.put(req, res.clone()));
+  return res;
+}
+
+const coord = (url, places) => {
+  const lat = Number(url.searchParams.get('lat'));
+  const lon = Number(url.searchParams.get('lon'));
+  if (!Number.isFinite(lat) || !Number.isFinite(lon) || Math.abs(lat) > 90 || Math.abs(lon) > 180) return null;
+  return [lat.toFixed(places), lon.toFixed(places)];
+};
+
+// /api/weather: MET Norway's Locationforecast (CC BY 4.0), which asks for an
+// identifying User-Agent that browsers cannot send, and for caching.
+function weather(url, ctx) {
+  const c = coord(url, 2);
+  if (!c) return json({ error: 'lat and lon are required' }, 400);
+  return cachedJson(`weather/${c[0]},${c[1]}`, 1800, ctx, async () => {
+    const res = await fetch(`https://api.met.no/weatherapi/locationforecast/2.0/complete?lat=${c[0]}&lon=${c[1]}`, {
+      headers: { 'User-Agent': OSM_UA, Accept: 'application/json' },
+      signal: AbortSignal.timeout(15000),
+    });
+    if (!res.ok) throw new Error(`MET Norway returned HTTP ${res.status}`);
+    const data = await res.json();
+    return { updated: data.properties.meta.updated_at, units: data.properties.meta.units, series: data.properties.timeseries };
+  });
+}
+
+// /api/sst: sea surface temperature from NOAA's MUR analysis (public domain)
+// through the CoastWatch ERDDAP server, which sends no CORS headers. One
+// query takes a box of about 50 km over the last month; the nearest sea cell
+// with data is returned with its history.
+function sst(url, ctx) {
+  const c = coord(url, 2);
+  if (!c) return json({ error: 'lat and lon are required' }, 400);
+  const [lat, lon] = c.map(Number);
+  const k = (v) => (Math.round(v * 20) / 20).toFixed(2);
+  return cachedJson(`sst/${k(lat)},${k(lon)}`, 21600, ctx, async () => {
+    const b = (v) => v.toFixed(2);
+    const q = `analysed_sst[last-30:3:last][(${b(Math.max(-89.9, lat - 0.25))}):5:(${b(Math.min(89.9, lat + 0.25))})][(${b(Math.max(-179.99, lon - 0.25))}):5:(${b(Math.min(180, lon + 0.25))})]`;
+    // CoastWatch often answers 503 for a moment under load, so try a few times.
+    const target = `https://coastwatch.pfeg.noaa.gov/erddap/griddap/jplMURSST41.json?${encodeURIComponent(q).replace(/%3A/g, ':')}`;
+    let res;
+    for (let i = 0; i < 4; i++) {
+      res = await fetch(target, { headers: { 'User-Agent': OSM_UA }, signal: AbortSignal.timeout(30000) });
+      if (res.status !== 503) break;
+      await new Promise((r) => setTimeout(r, 1500));
+    }
+    if (!res.ok) throw new Error(`NOAA ERDDAP returned HTTP ${res.status}`);
+    const rows = (await res.json()).table.rows;
+    const latest = rows.reduce((m, r) => (r[0] > m ? r[0] : m), '');
+    let best = null;
+    for (const r of rows) {
+      if (r[0] !== latest || r[3] == null) continue;
+      const d = (r[1] - lat) ** 2 + ((r[2] - lon) * Math.cos((lat * Math.PI) / 180)) ** 2;
+      if (!best || d < best.d) best = { d, lat: r[1], lon: r[2] };
+    }
+    if (!best) return { sea: false };
+    const series = rows.filter((r) => r[1] === best.lat && r[2] === best.lon && r[3] != null).map((r) => [r[0].slice(0, 10), Math.round(r[3] * 10) / 10]);
+    return { sea: true, lat: best.lat, lon: best.lon, km: Math.round(Math.sqrt(best.d) * 111.2 * 10) / 10, series };
+  });
+}
+
+// /api/tle: current orbital elements from CelesTrak for a few well-known
+// spacecraft; CelesTrak asks users not to download more often than every two
+// hours, so every visitor shares one cached copy.
+const SATS = { 25544: 'ISS', 48274: 'Tiangong', 20580: 'Hubble' };
+function tle(url, ctx) {
+  const cat = url.searchParams.get('cat');
+  if (!SATS[cat]) return json({ error: 'unknown satellite' }, 400);
+  return cachedJson(`tle/${cat}`, 7200, ctx, async () => {
+    const res = await fetch(`https://celestrak.org/NORAD/elements/gp.php?CATNR=${cat}&FORMAT=TLE`, { headers: { 'User-Agent': OSM_UA }, signal: AbortSignal.timeout(15000) });
+    if (!res.ok) throw new Error(`CelesTrak returned HTTP ${res.status}`);
+    const lines = (await res.text()).trim().split(/\r?\n/).map((l) => l.trim());
+    if (lines.length < 3 || !lines[1].startsWith('1 ') || !lines[2].startsWith('2 ')) throw new Error('CelesTrak sent no orbit data');
+    return { name: lines[0], line1: lines[1], line2: lines[2], fetched: new Date().toISOString() };
+  });
+}
+
+// /api/aq: the nearest air quality monitoring stations from OpenAQ (needs the
+// OPENAQ_KEY secret), with their latest reading of each pollutant.
+function airQuality(url, env, ctx) {
+  const c = coord(url, 2);
+  if (!c) return json({ error: 'lat and lon are required' }, 400);
+  if (!env.OPENAQ_KEY) return json({ error: 'not-configured' }, 503, { 'Cache-Control': 'no-store' });
+  return cachedJson(`aq/${c[0]},${c[1]}`, 1800, ctx, async () => {
+    const get = async (path) => {
+      const res = await fetch(`https://api.openaq.org/v3${path}`, { headers: { 'X-API-Key': env.OPENAQ_KEY, 'User-Agent': OSM_UA }, signal: AbortSignal.timeout(15000) });
+      if (!res.ok) throw new Error(`OpenAQ returned HTTP ${res.status}`);
+      return (await res.json()).results || [];
+    };
+    const recent = Date.now() - 3 * 86400000;
+    const locs = (await get(`/locations?coordinates=${c[0]},${c[1]}&radius=25000&limit=100`))
+      .filter((l) => !l.isMobile && l.coordinates && Date.parse(l.datetimeLast?.utc || 0) > recent && l.sensors?.length);
+    const near = locs
+      .map((l) => ({ l, d: (l.coordinates.latitude - c[0]) ** 2 + ((l.coordinates.longitude - c[1]) * Math.cos((c[0] * Math.PI) / 180)) ** 2 }))
+      .sort((a, b) => a.d - b.d)
+      .slice(0, 5);
+    const stations = await Promise.all(near.map(async ({ l }) => {
+      const latest = await get(`/locations/${l.id}/latest`).catch(() => []);
+      const bySensor = new Map(latest.map((r) => [r.sensorsId, r]));
+      const readings = {};
+      for (const s of l.sensors) {
+        const r = bySensor.get(s.id);
+        if (!r || r.value == null || Date.parse(r.datetime?.utc || 0) < recent) continue;
+        readings[s.parameter.name] = { value: r.value, units: s.parameter.units, at: r.datetime.utc };
+      }
+      return { id: l.id, name: l.name, locality: l.locality, provider: l.provider?.name, lat: l.coordinates.latitude, lon: l.coordinates.longitude, readings };
+    }));
+    return { stations: stations.filter((s) => Object.keys(s.readings).length) };
+  });
+}
+
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
@@ -339,6 +466,10 @@ export default {
       if (url.pathname === '/api/ip') return visitorIp(request);
       if (url.pathname === '/api/page') return page(url.searchParams.get('url') || '');
       if (url.pathname === '/api/nearby') return nearby(url, ctx);
+      if (url.pathname === '/api/weather') return weather(url, ctx);
+      if (url.pathname === '/api/sst') return sst(url, ctx);
+      if (url.pathname === '/api/tle') return tle(url, ctx);
+      if (url.pathname === '/api/aq') return airQuality(url, env, ctx);
     }
     if (url.pathname.startsWith('/api/')) return new Response('Not found', { status: 404 });
     return env.ASSETS.fetch(request);

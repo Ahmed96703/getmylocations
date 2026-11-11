@@ -110,8 +110,25 @@ export default function Privacy() {
           <strong>Environment Agency</strong> — used by Flood Warnings Near Me. Your browser sends the position, rounded to about 100 m, to the Environment Agency&rsquo;s real-time flood-monitoring API to get the warnings and river gauges nearby.
         </li>
         <li>
-          <strong>Open-Meteo</strong> — used by Air Quality Near Me and the Elevation Finder. Your browser sends the position (rounded to about 1 km for air quality) or the points you click to Open-Meteo, a free weather and elevation service based in Switzerland. Its terms are at{' '}
-          <span className="text-fg-muted font-mono text-sm">open-meteo.com/en/terms</span>.
+          <strong>Our weather, sea temperature and air quality relays</strong> — Weather Near Me and the UV index on Air Quality Near Me send the position, rounded to about 1 km, to our own server, which asks MET Norway (the Norwegian Meteorological Institute) for the forecast. Sea Temperature sends the rounded position to our server, which asks NOAA CoastWatch for satellite sea temperatures. Air Quality Near Me sends the rounded position to our server, which asks OpenAQ for nearby monitoring stations. Our server caches the answers for 30 minutes to 6 hours; these services see our server, not your IP.
+        </li>
+        <li>
+          <strong>AWS Terrain Tiles</strong> — used by the Elevation Finder. Your browser loads the elevation map images covering the points you choose from Amazon Web Services&rsquo; open data bucket, which sees the tile requested and your IP.
+        </li>
+        <li>
+          <strong>NOAA Space Weather Prediction Center</strong> — used by the Northern Lights Forecast. Your browser downloads the global aurora and Kp forecasts, general files that contain no location; your chance of aurora is worked out in your browser.
+        </li>
+        <li>
+          <strong>CelesTrak</strong> — used by the ISS Tracker, through our server, which fetches the current orbital elements every two hours. Positions and pass times over your location are worked out in your browser; your location is not sent anywhere.
+        </li>
+        <li>
+          <strong>OSRM route planner</strong> — used by the Trip Fuel Cost Calculator. After the place names you type are found with Nominatim, your browser sends the two points to the OSRM demo server (router.project-osrm.org) for the road distance.
+        </li>
+        <li>
+          <strong>ExchangeRate-API</strong> — used by the Currency Converter. Your browser downloads the day&rsquo;s exchange rate table from open.er-api.com; no amount or currency choice is sent.
+        </li>
+        <li>
+          <strong>Nager.Date</strong> — used by Public Holidays. Your browser asks date.nager.at for the holidays of the country and year you choose; no location is sent.
         </li>
         <li>
           <strong>FCC Area API</strong> — a backup for the county and state on What&rsquo;s My ZIP Code when the Census service does not answer. It receives the coordinate and your IP. The FCC&rsquo;s privacy policy is at{' '}

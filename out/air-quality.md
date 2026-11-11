@@ -1,30 +1,43 @@
 ---
-title: "Air Quality Near Me Today: AQI, UV Index & Pollen Count"
-description: "Air quality near you right now: US and European AQI, PM2.5, ozone and NO₂, today's UV index and the pollen count (grass, birch, ragweed), with an hourly forecast and 4-day outlook for any place."
+title: "Air Quality Near Me Today: AQI, PM2.5 & UV Index"
+description: "Air quality near you right now from the nearest monitoring stations: US AQI, PM2.5, PM10, ozone and NO₂ compared with WHO guidelines, plus today's UV index and peak, for any place."
 url: https://getmylocations.com/air-quality
 ---
 
-Free Tool · Copernicus forecast data
+Free Tool · Live station readings
 
-# Air quality near me: AQI, UV index and pollen count today
+# Air quality near me: AQI, PM2.5 and UV index today
 
-See the **air quality where you are right now** on the US or European index, what it means for exercise and health, the levels of **PM2.5, ozone and nitrogen dioxide**, **today's UV index** and, in Europe and the UK, the **pollen count** for grass, trees and weeds. With an hourly forecast and a 4-day outlook for any place. Free, no signup.
+See the **air quality where you are right now**, measured by the **nearest monitoring stations**: the US air quality index and what it means for exercise and health, the levels of **PM2.5, PM10, ozone and nitrogen dioxide** against WHO guidelines, and **today's UV index**. Works for any place with stations nearby; free, no signup.
 
-## Air quality, UV and pollen for a place
+## Air quality and UV near a place
 
-Forecasts from [Open-Meteo](https://open-meteo.com/en/docs/air-quality-api), based on the Copernicus Atmosphere Monitoring Service (CAMS), on a grid of about 11 km in Europe and 45 km elsewhere, so a busy road can be worse than shown. For official alerts follow your national service. Your position is rounded to about 1 km before it is sent.
+Each dot is a monitoring station, coloured by its air quality index.
+
+Readings from official and research monitoring stations, collected by [OpenAQ](https://openaq.org/), within 25 km and from the last three days. The AQI uses the US EPA scale on the latest hourly particle reading, so it can differ from an official 24-hour figure. UV forecast from [MET Norway](https://api.met.no/) (CC BY 4.0). Your position is rounded to about 1 km before it is sent.
 
 ## Air quality index levels
 
-| US AQI | European AQI | Level | What to do |
-| --- | --- | --- | --- |
-| 0–50 | 0–40 | Good / fair | Enjoy the outdoors as usual |
-| 51–100 | 40–60 | Moderate | Unusually sensitive people may limit long, hard exercise outside |
-| 101–150 | 60–80 | Unhealthy for sensitive groups / poor | People with asthma, heart or lung disease, older adults and children should take it easier |
-| 151–200 | 80–100 | Unhealthy / very poor | Everyone should cut down hard exercise outdoors |
-| 201+ | 100+ | Very unhealthy to hazardous | Stay indoors with windows closed if you can |
+| US AQI | Level | What to do |
+| --- | --- | --- |
+| 0–50 | Good | Enjoy the outdoors as usual |
+| 51–100 | Moderate | Unusually sensitive people may limit long, hard exercise outside |
+| 101–150 | Unhealthy for sensitive groups | People with asthma, heart or lung disease, older adults and children should take it easier |
+| 151–200 | Unhealthy | Everyone should cut down hard exercise outdoors |
+| 201+ | Very unhealthy to hazardous | Stay indoors with windows closed if you can |
 
-The two scales are calculated differently, so the same air can score 43 on one and 65 on the other. The tool picks the US index in the Americas and the European index elsewhere; switch between them with the buttons.
+The index is worked out from PM2.5 and PM10 using the US EPA breakpoints revised in 2024, taking whichever is worse. Official indexes average particles over 24 hours, so a short spike, such as smoke from a bonfire, shows higher here than in a daily report.
+
+## WHO air quality guidelines
+
+| Pollutant | WHO guideline | Main sources |
+| --- | --- | --- |
+| PM2.5 | 15 µg/m³ (24-hour) | Traffic, wood burning, industry, wildfire smoke |
+| PM10 | 45 µg/m³ (24-hour) | Dust, construction, road and brake wear |
+| NO₂ | 25 µg/m³ (24-hour) | Road traffic, especially diesel |
+| Ozone | 100 µg/m³ (8-hour) | Forms in sunshine from other pollutants |
+
+The World Health Organization tightened these levels in 2021. Many cities are above them on some days even when the national index says the air is fine, so a reading above the guideline is a nudge to take it easy, not a reason for alarm.
 
 ## UV index and sun protection
 
@@ -33,31 +46,27 @@ The two scales are calculated differently, so the same air can score 43 on one a
 -   **6–7, high** and **8–10, very high:** SPF 30 or higher, cover up, and stay in the shade in the middle of the day.
 -   **11 and above, extreme:** unprotected skin can burn in minutes; avoid the midday sun.
 
-## Pollen and hay fever
-
-In Europe and the UK, tree pollen (alder from late winter, birch in April and May, olive around the Mediterranean) comes first, grass pollen peaks from late May to July, and weed pollen such as ragweed and mugwort runs from late summer into autumn. Counts are highest on warm, dry, breezy days and usually lowest after rain. If you have hay fever, check the forecast in the morning, keep windows closed when counts are high, and shower and change clothes after being outside.
-
 ## Frequently asked questions
 
 What is the air quality near me today?
 
-Press "Air quality near me" to use your location, or search any place. The tool shows the current air quality index with what it means for outdoor activity, the main pollutants, the UV index and, in Europe, the pollen count, with an hour-by-hour forecast.
+Press "Air quality near me" to use your location, or search any place. The tool finds the monitoring stations within 25 km that reported in the last three days, shows the air quality index from the nearest one with particle readings, what it means for outdoor activity, each station's pollutant levels and the UV index.
 
 What is a good AQI?
 
-On the US scale, 0 to 50 is good and 51 to 100 moderate; above 100 the air is unhealthy for sensitive groups such as people with asthma, older adults and children. On the European scale, below 40 is good or fair, 40 to 60 moderate and above 60 poor.
+On the US scale, 0 to 50 is good and 51 to 100 moderate; above 100 the air is unhealthy for sensitive groups such as people with asthma, older adults and children, and above 150 it is unhealthy for everyone.
 
-Why does this differ from my local monitoring station?
+Why does this differ from my weather app?
 
-These are model forecasts for an area about 11 km across in Europe and 45 km elsewhere, not readings from one street. Next to a busy road or during a local fire, a nearby station can show worse air; in a park it can show better.
+Many apps show a computer model forecast for an area several kilometres across. These are measurements from real stations, so they are exact for the station's spot but can differ a few streets away, and the index here uses the latest hourly reading rather than a 24-hour average.
+
+Why is there no station near me?
+
+Monitoring networks are dense in cities in Europe, North America and much of Asia, and sparse in rural areas and some countries. If nothing has reported within 25 km in the last three days, the tool says so rather than guessing.
 
 When do I need sun protection?
 
 When the UV index is 3 or more. In the UK and northern Europe that is common from about April to September around the middle of the day; in Australia and New Zealand, UV is high or extreme on most summer days and can be moderate even in winter.
-
-Why is there no pollen count for my area?
-
-The pollen model covers Europe only, including the UK. Outside the season, roughly February to September, counts are usually zero. For the US and Australia, national weather services and allergy organisations publish their own pollen forecasts.
 
 ## Related tools
 

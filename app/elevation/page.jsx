@@ -22,7 +22,7 @@ const faqs = [
   },
   {
     q: 'Why does a mountain show lower than its official height?',
-    a: 'Each figure is an average over a square about 90 m across. A sharp summit is the very top of that square, so it reads lower: Ben Nevis, 1,345 m, shows about 1,290 m. For a peak\'s official height, use the national mapping agency.',
+    a: 'Each figure is the height of a map pixel 10 to 30 m across, from radar and survey models. A sharp summit is the very top of its pixel, so it can read lower: Ben Nevis, 1,345 m, shows about 1,320 m. For a peak\'s official height, use the national mapping agency.',
   },
   {
     q: 'How do I see the elevation along a route?',
@@ -39,7 +39,7 @@ export default function Page() {
     <ToolPage
       path={PATH}
       name="Elevation Finder"
-      eyebrow="Free Tool · Copernicus elevation data"
+      eyebrow="Free Tool · Open elevation data"
       h1="What is my elevation?"
       accent="elevation finder and profile map"
       intro="Find your elevation above sea level, or the height of any address, mountain or point you click on the map, in metres and feet. Draw a walk, ride or road to see its elevation profile, the total climb and descent, the highest and lowest points and the steepest slope. Works worldwide; free, no signup."

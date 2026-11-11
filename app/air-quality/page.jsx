@@ -5,32 +5,32 @@ const PATH = '/air-quality';
 
 export const metadata = toolMetadata({
   path: PATH,
-  title: 'Air Quality Near Me Today: AQI, UV Index & Pollen Count',
+  title: 'Air Quality Near Me Today: AQI, PM2.5 & UV Index',
   description:
-    'Air quality near you right now: US and European AQI, PM2.5, ozone and NO₂, today\'s UV index and the pollen count (grass, birch, ragweed), with an hourly forecast and 4-day outlook for any place.',
-  keywords: ['air quality near me', 'aqi near me', 'air quality today', 'air quality index', 'uv index today', 'uv index near me', 'pollen count today', 'pollen count near me', 'pm2.5 near me', 'is the air quality bad today'],
+    'Air quality near you right now from the nearest monitoring stations: US AQI, PM2.5, PM10, ozone and NO₂ compared with WHO guidelines, plus today\'s UV index and peak, for any place.',
+  keywords: ['air quality near me', 'aqi near me', 'air quality today', 'air quality index', 'uv index today', 'uv index near me', 'pm2.5 near me', 'air pollution near me', 'is the air quality bad today', 'air quality monitoring stations near me'],
 });
 
 const faqs = [
   {
     q: 'What is the air quality near me today?',
-    a: 'Press "Air quality near me" to use your location, or search any place. The tool shows the current air quality index with what it means for outdoor activity, the main pollutants, the UV index and, in Europe, the pollen count, with an hour-by-hour forecast.',
+    a: 'Press "Air quality near me" to use your location, or search any place. The tool finds the monitoring stations within 25 km that reported in the last three days, shows the air quality index from the nearest one with particle readings, what it means for outdoor activity, each station\'s pollutant levels and the UV index.',
   },
   {
     q: 'What is a good AQI?',
-    a: 'On the US scale, 0 to 50 is good and 51 to 100 moderate; above 100 the air is unhealthy for sensitive groups such as people with asthma, older adults and children. On the European scale, below 40 is good or fair, 40 to 60 moderate and above 60 poor.',
+    a: 'On the US scale, 0 to 50 is good and 51 to 100 moderate; above 100 the air is unhealthy for sensitive groups such as people with asthma, older adults and children, and above 150 it is unhealthy for everyone.',
   },
   {
-    q: 'Why does this differ from my local monitoring station?',
-    a: 'These are model forecasts for an area about 11 km across in Europe and 45 km elsewhere, not readings from one street. Next to a busy road or during a local fire, a nearby station can show worse air; in a park it can show better.',
+    q: 'Why does this differ from my weather app?',
+    a: 'Many apps show a computer model forecast for an area several kilometres across. These are measurements from real stations, so they are exact for the station\'s spot but can differ a few streets away, and the index here uses the latest hourly reading rather than a 24-hour average.',
+  },
+  {
+    q: 'Why is there no station near me?',
+    a: 'Monitoring networks are dense in cities in Europe, North America and much of Asia, and sparse in rural areas and some countries. If nothing has reported within 25 km in the last three days, the tool says so rather than guessing.',
   },
   {
     q: 'When do I need sun protection?',
     a: 'When the UV index is 3 or more. In the UK and northern Europe that is common from about April to September around the middle of the day; in Australia and New Zealand, UV is high or extreme on most summer days and can be moderate even in winter.',
-  },
-  {
-    q: 'Why is there no pollen count for my area?',
-    a: 'The pollen model covers Europe only, including the UK. Outside the season, roughly February to September, counts are usually zero. For the US and Australia, national weather services and allergy organisations publish their own pollen forecasts.',
   },
 ];
 
@@ -39,13 +39,13 @@ export default function Page() {
     <ToolPage
       path={PATH}
       name="Air Quality Near Me"
-      eyebrow="Free Tool · Copernicus forecast data"
+      eyebrow="Free Tool · Live station readings"
       h1="Air quality near me"
-      accent="AQI, UV index and pollen count today"
-      intro="See the air quality where you are right now on the US or European index, what it means for exercise and health, the levels of PM2.5, ozone and nitrogen dioxide, today's UV index and, in Europe and the UK, the pollen count for grass, trees and weeds. With an hourly forecast and a 4-day outlook for any place. Free, no signup."
-      bold={['air quality where you are right now', 'PM2.5, ozone and nitrogen dioxide', "today's UV index", 'pollen count']}
-      appDescription="Free air quality checker for any place: US and European AQI, pollutants, UV index and European pollen counts, with hourly and 4-day forecasts from Copernicus data."
-      features={['US AQI and European AQI', 'PM2.5, PM10, NO₂, ozone, SO₂ and CO', 'UV index now and today\'s peak', 'Grass, tree and weed pollen (Europe)', 'Hourly forecast and 4-day outlook']}
+      accent="AQI, PM2.5 and UV index today"
+      intro="See the air quality where you are right now, measured by the nearest monitoring stations: the US air quality index and what it means for exercise and health, the levels of PM2.5, PM10, ozone and nitrogen dioxide against WHO guidelines, and today's UV index. Works for any place with stations nearby; free, no signup."
+      bold={['air quality where you are right now', 'nearest monitoring stations', 'PM2.5, PM10, ozone and nitrogen dioxide', "today's UV index"]}
+      appDescription="Free air quality checker for any place: US AQI and pollutant readings from nearby monitoring stations, compared with WHO guidelines, plus the UV index forecast."
+      features={['US AQI from the nearest station', 'PM2.5, PM10, NO₂, ozone, SO₂ and CO', 'Readings compared with WHO guidelines', 'UV index now and the next 24 hours\' peak', 'Stations on a map with distance and direction']}
       tool={<Tool />}
       faqs={faqs}
       related={[
@@ -57,17 +57,32 @@ export default function Page() {
     >
       <Section title="Air quality index levels">
         <Table
-          head={['US AQI', 'European AQI', 'Level', 'What to do']}
+          head={['US AQI', 'Level', 'What to do']}
           rows={[
-            ['0–50', '0–40', 'Good / fair', 'Enjoy the outdoors as usual'],
-            ['51–100', '40–60', 'Moderate', 'Unusually sensitive people may limit long, hard exercise outside'],
-            ['101–150', '60–80', 'Unhealthy for sensitive groups / poor', 'People with asthma, heart or lung disease, older adults and children should take it easier'],
-            ['151–200', '80–100', 'Unhealthy / very poor', 'Everyone should cut down hard exercise outdoors'],
-            ['201+', '100+', 'Very unhealthy to hazardous', 'Stay indoors with windows closed if you can'],
+            ['0–50', 'Good', 'Enjoy the outdoors as usual'],
+            ['51–100', 'Moderate', 'Unusually sensitive people may limit long, hard exercise outside'],
+            ['101–150', 'Unhealthy for sensitive groups', 'People with asthma, heart or lung disease, older adults and children should take it easier'],
+            ['151–200', 'Unhealthy', 'Everyone should cut down hard exercise outdoors'],
+            ['201+', 'Very unhealthy to hazardous', 'Stay indoors with windows closed if you can'],
           ]}
         />
         <P>
-          The two scales are calculated differently, so the same air can score 43 on one and 65 on the other. The tool picks the US index in the Americas and the European index elsewhere; switch between them with the buttons.
+          The index is worked out from PM2.5 and PM10 using the US EPA breakpoints revised in 2024, taking whichever is worse. Official indexes average particles over 24 hours, so a short spike, such as smoke from a bonfire, shows higher here than in a daily report.
+        </P>
+      </Section>
+
+      <Section title="WHO air quality guidelines">
+        <Table
+          head={['Pollutant', 'WHO guideline', 'Main sources']}
+          rows={[
+            ['PM2.5', '15 µg/m³ (24-hour)', 'Traffic, wood burning, industry, wildfire smoke'],
+            ['PM10', '45 µg/m³ (24-hour)', 'Dust, construction, road and brake wear'],
+            ['NO₂', '25 µg/m³ (24-hour)', 'Road traffic, especially diesel'],
+            ['Ozone', '100 µg/m³ (8-hour)', 'Forms in sunshine from other pollutants'],
+          ]}
+        />
+        <P>
+          The World Health Organization tightened these levels in 2021. Many cities are above them on some days even when the national index says the air is fine, so a reading above the guideline is a nudge to take it easy, not a reason for alarm.
         </P>
       </Section>
 
@@ -80,11 +95,6 @@ export default function Page() {
         ]} />
       </Section>
 
-      <Section title="Pollen and hay fever">
-        <P>
-          In Europe and the UK, tree pollen (alder from late winter, birch in April and May, olive around the Mediterranean) comes first, grass pollen peaks from late May to July, and weed pollen such as ragweed and mugwort runs from late summer into autumn. Counts are highest on warm, dry, breezy days and usually lowest after rain. If you have hay fever, check the forecast in the morning, keep windows closed when counts are high, and shower and change clothes after being outside.
-        </P>
-      </Section>
     </ToolPage>
   );
 }

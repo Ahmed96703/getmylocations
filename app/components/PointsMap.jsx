@@ -5,7 +5,7 @@ import { MapContainer, TileLayer, CircleMarker, Circle, Tooltip, useMap, useMapE
 import 'leaflet/dist/leaflet.css';
 import { TILES } from './tileLayers.js';
 
-function Fit({ center, points, radius, fitKey, zoom }) {
+function Fit({ center, points, radius, fitKey, zoom, fitPoints }) {
   const map = useMap();
   useEffect(() => {
     if (!center) return;
@@ -13,7 +13,7 @@ function Fit({ center, points, radius, fitKey, zoom }) {
       const d = radius / 111320;
       const e = radius / (111320 * Math.max(0.05, Math.cos((center.lat * Math.PI) / 180)));
       map.fitBounds([[center.lat - d, center.lon - e], [center.lat + d, center.lon + e]], { padding: [20, 20] });
-    } else if (points.length) {
+    } else if (points.length && fitPoints) {
       map.fitBounds([[center.lat, center.lon], ...points.map((p) => [p.lat, p.lon])], { padding: [30, 30], maxZoom: 16 });
     } else {
       map.setView([center.lat, center.lon], zoom);
@@ -37,7 +37,7 @@ function ClickHandler({ onPick }) {
 
 // Map shared by the single-purpose tools: a center point, an optional radius
 // circle, and points drawn on a canvas ({ lat, lon, color, r, tip, key }).
-export default function PointsMap({ center, points = [], radius, fitKey, focus, onPick, label = 'Map', centerTip = 'Search point', start = [30, 0], startZoom = 2, attribution = '', zoom = 13 }) {
+export default function PointsMap({ center, points = [], radius, fitKey, focus, onPick, label = 'Map', centerTip = 'Search point', start = [30, 0], startZoom = 2, attribution = '', zoom = 13, fitPoints = true }) {
   const tiles = TILES.light;
   return (
     <div className="w-full aspect-[4/3] sm:aspect-[16/10] rounded-2xl overflow-hidden border border-line">
@@ -56,7 +56,7 @@ export default function PointsMap({ center, points = [], radius, fitKey, focus, 
             <Tooltip>{centerTip}</Tooltip>
           </CircleMarker>
         )}
-        <Fit center={center} points={points} radius={radius} fitKey={fitKey} zoom={zoom} />
+        <Fit center={center} points={points} radius={radius} fitKey={fitKey} zoom={zoom} fitPoints={fitPoints} />
         <FlyTo focus={focus} />
         <ClickHandler onPick={onPick} />
       </MapContainer>

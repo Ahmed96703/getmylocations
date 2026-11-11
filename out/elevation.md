@@ -4,7 +4,7 @@ description: "Find your elevation above sea level, or the height of any point on
 url: https://getmylocations.com/elevation
 ---
 
-Free Tool · Copernicus elevation data
+Free Tool · Open elevation data
 
 # What is my elevation?: elevation finder and profile map
 
@@ -16,7 +16,7 @@ Find your **elevation above sea level**, or the height of any address, mountain 
 
 Click anywhere on the map to get its height above sea level.
 
-Heights from [Open-Meteo](https://open-meteo.com/en/docs/elevation-api), using the Copernicus 90 m elevation model. Each figure is an average over a square about 90 m across, so sharp summits read lower than their official height, and because the model measures the surface seen from space, dense forest or large buildings can add a few metres. The profile samples the straight lines between your points.
+Heights from the [Terrain Tiles](https://registry.opendata.aws/terrain-tiles/) open dataset on AWS (Mapzen), which combines SRTM, GMTED, ETOPO1, the US National Elevation Dataset and other sources ([full attribution](https://github.com/tilezen/joerd/blob/master/docs/attribution.md)), read on your device. Pixels are about 10 to 30 m across depending on the area, so sharp summits can read a little lower than their official height. The profile samples the straight lines between your points.
 
 ## How to find the elevation of a place
 
@@ -50,7 +50,7 @@ GPS measures height less precisely than position, often within 10 to 30 metres, 
 
 Why does a mountain show lower than its official height?
 
-Each figure is an average over a square about 90 m across. A sharp summit is the very top of that square, so it reads lower: Ben Nevis, 1,345 m, shows about 1,290 m. For a peak's official height, use the national mapping agency.
+Each figure is the height of a map pixel 10 to 30 m across, from radar and survey models. A sharp summit is the very top of its pixel, so it can read lower: Ben Nevis, 1,345 m, shows about 1,320 m. For a peak's official height, use the national mapping agency.
 
 How do I see the elevation along a route?
 

@@ -143,7 +143,7 @@ Every location tool on this site. Each one is free, runs in your browser, and ne
     
     ### Air Quality Near Me
     
-    Air quality index, UV index and pollen count for any place, with an hourly forecast.
+    Air quality index from the nearest monitoring stations, PM2.5, ozone and the UV index.
     
     ](https://getmylocations.com/air-quality)
 -   [
@@ -188,6 +188,62 @@ Every location tool on this site. Each one is free, runs in your browser, and ne
     Find the exact opposite point on Earth from you or any place, on two maps.
     
     ](https://getmylocations.com/antipode-map)
+-   [
+    
+    ### Weather Near Me
+    
+    Weather now, hour by hour and for 9 days, and whether it will rain today.
+    
+    ](https://getmylocations.com/weather)
+-   [
+    
+    ### Northern Lights Forecast
+    
+    Live aurora map, your chance of seeing the northern lights tonight and the Kp forecast.
+    
+    ](https://getmylocations.com/northern-lights)
+-   [
+    
+    ### ISS Tracker
+    
+    The International Space Station live on a map, and when you can see it pass over.
+    
+    ](https://getmylocations.com/iss-tracker)
+-   [
+    
+    ### Trip Fuel Cost Calculator
+    
+    Fuel or charging cost of a journey from the road distance, mpg or L/100 km and price.
+    
+    ](https://getmylocations.com/fuel-cost-calculator)
+-   [
+    
+    ### Sea Temperature
+    
+    Today’s sea temperature at any beach from satellite data, and whether it is warm enough to swim.
+    
+    ](https://getmylocations.com/sea-temperature)
+-   [
+    
+    ### Currency Converter
+    
+    Convert between 160+ currencies at today’s mid-market exchange rates.
+    
+    ](https://getmylocations.com/currency-converter)
+-   [
+    
+    ### Emergency Numbers
+    
+    Police, ambulance and fire numbers for 70+ countries, with the one for where you are.
+    
+    ](https://getmylocations.com/emergency-numbers)
+-   [
+    
+    ### Public Holidays
+    
+    Public and bank holidays for 100+ countries, with the next holiday and long weekends.
+    
+    ](https://getmylocations.com/public-holidays)
 -   [
     
     ### Address Finder
