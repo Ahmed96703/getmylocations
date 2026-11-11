@@ -71,7 +71,8 @@ export default function ToolPage({ path, name, eyebrow, h1, accent, intro, bold 
   // Related tools: the ones the page names first, then others from the same group.
   const own = NET_TOOLS.find((t) => t.href === path);
   const picks = [
-    ...related.map((href) => NET_TOOLS.find((t) => t.href === href) || null).filter(Boolean),
+    // `related` entries are hrefs of network tools, or { href, label, desc } for any other page.
+    ...related.map((r) => (typeof r === 'object' ? r : NET_TOOLS.find((t) => t.href === r) || null)).filter(Boolean),
     ...NET_TOOLS.filter((t) => t.group === own?.group && t.href !== path && !related.includes(t.href)),
   ].slice(0, 4);
 

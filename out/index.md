@@ -99,6 +99,41 @@ Every location tool on this site. Each one is free, runs in your browser, and ne
     ](https://getmylocations.com/public-toilets-near-me)
 -   [
     
+    ### Earthquakes Near Me
+    
+    Recent earthquakes near you on a live map, with magnitude, distance and depth.
+    
+    ](https://getmylocations.com/earthquakes-near-me)
+-   [
+    
+    ### Sunrise & Sunset Times
+    
+    Sunrise, sunset, golden hour, twilight and day length for any place and date.
+    
+    ](https://getmylocations.com/sunrise-sunset)
+-   [
+    
+    ### Photo Location Finder
+    
+    See where a photo was taken from its GPS data, without uploading it.
+    
+    ](https://getmylocations.com/photo-location)
+-   [
+    
+    ### UK Crime Map
+    
+    Crimes reported within a mile of any UK postcode, by type and street.
+    
+    ](https://getmylocations.com/crime-map)
+-   [
+    
+    ### OS Grid Reference Finder
+    
+    Your OS grid reference, and grid references to latitude and longitude.
+    
+    ](https://getmylocations.com/uk-grid-reference)
+-   [
+    
     ### Address Finder
     
     Address-to-coordinates and coordinates-to-address geocoding both ways.

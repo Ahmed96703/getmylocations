@@ -11,9 +11,12 @@
     "lint": "next lint",
     "vite:dev": "vite",
     "vite:build": "vite build",
-    "preview": "npm run build && npx serve@latest out"
+    "preview": "npm run build && npx serve@latest out",
+    "growth": "node scripts/growth/run.mjs"
   },
   "dependencies": {
+    "@photostructure/tz-lookup": "11.7.0",
+    "exifr": "7.1.3",
     "leaflet": "^1.9.4",
     "next": "^14.2.13",
     "react": "^18.3.1",
