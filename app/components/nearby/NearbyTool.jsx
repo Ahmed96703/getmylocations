@@ -21,8 +21,8 @@ const walk = (m) => `${Math.max(1, Math.round((m * 1.3) / 80))} min walk`; // 80
 // Worker returns for `kind` ({ id, label, one, radius, color }); `filters` are
 // optional checkboxes ({ id, label, test(tags) }); `badges(place)` returns
 // short labels from the OpenStreetMap tags. `nameFilter` adds a box to match
-// a name or chain, such as Costco or Boots.
-export default function NearbyTool({ kind, title, button, categories, filters = [], badges, empty, nameFilter }) {
+// a name or chain, such as Costco or Boots. `mode` is 'walking' or 'driving'.
+export default function NearbyTool({ kind, title, button, categories, filters = [], badges, empty, nameFilter, mode = 'walking' }) {
   const [center, setCenter] = useState(null);
   const [places, setPlaces] = useState([]);
   const [cat, setCat] = useState(categories[0].id);
@@ -193,7 +193,7 @@ export default function NearbyTool({ kind, title, button, categories, filters = 
                     <span className="text-fg-subtle mr-1.5">{i + 1}.</span>
                     {p.tags.name || p.tags.brand || current.one}
                   </h3>
-                  <span className="text-sm font-mono text-fg">{dist(p.d)} {compass(p.dir)}<span className="text-fg-subtle font-sans text-xs"> · {walk(p.d)}</span></span>
+                  <span className="text-sm font-mono text-fg">{dist(p.d)} {compass(p.dir)}{mode === 'walking' && <span className="text-fg-subtle font-sans text-xs"> · {walk(p.d)}</span>}</span>
                 </div>
                 {addr && <p className="text-sm text-fg-muted mt-1">{addr}</p>}
                 {h && (
@@ -209,7 +209,7 @@ export default function NearbyTool({ kind, title, button, categories, filters = 
                   </ul>
                 )}
                 <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm">
-                  <a href={directionsUrl(p)} target="_blank" rel="noopener" className="text-accent hover:underline">Directions</a>
+                  <a href={directionsUrl(p, mode)} target="_blank" rel="noopener" className="text-accent hover:underline">Directions</a>
                   {tel && <a href={`tel:${tel.split(';')[0].replace(/[^\d+]/g, '')}`} className="text-accent hover:underline">Call {tel.split(';')[0]}</a>}
                   <button type="button" onClick={() => setFocus(p)} className="text-accent hover:underline">Show on map</button>
                   <a href={osmUrl(p)} target="_blank" rel="noopener" className="text-fg-subtle hover:underline">Details or fix on OpenStreetMap</a>
@@ -221,7 +221,7 @@ export default function NearbyTool({ kind, title, button, categories, filters = 
       )}
 
       <p className="mt-4 text-xs text-fg-subtle leading-relaxed">
-        Places and opening hours from <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener" className="hover:underline">OpenStreetMap</a> contributors, refreshed weekly. Distances are straight-line; walking times assume streets about 30% longer. Your position is rounded to about {kind === 'health' ? '2 km' : '1 km'} before the lookup is sent, and distances are worked out in your browser.
+        Places and opening hours from <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener" className="hover:underline">OpenStreetMap</a> contributors, refreshed weekly. Distances are straight-line{mode === 'walking' ? '; walking times assume streets about 30% longer' : ''}. Your position is rounded to about {kind === 'toilets' ? '1 km' : '2 km'} before the lookup is sent, and distances are worked out in your browser.
       </p>
     </section>
   );

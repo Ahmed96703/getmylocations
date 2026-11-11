@@ -138,7 +138,7 @@ async function page(target) {
   }, 200, { 'Cache-Control': 'private, max-age=300' });
 }
 
-// /api/nearby?kind=health|toilets&lat=..&lon=.. answers the Pharmacy Near Me
+// /api/nearby?kind=health|toilets|ev&lat=..&lon=.. answers the Pharmacy Near Me
 // and Public Toilets Near Me tools from OpenStreetMap, through the public
 // Overpass API. The browser rounds the position to a grid cell before it
 // asks (about 2 km for health, 1 km for toilets), so neither this Worker nor
@@ -166,12 +166,16 @@ const NEARBY = {
     ],
   },
   toilets: { cell: 0.01, parts: [['toilets', 'amenity', 'toilets', 2800]] },
+  ev: { cell: 0.02, parts: [['charging_station', 'amenity', 'charging_station', 6700]] },
 };
 const KEEP = [
   'name', 'brand', 'operator', 'opening_hours', 'phone', 'contact:phone', 'website', 'contact:website',
   'addr:street', 'addr:housenumber', 'addr:city', 'addr:postcode', 'emergency', 'dispensing',
   'fee', 'charge', 'wheelchair', 'changing_table', 'unisex', 'access', 'indoor', 'level',
   'defibrillator:location', 'description',
+  'network', 'capacity', 'socket:type2', 'socket:type2_combo', 'socket:chademo', 'socket:type1', 'socket:type1_combo',
+  'socket:tesla_supercharger', 'socket:nacs', 'socket:type2:output', 'socket:type2_combo:output', 'socket:chademo:output',
+  'parking:fee', 'authentication:app', 'authentication:contactless', 'authentication:membership_card',
 ];
 const NEARBY_CACHE_SECONDS = 7 * 86400;
 const NEARBY_VERSION = 2;

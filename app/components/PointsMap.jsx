@@ -5,7 +5,7 @@ import { MapContainer, TileLayer, CircleMarker, Circle, Tooltip, useMap, useMapE
 import 'leaflet/dist/leaflet.css';
 import { TILES } from './tileLayers.js';
 
-function Fit({ center, points, radius, fitKey }) {
+function Fit({ center, points, radius, fitKey, zoom }) {
   const map = useMap();
   useEffect(() => {
     if (!center) return;
@@ -16,7 +16,7 @@ function Fit({ center, points, radius, fitKey }) {
     } else if (points.length) {
       map.fitBounds([[center.lat, center.lon], ...points.map((p) => [p.lat, p.lon])], { padding: [30, 30], maxZoom: 16 });
     } else {
-      map.setView([center.lat, center.lon], 13);
+      map.setView([center.lat, center.lon], zoom);
     }
   }, [fitKey, map]);
   return null;
@@ -37,7 +37,7 @@ function ClickHandler({ onPick }) {
 
 // Map shared by the single-purpose tools: a center point, an optional radius
 // circle, and points drawn on a canvas ({ lat, lon, color, r, tip, key }).
-export default function PointsMap({ center, points = [], radius, fitKey, focus, onPick, label = 'Map', centerTip = 'Search point', start = [30, 0], startZoom = 2, attribution = '' }) {
+export default function PointsMap({ center, points = [], radius, fitKey, focus, onPick, label = 'Map', centerTip = 'Search point', start = [30, 0], startZoom = 2, attribution = '', zoom = 13 }) {
   const tiles = TILES.light;
   return (
     <div className="w-full aspect-[4/3] sm:aspect-[16/10] rounded-2xl overflow-hidden border border-line">
@@ -56,7 +56,7 @@ export default function PointsMap({ center, points = [], radius, fitKey, focus, 
             <Tooltip>{centerTip}</Tooltip>
           </CircleMarker>
         )}
-        <Fit center={center} points={points} radius={radius} fitKey={fitKey} />
+        <Fit center={center} points={points} radius={radius} fitKey={fitKey} zoom={zoom} />
         <FlyTo focus={focus} />
         <ClickHandler onPick={onPick} />
       </MapContainer>

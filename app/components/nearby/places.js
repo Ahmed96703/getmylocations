@@ -7,7 +7,7 @@ import { bearing } from '../../fire-map/fires.js';
 
 // Must match NEARBY[kind].cell in worker/index.js. The position is rounded to
 // the cell before it leaves the browser.
-const CELL = { health: 0.02, toilets: 0.01 };
+const CELL = { health: 0.02, toilets: 0.01, ev: 0.02 };
 
 const snap = (v, cell) => (Math.round(v / cell) * cell).toFixed(4);
 

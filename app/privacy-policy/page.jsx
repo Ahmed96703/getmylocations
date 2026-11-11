@@ -83,7 +83,7 @@ export default function Privacy() {
         </li>
         <li>
           <strong>OpenStreetMap Nominatim</strong> — used for the nearest street address on the homepage and My Location, by the Address Finder, by the
-          Street View tool to turn a typed address into coordinates, by What&rsquo;s My Postcode for the nearest address and for postcodes outside the UK, by the Photo Location Finder for the address of a photo&rsquo;s coordinates (the photo itself is never uploaded; it is read in your browser), for place searches on the Earthquakes, Sunrise and Sunset and UK Crime Map tools, and as a fallback elsewhere. Their privacy policy is published at{' '}
+          Street View tool to turn a typed address into coordinates, by What&rsquo;s My Postcode for the nearest address and for postcodes outside the UK, by the Photo Location Finder for the address of a photo&rsquo;s coordinates (the photo itself is never uploaded; it is read in your browser), for the place names on the Antipode Map, for place searches on the Earthquakes, Sunrise and Sunset, UK Crime Map, Elevation, Area Calculator, Time Difference and Moon Phase tools, and as a fallback elsewhere. Their privacy policy is published at{' '}
           <span className="text-fg-muted font-mono text-sm">wiki.osmfoundation.org/wiki/Privacy_Policy</span>.
         </li>
         <li>
@@ -97,7 +97,7 @@ export default function Privacy() {
           <span className="text-fg-muted font-mono text-sm">census.gov/about/policies/privacy.html</span>.
         </li>
         <li>
-          <strong>QLever (University of Freiburg) and the OpenStreetMap Overpass API</strong> — used by Pharmacy Near Me and Public Toilets Near Me to find places nearby. Your browser rounds the position to a grid of about 2 km (pharmacies) or 1 km (toilets) and sends only that rounded point to our own server, which asks QLever&rsquo;s OpenStreetMap index (or an Overpass server when QLever does not answer) and keeps the answer for up to a week. These services see our server, not your IP. Distances are worked out in your browser.
+          <strong>QLever (University of Freiburg) and the OpenStreetMap Overpass API</strong> — used by Pharmacy Near Me, Public Toilets Near Me and EV Charging Near Me to find places nearby. Your browser rounds the position to a grid of about 2 km (pharmacies and chargers) or 1 km (toilets) and sends only that rounded point to our own server, which asks QLever&rsquo;s OpenStreetMap index (or an Overpass server when QLever does not answer) and keeps the answer for up to a week. These services see our server, not your IP. Distances are worked out in your browser.
         </li>
         <li>
           <strong>data.police.uk</strong> — used by the UK Crime Map. Your browser sends the position, rounded to about 100 m, and the month to the Home Office&rsquo;s police data API, which returns the crimes recorded within a mile; when there are none it also asks which police force covers that point. Its terms are at{' '}
@@ -105,6 +105,13 @@ export default function Privacy() {
         </li>
         <li>
           <strong>USGS and GeoNet</strong> — used by Earthquakes Near Me. Your browser sends the position, rounded to about 1 km, with the search radius and period to the US Geological Survey&rsquo;s earthquake catalogue. In New Zealand it also loads GeoNet&rsquo;s list of the latest quakes, a general feed that receives no coordinate.
+        </li>
+        <li>
+          <strong>Environment Agency</strong> — used by Flood Warnings Near Me. Your browser sends the position, rounded to about 100 m, to the Environment Agency&rsquo;s real-time flood-monitoring API to get the warnings and river gauges nearby.
+        </li>
+        <li>
+          <strong>Open-Meteo</strong> — used by Air Quality Near Me and the Elevation Finder. Your browser sends the position (rounded to about 1 km for air quality) or the points you click to Open-Meteo, a free weather and elevation service based in Switzerland. Its terms are at{' '}
+          <span className="text-fg-muted font-mono text-sm">open-meteo.com/en/terms</span>.
         </li>
         <li>
           <strong>FCC Area API</strong> — a backup for the county and state on What&rsquo;s My ZIP Code when the Census service does not answer. It receives the coordinate and your IP. The FCC&rsquo;s privacy policy is at{' '}

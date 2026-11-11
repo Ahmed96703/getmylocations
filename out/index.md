@@ -134,6 +134,62 @@ Every location tool on this site. Each one is free, runs in your browser, and ne
     ](https://getmylocations.com/uk-grid-reference)
 -   [
     
+    ### Flood Warnings Near Me
+    
+    Live flood warnings, alerts and river levels near any postcode in England.
+    
+    ](https://getmylocations.com/flood-warnings)
+-   [
+    
+    ### Air Quality Near Me
+    
+    Air quality index, UV index and pollen count for any place, with an hourly forecast.
+    
+    ](https://getmylocations.com/air-quality)
+-   [
+    
+    ### Elevation Finder
+    
+    Height above sea level of your location or any point, and an elevation profile.
+    
+    ](https://getmylocations.com/elevation)
+-   [
+    
+    ### Area Calculator
+    
+    Measure the area of any field, plot or roof on a satellite map in acres and m².
+    
+    ](https://getmylocations.com/area-calculator)
+-   [
+    
+    ### Time Difference
+    
+    The time and time difference between any two places, with the best time to call.
+    
+    ](https://getmylocations.com/time-difference)
+-   [
+    
+    ### Moon Phase Today
+    
+    Moon phase and % lit today, moonrise and moonset, and the next full moon.
+    
+    ](https://getmylocations.com/moon-phase)
+-   [
+    
+    ### EV Charging Near Me
+    
+    Electric car charging points near you with connectors, power and network.
+    
+    ](https://getmylocations.com/ev-charging-near-me)
+-   [
+    
+    ### Antipode Map
+    
+    Find the exact opposite point on Earth from you or any place, on two maps.
+    
+    ](https://getmylocations.com/antipode-map)
+-   [
+    
     ### Address Finder
     
     Address-to-coordinates and coordinates-to-address geocoding both ways.
